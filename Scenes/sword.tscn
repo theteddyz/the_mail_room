@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://bkqv3it8a12tp" path="res://Assets/officewall.tres" id="3_d3ii8"]
 
 [node name="sword" instance=ExtResource("1_p8how")]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 4.53021)
+transform = Transform3D(0.35, 0, 0, 0, 0.345518, 0.0558318, 0, -0.0558318, 0.345518, 0, 2.09641, 3.29288)
 
 [node name="Blade" parent="." index="0"]
 transform = Transform3D(1.40153, 0, 0, 0, 0.230781, 0, 0, 0, 8.13702, -2.49967, 0, -1.07984)
