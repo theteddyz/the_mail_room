@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://bkqv3it8a12tp" path="res://Assets/officewall.tres" id="3_d3ii8"]
 
 [node name="sword" instance=ExtResource("1_p8how")]
-transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 4.53021)
 
 [node name="Blade" parent="." index="0"]
 material_override = ExtResource("2_q8u8s")
