@@ -8,6 +8,7 @@
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
 
 [node name="Blade" parent="." index="0"]
+transform = Transform3D(1.40153, 0, 0, 0, 0.230781, 0, 0, 0, 8.13702, -2.49967, 0, -1.07984)
 material_override = ExtResource("2_q8u8s")
 lod_bias = 0.001
 
