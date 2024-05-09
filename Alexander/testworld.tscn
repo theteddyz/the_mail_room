@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=7 format=3 uid="uid://csn6vamjgfjbr"]
+
+[ext_resource type="Script" path="res://Alexander/Player.gd" id="1_uqdaa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h2ln"]
 albedo_color = Color(0.333333, 0.333333, 0.333333, 1)
@@ -16,6 +18,8 @@ background_mode = 2
 sky = SubResource("Sky_11ekw")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 
 [node name="testworld" type="Node3D"]
 
@@ -35,3 +39,15 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
 environment = SubResource("Environment_13vtk")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_uqdaa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037508, 1.00868, 0.0105362)
+shape = SubResource("CapsuleShape3D_h18q0")
+
+[node name="Head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="Camera" type="Camera3D" parent="Player/Head"]
