@@ -13,7 +13,7 @@ data_*/
 # Godot 4+ specific ignores
 .godot/
 
-!.godot/uid_cache.bin
+.godot/uid_cache.bin
 
 # Mono-specific ignores
 .mono/
