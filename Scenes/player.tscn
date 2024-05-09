@@ -1,17 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=4 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_cvbc7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia68h"]
+height = 1.2
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_cvbc7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="standing_collision_shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037508, 1.00868, 0.0105362)
 shape = SubResource("CapsuleShape3D_h18q0")
+
+[node name="crouching_collision_shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, 0.6, 0.011)
+shape = SubResource("CapsuleShape3D_ia68h")
+disabled = true
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
+
+[node name="StandingObstructionRaycast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
