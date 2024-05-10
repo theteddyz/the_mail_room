@@ -3,18 +3,19 @@ extends Control
 @onready var object_text:RichTextLabel = $VBoxContainer/ScrollContainer/RichTextLabel
 @onready var background_image:TextureRect = $TextureRect
 var skip_typewriter_effect: bool = false
-func _ready():
-	set_text("this is a typewritter effect and i am working. This is really cool actually and not stupid at all. I AM SCARED AHHHHHHHHHHHHHHHHHHHHH SCARY MONSTER.")
 
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		skip_typewriter_effect = true
 
-func set_text(text):
+func set_text(text:String,img_path:String):
+	var img = load(img_path)
+	background_image.texture = img
+	skip_typewriter_effect = false
 	object_text.modulate = Color(1, 1, 1, 1)
 	object_text.text = ""  # Start with empty text
-	
+	self.show()
 	await display_text_with_typewriter_effect(text, 0.03)  # Adjust the speed as necessary
 
 
