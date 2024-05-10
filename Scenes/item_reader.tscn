@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2x4onytkpeym"]
 
-[ext_resource type="Script" path="res://Jakob/item_reader.gd" id="1_4wo04"]
-[ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="2_jkxbg"]
+[ext_resource type="Script" path="res://Scripts/item_reader.gd" id="1_psbv5"]
+[ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="2_vhxoh"]
 
 [node name="ItemReader" type="Control"]
 visible = false
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4wo04")
+script = ExtResource("1_psbv5")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -24,7 +24,7 @@ offset_right = -341.0
 offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_jkxbg")
+texture = ExtResource("2_vhxoh")
 stretch_mode = 3
 
 [node name="Panel" type="Panel" parent="."]
