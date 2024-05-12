@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+#UI Nodes
+@onready var pause_menu = $"../pauseMenu"
+
 # Player Nodes
 @onready var head = $Head
 @onready var standing_collision_shape = $standing_collision_shape
@@ -53,7 +56,7 @@ func _input(event):
 
 func _shortcut_input(event):
 	if event.is_action_pressed("escape"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		pause_menu.game_paused()
 
 func _physics_process(delta):
 	# Input / State checks
