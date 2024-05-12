@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var headbop_root = $Head/HeadbopRoot
 @onready var interactable_finder = $Head/InteractableFinder
 @onready var standing_obstruction_raycast = $Head/StandingObstructionRaycast
+@onready var crosshair = $Head/HeadbopRoot/Camera/Crosshair
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -46,6 +47,7 @@ var direction = Vector3.ZERO
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	crosshair.visible = false
 
 func _input(event):
 	# Mouse
@@ -54,6 +56,10 @@ func _input(event):
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		get_viewport().set_input_as_handled()
+		
+	if event.is_action_pressed("interact") and interactable_finder.is_colliding():
+		var interactable = interactable_finder.get_collider()
+		interactable.interact()
 
 func _shortcut_input(event):
 	if event.is_action_pressed("escape"):
@@ -112,6 +118,8 @@ func _physics_process(delta):
 	
 	
 	if interactable_finder.is_colliding():
-		print("meme")
+		crosshair.visible = true
+	else: 
+		crosshair.visible = false
 
 	move_and_slide()
