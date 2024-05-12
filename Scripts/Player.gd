@@ -9,7 +9,13 @@ extends CharacterBody3D
 @onready var crouching_collision_shape = $crouching_collision_shape
 @onready var headbop_root = $Head/HeadbopRoot
 @onready var interactable_finder = $Head/InteractableFinder
-@onready var standing_obstruction_raycast = $Head/StandingObstructionRaycast
+
+@onready var standing_obstruction_raycast_0 = $Head/StandingObstructionRaycasts/StandingObstructionRaycast0
+@onready var standing_obstruction_raycast_1 = $Head/StandingObstructionRaycasts/StandingObstructionRaycast1
+@onready var standing_obstruction_raycast_2 = $Head/StandingObstructionRaycasts/StandingObstructionRaycast2
+@onready var standing_obstruction_raycast_3 = $Head/StandingObstructionRaycasts/StandingObstructionRaycast3
+var standing_is_blocked = false
+
 @onready var crosshair = $Head/HeadbopRoot/Camera/Crosshair
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -44,10 +50,20 @@ var head_bopping_current = 0.0
 # Privates
 var current_speed = 5.0
 var direction = Vector3.ZERO
+var driving = false
+var interact_cooldown = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	crosshair.visible = false
+	
+func driveCart():
+	crosshair.visible = false
+	driving = true	
+	await assumeCartPosition()
+	
+func releaseCart():
+	driving = false
 
 func _input(event):
 	# Mouse
@@ -57,15 +73,39 @@ func _input(event):
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		get_viewport().set_input_as_handled()
 		
-	if event.is_action_pressed("interact") and interactable_finder.is_colliding():
+	# Handle Interaction
+	if Input.is_action_pressed("interact") and interactable_finder.is_colliding() and !interact_cooldown:
 		var interactable = interactable_finder.get_collider()
-		interactable.interact()
+		interact_cooldown = true
+		# TODO: Check if bad
+		get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
+		if interactable.name == "Handlebar":
+			driveCart()
+		else: 
+			interactable.interact()
+		get_viewport().set_input_as_handled()
 
 func _shortcut_input(event):
 	if event.is_action_pressed("escape"):
 		pause_menu.game_paused()
 
 func _physics_process(delta):
+	# Check standing-obstruction
+	checkObstructionRaycasts()
+	
+	if not driving:
+		regularMove(delta)
+	else:
+		cartMove(delta)
+
+func checkObstructionRaycasts():
+	if standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding()or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding():
+		standing_is_blocked = true
+	else:
+		standing_is_blocked = false
+
+func regularMove(delta):
+	
 	# Input / State checks
 	if(Input.is_action_pressed("crouch")):
 		standing_collision_shape.disabled = true
@@ -76,7 +116,7 @@ func _physics_process(delta):
 		head_bopping_index += head_bopping_crouching_speed * delta
 	else:
 		# if standing would collide
-		if !standing_obstruction_raycast.is_colliding():
+		if !standing_is_blocked:
 			standing_collision_shape.disabled = false
 			crouching_collision_shape.disabled = true
 			head.position.y = lerp(head.position.y, starting_height, crouching_lerp_speed)
@@ -88,7 +128,6 @@ func _physics_process(delta):
 				current_speed = walking_speed
 				head_bopping_current = head_bopping_walking_intensity
 				head_bopping_index += head_bopping_walking_speed * delta
-				
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -116,10 +155,26 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 	
-	
-	if interactable_finder.is_colliding():
+	# Interactable-indicator
+	if interactable_finder.is_colliding() and !interact_cooldown:
 		crosshair.visible = true
 	else: 
 		crosshair.visible = false
 
+	# Apply the movement
 	move_and_slide()
+
+func cartMove(delta):
+	# Release the cart if we are driving it
+	if Input.is_action_pressed("drive") and driving:
+		releaseCart()
+		
+func assumeCartPosition():
+	var mailcart = get_parent().get_node("Mailcart")
+	var playerPosition = mailcart.find_child("PlayerPosition")
+	position = Vector3(playerPosition.global_position.x, position.y, playerPosition.global_position.z)
+	await get_tree().create_timer(1.5).timeout
+	print("Yay")
+	
+func turnOffInteractCooldown():
+	interact_cooldown = false

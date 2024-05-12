@@ -14,6 +14,4 @@ func _process(delta):
 	
 func interact():
 	print("I've been touched!!! :()")
-	print("I've been touched!!! :()")
-	print("I've been touched!!! :()")
 	

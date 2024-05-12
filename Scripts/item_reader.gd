@@ -18,7 +18,6 @@ func set_text(text:String,img_path:String):
 	self.show()
 	await display_text_with_typewriter_effect(text, 0.03)  # Adjust the speed as necessary
 
-
 func display_text_with_typewriter_effect(text: String, delay: float):
 	for i in range(len(text)):
 		if skip_typewriter_effect:

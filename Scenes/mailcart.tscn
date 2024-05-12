@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://tw0mk31qdtge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mx67c"]
+albedo_color = Color(0.694118, 0.231373, 0.262745, 1)
+
+[node name="Mailcart" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725, 0)
+use_collision = true
+size = Vector3(1.94836, 0.833679, 1)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Handlebar" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.315, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(0.185, 0.315, 1.1)
+material = SubResource("StandardMaterial3D_mx67c")
+
+[node name="PlayerPosition" type="Node3D" parent="Node3D/Handlebar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366249, 0, 0)

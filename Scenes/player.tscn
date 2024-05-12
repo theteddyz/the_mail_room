@@ -9,6 +9,7 @@
 height = 1.2
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 4
 script = ExtResource("1_cvbc7")
 
 [node name="standing_collision_shape" type="CollisionShape3D" parent="."]
@@ -37,6 +38,20 @@ texture = ExtResource("2_5t4wg")
 target_position = Vector3(0, 0, -1.7)
 collision_mask = 2
 
-[node name="StandingObstructionRaycast" type="RayCast3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8, 0)
-target_position = Vector3(0, 2, 0)
+[node name="StandingObstructionRaycasts" type="Node3D" parent="Head"]
+
+[node name="StandingObstructionRaycast0" type="RayCast3D" parent="Head/StandingObstructionRaycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.455761, -0.797134, 0)
+target_position = Vector3(0, 1.095, 0)
+
+[node name="StandingObstructionRaycast1" type="RayCast3D" parent="Head/StandingObstructionRaycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.451038, -0.797134, 0)
+target_position = Vector3(0, 1.095, 0)
+
+[node name="StandingObstructionRaycast2" type="RayCast3D" parent="Head/StandingObstructionRaycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00484732, -0.797134, 0.454299)
+target_position = Vector3(0, 1.095, 0)
+
+[node name="StandingObstructionRaycast3" type="RayCast3D" parent="Head/StandingObstructionRaycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00484732, -0.797134, -0.444105)
+target_position = Vector3(0, 1.095, 0)
