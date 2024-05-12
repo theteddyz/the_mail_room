@@ -7,8 +7,9 @@ extends CharacterBody3D
 @onready var head = $Head
 @onready var standing_collision_shape = $standing_collision_shape
 @onready var crouching_collision_shape = $crouching_collision_shape
-@onready var standing_obstruction_raycast:RayCast3D = $StandingObstructionRaycast
 @onready var headbop_root = $Head/HeadbopRoot
+@onready var interactable_finder = $Head/InteractableFinder
+@onready var standing_obstruction_raycast = $Head/StandingObstructionRaycast
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -108,5 +109,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
+	
+	
+	if interactable_finder.is_colliding():
+		print("meme")
 
 	move_and_slide()

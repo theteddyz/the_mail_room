@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=10 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="1_u0m20"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
+[ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/interactable_test.tscn" id="4_p0gx3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
 albedo_texture = ExtResource("1_o8goe")
@@ -59,3 +60,6 @@ shadow_enabled = true
 environment = SubResource("Environment_13vtk")
 
 [node name="Player" parent="." instance=ExtResource("2_n1cxu")]
+
+[node name="InteractableTest" parent="." instance=ExtResource("4_p0gx3")]
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 1.5, -5.82439)
