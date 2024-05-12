@@ -28,6 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 [node name="Camera" type="Camera3D" parent="Head/HeadbopRoot"]
 
 [node name="Crosshair" type="Sprite2D" parent="Head/HeadbopRoot/Camera"]
+visible = false
 position = Vector2(576, 320)
 scale = Vector2(0.32, 0.32)
 texture = ExtResource("2_5t4wg")
