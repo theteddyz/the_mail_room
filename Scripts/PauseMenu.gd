@@ -10,7 +10,7 @@ func _ready():
 
 func _on_continue_pressed():
 	if is_paused:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 		get_tree().paused = false
 		is_paused = false
 		hide()

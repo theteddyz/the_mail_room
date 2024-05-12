@@ -1,8 +1,9 @@
 extends CharacterBody3D
 
 #UI Nodes
-@onready var pause_menu = $"../pauseMenu"
-
+@onready var pause_menu = $"../GUI/pauseMenu"
+#Need this to check for the item reader so we cannot move the head
+var is_reading = false
 # Player Nodes
 @onready var head = $Head
 @onready var standing_collision_shape = $standing_collision_shape
@@ -16,7 +17,7 @@ extends CharacterBody3D
 @onready var standing_obstruction_raycast_3 = $Head/StandingObstructionRaycasts/StandingObstructionRaycast3
 var standing_is_blocked = false
 
-@onready var crosshair = $Head/HeadbopRoot/Camera/Crosshair
+@onready var crosshair = $Head/HeadbopRoot/Camera/Control/Crosshair
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -67,14 +68,14 @@ func releaseCart():
 
 func _input(event):
 	# Mouse
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && !is_reading:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		get_viewport().set_input_as_handled()
 		
 	# Handle Interaction
-	if Input.is_action_pressed("interact") and interactable_finder.is_colliding() and !interact_cooldown:
+	if Input.is_action_pressed("interact") and interactable_finder.is_colliding() and !interact_cooldown and !is_reading:
 		var interactable = interactable_finder.get_collider()
 		interact_cooldown = true
 		# TODO: Check if bad
@@ -156,7 +157,7 @@ func regularMove(delta):
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 	
 	# Interactable-indicator
-	if interactable_finder.is_colliding() and !interact_cooldown:
+	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading:
 		crosshair.visible = true
 	else: 
 		crosshair.visible = false

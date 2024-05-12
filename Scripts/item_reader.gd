@@ -3,15 +3,25 @@ extends Control
 @onready var object_text:RichTextLabel = $VBoxContainer/ScrollContainer/RichTextLabel
 @onready var background_image:TextureRect = $TextureRect
 var skip_typewriter_effect: bool = false
+@onready var player = $"../../Player"
+func _ready():
+	#hide()
+	pass
+
+func display_item(text:String,img_path:Texture2D):
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	var player = $"../../Player"
+	player.is_reading = true
+	set_text(text,img_path)
+	
 
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		skip_typewriter_effect = true
 
-func set_text(text:String,img_path:String):
-	var img = load(img_path)
-	background_image.texture = img
+func set_text(text:String,img_path:Texture2D):
+	background_image.texture = img_path
 	skip_typewriter_effect = false
 	object_text.modulate = Color(1, 1, 1, 1)
 	object_text.text = ""  # Start with empty text
@@ -25,3 +35,9 @@ func display_text_with_typewriter_effect(text: String, delay: float):
 			return
 		object_text.text = "[center]" + text.substr(0, i + 1) + "[/center]"
 		await get_tree().create_timer(delay).timeout
+
+
+func _on_button_pressed():
+	hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	player.is_reading = false

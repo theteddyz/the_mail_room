@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=15 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="1_u0m20"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
+[ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/item_reader.tscn" id="2_pfcaa"]
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/interactable_test.tscn" id="4_p0gx3"]
+[ext_resource type="Script" path="res://Jakob/readable_objectg.gd" id="5_s8sdp"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/mailcart.tscn" id="5_tbsk3"]
 [ext_resource type="Script" path="res://Scripts/Mailcart.gd" id="6_riro2"]
+[ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
 albedo_texture = ExtResource("1_o8goe")
@@ -31,7 +34,20 @@ glow_enabled = true
 
 [node name="testworld" type="Node3D"]
 
-[node name="pauseMenu" parent="." instance=ExtResource("1_u0m20")]
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemReader" parent="GUI" instance=ExtResource("2_pfcaa")]
+visible = false
+layout_mode = 1
+
+[node name="pauseMenu" parent="GUI" instance=ExtResource("1_u0m20")]
+layout_mode = 1
 
 [node name="stage" type="Node3D" parent="."]
 
@@ -65,6 +81,12 @@ environment = SubResource("Environment_13vtk")
 
 [node name="InteractableTest" parent="." instance=ExtResource("4_p0gx3")]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 1.5, -5.82439)
+
+[node name="InteractableTest2" parent="." instance=ExtResource("4_p0gx3")]
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 6, 1.5, -5.82439)
+script = ExtResource("5_s8sdp")
+image_path = ExtResource("7_h5xp5")
+object_text = "Im being read woopie!"
 
 [node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28541, 0.725, 0)
