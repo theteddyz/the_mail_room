@@ -10,6 +10,7 @@ height = 1.2
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
+collision_mask = 17
 script = ExtResource("1_cvbc7")
 
 [node name="standing_collision_shape" type="CollisionShape3D" parent="."]

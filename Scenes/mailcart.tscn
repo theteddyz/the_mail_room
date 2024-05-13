@@ -6,6 +6,7 @@ albedo_color = Color(0.694118, 0.231373, 0.262745, 1)
 [node name="Mailcart" type="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725, 0)
 use_collision = true
+collision_layer = 16
 size = Vector3(1.94836, 0.833679, 1)
 
 [node name="Node3D" type="Node3D" parent="."]

@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+#TODO: Un-link mouse-rotation when cart-movement is happening, input right and left should cause rotation
+
 #UI Nodes
 @onready var pause_menu = $"../GUI/pauseMenu"
 #Need this to check for the item reader so we cannot move the head
@@ -35,6 +37,8 @@ var head_bopping_vector = Vector2.ZERO
 var head_bopping_index = 0.0
 var head_bopping_current = 0.0
 
+@export var mailcart: Node
+
 # Speed variables
 @export var walking_speed = 5.0
 @export var sprinting_speed = 10.0
@@ -43,6 +47,10 @@ var head_bopping_current = 0.0
 @export var mouse_sense = 0.25
 @export var movement_lerp_speed = 8.2
 @export var crouching_lerp_speed = 0.18
+
+@export var cart_movement_lerp_speed = 3.85
+@export var cart_sprinting_speed = 5.2
+@export var cart_walking_speed = 3.8
 
 
 @onready var starting_height = head.position.y
@@ -53,6 +61,8 @@ var current_speed = 5.0
 var direction = Vector3.ZERO
 var driving = false
 var interact_cooldown = false
+var is_assuming_cart_position = false
+var assuming_cart_lerp_factor = 0
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -60,11 +70,14 @@ func _ready():
 	
 func driveCart():
 	crosshair.visible = false
-	driving = true	
-	await assumeCartPosition()
+	driving = true
+	is_assuming_cart_position = true
 	
 func releaseCart():
 	driving = false
+	mailcart.reparent(get_parent())
+	set_collision_mask_value(5, true)
+	
 
 func _input(event):
 	# Mouse
@@ -78,7 +91,6 @@ func _input(event):
 	if Input.is_action_pressed("interact") and interactable_finder.is_colliding() and !interact_cooldown and !is_reading:
 		var interactable = interactable_finder.get_collider()
 		interact_cooldown = true
-		# TODO: Check if bad
 		get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
 		if interactable.name == "Handlebar":
 			driveCart()
@@ -166,16 +178,41 @@ func regularMove(delta):
 	move_and_slide()
 
 func cartMove(delta):
-	# Release the cart if we are driving it
-	if Input.is_action_pressed("drive") and driving:
-		releaseCart()
+	if is_assuming_cart_position:
+		var playerpos = mailcart.get_node("Node3D/Handlebar/PlayerPosition")
+		var targetPosition = Vector3(playerpos.global_position.x, position.y, playerpos.global_position.z)
+		position = position.lerp(targetPosition, assuming_cart_lerp_factor)
+		assuming_cart_lerp_factor += delta * 2.25
+		if assuming_cart_lerp_factor > 1:
+			mailcart.reparent(self, true)
+			set_collision_mask_value(5, false)
+			is_assuming_cart_position = false
+			assuming_cart_lerp_factor = 0
+	else: 
+		# Release the cart if we are driving it
+		if Input.is_action_pressed("drive") and driving:
+			releaseCart()
+			
+		if Input.is_action_pressed("sprint"):
+			current_speed = cart_sprinting_speed
+		else: 
+			current_speed = cart_walking_speed
 		
-func assumeCartPosition():
-	var mailcart = get_parent().get_node("Mailcart")
-	var playerPosition = mailcart.find_child("PlayerPosition")
-	position = Vector3(playerPosition.global_position.x, position.y, playerPosition.global_position.z)
-	await get_tree().create_timer(1.5).timeout
-	print("Yay")
-	
+		# Add the gravity.
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		
+		var input_dir = Input.get_vector("left", "right", "forward", "backward")
+		direction = lerp(direction, (transform.basis * Vector3(input_dir.x * 0.2, 0, input_dir.y)).normalized(), delta * cart_movement_lerp_speed)
+
+		if direction:
+			velocity.x = direction.x * current_speed
+			velocity.z = direction.z * current_speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, current_speed)
+			velocity.z = move_toward(velocity.z, 0, current_speed)
+		
+		move_and_slide()
+
 func turnOffInteractCooldown():
 	interact_cooldown = false
