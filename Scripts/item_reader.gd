@@ -21,12 +21,13 @@ func _input(event):
 		skip_typewriter_effect = true
 
 func set_text(text:String,img_path:Texture2D):
+	var delay = 0.03
 	background_image.texture = img_path
 	skip_typewriter_effect = false
 	object_text.modulate = Color(1, 1, 1, 1)
 	object_text.text = ""  # Start with empty text
 	self.show()
-	await display_text_with_typewriter_effect(text, 0.03)  # Adjust the speed as necessary
+	await display_text_with_typewriter_effect(text, delay)  # Adjust the speed as necessary
 
 func display_text_with_typewriter_effect(text: String, delay: float):
 	for i in range(len(text)):

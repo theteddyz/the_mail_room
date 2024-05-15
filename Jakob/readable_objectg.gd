@@ -1,8 +1,10 @@
 extends CSGBox3D
 
 @onready var item_reader = $"../GUI/ItemReader"
+@onready var journal = $"../GUI/playerJournal"
 @export var image_path:Texture2D 
 @export var object_text:String
+
 var startPosition = Vector3.ZERO
 
 func _ready():
@@ -12,9 +14,11 @@ func _ready():
 func _process(delta):
 	rotate_x(1.35 * delta)
 	rotate_z(1.85 * delta)
+	
 	position = Vector3(position.x, startPosition.y + sin(Time.get_ticks_msec() * delta * 0.5) * 0.05, position.z)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func interact():
 	item_reader.display_item("AHHHHHHHHHHHH IM BEING READ WOOOPIE",image_path)
-	
+	if journal:
+		journal.add_note("THIS IS THE TITLE","THIS IS THE CONTENT",image_path)
+		queue_free()
