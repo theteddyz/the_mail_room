@@ -1,7 +1,6 @@
 extends CSGBox3D
 
 @onready var item_reader = $"../GUI/ItemReader"
-@onready var journal = $"../GUI/playerJournal"
 @export var image_path:Texture2D 
 @export var object_text:String
 
@@ -19,6 +18,3 @@ func _process(delta):
 
 func interact():
 	item_reader.display_item("AHHHHHHHHHHHH IM BEING READ WOOOPIE",image_path)
-	if journal:
-		journal.add_note("THIS IS THE TITLE","THIS IS THE CONTENT",image_path)
-		queue_free()
