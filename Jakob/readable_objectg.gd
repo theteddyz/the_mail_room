@@ -10,7 +10,7 @@ func _ready():
 	startPosition = position
 
 
-func _process(delta):
+func _physics_process(delta):
 	rotate_x(1.35 * delta)
 	rotate_z(1.85 * delta)
 	
