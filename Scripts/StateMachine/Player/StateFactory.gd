@@ -5,7 +5,6 @@ var states
 func _init():
 	states = {
 		"walking": WalkingState,
-		"crouching": CrouchingState
 }
 
 func get_state(state_name):

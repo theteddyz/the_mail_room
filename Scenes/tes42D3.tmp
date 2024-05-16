@@ -1,0 +1,100 @@
+[gd_scene load_steps=16 format=3 uid="uid://csn6vamjgfjbr"]
+
+[ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
+[ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="1_u0m20"]
+[ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
+[ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/item_reader.tscn" id="2_pfcaa"]
+[ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/interactable_test.tscn" id="4_p0gx3"]
+[ext_resource type="Script" path="res://Jakob/readable_objectg.gd" id="5_s8sdp"]
+[ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/mailcart.tscn" id="5_tbsk3"]
+[ext_resource type="Script" path="res://Scripts/Mailcart.gd" id="6_riro2"]
+[ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
+[ext_resource type="Script" path="res://Scripts/grabableObject.gd" id="8_k21ww"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
+albedo_texture = ExtResource("1_o8goe")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h2ln"]
+albedo_color = Color(0.333333, 0.333333, 0.333333, 1)
+albedo_texture = ExtResource("1_o8goe")
+metallic_specular = 0.25
+uv1_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_28hyf"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_11ekw"]
+sky_material = SubResource("ProceduralSkyMaterial_28hyf")
+
+[sub_resource type="Environment" id="Environment_13vtk"]
+background_mode = 2
+sky = SubResource("Sky_11ekw")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="testworld" type="Node3D"]
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemReader" parent="GUI" instance=ExtResource("2_pfcaa")]
+visible = false
+layout_mode = 1
+
+[node name="pauseMenu" parent="GUI" instance=ExtResource("1_u0m20")]
+layout_mode = 1
+
+[node name="stage" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_1330w")
+use_collision = true
+size = Vector3(20, 1, 20)
+material = SubResource("StandardMaterial3D_0h2ln")
+
+[node name="stage2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.53711, 14.7408)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="stage2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_1330w")
+use_collision = true
+size = Vector3(20, 1, 20)
+material = SubResource("StandardMaterial3D_0h2ln")
+
+[node name="environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
+environment = SubResource("Environment_13vtk")
+
+[node name="Player" parent="." instance=ExtResource("2_n1cxu")]
+
+[node name="InteractableTest" parent="." instance=ExtResource("4_p0gx3")]
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 1.5, -5.82439)
+
+[node name="InteractableTest2" parent="." instance=ExtResource("4_p0gx3")]
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 6, 1.5, -5.82439)
+script = ExtResource("5_s8sdp")
+image_path = ExtResource("7_h5xp5")
+object_text = "Im being read woopie!"
+
+[node name="InteractableTest3" parent="." instance=ExtResource("4_p0gx3")]
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 3, 1.5, -5.82439)
+script = ExtResource("8_k21ww")
+offset = Vector3(0, 0, -0.3)
+mass = 1.0
+
+[node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28541, 0.725, 0)
+script = ExtResource("6_riro2")
