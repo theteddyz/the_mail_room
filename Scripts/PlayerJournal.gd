@@ -26,21 +26,12 @@ func update_notes_list():
 		button.text = title
 		button.name = title
 		print("NOTE ADDED: " + title)
-		var result =  button.pressed.connect(Callable(self, "_on_button_down"))
+		var result =  button.pressed.connect(Callable(self, "_on_note_selected"))
 		if result != OK:
 			print("NOT OKAY FUCK")
 		notes_list.add_child(button)
 		button.button_pressed = true
 		print("Button added for: " + title)
-
-
-func _on_button_down():
-	get_tree().paused =false
-	print("Button pressed: ")
-	var button = get_tree().get_current_scene().get_node(get_tree().get_current_scene().get_focus_owner().get_path())
-	if button and button is Button:
-		var title = button.name
-		_on_note_selected()
 
 func _on_note_selected():
 	print("Button pressed: ")
