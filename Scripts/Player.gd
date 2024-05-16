@@ -1,72 +1,25 @@
 extends CharacterBody3D
 
-#TODO: Un-link mouse-rotation when cart-movement is happening, input right and left should cause rotation
+
 
 #UI Nodes
 @onready var pause_menu = $"../GUI/pauseMenu"
 #Need this to check for the item reader so we cannot move the head
-var is_reading = false
-# Player Nodes
-@onready var head = $Head
-@onready var standing_collision_shape = $standing_collision_shape
-@onready var crouching_collision_shape = $crouching_collision_shape
-@onready var headbop_root = $Head/HeadbopRoot
-@onready var interactable_finder = $Head/InteractableFinder
-
-@onready var standing_obstruction_raycast_0 = $Head/StandingObstructionRaycasts/StandingObstructionRaycast0
-@onready var standing_obstruction_raycast_1 = $Head/StandingObstructionRaycasts/StandingObstructionRaycast1
-@onready var standing_obstruction_raycast_2 = $Head/StandingObstructionRaycasts/StandingObstructionRaycast2
-@onready var standing_obstruction_raycast_3 = $Head/StandingObstructionRaycasts/StandingObstructionRaycast3
-var standing_is_blocked = false
-
-@onready var crosshair = $Head/HeadbopRoot/Camera/Control/Crosshair
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-# Head Bopping
-const head_bopping_sprinting_speed = 20
-const head_bopping_walking_speed = 12
-const head_bopping_crouching_speed = 9
-
-const head_bopping_crouching_intensity = 0.05
-const head_bopping_walking_intensity = 0.1
-const head_bopping_sprinting_intensity = 0.2
-
-var head_bopping_vector = Vector2.ZERO
-var head_bopping_index = 0.0
-var head_bopping_current = 0.0
 
 @export var mailcart: Node
 
 # Speed variables
-@export var walking_speed = 5.0
-@export var sprinting_speed = 10.0
-@export var crouching_speed = 3.1
-@export var jump_velocity = 4.5
-@export var mouse_sense = 0.25
-@export var movement_lerp_speed = 8.2
-@export var crouching_lerp_speed = 0.18
+@export var jump_velocity = 4.5 
 
 @export var cart_movement_lerp_speed = 3.85
 @export var cart_sprinting_speed = 5.2
 @export var cart_walking_speed = 3.8
 
-
-@onready var starting_height = head.position.y
-@onready var crouching_depth = starting_height - 0.5
-
 # Privates
-var current_speed = 5.0
-var direction = Vector3.ZERO
-var driving = false
-var interact_cooldown = false
-var is_assuming_cart_position = false
-var assuming_cart_lerp_factor = 0
+
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	crosshair.visible = false
+	#TODO: Continue from here
 	
 func driveCart():
 	crosshair.visible = false
@@ -80,42 +33,12 @@ func releaseCart():
 	
 
 func _input(event):
-	# Mouse
-	if event is InputEventMouseMotion && !is_reading:
-		rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
-		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
-		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-		get_viewport().set_input_as_handled()
-		
-	# Handle Interaction
-	if Input.is_action_pressed("interact") and interactable_finder.is_colliding() and !interact_cooldown and !is_reading:
-		var interactable = interactable_finder.get_collider()
-		interact_cooldown = true
-		get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
-		if interactable.name == "Handlebar":
-			driveCart()
-		else: 
-			interactable.interact()
-		get_viewport().set_input_as_handled()
-
-func _shortcut_input(event):
-	if event.is_action_pressed("escape"):
-		pause_menu.game_paused()
-
-func _physics_process(delta):
-	# Check standing-obstruction
-	checkObstructionRaycasts()
 	
-	if not driving:
-		regularMove(delta)
-	else:
-		cartMove(delta)
 
-func checkObstructionRaycasts():
-	if standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding()or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding():
-		standing_is_blocked = true
-	else:
-		standing_is_blocked = false
+
+
+
+
 
 func regularMove(delta):
 	
@@ -141,41 +64,6 @@ func regularMove(delta):
 				current_speed = walking_speed
 				head_bopping_current = head_bopping_walking_intensity
 				head_bopping_index += head_bopping_walking_speed * delta
-
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * movement_lerp_speed)
-
-	if direction:
-		velocity.x = direction.x * current_speed
-		velocity.z = direction.z * current_speed
-		
-		# Head Bopping
-		if Vector3(input_dir.x, 0, input_dir.y) != Vector3.ZERO:
-			head_bopping_vector.y = sin(head_bopping_index)
-			head_bopping_vector.x = sin(head_bopping_index/2)+0.5
-			
-			headbop_root.position.y = lerp(headbop_root.position.y, head_bopping_vector.y * (head_bopping_current / 2.0), delta * movement_lerp_speed)
-			headbop_root.position.x = lerp(headbop_root.position.x, head_bopping_vector.x * (head_bopping_current), delta * movement_lerp_speed)
-		else:
-			headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
-	else:
-		velocity.x = move_toward(velocity.x, 0, current_speed)
-		velocity.z = move_toward(velocity.z, 0, current_speed)
-	
-	# Interactable-indicator
-	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading:
-		crosshair.visible = true
-	else: 
-		crosshair.visible = false
-
-	# Apply the movement
-	move_and_slide()
 
 func cartMove(delta):
 	if is_assuming_cart_position:
@@ -213,6 +101,3 @@ func cartMove(delta):
 			velocity.z = move_toward(velocity.z, 0, current_speed)
 		
 		move_and_slide()
-
-func turnOffInteractCooldown():
-	interact_cooldown = false

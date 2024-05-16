@@ -1,0 +1,35 @@
+extends CharacterBody3D
+class_name PlayerMachine
+
+# UI Nodes
+@onready var pause_menu = $"../GUI/pauseMenu"
+
+# Privates
+var state: State
+var state_factory: StateFactory
+var standing_is_blocked = false
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+#var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	state_factory = StateFactory.new()
+	change_state("walking")
+
+# Break this out to a pausemanager or similar
+func _shortcut_input(event):
+	if event.is_action_pressed("escape"):
+		pause_menu.game_paused()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+func change_state(new_state_name):
+	if state != null:
+		state.queue_free()
+	state = state_factory.get_state(new_state_name).new()
+	state.setup(Callable(self, "change_state"), self)
+	state.name = "current_state"
+	add_child(state)

@@ -11,10 +11,9 @@ func _ready():
 func display_item(text:String,img_path:Texture2D):
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	var player = $"../../Player"
-	player.is_reading = true
+	player.state.is_reading = true
 	set_text(text,img_path)
 	
-
 
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
@@ -40,4 +39,4 @@ func display_text_with_typewriter_effect(text: String, delay: float):
 func _on_button_pressed():
 	hide()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	player.is_reading = false
+	player.state.is_reading = false
