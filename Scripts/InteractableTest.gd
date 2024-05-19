@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	rotate_x(1.35 * delta)
 	rotate_z(1.85 * delta)
 	position = Vector3(position.x, startPosition.y + sin(Time.get_ticks_msec() * delta * 0.5) * 0.05, position.z)
