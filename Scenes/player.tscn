@@ -29,6 +29,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Camera" type="Camera3D" parent="Head/HeadbopRoot"]
 
+[node name="ItemHolder" type="Marker3D" parent="Head/HeadbopRoot/Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011888, 0.0205584, -1.24889)
+
 [node name="Control" type="Control" parent="Head/HeadbopRoot/Camera"]
 layout_mode = 3
 anchors_preset = 8

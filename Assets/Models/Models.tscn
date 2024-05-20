@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://co6451mb8aq7j"]
+
+[ext_resource type="PackedScene" uid="uid://j3j45yof2ynm" path="res://Assets/Models/BlenderModels/desk.blend" id="1_ybtpc"]
+
+[node name="desk" instance=ExtResource("1_ybtpc")]
+
+[node name="CeilingLowPoly" parent="." index="44"]
+transform = Transform3D(0.586763, 0, 0, 0, 0.586763, 0, 0, 0, 0.586763, 7.53395, 4.0144, -1.66531)
