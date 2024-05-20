@@ -64,7 +64,7 @@ func _input(event):
 		get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
 		if interactable.name == "Handlebar":
 			# TODO: STATE CHANGE TO CARTING
-			change_state.call("carting")
+			change_state.call("grabcart")
 		else: 
 			interactable.interact()
 		get_viewport().set_input_as_handled()

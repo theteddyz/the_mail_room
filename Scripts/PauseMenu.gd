@@ -7,7 +7,6 @@ func _ready():
 	is_paused = false
 	get_tree().paused = false
 
-
 func _on_continue_pressed():
 	if is_paused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
