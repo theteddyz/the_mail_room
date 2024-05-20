@@ -41,7 +41,7 @@ func _physics_process(delta):
 		# Actual Lerps
 		persistent_state.position = persistent_state.position.lerp(targetPosition, assuming_cart_lerp_factor)
 		persistent_state.rotation = persistent_state.rotation.lerp(Vector3(0, mailcart.rotation.y + deg_to_rad(90), 0), assuming_cart_lerp_factor)
-		head.position = head.position.lerp(Vector3(initial_head_position.x, targetHeadPosition, initial_head_position.z), assuming_cart_lerp_factor)
+		#head.position = head.position.lerp(Vector3(initial_head_position.x, targetHeadPosition, initial_head_position.z), assuming_cart_lerp_factor)
 		
 		assuming_cart_lerp_factor += delta * 2.25
 		if assuming_cart_lerp_factor > 1:
