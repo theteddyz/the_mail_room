@@ -5,7 +5,8 @@ var states
 func _init():
 	states = {
 		"walking": WalkingState,
-}
+		#"carting": CartingState,
+	}	
 
 func get_state(state_name):
 	if states.has(state_name):

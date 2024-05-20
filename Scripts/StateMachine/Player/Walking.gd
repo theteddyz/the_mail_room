@@ -52,7 +52,7 @@ func _ready():
 func _input(event):
 	# Mouse
 	if event is InputEventMouseMotion && !is_reading:
-		get_parent().rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
+		persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		get_viewport().set_input_as_handled()
@@ -64,7 +64,7 @@ func _input(event):
 		get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
 		if interactable.name == "Handlebar":
 			# TODO: STATE CHANGE TO CARTING
-			pass
+			change_state.call("carting")
 		else: 
 			interactable.interact()
 		get_viewport().set_input_as_handled()
@@ -72,6 +72,10 @@ func _input(event):
 func turnOffInteractCooldown():
 	interact_cooldown = false
 
+func _process(delta):
+	# Apply the movement
+	persistent_state.move_and_slide()
+	
 func _physics_process(delta):
 	# Check standing-obstruction
 	checkObstructionRaycasts()
@@ -110,11 +114,11 @@ func regularMove(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	direction = lerp(direction, (get_parent().transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * movement_lerp_speed)
+	direction = lerp(direction, (persistent_state.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * movement_lerp_speed)
 
 	if direction:
-		get_parent().velocity.x = direction.x * current_speed
-		get_parent().velocity.z = direction.z * current_speed
+		persistent_state.velocity.x = direction.x * current_speed
+		persistent_state.velocity.z = direction.z * current_speed
 		
 		# Head Bopping
 		if Vector3(input_dir.x, 0, input_dir.y) != Vector3.ZERO:
@@ -126,14 +130,11 @@ func regularMove(delta):
 		else:
 			headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
 	else:
-		get_parent().velocity.x = move_toward(velocity.x, 0, current_speed)
-		get_parent().velocity.z = move_toward(velocity.z, 0, current_speed)
+		persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
+		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
 	
 	# Interactable-indicator
 	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading:
 		crosshair.visible = true
 	else: 
 		crosshair.visible = false
-
-	# Apply the movement
-	get_parent().move_and_slide()

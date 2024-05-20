@@ -21,10 +21,6 @@ func _ready():
 func _shortcut_input(event):
 	if event.is_action_pressed("escape"):
 		pause_menu.game_paused()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func change_state(new_state_name):
 	if state != null:

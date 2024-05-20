@@ -1,11 +1,11 @@
-extends CharacterBody3D
+extends Node3D
 
 class_name State
 
 # Privates
 var current_speed = 0
 var change_state: Callable
-var persistent_state
+var persistent_state: CharacterBody3D
 var mouse_sense = 0.25
 
 # Called when a new instance of any state is created

@@ -26,20 +26,6 @@ func driveCart():
 	driving = true
 	is_assuming_cart_position = true
 	
-func releaseCart():
-	driving = false
-	mailcart.reparent(get_parent())
-	set_collision_mask_value(5, true)
-	
-
-func _input(event):
-	
-
-
-
-
-
-
 func regularMove(delta):
 	
 	# Input / State checks
