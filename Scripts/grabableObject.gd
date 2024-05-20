@@ -1,38 +1,32 @@
 extends Interactable
-@onready var player = $"../../Player"
-@onready var original_parent
-@export var throw_strength: float = 10.0  # Define the throw strength
+
+@export var throw_strength: float = 800.0  # Define the throw strength
 @export var weightLimit: float = 10.0  # Define the throw strength
 @export var max_lift_height: float = 100.0
 var is_picked_up = false
-var is_dragged = false
-var startPosition = Vector3.ZERO
+var pickUpTimer:bool = false
 var itemPos
 var playerHead
 var camera:Camera3D
 var throw_direction = Vector3.ZERO
-var is_moving_to_item_holder:bool = false
 var force = Vector3.ZERO
-@export var lerp_speed: float = 20.0  # Define the speed of lerping
-@onready var collisionShape:CollisionShape3D = $"../CollisionShape3D"
+var player
+var original_parent
 @onready var parent: RigidBody3D = self.get_parent()
-var original_collision_layer: int
-var original_collision_mask: int
 func _ready():
-	startPosition = position
-	original_collision_layer = parent.collision_layer
-	original_collision_mask = parent.collision_mask
 	original_parent = parent.get_parent()
+	player = parent.get_parent().find_child("Player")
 	camera = player.find_child("Camera")
 
 
 func _physics_process(delta):
-	if is_moving_to_item_holder or is_picked_up or is_dragged:
+	if  is_picked_up and !pickUpTimer:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			update_position(delta)
 			if Input.is_action_just_pressed("drive"):
 				throwMe()
-				parent.apply_impulse(throw_direction * throw_strength, parent.position)
+				parent.apply_force(throw_direction * throw_strength, throw_direction)
+				is_picked_up = false
 		else:
 			dropMe()
 
@@ -45,44 +39,32 @@ func interact():
 
 
 func pickmeUp():
-	if is_picked_up:
+	if is_picked_up or pickUpTimer:
 		return
 	if parent.mass <= weightLimit:
-		EventBus.emitCustomSignal("object_held", parent.mass)
-		is_moving_to_item_holder = true
-	else:
-		var currentPos = parent.global_position
-		if  original_parent == parent.get_parent():
-			original_parent.remove_child(parent)
-			player.add_child(parent)
-		is_dragged = true
-		parent.global_position = currentPos
+		#EventBus.emitCustomSignal("object_held", parent.mass)
+		parent.set_collision_mask_value(5, false)
+		is_picked_up = true
+
 
 
 func dropMe():
-	if is_dragged:
+	if is_picked_up:
 		var currentPos = parent.global_position
-		is_dragged = false
+		is_picked_up = false
+		parent.set_collision_mask_value(5, true)
 		parent.global_position = currentPos
-	parent.collision_layer = original_collision_layer
-	parent.collision_mask = original_collision_mask
-	is_picked_up = false
-	if is_moving_to_item_holder:
-		is_moving_to_item_holder = false
 
 func throwMe():
 	if not is_picked_up:
 		return
-	is_picked_up = false
-	is_moving_to_item_holder = false
 	throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
-	parent.collision_layer = original_collision_layer
-	parent.collision_mask = original_collision_mask
+	parent.set_collision_mask_value(5, true)
 	#EventBus.emit_custom_signal("object_held", -mass)
 
 
 func update_position(delta):
-	if is_moving_to_item_holder:
+	if is_picked_up:
 		var targetPosition:Vector3 = itemPos.global_transform.origin
 		var currentPosition = parent.global_transform.origin
 		var directionTo:Vector3 = targetPosition - currentPosition
@@ -95,7 +77,8 @@ func update_position(delta):
 		
 
 func _process(delta):
-	parent.set_linear_velocity(force)
+	if is_picked_up:
+		parent.set_linear_velocity(force)
 
 #func _integrate_forces():
 #	parent.set_linear_velocity(force)
