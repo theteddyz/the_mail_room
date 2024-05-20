@@ -9,13 +9,14 @@ class_name CartingState
 @export var cart_movement_lerp_speed = 3.85
 @export var cart_sprinting_speed = 5.2
 @export var cart_walking_speed = 3.8
+@export var cart_turning_speed_modifier = 0.15
 
-#TODO: Un-link mouse-rotation when cart-movement is happening, input right and left should cause rotation
+var directionX = Vector3.ZERO
+var directionZ = Vector3.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("Carting State Ready")
-	persistent_state.set_collision_mask_value(5, false)	
 	mailcart.reparent(persistent_state, true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,6 +29,7 @@ func _process(delta):
 func releaseCart():
 	mailcart.reparent(persistent_state.get_parent())
 	persistent_state.set_collision_mask_value(5, true)
+	head.position = Vector3(0, 1.8, 0)
 	change_state.call("walking")
 
 func _physics_process(delta):
@@ -36,13 +38,17 @@ func _physics_process(delta):
 		else: 
 			current_speed = cart_walking_speed
 		
-		#var input_dir = Input.get_vector("left", "right", "forward", "backward")
-		#direction = lerp(direction, (transform.basis * Vector3(input_dir.x * 0.2, 0, input_dir.y)).normalized(), delta * cart_movement_lerp_speed)
-#
-		#if direction:
-			#velocity.x = direction.x * current_speed
-			#velocity.z = direction.z * current_speed
-		#else:
-			#velocity.x = move_toward(velocity.x, 0, current_speed)
-			#velocity.z = move_toward(velocity.z, 0, current_speed)
+		var input_dir_steering = Input.get_axis("left", "right")
+		var input_dir_acceleration = Input.get_axis("forward", "backward")
+		var turning_delta = min(abs(persistent_state.velocity.x), 2.75)
+		
+		directionX = lerp(directionX, Vector3(input_dir_acceleration, 0, 0).normalized(), delta * cart_movement_lerp_speed)
+		directionZ = lerp(directionZ, Vector3(0, 0, input_dir_steering * turning_delta * cart_turning_speed_modifier), delta * cart_movement_lerp_speed)
+		
+		if directionX or directionZ:
+			persistent_state.velocity.x = directionX.x * current_speed
+			persistent_state.velocity.z = -directionZ.z * current_speed
+		else:
+			persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
+			persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
 
