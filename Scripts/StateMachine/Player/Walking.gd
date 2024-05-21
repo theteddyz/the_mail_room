@@ -2,7 +2,8 @@ extends State
 class_name WalkingState
 
 # Nodes
-@onready var head = get_parent().get_node("Head")
+@onready var neck = get_parent().get_node("Neck")
+@onready var head = neck.get_node("Head")
 @onready var standing_collision_shape = get_parent().get_node("standing_collision_shape")
 @onready var crouching_collision_shape = get_parent().get_node("crouching_collision_shape")
 @onready var headbop_root = head.get_node("HeadbopRoot")
@@ -43,7 +44,7 @@ var head_bopping_current = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	starting_height = head.position.y
+	starting_height = neck.position.y
 	crouching_depth = starting_height - 0.5
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	crosshair.visible = false
@@ -63,7 +64,6 @@ func _input(event):
 		interact_cooldown = true
 		get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
 		if interactable.name == "Handlebar":
-			# TODO: STATE CHANGE TO CARTING
 			change_state.call("grabcart")
 		else: 
 			interactable.interact()
@@ -88,12 +88,13 @@ func checkObstructionRaycasts():
 		standing_is_blocked = false
 
 func regularMove(delta):
+	
 	# Input / State checks
 	if(Input.is_action_pressed("crouch")):
 		standing_collision_shape.disabled = true
 		crouching_collision_shape.disabled = false
 		current_speed = crouching_speed
-		head.position.y = lerp(head.position.y, crouching_depth, crouching_lerp_speed)
+		neck.position.y = lerp(neck.position.y, crouching_depth, crouching_lerp_speed)
 		head_bopping_current = head_bopping_crouching_intensity
 		head_bopping_index += head_bopping_crouching_speed * delta
 	else:
@@ -101,7 +102,7 @@ func regularMove(delta):
 		if !standing_is_blocked:
 			standing_collision_shape.disabled = false
 			crouching_collision_shape.disabled = true
-			head.position.y = lerp(head.position.y, starting_height, crouching_lerp_speed)
+			neck.position.y = lerp(neck.position.y, starting_height, crouching_lerp_speed)
 			if Input.is_action_pressed("sprint"):
 				current_speed = sprinting_speed
 				head_bopping_current = head_bopping_sprinting_intensity
@@ -116,9 +117,13 @@ func regularMove(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	direction = lerp(direction, (persistent_state.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * movement_lerp_speed)
 
+
 	if direction:
 		persistent_state.velocity.x = direction.x * current_speed
 		persistent_state.velocity.z = direction.z * current_speed
+		
+		print("Direction Input: ", direction.z)
+		print("Player Rotation: ", persistent_state.rotation)
 		
 		# Head Bopping
 		if Vector3(input_dir.x, 0, input_dir.y) != Vector3.ZERO:

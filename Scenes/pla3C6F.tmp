@@ -22,19 +22,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, 0.6, 0.011)
 shape = SubResource("CapsuleShape3D_ia68h")
 disabled = true
 
-[node name="Neck" type="Node3D" parent="."]
+[node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
-[node name="Head" type="Node3D" parent="Neck"]
+[node name="HeadbopRoot" type="Node3D" parent="Head"]
 
-[node name="HeadbopRoot" type="Node3D" parent="Neck/Head"]
+[node name="Camera" type="Camera3D" parent="Head/HeadbopRoot"]
 
-[node name="Camera" type="Camera3D" parent="Neck/Head/HeadbopRoot"]
-
-[node name="ItemHolder" type="Marker3D" parent="Neck/Head/HeadbopRoot/Camera"]
+[node name="ItemHolder" type="Marker3D" parent="Head/HeadbopRoot/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011888, 0.0205584, -1.24889)
 
-[node name="Control" type="Control" parent="Neck/Head/HeadbopRoot/Camera"]
+[node name="Control" type="Control" parent="Head/HeadbopRoot/Camera"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,29 +46,29 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Crosshair" type="Sprite2D" parent="Neck/Head/HeadbopRoot/Camera/Control"]
+[node name="Crosshair" type="Sprite2D" parent="Head/HeadbopRoot/Camera/Control"]
 visible = false
 scale = Vector2(0.32, 0.32)
 texture = ExtResource("2_5t4wg")
 
-[node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
+[node name="InteractableFinder" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 0, -1.7)
 collision_mask = 2
 
-[node name="StandingObstructionRaycasts" type="Node3D" parent="Neck/Head"]
+[node name="StandingObstructionRaycasts" type="Node3D" parent="Head"]
 
-[node name="StandingObstructionRaycast0" type="RayCast3D" parent="Neck/Head/StandingObstructionRaycasts"]
+[node name="StandingObstructionRaycast0" type="RayCast3D" parent="Head/StandingObstructionRaycasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.455761, -0.797134, 0)
 target_position = Vector3(0, 1.095, 0)
 
-[node name="StandingObstructionRaycast1" type="RayCast3D" parent="Neck/Head/StandingObstructionRaycasts"]
+[node name="StandingObstructionRaycast1" type="RayCast3D" parent="Head/StandingObstructionRaycasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.451038, -0.797134, 0)
 target_position = Vector3(0, 1.095, 0)
 
-[node name="StandingObstructionRaycast2" type="RayCast3D" parent="Neck/Head/StandingObstructionRaycasts"]
+[node name="StandingObstructionRaycast2" type="RayCast3D" parent="Head/StandingObstructionRaycasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00484732, -0.797134, 0.454299)
 target_position = Vector3(0, 1.095, 0)
 
-[node name="StandingObstructionRaycast3" type="RayCast3D" parent="Neck/Head/StandingObstructionRaycasts"]
+[node name="StandingObstructionRaycast3" type="RayCast3D" parent="Head/StandingObstructionRaycasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00484732, -0.797134, -0.444105)
 target_position = Vector3(0, 1.095, 0)

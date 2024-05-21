@@ -1,7 +1,8 @@
 extends State
 class_name GrabCartState
 
-@onready var head = get_parent().get_node("Head")
+@onready var neck = get_parent().get_node("Neck")
+@onready var head = neck.get_node("Head")
 @onready var headbop_root = head.get_node("HeadbopRoot")
 @onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
 @onready var mailcart = get_parent().get_parent().get_node("Mailcart")
@@ -16,7 +17,7 @@ func _ready():
 	print("Grab Cart State Ready")
 	crosshair.visible = false
 	initial_cart_rotation = mailcart.rotation
-	initial_head_position = head.position
+	initial_head_position = neck.position
 	persistent_state.set_collision_mask_value(5, false)	
 
 
@@ -24,7 +25,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("drive"):
 		is_assuming_cart_position = false
-		head.position.y = initial_head_position.y
+		neck.position.y = initial_head_position.y
 		persistent_state.set_collision_mask_value(5, true)	
 		change_state.call("walking")
 	
@@ -38,7 +39,7 @@ func _physics_process(delta):
 		# Actual Lerps
 		persistent_state.position = persistent_state.position.lerp(targetPosition, assuming_cart_lerp_factor)
 		persistent_state.rotation = persistent_state.rotation.slerp(Vector3(0, mailcart.rotation.y + deg_to_rad(90), 0), assuming_cart_lerp_factor)
-		head.position = head.position.lerp(Vector3(initial_head_position.x, targetHeadPosition, initial_head_position.z), assuming_cart_lerp_factor)
+		neck.position = neck.position.lerp(Vector3(initial_head_position.x, targetHeadPosition, initial_head_position.z), assuming_cart_lerp_factor)
 		
 		assuming_cart_lerp_factor += delta * 2.25
 		if assuming_cart_lerp_factor > 1:
