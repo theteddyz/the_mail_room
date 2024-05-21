@@ -3,9 +3,9 @@ extends Interactable
 @export var throw_strength: float = 700.0  
 @export var weightLimit: float = 1000.0  
 @export var max_lift_height: float = 100.0
-@export var max_force:float = 30.0
+@export var max_force:float = 6.0
 @onready var parent: RigidBody3D = self.get_parent()
-@export var force_threshold: float = 10.0
+@export var distance_threshold: float = 1.0
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 var pickup_timer: Timer
@@ -16,7 +16,7 @@ var playerHead
 var camera:Camera3D
 var throw_direction = Vector3.ZERO
 var force = Vector3.ZERO
-var player
+var player: CharacterBody3D
 var timerAdded:bool = false
 
 func _ready():
@@ -53,9 +53,9 @@ func interact():
 func pickmeUp():
 	if is_picked_up:
 		return
-	if parent.mass <= weightLimit:
-		EventBus.emitCustomSignal("object_held", parent.mass)
-		is_picked_up = true
+	#if parent.mass <= weightLimit:
+	EventBus.emitCustomSignal("object_held", parent.mass)
+	is_picked_up = true
 
 
 
@@ -84,22 +84,24 @@ func update_position(delta):
 		var currentPosition:Vector3 = parent.global_transform.origin
 		var directionTo:Vector3 = targetPosition - currentPosition
 		var distance:float = currentPosition.distance_to(targetPosition)
-		force = directionTo.normalized()*(pow(distance*10,2)/(parent.mass * 0.15))
-		force.x = clamp(force.x, -max_force, max_force)
-		force.y = clamp(force.y, -max_force, max_force)
-		force.y -= parent.mass * 0.25
-		force.z = clamp(force.z, -max_force, max_force)
+		force = directionTo.normalized()*(pow(distance*10,2)/max(1,(parent.mass*0.15)))
+		
+		force.x = clamp(force.x, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
+		force.y = clamp(force.y, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
+		force.y -= parent.mass * 0.07
+		force.z = clamp(force.z, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
 		parent.set_linear_velocity(force)
-		#if force.length() > force_threshold:
-			#force_above_threshold_time += delta
-			#if force_above_threshold_time >= drop_time_threshold:
-				#dropMe()
-		#else:
-			#force_above_threshold_time = 0.0
-		#
+		if distance > distance_threshold:
+			force_above_threshold_time += delta
+			if force_above_threshold_time >= drop_time_threshold:
+				dropMe()
+		else:
+			force_above_threshold_time = 0.0
+		
 
-func _process(delta):
-	pass
+#func _process(delta):
+	#if is_picked_up:
+		#parent.set_linear_velocity(force)
 
 
 func start_pickup_timer():

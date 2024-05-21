@@ -16,9 +16,11 @@ var directionX = Vector3.ZERO
 var directionZ = Vector3.ZERO
 var direction = Vector3.ZERO
 
+var rotate = 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Carting State Ready")
+	#print("Carting State Ready")
 	mailcart.reparent(persistent_state, true)
 
 func _input(event):
@@ -56,7 +58,7 @@ func _physics_process(delta):
 		var input_dir = Input.get_vector("left", "right", "forward", "backward")
 
 		# Calculate the movement direction based on the input and the player's basis
-		var movement_direction = (persistent_state.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		var movement_direction = (persistent_state.transform.basis * Vector3(0, 0, input_dir.y)).normalized()
 
 		# Interpolate smoothly between the current direction and the movement direction
 		direction = direction.lerp(movement_direction, delta * cart_movement_lerp_speed)
@@ -68,14 +70,38 @@ func _physics_process(delta):
 
 		# Separate the rotation input (horizontal input)
 		var horizontal_input = Vector2(input_dir.x, 0).normalized()
-
-		if horizontal_input.length() > 0.1:
+		var velocity_difference := (Quaternion.from_euler(global_rotation).inverse() * persistent_state.velocity);
+		if horizontal_input.length() > 0.1 && input_dir.y != 0:
 			# Calculate the target rotation based on the horizontal input
 			var target_rotation = atan2(horizontal_input.x, horizontal_input.y)
 			var current_rotation = persistent_state.rotation.y
-
+			
+			#Calculate relative velocity
+			
+			
+			if velocity_difference.z < 0:
+				rotate = lerp(rotate, deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length()), delta*10)
+				#rotate = deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length())
+				persistent_state.rotate_y(rotate)
+			else :
+				rotate = lerp(rotate, deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length()), delta*10)
+				#rotate = deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length())
+				persistent_state.rotate_y(rotate)
+		else:
+			if velocity_difference.z < 0:
+				rotate = lerp(rotate, deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length()), delta*10)
+				#rotate = deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length())
+				persistent_state.rotate_y(rotate)
+			else :
+				rotate = lerp(rotate, deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length()), delta*10)
+				#rotate = deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length())
+				persistent_state.rotate_y(rotate)
+			
+			#persistent_state.rotate_y(rotate)
+			persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, delta*2)
+			persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, delta*2)
 			# Smoothly interpolate the rotation towards the target rotation
-			persistent_state.rotation.y = lerp_angle(current_rotation, target_rotation, delta * 2.25)
+			#persistent_state.rotation.y = lerp_angle(current_rotation, target_rotation, delta * 2.25)
 
 		#var input_dir = Input.get_vector("left", "right", "forward", "backward")
 		#direction = lerp(direction, (persistent_state.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * cart_movement_lerp_speed)
@@ -96,7 +122,7 @@ func _physics_process(delta):
 			#
 		#else:
 			#persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
-			##persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, 0)
+			#persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, 0)
 			
 		#if directionX or directionZ:
 			#persistent_state.velocity.x = -directionX.z * current_speed

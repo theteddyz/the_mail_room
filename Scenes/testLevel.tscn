@@ -105,8 +105,8 @@ script = ExtResource("8_s3yta")
 throw_strength = 700.0
 weightLimit = 1000.0
 max_lift_height = 100.0
-max_force = 30.0
-force_threshold = 10.0
+max_force = 6.0
+distance_threshold = 1.0
 drop_time_threshold = 0.5
 regrab_cooldown = 0.5
 
