@@ -1,9 +1,18 @@
 extends Node
-
+#Signals 
+#Signals when an game object is held by player and feeds mass
 signal object_held(mass: float)
+#Signals when we drop an object and feeds mass. Mass is not needed but need an arg 
+#Should be fixed later bother Jakob is not
+signal dropped_object(mass:float)
+#Signal for telling the pause menu we are reading something
+signal player_reading(is_reading:bool)
 
 
-func emitCustomSignal(signal_name: String, args):
+
+
+#Connecting Functions
+func emitCustomSignal(signal_name: String, args = []):
 	if has_signal(signal_name):
 		emit_signal(signal_name, args)
 	else:

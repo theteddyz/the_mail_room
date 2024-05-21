@@ -13,6 +13,7 @@ func display_item(text:String,img_path:Texture2D):
 	var player = $"../../Player"
 	player.state.is_reading = true
 	set_text(text,img_path)
+	EventBus.emitCustomSignal("player_reading",is_reading(0))
 	
 
 func _input(event):
@@ -36,8 +37,15 @@ func display_text_with_typewriter_effect(text: String, delay: float):
 		object_text.text = "[center]" + text.substr(0, i + 1) + "[/center]"
 		await get_tree().create_timer(delay).timeout
 
-
+func is_reading(caller:int)->bool:
+	var is_reading
+	if caller == 0:
+		is_reading = true
+	else:
+		is_reading = false
+	return is_reading
 func _on_button_pressed():
 	hide()
+	EventBus.emitCustomSignal("player_reading",is_reading(1))
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	player.state.is_reading = false
