@@ -108,11 +108,16 @@ shape = SubResource("BoxShape3D_8sc5h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 8192
 script = ExtResource("8_k21ww")
-offset = Vector3(0, 0, -0.3)
-mass = 1.0
+throw_strength = 700.0
+weightLimit = 100.0
+max_lift_height = 100.0
+max_force = 30.0
+force_threshold = 20.0
+drop_time_threshold = 0.5
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4227, 3.66831, -8.39534)
+mass = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -122,5 +127,9 @@ shape = SubResource("BoxShape3D_8sc5h")
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 collision_mask = 8192
 script = ExtResource("8_k21ww")
-offset = Vector3(0, 0, -0.3)
-mass = 1.0
+throw_strength = 700.0
+weightLimit = 100.0
+max_lift_height = 100.0
+max_force = 30.0
+force_threshold = 20.0
+drop_time_threshold = 0.5

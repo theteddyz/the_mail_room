@@ -29,7 +29,8 @@ var crouching_depth
 var interact_cooldown = false
 var is_reading = false
 var standing_is_blocked = false
-
+var held_mass:float
+var is_holding_object = false
 # Headbopping
 const head_bopping_walking_speed = 12
 const head_bopping_walking_intensity = 0.1
@@ -48,6 +49,8 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	crosshair.visible = false
 	print("Walking State Ready")
+	EventBus.connect("object_held",held_object)
+	EventBus.connect("dropped_object",droppped_object)
 
 func _input(event):
 	# Mouse
@@ -58,7 +61,7 @@ func _input(event):
 		get_viewport().set_input_as_handled()
 		
 	# Handle Interaction
-	if Input.is_action_pressed("interact") and interactable_finder.is_colliding() and !interact_cooldown and !is_reading:
+	if Input.is_action_pressed("interact") and interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object:
 		var interactable = interactable_finder.get_collider()
 		interact_cooldown = true
 		get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
@@ -68,6 +71,16 @@ func _input(event):
 		else: 
 			interactable.interact()
 		get_viewport().set_input_as_handled()
+
+func held_object(mass:float):
+	walking_speed = (walking_speed/mass) + 1
+	sprinting_speed =(sprinting_speed/mass) + 1
+	is_holding_object = true
+func droppped_object(mass:float):
+	#TODO:MAKE THESE VARIABLES
+	walking_speed = 5.0
+	sprinting_speed = 10.0
+	is_holding_object = false
 
 func turnOffInteractCooldown():
 	interact_cooldown = false
@@ -134,7 +147,7 @@ func regularMove(delta):
 		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
 	
 	# Interactable-indicator
-	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading:
+	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object:
 		crosshair.visible = true
 	else: 
 		crosshair.visible = false
