@@ -7,24 +7,28 @@ extends Interactable
 @onready var parent: RigidBody3D = self.get_parent()
 @export var force_threshold: float = 20.0
 @export var drop_time_threshold: float = 0.5
+@export var regrab_cooldown: float = 0.5
+var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
 var is_picked_up = false
-var pickUpTimer:bool = false
 var itemPos
 var playerHead
 var camera:Camera3D
 var throw_direction = Vector3.ZERO
 var force = Vector3.ZERO
 var player
-
+var timerAdded:bool = false
 
 func _ready():
 	player = parent.get_parent().find_child("Player")
 	camera = player.find_child("Camera")
+	pickup_timer = Timer.new()
+	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
+	
 
 
 func _physics_process(delta):
-	if  is_picked_up and !pickUpTimer:
+	if  is_picked_up:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			update_position(delta)
 			if Input.is_action_just_pressed("drive"):
@@ -35,15 +39,19 @@ func _physics_process(delta):
 			dropMe()
 
 func interact():
-	itemPos = player.find_child("ItemHolder")
-	camera = player.find_child("Camera")
-	playerHead = player.find_child("Head")
-	pickmeUp()
+	if pickup_timer.is_stopped():
+		if !timerAdded:
+			parent.add_child(pickup_timer)
+			timerAdded=true
+		itemPos = player.find_child("ItemHolder")
+		camera = player.find_child("Camera")
+		playerHead = player.find_child("Head")
+		pickmeUp()
 
 
 
 func pickmeUp():
-	if is_picked_up or pickUpTimer:
+	if is_picked_up:
 		return
 	if parent.mass <= weightLimit:
 		EventBus.emitCustomSignal("object_held", parent.mass)
@@ -67,6 +75,7 @@ func throwMe():
 	throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
 	parent.set_collision_mask_value(5, true)
 	EventBus.emitCustomSignal("dropped_object",parent.mass)
+	start_pickup_timer()
 
 
 func update_position(delta):
@@ -92,5 +101,12 @@ func _process(delta):
 	if is_picked_up:
 		parent.set_linear_velocity(force)
 
+
+func start_pickup_timer():
+	pickup_timer.start(regrab_cooldown)
+
+
+func _on_pickup_timer_timeout():
+	pickup_timer.stop()
 #func _integrate_forces():
 	#parent.set_linear_velocity(force)
