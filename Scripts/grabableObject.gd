@@ -1,7 +1,7 @@
 extends Interactable
 
 @export var throw_strength: float = 700.0  
-@export var weightLimit: float = 100.0  
+@export var weightLimit: float = 1000.0  
 @export var max_lift_height: float = 100.0
 @export var max_force:float = 30.0
 @onready var parent: RigidBody3D = self.get_parent()
@@ -33,7 +33,7 @@ func _physics_process(delta):
 			update_position(delta)
 			if Input.is_action_just_pressed("drive"):
 				throwMe()
-				parent.apply_force(throw_direction * throw_strength/parent.mass, throw_direction)
+				parent.apply_force(throw_direction * throw_strength, throw_direction)
 				is_picked_up = false
 		else:
 			dropMe()
@@ -84,23 +84,22 @@ func update_position(delta):
 		var currentPosition:Vector3 = parent.global_transform.origin
 		var directionTo:Vector3 = targetPosition - currentPosition
 		var distance:float = currentPosition.distance_to(targetPosition)
-		force = directionTo.normalized()*(pow(distance*10,2)/parent.mass)
+		force = directionTo.normalized()*(pow(distance*10,2)/(parent.mass * 0.15))
 		force.x = clamp(force.x, -max_force, max_force)
 		force.y = clamp(force.y, -max_force, max_force)
 		force.y -= parent.mass * 0.25
 		force.z = clamp(force.z, -max_force, max_force)
 		parent.set_linear_velocity(force)
-		if force.length() > force_threshold:
-			force_above_threshold_time += delta
-			if force_above_threshold_time >= drop_time_threshold:
-				dropMe()
-		else:
-			force_above_threshold_time = 0.0
-		
+		#if force.length() > force_threshold:
+			#force_above_threshold_time += delta
+			#if force_above_threshold_time >= drop_time_threshold:
+				#dropMe()
+		#else:
+			#force_above_threshold_time = 0.0
+		#
 
 func _process(delta):
-	if is_picked_up:
-		parent.set_linear_velocity(force)
+	pass
 
 
 func start_pickup_timer():

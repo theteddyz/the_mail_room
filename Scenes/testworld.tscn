@@ -108,7 +108,7 @@ script = ExtResource("6_riro2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5773, 0.915256, -5.39075)
 collision_layer = 4
 collision_mask = 4
-mass = 25.0
+mass = 250.0
 physics_material_override = SubResource("PhysicsMaterial_auk0d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
@@ -119,7 +119,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_mask = 8192
 script = ExtResource("8_k21ww")
 throw_strength = 700.0
-weightLimit = 100.0
+weightLimit = 1000.0
 max_lift_height = 100.0
 max_force = 30.0
 force_threshold = 10.0
@@ -141,7 +141,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 collision_mask = 8192
 script = ExtResource("8_k21ww")
 throw_strength = 700.0
-weightLimit = 100.0
+weightLimit = 1000.0
 max_lift_height = 100.0
 max_force = 30.0
 force_threshold = 10.0
