@@ -1,11 +1,11 @@
 extends Interactable
 
-@export var throw_strength: float = 700.0  # Define the throw strength
-@export var weightLimit: float = 100.0  # Define the throw strength
+@export var throw_strength: float = 700.0  
+@export var weightLimit: float = 100.0  
 @export var max_lift_height: float = 100.0
 @export var max_force:float = 30.0
 @onready var parent: RigidBody3D = self.get_parent()
-@export var force_threshold: float = 20.0
+@export var force_threshold: float = 10.0
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 var pickup_timer: Timer
@@ -33,7 +33,7 @@ func _physics_process(delta):
 			update_position(delta)
 			if Input.is_action_just_pressed("drive"):
 				throwMe()
-				parent.apply_force(throw_direction * throw_strength, throw_direction)
+				parent.apply_force(throw_direction * throw_strength/parent.mass, throw_direction)
 				is_picked_up = false
 		else:
 			dropMe()
@@ -65,17 +65,17 @@ func dropMe():
 		parent.linear_damp = 10
 		var currentPos = parent.global_position
 		is_picked_up = false
-		parent.set_collision_mask_value(5, true)
 		parent.global_position = currentPos
 		parent.linear_damp = 1
+		force_above_threshold_time = 0.0
 
 func throwMe():
 	if not is_picked_up:
 		return
 	throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
-	parent.set_collision_mask_value(5, true)
 	EventBus.emitCustomSignal("dropped_object",parent.mass)
 	start_pickup_timer()
+	force_above_threshold_time = 0.0
 
 
 func update_position(delta):
@@ -87,6 +87,7 @@ func update_position(delta):
 		force = directionTo.normalized()*(pow(distance*10,2)/parent.mass)
 		force.x = clamp(force.x, -max_force, max_force)
 		force.y = clamp(force.y, -max_force, max_force)
+		force.y -= parent.mass * 0.25
 		force.z = clamp(force.z, -max_force, max_force)
 		parent.set_linear_velocity(force)
 		if force.length() > force_threshold:

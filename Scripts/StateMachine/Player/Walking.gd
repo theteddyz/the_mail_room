@@ -75,9 +75,11 @@ func _input(event):
 func held_object(mass:float):
 	walking_speed = (walking_speed/mass) + 1
 	sprinting_speed =(sprinting_speed/mass) + 1
+	crouching_speed =(crouching_speed/mass) + 1
 	is_holding_object = true
 func droppped_object(mass:float):
 	#TODO:MAKE THESE VARIABLES
+	crouching_speed = 3.1
 	walking_speed = 5.0
 	sprinting_speed = 10.0
 	is_holding_object = false
