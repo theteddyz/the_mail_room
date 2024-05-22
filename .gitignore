@@ -12,6 +12,8 @@ data_*/
 
 # Godot 4+ specific ignores
 .godot/
+/.godot
+/.godot/editor
 
 .godot/uid_cache.bin
 
