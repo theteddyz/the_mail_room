@@ -55,7 +55,8 @@ texture = ExtResource("2_5t4wg")
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -1.7)
-collision_mask = 2
+collision_mask = 8194
+collide_with_areas = true
 
 [node name="StandingObstructionRaycasts" type="Node3D" parent="Neck/Head"]
 

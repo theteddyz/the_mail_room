@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=19 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="1_u0m20"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Mailcart.gd" id="6_riro2"]
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
 [ext_resource type="Script" path="res://Scripts/grabableObject.gd" id="8_k21ww"]
+[ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Objects/grabable_object_template.tscn" id="11_ys87f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
 albedo_texture = ExtResource("1_o8goe")
@@ -61,6 +62,8 @@ layout_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_1330w")
 use_collision = true
+collision_layer = 5
+collision_mask = 5
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_0h2ln")
 
@@ -71,6 +74,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.53711, 14.7408)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_1330w")
 use_collision = true
+collision_layer = 5
+collision_mask = 5
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_0h2ln")
 
@@ -84,6 +89,7 @@ shadow_enabled = true
 environment = SubResource("Environment_13vtk")
 
 [node name="Player" parent="." instance=ExtResource("2_n1cxu")]
+collision_mask = 20
 
 [node name="InteractableTest" parent="." instance=ExtResource("4_p0gx3")]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 1.5, -5.82439)
@@ -100,6 +106,8 @@ script = ExtResource("6_riro2")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5773, 0.915256, -5.39075)
+collision_layer = 5
+collision_mask = 5
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_auk0d")
 
@@ -120,6 +128,8 @@ regrab_cooldown = 0.5
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4227, 3.66831, -8.39534)
+collision_layer = 5
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
@@ -136,3 +146,5 @@ max_force = 6.0
 distance_threshold = 1.0
 drop_time_threshold = 0.5
 regrab_cooldown = 0.5
+
+[node name="GrabableObjectTemplate" parent="." instance=ExtResource("11_ys87f")]
