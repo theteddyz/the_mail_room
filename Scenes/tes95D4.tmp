@@ -34,10 +34,10 @@ sky = SubResource("Sky_11ekw")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8sc5h"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_auk0d"]
+friction = 0.6
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h63xk"]
-friction = 0.5
+[sub_resource type="BoxShape3D" id="BoxShape3D_8sc5h"]
 
 [node name="testworld" type="Node3D"]
 
@@ -104,41 +104,48 @@ object_text = "Im being read woopie!"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28541, 0.725, 0)
 script = ExtResource("6_riro2")
 
-[node name="GrabableObjectTemplate" parent="." instance=ExtResource("11_ys87f")]
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5773, 0.915256, -5.39075)
+collision_layer = 5
+collision_mask = 5
+mass = 100.0
+physics_material_override = SubResource("PhysicsMaterial_auk0d")
 
-[node name="RigidBody3D3" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36732, -4.73003)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_8sc5h")
 
-[node name="InteractableTest" parent="RigidBody3D3" instance=ExtResource("4_p0gx3")]
-transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 0, 0)
+[node name="InteractableTest3" parent="RigidBody3D" instance=ExtResource("4_p0gx3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_mask = 8192
 script = ExtResource("8_k21ww")
-throw_strength = 700.0
-weightLimit = 1000.0
+throw_strength = 800.0
+weightLimit = 10.0
 max_lift_height = 100.0
-max_force = 300.0
+max_force = 6.0
 distance_threshold = 1.0
 drop_time_threshold = 0.5
 regrab_cooldown = 0.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4227, 3.66831, -8.39534)
+collision_layer = 5
+collision_mask = 12293
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("BoxShape3D_8sc5h")
 
-[node name="RigidBody3D4" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30603, 1.36732, -4.73003)
-mass = 100.0
-physics_material_override = SubResource("PhysicsMaterial_h63xk")
-
-[node name="InteractableTest" parent="RigidBody3D4" instance=ExtResource("4_p0gx3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="InteractableTest3" parent="RigidBody3D2" instance=ExtResource("4_p0gx3")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+collision_layer = 6
+collision_mask = 8198
 script = ExtResource("8_k21ww")
-throw_strength = 700.0
-weightLimit = 1000.0
+throw_strength = 800.0
+weightLimit = 10.0
 max_lift_height = 100.0
-max_force = 300.0
+max_force = 6.0
 distance_threshold = 1.0
 drop_time_threshold = 0.5
 regrab_cooldown = 0.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
-shape = SubResource("BoxShape3D_8sc5h")
+[node name="GrabableObjectTemplate" parent="." instance=ExtResource("11_ys87f")]

@@ -49,7 +49,7 @@ func _ready():
 	crouching_depth = starting_height - 0.5
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	crosshair.visible = false
-	print("Walking State Ready")
+	#print("Walking State Ready")
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
 
@@ -137,8 +137,8 @@ func regularMove(delta):
 		persistent_state.velocity.x = direction.x * current_speed
 		persistent_state.velocity.z = direction.z * current_speed
 		
-		print("Direction Input: ", direction.z)
-		print("Player Rotation: ", persistent_state.rotation)
+		#print("Direction Input: ", direction.z)
+		#print("Player Rotation: ", persistent_state.rotation)
 		
 		# Head Bopping
 		if Vector3(input_dir.x, 0, input_dir.y) != Vector3.ZERO:

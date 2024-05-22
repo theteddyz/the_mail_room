@@ -3,7 +3,7 @@ extends Interactable
 @export var throw_strength: float = 700.0  
 @export var weightLimit: float = 1000.0  
 @export var max_lift_height: float = 100.0
-@export var max_force:float = 6.0
+@export var max_force:float = 300.0
 @onready var parent: RigidBody3D = self.get_parent()
 @export var distance_threshold: float = 1.0
 @export var drop_time_threshold: float = 0.5
@@ -15,7 +15,7 @@ var itemPos
 var playerHead
 var camera:Camera3D
 var throw_direction = Vector3.ZERO
-var force = Vector3.ZERO
+var force:Vector3 = Vector3.ZERO
 var player: CharacterBody3D
 var timerAdded:bool = false
 
@@ -66,7 +66,7 @@ func dropMe():
 		var currentPos = parent.global_position
 		is_picked_up = false
 		parent.global_position = currentPos
-		parent.linear_damp = 1
+		parent.linear_damp = 0.1
 		force_above_threshold_time = 0.0
 
 func throwMe():
@@ -84,13 +84,23 @@ func update_position(delta):
 		var currentPosition:Vector3 = parent.global_transform.origin
 		var directionTo:Vector3 = targetPosition - currentPosition
 		var distance:float = currentPosition.distance_to(targetPosition)
-		force = directionTo.normalized()*(pow(distance*10,2)/max(1,(parent.mass*0.15)))
 		
-		force.x = clamp(force.x, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
-		force.y = clamp(force.y, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
-		force.y -= parent.mass * 0.07
-		force.z = clamp(force.z, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
-		parent.set_linear_velocity(force)
+		#parent.linear_damp = 55;
+		force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
+		
+		#force.x = clamp(force.x, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
+		#force.y = clamp(force.y, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
+		#force.y -= parent.mass * 0.07
+		#force.z = clamp(force.z, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
+		
+		force = force.limit_length(max_force + (parent.mass * 2) + player.velocity.length())
+		
+		parent.apply_central_force(force)
+		
+		var angleBetweenForceAndVelocity = min(90,force.angle_to(parent.linear_velocity))*2
+		
+		parent.apply_central_force(-parent.linear_velocity * 20) #* angleBetweenForceAndVelocity)		
+		
 		if distance > distance_threshold:
 			force_above_threshold_time += delta
 			if force_above_threshold_time >= drop_time_threshold:
