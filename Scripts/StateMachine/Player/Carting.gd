@@ -34,18 +34,6 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("drive"):
-		releaseCart()
-		
-	persistent_state.move_and_slide()
-
-func releaseCart():
-	mailcart.reparent(persistent_state.get_parent())
-	persistent_state.set_collision_mask_value(5, true)
-	neck.position = Vector3(0, 1.8, 0)
-	change_state.call("walking")
-
-func _physics_process(delta):
 		if Input.is_action_pressed("sprint"):
 			current_speed = cart_sprinting_speed
 		else: 
@@ -80,20 +68,20 @@ func _physics_process(delta):
 			
 			
 			if velocity_difference.z < 0:
-				rotate = lerp(rotate, deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length()), delta*10)
+				rotate = lerp(rotate, deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length()), delta*5)
 				#rotate = deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length())
 				persistent_state.rotate_y(rotate)
 			else :
-				rotate = lerp(rotate, deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length()), delta*10)
+				rotate = lerp(rotate, deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length()), delta*5)
 				#rotate = deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length())
 				persistent_state.rotate_y(rotate)
 		else:
 			if velocity_difference.z < 0:
-				rotate = lerp(rotate, deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length()), delta*10)
+				rotate = lerp(rotate, deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length()), delta*5)
 				#rotate = deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length())
 				persistent_state.rotate_y(rotate)
 			else :
-				rotate = lerp(rotate, deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length()), delta*10)
+				rotate = lerp(rotate, deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length()), delta*5)
 				#rotate = deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length())
 				persistent_state.rotate_y(rotate)
 			
@@ -131,4 +119,18 @@ func _physics_process(delta):
 			#persistent_state.velocity.x = move_toward(persistent_state.velocity.z, 0, current_speed)
 			#persistent_state.velocity.z = move_toward(persistent_state.velocity.x, 0, current_speed)
 			
+	
+		if Input.is_action_pressed("drive"):
+			releaseCart()
+		
+		persistent_state.move_and_slide()
+
+func releaseCart():
+	mailcart.reparent(persistent_state.get_parent())
+	persistent_state.set_collision_mask_value(5, true)
+	neck.position = Vector3(0, 1.8, 0)
+	change_state.call("walking")
+
+#func _physics_process(delta):
+
 

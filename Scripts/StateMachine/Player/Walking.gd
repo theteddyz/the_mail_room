@@ -112,9 +112,6 @@ func turnOffInteractCooldown():
 func _process(delta):
 	# Apply the movement
 	persistent_state.move_and_slide()
-	
-func _physics_process(delta):
-	# Check standing-obstruction
 	checkObstructionRaycasts()
 	regularMove(delta)
 	
@@ -123,6 +120,10 @@ func _physics_process(delta):
 		crosshair.visible = true
 	else: 
 		crosshair.visible = false
+		
+#func _physics_process(delta):
+	# Check standing-obstruction
+	
 
 func checkObstructionRaycasts():
 	if standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding()or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding():

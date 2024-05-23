@@ -23,13 +23,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("drive"):
-		is_assuming_cart_position = false
-		neck.position.y = initial_head_position.y
-		persistent_state.set_collision_mask_value(5, true)	
-		change_state.call("walking")
-	
-func _physics_process(delta):
 	if is_assuming_cart_position:
 		var playerpos = mailcart.get_node("Node3D/Handlebar/PlayerPosition")
 		var targetPosition = Vector3(playerpos.global_position.x, persistent_state.position.y, playerpos.global_position.z)
@@ -46,4 +39,14 @@ func _physics_process(delta):
 			persistent_state.velocity = Vector3.ZERO
 			is_assuming_cart_position = false
 			change_state.call("carting")
+	
+	
+	if Input.is_action_pressed("drive"):
+		is_assuming_cart_position = false
+		neck.position.y = initial_head_position.y
+		persistent_state.set_collision_mask_value(5, true)	
+		change_state.call("walking")
+	
+#func _physics_process(delta):
+	
 
