@@ -8,21 +8,15 @@ signal dropped_object(mass:float)
 #Signal for telling the pause menu we are reading something
 signal player_reading(is_reading:bool)
 
-
+signal test_signal(string1:String,string2:String,string3:String,string4:String)
 
 
 #Connecting Functions
 func emitCustomSignal(signal_name: String, args = []):
 	if has_signal(signal_name):
-		if args.size() == 1:
-			emit_signal(signal_name, args[0])
-		if args.size() == 2:
-			print(args)
-			emit_signal(signal_name, args[0], args[1])
-			
-		if args.size() == 3:
-			emit_signal(signal_name, args[0], args[1], args[2])
-				
+		var method_name = "emit_signal"
+		var full_args = [signal_name] + args
+		callv(method_name, full_args)
 	else:
 		print("Signal not found: " + signal_name)
 
