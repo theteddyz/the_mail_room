@@ -33,6 +33,7 @@ var standing_is_blocked = false
 var held_mass:float
 var is_holding_object = false
 var is_looking_at_mailcart = false
+var object_last_held = null
 
 # Headbopping
 const head_bopping_walking_speed = 12
@@ -51,7 +52,6 @@ func _ready():
 	crouching_depth = starting_height - 0.5
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	crosshair.visible = false
-	#print("Walking State Ready")
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
 
@@ -68,22 +68,24 @@ func _input(event):
 			var collider = interactable_finder.get_collider()
 			
 			# Handle Interaction
-			if Input.is_action_pressed("interact") and !interact_cooldown and !is_reading and !is_holding_object:
+			if Input.is_action_pressed("interact") and !interact_cooldown and !is_reading:
 				interact_cooldown = true
 				get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
-				if collider.name == "Handlebar":
+				if collider.name == "Handlebar" and !is_holding_object:
 					change_state.call("grabcart")
 				elif collider.name == "Mailcart":
-					pass
-					#TODO: If we are carrying a package we should drop it and call the corresponding 
-					#function (collider.add_package(package gameobject).
-					#TODO: If we are not carrying a package we should grab the currently inspected package in the mailcart
-				else: 
+					if is_holding_object and object_last_held is Package:
+						collider.add_package(object_last_held)
+						is_holding_object = false
+						#TODO: If we are carrying a package we should drop it and call the corresponding 
+						#function (collider.add_package(package gameobject).
+						#TODO: If we are not carrying a package we should grab the currently inspected package in the mailcart
+				elif !is_holding_object: 
 					collider.interact()
 				get_viewport().set_input_as_handled()
 			
 			if event.is_action_pressed("inspect") and collider.name == "Mailcart":
-				pass
+				print("Inspect pressed on MAILCART (will inspect package)")
 				#TODO: The player should cease all movement (Different state?) and call a new function, mailcart.inspect()
 				# which zooms the playercamera to inspect the highlighted package
 	
@@ -93,11 +95,20 @@ func _input(event):
 			if event.is_action_pressed("scroll package up") and collider.name == "Mailcart":
 				collider.scroll_package_up()
 
-func held_object(mass:float):
-	walking_speed = (walking_speed/mass) + 1
-	sprinting_speed =(sprinting_speed/mass) + 1
-	crouching_speed =(crouching_speed/mass) + 1
+func held_object(mass:float, object: Node3D):
+	print(object)
 	is_holding_object = true
+	if object != null:
+		object_last_held = object
+		if object is Package:
+			print("IS PACKAGE!")
+			# Do not think we want to impact the player
+			pass
+	else:
+		walking_speed = (walking_speed/mass) + 1
+		sprinting_speed =(sprinting_speed/mass) + 1
+		crouching_speed =(crouching_speed/mass) + 1
+	
 
 func droppped_object(mass:float):
 	#TODO:MAKE THESE VARIABLES

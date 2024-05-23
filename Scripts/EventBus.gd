@@ -1,7 +1,7 @@
 extends Node
 #Signals 
 #Signals when an game object is held by player and feeds mass
-signal object_held(mass: float)
+signal object_held(mass: float, object: Node3D)
 #Signals when we drop an object and feeds mass. Mass is not needed but need an arg 
 #Should be fixed later bother Jakob is not
 signal dropped_object(mass:float)
@@ -14,7 +14,15 @@ signal player_reading(is_reading:bool)
 #Connecting Functions
 func emitCustomSignal(signal_name: String, args = []):
 	if has_signal(signal_name):
-		emit_signal(signal_name, args)
+		if args.size() == 1:
+			emit_signal(signal_name, args[0])
+		if args.size() == 2:
+			print(args)
+			emit_signal(signal_name, args[0], args[1])
+			
+		if args.size() == 3:
+			emit_signal(signal_name, args[0], args[1], args[2])
+				
 	else:
 		print("Signal not found: " + signal_name)
 

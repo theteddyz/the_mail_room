@@ -74,14 +74,15 @@ func pickmeUp():
 	if is_picked_up:
 		return
 	#if parent.mass <= weightLimit:
-	EventBus.emitCustomSignal("object_held", parent.mass)
+	#TODO: Switch "null" to something "more" correct
+	EventBus.emitCustomSignal("object_held", [parent.mass, null])
 	is_picked_up = true
 
 
 
 func dropMe():
 	if is_picked_up:
-		EventBus.emitCustomSignal("dropped_object",parent.mass)
+		EventBus.emitCustomSignal("dropped_object", [parent.mass])
 		parent.linear_damp = 10
 		var currentPos = parent.global_position
 		is_picked_up = false
