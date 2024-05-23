@@ -19,15 +19,35 @@ var force:Vector3 = Vector3.ZERO
 var player: CharacterBody3D
 var timerAdded:bool = false
 
+var update = false
+var prevPosition
+var currentPositon
+var originScale
 func _ready():
 	player = parent.get_parent().find_child("Player")
 	camera = player.find_child("Camera")
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
-	
+	originScale = scale
+	prevPosition = parent.global_transform
+	currentPositon = parent.global_transform
 
+func _update_transform():
+	prevPosition = currentPositon
+	currentPositon = parent.global_transform
+
+func _process(delta):
+	scale = originScale
+	if update:
+		_update_transform()
+		update = false
+	var f = clamp(Engine.get_physics_interpolation_fraction(),0,1)
+	global_transform = prevPosition.interpolate_with(currentPositon,f)
+	#Stupid temp fix for now
+	scale = originScale
 
 func _physics_process(delta):
+	update = true
 	if  is_picked_up:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			update_position(delta)
@@ -84,7 +104,6 @@ func update_position(delta):
 		var currentPosition:Vector3 = parent.global_transform.origin
 		var directionTo:Vector3 = targetPosition - currentPosition
 		var distance:float = currentPosition.distance_to(targetPosition)
-		
 		#parent.linear_damp = 55;
 		force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
 		
@@ -94,13 +113,10 @@ func update_position(delta):
 		#force.z = clamp(force.z, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
 		
 		force = force.limit_length(max_force + (parent.mass * 2) + player.velocity.length())
-		
 		parent.apply_central_force(force)
-		
 		var angleBetweenForceAndVelocity = min(90,force.angle_to(parent.linear_velocity))*2
 		
 		parent.apply_central_force(-parent.linear_velocity * 20) #* angleBetweenForceAndVelocity)		
-		
 		if distance > distance_threshold:
 			force_above_threshold_time += delta
 			if force_above_threshold_time >= drop_time_threshold:
@@ -110,8 +126,7 @@ func update_position(delta):
 		
 
 #func _process(delta):
-	#if is_picked_up:
-		#parent.set_linear_velocity(force)
+	#global_transform = parent.global_transform
 
 
 func start_pickup_timer():
