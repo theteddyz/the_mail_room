@@ -74,19 +74,24 @@ func _input(event):
 				if collider.name == "Handlebar":
 					change_state.call("grabcart")
 				elif collider.name == "Mailcart":
-					print("MAILCART INTERACT")
+					pass
+					#TODO: If we are carrying a package we should drop it and call the corresponding 
+					#function (collider.add_package(package gameobject).
+					#TODO: If we are not carrying a package we should grab the currently inspected package in the mailcart
 				else: 
 					collider.interact()
 				get_viewport().set_input_as_handled()
 			
 			if event.is_action_pressed("inspect") and collider.name == "Mailcart":
-				print("isnpect")
+				pass
+				#TODO: The player should cease all movement (Different state?) and call a new function, mailcart.inspect()
+				# which zooms the playercamera to inspect the highlighted package
 	
 			if event.is_action_pressed("scroll package down") and collider.name == "Mailcart":
-				print("scroll package down")
+				collider.scroll_package_down()
 	
 			if event.is_action_pressed("scroll package up") and collider.name == "Mailcart":
-				print("scroll package up")
+				collider.scroll_package_up()
 
 func held_object(mass:float):
 	walking_speed = (walking_speed/mass) + 1

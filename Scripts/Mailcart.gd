@@ -24,10 +24,11 @@ func scroll_package_up():
 
 # Function to scroll the package down
 func scroll_package_down():
-	if current_index > 0:
-		current_index -= 1
-	else:
-		current_index = game_objects.size() - 1
+	if game_objects.size() != 0:
+		if current_index > 0:
+			current_index -= 1
+		else:
+			current_index = game_objects.size() - 1
 	print("Current Index after scrolling down: ", current_index)
 
 # Function to grab the current package
