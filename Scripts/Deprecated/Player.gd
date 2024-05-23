@@ -41,7 +41,6 @@ func _input(event):
 
 
 func regularMove(delta):
-	
 	# Input / State checks
 	if(Input.is_action_pressed("crouch")):
 		standing_collision_shape.disabled = true

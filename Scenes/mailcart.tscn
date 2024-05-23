@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://tw0mk31qdtge"]
+[gd_scene load_steps=3 format=3 uid="uid://tw0mk31qdtge"]
+
+[ext_resource type="Script" path="res://Scripts/Mailcart.gd" id="1_1hgo0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mx67c"]
 albedo_color = Color(0.694118, 0.231373, 0.262745, 1)
@@ -6,8 +8,9 @@ albedo_color = Color(0.694118, 0.231373, 0.262745, 1)
 [node name="Mailcart" type="CSGBox3D"]
 transform = Transform3D(1, 0.000381655, -0.000254259, -0.00038156, 1, 0.000348506, 0.000254402, -0.000348401, 1, 0, 0.725, 0)
 use_collision = true
-collision_layer = 16
+collision_layer = 18
 size = Vector3(1.94836, 0.833679, 1)
+script = ExtResource("1_1hgo0")
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -21,3 +24,7 @@ material = SubResource("StandardMaterial3D_mx67c")
 
 [node name="PlayerPosition" type="Node3D" parent="Node3D/Handlebar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366249, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.102931, 2.15745e-08, -2.76486e-10, -1.02884e-09, 2.51235, -3.49246e-10, -2.91038e-11, 2.14204e-08, 0.886869, -0.75, 0.199, -2.91038e-11)
+size = Vector3(1, 0.306152, 1)

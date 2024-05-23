@@ -7,7 +7,7 @@ class_name WalkingState
 @onready var standing_collision_shape = get_parent().get_node("standing_collision_shape")
 @onready var crouching_collision_shape = get_parent().get_node("crouching_collision_shape")
 @onready var headbop_root = head.get_node("HeadbopRoot")
-@onready var interactable_finder = head.get_node("InteractableFinder")
+@onready var interactable_finder: RayCast3D = head.get_node("InteractableFinder")
 @onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
 
 @onready var standing_obstruction_raycast_0 = head.get_node("StandingObstructionRaycasts").get_node("StandingObstructionRaycast0")
@@ -32,6 +32,8 @@ var is_reading = false
 var standing_is_blocked = false
 var held_mass:float
 var is_holding_object = false
+var is_looking_at_mailcart = false
+
 # Headbopping
 const head_bopping_walking_speed = 12
 const head_bopping_walking_intensity = 0.1
@@ -60,23 +62,38 @@ func _input(event):
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 		get_viewport().set_input_as_handled()
-		
-	# Handle Interaction
-	if Input.is_action_pressed("interact") and interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object:
-		var interactable = interactable_finder.get_collider()
-		interact_cooldown = true
-		get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
-		if interactable.name == "Handlebar":
-			change_state.call("grabcart")
-		else: 
-			interactable.interact()
-		get_viewport().set_input_as_handled()
+	
+	if event is InputEventMouseButton:
+		if interactable_finder.is_colliding():
+			var collider = interactable_finder.get_collider()
+			
+			# Handle Interaction
+			if Input.is_action_pressed("interact") and !interact_cooldown and !is_reading and !is_holding_object:
+				interact_cooldown = true
+				get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
+				if collider.name == "Handlebar":
+					change_state.call("grabcart")
+				elif collider.name == "Mailcart":
+					print("MAILCART INTERACT")
+				else: 
+					collider.interact()
+				get_viewport().set_input_as_handled()
+			
+			if event.is_action_pressed("inspect") and collider.name == "Mailcart":
+				print("isnpect")
+	
+			if event.is_action_pressed("scroll package down") and collider.name == "Mailcart":
+				print("scroll package down")
+	
+			if event.is_action_pressed("scroll package up") and collider.name == "Mailcart":
+				print("scroll package up")
 
 func held_object(mass:float):
 	walking_speed = (walking_speed/mass) + 1
 	sprinting_speed =(sprinting_speed/mass) + 1
 	crouching_speed =(crouching_speed/mass) + 1
 	is_holding_object = true
+
 func droppped_object(mass:float):
 	#TODO:MAKE THESE VARIABLES
 	crouching_speed = 3.1
@@ -95,6 +112,12 @@ func _physics_process(delta):
 	# Check standing-obstruction
 	checkObstructionRaycasts()
 	regularMove(delta)
+	
+	# Interactable Stuff
+	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object:
+		crosshair.visible = true
+	else: 
+		crosshair.visible = false
 
 func checkObstructionRaycasts():
 	if standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding()or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding():
@@ -132,7 +155,6 @@ func regularMove(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	direction = lerp(direction, (persistent_state.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * movement_lerp_speed)
 
-
 	if direction:
 		persistent_state.velocity.x = direction.x * current_speed
 		persistent_state.velocity.z = direction.z * current_speed
@@ -152,9 +174,3 @@ func regularMove(delta):
 	else:
 		persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
 		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
-	
-	# Interactable-indicator
-	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object:
-		crosshair.visible = true
-	else: 
-		crosshair.visible = false

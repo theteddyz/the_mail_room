@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=18 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="1_u0m20"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/interactable_test.tscn" id="4_p0gx3"]
 [ext_resource type="Script" path="res://Jakob/readable_objectg.gd" id="5_s8sdp"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/mailcart.tscn" id="5_tbsk3"]
-[ext_resource type="Script" path="res://Scripts/Mailcart.gd" id="6_riro2"]
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
 [ext_resource type="Script" path="res://Scripts/grabableObject.gd" id="8_k21ww"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Objects/grabable_object_template.tscn" id="11_ys87f"]
@@ -102,7 +101,6 @@ object_text = "Im being read woopie!"
 
 [node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28541, 0.725, 0)
-script = ExtResource("6_riro2")
 
 [node name="GrabableObjectTemplate" parent="." instance=ExtResource("11_ys87f")]
 
