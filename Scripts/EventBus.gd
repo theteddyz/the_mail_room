@@ -1,20 +1,19 @@
 extends Node
-#Signals 
+##Signals##
 #Signals when an game object is held by player and feeds mass
-signal object_held(mass: float)
-#Signals when we drop an object and feeds mass. Mass is not needed but need an arg 
-#Should be fixed later bother Jakob is not
-signal dropped_object(mass:float)
+signal object_held(mass: float, object: Node3D)
+#Signals when we drop an object
+signal dropped_object()
 #Signal for telling the pause menu we are reading something
 signal player_reading(is_reading:bool)
-
-
-
+###############################################################################
 
 #Connecting Functions
 func emitCustomSignal(signal_name: String, args = []):
 	if has_signal(signal_name):
-		emit_signal(signal_name, args)
+		var method_name = "emit_signal"
+		var full_args = [signal_name] + args
+		callv(method_name, full_args)
 	else:
 		print("Signal not found: " + signal_name)
 
