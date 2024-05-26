@@ -97,7 +97,7 @@ func throwMe():
 	if not is_picked_up:
 		return
 	throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
-	EventBus.emitCustomSignal("dropped_object",parent.mass)
+	EventBus.emitCustomSignal("dropped_object",[parent.mass])
 	start_pickup_timer()
 	force_above_threshold_time = 0.0
 
