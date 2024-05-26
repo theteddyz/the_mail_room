@@ -1,5 +1,5 @@
 extends Interactable
-
+#This is a duplicate to use for any object using CSGD BOX ones with actually meshes should use regular script
 @export var throw_strength: float = 700.0  
 @export var weightLimit: float = 1000.0  
 @export var max_lift_height: float = 100.0
@@ -18,8 +18,7 @@ var throw_direction = Vector3.ZERO
 var force:Vector3 = Vector3.ZERO
 var player: CharacterBody3D
 var timerAdded:bool = false
-var mesh
-var meshScale
+
 var update = false
 var prevPosition
 var currentPositon
@@ -30,8 +29,6 @@ func _ready():
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
 	originScale = scale
-	mesh = parent.get_child(0)
-	meshScale = mesh.scale
 	prevPosition = parent.global_transform
 	currentPositon = parent.global_transform
 
@@ -45,9 +42,9 @@ func _process(delta):
 		_update_transform()
 		update = false
 	var f = clamp(Engine.get_physics_interpolation_fraction(),0,1)
-	mesh.global_transform = prevPosition.interpolate_with(currentPositon,f)
+	global_transform = prevPosition.interpolate_with(currentPositon,f)
 	#Stupid temp fix for now
-	mesh.scale = meshScale
+	scale = originScale
 
 func _physics_process(delta):
 	update = true

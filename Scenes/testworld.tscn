@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Jakob/readable_objectg.gd" id="5_s8sdp"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/mailcart.tscn" id="5_tbsk3"]
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
-[ext_resource type="Script" path="res://Scripts/grabableObject.gd" id="8_k21ww"]
+[ext_resource type="Script" path="res://Scripts/grabableObject_OLD.gd" id="10_xt8rb"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Objects/grabable_object_template.tscn" id="11_ys87f"]
 [ext_resource type="Script" path="res://Scripts/Package.gd" id="11_ywmwq"]
 
@@ -117,7 +117,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36732, -4.73003)
 
 [node name="InteractableTest" parent="RigidBody3D3" instance=ExtResource("4_p0gx3")]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 0, 0)
-script = ExtResource("8_k21ww")
+script = ExtResource("10_xt8rb")
 throw_strength = 700.0
 weightLimit = 1000.0
 max_lift_height = 100.0
@@ -152,7 +152,7 @@ physics_material_override = SubResource("PhysicsMaterial_h63xk")
 
 [node name="InteractableTest" parent="RigidBody3D4" instance=ExtResource("4_p0gx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-script = ExtResource("8_k21ww")
+script = ExtResource("10_xt8rb")
 throw_strength = 700.0
 weightLimit = 1000.0
 max_lift_height = 100.0
