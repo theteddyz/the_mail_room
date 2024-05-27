@@ -104,6 +104,7 @@ shadow_enabled = true
 environment = SubResource("Environment_13vtk")
 
 [node name="Player" parent="." instance=ExtResource("2_n1cxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 collision_mask = 20
 
 [node name="InteractableTest" parent="." instance=ExtResource("4_p0gx3")]
@@ -173,6 +174,6 @@ regrab_cooldown = 0.5
 shape = SubResource("BoxShape3D_8sc5h")
 
 [node name="TestMonster" parent="." instance=ExtResource("12_ty778")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.746, 0, -6.619)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.746, 0, -6.619)
 collision_layer = 5
 collision_mask = 5
