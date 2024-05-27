@@ -72,7 +72,6 @@ func interact():
 		pickmeUp()
 
 
-
 func pickmeUp():
 	if is_picked_up:
 		return
@@ -80,7 +79,6 @@ func pickmeUp():
 	#TODO: Switch "null" to something "more" correct
 	EventBus.emitCustomSignal("object_held", [parent.mass, null])
 	is_picked_up = true
-
 
 
 func dropMe(throw:bool):

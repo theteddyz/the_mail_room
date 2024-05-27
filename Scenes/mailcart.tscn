@@ -24,7 +24,3 @@ material = SubResource("StandardMaterial3D_mx67c")
 
 [node name="PlayerPosition" type="Node3D" parent="Node3D/Handlebar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366249, 0, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(0.102931, 2.15745e-08, -2.76486e-10, -1.02884e-09, 2.51235, -3.49246e-10, -2.91038e-11, 2.14204e-08, 0.886869, -0.75, 0.199, -2.91038e-11)
-size = Vector3(1, 0.306152, 1)

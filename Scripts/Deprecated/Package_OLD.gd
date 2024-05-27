@@ -1,5 +1,5 @@
 extends Interactable
-class_name Package
+class_name Package_OLD
 
 #TODO: Clean this up AND the package gameobject
 
@@ -25,6 +25,7 @@ var update = false
 var prevPosition
 var currentPositon
 var originScale
+
 func _ready():
 	player = get_parent().get_parent().find_child("Player")
 	camera = player.find_child("Camera")

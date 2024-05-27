@@ -151,29 +151,13 @@ shape = SubResource("BoxShape3D_8sc5h")
 [node name="PACKAGE_NEW" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48117, 0.889217, 0.998476)
 collision_layer = 3
+linear_damp = 10.0
 script = ExtResource("11_isxos")
-cart_rotation = Vector3(0, 0, 90)
-cart_position = Vector3(0, 0.25, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PACKAGE_NEW"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00698471, 0.00109863, -0.00308228)
 shape = SubResource("BoxShape3D_hjfl0")
 
 [node name="Shape" type="CSGBox3D" parent="PACKAGE_NEW"]
-transform = Transform3D(0.526728, 0, 0, 0, 0.100261, 0, 0, 0, 0.754658, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_yj08l")
-
-[node name="PACKAGE_NEW2" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.07769, 0.889217, 0.998476)
-collision_layer = 3
-script = ExtResource("11_isxos")
-cart_rotation = Vector3(0, 0, 90)
-cart_position = Vector3(0, 0.25, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PACKAGE_NEW2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00698471, 0.00109863, -0.00308228)
-shape = SubResource("BoxShape3D_hjfl0")
-
-[node name="Shape" type="CSGBox3D" parent="PACKAGE_NEW2"]
 transform = Transform3D(0.526728, 0, 0, 0, 0.100261, 0, 0, 0, 0.754658, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_yj08l")
