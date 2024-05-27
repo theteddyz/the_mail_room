@@ -8,22 +8,31 @@ extends Interactable
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 @onready var parent: RigidBody3D = get_parent()
+
+
+
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
 var is_picked_up = false
+var player: CharacterBody3D
 var itemPos
 var playerHead
 var camera:Camera3D
 var throw_direction = Vector3.ZERO
 var force:Vector3 = Vector3.ZERO
-var player: CharacterBody3D
 var timerAdded:bool = false
+
+
+
+#Needed for Interpolation Fix
 var mesh
 var meshScale
 var update = false
 var prevPosition
 var currentPositon
 var originScale
+
+
 func _ready():
 	player = parent.get_parent().find_child("Player")
 	camera = player.find_child("Camera")

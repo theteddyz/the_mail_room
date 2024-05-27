@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://5vwkanc2n0u0"]
+
+[ext_resource type="Script" path="res://Scripts/TestMonster.gd" id="1_8puf2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5x1el"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n02ip"]
+albedo_color = Color(0.988235, 0.47451, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kj3sn"]
+
+[node name="TestMonster" type="CharacterBody3D"]
+script = ExtResource("1_8puf2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_5x1el")
+surface_material_override/0 = SubResource("StandardMaterial3D_n02ip")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kj3sn")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.5

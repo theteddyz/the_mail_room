@@ -13,7 +13,7 @@ func display_item(text:String,img_path:Texture2D):
 	var player = $"../../Player"
 	player.state.is_reading = true
 	set_text(text,img_path)
-	EventBus.emitCustomSignal("player_reading",is_reading(0))
+	EventBus.emitCustomSignal("player_reading",[is_reading(0)])
 	
 
 func _input(event):
@@ -46,6 +46,6 @@ func is_reading(caller:int)->bool:
 	return is_reading
 func _on_button_pressed():
 	hide()
-	EventBus.emitCustomSignal("player_reading",is_reading(1))
+	EventBus.emitCustomSignal("player_reading",[is_reading(1)])
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	player.state.is_reading = false
