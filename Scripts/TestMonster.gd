@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+@export var disable:bool = false
 @onready var nav_agent = $NavigationAgent3D
 var player
 var SPEED = 3.0
@@ -9,7 +9,7 @@ func _ready():
 	await get_tree().create_timer(0.1).timeout
 	player = get_parent().find_child("Player")
 func _physics_process(delta):
-	if player:
+	if player and !disable:
 		update_target_location(player.global_transform.origin)
 		var current_location = global_transform.origin
 		var next_location = nav_agent.get_next_path_position()
