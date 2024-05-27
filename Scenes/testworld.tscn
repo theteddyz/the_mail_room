@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject_OLD.gd" id="10_xt8rb"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Objects/grabable_object_template.tscn" id="11_ys87f"]
-[ext_resource type="Script" path="res://Scripts/Deprecated/Package_OLD.gd" id="11_ywmwq"]
+[ext_resource type="Script" path="res://Scripts/Package.gd" id="11_ywmwq"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Monsters/test_monster.tscn" id="12_ty778"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qridb"]
