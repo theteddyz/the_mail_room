@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=22 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="1_u0m20"]
@@ -8,9 +8,14 @@
 [ext_resource type="Script" path="res://Jakob/readable_objectg.gd" id="5_s8sdp"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/mailcart.tscn" id="5_tbsk3"]
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
-[ext_resource type="Script" path="res://Scripts/grabableObject_OLD.gd" id="10_xt8rb"]
-[ext_resource type="Script" path="res://Scenes/Package.gd" id="11_isxos"]
+[ext_resource type="Script" path="res://Scripts/GrabbableObject_OLD.gd" id="10_xt8rb"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Objects/grabable_object_template.tscn" id="11_ys87f"]
+[ext_resource type="Script" path="res://Scripts/Deprecated/Package_OLD.gd" id="11_ywmwq"]
+[ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Monsters/test_monster.tscn" id="12_ty778"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_qridb"]
+vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
 albedo_texture = ExtResource("1_o8goe")
@@ -36,14 +41,15 @@ glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8sc5h"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8yqr"]
+albedo_color = Color(0.807843, 0, 0.0627451, 1)
+emission_enabled = true
+emission = Color(0.898039, 0, 0.0627451, 1)
+emission_energy_multiplier = 13.95
+rim_enabled = true
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h63xk"]
-friction = 0.5
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_hjfl0"]
-size = Vector3(0.540103, 0.120361, 0.77594)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yj08l"]
-albedo_color = Color(0.839216, 0.764706, 0.639216, 1)
+friction = 0.2
 
 [node name="testworld" type="Node3D"]
 
@@ -62,16 +68,19 @@ layout_mode = 1
 [node name="pauseMenu" parent="GUI" instance=ExtResource("1_u0m20")]
 layout_mode = 1
 
-[node name="stage" type="Node3D" parent="."]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="stage"]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+navigation_mesh = SubResource("NavigationMesh_qridb")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
 material_override = SubResource("StandardMaterial3D_1330w")
 use_collision = true
 collision_layer = 5
 collision_mask = 5
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_0h2ln")
+
+[node name="stage" type="Node3D" parent="."]
 
 [node name="stage2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.53711, 14.7408)
@@ -95,6 +104,7 @@ shadow_enabled = true
 environment = SubResource("Environment_13vtk")
 
 [node name="Player" parent="." instance=ExtResource("2_n1cxu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 collision_mask = 20
 
 [node name="InteractableTest" parent="." instance=ExtResource("4_p0gx3")]
@@ -129,8 +139,23 @@ regrab_cooldown = 0.5
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("BoxShape3D_8sc5h")
 
+[node name="PACKAGE" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45474, 1.36732, 3.97071)
+
+[node name="PackageTestBoxthing" type="CSGBox3D" parent="PACKAGE"]
+transform = Transform3D(0.279999, -0.000579984, -7.98122e-05, 0.000579952, 0.279999, -0.000112812, 8.00455e-05, 0.000112647, 0.28, 0, 0, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+material = SubResource("StandardMaterial3D_w8yqr")
+script = ExtResource("11_ywmwq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PACKAGE"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+shape = SubResource("BoxShape3D_8sc5h")
+
 [node name="RigidBody3D4" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.30603, 1.36732, -4.73003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.306, 0.5, -4.73)
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_h63xk")
 
@@ -148,32 +173,7 @@ regrab_cooldown = 0.5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
 shape = SubResource("BoxShape3D_8sc5h")
 
-[node name="PACKAGE_NEW" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48117, 0.889217, 0.998476)
-collision_layer = 3
-script = ExtResource("11_isxos")
-cart_rotation = Vector3(0, 0, 90)
-cart_position = Vector3(0, 0.25, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PACKAGE_NEW"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00698471, 0.00109863, -0.00308228)
-shape = SubResource("BoxShape3D_hjfl0")
-
-[node name="Shape" type="CSGBox3D" parent="PACKAGE_NEW"]
-transform = Transform3D(0.526728, 0, 0, 0, 0.100261, 0, 0, 0, 0.754658, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_yj08l")
-
-[node name="PACKAGE_NEW2" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.07769, 0.889217, 0.998476)
-collision_layer = 3
-script = ExtResource("11_isxos")
-cart_rotation = Vector3(0, 0, 90)
-cart_position = Vector3(0, 0.25, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PACKAGE_NEW2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00698471, 0.00109863, -0.00308228)
-shape = SubResource("BoxShape3D_hjfl0")
-
-[node name="Shape" type="CSGBox3D" parent="PACKAGE_NEW2"]
-transform = Transform3D(0.526728, 0, 0, 0, 0.100261, 0, 0, 0, 0.754658, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_yj08l")
+[node name="TestMonster" parent="." instance=ExtResource("12_ty778")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.746, 0, -6.619)
+collision_layer = 5
+collision_mask = 5

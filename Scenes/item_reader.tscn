@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2x4onytkpeym"]
 
-[ext_resource type="Script" path="res://Scripts/item_reader.gd" id="1_psbv5"]
+[ext_resource type="Script" path="res://Scripts/ItemReader.gd" id="1_psbv5"]
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="2_vhxoh"]
 
 [node name="ItemReader" type="Control"]
