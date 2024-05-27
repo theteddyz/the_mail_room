@@ -28,9 +28,3 @@ shape = SubResource("CapsuleShape3D_kj3sn")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.5
-
-[node name="InteractableFinder" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64224, 0.964385)
-target_position = Vector3(0, 0, -1.5)
-collision_mask = 4
-collide_with_areas = true
