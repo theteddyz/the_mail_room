@@ -5,6 +5,9 @@ class_name Package
 @export var regrab_cooldown: float = 0.5
 @export var cart_rotation = Vector3.ZERO
 @export var cart_position = Vector3.ZERO
+@export var hand_rotation = Vector3.ZERO
+@export var hand_position = Vector3.ZERO
+
 var is_picked_up = false
 var itemPos
 var playerHead

@@ -88,47 +88,16 @@ func _process(delta):
 			#persistent_state.rotate_y(rotate)
 			persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, delta*2)
 			persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, delta*2)
-			# Smoothly interpolate the rotation towards the target rotation
-			#persistent_state.rotation.y = lerp_angle(current_rotation, target_rotation, delta * 2.25)
-
-		#var input_dir = Input.get_vector("left", "right", "forward", "backward")
-		#direction = lerp(direction, (persistent_state.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * cart_movement_lerp_speed)
-#
-		#if direction:
-			#persistent_state.velocity.x = direction.x * current_speed
-			#persistent_state.velocity.z = direction.z * current_speed
-			#persistent_state.rotate_y(deg_to_rad(1) * 2.25 * direction.z)
-
-
-		#var input_dir = Input.get_vector("left", "right", "forward", "backward")
-		#direction = lerp(direction, (persistent_state.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * cart_movement_lerp_speed)
-#
-		#if direction:
-			#persistent_state.velocity.x = direction.x * current_speed
-			##persistent_state.velocity.z = direction.z * current_speed
-			##persistent_state.rotate_y(deg_to_rad(1.75 * (persistent_state.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized().z))
-			#
-		#else:
-			#persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
-			#persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, 0)
 			
-		#if directionX or directionZ:
-			#persistent_state.velocity.x = -directionX.z * current_speed
-			#persistent_state.velocity.z = -directionZ.x * current_speed
-		#else:
-			#persistent_state.velocity.x = move_toward(persistent_state.velocity.z, 0, current_speed)
-			#persistent_state.velocity.z = move_toward(persistent_state.velocity.x, 0, current_speed)
-			
-	
 		if Input.is_action_pressed("drive"):
 			releaseCart()
-		
 		persistent_state.move_and_slide()
 
 func releaseCart():
 	mailcart.reparent(persistent_state.get_parent())
 	persistent_state.set_collision_mask_value(5, true)
 	neck.position = Vector3(0, 1.8, 0)
+	neck.rotation = Vector3.ZERO
 	change_state.call("walking")
 
 #func _physics_process(delta):

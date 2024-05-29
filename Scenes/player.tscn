@@ -36,7 +36,7 @@ doppler_tracking = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011888, 0.0205584, -1.24889)
 
 [node name="PackageHolder" type="Marker3D" parent="Neck/Head/HeadbopRoot/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.331, -0.978)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319181, -0.331, -0.969561)
 
 [node name="Control" type="Control" parent="Neck/Head/HeadbopRoot/Camera"]
 layout_mode = 3

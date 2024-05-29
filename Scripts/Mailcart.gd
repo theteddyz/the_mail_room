@@ -8,10 +8,35 @@ var player
 # Pointer to track the current index in the game_objects array
 var current_index = 0
 
+# If we want to highlight packages
+var is_being_looked_at = false
+
+var highlight_lerp_speed = 8.2
+var unhighlight_lerp_speed = 8.2
+
 func _ready():
 	# Initialize the array with game objects if needed
 	# For example, game_objects.append(some_game_object)
+	is_being_looked_at = false
 	player = get_parent().find_child("Player")	
+
+func _process(delta):
+	if is_being_looked_at and game_objects.size() != 0:
+		game_objects[current_index].position.y = lerp(game_objects[current_index].position.y, 0.5, highlight_lerp_speed * delta)
+		lowerOtherPackages(delta)
+	else:
+		lowerAllPackages(delta)
+	
+func lowerAllPackages(delta):
+	for index in game_objects.size():
+		var package = game_objects[index]
+		package.position.y = lerp(package.position.y, package.cart_position.y, unhighlight_lerp_speed * delta)
+
+func lowerOtherPackages(delta):
+	for index in game_objects.size():
+		if index != current_index:
+			var package = game_objects[index]
+			package.position.y = lerp(package.position.y, package.cart_position.y, unhighlight_lerp_speed * delta)
 
 func remove_package():
 	pass

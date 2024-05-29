@@ -9,6 +9,7 @@ class_name WalkingState
 @onready var headbop_root = head.get_node("HeadbopRoot")
 @onready var interactable_finder: RayCast3D = head.get_node("InteractableFinder")
 @onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
+var mailcart
 
 @onready var standing_obstruction_raycast_0 = head.get_node("StandingObstructionRaycasts").get_node("StandingObstructionRaycast0")
 @onready var standing_obstruction_raycast_1 = head.get_node("StandingObstructionRaycasts").get_node("StandingObstructionRaycast1")
@@ -48,6 +49,8 @@ var head_bopping_current = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	mailcart = persistent_state.get_parent().get_node("Mailcart")
+	print(persistent_state.get_parent())
 	starting_height = neck.position.y
 	crouching_depth = starting_height - 0.5
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -110,7 +113,8 @@ func grabbed_package(package: Package):
 	bind_package_to_player(package)
 	
 func bind_package_to_player(package: Package):
-	package.position = Vector3.ZERO
+	package.position = package.hand_position
+	package.rotation = package.hand_rotation
 	package.freeze = true
 	package.reparent(persistent_state.find_child("PackageHolder"), false)
 	# MOVE PACKAGE TO PLAYER HERE
@@ -138,6 +142,7 @@ func _process(delta):
 	persistent_state.move_and_slide()
 	checkObstructionRaycasts()
 	regularMove(delta)
+	updateCartLookStatus()
 	
 	# Interactable Stuff
 	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object:
@@ -195,8 +200,18 @@ func regularMove(delta):
 			
 			headbop_root.position.y = lerp(headbop_root.position.y, head_bopping_vector.y * (head_bopping_current / 2.0), delta * movement_lerp_speed)
 			headbop_root.position.x = lerp(headbop_root.position.x, head_bopping_vector.x * (head_bopping_current), delta * movement_lerp_speed)
+			# We want to exempt packages from the headbop
+			if is_holding_object and object_last_held is Package:
+				object_last_held.position = object_last_held.hand_position - headbop_root.position
 		else:
 			headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
 	else:
 		persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
 		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
+		
+func updateCartLookStatus():
+	if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart" and !is_holding_object:
+		interactable_finder.get_collider().is_being_looked_at = true
+	else:
+		mailcart.is_being_looked_at = false
+			
