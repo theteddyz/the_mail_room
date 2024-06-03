@@ -14,6 +14,7 @@ var attack_range: float = 2.0
 var vision_cone: MeshInstance3D
 var time_since_last_seen: float = 0.0
 var lose_sight_time: float = 2.0 # Time in seconds to lose sight
+var foundPlayer:bool = false
 func _ready():
 	await get_tree().create_timer(0.1).timeout
 	player = get_parent().find_child("Player")
@@ -59,6 +60,10 @@ func _patrol_behavior(delta):
 
 func _chase_behavior(delta):
 	if player:
+		if foundPlayer == false:
+			EventBus.emitCustomSignal("scare_event",["monster_encounter",global_position])
+			print("event signaled")
+			foundPlayer = true
 		if global_position.distance_to(player.global_position) < attack_range:
 			current_state = "attack"
 		else:

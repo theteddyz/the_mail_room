@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=22 format=3 uid="uid://csn6vamjgfjbr"]
 
+[ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="1_u0m20"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
@@ -45,6 +46,8 @@ glow_enabled = true
 friction = 0.2
 
 [node name="testworld" type="Node3D"]
+
+[node name="ScareDirector" parent="." instance=ExtResource("1_faoyl")]
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
@@ -155,7 +158,6 @@ shape = SubResource("BoxShape3D_8sc5h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.746, 0, -6.619)
 collision_layer = 5
 collision_mask = 5
-disable = true
 
 [node name="PACKAGE_NEW" parent="." instance=ExtResource("12_c01f0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02809, 0.340293, 0)
