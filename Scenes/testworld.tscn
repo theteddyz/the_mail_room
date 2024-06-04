@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=25 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/scareDirector.tscn" id="1_faoyl"]
+[ext_resource type="PackedScene" uid="uid://cx0h2jtkrhjef" path="res://Scenes/GameManager.tscn" id="1_j8n7t"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="1_u0m20"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
@@ -50,6 +51,8 @@ size = Vector3(0.894745, 0.904297, 1)
 friction = 0.2
 
 [node name="testworld" type="Node3D"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_j8n7t")]
 
 [node name="ScareDirector" parent="." instance=ExtResource("1_faoyl")]
 
