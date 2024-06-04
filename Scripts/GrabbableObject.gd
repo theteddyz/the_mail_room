@@ -21,16 +21,20 @@ var camera:Camera3D
 var throw_direction = Vector3.ZERO
 var force:Vector3 = Vector3.ZERO
 var timerAdded:bool = false
-@onready var Interpolator = $"../Interpolator"
+var Interpolator 
 
 func _ready():
-	player = parent.get_parent().find_child("Player")
+	Interpolator = get_parent().find_child("Interpolator")
+	print(Interpolator)
+	var root = get_tree().root.get_child(1)
+	player = root.find_child("Player")
 	camera = player.find_child("Camera")
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
 
 func _physics_process(delta):
-	Interpolator.setUpdate(true)
+	if  Interpolator:
+		Interpolator.setUpdate(true)
 	if  is_picked_up:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			update_position(delta)
