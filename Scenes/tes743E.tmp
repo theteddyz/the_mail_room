@@ -49,6 +49,8 @@ friction = 0.2
 [node name="testworld" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_j8n7t")]
+ACTUAL = true
+blacklist = null
 
 [node name="ScareDirector" parent="." instance=ExtResource("1_faoyl")]
 

@@ -9,13 +9,11 @@ class_name Package
 @export var hand_position = Vector3.ZERO
 
 var is_picked_up = false
-var itemPos
 var playerHead
 var player: CharacterBody3D
 
 func _ready():
 	player = get_parent().find_child("Player")
-	itemPos = player.find_child("PackageHolder")
 
 func interact():
 	player.state.grabbed_package(self)

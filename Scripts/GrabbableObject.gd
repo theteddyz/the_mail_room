@@ -28,7 +28,6 @@ func _ready():
 	camera = player.find_child("Camera")
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
-	
 
 func _physics_process(delta):
 	Interpolator.setUpdate(true)
