@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://jfti671okaf0"]
+[gd_scene load_steps=16 format=3 uid="uid://jfti671okaf0"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/item_reader.tscn" id="1_3vrqn"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="2_vni45"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="7_snnv4"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="8_s3yta"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/mailcart.tscn" id="9_qohw7"]
-[ext_resource type="Script" path="res://Scripts/Mailcart.gd" id="10_5jhch"]
 [ext_resource type="PackedScene" uid="uid://j3j45yof2ynm" path="res://Assets/Models/BlenderModels/desk.blend" id="11_xkad7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
@@ -112,7 +111,6 @@ regrab_cooldown = 0.5
 
 [node name="Mailcart" parent="." instance=ExtResource("9_qohw7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28541, 0.725, 0)
-script = ExtResource("10_5jhch")
 
 [node name="desk" parent="." instance=ExtResource("11_xkad7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.563, 0, -0.849455)

@@ -21,45 +21,20 @@ var camera:Camera3D
 var throw_direction = Vector3.ZERO
 var force:Vector3 = Vector3.ZERO
 var timerAdded:bool = false
-
-
-
-#Needed for Interpolation Fix
-var mesh
-var meshScale
-var update = false
-var prevPosition
-var currentPositon
-var originScale
-
+var Interpolator 
 
 func _ready():
-	player = parent.get_parent().find_child("Player")
+	Interpolator = get_parent().find_child("Interpolator")
+	print(Interpolator)
+	var root = get_tree().root.get_child(1)
+	player = root.find_child("Player")
 	camera = player.find_child("Camera")
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
-	originScale = scale
-	mesh = parent.get_child(0)
-	meshScale = mesh.scale
-	prevPosition = parent.global_transform
-	currentPositon = parent.global_transform
-
-func _update_transform():
-	prevPosition = currentPositon
-	currentPositon = parent.global_transform
-
-func _process(delta):
-	scale = originScale
-	if update:
-		_update_transform()
-		update = false
-	var f = clamp(Engine.get_physics_interpolation_fraction(),0,1)
-	mesh.global_transform = prevPosition.interpolate_with(currentPositon,f)
-	#Stupid temp fix for now
-	mesh.scale = meshScale
 
 func _physics_process(delta):
-	update = true
+	if  Interpolator:
+		Interpolator.setUpdate(true)
 	if  is_picked_up:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			update_position(delta)
@@ -81,7 +56,6 @@ func interact():
 		pickmeUp()
 
 
-
 func pickmeUp():
 	if is_picked_up:
 		return
@@ -89,7 +63,6 @@ func pickmeUp():
 	#TODO: Switch "null" to something "more" correct
 	EventBus.emitCustomSignal("object_held", [parent.mass, null])
 	is_picked_up = true
-
 
 
 func dropMe(throw:bool):
@@ -115,7 +88,6 @@ func update_position(delta):
 		var distance:float = currentPosition.distance_to(targetPosition)
 		#parent.linear_damp = 55;
 		force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
-		
 		#force.x = clamp(force.x, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
 		#force.y = clamp(force.y, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
 		#force.y -= parent.mass * 0.07

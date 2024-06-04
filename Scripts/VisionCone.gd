@@ -25,7 +25,7 @@ func generate_cone_mesh(radius: float, angle: float, segments: int) -> ArrayMesh
 		var theta = angle * i / segments - angle / 2
 		var x = radius * cos(theta)
 		var z = radius * sin(theta)
-		vertices.append(Vector3(x, 0, -z))
+		vertices.append(Vector3(x, 0, z))
 	for i in range(1, segments):
 		indices.append(0)
 		indices.append(i)

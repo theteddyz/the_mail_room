@@ -9,6 +9,7 @@ class_name WalkingState
 @onready var headbop_root = head.get_node("HeadbopRoot")
 @onready var interactable_finder: RayCast3D = head.get_node("InteractableFinder")
 @onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
+var mailcart
 
 @onready var standing_obstruction_raycast_0 = head.get_node("StandingObstructionRaycasts").get_node("StandingObstructionRaycast0")
 @onready var standing_obstruction_raycast_1 = head.get_node("StandingObstructionRaycasts").get_node("StandingObstructionRaycast1")
@@ -48,6 +49,8 @@ var head_bopping_current = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	mailcart = persistent_state.get_parent().get_node("Mailcart")
+	print(persistent_state.get_parent())
 	starting_height = neck.position.y
 	crouching_depth = starting_height - 0.5
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -61,29 +64,30 @@ func _input(event):
 		persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-		get_viewport().set_input_as_handled()
 	
 	if event is InputEventMouseButton:
+		if event.is_action_released("interact") and is_holding_object and object_last_held is Package:
+				if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart":
+					print("ADDED PACKAGE")
+					interactable_finder.get_collider().add_package(object_last_held)
+					is_holding_object = false
+					#TODO: If we are not carrying a package we should grab the currently inspected package in the mailcart
+				else:
+					dropped_package()
+					
 		if interactable_finder.is_colliding():
 			var collider = interactable_finder.get_collider()
-			
 			# Handle Interaction
-			if Input.is_action_pressed("interact") and !interact_cooldown and !is_reading:
+			if Input.is_action_just_pressed("interact") and !interact_cooldown and !is_reading:
 				interact_cooldown = true
 				get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
 				if collider.name == "Handlebar" and !is_holding_object:
 					change_state.call("grabcart")
-				elif collider.name == "Mailcart":
-					if is_holding_object and object_last_held is Package:
-						collider.add_package(object_last_held)
-						is_holding_object = false
-						#TODO: If we are carrying a package we should drop it and call the corresponding 
-						#function (collider.add_package(package gameobject).
-						#TODO: If we are not carrying a package we should grab the currently inspected package in the mailcart
+				elif collider.name == "Mailcart" and !is_holding_object:
+					collider.grab_current_package()
 				elif !is_holding_object: 
 					collider.interact()
-				get_viewport().set_input_as_handled()
-			
+					
 			if event.is_action_pressed("inspect") and collider.name == "Mailcart":
 				print("Inspect pressed on MAILCART (will inspect package)")
 				#TODO: The player should cease all movement (Different state?) and call a new function, mailcart.inspect()
@@ -98,20 +102,33 @@ func _input(event):
 func held_object(mass:float, object: Node3D):
 	print(object)
 	is_holding_object = true
-	if object != null:
-		object_last_held = object
-		if object is Package:
-			print("IS PACKAGE!")
-			# Do not think we want to impact the player
-			pass
-	else:
-		walking_speed = (walking_speed/mass) + 1
-		sprinting_speed =(sprinting_speed/mass) + 1
-		crouching_speed =(crouching_speed/mass) + 1
+	object_last_held = object
+	walking_speed = (walking_speed/mass) + 1
+	sprinting_speed = (sprinting_speed/mass) + 1
+	crouching_speed = (crouching_speed/mass) + 1
+
+func grabbed_package(package: Package):
+	is_holding_object = true
+	object_last_held = package
+	bind_package_to_player(package)
 	
+func bind_package_to_player(package: Package):
+	package.position = package.hand_position
+	package.rotation = package.hand_rotation
+	package.freeze = true
+	package.reparent(persistent_state.find_child("PackageHolder"), false)
+	# MOVE PACKAGE TO PLAYER HERE
+	
+func dropped_package():
+	is_holding_object = false
+	unbind_package_from_player()
+	
+func unbind_package_from_player():
+	object_last_held.freeze = false
+	persistent_state.find_child("PackageHolder").get_child(0).reparent(get_tree().root, true)
+	# MOVE PACKAGE FROM PLAYER HERE
 
 func droppped_object(mass:float):
-	#TODO:MAKE THESE VARIABLES
 	crouching_speed = 3.1
 	walking_speed = 5.0
 	sprinting_speed = 10.0
@@ -125,16 +142,13 @@ func _process(delta):
 	persistent_state.move_and_slide()
 	checkObstructionRaycasts()
 	regularMove(delta)
+	updateCartLookStatus()
 	
 	# Interactable Stuff
 	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object:
 		crosshair.visible = true
 	else: 
 		crosshair.visible = false
-		
-#func _physics_process(delta):
-	# Check standing-obstruction
-	
 
 func checkObstructionRaycasts():
 	if standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding()or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding():
@@ -186,8 +200,18 @@ func regularMove(delta):
 			
 			headbop_root.position.y = lerp(headbop_root.position.y, head_bopping_vector.y * (head_bopping_current / 2.0), delta * movement_lerp_speed)
 			headbop_root.position.x = lerp(headbop_root.position.x, head_bopping_vector.x * (head_bopping_current), delta * movement_lerp_speed)
+			# We want to exempt packages from the headbop
+			if is_holding_object and object_last_held is Package:
+				object_last_held.position = object_last_held.hand_position - headbop_root.position
 		else:
 			headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
 	else:
 		persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
 		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
+		
+func updateCartLookStatus():
+	if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart" and !is_holding_object:
+		interactable_finder.get_collider().is_being_looked_at = true
+	else:
+		mailcart.is_being_looked_at = false
+			

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dicq0w2sau0cw"]
+[gd_scene load_steps=5 format=3 uid="uid://dicq0w2sau0cw"]
 
 [ext_resource type="PackedScene" uid="uid://d3hn5glhsxdca" path="res://Assets/Models/computer.tscn" id="1_4io34"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="2_gvy8y"]
+[ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/ObjectInterpolation.tscn" id="2_jik8i"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_si587"]
 points = PackedVector3Array(-0.855518, 0.580445, -0.676564, -0.855518, 0.580445, -0.304518, -0.855518, 2.04125, -0.676564, -0.853843, 0.24077, -0.708396, -0.853843, 0.160647, -0.698924, -0.853843, 0, -0.659639, -0.855518, 2.04125, -0.304518, -0.853843, 0, 0.659448, 0.855522, 2.04125, -0.676564, 0.85368, 0.24077, -0.708396, 0.85368, 0.160647, -0.698924, 0.85368, 0, -0.659639, -0.592062, 1.73095, 0.818297, 0.855522, 2.04125, -0.304518, -0.853843, 0.401017, 0.659448, 0.85368, 0, 0.659448, -0.587205, 0.254157, 0.856185, -0.604456, 0.264747, 0.85634, 0.855522, 0.580445, -0.676564, 0.591731, 1.73095, 0.818297, -0.581678, 0.302711, 0.87311, -0.55957, 0.340874, 0.877924, -0.538466, 0.378039, 0.876527, 0.85368, 0.401017, 0.659448, 0.855522, 0.580445, -0.304518, -0.541984, 0.330684, 0.877769, -0.564259, 0.292321, 0.872955, 0.591731, 0.763271, 0.818297)
@@ -12,7 +13,11 @@ collision_layer = 5
 collision_mask = 12293
 center_of_mass_mode = 1
 
-[node name="Computer2" parent="." instance=ExtResource("1_4io34")]
+[node name="Interpolator" parent="." instance=ExtResource("2_jik8i")]
+transform = Transform3D(0.402973, 0, 0, 0, 0.402973, 0, 0, 0, 0.402973, 0, 0, 0)
+
+[node name="Computer2" parent="Interpolator" instance=ExtResource("1_4io34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.402973, 0, 0, 0, 0.402973, 0, 0, 0, 0.402973, 0, 0, 0)

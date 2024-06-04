@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://co8tc5q81xn68"]
+
+[ext_resource type="Script" path="res://Scripts/ScareDirector.gd" id="1_8ueo3"]
+
+[node name="ScareDirector" type="Node"]
+script = ExtResource("1_8ueo3")

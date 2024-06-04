@@ -29,3 +29,17 @@ func change_state(new_state_name):
 	state.setup(Callable(self, "change_state"), self)
 	state.name = "current_state"
 	add_child(state)
+
+func save():
+	var save_dict = {
+		#"filename" : get_scene_file_path(),
+		"nodepath" : name,
+		#"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"pos_z" : position.z,
+		"rotation.y" : rotation.y,
+		#"find.Head.rotation.x" : find_child("Head").rotation.x # TEST
+		#"state" : state.get_class(),
+	}
+	return save_dict

@@ -1,15 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=5 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="2_5t4wg"]
-[ext_resource type="Script" path="res://Scenes/HeadResourceSaver.gd" id="2_p5fho"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia68h"]
 height = 1.2
 
-[node name="Player" type="CharacterBody3D" groups=["Persist"]]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 17
 script = ExtResource("1_lsi20")
@@ -26,8 +25,7 @@ disabled = true
 [node name="Neck" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
-[node name="Head" type="Node3D" parent="Neck" groups=["Persist"]]
-script = ExtResource("2_p5fho")
+[node name="Head" type="Node3D" parent="Neck"]
 
 [node name="HeadbopRoot" type="Node3D" parent="Neck/Head"]
 
@@ -38,7 +36,7 @@ doppler_tracking = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011888, 0.0205584, -1.24889)
 
 [node name="PackageHolder" type="Marker3D" parent="Neck/Head/HeadbopRoot/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319181, -0.331, -0.969561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.331, -0.978)
 
 [node name="Control" type="Control" parent="Neck/Head/HeadbopRoot/Camera"]
 layout_mode = 3

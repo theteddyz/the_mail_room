@@ -1,7 +1,5 @@
-[gd_scene load_steps=25 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=21 format=3 uid="uid://csn6vamjgfjbr"]
 
-[ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/scareDirector.tscn" id="1_faoyl"]
-[ext_resource type="PackedScene" uid="uid://cx0h2jtkrhjef" path="res://Scenes/GameManager.tscn" id="1_j8n7t"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="1_u0m20"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
@@ -14,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Objects/grabable_object_template.tscn" id="11_ys87f"]
 [ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Objects/package_template.tscn" id="12_c01f0"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Monsters/test_monster.tscn" id="12_ty778"]
-[ext_resource type="PackedScene" uid="uid://cphffp645k6d2" path="res://Assets/Models/desk_2.tscn" id="14_ca8wn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qridb"]
 vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
@@ -42,21 +39,12 @@ sky = SubResource("Sky_11ekw")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8pws"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_8sc5h"]
-size = Vector3(0.894745, 0.904297, 1)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h63xk"]
 friction = 0.2
 
 [node name="testworld" type="Node3D"]
-
-[node name="GameManager" parent="." instance=ExtResource("1_j8n7t")]
-
-[node name="ScareDirector" parent="." instance=ExtResource("1_faoyl")]
-
-[node name="RigidBody3D5" parent="." instance=ExtResource("14_ca8wn")]
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
@@ -109,8 +97,7 @@ shadow_enabled = true
 environment = SubResource("Environment_13vtk")
 
 [node name="Player" parent="." instance=ExtResource("2_n1cxu")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2092, 0, 3.54039)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)
 collision_mask = 20
 
 [node name="InteractableTest" parent="." instance=ExtResource("4_p0gx3")]
@@ -126,8 +113,6 @@ object_text = "Im being read woopie!"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28541, 0.725, 0)
 
 [node name="GrabableObjectTemplate" parent="." instance=ExtResource("11_ys87f")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.699444, 1.43345, 0)
-physics_material_override = SubResource("PhysicsMaterial_q8pws")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36732, -4.73003)
@@ -144,7 +129,7 @@ drop_time_threshold = 0.5
 regrab_cooldown = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.00396881, -0.000659227, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 shape = SubResource("BoxShape3D_8sc5h")
 
 [node name="RigidBody3D4" type="RigidBody3D" parent="."]

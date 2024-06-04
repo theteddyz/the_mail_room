@@ -12,6 +12,9 @@ var vision_range: float = 10.0
 var vision_angle: float = 45.0 # Angle in degrees
 var attack_range: float = 2.0
 var vision_cone: MeshInstance3D
+var time_since_last_seen: float = 0.0
+var lose_sight_time: float = 2.0 # Time in seconds to lose sight
+var foundPlayer:bool = false
 func _ready():
 	await get_tree().create_timer(0.1).timeout
 	player = get_parent().find_child("Player")
@@ -34,15 +37,12 @@ func _physics_process(delta):
 				_attack_behavior(delta)
 			"flee":
 				_flee_behavior(delta)
-	print(current_state)
+		update_timer(delta)
+		handleCollisions()
 
 
 func _idle_behavior(delta):
-	if player and global_position.distance_to(player.global_position) < detection_range:
-		current_state = "chase"
-		vision_cone.update_cone(vision_cone.chase_material)
-	else:
-		current_state = "patrol"
+	current_state = "patrol"
 
 func _patrol_behavior(delta):
 	if player and is_player_in_vision():
@@ -60,10 +60,21 @@ func _patrol_behavior(delta):
 
 func _chase_behavior(delta):
 	if player:
+		if foundPlayer == false:
+			EventBus.emitCustomSignal("scare_event",["monster_encounter",global_position])
+			print("event signaled")
+			foundPlayer = true
 		if global_position.distance_to(player.global_position) < attack_range:
 			current_state = "attack"
 		else:
-			nav_agent.target_position = player.global_position
+			if is_player_in_vision():
+				time_since_last_seen = 0.0 # Reset timer when player is in vision
+				nav_agent.target_position = player.global_position
+			else:
+				time_since_last_seen += delta
+				if time_since_last_seen > lose_sight_time:
+					current_state = "patrol"
+					vision_cone.update_cone(vision_cone.patrol_material)
 			var direction = (nav_agent.get_next_path_position() - global_position).normalized()
 			velocity = direction * speed
 			rotate_monster(direction)
@@ -85,7 +96,27 @@ func is_player_in_vision() -> bool:
 	var forward = -transform.basis.z
 	var angle_to_player = rad_to_deg(forward.angle_to(to_player.normalized()))
 	return angle_to_player <= vision_angle / 2
+
+
+
 func rotate_monster(direction: Vector3):
 	if direction.length() > 0:
 		var target_rotation = atan2(direction.x, direction.z)
 		rotation.y = lerp_angle(rotation.y, target_rotation, 0.1)
+
+
+func update_timer(delta):
+	if current_state == "chase" and !is_player_in_vision():
+		time_since_last_seen += delta
+	else:
+		time_since_last_seen = 0.0
+
+
+func handleCollisions():
+	var collision = move_and_collide(velocity * get_physics_process_delta_time())
+	if collision:
+		var collider = collision.get_collider()
+		if collider and collider is RigidBody3D: # Make sure the colliders are in a group called "rigidbodies"
+			var push_direction = collision.get_normal()
+			push_direction.y = 0 # Prevent pushing up or down
+			collider.apply_central_impulse(push_direction * 100) # Adjust force as needed

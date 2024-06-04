@@ -6,6 +6,8 @@ signal object_held(mass: float, object: Node3D)
 signal dropped_object()
 #Signal for telling the pause menu we are reading something
 signal player_reading(is_reading:bool)
+#Signal for trigger Scares for the ScareDirector to keep track of
+signal scare_event(event_type:String,pos:Vector3)
 ###############################################################################
 
 #Connecting Functions
