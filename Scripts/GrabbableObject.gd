@@ -61,13 +61,13 @@ func pickmeUp():
 		return
 	#if parent.mass <= weightLimit:
 	#TODO: Switch "null" to something "more" correct
-	EventBus.emitCustomSignal("object_held", [parent.mass, null])
+	EventBus.emitCustomSignal("object_held", [parent.mass, get_parent()])
 	is_picked_up = true
 
 
 func dropMe(throw:bool):
 	if is_picked_up and throw == false:
-		EventBus.emitCustomSignal("dropped_object", [parent.mass])
+		EventBus.emitCustomSignal("dropped_object", [parent.mass,self])
 		parent.linear_damp = 10
 		var currentPos = parent.global_position
 		is_picked_up = false
@@ -76,7 +76,7 @@ func dropMe(throw:bool):
 		force_above_threshold_time = 0.0
 	else:
 		throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
-		EventBus.emitCustomSignal("dropped_object",[parent.mass])
+		EventBus.emitCustomSignal("dropped_object",[parent.mass,self])
 		start_pickup_timer()
 		force_above_threshold_time = 0.0
 
