@@ -4,5 +4,5 @@
 
 [node name="desk" instance=ExtResource("1_ybtpc")]
 
-[node name="CeilingLowPoly" parent="." index="44"]
+[node name="CeilingLowPoly" parent="." index="61"]
 transform = Transform3D(0.586763, 0, 0, 0, 0.586763, 0, 0, 0, 0.586763, 7.53395, 4.0144, -1.66531)

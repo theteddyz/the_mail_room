@@ -13,9 +13,6 @@ var standing_is_blocked = false
 #var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 # Called when the node enters the scene tree for the first time.
-func _process(delta):
-	velocity.y = 0
-	global_position.y = 0
 func _ready():
 	state_factory = StateFactory.new()
 	change_state("walking")

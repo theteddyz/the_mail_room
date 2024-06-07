@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://tw0mk31qdtge"]
+[gd_scene load_steps=33 format=3 uid="uid://tw0mk31qdtge"]
 
 [ext_resource type="Script" path="res://Scripts/Mailcart.gd" id="1_1hgo0"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="2_5qw36"]
@@ -89,6 +89,9 @@ points = PackedVector3Array(-0.367835, 0.379036, 1.28846, -0.401422, 0.177513, 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mx67c"]
 albedo_color = Color(0.694118, 0.231373, 0.262745, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3iw6"]
+size = Vector3(1.65344, 0.0738643, 0.817902)
 
 [node name="Mailcart" type="RigidBody3D"]
 transform = Transform3D(1, 1.98668e-11, 0, -4.38547e-11, 1, 0, 0, 2.91038e-11, 1, 0, 0, 0)
@@ -215,7 +218,7 @@ shape = SubResource("ConvexPolygonShape3D_0canu")
 transform = Transform3D(1, 0.000381655, -0.000254259, -0.00038156, 1, 0.000348506, 0.000254402, -0.000348401, 1, 0.128054, 0.520626, -0.000392759)
 
 [node name="Handlebar" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(0.999999, 3.98401e-10, 0, -6.25853e-10, 0.999999, -6.40284e-10, 0, 4.07454e-10, 0.999999, 1.07246, 0.137102, -8.04138e-05)
+transform = Transform3D(0.999999, 4.27519e-10, 0, -6.84047e-10, 0.999999, -6.40284e-10, 0, 4.36557e-10, 0.999999, 1.07246, 0.137102, -8.04138e-05)
 visible = false
 use_collision = true
 collision_layer = 2
@@ -224,10 +227,14 @@ size = Vector3(0.185, 0.315, 1.1)
 material = SubResource("StandardMaterial3D_mx67c")
 
 [node name="PlayerPosition" type="Node3D" parent="Node3D/Handlebar"]
-transform = Transform3D(1, 1.072e-10, 0, -2.18456e-10, 1, 0, 0, 1.16415e-10, 1, 0.236764, 0.0885723, 6.38001e-05)
+transform = Transform3D(1, 4.91269e-11, 5.82077e-11, -1.30981e-10, 1, -2.91038e-11, -5.82077e-11, 1.74623e-10, 1, 0.396229, 0.0886333, 2.32533e-05)
 
 [node name="RadioPosition" type="Node3D" parent="Node3D"]
 transform = Transform3D(0.999999, 2.81936e-10, 0, -4.51251e-10, 0.999999, -4.65661e-10, 0, 2.91038e-10, 0.999999, -0.346909, -0.165872, 0.63377)
 
 [node name="RadioPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 6.93889e-18, 1, 0, -1.00974e-27, 0, 1, -0.203811, 0.36454, 0.611935)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181335, -0.67269, 0.000289917)
+shape = SubResource("BoxShape3D_q3iw6")
