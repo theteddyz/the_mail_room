@@ -3,7 +3,7 @@ extends Node
 #Signals when an game object is held by player and feeds mass
 signal object_held(mass: float, object: Node3D)
 #Signals when we drop an object
-signal dropped_object()
+signal dropped_object(mass:float,object:Node3D)
 #Signal for telling the pause menu we are reading something
 signal player_reading(is_reading:bool)
 #Signal for trigger Scares for the ScareDirector to keep track of
