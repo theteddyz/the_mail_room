@@ -64,7 +64,12 @@ func _input(event):
 		persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-	
+	if interactable_finder.is_colliding() and Input.is_action_just_pressed("drive"):
+		var collider = interactable_finder.get_collider()
+		if collider and !is_holding_object:
+			if collider.name == "Radio":
+				var parent = collider.get_parent()
+				parent.check_tape()
 	if event is InputEventMouseButton:
 		if event.is_action_released("interact") and is_holding_object and object_last_held is Package:
 				if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart":
@@ -74,7 +79,12 @@ func _input(event):
 					#TODO: If we are not carrying a package we should grab the currently inspected package in the mailcart
 				else:
 					dropped_package()
-					
+		if event.is_action_released("interact") and is_holding_object and object_last_held.name == "Radio":
+			print("HELLO")
+			if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart":
+				interactable_finder.get_collider().add_radio(object_last_held)
+		if event.is_action_released("interact") and is_holding_object and object_last_held:
+			pass
 		if interactable_finder.is_colliding():
 			var collider = interactable_finder.get_collider()
 			# Handle Interaction
@@ -95,11 +105,19 @@ func _input(event):
 	
 			if event.is_action_pressed("scroll package down") and collider.name == "Mailcart":
 				collider.scroll_package_down()
-	
+
 			if event.is_action_pressed("scroll package up") and collider.name == "Mailcart":
 				collider.scroll_package_up()
+				
+			if event.is_action_pressed("scroll package down") and collider.name == "Radio":
+				var parent = collider.get_parent()
+				parent.change_station_up()
+				
+			if event.is_action_pressed("scroll package up") and collider.name == "Radio":
+				var parent = collider.get_parent()
+				parent.change_station_down()
 
-func held_object(mass:float, object: Node3D):
+func held_object(mass:float, object):
 	print(object)
 	is_holding_object = true
 	object_last_held = object
@@ -125,10 +143,10 @@ func dropped_package():
 	
 func unbind_package_from_player():
 	object_last_held.freeze = false
-	persistent_state.find_child("PackageHolder").get_child(0).reparent(persistent_state.get_parent(), true)
+	persistent_state.find_child("PackageHolder").get_child(0).reparent(get_tree().root, true)
 	# MOVE PACKAGE FROM PLAYER HERE
 
-func droppped_object(mass:float):
+func droppped_object(mass:float,object):
 	crouching_speed = 3.1
 	walking_speed = 5.0
 	sprinting_speed = 10.0
@@ -210,9 +228,10 @@ func regularMove(delta):
 		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
 		
 func updateCartLookStatus():
-	if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart" and !is_holding_object:
-		interactable_finder.get_collider().is_being_looked_at = true
-	else:
-		if(mailcart != null):
-			mailcart.is_being_looked_at = false
+	if mailcart:
+		if !is_holding_object:
+			if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart" and !is_holding_object:
+				interactable_finder.get_collider().is_being_looked_at = true
+			else:
+				mailcart.is_being_looked_at = false
 			

@@ -2,7 +2,7 @@ extends Node3D
 
 # Array to hold game objects
 var game_objects = []
-
+var radio_position
 var player
 
 # Pointer to track the current index in the game_objects array
@@ -17,6 +17,7 @@ var unhighlight_lerp_speed = 8.2
 func _ready():
 	# Initialize the array with game objects if needed
 	# For example, game_objects.append(some_game_object)
+	radio_position = find_child("RadioPosition")
 	is_being_looked_at = false
 	player = get_parent().find_child("Player")	
 
@@ -96,3 +97,16 @@ func move_package_to_cart(package: Package, position: float):
 	package.rotation_degrees = package.cart_rotation
 	package.position = Vector3(position, package.cart_position.y, 0)
 	pass
+
+
+func add_radio(radio:RigidBody3D):
+	var root = get_tree().root.get_child(1)
+	root.remove_child(radio)
+	radio_position.add_child(radio)
+	radio.global_position = radio_position.global_position
+	radio.set_gravity_scale(0)
+	radio.attached_to_cart = true
+	
+
+
+
