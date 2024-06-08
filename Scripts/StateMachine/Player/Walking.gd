@@ -125,7 +125,7 @@ func dropped_package():
 	
 func unbind_package_from_player():
 	object_last_held.freeze = false
-	persistent_state.find_child("PackageHolder").get_child(0).reparent(get_tree().root, true)
+	persistent_state.find_child("PackageHolder").get_child(0).reparent(persistent_state.get_parent(), true)
 	# MOVE PACKAGE FROM PLAYER HERE
 
 func droppped_object(mass:float):
@@ -213,5 +213,6 @@ func updateCartLookStatus():
 	if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart" and !is_holding_object:
 		interactable_finder.get_collider().is_being_looked_at = true
 	else:
-		mailcart.is_being_looked_at = false
+		if(mailcart != null):
+			mailcart.is_being_looked_at = false
 			

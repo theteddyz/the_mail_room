@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="2_5t4wg"]
-[ext_resource type="Script" path="res://Scenes/HeadResourceSaver.gd" id="2_p5fho"]
+[ext_resource type="Script" path="res://Scripts/HeadResourceSaver.gd" id="2_eyvdn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 
@@ -27,7 +27,7 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Head" type="Node3D" parent="Neck" groups=["Persist"]]
-script = ExtResource("2_p5fho")
+script = ExtResource("2_eyvdn")
 
 [node name="HeadbopRoot" type="Node3D" parent="Neck/Head"]
 

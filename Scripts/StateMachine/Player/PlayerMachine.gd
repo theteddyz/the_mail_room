@@ -1,7 +1,6 @@
 extends CharacterBody3D
 class_name PlayerMachine
 
-# UI Nodes
 @onready var pause_menu = $"../GUI/pauseMenu"
 
 # Privates
@@ -14,6 +13,7 @@ var standing_is_blocked = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	state_factory = StateFactory.new()
 	change_state("walking")
 
@@ -32,14 +32,10 @@ func change_state(new_state_name):
 
 func save():
 	var save_dict = {
-		#"filename" : get_scene_file_path(),
-		"nodepath" : name,
-		#"parent" : get_parent().get_path(),
+		"nodepath" : get_parent().name + "/" + name,
 		"pos_x" : position.x, # Vector2 is not supported by JSON
 		"pos_y" : position.y,
 		"pos_z" : position.z,
 		"rotation.y" : rotation.y,
-		#"find.Head.rotation.x" : find_child("Head").rotation.x # TEST
-		#"state" : state.get_class(),
 	}
 	return save_dict

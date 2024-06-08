@@ -1,20 +1,22 @@
-[gd_scene load_steps=25 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=27 format=3 uid="uid://csn6vamjgfjbr"]
 
+[ext_resource type="Script" path="res://Scenes/TestworldResourceSaver.gd" id="1_53ayj"]
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/scareDirector.tscn" id="1_faoyl"]
-[ext_resource type="PackedScene" uid="uid://cx0h2jtkrhjef" path="res://Scenes/GameManager.tscn" id="1_j8n7t"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="1_u0m20"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/item_reader.tscn" id="2_pfcaa"]
+[ext_resource type="PackedScene" uid="uid://cl4axeew1gfd7" path="res://Scenes/Managers/world_elevator_tracker.tscn" id="2_rldjg"]
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/interactable_test.tscn" id="4_p0gx3"]
 [ext_resource type="Script" path="res://Jakob/readable_objectg.gd" id="5_s8sdp"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/mailcart.tscn" id="5_tbsk3"]
+[ext_resource type="PackedScene" uid="uid://dx6plgi74jhr5" path="res://Scenes/elevator.tscn" id="7_fh775"]
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Jakob/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject_OLD.gd" id="10_xt8rb"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Objects/grabable_object_template.tscn" id="11_ys87f"]
 [ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Objects/package_template.tscn" id="12_c01f0"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Monsters/test_monster.tscn" id="12_ty778"]
-[ext_resource type="PackedScene" uid="uid://cphffp645k6d2" path="res://Assets/Models/desk_2.tscn" id="14_ca8wn"]
+[ext_resource type="PackedScene" path="res://Assets/Models/desk_2.tscn" id="14_ca8wn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_qridb"]
 vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
@@ -24,7 +26,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 albedo_texture = ExtResource("1_o8goe")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h2ln"]
-albedo_color = Color(0.333333, 0.333333, 0.333333, 1)
+albedo_color = Color(0, 0.541176, 0.607843, 1)
 albedo_texture = ExtResource("1_o8goe")
 metallic_specular = 0.25
 uv1_triplanar = true
@@ -50,11 +52,12 @@ size = Vector3(0.894745, 0.904297, 1)
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h63xk"]
 friction = 0.2
 
-[node name="testworld" type="Node3D"]
-
-[node name="GameManager" parent="." instance=ExtResource("1_j8n7t")]
+[node name="testworld" type="Node3D" groups=["Persist"]]
+script = ExtResource("1_53ayj")
 
 [node name="ScareDirector" parent="." instance=ExtResource("1_faoyl")]
+
+[node name="WorldElevatorTracker" parent="." instance=ExtResource("2_rldjg")]
 
 [node name="RigidBody3D5" parent="." instance=ExtResource("14_ca8wn")]
 
@@ -85,8 +88,6 @@ collision_mask = 5
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_0h2ln")
 
-[node name="stage" type="Node3D" parent="."]
-
 [node name="stage2" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.53711, 14.7408)
 
@@ -98,6 +99,9 @@ collision_layer = 5
 collision_mask = 5
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_0h2ln")
+
+[node name="Elevator" parent="." instance=ExtResource("7_fh775")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.0188)
 
 [node name="environment" type="Node3D" parent="."]
 
@@ -171,11 +175,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.746, 0, -6.619)
 collision_layer = 5
 collision_mask = 5
 disable = true
-
-[node name="PACKAGE_NEW" parent="." instance=ExtResource("12_c01f0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02809, 0.340293, 0)
-hand_rotation = Vector3(1.00531, -0.74002, 0)
-hand_position = Vector3(0.375, -0.48, 0)
 
 [node name="PACKAGE_NEW2" parent="." instance=ExtResource("12_c01f0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22661, 0.340293, 0)

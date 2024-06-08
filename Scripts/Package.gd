@@ -13,6 +13,7 @@ var playerHead
 var player: CharacterBody3D
 
 func _ready():
+	print(get_parent())
 	player = get_parent().find_child("Player")
 
 func interact():

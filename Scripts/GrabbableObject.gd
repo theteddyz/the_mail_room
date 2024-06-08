@@ -26,8 +26,9 @@ var Interpolator
 func _ready():
 	Interpolator = get_parent().find_child("Interpolator")
 	print(Interpolator)
-	var root = get_tree().root.get_child(1)
-	player = root.find_child("Player")
+	var root = get_tree().root
+	var current_scene = root.get_child(root.get_child_count() - 1)
+	player = current_scene.find_child("Player")
 	camera = player.find_child("Camera")
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
