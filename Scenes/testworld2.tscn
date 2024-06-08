@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dgcuo40hsxb4d"]
+[gd_scene load_steps=16 format=3 uid="uid://dgcuo40hsxb4d"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/scareDirector.tscn" id="1_c32a1"]
 [ext_resource type="Script" path="res://Scenes/TestworldResourceSaver.gd" id="1_fu55l"]
-[ext_resource type="PackedScene" uid="uid://cl4axeew1gfd7" path="res://Scenes/Managers/world_elevator_tracker.tscn" id="1_ui1bs"]
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/item_reader.tscn" id="3_y2srt"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/pauseMenu.tscn" id="4_lihm6"]
 [ext_resource type="PackedScene" uid="uid://dx6plgi74jhr5" path="res://Scenes/elevator.tscn" id="5_po8kg"]
@@ -39,8 +38,6 @@ glow_enabled = true
 
 [node name="testworld2" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_fu55l")
-
-[node name="WorldElevatorTracker" parent="." instance=ExtResource("1_ui1bs")]
 
 [node name="ScareDirector" parent="." instance=ExtResource("1_c32a1")]
 

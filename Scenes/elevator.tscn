@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx6plgi74jhr5"]
+[gd_scene load_steps=6 format=3 uid="uid://dx6plgi74jhr5"]
 
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_67lg4"]
-[ext_resource type="Script" path="res://Scripts/ElevatorController.gd" id="1_uuatv"]
 [ext_resource type="Script" path="res://Scripts/ElevatorButton.gd" id="2_jns2g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
@@ -17,7 +16,6 @@ uv1_triplanar = true
 size = Vector3(3.93994, 1.51721, 3.91652)
 
 [node name="Elevator" type="Node3D"]
-script = ExtResource("1_uuatv")
 
 [node name="Ground" type="CSGBox3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.201, 0, -0.5, 0)
