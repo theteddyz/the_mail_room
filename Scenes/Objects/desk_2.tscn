@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://3upounxo75ji"]
+[gd_scene load_steps=30 format=3 uid="uid://cphffp645k6d2"]
 
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="1_ijyv1"]
 [ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/ObjectInterpolation.tscn" id="1_q0fs6"]
@@ -196,133 +196,129 @@ skeleton = NodePath("")
 [node name="SliderJoint3D" type="SliderJoint3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.829474, 0.372507, -0.0448174)
 node_a = NodePath("..")
-node_b = NodePath("../Node3D/RigidBody3D2")
+node_b = NodePath("../RigidBody3D2")
 linear_limit/upper_distance = 0.7
 linear_limit/lower_distance = 0.0
 
 [node name="SliderJoint3D2" type="SliderJoint3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.829474, 0.72098, -0.0448174)
 node_a = NodePath("..")
-node_b = NodePath("../Node3D/RigidBody3D3")
+node_b = NodePath("../RigidBody3D3")
 linear_limit/upper_distance = 0.7
 linear_limit/lower_distance = 0.0
 
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="RigidBody3D2" type="RigidBody3D" parent="Node3D"]
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(0.586763, 0, 0, 0, 0.586763, 0, 0, 0, 0.586763, 0.809985, 0.825102, 0.526756)
-axis_lock_linear_x = true
-axis_lock_linear_y = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 
-[node name="Area3D" type="Area3D" parent="Node3D/RigidBody3D2"]
+[node name="Area3D" type="Area3D" parent="RigidBody3D2"]
 collision_layer = 6
 collision_mask = 6
 script = ExtResource("2_hnkys")
 
-[node name="Interpolator" parent="Node3D/RigidBody3D2/Area3D" instance=ExtResource("1_q0fs6")]
+[node name="Interpolator" parent="RigidBody3D2/Area3D" instance=ExtResource("1_q0fs6")]
 
-[node name="CabinetDesk2" type="MeshInstance3D" parent="Node3D/RigidBody3D2/Area3D/Interpolator"]
+[node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D2/Area3D/Interpolator"]
 mesh = SubResource("ArrayMesh_qr8se")
 skeleton = NodePath("")
 
-[node name="_CollisionShape3D_95527" type="CollisionShape3D" parent="Node3D/RigidBody3D2/Area3D"]
+[node name="_CollisionShape3D_95527" type="CollisionShape3D" parent="RigidBody3D2/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_8cik2")
 
-[node name="_CollisionShape3D_95526" type="CollisionShape3D" parent="Node3D/RigidBody3D2/Area3D"]
+[node name="_CollisionShape3D_95526" type="CollisionShape3D" parent="RigidBody3D2/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_3m5px")
 
-[node name="_CollisionShape3D_95525" type="CollisionShape3D" parent="Node3D/RigidBody3D2/Area3D"]
+[node name="_CollisionShape3D_95525" type="CollisionShape3D" parent="RigidBody3D2/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_7vtbx")
 
-[node name="_CollisionShape3D_95524" type="CollisionShape3D" parent="Node3D/RigidBody3D2/Area3D"]
+[node name="_CollisionShape3D_95524" type="CollisionShape3D" parent="RigidBody3D2/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_4ag83")
 
-[node name="_CollisionShape3D_95523" type="CollisionShape3D" parent="Node3D/RigidBody3D2/Area3D"]
+[node name="_CollisionShape3D_95523" type="CollisionShape3D" parent="RigidBody3D2/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_ccyje")
 
-[node name="_CollisionShape3D_95522" type="CollisionShape3D" parent="Node3D/RigidBody3D2/Area3D"]
+[node name="_CollisionShape3D_95522" type="CollisionShape3D" parent="RigidBody3D2/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_pn5vf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RigidBody3D2/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_q7ws3")
 
-[node name="_CollisionShape3D_95527" type="CollisionShape3D" parent="Node3D/RigidBody3D2"]
+[node name="_CollisionShape3D_95527" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("ConvexPolygonShape3D_8cik2")
 
-[node name="_CollisionShape3D_95526" type="CollisionShape3D" parent="Node3D/RigidBody3D2"]
+[node name="_CollisionShape3D_95526" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("ConvexPolygonShape3D_3m5px")
 
-[node name="_CollisionShape3D_95525" type="CollisionShape3D" parent="Node3D/RigidBody3D2"]
+[node name="_CollisionShape3D_95525" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("ConvexPolygonShape3D_7vtbx")
 
-[node name="_CollisionShape3D_95524" type="CollisionShape3D" parent="Node3D/RigidBody3D2"]
+[node name="_CollisionShape3D_95524" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("ConvexPolygonShape3D_4ag83")
 
-[node name="_CollisionShape3D_95523" type="CollisionShape3D" parent="Node3D/RigidBody3D2"]
+[node name="_CollisionShape3D_95523" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("ConvexPolygonShape3D_ccyje")
 
-[node name="_CollisionShape3D_95522" type="CollisionShape3D" parent="Node3D/RigidBody3D2"]
+[node name="_CollisionShape3D_95522" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("ConvexPolygonShape3D_pn5vf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RigidBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2"]
 shape = SubResource("ConvexPolygonShape3D_q7ws3")
 
-[node name="RigidBody3D3" type="RigidBody3D" parent="Node3D"]
-transform = Transform3D(0.586763, 0, 0, 0, 0.586763, 0, 0, 0, 0.586763, 0.809985, 0.36166, 0.526756)
+[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+transform = Transform3D(0.586763, 0, 0, 0, 0.586763, 0, 0, 0, 0.586763, 0.809985, 0.345102, 0.526756)
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 
-[node name="Area3D" type="Area3D" parent="Node3D/RigidBody3D3"]
+[node name="Area3D" type="Area3D" parent="RigidBody3D3"]
 collision_layer = 6
 collision_mask = 6
 script = ExtResource("2_hnkys")
 
-[node name="Interpolator" parent="Node3D/RigidBody3D3/Area3D" instance=ExtResource("1_q0fs6")]
+[node name="Interpolator" parent="RigidBody3D3/Area3D" instance=ExtResource("1_q0fs6")]
 
-[node name="CabinetDesk2" type="MeshInstance3D" parent="Node3D/RigidBody3D3/Area3D/Interpolator"]
+[node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D3/Area3D/Interpolator"]
 mesh = SubResource("ArrayMesh_qr8se")
 skeleton = NodePath("")
 
-[node name="_CollisionShape3D_95527" type="CollisionShape3D" parent="Node3D/RigidBody3D3/Area3D"]
+[node name="_CollisionShape3D_95527" type="CollisionShape3D" parent="RigidBody3D3/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_8cik2")
 
-[node name="_CollisionShape3D_95526" type="CollisionShape3D" parent="Node3D/RigidBody3D3/Area3D"]
+[node name="_CollisionShape3D_95526" type="CollisionShape3D" parent="RigidBody3D3/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_3m5px")
 
-[node name="_CollisionShape3D_95525" type="CollisionShape3D" parent="Node3D/RigidBody3D3/Area3D"]
+[node name="_CollisionShape3D_95525" type="CollisionShape3D" parent="RigidBody3D3/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_7vtbx")
 
-[node name="_CollisionShape3D_95524" type="CollisionShape3D" parent="Node3D/RigidBody3D3/Area3D"]
+[node name="_CollisionShape3D_95524" type="CollisionShape3D" parent="RigidBody3D3/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_4ag83")
 
-[node name="_CollisionShape3D_95523" type="CollisionShape3D" parent="Node3D/RigidBody3D3/Area3D"]
+[node name="_CollisionShape3D_95523" type="CollisionShape3D" parent="RigidBody3D3/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_ccyje")
 
-[node name="_CollisionShape3D_95522" type="CollisionShape3D" parent="Node3D/RigidBody3D3/Area3D"]
+[node name="_CollisionShape3D_95522" type="CollisionShape3D" parent="RigidBody3D3/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_pn5vf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RigidBody3D3/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_q7ws3")
 
-[node name="_CollisionShape3D_95527" type="CollisionShape3D" parent="Node3D/RigidBody3D3"]
+[node name="_CollisionShape3D_95527" type="CollisionShape3D" parent="RigidBody3D3"]
 shape = SubResource("ConvexPolygonShape3D_8cik2")
 
-[node name="_CollisionShape3D_95526" type="CollisionShape3D" parent="Node3D/RigidBody3D3"]
+[node name="_CollisionShape3D_95526" type="CollisionShape3D" parent="RigidBody3D3"]
 shape = SubResource("ConvexPolygonShape3D_3m5px")
 
-[node name="_CollisionShape3D_95525" type="CollisionShape3D" parent="Node3D/RigidBody3D3"]
+[node name="_CollisionShape3D_95525" type="CollisionShape3D" parent="RigidBody3D3"]
 shape = SubResource("ConvexPolygonShape3D_7vtbx")
 
-[node name="_CollisionShape3D_95524" type="CollisionShape3D" parent="Node3D/RigidBody3D3"]
+[node name="_CollisionShape3D_95524" type="CollisionShape3D" parent="RigidBody3D3"]
 shape = SubResource("ConvexPolygonShape3D_4ag83")
 
-[node name="_CollisionShape3D_95523" type="CollisionShape3D" parent="Node3D/RigidBody3D3"]
+[node name="_CollisionShape3D_95523" type="CollisionShape3D" parent="RigidBody3D3"]
 shape = SubResource("ConvexPolygonShape3D_ccyje")
 
-[node name="_CollisionShape3D_95522" type="CollisionShape3D" parent="Node3D/RigidBody3D3"]
+[node name="_CollisionShape3D_95522" type="CollisionShape3D" parent="RigidBody3D3"]
 shape = SubResource("ConvexPolygonShape3D_pn5vf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RigidBody3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
 shape = SubResource("ConvexPolygonShape3D_q7ws3")

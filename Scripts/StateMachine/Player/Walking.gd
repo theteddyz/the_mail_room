@@ -228,9 +228,10 @@ func regularMove(delta):
 		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
 		
 func updateCartLookStatus():
-	if !is_holding_object:
-		if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart" and !is_holding_object:
-			interactable_finder.get_collider().is_being_looked_at = true
-		else:
-			mailcart.is_being_looked_at = false
+	if mailcart:
+		if !is_holding_object:
+			if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart" and !is_holding_object:
+				interactable_finder.get_collider().is_being_looked_at = true
+			else:
+				mailcart.is_being_looked_at = false
 			
