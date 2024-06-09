@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cmufbnmq1hlps"]
+[gd_scene load_steps=53 format=3 uid="uid://c1vqv17kvdegg"]
 
 [ext_resource type="Texture2D" uid="uid://b57jpmwtrxcc3" path="res://Assets/Textures/BlenderTextures/KeyboardLowRez2.png" id="2_48hvl"]
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="3_pmmto"]

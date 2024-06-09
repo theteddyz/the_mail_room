@@ -1,7 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://3upounxo75ji"]
+[gd_scene load_steps=30 format=3 uid="uid://b7mvnta8bi067"]
 
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="1_ijyv1"]
-[ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/ObjectInterpolation.tscn" id="1_q0fs6"]
+[ext_resource type="PackedScene" path="res://Scenes/ObjectInterpolation.tscn" id="1_q0fs6"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="2_bppe2"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="2_hnkys"]
 

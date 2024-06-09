@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=13 format=3 uid="uid://b8dyjpdcef1vu"]
 
-[ext_resource type="PackedScene" uid="uid://bs2k28vlgdnhl" path="res://Scenes/gui.tscn" id="1_7c8is"]
-[ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Objects/wall_tall.tscn" id="3_g3cll"]
-[ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Objects/ceiling_low_poly.tscn" id="4_x4pi8"]
+[ext_resource type="PackedScene" path="res://Scenes/gui.tscn" id="1_7c8is"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/wall_tall.tscn" id="3_g3cll"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/ceiling_low_poly.tscn" id="4_x4pi8"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="5_h1gg0"]
-[ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Objects/office_cubicle.tscn" id="5_o7viy"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/office_cubicle.tscn" id="5_o7viy"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="8_ib66a"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/mailcart.tscn" id="8_oinhq"]
-[ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Objects/wall_meeting_room_003.tscn" id="9_v3n8q"]
+[ext_resource type="PackedScene" uid="uid://dx6plgi74jhr5" path="res://Scenes/elevator.tscn" id="9_c0qsl"]
+[ext_resource type="PackedScene" path="res://Scenes/Objects/wall_meeting_room_003.tscn" id="9_v3n8q"]
 
 [sub_resource type="Environment" id="Environment_vrbc5"]
 
@@ -806,3 +807,6 @@ transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0,
 
 [node name="WallMeetingRoom_004" parent="." instance=ExtResource("9_v3n8q")]
 transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 21.328, 0.498674, -3.99267)
+
+[node name="Elevator" parent="." instance=ExtResource("9_c0qsl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502056, 57.6842)
