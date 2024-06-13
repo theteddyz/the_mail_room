@@ -81,3 +81,7 @@ target_position = Vector3(0, 1.095, 0)
 [node name="StandingObstructionRaycast3" type="RayCast3D" parent="Neck/Head/StandingObstructionRaycasts"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00484732, -0.797134, -0.444105)
 target_position = Vector3(0, 1.095, 0)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72236, 0)
+current = true

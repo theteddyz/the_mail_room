@@ -8,6 +8,8 @@ signal dropped_object(mass:float,object:Node3D)
 signal player_reading(is_reading:bool)
 #Signal for trigger Scares for the ScareDirector to keep track of
 signal scare_event(event_type:String,pos:Vector3)
+#Signal for when we want to disable to player movement
+signal disable_player_movement(l:bool,w:bool)
 ###############################################################################
 
 #Connecting Functions

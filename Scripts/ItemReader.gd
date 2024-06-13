@@ -3,7 +3,7 @@ extends Control
 @onready var object_text:RichTextLabel = $VBoxContainer/ScrollContainer/RichTextLabel
 @onready var background_image:TextureRect = $TextureRect
 var skip_typewriter_effect: bool = false
-@onready var player = $"../../Player"
+var player 
 func _ready():
 	#hide()
 	pass

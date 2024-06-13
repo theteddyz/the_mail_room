@@ -35,6 +35,8 @@ var held_mass:float
 var is_holding_object = false
 var is_looking_at_mailcart = false
 var object_last_held = null
+var disable_look_movement = false
+var disable_walk_movement = false
 
 # Headbopping
 const head_bopping_walking_speed = 12
@@ -50,17 +52,17 @@ var head_bopping_current = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mailcart = persistent_state.get_parent().get_node("Mailcart")
-	print(persistent_state.get_parent())
 	starting_height = neck.position.y
 	crouching_depth = starting_height - 0.5
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	crosshair.visible = false
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
+	EventBus.connect("disable_player_movement",disable_movement_event)
 
 func _input(event):
 	# Mouse
-	if event is InputEventMouseMotion && !is_reading:
+	if event is InputEventMouseMotion && !is_reading && !disable_look_movement:
 		persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
@@ -163,7 +165,7 @@ func _process(delta):
 	updateCartLookStatus()
 	
 	# Interactable Stuff
-	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object:
+	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object and !disable_look_movement:
 		crosshair.visible = true
 	else: 
 		crosshair.visible = false
@@ -175,58 +177,58 @@ func checkObstructionRaycasts():
 		standing_is_blocked = false
 
 func regularMove(delta):
-	
+	if !disable_walk_movement:
 	# Input / State checks
-	if(Input.is_action_pressed("crouch")):
-		standing_collision_shape.disabled = true
-		crouching_collision_shape.disabled = false
-		current_speed = crouching_speed
-		neck.position.y = lerp(neck.position.y, crouching_depth, crouching_lerp_speed)
-		head_bopping_current = head_bopping_crouching_intensity
-		head_bopping_index += head_bopping_crouching_speed * delta
-	else:
-		# if standing would collide
-		if !standing_is_blocked:
-			standing_collision_shape.disabled = false
-			crouching_collision_shape.disabled = true
-			neck.position.y = lerp(neck.position.y, starting_height, crouching_lerp_speed)
-			if Input.is_action_pressed("sprint"):
-				current_speed = sprinting_speed
-				head_bopping_current = head_bopping_sprinting_intensity
-				head_bopping_index += head_bopping_sprinting_speed * delta
-			else:
-				current_speed = walking_speed
-				head_bopping_current = head_bopping_walking_intensity
-				head_bopping_index += head_bopping_walking_speed * delta
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	direction = lerp(direction, (persistent_state.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * movement_lerp_speed)
-
-	if direction:
-		persistent_state.velocity.x = direction.x * current_speed
-		persistent_state.velocity.z = direction.z * current_speed
-		
-		#print("Direction Input: ", direction.z)
-		#print("Player Rotation: ", persistent_state.rotation)
-		
-		# Head Bopping
-		if Vector3(input_dir.x, 0, input_dir.y) != Vector3.ZERO:
-			head_bopping_vector.y = sin(head_bopping_index)
-			head_bopping_vector.x = sin(head_bopping_index/2)+0.5
-			
-			headbop_root.position.y = lerp(headbop_root.position.y, head_bopping_vector.y * (head_bopping_current / 2.0), delta * movement_lerp_speed)
-			headbop_root.position.x = lerp(headbop_root.position.x, head_bopping_vector.x * (head_bopping_current), delta * movement_lerp_speed)
-			# We want to exempt packages from the headbop
-			if is_holding_object and object_last_held is Package:
-				object_last_held.position = object_last_held.hand_position - headbop_root.position
+		if(Input.is_action_pressed("crouch")):
+			standing_collision_shape.disabled = true
+			crouching_collision_shape.disabled = false
+			current_speed = crouching_speed
+			neck.position.y = lerp(neck.position.y, crouching_depth, crouching_lerp_speed)
+			head_bopping_current = head_bopping_crouching_intensity
+			head_bopping_index += head_bopping_crouching_speed * delta
 		else:
-			headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
-	else:
-		persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
-		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
-		
+			# if standing would collide
+			if !standing_is_blocked:
+				standing_collision_shape.disabled = false
+				crouching_collision_shape.disabled = true
+				neck.position.y = lerp(neck.position.y, starting_height, crouching_lerp_speed)
+				if Input.is_action_pressed("sprint"):
+					current_speed = sprinting_speed
+					head_bopping_current = head_bopping_sprinting_intensity
+					head_bopping_index += head_bopping_sprinting_speed * delta
+				else:
+					current_speed = walking_speed
+					head_bopping_current = head_bopping_walking_intensity
+					head_bopping_index += head_bopping_walking_speed * delta
+
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var input_dir = Input.get_vector("left", "right", "forward", "backward")
+		direction = lerp(direction, (persistent_state.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * movement_lerp_speed)
+
+		if direction:
+			persistent_state.velocity.x = direction.x * current_speed
+			persistent_state.velocity.z = direction.z * current_speed
+			
+			#print("Direction Input: ", direction.z)
+			#print("Player Rotation: ", persistent_state.rotation)
+			
+			# Head Bopping
+			if Vector3(input_dir.x, 0, input_dir.y) != Vector3.ZERO:
+				head_bopping_vector.y = sin(head_bopping_index)
+				head_bopping_vector.x = sin(head_bopping_index/2)+0.5
+				
+				headbop_root.position.y = lerp(headbop_root.position.y, head_bopping_vector.y * (head_bopping_current / 2.0), delta * movement_lerp_speed)
+				headbop_root.position.x = lerp(headbop_root.position.x, head_bopping_vector.x * (head_bopping_current), delta * movement_lerp_speed)
+				# We want to exempt packages from the headbop
+				if is_holding_object and object_last_held is Package:
+					object_last_held.position = object_last_held.hand_position - headbop_root.position
+			else:
+				headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
+		else:
+			persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
+			persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
+			
 func updateCartLookStatus():
 	if mailcart:
 		if !is_holding_object:
@@ -236,3 +238,7 @@ func updateCartLookStatus():
 				if(mailcart != null):
 					mailcart.is_being_looked_at = false
 			
+
+func disable_movement_event(l:bool,w:bool):
+	disable_look_movement = l
+	disable_walk_movement = w
