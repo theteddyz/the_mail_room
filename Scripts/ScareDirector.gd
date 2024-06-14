@@ -3,7 +3,6 @@ extends Node
 var scareIntensity:float = 0.0
 var scareThreshold:float = 10.0
 var decayRate:float = 0.1
-
 var events: Dictionary = {
 	"sound_event":2.0,
 	"environment_change":3.0,

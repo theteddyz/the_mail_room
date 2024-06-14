@@ -1,4 +1,5 @@
 extends Node3D
+@export var floor_num:int
 func save():
 	var save_dict = {
 		#"filename" : get_scene_file_path(),

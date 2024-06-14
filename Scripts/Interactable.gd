@@ -3,4 +3,4 @@ class_name Interactable
 
 # Overridable function used for typing
 func interact():
-	pass
+	print("CLICKED")

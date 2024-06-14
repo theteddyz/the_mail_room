@@ -6,10 +6,10 @@ const FILE_NAME = "user://game-data.json"
 var current_scene : Node
 var player_reference: Node
 var elevator_reference: Node
-
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
+	EventBus.connect("moved_to_floor",goto_scene)
 	load_game()
 	
 func load_game():
@@ -104,13 +104,13 @@ func _deferred_goto_scene(path):
 	elevator_reference.position = new_elevator.position
 	
 	#TEMPORARY AND SLOW WAY TO FIND THE LEVEL WE SHOULD TOGGLE TO NEXT TIME WE PRESS LOAD
-	elevator_reference.find_child("Button").target_scene_path = new_elevator.find_child("Button").target_scene_path
-	if(elevator_reference.find_child("Button").target_scene_path == path):
-		elevator_reference.find_child("Button").target_scene_path = "res://Scenes/testworld.tscn"
-	else:
-		elevator_reference.find_child("Button").target_scene_path = "res://Scenes/testworld2.tscn"
-	new_elevator.free()
-	elevator_reference.name = "Elevator"
+	#elevator_reference.find_child("Button").target_scene_path = new_elevator.find_child("Button").target_scene_path
+	#if(elevator_reference.find_child("Button").target_scene_path == path):
+		#elevator_reference.find_child("Button").target_scene_path = "res://Scenes/testworld.tscn"
+	#else:
+		#elevator_reference.find_child("Button").target_scene_path = "res://Scenes/testworld2.tscn"
+	#new_elevator.free()
+	#elevator_reference.name = "Elevator"
 
 	# Position the player	
 	player_reference.position = elevator_reference.position + player_relative_to_elevator
