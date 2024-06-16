@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=24 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
@@ -13,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/grabable_object_template.tscn" id="11_ys87f"]
 [ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Prefabs/MoveableObjects/package_template.tscn" id="12_c01f0"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="12_ty778"]
-[ext_resource type="PackedScene" uid="uid://3upounxo75ji" path="res://Assets/Models/desk_2.tscn" id="15_yid15"]
+[ext_resource type="PackedScene" uid="uid://3upounxo75ji" path="res://Assets/Models/desk.tscn" id="15_yid15"]
+[ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="16_ju8dt"]
 [ext_resource type="PackedScene" uid="uid://dx2sptdmhca2w" path="res://Assets/Models/elevator.tscn" id="19_8q8av"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
@@ -141,3 +142,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2257, 1.19209e-07, -0.9517
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1.12661, -4)
 collision_layer = 18
 physics_material_override = SubResource("PhysicsMaterial_bh3ib")
+
+[node name="WallMeetingRoomWithDoor" parent="." instance=ExtResource("16_ju8dt")]
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -3.72168, -4.76837e-07, -9.79537)

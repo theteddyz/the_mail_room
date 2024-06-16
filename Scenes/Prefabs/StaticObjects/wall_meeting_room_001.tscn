@@ -41,6 +41,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ajmbq")
 
 [node name="WallMeetingRoom_001" type="MeshInstance3D"]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -24.8116, -0.0697859, 0.986406)
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0, 0, 0)
 mesh = SubResource("ArrayMesh_keen6")
 skeleton = NodePath("")
