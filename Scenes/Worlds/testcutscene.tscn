@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=21 format=3 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_u173c"]
 [ext_resource type="PackedScene" uid="uid://bs2k28vlgdnhl" path="res://Scenes/Prefabs/gui/gui.tscn" id="2_h58gi"]
@@ -135,6 +135,8 @@ _data = {
 "RESET": SubResource("Animation_8k0a1"),
 "Scene": SubResource("Animation_03a06")
 }
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_60xfd"]
 
 [node name="world" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_u173c")
@@ -898,21 +900,24 @@ material = ExtResource("8_h3rhg")
 [node name="CSGBox3D7" type="CSGBox3D" parent="stage/Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1166, -0.5, 49.8348)
 use_collision = true
-collision_layer = 5
-collision_mask = 5
+collision_layer = 7
+collision_mask = 7
 size = Vector3(20.9972, 1, 20)
 material = ExtResource("8_h3rhg")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="stage/Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.87144, -0.5, 49.8348)
 use_collision = true
-collision_layer = 5
-collision_mask = 5
+collision_layer = 7
+collision_mask = 7
 size = Vector3(20.9972, 1, 20)
 material = ExtResource("8_h3rhg")
 
 [node name="Mailcart" parent="." instance=ExtResource("9_lovsk")]
-transform = Transform3D(1, 1.98668e-11, 0, -4.38547e-11, 1, 0, 0, 2.91038e-11, 1, 3.79813, 1.24181, 58.4666)
+transform = Transform3D(1, 1.98668e-11, 0, -4.38547e-11, 1, 0, 0, 2.91038e-11, 1, 3.79813, 2.82482, 58.4666)
+collision_mask = 19
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_60xfd")
 
 [node name="Radio" parent="." instance=ExtResource("10_r6ec6")]
 transform = Transform3D(-0.0627356, 0, 0.22978, 0, 0.23819, 0, -0.22978, 0, -0.0627356, 5.74676, 1.63531, 10.257)
@@ -923,6 +928,7 @@ autoplay = true
 
 [node name="Player" parent="." instance=ExtResource("12_rgcp3")]
 transform = Transform3D(-0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, -0.669131, 4.452, 0.5, 10.201)
+collision_mask = 20
 
 [node name="Elevator" parent="." instance=ExtResource("13_8lshx")]
 transform = Transform3D(-1.08604, 0, -9.49446e-08, 0, 1.08604, 0, 9.49446e-08, 0, -1.08604, -0.337034, 1.53904, 62.9027)
