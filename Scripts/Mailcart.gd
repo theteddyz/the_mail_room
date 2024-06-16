@@ -107,6 +107,14 @@ func add_radio(radio:RigidBody3D):
 	radio.set_gravity_scale(0)
 	radio.attached_to_cart = true
 	
-
+func save():
+	var save_dict = {
+		"nodepath" : get_parent().name + "/" + name,
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"pos_z" : position.z,
+		"rotation.y" : rotation.y,
+	}
+	return save_dict
 
 

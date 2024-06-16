@@ -831,6 +831,38 @@ tracks/3/keys = {
 "values": [Vector3(0, 10.6999, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_4twli"]
+resource_name = "call_elevator"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elevator:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 10.6999, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1qtyu"]
+resource_name = "call_elevator_up"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elevator:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -10.7, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ck3i1"]
 resource_name = "door_close_inside"
 length = 2.0
@@ -951,38 +983,6 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0), Vector3(-1.2, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4twli"]
-resource_name = "call_elevator"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Elevator:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 10.6999, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_1qtyu"]
-resource_name = "call_elevator_up"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Elevator:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -10.7, 0), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_683k4"]
 _data = {
 "RESET": SubResource("Animation_wocxw"),
@@ -994,7 +994,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8j03"]
-size = Vector3(3.93994, 3.14639, 4.73866)
+size = Vector3(3.93994, 13.6959, 6.20771)
 
 [node name="Elevator" type="Node3D"]
 script = ExtResource("1_rvpeo")
@@ -1216,8 +1216,8 @@ libraries = {
 }
 
 [node name="ObjectDetectionShape" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925814, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.925814, 0.725212)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectDetectionShape"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300293, -0.216538, 0.428214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300293, 5.05823, -0.30631)
 shape = SubResource("BoxShape3D_s8j03")

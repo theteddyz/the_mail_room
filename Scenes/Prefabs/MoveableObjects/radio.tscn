@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://sg2x8xtsvg2q" path="res://Assets/Models/radio_model.tscn" id="1_5dhgp"]
 [ext_resource type="Script" path="res://Scripts/Radio.gd" id="1_bg5d2"]
-[ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/ObjectInterpolation.tscn" id="1_m8eq4"]
+[ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/Prefabs/AssetTools/ObjectInterpolation.tscn" id="1_m8eq4"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="3_kk33k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ec5j2"]

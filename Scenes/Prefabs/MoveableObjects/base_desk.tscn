@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="3_pmmto"]
 [ext_resource type="Texture2D" uid="uid://bcwwtsc4ei0vy" path="res://Assets/Textures/BlenderTextures/Mouse.png" id="4_ney5p"]
 [ext_resource type="Texture2D" uid="uid://c2jhrc67c27nk" path="res://Assets/Textures/BlenderTextures/PowerStrip.png" id="5_eytsp"]
-[ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Objects/grabable_object_template.tscn" id="6_e5f0h"]
+[ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/grabable_object_template.tscn" id="6_e5f0h"]
 [ext_resource type="Texture2D" uid="uid://gr821vyans0e" path="res://Assets/Textures/BlenderTextures/Chair.png" id="7_77xud"]
 [ext_resource type="Texture2D" uid="uid://dkm7r1g2w10pc" path="res://Assets/Textures/BlenderTextures/ChairWheel.png" id="8_7g6ov"]
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="8_477ld"]

@@ -11,7 +11,6 @@ var is_called = false
 func _ready():
 	left_door.set_position(Vector3.ZERO)
 	right_door.set_position(Vector3.ZERO)
-	print(get_tree().root.get_child(2))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

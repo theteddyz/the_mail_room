@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cxx4tf5grxfu8"]
 
 [ext_resource type="Texture2D" uid="uid://dqvl503sdqana" path="res://Assets/Textures/BlenderTextures/Radio.png" id="1_0s5h3"]
-[ext_resource type="Script" path="res://Assets/Models/radio_animation.gd" id="2_3yv3g"]
+[ext_resource type="Script" path="res://Scripts/radio_animation.gd" id="2_3yv3g"]
 [ext_resource type="AudioStream" uid="uid://dbl2pr7jxdqjm" path="res://Assets/Audio/Narrator/MailRoomRadio.mp3" id="3_exwrv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3b7vo"]

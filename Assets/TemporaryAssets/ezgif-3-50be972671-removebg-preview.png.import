@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://m5qf43vcn1jl"
-path.s3tc="res://.godot/imported/ezgif-3-50be972671-removebg-preview.png-f63bfcfda7b251625b6a9be8f40bff53.s3tc.ctex"
+path.s3tc="res://.godot/imported/ezgif-3-50be972671-removebg-preview.png-6a932a849aa2dba0540c0ed3e1e07f02.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Jakob/ezgif-3-50be972671-removebg-preview.png"
-dest_files=["res://.godot/imported/ezgif-3-50be972671-removebg-preview.png-f63bfcfda7b251625b6a9be8f40bff53.s3tc.ctex"]
+source_file="res://Assets/TemporaryAssets/ezgif-3-50be972671-removebg-preview.png"
+dest_files=["res://.godot/imported/ezgif-3-50be972671-removebg-preview.png-6a932a849aa2dba0540c0ed3e1e07f02.s3tc.ctex"]
 
 [params]
 

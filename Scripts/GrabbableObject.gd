@@ -1,4 +1,4 @@
-extends Interactable
+extends Grabbable
 
 @export var throw_strength: float = 700.0  
 @export var weightLimit: float = 1000.0  
@@ -7,7 +7,6 @@ extends Interactable
 @export var distance_threshold: float = 1.0
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
-@onready var parent: RigidBody3D = get_parent()
 
 
 
@@ -41,7 +40,7 @@ func _physics_process(delta):
 			update_position(delta)
 			if Input.is_action_just_pressed("drive"):
 				dropMe(true)
-				parent.apply_force(throw_direction * throw_strength, throw_direction)
+				apply_force(throw_direction * throw_strength, throw_direction)
 				is_picked_up = false
 		else:
 			dropMe(false)
@@ -49,7 +48,7 @@ func _physics_process(delta):
 func interact():
 	if pickup_timer.is_stopped():
 		if !timerAdded:
-			parent.add_child(pickup_timer)
+			add_child(pickup_timer)
 			timerAdded=true
 		itemPos = player.find_child("ItemHolder")
 		camera = player.find_child("Camera")
@@ -62,29 +61,29 @@ func pickmeUp():
 		return
 	#if parent.mass <= weightLimit:
 	#TODO: Switch "null" to something "more" correct
-	EventBus.emitCustomSignal("object_held", [parent.mass, get_parent()])
+	EventBus.emitCustomSignal("object_held", [mass, get_parent()])
 	is_picked_up = true
 
 
 func dropMe(throw:bool):
 	if is_picked_up and throw == false:
-		EventBus.emitCustomSignal("dropped_object", [parent.mass,self])
-		parent.linear_damp = 10
-		var currentPos = parent.global_position
+		EventBus.emitCustomSignal("dropped_object", [mass,self])
+		linear_damp = 10
+		var currentPos = global_position
 		is_picked_up = false
-		parent.global_position = currentPos
-		parent.linear_damp = 0.1
+		global_position = currentPos
+		linear_damp = 0.1
 		force_above_threshold_time = 0.0
 	else:
 		throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
-		EventBus.emitCustomSignal("dropped_object",[parent.mass,self])
+		EventBus.emitCustomSignal("dropped_object",[mass,self])
 		start_pickup_timer()
 		force_above_threshold_time = 0.0
 
 func update_position(delta):
 	if is_picked_up:
 		var targetPosition:Vector3 = itemPos.global_transform.origin
-		var currentPosition:Vector3 = parent.global_transform.origin
+		var currentPosition:Vector3 = global_transform.origin
 		var directionTo:Vector3 = targetPosition - currentPosition
 		var distance:float = currentPosition.distance_to(targetPosition)
 		#parent.linear_damp = 55;
@@ -94,11 +93,11 @@ func update_position(delta):
 		#force.y -= parent.mass * 0.07
 		#force.z = clamp(force.z, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
 		
-		force = force.limit_length(max_force + (parent.mass * 2) + player.velocity.length())
-		parent.apply_central_force(force)
-		var angleBetweenForceAndVelocity = min(90,force.angle_to(parent.linear_velocity))*2
+		force = force.limit_length(max_force + (mass * 2) + player.velocity.length())
+		apply_central_force(force)
+		var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
 		
-		parent.apply_central_force(-parent.linear_velocity * 20) #* angleBetweenForceAndVelocity)		
+		apply_central_force(-linear_velocity * 20) #* angleBetweenForceAndVelocity)		
 		if distance > distance_threshold:
 			force_above_threshold_time += delta
 			if force_above_threshold_time >= drop_time_threshold:
