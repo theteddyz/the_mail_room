@@ -3,8 +3,12 @@ extends Camera3D
 @onready var world = $".."
 @onready var player = $"../Player"
 @onready var radio = $"../Radio"
+@export var disable_cutScene:bool
 func _ready():
-	$"../AnimationPlayer".play("Scene")
+	if !disable_cutScene:
+		$"../AnimationPlayer".play("Scene")
+	else:
+		playerMovementEnable()
 	pass
 
 

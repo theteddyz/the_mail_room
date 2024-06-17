@@ -157,6 +157,7 @@ libraries = {
 }
 
 [node name="Control" type="Control" parent="AnimationPlayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -196,6 +197,7 @@ text = "The Mail Room"
 transform = Transform3D(-0.669001, 0, -0.743262, 0, 1, 0, 0.743262, 0, -0.669001, 5.03, 2.3, 10.738)
 current = true
 script = ExtResource("3_juhrl")
+disable_cutScene = true
 
 [node name="stage" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
