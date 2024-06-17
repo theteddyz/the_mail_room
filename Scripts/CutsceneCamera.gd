@@ -20,4 +20,5 @@ func playerMovementEnable():
 
 func disablePlayerMovement():
 	EventBus.emitCustomSignal("disable_player_movement",[true,true])
-	player.global_rotation = global_rotation
+	if !disable_cutScene:
+		player.global_rotation = global_rotation
