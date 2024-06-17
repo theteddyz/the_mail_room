@@ -46,6 +46,7 @@ cull_mode = 2
 albedo_texture = ExtResource("1_homs6")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.81
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_yo1yu"]
 _surfaces = [{
@@ -89,12 +90,27 @@ mesh = SubResource("ArrayMesh_y8lkm")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -7.09072, 0)
-light_volumetric_fog_energy = 0.2
-omni_range = 7.386
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.216, 0)
+visible = false
+light_color = Color(1, 0.952941, 0.858824, 1)
+light_energy = 5.809
+light_indirect_energy = 7.474
+light_volumetric_fog_energy = 0.0
+light_specular = 1.147
+shadow_enabled = true
+shadow_opacity = 0.82
+shadow_blur = 0.0
+omni_range = 3.589
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(4.61975, 0, 0, 0, -2.01936e-07, 4.61975, 0, -4.61975, -2.01936e-07, 0, -2.37282, 0)
-light_volumetric_fog_energy = 0.1
-spot_range = 11.4282
-spot_angle = 58.5688
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -1.913, 0)
+light_color = Color(1, 0.952941, 0.858824, 1)
+light_energy = 5.377
+light_volumetric_fog_energy = 0.375
+light_bake_mode = 1
+shadow_enabled = true
+shadow_reverse_cull_face = true
+distance_fade_begin = 0.0
+spot_range = 6.417
+spot_attenuation = 0.554785
+spot_angle = 65.57

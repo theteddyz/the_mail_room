@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmxv45rsi8hbd"]
-
-[ext_resource type="PackedScene" uid="uid://j3j45yof2ynm" path="res://Assets/Models/BlenderModels/desk.blend" id="1_wyrmb"]
-
-[node name="desk" instance=ExtResource("1_wyrmb")]
