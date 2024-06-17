@@ -1,5 +1,5 @@
-extends Node3D
-class_name Interactable
+extends RigidBody3D
+class_name Grabbable
 
 # Overridable function used for typing
 func interact():

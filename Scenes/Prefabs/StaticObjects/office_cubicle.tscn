@@ -1,0 +1,40 @@
+[gd_scene load_steps=12 format=3 uid="uid://d1pv5poqi0p1s"]
+
+[ext_resource type="PackedScene" uid="uid://dhy137f2q5r8l" path="res://Scenes/Prefabs/StaticObjects/cubicle.tscn" id="1_g8gtr"]
+[ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/grabable_object_template.tscn" id="2_yrf3f"]
+[ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/StaticObjects/keyboard_low_poly_2.tscn" id="3_u2t8d"]
+[ext_resource type="PackedScene" uid="uid://c26hbiaufc6xb" path="res://Scenes/Prefabs/StaticObjects/mouse.tscn" id="4_utlkq"]
+[ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="5_n3u8f"]
+[ext_resource type="PackedScene" uid="uid://cq3vkf11swts2" path="res://Scenes/Prefabs/StaticObjects/cables.tscn" id="5_tqqw6"]
+[ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="6_3bxda"]
+[ext_resource type="PackedScene" uid="uid://bxl6cnj04eefh" path="res://Scenes/Prefabs/StaticObjects/cables_001.tscn" id="6_ny62m"]
+[ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="7_my7gv"]
+[ext_resource type="PackedScene" uid="uid://bc4e2pkwjrbhi" path="res://Scenes/Prefabs/StaticObjects/papers_tall.tscn" id="10_qm1qt"]
+[ext_resource type="PackedScene" uid="uid://cdj2vclj1i0vn" path="res://Scenes/Prefabs/StaticObjects/papers_low.tscn" id="11_cuvh8"]
+
+[node name="OfficeCubicle" type="Node3D"]
+
+[node name="Cubicle" parent="." instance=ExtResource("1_g8gtr")]
+
+[node name="GrabableObjectTemplate" parent="." instance=ExtResource("2_yrf3f")]
+transform = Transform3D(0.617832, 0, 0.78631, 0, 1, 0, -0.78631, 0, 0.617832, 1.11988, 1.212, 1.06225)
+
+[node name="KeyboardLowPoly2" parent="." instance=ExtResource("3_u2t8d")]
+
+[node name="Mouse" parent="." instance=ExtResource("4_utlkq")]
+
+[node name="Cables" parent="." instance=ExtResource("5_tqqw6")]
+
+[node name="Cables_001" parent="." instance=ExtResource("6_ny62m")]
+
+[node name="Chair" parent="." instance=ExtResource("5_n3u8f")]
+
+[node name="Cylinder" parent="." instance=ExtResource("6_3bxda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60275, 0, -1.45313)
+
+[node name="Lamp" parent="." instance=ExtResource("7_my7gv")]
+transform = Transform3D(0.871881, 0, 0.489717, 0, 1, 0, -0.489717, 0, 0.871881, 0, 1.18173, 1.37435)
+
+[node name="PapersTall" parent="." instance=ExtResource("10_qm1qt")]
+
+[node name="PapersLow" parent="." instance=ExtResource("11_cuvh8")]

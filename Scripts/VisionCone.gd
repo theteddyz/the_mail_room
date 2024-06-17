@@ -5,8 +5,8 @@ var vision_angle: float = 45.0 # Angle in degrees
 var patrol_material: StandardMaterial3D
 var chase_material: StandardMaterial3D
 func _ready():
-	patrol_material = load("res://Scenes/Monsters/patrol_material.tres")
-	chase_material = load("res://Scenes/Monsters/chase_materiel.tres")
+	patrol_material = load("res://Scenes/Prefabs/Monsters/patrol_material.tres")
+	chase_material = load("res://Scenes/Prefabs/Monsters/chase_materiel.tres")
 	update_cone(patrol_material)
 
 

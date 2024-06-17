@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="the-mail-room"
-run/main_scene="res://Scenes/testworld.tscn"
+run/main_scene="res://Scenes/Worlds/testworld.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
