@@ -68,11 +68,11 @@ func pickmeUp():
 func dropMe(throw:bool):
 	if is_picked_up and throw == false:
 		EventBus.emitCustomSignal("dropped_object", [mass,self])
-		linear_damp = 10
+		#linear_damp = 10
 		var currentPos = global_position
 		is_picked_up = false
 		global_position = currentPos
-		linear_damp = 0.1
+		#linear_damp = 0.1
 		force_above_threshold_time = 0.0
 	else:
 		throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
