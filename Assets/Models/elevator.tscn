@@ -1175,7 +1175,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -4.9738e-13, 0, 1, 0, 4.9738e-13, 0, 1, 0.107107, -0.362866, 0)
 collision_layer = 3
 script = ExtResource("9_mt8yi")
-target_scene_path = "res://Scenes/testworld.tscn"
+target_scene_path = "res://Scenes/Worlds/testworld2.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/Mail_Room/Area3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.0024668, -0.00111961, 0.000319481)

@@ -1,4 +1,4 @@
-extends CSGBox3D
+extends Interactable
 
 @onready var item_reader = $"../GUI/ItemReader"
 @export var image_path:Texture2D 

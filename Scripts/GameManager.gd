@@ -6,6 +6,7 @@ const FILE_NAME = "user://game-data.json"
 var current_scene : Node
 var player_reference: Node
 var elevator_reference: Node
+
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
@@ -81,6 +82,9 @@ func _deferred_goto_scene(path):
 	# Load the new scene. New scene exists "in limbo"
 	var s = ResourceLoader.load(path)
 	
+	if(s == null):
+		assert(false, "Could not load scene: " + path + ", not valid path?")
+		
 	var player_relative_to_elevator = player_reference.position - elevator_reference.position
 	
 	# Change to the new scene
