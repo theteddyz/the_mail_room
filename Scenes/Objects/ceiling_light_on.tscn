@@ -89,14 +89,12 @@ mesh = SubResource("ArrayMesh_y8lkm")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -17.5606, 0)
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -7.09072, 0)
 light_volumetric_fog_energy = 0.2
-omni_range = 7.4697
+omni_range = 7.386
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(4.61975, 0, 0, 0, -2.01936e-07, 4.61975, 0, -4.61975, -2.01936e-07, 0, -2.37282, 0)
-visible = false
-light_energy = 8.024
 light_volumetric_fog_energy = 0.1
 spot_range = 11.4282
 spot_angle = 58.5688
