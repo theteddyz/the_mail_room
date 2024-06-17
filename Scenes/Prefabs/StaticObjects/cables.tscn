@@ -40,6 +40,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_t74xi")
 
 [node name="Cables" type="MeshInstance3D"]
-transform = Transform3D(0.00452768, 0, 0.00554832, 0, 0.00716127, 0, -0.00554832, 0, 0.00452768, 0.363637, 1.67579, 2.1104)
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ddqko")
 skeleton = NodePath("")
