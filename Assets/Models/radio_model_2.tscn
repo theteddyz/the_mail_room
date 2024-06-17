@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dqvl503sdqana" path="res://Assets/Textures/BlenderTextures/Radio.png" id="1_0s5h3"]
 [ext_resource type="Script" path="res://Scripts/radio_animation.gd" id="2_3yv3g"]
-[ext_resource type="AudioStream" uid="uid://dbl2pr7jxdqjm" path="res://Assets/Audio/Narrator/MailRoomRadio.mp3" id="3_exwrv"]
+[ext_resource type="AudioStream" uid="uid://dqybje1nstb5t" path="res://Assets/Audio/Narrator/IntroCutsceneVoice.mp3" id="3_clxld"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3b7vo"]
 resource_name = "Radio"
@@ -125,7 +125,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_exwrv")
-volume_db = 4.0
+stream = ExtResource("3_clxld")
+max_distance = 25.0
 
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
