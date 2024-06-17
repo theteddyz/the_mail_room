@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name PlayerMachine
 
-@onready var pause_menu = $"../GUI/pauseMenu"
+var pause_menu
 
 # Privates
 var state: State
@@ -19,7 +19,7 @@ func _ready():
 # Break this out to a pausemanager or similar
 func _shortcut_input(event):
 	if event.is_action_pressed("escape"):
-		pause_menu.game_paused()
+		EventBus.emitCustomSignal("game_paused")
 	
 func change_state(new_state_name):
 	if state != null:

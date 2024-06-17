@@ -18,6 +18,8 @@
 
 [node name="GrabableObjectTemplate" parent="." instance=ExtResource("2_yrf3f")]
 transform = Transform3D(0.617832, 0, 0.78631, 0, 1, 0, -0.78631, 0, 0.617832, 1.11988, 1.212, 1.06225)
+collision_layer = 7
+collision_mask = 12295
 
 [node name="KeyboardLowPoly2" parent="." instance=ExtResource("3_u2t8d")]
 

@@ -8,6 +8,7 @@ func _ready():
 	is_paused = false
 	get_tree().paused = false
 	EventBus.connect("player_reading",is_player_reading)
+	EventBus.connect("game_paused",game_paused)
 
 func _on_continue_pressed():
 	if is_paused and !is_reading:

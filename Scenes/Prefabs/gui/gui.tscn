@@ -11,9 +11,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemReader" parent="." instance=ExtResource("1_4tqc1")]
-visible = false
+[node name="pauseMenu" parent="." instance=ExtResource("2_j1350")]
 layout_mode = 1
 
-[node name="pauseMenu" parent="." instance=ExtResource("2_j1350")]
+[node name="ItemReader" parent="." instance=ExtResource("1_4tqc1")]
+visible = false
 layout_mode = 1
