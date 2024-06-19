@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cxx4tf5grxfu8" path="res://Assets/Models/radio_model_2.tscn" id="10_r6ec6"]
 [ext_resource type="AudioStream" uid="uid://xwggf2hn0alx" path="res://Assets/Audio/579569__leonelmail__office-ambience-sharespace-2.mp3" id="11_1i41i"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_rgcp3"]
-[ext_resource type="PackedScene" uid="uid://dx2sptdmhca2w" path="res://Assets/Models/elevator.tscn" id="13_8lshx"]
+[ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator.tscn" id="13_8lshx"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="14_0rx2b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vlblk"]
@@ -23,13 +23,13 @@ ground_horizon_color = Color(0.980392, 0.717647, 0.560784, 1)
 ground_curve = 0.218567
 ground_energy_multiplier = 2.0
 
-[sub_resource type="Sky" id="Sky_m0upo"]
+[sub_resource type="Sky" id="Sky_pbr1w"]
 sky_material = SubResource("ProceduralSkyMaterial_vlblk")
 
 [sub_resource type="Environment" id="Environment_mq4r4"]
 background_mode = 2
 background_energy_multiplier = 2.33
-sky = SubResource("Sky_m0upo")
+sky = SubResource("Sky_pbr1w")
 tonemap_exposure = 0.89
 ssao_radius = 0.91
 sdfgi_enabled = true

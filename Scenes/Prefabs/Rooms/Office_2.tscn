@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://brv3eers03ym6"]
+[gd_scene load_steps=11 format=3 uid="uid://brv3eers03ym6"]
 
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="1_40tk7"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/wall_with_door.tscn" id="2_8ukjs"]
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="3_bxrne"]
-[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2.tscn" id="5_hkq8t"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="6_o0i0k"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="7_e0kqh"]
 [ext_resource type="PackedScene" uid="uid://ceqmesnkrigqg" path="res://Scenes/Prefabs/StaticObjects/ceiling_broken.tscn" id="7_wfdok"]
+[ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly.tscn" id="7_xvsp6"]
 [ext_resource type="PackedScene" uid="uid://dsv2dauvh5oeq" path="res://Scenes/Prefabs/StaticObjects/ceiling_broken_2.tscn" id="8_2wi2g"]
+[ext_resource type="PackedScene" uid="uid://g3iqvb0k1cr6" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on.tscn" id="9_5x0vs"]
 [ext_resource type="PackedScene" uid="uid://cauvpuh74hlme" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_002.tscn" id="9_u0xry"]
 
 [node name="Office" type="Node3D"]
@@ -58,11 +59,8 @@ transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -9.17227, 4.179, 
 [node name="CeilingBroken2" parent="Stage/Ceiling" instance=ExtResource("8_2wi2g")]
 transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -4.048, 4.179, -0.568)
 
-[node name="CeilingLightOn" parent="Stage/Ceiling" instance=ExtResource("5_hkq8t")]
-transform = Transform3D(-0.216462, 0, -1.89237e-08, 0, 0.216462, 0, 1.89237e-08, 0, -0.216462, -9.39059, 4.27249, 4.52776)
-
-[node name="CeilingLightOn2" parent="Stage/Ceiling" instance=ExtResource("5_hkq8t")]
-transform = Transform3D(-8.27111e-09, -0.105125, 0.189221, -4.59514e-09, 0.189221, 0.105125, -0.216462, 2.29188e-23, -9.46185e-09, -3.99591, 4.00375, -0.631803)
+[node name="CeilingLowPoly2" parent="Stage/Ceiling" instance=ExtResource("7_xvsp6")]
+transform = Transform3D(-5.35063e-09, -0.068006, 0.122408, -2.97262e-09, 0.122408, 0.068006, -0.140031, 1.48263e-23, -6.12093e-09, -6.80213, 3.94729, -4.63722)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Stage/Ceiling"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5264, 5.86999, 1.86476)
@@ -77,6 +75,12 @@ transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -9.57778, 4.17886
 
 [node name="Ceiling4" parent="Stage/Ceiling" instance=ExtResource("6_o0i0k")]
 transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -4.43032, 4.17886, 4.45608)
+
+[node name="CeilingLightOn" parent="Stage/Ceiling" instance=ExtResource("9_5x0vs")]
+transform = Transform3D(-5.63728e-09, -0.173849, 0.128966, -7.59919e-09, 0.128966, 0.173849, -0.216462, 4.58376e-23, -9.46185e-09, -3.71526, 4.2256, -0.51017)
+
+[node name="CeilingLightOn2" parent="Stage/Ceiling" instance=ExtResource("9_5x0vs")]
+transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -9.95161, 4.25442, 4.49812)
 
 [node name="Objects" type="Node3D" parent="Stage"]
 

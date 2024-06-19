@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dx2sptdmhca2w"]
+[gd_scene load_steps=70 format=3 uid="uid://wt6476m6k8tc"]
 
 [ext_resource type="Script" path="res://Scripts/ElevatorController.gd" id="1_rvpeo"]
 [ext_resource type="Texture2D" uid="uid://d24ont78p0umt" path="res://Assets/Textures/BlenderTextures/Elevator.png" id="1_u6psm"]
@@ -1000,12 +1000,12 @@ size = Vector3(3.93994, 13.6959, 6.20771)
 script = ExtResource("1_rvpeo")
 
 [node name="WallWithElevatorEntrance" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0, -1.02229, 2.96194)
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0, 0, 2.962)
 mesh = SubResource("ArrayMesh_futmu")
 skeleton = NodePath("")
 
 [node name="ElevatorEntrance" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0, -1.02229, 2.96194)
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0, 0, 2.962)
 mesh = SubResource("ArrayMesh_d2743")
 skeleton = NodePath("")
 
@@ -1201,7 +1201,7 @@ shape = SubResource("SphereShape3D_2ts6n")
 shape = SubResource("ConcavePolygonShape3D_718nb")
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.988351, 0.347189, 3.13153)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978574, 1.37669, 3.13153)
 
 [node name="Area3D" type="Area3D" parent="Node3D"]
 collision_layer = 3

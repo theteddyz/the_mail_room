@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="12_ty778"]
 [ext_resource type="PackedScene" uid="uid://3upounxo75ji" path="res://Assets/Models/desk.tscn" id="15_yid15"]
 [ext_resource type="PackedScene" uid="uid://cauvpuh74hlme" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_002.tscn" id="16_bj7ur"]
-[ext_resource type="PackedScene" uid="uid://dx2sptdmhca2w" path="res://Assets/Models/elevator.tscn" id="19_8q8av"]
+[ext_resource type="PackedScene" uid="uid://dx2sptdmhca2w" path="res://Scenes/Prefabs/MoveableObjects/elevator.tscn" id="19_8q8av"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
 albedo_texture = ExtResource("1_o8goe")

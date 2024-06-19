@@ -22,6 +22,14 @@ collision_mask = 5
 size = Vector3(26.8208, 1, 15.9751)
 material = ExtResource("1_s1y8p")
 
+[node name="CSGBox3D5" type="CSGBox3D" parent="Stage/floors"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047685, 6.51584, -7.87006)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(26.1644, 1, 15.7537)
+material = ExtResource("1_s1y8p")
+
 [node name="CSGBox3D4" type="CSGBox3D" parent="Stage/floors"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.280501, -0.5, -0.0483804)
 use_collision = true
