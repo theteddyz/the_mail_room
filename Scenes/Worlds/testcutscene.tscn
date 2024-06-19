@@ -1,10 +1,12 @@
 [gd_scene load_steps=21 format=3 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_u173c"]
+[ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_q6sdx"]
 [ext_resource type="Script" path="res://Scripts/CutsceneCamera.gd" id="3_juhrl"]
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="4_msfst"]
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="5_ntyld"]
 [ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly.tscn" id="6_qvt04"]
+[ext_resource type="PackedScene" uid="uid://438d404w3d6r" path="res://Scenes/Prefabs/StaticObjects/cubicle_empty.tscn" id="7_cavj3"]
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="7_gmjtd"]
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="8_h3rhg"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="9_lovsk"]
@@ -14,22 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator.tscn" id="13_8lshx"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="14_0rx2b"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vlblk"]
-sky_top_color = Color(0.670588, 0.831373, 0.811765, 1)
-sky_horizon_color = Color(0.980392, 0.717647, 0.560784, 1)
-sky_energy_multiplier = 2.0
-ground_bottom_color = Color(0.305882, 0.145098, 0.0235294, 1)
-ground_horizon_color = Color(0.980392, 0.717647, 0.560784, 1)
-ground_curve = 0.218567
-ground_energy_multiplier = 2.0
-
-[sub_resource type="Sky" id="Sky_pbr1w"]
-sky_material = SubResource("ProceduralSkyMaterial_vlblk")
-
 [sub_resource type="Environment" id="Environment_mq4r4"]
 background_mode = 2
 background_energy_multiplier = 2.33
-sky = SubResource("Sky_pbr1w")
+sky = ExtResource("2_q6sdx")
 tonemap_exposure = 0.89
 ssao_radius = 0.91
 sdfgi_enabled = true
@@ -153,7 +143,6 @@ _data = {
 
 [node name="world" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_u173c")
-floor_num = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.0324375, -0.0583124, 0.997771, -0.000168012, 0.998297, 0.0583377, -0.999474, 0.00172469, -0.032392, 196.62, 40.3983, 0)
@@ -962,56 +951,11 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -27.052,
 [node name="Cubicles2" type="Node3D" parent="stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6986, 0, 0)
 
-[node name="OfficeCubicle2" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.34745, -0.0473671, -17.1416)
-
-[node name="OfficeCubicle5" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.99908, -0.0473666, -12.7442)
-
-[node name="OfficeCubicle3" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1.06761, -0.0473666, -17.1271)
-
-[node name="OfficeCubicle4" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -5.56892, -0.0473666, -17.1271)
-
-[node name="OfficeCubicle37" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -10.0254, -0.0473666, -17.1271)
-
 [node name="OfficeCubicle6" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.99908, -0.0473666, -8.25303)
 
-[node name="OfficeCubicle25" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.99908, -0.0473666, -3.71483)
-
-[node name="OfficeCubicle7" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59525, -0.0473666, -8.25303)
-
-[node name="OfficeCubicle8" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09394, -0.0473666, -8.25303)
-
-[node name="OfficeCubicle38" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36255, -0.0473666, -8.25303)
-
-[node name="OfficeCubicle26" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.8754, -0.0473671, -3.49841)
-
 [node name="OfficeCubicle27" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27.9129, -0.0473666, -7.89583)
-
-[node name="OfficeCubicle28" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.4603, -0.0473666, -3.51291)
-
-[node name="OfficeCubicle29" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.959, -0.0473666, -3.51291)
-
-[node name="OfficeCubicle43" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -27.8866, -0.0473666, -3.51291)
-
-[node name="OfficeCubicle30" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.9129, -0.0473666, -12.387)
-
-[node name="OfficeCubicle31" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -28.0056, -0.0473666, -16.9252)
 
 [node name="OfficeCubicle34" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23.6368, -0.0473666, -16.9252)
@@ -1022,29 +966,83 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.60
 [node name="OfficeCubicle45" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -19.1963, -0.0473666, -16.9252)
 
-[node name="OfficeCubicle32" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.9327, -0.0473666, -12.387)
+[node name="Cubicle_empty2" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9327, -0.0473666, -12.387)
 
-[node name="OfficeCubicle33" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -37.434, -0.0473666, -12.387)
+[node name="Cubicle_empty15" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1531, -0.0473666, -12.387)
 
-[node name="OfficeCubicle44" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -41.8905, -0.0473666, -12.387)
+[node name="Cubicle_empty16" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1531, -0.0473666, -17.2458)
+
+[node name="Cubicle_empty17" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6424, -0.0473666, -3.29653)
+
+[node name="Cubicle_empty7" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12232, -0.0473666, -17.086)
+
+[node name="Cubicle_empty8" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.39204, -0.0473666, -17.086)
+
+[node name="Cubicle_empty9" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.30857, -0.0473666, -17.086)
+
+[node name="Cubicle_empty10" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.12232, -0.0473666, -8.51979)
+
+[node name="Cubicle_empty13" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1673, -0.0473666, -3.82258)
+
+[node name="Cubicle_empty14" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1673, -0.0473666, -13.15)
+
+[node name="Cubicle_empty11" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.39204, -0.0473666, -8.51979)
+
+[node name="Cubicle_empty12" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.30857, -0.0473666, -8.51979)
+
+[node name="Cubicle_empty18" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.12232, -0.0473666, 0.778996)
+
+[node name="Cubicle_empty19" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.39204, -0.0473666, 0.778996)
+
+[node name="Cubicle_empty20" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.30857, -0.0473666, 0.778996)
+
+[node name="Cubicle_empty3" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.434, -0.0473666, -12.387)
+
+[node name="Cubicle_empty" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.8905, -0.0473666, -12.387)
+
+[node name="Cubicle_empty4" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.9327, -0.0473666, -3.27339)
+
+[node name="Cubicle_empty5" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -37.434, -0.0473666, -3.27339)
+
+[node name="Cubicle_empty6" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -41.8905, -0.0473666, -3.27339)
+
+[node name="Cubicle_empty21" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6424, -0.0473666, 0.792907)
+
+[node name="Cubicle_empty22" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9327, -0.0473666, 0.81604)
+
+[node name="Cubicle_empty23" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.434, -0.0473666, 0.81604)
+
+[node name="Cubicle_empty24" parent="stage/Cubicles2" instance=ExtResource("7_cavj3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.8905, -0.0473666, 0.81604)
 
 [node name="OfficeCubicle9" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
 transform = Transform3D(1.00019, -0.000155308, -2.45258e-05, 0.000155308, 1.00019, -0.000163639, 2.45258e-05, 0.000163639, 1.00019, -14.3182, -0.0455133, 0.84648)
 
 [node name="OfficeCubicle10" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.98786, -0.0473671, 0.84648)
-
-[node name="OfficeCubicle11" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58402, -0.0473671, 0.84648)
-
-[node name="OfficeCubicle12" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08271, -0.0473671, 0.84648)
-
-[node name="OfficeCubicle39" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.37378, -0.0473671, 0.84648)
 
 [node name="OfficeCubicle13" parent="stage/Cubicles2" instance=ExtResource("7_gmjtd")]
 transform = Transform3D(1, -0.000155279, -2.45212e-05, 0.000155279, 1, -0.000163608, 2.45212e-05, 0.000163608, 1, -14.3184, -0.0467356, 8.31777)
@@ -1093,18 +1091,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.37378, -0.0473671, 23.5097)
 
 [node name="Cubicles3" type="Node3D" parent="stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.03598, -2.38419e-07, 0.0356169)
-
-[node name="OfficeCubicle9" parent="stage/Cubicles3" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3185, -0.0473671, 0.84648)
-
-[node name="OfficeCubicle10" parent="stage/Cubicles3" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.98786, -0.0473671, 0.84648)
-
-[node name="OfficeCubicle11" parent="stage/Cubicles3" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58402, -0.0473671, 0.84648)
-
-[node name="OfficeCubicle12" parent="stage/Cubicles3" instance=ExtResource("7_gmjtd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08271, -0.0473671, 0.84648)
 
 [node name="OfficeCubicle39" parent="stage/Cubicles3" instance=ExtResource("7_gmjtd")]
 transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 3.37378, -0.0473671, 0.84648)
@@ -1282,6 +1268,7 @@ material = ExtResource("8_h3rhg")
 
 [node name="CeilingBlockingLight" type="Node3D" parent="stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.26044, 0)
+visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="stage/CeilingBlockingLight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38202, -0.5, -10.1434)
@@ -1350,7 +1337,6 @@ material = ExtResource("8_h3rhg")
 [node name="Mailcart" parent="." instance=ExtResource("9_lovsk")]
 transform = Transform3D(1, 1.98668e-11, 0, -4.38547e-11, 1, 0, 0, 2.91038e-11, 1, 7.27007, 0.78271, 29.351)
 collision_mask = 19
-mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_60xfd")
 
 [node name="Radio" parent="." instance=ExtResource("10_r6ec6")]
@@ -1363,9 +1349,6 @@ autoplay = true
 [node name="Player" parent="." instance=ExtResource("12_rgcp3")]
 transform = Transform3D(-0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, -0.669131, 0.139197, 0.5, -6.00579)
 collision_mask = 20
-
-[node name="Elevator" parent="." instance=ExtResource("13_8lshx")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 5.00316, 1.51966, 33.3629)
 
 [node name="Desks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -5)
@@ -1387,3 +1370,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.171
 
 [node name="Desk6" parent="Desks" instance=ExtResource("14_0rx2b")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.06713, -0.481366, -6.02008)
+
+[node name="Elevator" parent="." instance=ExtResource("13_8lshx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.47258, 0.5, 33.3853)
