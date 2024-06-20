@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1pv5poqi0p1s"]
+[gd_scene load_steps=13 format=3 uid="uid://d1pv5poqi0p1s"]
 
 [ext_resource type="PackedScene" uid="uid://dhy137f2q5r8l" path="res://Scenes/Prefabs/StaticObjects/cubicle.tscn" id="1_g8gtr"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/grabable_object_template.tscn" id="2_yrf3f"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bc4e2pkwjrbhi" path="res://Scenes/Prefabs/StaticObjects/papers_tall.tscn" id="10_qm1qt"]
 [ext_resource type="PackedScene" uid="uid://cdj2vclj1i0vn" path="res://Scenes/Prefabs/StaticObjects/papers_low.tscn" id="11_cuvh8"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gg5xj"]
+
 [node name="OfficeCubicle" type="Node3D"]
 
 [node name="Cubicle" parent="." instance=ExtResource("1_g8gtr")]
@@ -20,6 +22,8 @@
 transform = Transform3D(0.617832, 0, 0.78631, 0, 1, 0, -0.78631, 0, 0.617832, 1.11988, 1.212, 1.06225)
 collision_layer = 7
 collision_mask = 12295
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_gg5xj")
 
 [node name="KeyboardLowPoly2" parent="." instance=ExtResource("3_u2t8d")]
 

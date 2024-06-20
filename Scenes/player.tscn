@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=15 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="2_5t4wg"]
@@ -9,18 +9,115 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia68h"]
 height = 1.2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_j34qt"]
+size = Vector3(1.23438, 0.0488434, 0.947998)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ok52q"]
+size = Vector3(1.53981, 0.503716, 0.0446792)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ve4aq"]
+size = Vector3(1.57214, 0.185547, 0.0421143)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56fp2"]
+size = Vector3(0.0581055, 0.914185, 0.941833)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_glwx3"]
+size = Vector3(0.285416, 0.920715, 0.854126)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5uotp"]
+size = Vector3(0.211182, 0.452087, 0.0598679)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fp8fv"]
+size = Vector3(0.703003, 0.0565796, 0.690308)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2mwbb"]
+radius = 0.0937542
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vr3m2"]
+radius = 0.122298
+
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
 collision_layer = 4
 collision_mask = 17
 script = ExtResource("1_lsi20")
 
-[node name="standing_collision_shape" type="CollisionShape3D" parent="."]
+[node name="standing_collision_shape" type="CollisionShape3D" parent="." groups=["Walking_Colliders"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037508, 1.00868, 0.0105362)
 shape = SubResource("CapsuleShape3D_h18q0")
 
-[node name="crouching_collision_shape" type="CollisionShape3D" parent="."]
+[node name="crouching_collision_shape" type="CollisionShape3D" parent="." groups=["Walking_Colliders"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, 0.6, 0.011)
 shape = SubResource("CapsuleShape3D_ia68h")
+disabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.177343, 0.710439, -2.00036)
+shape = SubResource("BoxShape3D_j34qt")
+disabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.607043, 0.417263, -1.84683)
+shape = SubResource("BoxShape3D_ok52q")
+disabled = true
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.287523, 0.417263, -1.8977)
+shape = SubResource("BoxShape3D_ok52q")
+disabled = true
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.684414, 1.04939, -1.84283)
+shape = SubResource("BoxShape3D_ve4aq")
+disabled = true
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.36352, 1.04939, -1.90243)
+shape = SubResource("BoxShape3D_ve4aq")
+disabled = true
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.223982, 0.662886, -2.69629)
+shape = SubResource("BoxShape3D_56fp2")
+disabled = true
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.124679, 0.678009, -1.20226)
+shape = SubResource("BoxShape3D_glwx3")
+disabled = true
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.218945, 0.524533, -0.939738)
+shape = SubResource("BoxShape3D_5uotp")
+disabled = true
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.423563, 0.514248, -0.903197)
+shape = SubResource("BoxShape3D_5uotp")
+disabled = true
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.116999, 0.306122, -1.16398)
+shape = SubResource("BoxShape3D_fp8fv")
+disabled = true
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.223603, 0.045334, -2.57957)
+shape = SubResource("SphereShape3D_2mwbb")
+disabled = true
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.597685, 0.045334, -2.53286)
+shape = SubResource("SphereShape3D_2mwbb")
+disabled = true
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.248225, 0.0421695, -1.12532)
+shape = SubResource("SphereShape3D_vr3m2")
+disabled = true
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="." groups=["Carting_Collider"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.489466, 0.0421695, -1.08336)
+shape = SubResource("SphereShape3D_vr3m2")
 disabled = true
 
 [node name="Neck" type="Node3D" parent="."]

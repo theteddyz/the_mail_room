@@ -1,6 +1,6 @@
 extends Node3D
 
-var current_floor = 0
+var current_floor = 4
 var floors:Dictionary = {-2: 81.5, -1: 64, 0: 49, 1: 30.5, 2: 10.5, 3: -7, 4: -27, 5: -46, 6: -64, 7: -84}
 var is_called = false
 @onready var left_door:MeshInstance3D = $ElevatorEntrance/ElevatorEntranceDoor

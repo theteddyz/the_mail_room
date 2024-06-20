@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca33bja4je2kc"]
+
+[ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="1_3dnjp"]
+[ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/wall_with_door.tscn" id="2_wa6y7"]
+[ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="3_pldie"]
+[ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="4_ldgt7"]
+[ext_resource type="PackedScene" uid="uid://cajnk2cjds60w" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room.tscn" id="5_eoqq2"]
+
+[node name="Long_Room" type="Node3D"]
+
+[node name="Stage" type="Node3D" parent="."]
+
+[node name="Walls" type="Node3D" parent="Stage"]
+
+[node name="StaticBody3D" parent="Stage/Walls" instance=ExtResource("1_3dnjp")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.48454, 0, 6.81279)
+
+[node name="StaticBody3D2" parent="Stage/Walls" instance=ExtResource("1_3dnjp")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.783771, 0, 6.813)
+
+[node name="StaticBody3D7" parent="Stage/Walls" instance=ExtResource("1_3dnjp")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.41234, 0, 1.7824)
+
+[node name="StaticBody3D3" parent="Stage/Walls" instance=ExtResource("1_3dnjp")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 6.04619, 0, 6.813)
+
+[node name="StaticBody3D4" parent="Stage/Walls" instance=ExtResource("1_3dnjp")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 8.52434, 0, 4.29791)
+
+[node name="StaticBody3D5" parent="Stage/Walls" instance=ExtResource("1_3dnjp")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -7.00302, 0, 4.30725)
+
+[node name="StaticBody3D8" parent="Stage/Walls" instance=ExtResource("2_wa6y7")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 6.0122, -0.0124718, 1.75851)
+
+[node name="floors" type="Node3D" parent="Stage"]
+
+[node name="Roof" type="Node3D" parent="Stage"]
+
+[node name="Ceiling" parent="Stage/Roof" instance=ExtResource("4_ldgt7")]
+transform = Transform3D(0.603622, 0, 0, 0, 0.603622, 0, 0, 0, 0.603622, -4.4743, 3.65672, 4.31143)
+
+[node name="Ceiling2" parent="Stage/Roof" instance=ExtResource("4_ldgt7")]
+transform = Transform3D(0.603622, 0, 0, 0, 0.603622, 0, 0, 0, 0.603622, 0.84232, 3.65672, 4.31143)
+
+[node name="Ceiling3" parent="Stage/Roof" instance=ExtResource("4_ldgt7")]
+transform = Transform3D(0.603622, 0, 0, 0, 0.603622, 0, 0, 0, 0.603622, 6.13572, 3.65672, 4.31143)
+
+[node name="meeting_room_wall_window" parent="." instance=ExtResource("5_eoqq2")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.798436, 0, 1.759)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.102858, -0.5, 4.4144)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(17.3277, 1, 6.59164)
+material = ExtResource("3_pldie")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.552817, 5.21688, 4.4144)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(16.6987, 1, 6.59164)
+material = ExtResource("3_pldie")

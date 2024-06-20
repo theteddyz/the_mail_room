@@ -7,7 +7,7 @@ extends Grabbable
 @export var distance_threshold: float = 1.0
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
-
+@export var should_freeze:bool = false
 
 
 var pickup_timer: Timer
@@ -27,6 +27,10 @@ func _ready():
 	var root = get_tree().root
 	var current_scene = root.get_child(root.get_child_count() - 1)
 	player = current_scene.find_child("Player")
+	if !should_freeze:
+		freeze = false
+	else:
+		freeze = true
 	if player:
 		camera = player.find_child("Camera")
 	pickup_timer = Timer.new()
@@ -44,6 +48,11 @@ func _physics_process(delta):
 				is_picked_up = false
 		else:
 			dropMe(false)
+	if !is_picked_up and should_freeze:
+		if linear_velocity.length_squared() > 0.0001 or angular_velocity.length_squared() > 0.0001:
+			pass
+		else:
+			freeze = true
 
 func interact():
 	if pickup_timer.is_stopped():
@@ -53,6 +62,8 @@ func interact():
 		itemPos = player.find_child("ItemHolder")
 		camera = player.find_child("Camera")
 		playerHead = player.find_child("Head")
+		if should_freeze:
+			freeze = false
 		pickmeUp()
 
 
@@ -74,11 +85,15 @@ func dropMe(throw:bool):
 		global_position = currentPos
 		#linear_damp = 0.1
 		force_above_threshold_time = 0.0
+		if should_freeze:
+			sleeping = true
 	else:
 		throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
 		EventBus.emitCustomSignal("dropped_object",[mass,self])
 		start_pickup_timer()
 		force_above_threshold_time = 0.0
+		if should_freeze:
+			sleeping = true
 
 func update_position(delta):
 	if is_picked_up:
@@ -93,7 +108,7 @@ func update_position(delta):
 		#force.y -= parent.mass * 0.07
 		#force.z = clamp(force.z, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
 		
-		force = force.limit_length(max_force + (mass * 2) + player.velocity.length())
+		force = force.limit_length(max_force + (mass * 4) + player.velocity.length())
 		apply_central_force(force)
 		var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
 		

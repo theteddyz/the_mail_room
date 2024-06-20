@@ -41,5 +41,6 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yrr62")
 
 [node name="Ceiling" type="MeshInstance3D"]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 0, 0, 0)
 mesh = SubResource("ArrayMesh_c0wp7")
 skeleton = NodePath("")

@@ -20,8 +20,8 @@ var rotate = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#print("Carting State Ready")
 	mailcart.reparent(persistent_state, true)
+	set_colliders_enabled("Carting_Collider",true)
 
 func _input(event):
 	# Mouse
@@ -99,7 +99,12 @@ func releaseCart():
 	neck.position = Vector3(0, 1.8, 0)
 	neck.rotation = Vector3.ZERO
 	change_state.call("walking")
+	set_colliders_enabled("Carting_Collider",false)
 
 #func _physics_process(delta):
+
+func set_colliders_enabled(group_name: String,enabled:bool) -> void:
+	for collider in get_tree().get_nodes_in_group(group_name):
+		collider.disabled = not enabled
 
 

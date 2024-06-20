@@ -116,5 +116,3 @@ func save():
 		"rotation.y" : rotation.y,
 	}
 	return save_dict
-
-
