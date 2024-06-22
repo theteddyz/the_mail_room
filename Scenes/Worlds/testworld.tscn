@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/readable_objectg.gd" id="5_s8sdp"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="5_tbsk3"]
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Assets/TemporaryAssets/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
-[ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/grabable_object_template.tscn" id="11_ys87f"]
+[ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="11_ys87f"]
 [ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Prefabs/MoveableObjects/package_template.tscn" id="12_c01f0"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="12_ty778"]
 [ext_resource type="PackedScene" uid="uid://3upounxo75ji" path="res://Assets/Models/desk.tscn" id="15_yid15"]

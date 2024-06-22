@@ -1,4 +1,5 @@
 extends Node3D
+class_name Interpolator
 @onready var mesh = get_child(0)
 @onready var parent = get_parent()
 var meshScale

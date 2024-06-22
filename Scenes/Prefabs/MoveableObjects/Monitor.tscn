@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dicq0w2sau0cw"]
+
+[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_s0ban"]
+[ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/Prefabs/AssetTools/ObjectInterpolation.tscn" id="2_veer4"]
+[ext_resource type="PackedScene" uid="uid://d3hn5glhsxdca" path="res://Assets/Models/computer.tscn" id="3_gdndj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e7wfd"]
+size = Vector3(0.690308, 0.80896, 0.574829)
+
+[node name="Monitor" type="RigidBody3D"]
+collision_layer = 6
+collision_mask = 12294
+center_of_mass_mode = 1
+angular_damp = 10.0
+script = ExtResource("1_s0ban")
+
+[node name="Interpolator" parent="." instance=ExtResource("2_veer4")]
+
+[node name="Computer2" parent="Interpolator" instance=ExtResource("3_gdndj")]
+transform = Transform3D(0.403, 0, 0, 0, 0.403, 0, 0, 0, 0.403, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00201416, -0.00274658, -0.0255737)
+shape = SubResource("BoxShape3D_e7wfd")

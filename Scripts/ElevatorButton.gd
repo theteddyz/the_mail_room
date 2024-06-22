@@ -1,6 +1,6 @@
 extends Interactable
 @export var target_scene_path := ""
-@onready var anim:AnimationPlayer = $"../../../AnimationPlayer"
+@onready var anim:AnimationPlayer = $"../../../../AnimationPlayer"
 
 func interact():
 	anim.play("door_close_inside")

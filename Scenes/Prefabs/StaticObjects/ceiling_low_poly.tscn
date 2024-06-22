@@ -41,8 +41,9 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_q57j1")
 
 [node name="CeilingLowPoly" type="MeshInstance3D"]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
 mesh = SubResource("ArrayMesh_mxn6q")
 skeleton = NodePath("")
 
 [node name="CeilingLightOn" parent="." instance=ExtResource("2_cxjao")]
-transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -0.0491918, 0.0661001, -3.68552e-07)
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -0.0491918, 0.0661001, -3.68552e-07)
