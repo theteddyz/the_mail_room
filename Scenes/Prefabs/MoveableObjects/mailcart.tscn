@@ -1,10 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://tw0mk31qdtge"]
+[gd_scene load_steps=12 format=3 uid="uid://tw0mk31qdtge"]
 
 [ext_resource type="Script" path="res://Scripts/Mailcart.gd" id="1_1hgo0"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="2_jjppu"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k13w5"]
-absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dt7j7"]
 size = Vector3(1.23438, 0.0488434, 0.947998)
@@ -37,7 +34,6 @@ radius = 0.122298
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.3, 0)
 collision_layer = 3
 collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_k13w5")
 script = ExtResource("1_1hgo0")
 
 [node name="Cart" parent="." instance=ExtResource("2_jjppu")]

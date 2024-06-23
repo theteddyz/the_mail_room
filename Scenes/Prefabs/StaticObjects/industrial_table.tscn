@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bybiuilah1qvy" path="res://Assets/Textures/BlenderTextures/IndustrialTable.png" id="1_rjscm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6176"]
-size = Vector3(2.62708, 1.12442, 1.3064)
+size = Vector3(4.42751, 1.51448, 2.17365)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xxbh"]
 resource_name = "IndustrialTable"
@@ -49,7 +49,7 @@ collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000793457, 0.00735521, 0.00524902)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0251678, 0.202385, -0.00460766)
 shape = SubResource("BoxShape3D_t6176")
 
 [node name="IndustrialTable2" type="MeshInstance3D" parent="."]
