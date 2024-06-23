@@ -34,7 +34,7 @@ radius = 0.0937542
 radius = 0.122298
 
 [node name="Mailcart" type="StaticBody3D" groups=["Persist"]]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.3, 0)
 collision_layer = 3
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_k13w5")
@@ -47,7 +47,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.237318, 0.632886, -0.125556)
 
 [node name="Handlebar" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(1, 0, -7.31859e-13, 0, 1, 0, 7.31859e-13, 0, 1, 1.25168, 0.397168, 0.133174)
+transform = Transform3D(0.93, 0, -7.61133e-13, 0, 1.26, 0, 6.80629e-13, 0, 1.04, 0.988445, 0.397168, 0.133174)
 visible = false
 use_collision = true
 collision_layer = 2

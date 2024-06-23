@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=21 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
@@ -10,10 +10,8 @@
 [ext_resource type="Script" path="res://Scripts/readable_objectg.gd" id="5_s8sdp"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="5_tbsk3"]
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Assets/TemporaryAssets/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="11_ys87f"]
 [ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Prefabs/MoveableObjects/package_template.tscn" id="12_c01f0"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="12_ty778"]
-[ext_resource type="PackedScene" uid="uid://3upounxo75ji" path="res://Assets/Models/desk.tscn" id="15_yid15"]
 [ext_resource type="PackedScene" uid="uid://cauvpuh74hlme" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_002.tscn" id="16_bj7ur"]
 [ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator.tscn" id="19_8q8av"]
 
@@ -38,8 +36,6 @@ background_mode = 2
 sky = SubResource("Sky_11ekw")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q8pws"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bh3ib"]
 
@@ -70,7 +66,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
 material_override = SubResource("StandardMaterial3D_1330w")
 use_collision = true
-collision_layer = 3
 collision_mask = 0
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_0h2ln")
@@ -112,10 +107,6 @@ script = ExtResource("5_s8sdp")
 image_path = ExtResource("7_h5xp5")
 object_text = "Im being read woopie!"
 
-[node name="GrabableObjectTemplate" parent="." instance=ExtResource("11_ys87f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.699444, 2.43345, -2.136)
-physics_material_override = SubResource("PhysicsMaterial_q8pws")
-
 [node name="TestMonster" parent="." instance=ExtResource("12_ty778")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.746, 0, -6.619)
 collision_layer = 5
@@ -135,11 +126,8 @@ hand_position = Vector3(0.375, -0.48, 0)
 [node name="Elevator" parent="." instance=ExtResource("19_8q8av")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.00531387, -13)
 
-[node name="Desk" parent="." instance=ExtResource("15_yid15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2257, 1.19209e-07, -0.951799)
-
 [node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1.12661, -4)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.280565, -4)
 collision_layer = 18
 physics_material_override = SubResource("PhysicsMaterial_bh3ib")
 
