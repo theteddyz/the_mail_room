@@ -153,7 +153,7 @@ angular_damp = 10.0
 script = ExtResource("1_6ip5t")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.513781, 0.857921, 0, -0.857921, 0.513781, 0, 0.551337, -0.149551)
+transform = Transform3D(1, 0, 0, 0, 0.513781, 0.857921, 0, -0.857921, 0.513781, -0.35734, 0.551337, -0.149551)
 visible = false
 light_color = Color(0.847059, 0.643137, 0.298039, 1)
 light_energy = 0.747
