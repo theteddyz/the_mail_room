@@ -124,13 +124,14 @@ size = Vector3(8.7654, 11.8827, 0.252686)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+collision_layer = 5
+collision_mask = 5
 
 [node name="WallWindow_004" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_76jci")
 skeleton = NodePath("")
 
 [node name="WallMeetingRoomGlass_002" type="MeshInstance3D" parent="WallWindow_004"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_gy36i")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_5bwb1")

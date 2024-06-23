@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=23 format=3 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_u173c"]
 [ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_q6sdx"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_rgcp3"]
 [ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator.tscn" id="13_8lshx"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="14_0rx2b"]
+[ext_resource type="VoxelGIData" uid="uid://crcnvap0du5j4" path="res://Assets/TemporaryAssets/voxelGITest/testcutscene.VoxelGI_data.res" id="17_bi161"]
 
 [sub_resource type="Environment" id="Environment_mq4r4"]
 background_mode = 2
@@ -208,14 +209,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="WallTall27" parent="stage/Walls" instance=ExtResource("4_msfst")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 17.4519, 1.43051e-06, 30.4006)
 
-[node name="WallTall28" parent="stage/Walls" instance=ExtResource("4_msfst")]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 14.5898, 1.43051e-06, 30.4046)
-
 [node name="WallTall44" parent="stage/Walls" instance=ExtResource("4_msfst")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0.942343, 1.43051e-06, 30.4038)
 
 [node name="WallTall45" parent="stage/Walls" instance=ExtResource("4_msfst")]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 10.4636, 1.43051e-06, 30.4038)
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 11.7955, 1.43051e-06, 30.4038)
 
 [node name="WallTall29" parent="stage/Walls" instance=ExtResource("4_msfst")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 17.3897, 0, 63.4771)
@@ -1275,7 +1273,6 @@ material = ExtResource("8_h3rhg")
 
 [node name="CeilingBlockingLight" type="Node3D" parent="stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.26044, 0)
-visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="stage/CeilingBlockingLight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38202, -0.5, -10.1434)
@@ -1379,4 +1376,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.171
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.06713, -0.481366, -6.02008)
 
 [node name="Elevator" parent="." instance=ExtResource("13_8lshx")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.79701, 0.5, 30.4031)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.10901, 0.5, 30.4031)
+
+[node name="VoxelGI" type="VoxelGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545349, 0, 23.2567)
+size = Vector3(58.0739, 20, 87.7271)
+data = ExtResource("17_bi161")

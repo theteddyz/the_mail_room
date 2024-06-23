@@ -85,6 +85,8 @@ size = Vector3(8.7654, 11.8827, 0.252686)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
+collision_layer = 5
+collision_mask = 5
 
 [node name="WallMeetingRoom_001" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_uoate")
