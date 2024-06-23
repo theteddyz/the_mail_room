@@ -157,6 +157,7 @@ environment = SubResource("Environment_mq4r4")
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545349, 0, 23.2567)
+subdiv = 2
 size = Vector3(58.0739, 20, 87.7271)
 data = ExtResource("17_bi161")
 
