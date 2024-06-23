@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="4_msfst"]
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="5_ntyld"]
 [ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly.tscn" id="6_qvt04"]
-[ext_resource type="PackedScene" uid="uid://438d404w3d6r" path="res://Scenes/Prefabs/StaticObjects/cubicle_empty.tscn" id="7_cavj3"]
+[ext_resource type="PackedScene" uid="uid://dh384hg87l3em" path="res://Scenes/Prefabs/StaticObjects/cubicle_empty.tscn" id="7_cavj3"]
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="7_gmjtd"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly_no_light.tscn" id="7_uqp7y"]
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="8_h3rhg"]
@@ -154,6 +154,12 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mq4r4")
+
+[node name="VoxelGI" type="VoxelGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545349, 0, 23.2567)
+subdiv = 2
+size = Vector3(58.0739, 20, 87.7271)
+data = ExtResource("17_bi161")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1339,7 +1345,7 @@ size = Vector3(20.9972, 1, 20)
 material = ExtResource("8_h3rhg")
 
 [node name="Mailcart" parent="." instance=ExtResource("9_lovsk")]
-transform = Transform3D(1, 1.98668e-11, 0, -4.38547e-11, 1, 0, 0, 2.91038e-11, 1, 7.27007, 0.78271, 29.351)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.22359, 0.78271, 29.351)
 collision_mask = 19
 physics_material_override = SubResource("PhysicsMaterial_60xfd")
 
@@ -1377,8 +1383,3 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.067
 
 [node name="Elevator" parent="." instance=ExtResource("13_8lshx")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.10901, 0.5, 30.4031)
-
-[node name="VoxelGI" type="VoxelGI" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545349, 0, 23.2567)
-size = Vector3(58.0739, 20, 87.7271)
-data = ExtResource("17_bi161")

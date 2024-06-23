@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://3upounxo75ji"]
+[gd_scene load_steps=23 format=3 uid="uid://box8t8l24q1si"]
 
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="1_ijyv1"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="2_bppe2"]
@@ -176,7 +176,7 @@ shape = SubResource("ConvexPolygonShape3D_072lv")
 [node name="RigidBody3D6" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.824136, 0.535279)
 collision_layer = 6
-collision_mask = 6
+collision_mask = 0
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 mass = 5.0
@@ -202,7 +202,7 @@ linear_limit/lower_distance = 0.0
 [node name="RigidBody3D5" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.354336, 0.535279)
 collision_layer = 6
-collision_mask = 6
+collision_mask = 0
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 mass = 5.0

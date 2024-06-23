@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://d1pv5poqi0p1s"]
 
 [ext_resource type="PackedScene" uid="uid://dhy137f2q5r8l" path="res://Scenes/Prefabs/StaticObjects/cubicle.tscn" id="1_g8gtr"]
-[ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="2_wogyr"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="2_wogyr"]
 [ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/StaticObjects/keyboard_low_poly_2.tscn" id="3_u2t8d"]
 [ext_resource type="PackedScene" uid="uid://c26hbiaufc6xb" path="res://Scenes/Prefabs/StaticObjects/mouse.tscn" id="4_utlkq"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="5_n3u8f"]
-[ext_resource type="PackedScene" uid="uid://c4pjt676komn4" path="res://Scenes/Prefabs/StaticObjects/cables.tscn" id="5_tqqw6"]
+[ext_resource type="PackedScene" uid="uid://cq3vkf11swts2" path="res://Scenes/Prefabs/StaticObjects/cables.tscn" id="5_tqqw6"]
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="6_3bxda"]
 [ext_resource type="PackedScene" uid="uid://bxl6cnj04eefh" path="res://Scenes/Prefabs/StaticObjects/cables_001.tscn" id="6_ny62m"]
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="7_my7gv"]

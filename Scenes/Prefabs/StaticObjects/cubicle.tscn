@@ -158,8 +158,8 @@ shape = SubResource("ConcavePolygonShape3D_3ib5a")
 
 [node name="RigidBody3D6" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 1.98952e-13, 0, 1, 0, -1.98952e-13, 0, 1, 2.37741, 1.5006, -1.16487)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 2
+collision_mask = 0
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 mass = 5.0
@@ -183,8 +183,8 @@ linear_limit/lower_distance = 0.0
 
 [node name="RigidBody3D5" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 3.69482e-13, 0, 1, 0, -3.69482e-13, 0, 1, 2.38178, 0.691243, -1.17513)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 2
+collision_mask = 0
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 mass = 5.0
@@ -209,8 +209,8 @@ linear_limit/lower_distance = 0.0
 
 [node name="RigidBody3D7" type="RigidBody3D" parent="."]
 transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -1.16305, 1.47777, 2.38959)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 2
+collision_mask = 0
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_q3bsi")
@@ -232,8 +232,8 @@ linear_limit/lower_distance = 0.0
 
 [node name="RigidBody3D8" type="RigidBody3D" parent="."]
 transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -1.18748, 0.691243, 2.40345)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 2
+collision_mask = 0
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_q3bsi")
