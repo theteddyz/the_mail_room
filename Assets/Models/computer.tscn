@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3hn5glhsxdca"]
 
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="1_pmqo7"]
-[ext_resource type="ArrayMesh" uid="uid://bi1t2hr824y0o" path="res://Assets/Models/computer_sceen_mesh.tres" id="2_gmy3x"]
+[ext_resource type="ArrayMesh" uid="uid://2viubuwrcu4r" path="res://Assets/Models/computer_sceen_mesh.tres" id="2_gmy3x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7k8f"]
 resource_name = "Material.001"
