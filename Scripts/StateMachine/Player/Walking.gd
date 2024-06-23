@@ -82,7 +82,6 @@ func _input(event):
 				else:
 					dropped_package()
 		if event.is_action_released("interact") and is_holding_object and object_last_held.name == "Radio":
-			print("HELLO")
 			if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart":
 				interactable_finder.get_collider().add_radio(object_last_held)
 		if event.is_action_released("interact") and is_holding_object and object_last_held:
@@ -120,7 +119,6 @@ func _input(event):
 				parent.change_station_down()
 
 func held_object(mass:float, object):
-	print(object)
 	is_holding_object = true
 	object_last_held = object
 	walking_speed = (walking_speed/mass) + 1
