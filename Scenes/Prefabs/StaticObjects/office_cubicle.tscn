@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1pv5poqi0p1s"]
+[gd_scene load_steps=15 format=3 uid="uid://d1pv5poqi0p1s"]
 
 [ext_resource type="PackedScene" uid="uid://dhy137f2q5r8l" path="res://Scenes/Prefabs/StaticObjects/cubicle.tscn" id="1_g8gtr"]
 [ext_resource type="PackedScene" uid="uid://c5ggiodp7gjke" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="2_wogyr"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="7_my7gv"]
 [ext_resource type="PackedScene" uid="uid://bc4e2pkwjrbhi" path="res://Scenes/Prefabs/StaticObjects/papers_tall.tscn" id="10_qm1qt"]
 [ext_resource type="PackedScene" uid="uid://cdj2vclj1i0vn" path="res://Scenes/Prefabs/StaticObjects/papers_low.tscn" id="11_cuvh8"]
+[ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="12_4dkud"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gg5xj"]
 
@@ -24,7 +25,6 @@
 transform = Transform3D(0.617832, 0, 0.78631, 0, 1, 0, -0.78631, 0, 0.617832, 1.03018, 1.58836, 1.1172)
 collision_layer = 7
 collision_mask = 12295
-mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_gg5xj")
 
 [node name="KeyboardLowPoly2" parent="." instance=ExtResource("3_u2t8d")]
@@ -55,3 +55,6 @@ transform = Transform3D(0.0835411, 0, -0.1487, 0, 0.146489, 0, 0.105945, 0, 0.11
 
 [node name="PapersLow" parent="." instance=ExtResource("11_cuvh8")]
 transform = Transform3D(0.109635, 0, 0.11037, 0, 0.146489, 0, -0.0786357, 0, 0.15388, -0.482422, 1.2779, 1.26531)
+
+[node name="RigidBody3D" parent="." instance=ExtResource("12_4dkud")]
+transform = Transform3D(-0.1157, 0, 0.993284, 0, 1, 0, -0.993284, 0, -0.1157, 1.2728, 1.20068, -0.271863)
