@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=12 format=3 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="1_salub"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://mail_room_wall_door.tscn" id="2_vsncc"]
@@ -7,33 +7,31 @@
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="6_rd5j2"]
 [ext_resource type="PackedScene" uid="uid://doveq38wiuloa" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_without_light.tscn" id="7_84et1"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="7_iwuw0"]
-[ext_resource type="PackedScene" uid="uid://fcuw17kn4sl1" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_flickering.tscn" id="8_coojh"]
 [ext_resource type="VoxelGIData" uid="uid://dkai54woqnuir" path="res://Assets/TemporaryAssets/voxelGITest/mail_room.VoxelGI_data.res" id="10_vwxva"]
 [ext_resource type="PackedScene" uid="uid://c88sba6h6nwvq" path="res://Scenes/Prefabs/StaticObjects/chute.tscn" id="11_duifo"]
 [ext_resource type="PackedScene" uid="uid://b65csccqsl1l1" path="res://Scenes/Prefabs/StaticObjects/industrial_table.tscn" id="12_haqay"]
 
 [sub_resource type="Environment" id="Environment_j0hss"]
-background_mode = 1
-ambient_light_color = Color(0.439216, 0.439216, 0.439216, 1)
-tonemap_mode = 2
+ambient_light_color = Color(0.878431, 1, 1, 1)
+tonemap_mode = 3
 ssr_depth_tolerance = 56.71
 ssao_horizon = 0.56
 ssil_enabled = true
-ssil_intensity = 4.67
+ssil_intensity = 7.35
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
 sdfgi_energy = 4.0
 glow_enabled = true
 glow_normalized = true
-glow_strength = 1.9
-glow_bloom = 0.1
+glow_bloom = 0.5
 glow_blend_mode = 4
 glow_hdr_scale = 1.71
-fog_light_color = Color(0.545098, 0.54902, 0.560784, 1)
+fog_enabled = true
+fog_light_color = Color(0.878431, 1, 1, 1)
 fog_light_energy = 0.26
 fog_sky_affect = 0.335
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.1088
+volumetric_fog_albedo = Color(0.878431, 1, 1, 1)
 adjustment_enabled = true
 adjustment_brightness = 0.77
 
@@ -52,330 +50,321 @@ data = ExtResource("10_vwxva")
 [node name="floor" type="Node3D" parent="stage"]
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="stage/floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.096871, -0.5, 3.97916)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.096871, -0.5, -5.93325)
 use_collision = true
 collision_layer = 5
 collision_mask = 5
-size = Vector3(26.6271, 1, 23.7081)
+size = Vector3(26.6271, 1, 18.0772)
+material = ExtResource("1_salub")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="stage/floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5256, -0.5, -5.72562)
+use_collision = true
+collision_layer = 5
+collision_mask = 5
+size = Vector3(26.6271, 1, 22.7222)
 material = ExtResource("1_salub")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="stage/floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21158, 6.04892, 3.87835)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1633, 6.06483, -5.24531)
 use_collision = true
 collision_layer = 5
 collision_mask = 5
-size = Vector3(26.8565, 0.0450439, 23.9097)
+size = Vector3(53.3556, 0.0450439, 18.2026)
 material = ExtResource("1_salub")
 
 [node name="Objects" type="Node3D" parent="stage"]
-
-[node name="IndustrialTable" parent="stage/Objects" instance=ExtResource("12_haqay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2863, 0.5, 1.5)
-
-[node name="IndustrialTable2" parent="stage/Objects" instance=ExtResource("12_haqay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.286, 0.5, 4.5)
-
-[node name="IndustrialTable5" parent="stage/Objects" instance=ExtResource("12_haqay")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.04043, 0.5, -0.181269)
-
-[node name="IndustrialTable6" parent="stage/Objects" instance=ExtResource("12_haqay")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.30574, 0.5, -0.181269)
-
-[node name="IndustrialTable7" parent="stage/Objects" instance=ExtResource("12_haqay")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.04043, 0.5, 9.63723)
-
-[node name="IndustrialTable8" parent="stage/Objects" instance=ExtResource("12_haqay")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.30574, 0.5, 9.63723)
-
-[node name="IndustrialTable3" parent="stage/Objects" instance=ExtResource("12_haqay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.286, 0.5, 7.5)
-
-[node name="IndustrialTable4" parent="stage/Objects" instance=ExtResource("12_haqay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.286, 0.5, 10.5)
 
 [node name="Rooms" type="Node3D" parent="stage"]
 
 [node name="Walls" type="Node3D" parent="stage"]
 
-[node name="StaticBody3D13" parent="stage/Walls" instance=ExtResource("2_vsncc")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -10.8682, 0, -2.329)
-
 [node name="StaticBody3D14" parent="stage/Walls" instance=ExtResource("2_vsncc")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.517279, 0, -7.841)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0.79569, 0, -6.931)
+
+[node name="StaticBody3D15" parent="stage/Walls" instance=ExtResource("2_vsncc")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -13.1654, -0.00728297, -0.313556)
 
 [node name="StaticBody3D16" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.3611, 0, -2.32915)
-
-[node name="StaticBody3D17" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 12.7477, 0, 0.370092)
-
-[node name="StaticBody3D18" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 12.7477, 0, 5.64801)
-
-[node name="StaticBody3D19" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 12.7477, 0, 10.9283)
-
-[node name="StaticBody3D20" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -13.2935, 0, 5.03024)
-
-[node name="StaticBody3D30" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -13.2935, 0, 0.185201)
-
-[node name="StaticBody3D36" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -13.2935, 0, -5.21777)
-
-[node name="StaticBody3D21" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -13.2936, 0, 10.292)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 12.3077, 0, -3.25367)
 
 [node name="StaticBody3D22" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5.14362, 0, -2.32915)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 6.6238, 0, -3.25367)
 
 [node name="StaticBody3D23" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.121131, 0, -2.32915)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0.948721, 0, -3.25367)
 
 [node name="StaticBody3D24" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -5.40505, 0, -2.32915)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -4.7329, 0, -3.25367)
+
+[node name="StaticBody3D33" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -10.4192, 0, -3.25367)
 
 [node name="StaticBody3D31" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.3611, 0, -7.84118)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 12.1633, 0, -6.931)
 
 [node name="StaticBody3D32" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5.14362, 0, -7.84118)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 6.48037, 0, -6.931)
 
 [node name="StaticBody3D34" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -5.40505, 0, -7.84118)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -4.89163, 0, -6.931)
 
 [node name="StaticBody3D35" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -11.0284, 0, -7.84118)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -10.5746, 0, -6.93085)
 
-[node name="StaticBody3D25" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.4761, 0, 12.824)
+[node name="StaticBody3D36" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -13.4983, 0, -9.6629)
 
-[node name="StaticBody3D26" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5.18726, 0, 12.824)
+[node name="StaticBody3D17" parent="stage/Walls" instance=ExtResource("2_vsncc")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -36.053, 0, -5.06916)
 
-[node name="StaticBody3D27" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.0951734, 0, 12.824)
+[node name="StaticBody3D46" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -36.053, 0, -10.7437)
 
-[node name="StaticBody3D28" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -5.39653, 0, 12.824)
+[node name="StaticBody3D47" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -36.0531, 0, 0.610999)
 
-[node name="StaticBody3D29" parent="stage/Walls" instance=ExtResource("3_hxukh")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -10.6614, 0, 12.8241)
+[node name="StaticBody3D38" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -16.2605, 0, -12.6689)
 
-[node name="StaticBody3D" parent="stage/Walls" instance=ExtResource("11_duifo")]
-transform = Transform3D(-4.37114e-08, 0.999848, -0.0174524, 0, 0.0174524, 0.999848, 1, 4.37047e-08, -7.62868e-10, 12.089, 3.556, 6)
+[node name="StaticBody3D42" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -16.0909, 0, 2.66712)
 
-[node name="StaticBody3D4" parent="stage/Walls" instance=ExtResource("11_duifo")]
-transform = Transform3D(-4.37114e-08, 0.999848, -0.0174524, 0, 0.0174524, 0.999848, 1, 4.37047e-08, -7.62868e-10, 12.089, 3.556, 9)
+[node name="StaticBody3D39" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -21.92, 0, -12.6693)
 
-[node name="StaticBody3D2" parent="stage/Walls" instance=ExtResource("11_duifo")]
-transform = Transform3D(-4.37114e-08, 0.999848, -0.0174524, 0, 0.0174524, 0.999848, 1, 4.37047e-08, -7.62868e-10, 12.089, 3.556, 3)
+[node name="StaticBody3D40" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -27.513, 0, -12.6693)
 
-[node name="StaticBody3D3" parent="stage/Walls" instance=ExtResource("11_duifo")]
-transform = Transform3D(-4.37114e-08, 0.999848, -0.0174524, 0, 0.0174524, 0.999848, 1, 4.37047e-08, -7.62868e-10, 12.089, 3.556, 0)
+[node name="StaticBody3D41" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -33.137, 0, -12.6693)
+
+[node name="StaticBody3D43" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -21.7716, 0, 2.66712)
+
+[node name="StaticBody3D44" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -27.4546, 0, 2.66712)
+
+[node name="StaticBody3D45" parent="stage/Walls" instance=ExtResource("3_hxukh")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -33.1386, 0, 2.66759)
 
 [node name="Lights" type="Node3D" parent="stage"]
 
 [node name="CeilingLightOn" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 4.77596, 4.39685, -5.48252)
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -19.245, 4, -8.28125)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_color = Color(0.858824, 0.941176, 0.976471, 1)
+light_energy = 0.75
+light_size = 0.295
 shadow_enabled = true
-shadow_blur = 10.0
+shadow_blur = 3.051
+omni_range = 7.5
 
 [node name="CeilingLightOn2" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 10.058, 4.39685, -5.48252)
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -24.959, 4, -8.28125)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_color = Color(0.858824, 0.941176, 0.976471, 1)
+light_energy = 0.75
+light_size = 0.295
 shadow_enabled = true
-shadow_blur = 10.0
+shadow_blur = 3.051
+omni_range = 7.5
 
-[node name="CeilingLightOn15" parent="stage/Lights" instance=ExtResource("8_coojh")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -0.27822, 4.39685, -5.32535)
+[node name="CeilingLightOn3" parent="stage/Lights" instance=ExtResource("7_84et1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -30.704, 4, -8.28125)
 
-[node name="CeilingLightOn13" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.67258, 4.39685, -5.48252)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
+[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_size = 0.295
 shadow_enabled = true
-shadow_blur = 10.0
-
-[node name="CeilingLightOn14" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.7499, 4.39685, -5.48252)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-shadow_blur = 10.0
-
-[node name="CeilingLightOn4" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.52287, 4.39685, 0.842657)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-shadow_blur = 10.0
-
-[node name="CeilingLightOn8" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 2.37058, 4.39685, 0.842657)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-shadow_blur = 10.0
-
-[node name="CeilingLightOn11" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 10.1477, 4.39685, 0.842657)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-shadow_blur = 10.0
-
-[node name="CeilingLightOn12" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 10.1477, 4.39685, 8.24546)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-shadow_blur = 10.0
-
-[node name="CeilingLightOn5" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.52287, 4.39685, 8.01141)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-shadow_blur = 10.0
-
-[node name="CeilingLightOn9" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.6218, 4.39685, 0.842657)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-shadow_blur = 10.0
-
-[node name="CeilingLightOn10" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.6218, 4.39685, 8.01141)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-shadow_blur = 10.0
-
-[node name="CeilingLightOn6" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -0.128719, 4.39685, 8.01141)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-shadow_blur = 10.0
+shadow_blur = 3.051
+omni_range = 8.522
 
 [node name="CeilingLightOn7" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 5.00609, 4.39685, 8.01141)
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -13.455, 4, -5.04403)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.82455, 0)
-light_energy = 2.231
-light_volumetric_fog_energy = 0.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_color = Color(0.858824, 0.941176, 0.976471, 1)
+light_energy = 0.75
+light_size = 0.295
 shadow_enabled = true
-shadow_blur = 10.0
+shadow_blur = 3.051
+omni_range = 7.5
+
+[node name="CeilingLightOn8" parent="stage/Lights" instance=ExtResource("7_84et1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -7.76013, 4, -5.04403)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_color = Color(0.858824, 0.941176, 0.976471, 1)
+light_energy = 0.75
+light_size = 0.295
+shadow_enabled = true
+shadow_blur = 3.051
+omni_range = 7.5
+
+[node name="CeilingLightOn9" parent="stage/Lights" instance=ExtResource("7_84et1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -2.05972, 4, -5.04403)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_color = Color(0.858824, 0.941176, 0.976471, 1)
+light_energy = 0.75
+light_size = 0.295
+shadow_enabled = true
+shadow_blur = 3.051
+omni_range = 7.5
+
+[node name="CeilingLightOn10" parent="stage/Lights" instance=ExtResource("7_84et1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 3.64315, 4, -5.04403)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_color = Color(0.858824, 0.941176, 0.976471, 1)
+light_energy = 0.75
+light_size = 0.295
+shadow_enabled = true
+shadow_blur = 3.051
+omni_range = 7.5
+
+[node name="CeilingLightOn11" parent="stage/Lights" instance=ExtResource("7_84et1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 9.34305, 4, -5.04403)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_color = Color(0.858824, 0.941176, 0.976471, 1)
+light_energy = 0.75
+light_size = 0.295
+shadow_enabled = true
+shadow_blur = 3.051
+omni_range = 7.5
+
+[node name="CeilingLightOn5" parent="stage/Lights" instance=ExtResource("7_84et1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -24.959, 4, -1.48713)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_color = Color(0.858824, 0.941176, 0.976471, 1)
+light_energy = 0.75
+light_size = 0.295
+shadow_enabled = true
+shadow_blur = 3.051
+omni_range = 7.5
+
+[node name="CeilingLightOn12" parent="stage/Lights" instance=ExtResource("7_84et1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -18.8863, 4, -1.48713)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_color = Color(0.858824, 0.941176, 0.976471, 1)
+light_energy = 0.75
+light_size = 0.295
+shadow_enabled = true
+shadow_blur = 3.051
+omni_range = 7.5
+
+[node name="CeilingLightOn6" parent="stage/Lights" instance=ExtResource("7_84et1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -30.704, 4, -1.48713)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="stage/Lights/CeilingLightOn6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
+light_color = Color(0.858824, 0.941176, 0.976471, 1)
+light_energy = 0.75
+light_size = 0.295
+shadow_enabled = true
+shadow_blur = 3.051
+omni_range = 7.5
 
 [node name="Roof" type="Node3D" parent="stage"]
 
-[node name="Ceiling" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 10.0312, 4.31899, -0.146)
-
-[node name="Ceiling2" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 10.0312, 4.31899, 5.018)
-
-[node name="Ceiling3" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 10.0312, 4.31899, 10.166)
-
-[node name="Ceiling4" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.82615, 4.31899, -0.146)
-
-[node name="Ceiling5" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.82615, 4.31899, 5.018)
-
-[node name="Ceiling6" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.82615, 4.31899, 10.166)
-
-[node name="Ceiling7" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -0.326092, 4.31899, -0.146)
-
-[node name="Ceiling8" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -0.326092, 4.31899, 5.018)
-
-[node name="Ceiling9" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -0.326092, 4.31899, 10.166)
-
-[node name="Ceiling10" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -5.5311, 4.31899, -0.146)
-
-[node name="Ceiling11" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -5.5311, 4.31899, 5.018)
-
-[node name="Ceiling12" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -5.5311, 4.31899, 10.166)
-
-[node name="Ceiling13" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -10.7284, 4.31899, -0.146308)
-
 [node name="Ceiling16" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -10.728, 4.31884, -5.325)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -10.6224, 3.89579, -4.9745)
+
+[node name="Ceiling21" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -16.3291, 3.89579, -4.9745)
+
+[node name="Ceiling22" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -16.3291, 3.89579, -10.6819)
+
+[node name="Ceiling23" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -16.3291, 3.89579, 0.697172)
+
+[node name="Ceiling24" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -22.0919, 3.89579, -4.9745)
+
+[node name="Ceiling25" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -22.0919, 3.896, -10.682)
+
+[node name="Ceiling26" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -22.092, 3.89579, 0.697)
+
+[node name="Ceiling27" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -27.7942, 3.89579, -4.9745)
+
+[node name="Ceiling28" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -27.794, 3.896, -10.682)
+
+[node name="Ceiling29" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -27.794, 3.896, 0.697)
+
+[node name="Ceiling30" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -33.532, 3.896, -4.974)
+
+[node name="Ceiling31" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -33.532, 3.896, -10.682)
+
+[node name="Ceiling32" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -33.532, 3.896, 0.697)
 
 [node name="Ceiling17" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -5.531, 4.31884, -5.325)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -4.91564, 3.89579, -4.9745)
 
 [node name="Ceiling18" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -0.341024, 4.31899, -5.325)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0.785603, 3.89594, -4.9745)
 
 [node name="Ceiling19" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.83943, 4.31899, -5.325)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 6.48764, 3.89594, -4.9745)
 
 [node name="Ceiling20" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 10.031, 4.31884, -5.325)
-
-[node name="Ceiling14" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -10.7284, 4.31899, 5.01826)
-
-[node name="Ceiling15" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -10.728, 4.31884, 10.1655)
-
-[node name="Objects2" type="Node3D" parent="stage"]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 12.193, 3.89579, -4.9745)
 
 [node name="Elevator" parent="." instance=ExtResource("6_gyuf1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.2004, 0, -5.06763)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.07, 0, -5.06763)
 
 [node name="Player" parent="." instance=ExtResource("7_iwuw0")]
-transform = Transform3D(0.043079, 0, 0.999072, 0, 1, 0, -0.999072, 0, 0.043079, 5.08913, -0.0256124, -5.36253)
+transform = Transform3D(0.043079, 0, 0.999072, 0, 1, 0, -0.999072, 0, 0.043079, 5.08913, -0.0256124, -4.93989)
+
+[node name="IndustrialTable" parent="." instance=ExtResource("12_haqay")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -19.1407, 0.556907, -4.93296)
+
+[node name="IndustrialTable2" parent="." instance=ExtResource("12_haqay")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -23.7147, 0.556907, -4.93296)
+
+[node name="IndustrialTable3" parent="." instance=ExtResource("12_haqay")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -27.7644, 0.556907, -4.93296)
+
+[node name="IndustrialTable4" parent="." instance=ExtResource("12_haqay")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -31.3907, 0.556907, -4.93296)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("11_duifo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.998, 2.72705, -11.9293)
+
+[node name="StaticBody3D6" parent="." instance=ExtResource("11_duifo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.998, 2.72705, 1.91074)
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("11_duifo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27.061, 2.72705, -11.9293)
+
+[node name="StaticBody3D5" parent="." instance=ExtResource("11_duifo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.061, 2.72705, 1.87034)
+
+[node name="StaticBody3D3" parent="." instance=ExtResource("11_duifo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.2804, 2.72705, -11.9293)
+
+[node name="StaticBody3D4" parent="." instance=ExtResource("11_duifo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2804, 2.72705, 1.83474)
