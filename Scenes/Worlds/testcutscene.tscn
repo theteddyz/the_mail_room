@@ -1350,7 +1350,7 @@ collision_mask = 19
 physics_material_override = SubResource("PhysicsMaterial_60xfd")
 
 [node name="Radio" parent="." instance=ExtResource("10_r6ec6")]
-transform = Transform3D(0.219448, 0, 0.0926127, 0, 0.23819, 0, -0.0926127, 0, 0.219448, 0.718202, 1.63531, -4.71484)
+transform = Transform3D(0.13379, 0, -0.197066, 0, 0.23819, 0, 0.197066, 0, 0.13379, -1.17844, 1.63531, -4.96646)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_1i41i")

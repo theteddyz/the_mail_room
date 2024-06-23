@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dicq0w2sau0cw"]
+[gd_scene load_steps=5 format=3 uid="uid://c5ggiodp7gjke"]
 
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_s0ban"]
 [ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/Prefabs/AssetTools/ObjectInterpolation.tscn" id="2_veer4"]
@@ -10,6 +10,7 @@ size = Vector3(0.690308, 0.80896, 0.574829)
 [node name="Monitor" type="RigidBody3D"]
 collision_layer = 6
 collision_mask = 12294
+mass = 3.0
 center_of_mass_mode = 1
 angular_damp = 10.0
 script = ExtResource("1_s0ban")

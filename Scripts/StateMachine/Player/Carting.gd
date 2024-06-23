@@ -91,6 +91,7 @@ func _process(delta):
 			
 		if Input.is_action_pressed("drive"):
 			releaseCart()
+		persistent_state.velocity.y = 0
 		persistent_state.move_and_slide()
 
 func releaseCart():
