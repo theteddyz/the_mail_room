@@ -47,7 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60275, 0, -1.45313)
 
 [node name="Lamp" parent="." instance=ExtResource("7_my7gv")]
 transform = Transform3D(0.871881, 0, 0.489717, 0, 1, 0, -0.489717, 0, 0.871881, -0.0100938, 1.40059, 1.37435)
-mass = 0.3
 physics_material_override = SubResource("PhysicsMaterial_d6yev")
 
 [node name="PapersTall" parent="." instance=ExtResource("10_qm1qt")]

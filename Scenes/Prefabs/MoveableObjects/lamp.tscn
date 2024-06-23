@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://xy4w3c35frqw"]
+[gd_scene load_steps=20 format=3 uid="uid://xy4w3c35frqw"]
 
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_6ip5t"]
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="2_obbdd"]
 [ext_resource type="Texture2D" uid="uid://dv4g5c8vuwrtt" path="res://Assets/Textures/BlenderTextures/LampUpper.png" id="3_uc4mx"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/DesklampButton.gd" id="4_ra0ww"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aq0mx"]
 resource_name = "LAMP"
@@ -143,9 +144,11 @@ radius = 0.0237673
 [sub_resource type="SphereShape3D" id="SphereShape3D_jyuxr"]
 radius = 0.149317
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_jq0n2"]
+size = Vector3(0.152542, 0.106934, 0.130573)
+
 [node name="Lamp" type="RigidBody3D"]
 collision_layer = 3
-collision_mask = 3
 angular_damp = 10.0
 script = ExtResource("1_6ip5t")
 
@@ -153,6 +156,7 @@ script = ExtResource("1_6ip5t")
 transform = Transform3D(1, 0, 0, 0, 0.513781, 0.857921, 0, -0.857921, 0.513781, 0, 0.551337, -0.149551)
 visible = false
 light_color = Color(0.847059, 0.643137, 0.298039, 1)
+light_energy = 0.747
 
 [node name="Lamp2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.136544, 0, 0, 0, 0.136544, 0, 0, 0, 0.136544, 0, 0, 0)
@@ -188,3 +192,17 @@ shape = SubResource("CylinderShape3D_ggja8")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.841662, -0.540005, 0, 0.540005, 0.841662, -0.00787917, 0.383946, -0.286674)
 shape = SubResource("SphereShape3D_jyuxr")
+
+[node name="ButtonRB" type="RigidBody3D" parent="." node_paths=PackedStringArray("light")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14468, -0.213288)
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+script = ExtResource("4_ra0ww")
+light = NodePath("../SpotLight3D")
+
+[node name="Button" type="CollisionShape3D" parent="ButtonRB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00119783, -0.00622559, 0.0100346)
+shape = SubResource("BoxShape3D_jq0n2")

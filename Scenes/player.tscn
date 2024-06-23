@@ -152,9 +152,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Crosshair" type="Sprite2D" parent="Neck/Head/HeadbopRoot/Camera/Control"]
-visible = false
 scale = Vector2(0.32, 0.32)
 texture = ExtResource("2_5t4wg")
+offset = Vector2(1.34, 42.685)
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -1.7)
