@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfbuid76trvb0"]
+
+[ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_52xw1"]
+[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_rtnu8"]
+[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="2_6j4ly"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuv2q"]
+resource_name = "CardboardBox"
+cull_mode = 2
+albedo_texture = ExtResource("1_52xw1")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dr4o4"]
+_surfaces = [{
+"aabb": AABB(-0.215486, -0.279373, -0.171839, 0.430972, 0.558745, 0.343688),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 2, 0, 7, 0, 3, 0, 2, 0, 6, 0, 7, 0, 6, 0, 5, 0, 7, 0, 6, 0, 4, 0, 5, 0, 4, 0, 1, 0, 5, 0, 4, 0, 0, 0, 1, 0, 2, 0, 4, 0, 6, 0, 2, 0, 0, 0, 4, 0, 7, 0, 1, 0, 3, 0, 7, 0, 5, 0, 1, 0),
+"name": "CardboardBox",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 255, 255, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 253, 255, 0, 0, 255, 255, 255, 255, 253, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_blnpd"]
+resource_name = "desk_Cube_102"
+_surfaces = [{
+"aabb": AABB(-0.215486, -0.279373, -0.171839, 0.430972, 0.558745, 0.343688),
+"attribute_data": PackedByteArray(50, 186, 215, 209, 64, 134, 88, 183, 169, 200, 227, 193, 50, 186, 227, 193, 71, 122, 166, 195, 169, 200, 215, 209, 186, 171, 227, 193, 112, 124, 88, 183, 121, 210, 227, 193, 186, 171, 215, 209, 118, 112, 166, 195, 121, 210, 215, 209, 128, 198, 215, 209, 64, 134, 166, 195, 49, 221, 88, 84, 128, 198, 227, 193, 71, 122, 88, 183, 49, 221, 100, 68, 8, 184, 227, 193, 112, 124, 166, 195, 1, 231, 88, 84, 8, 184, 215, 209, 118, 112, 88, 183, 1, 231, 100, 68),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 11, 0, 5, 0, 2, 0, 8, 0, 11, 0, 6, 0, 21, 0, 9, 0, 6, 0, 18, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 12, 0, 3, 0, 15, 0, 12, 0, 0, 0, 3, 0, 7, 0, 13, 0, 19, 0, 7, 0, 1, 0, 13, 0, 22, 0, 4, 0, 10, 0, 22, 0, 16, 0, 4, 0),
+"material": SubResource("StandardMaterial3D_uuv2q"),
+"name": "CardboardBox",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 253, 255, 255, 127, 0, 0, 0, 0, 253, 255, 84, 213, 0, 0, 0, 0, 253, 255, 255, 255, 0, 0, 255, 255, 253, 255, 255, 127, 0, 0, 255, 255, 253, 255, 84, 213, 0, 0, 255, 255, 253, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 84, 213, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 84, 213, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 253, 255, 255, 127, 255, 255, 0, 0, 253, 255, 84, 213, 255, 255, 0, 0, 253, 255, 255, 191, 255, 255, 255, 255, 253, 255, 255, 127, 255, 255, 255, 255, 253, 255, 84, 213, 255, 255, 255, 255, 253, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 84, 213, 255, 255, 255, 255, 0, 0, 255, 191, 255, 127, 255, 255, 170, 42, 84, 213, 255, 63, 255, 127, 255, 127, 255, 255, 170, 170, 170, 170, 255, 63, 255, 127, 255, 255, 255, 127, 170, 42, 84, 213, 255, 63, 255, 127, 255, 255, 255, 127, 170, 170, 170, 170, 255, 63, 255, 127, 255, 127, 255, 255, 170, 42, 84, 213, 255, 127, 0, 0, 255, 127, 255, 255, 170, 170, 170, 170, 255, 127, 0, 0, 255, 255, 255, 127, 170, 42, 84, 213, 255, 127, 0, 0, 255, 255, 255, 127, 170, 170, 170, 170, 255, 127, 0, 0)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_dr4o4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1vi2"]
+size = Vector3(0.127319, 0.16626, 0.106018)
+
+[node name="cardboard_box_mini" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0935703, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_rtnu8")
+
+[node name="Interpolator" type="Node3D" parent="."]
+script = ExtResource("2_6j4ly")
+
+[node name="CardboardBoxMini" type="MeshInstance3D" parent="Interpolator"]
+transform = Transform3D(0.318303, 0, 0, 0, 0.318303, 0, 0, 0, 0.318303, 0, 0, 0)
+mesh = SubResource("ArrayMesh_blnpd")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_m1vi2")

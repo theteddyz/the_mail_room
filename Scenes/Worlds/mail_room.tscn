@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=20 format=3 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="1_salub"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://mail_room_wall_door.tscn" id="2_vsncc"]
@@ -13,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://b65csccqsl1l1" path="res://Scenes/Prefabs/StaticObjects/industrial_table.tscn" id="12_haqay"]
 [ext_resource type="PackedScene" uid="uid://jwepvxwg65b2" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="12_r5uwn"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="13_smksi"]
+[ext_resource type="PackedScene" uid="uid://cgldfdyb7utbo" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="14_thyyr"]
+[ext_resource type="PackedScene" uid="uid://ugwqaphpkcxp" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_long.tscn" id="15_ceayg"]
+[ext_resource type="PackedScene" uid="uid://c148bm0rukaqe" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_medium.tscn" id="16_ine76"]
+[ext_resource type="PackedScene" uid="uid://dfbuid76trvb0" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_mini.tscn" id="17_6rwos"]
+[ext_resource type="PackedScene" uid="uid://bwkdr1hhs71ee" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="18_uvktp"]
 
 [sub_resource type="Environment" id="Environment_j0hss"]
 ambient_light_color = Color(0.878431, 1, 1, 1)
@@ -113,6 +118,561 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.28
 
 [node name="StaticBody3D4" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2804, 2.72705, 1.83474)
+
+[node name="Desk" parent="stage/Objects" instance=ExtResource("12_r5uwn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14.5062, 0, -9.52926)
+
+[node name="Desk2" parent="stage/Objects" instance=ExtResource("13_smksi")]
+transform = Transform3D(-0.00181511, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00181511, -9.82366, 0, -0.469987)
+
+[node name="Cardboard_box_big" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9616, 3.2618, 1.67041)
+
+[node name="Cardboard_box_big2" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9616, 3.2618, 0.553038)
+
+[node name="Cardboard_box_big5" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9616, 2.26014, 0.640711)
+
+[node name="Cardboard_box_big4" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9616, 3.2618, -1.30792)
+
+[node name="Cardboard_box_big7" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(0.81303, 0, -0.582222, 0, 1, 0, 0.582222, 0, 0.81303, -23.9616, 4.33196, -1.15579)
+
+[node name="Cardboard_box_big6" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9616, 2.24859, -0.477663)
+
+[node name="Cardboard_box_big3" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9616, 1.50593, -4.09971)
+
+[node name="Cardboard_box_big25" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2031, 1.25175, -8.54166)
+
+[node name="Cardboard_box_big26" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2031, 3.26433, -11.1214)
+
+[node name="Cardboard_box_big8" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -23.7332, 1.28692, -1.48921)
+
+[node name="Cardboard_box_big12" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8662, 0.356793, -1.48921)
+
+[node name="Cardboard_box_big27" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.8553, 0.356793, -4.88948)
+
+[node name="Cardboard_box_big28" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(0.691349, 0, 0.722521, 0, 1, 0, -0.722521, 0, 0.691349, -27.4762, 1.45124, -4.88948)
+
+[node name="Cardboard_box_big13" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8662, 0.356793, 1.53725)
+
+[node name="Cardboard_box_big9" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7009, 1.28692, -0.679732)
+
+[node name="Cardboard_box_long" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-0.0680661, 0.207511, -0.975862, 0.90435, 0.425906, 0.0274882, 0.421329, -0.88065, -0.216653, -23.9974, 3.3023, 1.16884)
+
+[node name="Cardboard_box_long3" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 1.97248, 1.98554)
+
+[node name="Cardboard_box_long4" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 2.1164, 1.98554)
+
+[node name="Cardboard_box_long5" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 2.21747, 1.98554)
+
+[node name="Cardboard_box_long6" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 2.401, 1.98554)
+
+[node name="Cardboard_box_long16" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 0.954747, 1.98554)
+
+[node name="Cardboard_box_long17" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 1.09866, 1.98554)
+
+[node name="Cardboard_box_long18" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 1.19973, 1.98554)
+
+[node name="Cardboard_box_long19" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 1.38327, 1.98554)
+
+[node name="Cardboard_box_long20" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.0194068, 0, -0.999812, 0, 1, 0, 0.999812, 0, 0.0194068, -23.9974, 1.46004, 0.985756)
+
+[node name="Cardboard_box_long12" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -23.9974, 4.02802, 1.76468)
+
+[node name="Cardboard_box_long13" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -23.9974, 4.17194, 1.76468)
+
+[node name="Cardboard_box_long14" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -23.9974, 4.27301, 1.76468)
+
+[node name="Cardboard_box_long15" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -23.9974, 4.45654, 1.76468)
+
+[node name="Cardboard_box_long8" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -23.9974, 1.97248, -1.30469)
+
+[node name="Cardboard_box_long9" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -23.9974, 2.1164, -1.30469)
+
+[node name="Cardboard_box_long10" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -23.9974, 2.21747, -1.30469)
+
+[node name="Cardboard_box_long11" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -23.9974, 2.401, -1.30469)
+
+[node name="Cardboard_box_long22" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -23.9974, 1.97248, -11.6109)
+
+[node name="Cardboard_box_long23" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -23.9974, 2.1164, -11.6109)
+
+[node name="Cardboard_box_long24" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -23.9974, 2.21747, -11.6109)
+
+[node name="Cardboard_box_long25" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -23.9974, 2.401, -11.6109)
+
+[node name="Cardboard_box_long7" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-4.37114e-08, 0, 1, -0.76482, 0.644244, -3.34314e-08, -0.644244, -0.76482, -2.81608e-08, -23.9974, 2.28075, 1.4539)
+
+[node name="Cardboard_box_long26" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 0.957623, -10.201)
+
+[node name="Cardboard_box_long27" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 1.10154, -10.201)
+
+[node name="Cardboard_box_long28" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 1.38614, -10.201)
+
+[node name="Cardboard_box_long30" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.33058, 0, -0.943778, 0, 1, 0, 0.943778, 0, 0.33058, -23.7517, 0.0963694, -10.0108)
+
+[node name="Cardboard_box_long29" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-4.37114e-08, 0, 1, -0.76482, 0.644244, -3.34314e-08, -0.644244, -0.76482, -2.81608e-08, -23.9974, 1.26589, -10.7326)
+
+[node name="Cardboard_box_long2" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9974, 1.36085, -5.20602)
+
+[node name="Cardboard_box_long70" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.659333, 0.751851, 0, -0.751851, 0.659333, 0, 0, 0, 1, -26.8435, 1.73886, -5.08432)
+
+[node name="Cardboard_box_long69" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.543673, 0, 0.839297, 0, 1, 0, -0.839298, 0, 0.543673, -29.2456, 1.03669, -10.0476)
+
+[node name="Cardboard_box_medium" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5885, 1.41634, -4.54241)
+
+[node name="Cardboard_box_medium9" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7888, 2.16549, -10.4123)
+
+[node name="Cardboard_box_long65" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -34.4332, 0.973139, -1.48564)
+
+[node name="Cardboard_box_long66" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -34.4332, 1.11705, -1.48564)
+
+[node name="Cardboard_box_long67" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -34.4332, 1.21812, -1.48564)
+
+[node name="Cardboard_box_long68" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -34.4332, 1.40166, -1.48564)
+
+[node name="Cardboard_box_medium33" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2245, 1.16614, -0.287005)
+
+[node name="Cardboard_box_medium11" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7888, 0.27602, -8.74735)
+
+[node name="Cardboard_box_medium12" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7888, 0.27602, -11.5548)
+
+[node name="Cardboard_box_medium4" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6992, 1.14096, 0.113589)
+
+[node name="Cardboard_box_medium5" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6992, 1.14096, 1.20653)
+
+[node name="Cardboard_box_big10" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -23.7332, 3.35919, -11.2939)
+
+[node name="Cardboard_box_big11" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7009, 3.35919, -10.4844)
+
+[node name="Cardboard_box_long21" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.335238, 0, -0.942133, 0, 1, 0, 0.942134, 0, 0.335238, -23.9559, 3.50403, -8.73598)
+
+[node name="Cardboard_box_medium6" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6992, 3.21322, -9.69106)
+
+[node name="Cardboard_box_medium7" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6992, 3.21322, -8.36841)
+
+[node name="Cardboard_box_medium2" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0583, 3.19353, -0.0386032)
+
+[node name="Cardboard_box_medium3" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0583, 1.72489, -4.75682)
+
+[node name="Cardboard_box_medium8" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9293, 3.22958, -9.06547)
+
+[node name="Cardboard_box_big19" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -34.5637, 4.38202, -11.2939)
+
+[node name="Cardboard_box_big20" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5314, 4.38202, -10.4844)
+
+[node name="Cardboard_box_long50" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.335238, 0, -0.942133, 0, 1, 0, 0.942134, 0, 0.335238, -34.7864, 4.52686, -8.73598)
+
+[node name="Cardboard_box_long51" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.335238, 0, -0.942133, 0, 1, 0, 0.942134, 0, 0.335238, -34.4003, 4.52686, -7.83439)
+
+[node name="Cardboard_box_medium17" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 0.780823, 0.624752, 0, -0.624752, 0.780823, -34.5297, 4.34686, -9.69106)
+
+[node name="Cardboard_box_medium18" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5297, 4.23606, -8.36841)
+
+[node name="Cardboard_box_medium20" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5297, 4.23606, -7.79863)
+
+[node name="Cardboard_box_medium23" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3588, 3.19628, -7.79863)
+
+[node name="Cardboard_box_medium19" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.7598, 4.25241, -9.06547)
+
+[node name="cardboard_box_mini" parent="stage/Objects" instance=ExtResource("17_6rwos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1909, 1.31421, -5.14413)
+
+[node name="cardboard_box_mini6" parent="stage/Objects" instance=ExtResource("17_6rwos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0338, 2.1521, -8.71613)
+
+[node name="cardboard_box_mini2" parent="stage/Objects" instance=ExtResource("17_6rwos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0471, 3.5736, 0.0265787)
+
+[node name="cardboard_box_mini3" parent="stage/Objects" instance=ExtResource("17_6rwos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2199, 3.5736, -0.21848)
+
+[node name="cardboard_box_mini4" parent="stage/Objects" instance=ExtResource("17_6rwos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0397, 3.10739, -0.430835)
+
+[node name="cardboard_box_mini5" parent="stage/Objects" instance=ExtResource("17_6rwos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2947, 3.10739, -0.430835)
+
+[node name="cardboard_box_small" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.0845, 1.41634, -4.65064)
+
+[node name="Cardboard_box_medium10" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -23.8165, 1.24591, -8.62597)
+
+[node name="cardboard_box_small17" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -23.6093, 1.24591, -9.09803)
+
+[node name="cardboard_box_small18" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -23.7664, 0.344586, -9.94146)
+
+[node name="Cardboard_box_long52" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.33058, 0, -0.943778, 0, 1, 0, 0.943778, 0, 0.33058, -34.5248, 3.06289, -9.61755)
+
+[node name="Cardboard_box_medium21" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5618, 3.24254, -8.35411)
+
+[node name="Cardboard_box_medium22" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5618, 3.24254, -11.1616)
+
+[node name="Cardboard_box_medium24" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4814, 3.24254, -10.5104)
+
+[node name="cardboard_box_small33" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -34.5394, 3.3111, -9.54822)
+
+[node name="cardboard_box_small34" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -34.3542, 3.14564, -8.90171)
+
+[node name="cardboard_box_small35" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -34.3542, 3.55406, -8.90171)
+
+[node name="Cardboard_box_long40" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.33058, 0, -0.943778, 0, 1, 0, 0.943778, 0, 0.33058, -29.3454, 1.98681, 0.136219)
+
+[node name="Cardboard_box_medium15" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3824, 2.16646, 1.39966)
+
+[node name="Cardboard_box_medium16" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3824, 2.16646, -1.4078)
+
+[node name="cardboard_box_small30" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -29.36, 2.23502, 0.205544)
+
+[node name="Cardboard_box_long58" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.33058, 0, -0.943778, 0, 1, 0, 0.943778, 0, 0.33058, -34.4418, 0.195808, -9.31987)
+
+[node name="Cardboard_box_medium27" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4788, 0.375459, -8.05643)
+
+[node name="Cardboard_box_medium28" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4788, 0.375459, -10.8639)
+
+[node name="cardboard_box_small37" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -34.4565, 0.444024, -9.25055)
+
+[node name="Cardboard_box_long59" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-0.378778, 0, 0.925488, 0, 1, 0, -0.925488, 0, -0.378778, -34.4889, 1.96682, -0.799571)
+
+[node name="Cardboard_box_medium29" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(-0.998671, 0, -0.0515342, 0, 1, 0, 0.0515342, 0, -0.998671, -34.517, 2.14647, -2.06324)
+
+[node name="Cardboard_box_medium30" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(-0.998671, 0, -0.0515342, 0, 1, 0, 0.0515342, 0, -0.998671, -34.3723, 2.14647, 0.740483)
+
+[node name="Cardboard_box_medium34" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(-0.998671, 0, -0.0515342, 0, 1, 0, 0.0515342, 0, -0.998671, -31.72, 1.44257, -4.76051)
+
+[node name="Cardboard_box_medium35" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(-0.892932, 0, -0.450192, 0, 1, 0, 0.450192, 0, -0.892932, -31.6978, 1.95443, -4.76051)
+
+[node name="Cardboard_box_medium36" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(-0.976243, 0, 0.216678, 0, 1, 0, -0.216678, 0, -0.976243, -31.6978, 2.48435, -4.76051)
+
+[node name="cardboard_box_small38" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(-0.54253, 0, -0.840037, 0, 1, 0, 0.840037, 0, -0.54253, -34.4778, 2.21504, -0.86956)
+
+[node name="cardboard_box_small16" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7735, 1.08876, 0.639812)
+
+[node name="Cardboard_box_big21" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -34.2707, 1.28692, -11.1417)
+
+[node name="Cardboard_box_big22" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2384, 1.28692, -10.3323)
+
+[node name="Cardboard_box_long53" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.535, 0.954747, -7.6671)
+
+[node name="Cardboard_box_long54" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.535, 1.09866, -7.6671)
+
+[node name="Cardboard_box_long55" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.535, 1.19973, -7.6671)
+
+[node name="Cardboard_box_long56" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.535, 1.38327, -7.6671)
+
+[node name="Cardboard_box_long57" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.0194068, 0, -0.999812, 0, 1, 0, 0.999812, 0, 0.0194068, -34.535, 1.46004, -8.66688)
+
+[node name="Cardboard_box_medium25" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2367, 1.14096, -9.53905)
+
+[node name="Cardboard_box_medium26" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2367, 1.14096, -8.44611)
+
+[node name="cardboard_box_small36" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3111, 1.08876, -9.01283)
+
+[node name="Cardboard_box_big23" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -34.4276, 3.27361, -1.98953)
+
+[node name="Cardboard_box_big24" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3952, 3.27361, -1.18005)
+
+[node name="Cardboard_box_long60" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.6918, 2.94144, 1.48511)
+
+[node name="Cardboard_box_long61" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.6918, 3.08535, 1.48511)
+
+[node name="Cardboard_box_long62" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.6918, 3.18642, 1.48511)
+
+[node name="Cardboard_box_long63" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.6918, 3.36996, 1.48511)
+
+[node name="Cardboard_box_long64" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.0194068, 0, -0.999812, 0, 1, 0, 0.999812, 0, 0.0194068, -34.6918, 3.44673, 0.485316)
+
+[node name="Cardboard_box_medium31" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3936, 3.12765, -0.38685)
+
+[node name="Cardboard_box_medium32" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.3936, 3.12765, 0.706088)
+
+[node name="cardboard_box_small39" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4679, 3.07545, 0.139373)
+
+[node name="Cardboard_box_big15" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -29.0395, 3.29552, -1.48921)
+
+[node name="Cardboard_box_big29" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.4788, 1.49341, -4.81955)
+
+[node name="Cardboard_box_big16" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0072, 3.29552, -0.679732)
+
+[node name="Cardboard_box_long35" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3037, 2.96335, 1.98554)
+
+[node name="Cardboard_box_long36" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3037, 3.10726, 1.98554)
+
+[node name="Cardboard_box_long37" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3037, 3.20833, 1.98554)
+
+[node name="Cardboard_box_long38" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3037, 3.39186, 1.98554)
+
+[node name="Cardboard_box_long39" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.0194068, 0, -0.999812, 0, 1, 0, 0.999812, 0, 0.0194068, -29.3037, 3.46864, 0.985756)
+
+[node name="Cardboard_box_medium13" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0055, 3.14955, 0.113589)
+
+[node name="Cardboard_box_medium14" parent="stage/Objects" instance=ExtResource("16_ine76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0055, 3.14955, 1.20653)
+
+[node name="cardboard_box_small29" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0798, 3.09736, 0.639812)
+
+[node name="cardboard_box_small2" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -24.0514, 3.12425, -0.713652)
+
+[node name="cardboard_box_small15" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -24.0514, 4.28418, 0.910103)
+
+[node name="cardboard_box_small3" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -23.744, 2.13291, 0.0919603)
+
+[node name="cardboard_box_small4" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -24.2699, 2.13291, 0.0919603)
+
+[node name="cardboard_box_small5" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -24.2699, 2.54291, 0.0919603)
+
+[node name="Cardboard_box_big17" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(-0.999521, 0, -0.0309396, 0, 1, 0, 0.0309396, 0, -0.999521, -34.65, 2.26014, -9.73926)
+
+[node name="Cardboard_box_big18" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(-0.999521, 0, -0.0309396, 0, 1, 0, 0.0309396, 0, -0.999521, -34.6154, 2.24859, -8.62142)
+
+[node name="Cardboard_box_long41" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-0.999521, 0, -0.0309397, 0, 1, 0, 0.0309397, 0, -0.999521, -34.6559, 1.97248, -11.0846)
+
+[node name="Cardboard_box_long42" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-0.999521, 0, -0.0309397, 0, 1, 0, 0.0309397, 0, -0.999521, -34.6559, 2.1164, -11.0846)
+
+[node name="Cardboard_box_long43" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-0.999521, 0, -0.0309397, 0, 1, 0, 0.0309397, 0, -0.999521, -34.6559, 2.21747, -11.0846)
+
+[node name="Cardboard_box_long44" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-0.999521, 0, -0.0309397, 0, 1, 0, 0.0309397, 0, -0.999521, -34.6559, 2.401, -11.0846)
+
+[node name="Cardboard_box_long45" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-0.891806, 0, 0.452419, 0, 1, 0, -0.452419, 0, -0.891805, -34.5541, 1.97248, -7.7959)
+
+[node name="Cardboard_box_long46" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-0.891806, 0, 0.452419, 0, 1, 0, -0.452419, 0, -0.891805, -34.5541, 2.1164, -7.7959)
+
+[node name="Cardboard_box_long47" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-0.891806, 0, 0.452419, 0, 1, 0, -0.452419, 0, -0.891805, -34.5541, 2.21747, -7.7959)
+
+[node name="Cardboard_box_long48" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(-0.891806, 0, 0.452419, 0, 1, 0, -0.452419, 0, -0.891805, -34.5541, 2.401, -7.7959)
+
+[node name="Cardboard_box_long49" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.0199328, 0.0236634, -0.999521, -0.76482, 0.644244, -2.88103e-08, 0.643936, 0.764454, 0.0309399, -34.6394, 2.28075, -10.5532)
+
+[node name="cardboard_box_small31" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(-0.998028, 0, 0.0627732, 0, 1, 0, -0.0627732, 0, -0.998028, -34.3249, 2.13291, -9.20031)
+
+[node name="cardboard_box_small32" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(-0.998028, 0, 0.0627732, 0, 1, 0, -0.0627732, 0, -0.998028, -34.3249, 2.54291, -9.20031)
+
+[node name="cardboard_box_small7" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -24.2699, 4.16023, 0.0919603)
+
+[node name="cardboard_box_small8" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -24.2699, 4.57023, 0.0919603)
+
+[node name="cardboard_box_small9" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -24.2699, 4.16023, -0.416215)
+
+[node name="cardboard_box_small10" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -24.2699, 4.57023, -0.416215)
+
+[node name="cardboard_box_small11" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -23.8592, 4.16023, -0.416215)
+
+[node name="cardboard_box_small12" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -23.8592, 4.57023, -0.416215)
+
+[node name="Cardboard_box_big14" parent="stage/Objects" instance=ExtResource("14_thyyr")]
+transform = Transform3D(0.81303, 0, -0.582222, 0, 1, 0, 0.582222, 0, 0.81303, -29.2656, 1.22599, -1.15579)
+
+[node name="Cardboard_box_long31" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -29.3014, 0.92205, 1.76468)
+
+[node name="Cardboard_box_long32" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -29.3014, 1.06596, 1.76468)
+
+[node name="Cardboard_box_long33" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -29.3014, 1.16703, 1.76468)
+
+[node name="Cardboard_box_long34" parent="stage/Objects" instance=ExtResource("15_ceayg")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -29.3014, 1.35057, 1.76468)
+
+[node name="cardboard_box_small22" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -29.3553, 1.17821, 0.910103)
+
+[node name="cardboard_box_small23" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -29.5739, 1.05426, 0.0919603)
+
+[node name="cardboard_box_small24" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -29.5739, 1.46426, 0.0919603)
+
+[node name="cardboard_box_small25" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -29.5739, 1.05426, -0.416215)
+
+[node name="cardboard_box_small26" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -29.5739, 1.46426, -0.416215)
+
+[node name="cardboard_box_small27" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -29.1631, 1.05426, -0.416215)
+
+[node name="cardboard_box_small28" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -29.1631, 1.46426, -0.416215)
+
+[node name="cardboard_box_small13" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -23.8592, 4.16023, 0.156381)
+
+[node name="cardboard_box_small19" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -23.9736, 0.243326, -0.378123)
+
+[node name="cardboard_box_small20" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -23.6105, 0.653321, -0.026965)
+
+[node name="cardboard_box_small21" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -23.6304, 0.243326, 0.0801928)
+
+[node name="cardboard_box_small40" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -19.3838, 1.47375, -4.94807)
+
+[node name="cardboard_box_small41" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -19.0207, 1.88374, -4.59692)
+
+[node name="cardboard_box_small42" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -19.0405, 1.47375, -4.48976)
+
+[node name="cardboard_box_small14" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -23.8592, 4.57023, 0.156381)
+
+[node name="cardboard_box_small6" parent="stage/Objects" instance=ExtResource("18_uvktp")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -23.8155, 2.54291, 0.0919603)
 
 [node name="Walls" type="Node3D" parent="stage"]
 
@@ -223,6 +783,24 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -38.9518, 0, -13.
 
 [node name="StaticBody3D58" parent="stage/Walls" instance=ExtResource("3_hxukh")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -38.9534, 0, 3.27224)
+
+[node name="StaticBody3D" parent="stage/Walls" instance=ExtResource("11_3qslt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.396, 0, -9.46604)
+
+[node name="StaticBody3D2" parent="stage/Walls" instance=ExtResource("11_3qslt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.396, 0, -0.445995)
+
+[node name="StaticBody3D3" parent="stage/Walls" instance=ExtResource("11_3qslt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.2925, 0, 0.225973)
+
+[node name="StaticBody3D4" parent="stage/Walls" instance=ExtResource("11_3qslt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.2925, 0, -10.2622)
+
+[node name="StaticBody3D5" parent="stage/Walls" instance=ExtResource("11_3qslt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.9389, 0, -10.2622)
+
+[node name="StaticBody3D6" parent="stage/Walls" instance=ExtResource("11_3qslt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.9389, 0, 0.327649)
 
 [node name="Rooms" type="Node3D" parent="stage"]
 
@@ -553,27 +1131,3 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.516
 
 [node name="Player" parent="." instance=ExtResource("7_iwuw0")]
 transform = Transform3D(0.043079, 0, 0.999072, 0, 1, 0, -0.999072, 0, 0.043079, 5.08913, -0.0256124, -4.93989)
-
-[node name="StaticBody3D" parent="." instance=ExtResource("11_3qslt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.396, 0, -9.46604)
-
-[node name="StaticBody3D2" parent="." instance=ExtResource("11_3qslt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -34.396, 0, -0.445995)
-
-[node name="StaticBody3D3" parent="." instance=ExtResource("11_3qslt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.2925, 0, 0.225973)
-
-[node name="StaticBody3D4" parent="." instance=ExtResource("11_3qslt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.2925, 0, -10.2622)
-
-[node name="StaticBody3D5" parent="." instance=ExtResource("11_3qslt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.9389, 0, -10.2622)
-
-[node name="StaticBody3D6" parent="." instance=ExtResource("11_3qslt")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.9389, 0, 0.327649)
-
-[node name="Desk" parent="." instance=ExtResource("12_r5uwn")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14.5062, 0, -9.52926)
-
-[node name="Desk2" parent="." instance=ExtResource("13_smksi")]
-transform = Transform3D(-0.00181511, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00181511, -9.82366, 0, -0.469987)

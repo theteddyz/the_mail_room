@@ -23,7 +23,7 @@ var timerAdded:bool = false
 var Interpolator 
 
 func _ready():
-	Interpolator = get_parent().find_child("Interpolator")
+	Interpolator = find_child("Interpolator")
 	var root = get_tree().root
 	var current_scene = root.get_child(root.get_child_count() - 1)
 	player = current_scene.find_child("Player")
