@@ -6,10 +6,13 @@ const FILE_NAME = "user://game-data.json"
 var current_scene : Node
 var player_reference: Node
 var elevator_reference: Node
-
+var mail_cart_refrence:Node
 func register_player(new_player):
 	player_reference = new_player
-
+func register_mail_cart(cart):
+	mail_cart_refrence = cart
+func get_mail_cart()->Node:
+	return mail_cart_refrence
 func get_player()->Node:
 	return player_reference
 func _ready():
@@ -22,6 +25,7 @@ func load_game():
 	if not FileAccess.file_exists(FILE_NAME):
 		player_reference = current_scene.find_child("Player")
 		elevator_reference = current_scene.find_child("Elevator")
+		mail_cart_refrence = current_scene.find_child("Mailcart")
 		return # Error! We don't have a save to load.
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
@@ -29,7 +33,7 @@ func load_game():
 	
 	player_reference = current_scene.find_child("Player")
 	elevator_reference = current_scene.find_child("Elevator")
-	
+	mail_cart_refrence = current_scene.find_child("Mailcart")
 	while save_game.get_position() < save_game.get_length():
 		var json_string = save_game.get_line()
 		var json = JSON.new()
@@ -103,7 +107,8 @@ func _deferred_goto_scene(path):
 	player_reference.reparent(current_scene, false)
 	player_reference.owner = current_scene
 	player_reference._ready()
-	
+	mail_cart_refrence.reparent(elevator_reference.find_child("Elevator").find_child("cart_pos"),false)
+	var mail_cart_pos = mail_cart_refrence.transform.origin
 	# Find and replace the elevator node
 	var new_elevator = current_scene.find_child("Elevator")
 	elevator_reference.reparent(current_scene, false)
@@ -129,10 +134,10 @@ func _deferred_goto_scene(path):
 
 	# Add it to the active scene, as child of root.
 	get_tree().root.add_child(current_scene)
-	print(player_reference)
 	player_reference.reparent(elevator_reference.find_child("Elevator"),false)
 	player_reference.position = Vector3(0,-1,0)
 	player_reference.rotation = Vector3(0,-180,0)
+	mail_cart_refrence.position = Vector3.ZERO
 	elevator_reference.move_floors()
 
 func load_node_variables():
