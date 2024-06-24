@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c08qc5mgsdt5y"]
+[gd_scene load_steps=9 format=3 uid="uid://c08qc5mgsdt5y"]
 
 [ext_resource type="Script" path="res://Scripts/Radio.gd" id="1_bg5d2"]
 [ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/Prefabs/AssetTools/ObjectInterpolation.tscn" id="1_m8eq4"]
 [ext_resource type="Texture2D" uid="uid://bpmaq4gl82cgl" path="res://Assets/Textures/BlenderTextures/Radio2.png" id="3_ibgl5"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="3_kk33k"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ec5j2"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_o8pl8"]
+size = Vector3(0.510742, 0.347382, 0.0707397)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxi58"]
 resource_name = "Radio.001"
@@ -47,14 +48,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_o4m80")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_o8pl8"]
-size = Vector3(0.510742, 0.347382, 0.0707397)
+[node name="Radio" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kk33k")
 
-[node name="Node3D" type="RigidBody3D"]
-collision_layer = 5
-collision_mask = 5
-physics_material_override = SubResource("PhysicsMaterial_ec5j2")
-script = ExtResource("1_bg5d2")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0131836, 0.0102997, 0.000335693)
+shape = SubResource("BoxShape3D_o8pl8")
 
 [node name="Interpolator" parent="." instance=ExtResource("1_m8eq4")]
 
@@ -63,17 +64,13 @@ transform = Transform3D(0.285781, 0, 0, 0, 0.285781, 0, 0, 0, 0.285781, 0, 0, 0)
 mesh = SubResource("ArrayMesh_r6dam")
 skeleton = NodePath("")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="Node3D" type="Area3D" parent="."]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_bg5d2")
 
-[node name="Radio" type="Area3D" parent="."]
-collision_layer = 6
-collision_mask = 6
-script = ExtResource("3_kk33k")
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Node3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Radio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0131836, 0.0102997, 0.000335693)
-shape = SubResource("BoxShape3D_o8pl8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0131836, 0.0102997, 0.000335693)
 shape = SubResource("BoxShape3D_o8pl8")

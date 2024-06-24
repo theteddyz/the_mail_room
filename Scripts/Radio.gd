@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends Area3D
 
 @onready var audio:AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var collider:CollisionShape3D = $CollisionShape3D
@@ -73,7 +73,6 @@ func remove_from_cart():
 	mailcartPosition.remove_child(self)
 	root.add_child(self)
 	attached_to_cart = false
-	set_gravity_scale(1)
 
 func check_dropped(smass,object):
 	if object.name == "Radio":
