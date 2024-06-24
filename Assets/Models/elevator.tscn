@@ -1084,6 +1084,7 @@ transform = Transform3D(1, 0, -4.68958e-13, 0, 1, 0, 4.68958e-13, 0, 1, 0.107107
 collision_layer = 3
 script = ExtResource("9_mt8yi")
 target_scene_path = "res://Scenes/Worlds/testcutscene.tscn"
+floor_num = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ElevatorFloors/CallCenter/Area3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.0024668, -0.00111961, 0.000319481)
@@ -1099,6 +1100,7 @@ transform = Transform3D(1, 0, -4.68958e-13, 0, 1, 0, 4.68958e-13, 0, 1, 0.107107
 collision_layer = 3
 script = ExtResource("9_mt8yi")
 target_scene_path = "res://Scenes/Worlds/Finance.tscn"
+floor_num = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ElevatorFloors/Finance/Area3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.0024668, -0.00111961, 0.000319481)
@@ -1114,6 +1116,7 @@ transform = Transform3D(1, 0, -4.68958e-13, 0, 1, 0, 4.68958e-13, 0, 1, 0.107107
 collision_layer = 3
 script = ExtResource("9_mt8yi")
 target_scene_path = "res://Scenes/Worlds/Marketing.tscn"
+floor_num = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ElevatorFloors/Marketing/Area3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.0024668, -0.00111961, 0.000319481)
@@ -1129,6 +1132,7 @@ transform = Transform3D(1, 0, -4.68958e-13, 0, 1, 0, 4.68958e-13, 0, 1, 0.107107
 collision_layer = 3
 script = ExtResource("9_mt8yi")
 target_scene_path = "res://Scenes/Worlds/R&D.tscn"
+floor_num = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ElevatorFloors/R&D/Area3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.0024668, -0.00111961, 0.000319481)
@@ -1144,6 +1148,7 @@ transform = Transform3D(1, 0, -4.68958e-13, 0, 1, 0, 4.68958e-13, 0, 1, 0.107107
 collision_layer = 3
 script = ExtResource("9_mt8yi")
 target_scene_path = "res://Scenes/Worlds/HumanResources.tscn"
+floor_num = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ElevatorFloors/HumanResources/Area3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.0024668, -0.00111961, 0.000319481)
@@ -1159,6 +1164,7 @@ transform = Transform3D(1, 0, -4.68958e-13, 0, 1, 0, 4.68958e-13, 0, 1, 0.107107
 collision_layer = 3
 script = ExtResource("9_mt8yi")
 target_scene_path = "res://Scenes/Worlds/InternalOperations.tscn"
+floor_num = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ElevatorFloors/InternalOperations/Area3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.0024668, -0.00111961, 0.000319481)
@@ -1174,6 +1180,7 @@ transform = Transform3D(1, 0, -4.83169e-13, 0, 1, 0, 4.83169e-13, 0, 1, 0.107107
 collision_layer = 3
 script = ExtResource("9_mt8yi")
 target_scene_path = "res://Scenes/Worlds/ServerRoom.tscn"
+floor_num = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ElevatorFloors/ServerRoom/Area3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.0024668, -0.00111961, 0.000319481)
@@ -1204,6 +1211,7 @@ transform = Transform3D(1, 0, -4.68958e-13, 0, 1, 0, 4.68958e-13, 0, 1, 0.107107
 collision_layer = 3
 script = ExtResource("9_mt8yi")
 target_scene_path = "res://Scenes/Worlds/mail_room.tscn"
+floor_num = -1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ElevatorFloors/MailRoom/Area3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.0024668, -0.00111961, 0.000319481)
@@ -1218,6 +1226,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -4.9738e-13, 0, 1, 0, 4.9738e-13, 0, 1, 0.106377, -0.471357, 0)
 collision_layer = 3
 script = ExtResource("9_mt8yi")
+floor_num = -2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ElevatorFloors/Storage/Area3D"]
 transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.0024668, -0.00111961, 0.000319481)

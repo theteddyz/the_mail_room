@@ -11,7 +11,7 @@ signal scare_event(event_type:String,pos:Vector3)
 #Signal for when we want to disable to player movement
 signal disable_player_movement(l:bool,w:bool)
 #Signal for giving the floor to the game manager when in the elevator
-signal  moved_to_floor(path:String)
+signal  moved_to_floor(path:String,floor:int)
 #Signal for when game is paused
 signal game_paused()
 ###############################################################################

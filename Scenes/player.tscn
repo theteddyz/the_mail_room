@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=16 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="2_5t4wg"]
@@ -35,6 +35,9 @@ radius = 0.0937542
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vr3m2"]
 radius = 0.122298
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0heh4"]
+radius = 2.68939
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
 collision_layer = 4
@@ -182,3 +185,11 @@ target_position = Vector3(0, 1.095, 0)
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72236, 0)
 current = true
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05926, -0.877543)
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_0heh4")

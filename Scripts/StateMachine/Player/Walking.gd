@@ -157,6 +157,7 @@ func turnOffInteractCooldown():
 
 func _process(delta):
 	# Apply the movement
+	rotation = Vector3.ZERO
 	persistent_state.velocity.y = 0
 	persistent_state.move_and_slide()
 	checkObstructionRaycasts()

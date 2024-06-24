@@ -1360,6 +1360,9 @@ autoplay = true
 transform = Transform3D(-0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, -0.669131, 0.139197, 0.5, -6.00579)
 collision_mask = 20
 
+[node name="Elevator" parent="." instance=ExtResource("13_8lshx")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.10901, 0.5, 30.4031)
+
 [node name="Desks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -5)
 
@@ -1380,6 +1383,3 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.171
 
 [node name="Desk6" parent="Desks" instance=ExtResource("14_0rx2b")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.06713, -0.481366, -6.02008)
-
-[node name="Elevator" parent="." instance=ExtResource("13_8lshx")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.10901, 0.5, 30.4031)

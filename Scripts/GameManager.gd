@@ -74,7 +74,7 @@ func save():
 		# Store the save dictionary as a new line in the save file.
 		save_game.store_line(json_string)
 
-func goto_scene(path):
+func goto_scene(path,floor):
 	if current_scene.get_scene_file_path() != path:
 		call_deferred("_deferred_goto_scene", path)
 
@@ -106,6 +106,7 @@ func _deferred_goto_scene(path):
 	
 	# Position the elevator
 	elevator_reference.position = new_elevator.position
+	elevator_reference.rotation = new_elevator.rotation
 	
 	#TEMPORARY AND SLOW WAY TO FIND THE LEVEL WE SHOULD TOGGLE TO NEXT TIME WE PRESS LOAD
 	#elevator_reference.find_child("Button").target_scene_path = new_elevator.find_child("Button").target_scene_path
@@ -113,17 +114,21 @@ func _deferred_goto_scene(path):
 		#elevator_reference.find_child("Button").target_scene_path = "res://Scenes/testworld.tscn"
 	#else:
 		#elevator_reference.find_child("Button").target_scene_path = "res://Scenes/testworld2.tscn"
-	#new_elevator.free()
+	new_elevator.free()
 	#elevator_reference.name = "Elevator"
 
 	# Position the player	
-	player_reference.position = elevator_reference.position + player_relative_to_elevator
 	
 	# Time to delete the old scene
 	old_scene.free()
 
 	# Add it to the active scene, as child of root.
 	get_tree().root.add_child(current_scene)
+	#print(player_reference)
+	#player_reference.reparent(elevator_reference.find_child("Elevator"),false)
+	#player_reference.position = Vector3.ZERO
+	#player_reference.rotation = Vector3.ZERO
+	#elevator_reference.move_floors()
 
 func load_node_variables():
 	if not FileAccess.file_exists(FILE_NAME):
