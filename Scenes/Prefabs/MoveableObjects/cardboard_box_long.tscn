@@ -49,7 +49,7 @@ size = Vector3(0.810974, 0.0979004, 0.460205)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0547399, 0)
 collision_layer = 7
 collision_mask = 7
-angular_damp = 10.0
+angular_damp = 1.0
 script = ExtResource("1_dpqm0")
 
 [node name="Interpolator" type="Node3D" parent="."]
