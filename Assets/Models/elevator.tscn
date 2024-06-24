@@ -1372,6 +1372,9 @@ collision_mask = 5
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_7rwnt")
 
+[node name="cart_pos" type="Node3D" parent="Elevator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.639733, 0.996865)
+
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978574, 1.37669, 3.13153)
 

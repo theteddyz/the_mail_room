@@ -5,7 +5,7 @@ class_name CartingState
 @onready var head = neck.get_node("Head")
 @onready var headbop_root = head.get_node("HeadbopRoot")
 @onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
-@onready var mailcart = get_parent().get_parent().get_node("Mailcart")
+@onready var mailcart
 
 @export var cart_movement_lerp_speed = 3.85
 @export var cart_sprinting_speed = 5.2
@@ -20,6 +20,7 @@ var rotate = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	mailcart = GameManager.get_mail_cart()
 	mailcart.reparent(persistent_state, true)
 	set_colliders_enabled("Carting_Collider",true)
 

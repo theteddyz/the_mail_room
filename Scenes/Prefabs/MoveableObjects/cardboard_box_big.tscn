@@ -47,8 +47,8 @@ size = Vector3(0.640778, 0.637268, 0.636597)
 
 [node name="Cardboard_box_big" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305338, 0)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_s1rcs")
 
 [node name="Interpolator" type="Node3D" parent="."]

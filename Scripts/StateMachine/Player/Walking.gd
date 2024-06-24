@@ -51,7 +51,7 @@ var head_bopping_current = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mailcart = persistent_state.get_parent().get_node("Mailcart")
+	mailcart = GameManager.get_mail_cart()
 	starting_height = neck.position.y
 	crouching_depth = starting_height - 0.5
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

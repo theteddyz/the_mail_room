@@ -17,9 +17,10 @@ var unhighlight_lerp_speed = 8.2
 func _ready():
 	# Initialize the array with game objects if needed
 	# For example, game_objects.append(some_game_object)
+	GameManager.register_mail_cart(self)
 	radio_position = find_child("RadioPosition")
 	is_being_looked_at = false
-	player = get_parent().find_child("Player")	
+	player = GameManager.get_player()
 
 func _process(delta):
 	if is_being_looked_at and game_objects.size() != 0:
