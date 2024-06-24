@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgldfdyb7utbo"]
+[gd_scene load_steps=9 format=3 uid="uid://cgldfdyb7utbo"]
 
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_s1rcs"]
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_skhh8"]
 [ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="2_sofgt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a3mem"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuv2q"]
 resource_name = "CardboardBox"
@@ -49,6 +51,8 @@ size = Vector3(0.640778, 0.637268, 0.636597)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305338, 0)
 collision_layer = 7
 collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_a3mem")
+angular_damp = 10.0
 script = ExtResource("1_s1rcs")
 
 [node name="Interpolator" type="Node3D" parent="."]
