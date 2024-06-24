@@ -13,7 +13,9 @@ var standing_is_blocked = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	state_factory = StateFactory.new()
+	GameManager.register_player(self)
 	change_state("walking")
 
 # Break this out to a pausemanager or similar

@@ -37,7 +37,7 @@ radius = 0.0937542
 radius = 0.122298
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0heh4"]
-radius = 2.68939
+radius = 8.51913
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
 collision_layer = 4

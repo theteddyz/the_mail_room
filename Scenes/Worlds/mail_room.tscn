@@ -78,11 +78,11 @@ size = Vector3(30.2252, 1, 22.7222)
 material = ExtResource("1_salub")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="stage/floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4968, 24.7614, -5.24531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8849, 6.30989, -5.24531)
 use_collision = true
 collision_layer = 5
 collision_mask = 5
-size = Vector3(59.6589, 0.0450439, 18.2026)
+size = Vector3(58.8827, 0.0450439, 18.2026)
 material = ExtResource("1_salub")
 
 [node name="Objects" type="Node3D" parent="stage"]
@@ -947,7 +947,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 [node name="Roof" type="Node3D" parent="stage"]
 
 [node name="Ceiling16" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -13.4783, 4.541, -4.9745)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -12.1685, 4.541, -4.9745)
 
 [node name="Ceiling33" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -13.4783, 4.541, 0.711371)
@@ -956,7 +956,7 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -13.4783, 4.541, 
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -7.72797, 4.541, 0.711371)
 
 [node name="Ceiling21" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -19.185, 4.541, -4.9745)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -17.8647, 4.541, -4.9745)
 
 [node name="Ceiling22" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -19.185, 4.541, -10.6819)
@@ -965,7 +965,7 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -19.185, 4.541, -
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -19.185, 4.541, 0.697172)
 
 [node name="Ceiling24" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -24.9478, 4.541, -4.9745)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -23.5492, 4.541, -4.9745)
 
 [node name="Ceiling25" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -24.9478, 4.541, -10.682)
@@ -974,7 +974,7 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -24.9478, 4.541, 
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -24.9479, 4.541, 0.697)
 
 [node name="Ceiling27" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -30.6501, 4.541, -4.9745)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -29.2476, 4.541, -4.9745)
 
 [node name="Ceiling28" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -30.6499, 4.541, -10.682)
@@ -983,7 +983,7 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -30.6499, 4.541, 
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -30.6499, 4.541, 0.697)
 
 [node name="Ceiling30" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -36.3879, 4.541, -4.974)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -34.9512, 4.541, -4.974)
 
 [node name="Ceiling31" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -36.3879, 4.541, -10.682)
@@ -992,25 +992,25 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -36.3879, 4.541, 
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -36.3879, 4.541, 0.697)
 
 [node name="Ceiling39" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -41.8501, 4.541, -4.974)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -40.6443, 4.541, -4.974)
 
 [node name="Ceiling40" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -41.8501, 4.541, -10.682)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -42.0538, 4.541, -10.682)
 
 [node name="Ceiling41" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -41.8501, 4.541, 0.697)
 
 [node name="Ceiling17" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -7.77154, 4.541, -4.9745)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -6.47654, 4.541, -4.9745)
 
 [node name="Ceiling18" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -2.0703, 4.541, -4.9745)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.787261, 4.541, -4.9745)
 
 [node name="Ceiling19" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 3.63174, 4.541, -4.9745)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 4.87951, 4.541, -4.9745)
 
 [node name="Ceiling20" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 9.3371, 4.541, -4.9745)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.5649, 4.541, -4.9745)
 
 [node name="Ceiling34" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -13.4783, 4.541, -10.6646)

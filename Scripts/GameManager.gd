@@ -7,6 +7,11 @@ var current_scene : Node
 var player_reference: Node
 var elevator_reference: Node
 
+func register_player(new_player):
+	player_reference = new_player
+
+func get_player()->Node:
+	return player_reference
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
@@ -124,11 +129,11 @@ func _deferred_goto_scene(path):
 
 	# Add it to the active scene, as child of root.
 	get_tree().root.add_child(current_scene)
-	#print(player_reference)
-	#player_reference.reparent(elevator_reference.find_child("Elevator"),false)
-	#player_reference.position = Vector3.ZERO
-	#player_reference.rotation = Vector3.ZERO
-	#elevator_reference.move_floors()
+	print(player_reference)
+	player_reference.reparent(elevator_reference.find_child("Elevator"),false)
+	player_reference.position = Vector3(0,-1,0)
+	player_reference.rotation = Vector3(0,-180,0)
+	elevator_reference.move_floors()
 
 func load_node_variables():
 	if not FileAccess.file_exists(FILE_NAME):

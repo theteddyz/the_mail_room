@@ -41,9 +41,15 @@ func move_floors():
 	if previous_floor > current_floor:
 		print("PLAYING")
 		anim.play("call_elevator_down")
+		await anim.animation_finished
+		var player = GameManager.get_player()
+		player.reparent(get_parent(),true)
 	else:
 		print("PLAYINGd")
 		anim.play("call_elevator_up")
+		await anim.animation_finished
+		var player = find_child("Player")
+		player.reparent(get_parent(),true)
 
 func set_floor(path,new_floor:int):
 	previous_floor = current_floor
