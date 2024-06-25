@@ -8,12 +8,8 @@ var state: State
 var state_factory: StateFactory
 var standing_is_blocked = false
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-#var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	state_factory = StateFactory.new()
 	GameManager.register_player(self)
 	change_state("walking")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://wt6476m6k8tc"]
+[gd_scene load_steps=74 format=3 uid="uid://wt6476m6k8tc"]
 
 [ext_resource type="Script" path="res://Scripts/ElevatorController.gd" id="1_rvpeo"]
 [ext_resource type="Texture2D" uid="uid://d24ont78p0umt" path="res://Assets/Textures/BlenderTextures/Elevator.png" id="1_u6psm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="7_avskn"]
 [ext_resource type="Script" path="res://Scripts/Call_Elevator_Button.gd" id="9_agksa"]
 [ext_resource type="Script" path="res://Scripts/ElevatorButton.gd" id="9_mt8yi"]
+[ext_resource type="Script" path="res://Assets/Models/ElevatorObjectDetector.gd" id="11_3vp34"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8r8s"]
 resource_name = "Wall"
@@ -780,7 +781,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pybao")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8j03"]
-size = Vector3(3.93994, 13.6959, 6.20771)
+size = Vector3(3.245, 3.715, 4.795)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n7f3k"]
 size = Vector3(0.118408, 3.01123, 4.63928)
@@ -1161,7 +1162,6 @@ script = ExtResource("9_agksa")
 shape = SubResource("SphereShape3D_2ts6n")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="WallWithElevatorEntrance"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 5
 collision_mask = 5
 
@@ -1366,9 +1366,12 @@ skeleton = NodePath("")
 
 [node name="ObjectDetectionShape" type="Area3D" parent="Elevator"]
 transform = Transform3D(0.847829, 0, 0, 0, 0.847829, 0, 0, 0, 0.847829, 0, 0.784932, 0.614856)
+collision_layer = 5
+collision_mask = 7
+script = ExtResource("11_3vp34")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ObjectDetectionShape"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300293, 5.05823, -0.30631)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300293, -0.169383, -0.60775)
 shape = SubResource("BoxShape3D_s8j03")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Elevator"]
@@ -1394,6 +1397,13 @@ shape = SubResource("BoxShape3D_ermmf")
 [node name="cart_pos" type="Node3D" parent="Elevator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.639733, 0.996865)
 
+[node name="ElevatorOrigin" type="Marker3D" parent="Elevator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.936651, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Elevator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.414172, 0)
+light_energy = 3.482
+
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978574, 1.37669, 3.13153)
 
@@ -1401,3 +1411,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.978574, 1.37669, 3.13153)
 libraries = {
 "": SubResource("AnimationLibrary_683k4")
 }
+
+[connection signal="body_entered" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_entered"]
+[connection signal="body_exited" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_exited"]

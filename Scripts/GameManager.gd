@@ -6,15 +6,22 @@ const FILE_NAME = "user://game-data.json"
 var current_scene : Node
 var player_reference: Node
 var elevator_reference: Node
-var mail_cart_refrence:Node
+var mail_cart_reference:Node
+
 func register_player(new_player):
 	player_reference = new_player
 func register_mail_cart(cart):
-	mail_cart_refrence = cart
+	mail_cart_reference = cart
+func register_elevator(elevator):
+	elevator_reference = elevator
+	
 func get_mail_cart()->Node:
-	return mail_cart_refrence
+	return mail_cart_reference
 func get_player()->Node:
 	return player_reference
+func get_elevator()->Node:
+	return elevator_reference
+	
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
@@ -23,17 +30,12 @@ func _ready():
 	
 func load_game():
 	if not FileAccess.file_exists(FILE_NAME):
-		player_reference = current_scene.find_child("Player")
-		elevator_reference = current_scene.find_child("Elevator")
-		mail_cart_refrence = current_scene.find_child("Mailcart")
 		return # Error! We don't have a save to load.
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
 	var save_game = FileAccess.open(FILE_NAME, FileAccess.READ)
 	
-	player_reference = current_scene.find_child("Player")
 	elevator_reference = current_scene.find_child("Elevator")
-	mail_cart_refrence = current_scene.find_child("Mailcart")
 	while save_game.get_position() < save_game.get_length():
 		var json_string = save_game.get_line()
 		var json = JSON.new()
@@ -57,7 +59,6 @@ func load_game():
 		else:
 			continue
 	call_deferred("load_node_variables")
-
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
@@ -83,18 +84,28 @@ func save():
 		# Store the save dictionary as a new line in the save file.
 		save_game.store_line(json_string)
 
-func goto_scene(path,floor):
+func goto_scene(path, floor = null):
 	if current_scene.get_scene_file_path() != path:
-		call_deferred("_deferred_goto_scene", path)
+		var elevatorMove = false
+		if(floor != null):
+			call_deferred("_deferred_goto_scene", path, true)
+		else:
+			call_deferred("_deferred_goto_scene", path)
+		
 
-func _deferred_goto_scene(path):
+func _deferred_goto_scene(path, is_not_scene_load = false):
 	# Load the new scene. New scene exists "in limbo"
 	var s = ResourceLoader.load(path)
 	
 	if(s == null):
 		assert(false, "Could not load scene: " + path + ", not valid path?")
-		
-	var player_relative_to_elevator = player_reference.position - elevator_reference.position
+	
+	var mailcart_in_elevator = elevator_reference.get_node("Elevator").get_node("ObjectDetectionShape").mailcart_exists_in_elevator
+	var elevator_reference_origin = elevator_reference.get_node("Elevator").get_node("ElevatorOrigin")
+	var player_relative_to_elevator = player_reference.global_position - elevator_reference_origin.global_position
+	var player_relativerotation_to_elevator = player_reference.rotation - elevator_reference.rotation
+	var mailcart_relative_to_elevator = mail_cart_reference.global_position - elevator_reference_origin.global_position
+	var mailcart_relativerotation_to_elevator = mail_cart_reference.rotation - elevator_reference.rotation
 	
 	# Change to the new scene
 	var old_scene = current_scene
@@ -107,38 +118,48 @@ func _deferred_goto_scene(path):
 	player_reference.reparent(current_scene, false)
 	player_reference.owner = current_scene
 	player_reference._ready()
-	mail_cart_refrence.reparent(elevator_reference.find_child("Elevator").find_child("cart_pos"),false)
-	var mail_cart_pos = mail_cart_refrence.transform.origin
+	
+	# Find and replace any potential mailcart node in new scene
+	var new_mailcart = current_scene.find_child("Mailcart")
+	if(new_mailcart != null):
+		new_mailcart.free()
+	# We do not want to add the mailcart to the new scene in some cases
+	if(mailcart_in_elevator):
+		mail_cart_reference.reparent(current_scene, false)
+		mail_cart_reference.owner = current_scene
+		mail_cart_reference._ready()
+	
+	
 	# Find and replace the elevator node
 	var new_elevator = current_scene.find_child("Elevator")
+	var new_elevator_rotation = new_elevator.rotation
 	elevator_reference.reparent(current_scene, false)
 	elevator_reference.owner = current_scene
 	
 	# Position the elevator
 	elevator_reference.position = new_elevator.position
 	elevator_reference.rotation = new_elevator.rotation
-	
-	#TEMPORARY AND SLOW WAY TO FIND THE LEVEL WE SHOULD TOGGLE TO NEXT TIME WE PRESS LOAD
-	#elevator_reference.find_child("Button").target_scene_path = new_elevator.find_child("Button").target_scene_path
-	#if(elevator_reference.find_child("Button").target_scene_path == path):
-		#elevator_reference.find_child("Button").target_scene_path = "res://Scenes/testworld.tscn"
-	#else:
-		#elevator_reference.find_child("Button").target_scene_path = "res://Scenes/testworld2.tscn"
 	new_elevator.free()
-	#elevator_reference.name = "Elevator"
-
-	# Position the player	
+	elevator_reference.name = "Elevator"
 	
 	# Time to delete the old scene
 	old_scene.free()
 
 	# Add it to the active scene, as child of root.
 	get_tree().root.add_child(current_scene)
-	player_reference.reparent(elevator_reference.find_child("Elevator"),false)
-	player_reference.position = Vector3(0,-1,0)
-	player_reference.rotation = Vector3(0,-180,0)
-	mail_cart_refrence.position = Vector3.ZERO
-	elevator_reference.move_floors()
+	
+	# Reparent player and cart to elevator if necessary
+	if(is_not_scene_load):
+		player_reference.reparent(elevator_reference.find_child("Elevator").get_node("ElevatorOrigin"), false)
+		player_reference.position = player_relative_to_elevator
+		player_reference.rotation = player_relativerotation_to_elevator
+		#if(mailcart_in_elevator):
+			#mail_cart_reference.reparent(elevator_reference.find_child("Elevator"), false)
+			#mail_cart_reference.position = mailcart_relative_to_elevator
+			#mail_cart_reference.rotation = mailcart_relativerotation_to_elevator
+	
+	if(is_not_scene_load):
+		elevator_reference.move_floors()
 
 func load_node_variables():
 	if not FileAccess.file_exists(FILE_NAME):
@@ -167,7 +188,7 @@ func load_node_variables():
 				
 				var istr = (i as String)
 				var split = istr.split(".")
-			# If the propery is further down, like rotation.y
+				# If the propery is further down, like rotation.y
 				if(istr.contains(".")):
 					new_object[split[0]][split[1]] = node_data[i]
 				else:

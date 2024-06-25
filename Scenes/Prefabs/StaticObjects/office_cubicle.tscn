@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://d1pv5poqi0p1s"]
 
 [ext_resource type="PackedScene" uid="uid://dhy137f2q5r8l" path="res://Scenes/Prefabs/StaticObjects/cubicle.tscn" id="1_g8gtr"]
-[ext_resource type="PackedScene" uid="uid://c5ggiodp7gjke" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="2_wogyr"]
+[ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="2_wogyr"]
 [ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/StaticObjects/keyboard_low_poly_2.tscn" id="3_u2t8d"]
 [ext_resource type="PackedScene" uid="uid://c26hbiaufc6xb" path="res://Scenes/Prefabs/StaticObjects/mouse.tscn" id="4_utlkq"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="5_n3u8f"]
@@ -23,8 +23,6 @@
 
 [node name="GrabableObjectTemplate" parent="." instance=ExtResource("2_wogyr")]
 transform = Transform3D(0.617832, 0, 0.78631, 0, 1, 0, -0.78631, 0, 0.617832, 1.03018, 1.58836, 1.1172)
-collision_layer = 7
-collision_mask = 12295
 physics_material_override = SubResource("PhysicsMaterial_gg5xj")
 
 [node name="KeyboardLowPoly2" parent="." instance=ExtResource("3_u2t8d")]

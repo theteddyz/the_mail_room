@@ -10,6 +10,7 @@ var is_called = false
 
 
 func _ready():
+	GameManager.register_elevator(self)
 	EventBus.connect("moved_to_floor",set_floor)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

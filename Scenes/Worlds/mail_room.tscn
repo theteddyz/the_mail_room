@@ -2,23 +2,23 @@
 
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_5vkla"]
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="1_salub"]
-[ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="2_vsncc"]
-[ext_resource type="PackedScene" uid="uid://dtgjfol411810" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall.tscn" id="3_hxukh"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="2_vsncc"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall.tscn" id="3_hxukh"]
 [ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator.tscn" id="6_gyuf1"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="6_rd5j2"]
-[ext_resource type="PackedScene" uid="uid://doveq38wiuloa" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_without_light.tscn" id="7_84et1"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_without_light.tscn" id="7_84et1"]
 [ext_resource type="VoxelGIData" uid="uid://dkai54woqnuir" path="res://Assets/TemporaryAssets/voxelGITest/mail_room.VoxelGI_data.res" id="10_vwxva"]
 [ext_resource type="PackedScene" uid="uid://bbp38gl3c7dir" path="res://Scenes/Prefabs/StaticObjects/mail_room_shelf.tscn" id="11_3qslt"]
 [ext_resource type="PackedScene" uid="uid://c88sba6h6nwvq" path="res://Scenes/Prefabs/StaticObjects/chute.tscn" id="11_duifo"]
 [ext_resource type="PackedScene" uid="uid://b65csccqsl1l1" path="res://Scenes/Prefabs/StaticObjects/industrial_table.tscn" id="12_haqay"]
-[ext_resource type="PackedScene" uid="uid://jwepvxwg65b2" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="12_r5uwn"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="12_r5uwn"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="13_smksi"]
-[ext_resource type="PackedScene" uid="uid://cgldfdyb7utbo" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="14_thyyr"]
-[ext_resource type="PackedScene" uid="uid://ugwqaphpkcxp" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_long.tscn" id="15_ceayg"]
-[ext_resource type="PackedScene" uid="uid://c148bm0rukaqe" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_medium.tscn" id="16_ine76"]
-[ext_resource type="PackedScene" uid="uid://bhyepbfxwhdat" path="res://Scenes/light_test.tscn" id="17_0ceh8"]
-[ext_resource type="PackedScene" uid="uid://dfbuid76trvb0" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_mini.tscn" id="17_6rwos"]
-[ext_resource type="PackedScene" uid="uid://bwkdr1hhs71ee" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="18_uvktp"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="14_thyyr"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_long.tscn" id="15_ceayg"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_medium.tscn" id="16_ine76"]
+[ext_resource type="PackedScene" path="res://Scenes/light_test.tscn" id="17_0ceh8"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_mini.tscn" id="17_6rwos"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="18_uvktp"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="20_05muy"]
 
 [sub_resource type="Environment" id="Environment_j0hss"]
@@ -58,6 +58,7 @@ size = Vector3(36.5455, 15.1998, 27.3774)
 data = ExtResource("10_vwxva")
 
 [node name="stage" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="floor" type="Node3D" parent="stage"]
 
@@ -1034,7 +1035,7 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 3.63174, 4.541, -
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 9.3371, 4.541, -10.6646)
 
 [node name="Elevator" parent="." instance=ExtResource("6_gyuf1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.5164, 0, -5.06763)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.516, 0.5, -5.068)
 
 [node name="Player" parent="." instance=ExtResource("20_05muy")]
-transform = Transform3D(-0.00603879, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.00603879, 4.8371, 0, -5.31932)
+transform = Transform3D(-0.00603879, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.00603879, 4.8371, 0.552787, -5.31932)
