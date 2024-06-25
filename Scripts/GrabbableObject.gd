@@ -72,6 +72,7 @@ func pickmeUp():
 		return
 	#if parent.mass <= weightLimit:
 	#TODO: Switch "null" to something "more" correct
+	angular_damp = 10
 	set_collision_mask_value(3, false)
 	EventBus.emitCustomSignal("object_held", [mass, get_parent()])
 	is_picked_up = true
@@ -86,6 +87,7 @@ func dropMe(throw:bool):
 		global_position = currentPos
 		#linear_damp = 0.1
 		force_above_threshold_time = 0.0
+		angular_damp = 1
 		set_collision_mask_value(3, false)
 		if should_freeze:
 			sleeping = true
@@ -94,6 +96,7 @@ func dropMe(throw:bool):
 		EventBus.emitCustomSignal("dropped_object",[mass,self])
 		start_pickup_timer()
 		force_above_threshold_time = 0.0
+		angular_damp = 1
 		set_collision_mask_value(3, false)
 		if should_freeze:
 			sleeping = true
