@@ -26,7 +26,6 @@ func _ready():
 	Interpolator = find_child("Interpolator")
 	var root = get_tree().root
 	var current_scene = root.get_child(root.get_child_count() - 1)
-	player = current_scene.find_child("Player")
 	if !should_freeze:
 		freeze = false
 	else:
@@ -55,6 +54,7 @@ func _physics_process(delta):
 			freeze = true
 
 func interact():
+	player = GameManager.get_player()
 	if pickup_timer.is_stopped():
 		if !timerAdded:
 			add_child(pickup_timer)
