@@ -581,7 +581,7 @@ mesh = SubResource("ArrayMesh_7464o")
 skeleton = NodePath("")
 
 [node name="ElevatorFloors" type="MeshInstance3D" parent="Elevator/Elevator_body"]
-transform = Transform3D(-0.64294, 0, -9.70812e-08, 0, 0.64294, 0, 9.70812e-08, 0, -0.64294, -1.09623, 0.64275, 2.42477)
+transform = Transform3D(-0.64294, 0, -9.70812e-08, 0, 0.64294, 0, 9.70812e-08, 0, -0.64294, -1.09623, 0.533626, 2.42477)
 mesh = SubResource("ArrayMesh_0cmp7")
 skeleton = NodePath("")
 
@@ -698,7 +698,7 @@ transform = Transform3D(1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, -0.00246
 shape = SubResource("SphereShape3D_jsaqy")
 
 [node name="Entrance" type="MeshInstance3D" parent="Elevator/Elevator_body/ElevatorFloors"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
+transform = Transform3D(1, 0, -5.68434e-14, 0, 1, 0, 5.68434e-14, 0, 1, 0, 0, -2.38419e-07)
 mesh = SubResource("ArrayMesh_vl4f5")
 skeleton = NodePath("")
 
