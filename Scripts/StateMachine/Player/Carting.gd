@@ -47,7 +47,7 @@ func _process(delta):
 		var input_dir = Input.get_vector("left", "right", "forward", "backward")
 
 		# Calculate the movement direction based on the input and the player's basis
-		var movement_direction = (persistent_state.transform.basis * Vector3(0, 0, input_dir.y)).normalized()
+		var movement_direction = (persistent_state.global_basis * Vector3(0, 0, input_dir.y)).normalized()
 
 		# Interpolate smoothly between the current direction and the movement direction
 		direction = direction.lerp(movement_direction, delta * cart_movement_lerp_speed)

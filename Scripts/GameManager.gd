@@ -25,7 +25,6 @@ func get_elevator()->Node:
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
-	EventBus.connect("moved_to_floor",goto_scene)
 	load_game()
 	
 func load_game():
@@ -115,9 +114,10 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 	var new_player = current_scene.find_child("Player")
 	if(new_player != null):
 		new_player.free()
-	player_reference.reparent(current_scene, false)
-	player_reference.owner = current_scene
-	player_reference._ready()
+	if(!is_not_scene_load):
+		player_reference.reparent(current_scene, false)
+		player_reference.owner = current_scene
+		player_reference._ready()
 	
 	# Find and replace any potential mailcart node in new scene
 	var new_mailcart = current_scene.find_child("Mailcart")
@@ -125,9 +125,10 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 		new_mailcart.free()
 	# We do not want to add the mailcart to the new scene in some cases
 	if(mailcart_in_elevator):
-		mail_cart_reference.reparent(current_scene, false)
-		mail_cart_reference.owner = current_scene
-		mail_cart_reference._ready()
+		#mail_cart_reference.reparent(current_scene, false)
+		#mail_cart_reference.owner = current_scene
+		#mail_cart_reference._ready()
+		pass
 	
 	
 	# Find and replace the elevator node
@@ -150,16 +151,18 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 	
 	# Reparent player and cart to elevator if necessary
 	if(is_not_scene_load):
-		player_reference.reparent(elevator_reference.find_child("Elevator").get_node("ElevatorOrigin"), false)
-		player_reference.position = player_relative_to_elevator
-		player_reference.rotation = player_relativerotation_to_elevator
+		pass
+		#player_reference.reparent(elevator_reference.find_child("Elevator").get_node("ElevatorOrigin"), false)
+		#player_reference.position = player_relative_to_elevator
+		#player_reference.rotation = player_relativerotation_to_elevator
+		
 		#if(mailcart_in_elevator):
 			#mail_cart_reference.reparent(elevator_reference.find_child("Elevator"), false)
 			#mail_cart_reference.position = mailcart_relative_to_elevator
 			#mail_cart_reference.rotation = mailcart_relativerotation_to_elevator
 	
 	if(is_not_scene_load):
-		elevator_reference.move_floors()
+		elevator_reference.load_floor()
 
 func load_node_variables():
 	if not FileAccess.file_exists(FILE_NAME):

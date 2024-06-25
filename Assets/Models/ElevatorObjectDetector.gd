@@ -11,6 +11,7 @@ func _on_body_entered(body):
 		game_objects.append(body)
 	elif(body.name == "Player" and body.state is CartingState):
 		if(body.get_node("Mailcart") != null):
+			print("IN COLLIDER")
 			mailcart_exists_in_elevator = true
 
 

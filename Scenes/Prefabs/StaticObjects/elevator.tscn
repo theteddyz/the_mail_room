@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=3 uid="uid://wd85mtseuke1"]
+
+[ext_resource type="Script" path="res://Scripts/ElevatorController.gd" id="1_4nay1"]
+[ext_resource type="PackedScene" uid="uid://dvcnb71rjht57" path="res://Scenes/Prefabs/StaticObjects/elevator_wall.tscn" id="2_36my7"]
+[ext_resource type="PackedScene" uid="uid://bmjy1n0uwnbhb" path="res://Scenes/Prefabs/StaticObjects/elevator_shaft.tscn" id="3_nwkyn"]
+[ext_resource type="PackedScene" uid="uid://cy7ngjicicj5t" path="res://Scenes/Prefabs/StaticObjects/new_elevator.tscn" id="4_bmf7c"]
+[ext_resource type="Script" path="res://Scripts/Call_Elevator_Button.gd" id="5_2p1qo"]
+[ext_resource type="Script" path="res://Assets/Models/ElevatorObjectDetector.gd" id="5_be72g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ks2cq"]
+size = Vector3(3.245, 3.715, 4.795)
+
+[sub_resource type="Animation" id="Animation_m8rxp"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_5mk03"]
+resource_name = "elevator_call_down"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elevator:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, 10, 0.75), Vector3(2, 1, 0.75)]
+}
+
+[sub_resource type="Animation" id="Animation_0put5"]
+resource_name = "elevator_call_up"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elevator:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, -3.5, 0.75), Vector3(2, 1, 0.75)]
+}
+
+[sub_resource type="Animation" id="Animation_3b418"]
+resource_name = "elevator_move_down"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elevator:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, 1, 0.75), Vector3(2, -3.5, 0.75)]
+}
+
+[sub_resource type="Animation" id="Animation_r48pq"]
+resource_name = "elevator_move_up"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elevator:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2, 1, 0.75), Vector3(2, 10, 0.75)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4y204"]
+_data = {
+"RESET": SubResource("Animation_m8rxp"),
+"elevator_call_down": SubResource("Animation_5mk03"),
+"elevator_call_up": SubResource("Animation_0put5"),
+"elevator_move_down": SubResource("Animation_3b418"),
+"elevator_move_up": SubResource("Animation_r48pq")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yfroe"]
+radius = 0.200699
+
+[node name="Elevator" type="Node3D"]
+script = ExtResource("1_4nay1")
+
+[node name="Elevator_Wall" parent="." instance=ExtResource("2_36my7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.0856521, 4)
+
+[node name="ElevatorShaft" parent="." instance=ExtResource("3_nwkyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.0856521, 0.825366)
+
+[node name="ElevatorShaft2" parent="." instance=ExtResource("3_nwkyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7.92886, 0.825366)
+
+[node name="ElevatorShaft3" parent="." instance=ExtResource("3_nwkyn")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 2, 15.5687, 0.825366)
+
+[node name="Elevator" parent="." instance=ExtResource("4_bmf7c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 0.75)
+
+[node name="ElevatorOrigin" type="Marker3D" parent="Elevator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.903498, 0)
+
+[node name="ObjectDetectionShape" type="Area3D" parent="Elevator"]
+transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 0.999997, 0, 0, 0)
+collision_layer = 5
+collision_mask = 7
+script = ExtResource("5_be72g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ObjectDetectionShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300293, -0.169383, -0.60775)
+shape = SubResource("BoxShape3D_ks2cq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4y204")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99677, 1.35007, 3.94624)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("5_2p1qo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0160871, 0, 0.111794)
+shape = SubResource("SphereShape3D_yfroe")
+
+[connection signal="body_entered" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_entered"]
+[connection signal="body_exited" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_exited"]

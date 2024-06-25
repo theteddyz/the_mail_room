@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="4_msfst"]
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="5_ntyld"]
 [ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly.tscn" id="6_qvt04"]
-[ext_resource type="PackedScene" uid="uid://dh384hg87l3em" path="res://Scenes/Prefabs/StaticObjects/cubicle_empty.tscn" id="7_cavj3"]
+[ext_resource type="PackedScene" uid="uid://438d404w3d6r" path="res://Scenes/Prefabs/StaticObjects/cubicle_empty.tscn" id="7_cavj3"]
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="7_gmjtd"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly_no_light.tscn" id="7_uqp7y"]
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="8_h3rhg"]
@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://cxx4tf5grxfu8" path="res://Assets/Models/radio_model_2.tscn" id="10_r6ec6"]
 [ext_resource type="AudioStream" uid="uid://xwggf2hn0alx" path="res://Assets/Audio/579569__leonelmail__office-ambience-sharespace-2.mp3" id="11_1i41i"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_rgcp3"]
-[ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator.tscn" id="13_8lshx"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="14_0rx2b"]
 [ext_resource type="VoxelGIData" uid="uid://crcnvap0du5j4" path="res://Assets/TemporaryAssets/voxelGITest/testcutscene.VoxelGI_data.res" id="17_bi161"]
+[ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="17_ucf0v"]
 
 [sub_resource type="Environment" id="Environment_mq4r4"]
 background_mode = 2
@@ -529,9 +529,6 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131,
 
 [node name="CeilingLowPoly38" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131, 6.068, 22.6633)
-
-[node name="CeilingLowPoly40" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131, 6.068, 34.0194)
 
 [node name="CeilingLowPoly42" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131, 6.068, 44.9715)
@@ -1246,27 +1243,27 @@ size = Vector3(32.2643, 1, 20)
 material = ExtResource("8_h3rhg")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7559, -0.5, 33.2412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7228, -0.5, 33.2412)
 use_collision = true
 collision_layer = 5
 collision_mask = 5
-size = Vector3(33.8997, 1, 26.7939)
+size = Vector3(35.966, 1, 26.7939)
 material = ExtResource("8_h3rhg")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.544, -0.5, 28.9534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6247, -0.5, 25.1243)
 use_collision = true
 collision_layer = 5
 collision_mask = 5
-size = Vector3(25.1199, 1, 18.2183)
+size = Vector3(25.2813, 1, 10.5601)
 material = ExtResource("8_h3rhg")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4337, -0.5, 51.9286)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5161, -0.5, 48.6632)
 use_collision = true
 collision_layer = 7
 collision_mask = 7
-size = Vector3(15.2543, 1, 30.0352)
+size = Vector3(19.0895, 1, 36.5659)
 material = ExtResource("8_h3rhg")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="stage/Floor"]
@@ -1275,6 +1272,22 @@ use_collision = true
 collision_layer = 7
 collision_mask = 7
 size = Vector3(44.3308, 1, 20.6459)
+material = ExtResource("8_h3rhg")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="stage/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1347, -0.5, 41.5594)
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(3.71274, 1, 10.4623)
+material = ExtResource("8_h3rhg")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="stage/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1347, 12.475, 33.6763)
+use_collision = true
+collision_layer = 7
+collision_mask = 7
+size = Vector3(3.71274, 0.211914, 7.87624)
 material = ExtResource("8_h3rhg")
 
 [node name="CeilingBlockingLight" type="Node3D" parent="stage"]
@@ -1360,9 +1373,6 @@ autoplay = true
 transform = Transform3D(-0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, -0.669131, 0.139197, 0.5, -6.00579)
 collision_mask = 20
 
-[node name="Elevator" parent="." instance=ExtResource("13_8lshx")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.10901, 0.5, 30.4031)
-
 [node name="Desks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -5)
 
@@ -1383,3 +1393,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.171
 
 [node name="Desk6" parent="Desks" instance=ExtResource("14_0rx2b")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.06713, -0.481366, -6.02008)
+
+[node name="Elevator" parent="." instance=ExtResource("17_ucf0v")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.11262, 0.596205, 34.4045)
