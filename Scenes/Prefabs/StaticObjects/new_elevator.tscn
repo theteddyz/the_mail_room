@@ -642,7 +642,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.164444, 0)
 collision_layer = 3
 script = ExtResource("3_prkdp")
-target_scene_path = "res://Scenes/Worlds/R&D.tscn"
+target_scene_path = "res://Scenes/Worlds/test_floor_layout.tscn"
 floor_num = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/Elevator_body/ElevatorFloors/R&D/Area3D"]

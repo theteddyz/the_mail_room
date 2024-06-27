@@ -123,12 +123,12 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0.117647)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gb2xf"]
-size = Vector3(8.7654, 11.8827, 0.252686)
+size = Vector3(5.58075, 7.65668, 0.252686)
 
 [node name="WallMeetingRoom_006" type="StaticBody3D"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="WallWindow_001" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
 mesh = SubResource("ArrayMesh_4utay")
 skeleton = NodePath("")
 
@@ -138,11 +138,10 @@ mesh = SubResource("ArrayMesh_1xjxo")
 skeleton = NodePath("")
 
 [node name="WallMeetingRoomGlass_002" type="MeshInstance3D" parent="WallWindow_001"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_clchy")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_1n3yb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001915, 6.02398, 0.00671387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0177665, 3.91097, 0.00671387)
 shape = SubResource("BoxShape3D_gb2xf")

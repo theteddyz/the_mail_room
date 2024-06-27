@@ -270,160 +270,160 @@ transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0,
 transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 20.182, 1.43051e-06, 60.6137)
 
 [node name="WallMeetingRoom_003" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9665, -0.00132599, 13.0073)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9665, -0.00132599, 13.0073)
 
 [node name="WallMeetingRoom_015" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9813, 0, 18.6919)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9813, 0, 18.6919)
 
 [node name="WallMeetingRoom_016" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9813, 0, 24.3413)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9813, 0, 24.3413)
 
 [node name="WallMeetingRoom_005" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9665, -0.00132599, 30.0073)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9665, -0.00132599, 30.0073)
 
 [node name="WallMeetingRoom_017" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9813, 0, 35.6969)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9813, 0, 35.6969)
 
 [node name="WallMeetingRoom_018" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9813, 0, 41.3841)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9813, 0, 41.3841)
 
 [node name="WallMeetingRoom_006" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9665, -0.00132599, 46.9347)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9665, -0.00132599, 46.9347)
 
 [node name="WallMeetingRoom_050" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9665, -0.00132599, 52.6303)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9665, -0.00132599, 52.6303)
 
 [node name="WallMeetingRoom_051" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9665, -0.00132599, 58.3152)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9665, -0.00132599, 58.3152)
 
 [node name="WallMeetingRoom_053" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9665, -0.00132599, 63.996)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9665, -0.00132599, 63.996)
 
 [node name="WallMeetingRoom_004" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9813, 0, -9.67861)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9813, 0, -9.67861)
 
 [node name="WallMeetingRoom_012" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9813, 0, -15.3678)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9813, 0, -15.3678)
 
 [node name="WallMeetingRoom_038" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9813, 0, -17.2378)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9813, 0, -17.2378)
 
 [node name="WallMeetingRoom_011" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9665, -0.00132599, -3.99267)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9665, -0.00132599, -3.99267)
 
 [node name="WallMeetingRoom_013" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9813, 0, 1.6341)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9813, 0, 1.6341)
 
 [node name="WallMeetingRoom_014" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 26.9813, 0, 7.31044)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 26.9813, 0, 7.31044)
 
 [node name="WallMeetingRoom_007" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, -0.00132599, 24.3127)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, -0.00132599, 24.3127)
 
 [node name="WallMeetingRoom_020" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, 18.6281)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, 18.6281)
 
 [node name="WallMeetingRoom_021" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, 12.9787)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, 12.9787)
 
 [node name="WallMeetingRoom_008" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, -0.00132599, 7.31267)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, -0.00132599, 7.31267)
 
 [node name="WallMeetingRoom_022" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, 1.62308)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, 1.62308)
 
 [node name="WallMeetingRoom_023" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, -4.06412)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, -4.06412)
 
 [node name="WallMeetingRoom_009" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, -0.00132599, -9.61472)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, -0.00132599, -9.61472)
 
 [node name="WallMeetingRoom_024" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, -15.32)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, -15.32)
 
 [node name="WallMeetingRoom_039" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, -17.1932)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, -17.1932)
 
 [node name="WallMeetingRoom_010" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, 46.9986)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, 46.9986)
 
 [node name="WallMeetingRoom_025" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, 52.6878)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, 52.6878)
 
 [node name="WallMeetingRoom_052" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, 58.3987)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, 58.3987)
 
 [node name="WallMeetingRoom_054" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, 64.0816)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, 64.0816)
 
 [node name="WallMeetingRoom_026" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, -0.00132599, 41.3126)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, -0.00132599, 41.3126)
 
 [node name="WallMeetingRoom_027" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, 35.6859)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, 35.6859)
 
 [node name="WallMeetingRoom_028" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-2.82771e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82771e-08, -29.6347, 0, 30.0095)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -29.6347, 0, 30.0095)
 
 [node name="WallMeetingRoom_019" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, -15.4258, -0.00132599, -20.1904)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -15.4258, -0.00132599, -20.1904)
 
 [node name="WallMeetingRoom_029" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, -9.74122, 0, -20.1904)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -9.74122, 0, -20.1904)
 
 [node name="WallMeetingRoom_030" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, -4.09182, 0, -20.1904)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -4.09182, 0, -20.1904)
 
 [node name="WallMeetingRoom_031" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, 1.57421, -0.00132599, -20.1904)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1.57421, -0.00132599, -20.1904)
 
 [node name="WallMeetingRoom_032" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, 7.2638, 0, -20.1904)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 7.2638, 0, -20.1904)
 
 [node name="WallMeetingRoom_033" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, 12.951, 0, -20.1904)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 12.951, 0, -20.1904)
 
 [node name="WallMeetingRoom_034" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, 18.5016, -0.00132599, -20.1904)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 18.5016, -0.00132599, -20.1904)
 
 [node name="WallMeetingRoom_035" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, 24.2069, 0, -20.1904)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 24.2069, 0, -20.1904)
 
 [node name="WallMeetingRoom_036" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, -26.799, 0, -20.1904)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -26.799, 0, -20.1904)
 
 [node name="WallMeetingRoom_037" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, -21.1226, 0, -20.1904)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -21.1226, 0, -20.1904)
 
 [node name="WallMeetingRoom_040" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, -15.4258, -0.00132599, 66.8655)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -15.4258, -0.00132599, 66.8655)
 
 [node name="WallMeetingRoom_041" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, -9.74122, 0, 66.8655)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -9.74122, 0, 66.8655)
 
 [node name="WallMeetingRoom_042" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, -4.09182, 0, 66.8655)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -4.09182, 0, 66.8655)
 
 [node name="WallMeetingRoom_043" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, 1.57421, -0.00132599, 66.8655)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1.57421, -0.00132599, 66.8655)
 
 [node name="WallMeetingRoom_044" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, 7.2638, 0, 66.8655)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 7.2638, 0, 66.8655)
 
 [node name="WallMeetingRoom_045" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, 12.951, 0, 66.8655)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 12.951, 0, 66.8655)
 
 [node name="WallMeetingRoom_046" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, 18.5016, -0.00132599, 66.8655)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 18.5016, -0.00132599, 66.8655)
 
 [node name="WallMeetingRoom_047" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, 24.2069, 0, 66.8655)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 24.2069, 0, 66.8655)
 
 [node name="WallMeetingRoom_048" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, -26.799, 0, 66.8655)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -26.799, 0, 66.8655)
 
 [node name="WallMeetingRoom_049" parent="stage/Walls" instance=ExtResource("5_ntyld")]
-transform = Transform3D(-0.646906, 0, 5.65543e-08, 0, 0.646906, 0, -5.65543e-08, 0, -0.646906, -21.1226, 0, 66.8655)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -21.1226, 0, 66.8655)
 
 [node name="CeilingTiles" type="Node3D" parent="stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76847, -1.57073, 0)
@@ -1282,14 +1282,6 @@ collision_mask = 7
 size = Vector3(3.71274, 1, 10.4623)
 material = ExtResource("8_h3rhg")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1347, 12.475, 33.6763)
-use_collision = true
-collision_layer = 7
-collision_mask = 7
-size = Vector3(3.71274, 0.211914, 7.87624)
-material = ExtResource("8_h3rhg")
-
 [node name="CeilingBlockingLight" type="Node3D" parent="stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.26044, 0)
 
@@ -1331,14 +1323,6 @@ use_collision = true
 collision_layer = 5
 collision_mask = 5
 size = Vector3(20, 1, 20)
-material = ExtResource("8_h3rhg")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1166, -0.5, 29.8442)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(20.9972, 1, 20)
 material = ExtResource("8_h3rhg")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="stage/CeilingBlockingLight"]

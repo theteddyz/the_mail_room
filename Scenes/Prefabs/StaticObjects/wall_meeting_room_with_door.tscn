@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://5dnxe87nmekr"]
+[gd_scene load_steps=17 format=3 uid="uid://5dnxe87nmekr"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_76lnn"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="2_si1lf"]
@@ -46,7 +46,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v2ctk")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g88gj"]
-size = Vector3(1.88333, 3.8623, 0.346191)
+size = Vector3(1.22773, 2.45911, 0.346191)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0wsh"]
 resource_name = "Glass"
@@ -127,10 +127,12 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_r0qhb")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yvfu"]
-size = Vector3(8.7654, 11.8827, 0.252686)
+size = Vector3(2.14258, 7.61762, 0.252686)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gmefs"]
+size = Vector3(1.47119, 4.33597, 0.156738)
 
 [node name="meeting_room_wall_Door" type="StaticBody3D"]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
 collision_layer = 5
 collision_mask = 5
 
@@ -141,15 +143,16 @@ axis_lock_linear_y = true
 script = ExtResource("2_si1lf")
 
 [node name="Door_001" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.96591, 2.04469, 0)
+transform = Transform3D(1.102, 0, 0, 0, 1.102, 0, 0, 0, 1.102, 0.615013, 1.31162, 0)
 mesh = SubResource("ArrayMesh_ler1d")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434737, 2.01416, -0.0397949)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0204976, 1.31256, -0.0397949)
 shape = SubResource("BoxShape3D_g88gj")
 
 [node name="WallMeetingRoomWithDoorGlass" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
 mesh = SubResource("ArrayMesh_q3788")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_8kdjq")
@@ -160,12 +163,21 @@ limit_upper = 1.5708
 limit_lower = -1.5708
 node_a = NodePath("..")
 node_b = NodePath("../RigidBody3D")
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.873866, 0.0510877, -0.0904708)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.579669, 1.29945, -0.0904708)
 
 [node name="WallMeetingRoomWithDoor2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ue7rc")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001915, 6.02398, 0.00671387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75462, 3.89144, 0.00671387)
 shape = SubResource("BoxShape3D_7yvfu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84691, 3.89144, 0.00671387)
+shape = SubResource("BoxShape3D_7yvfu")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0529785, 5.54793, 0.0012207)
+shape = SubResource("BoxShape3D_gmefs")
