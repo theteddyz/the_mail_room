@@ -103,8 +103,9 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 	var elevator_reference_origin = elevator_reference.get_node("Elevator").get_node("ElevatorOrigin")
 	var player_relative_to_elevator = player_reference.global_position - elevator_reference_origin.global_position
 	var player_relativerotation_to_elevator = player_reference.rotation - elevator_reference.rotation
-	var mailcart_relative_to_elevator = mail_cart_reference.global_position - elevator_reference_origin.global_position
-	var mailcart_relativerotation_to_elevator = mail_cart_reference.rotation - elevator_reference.rotation
+	if mail_cart_reference:
+		var mailcart_relative_to_elevator = mail_cart_reference.global_position - elevator_reference_origin.global_position
+		var mailcart_relativerotation_to_elevator = mail_cart_reference.rotation - elevator_reference.rotation
 	
 	# Change to the new scene
 	var old_scene = current_scene

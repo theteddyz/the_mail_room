@@ -463,7 +463,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.723, 0, -13.024)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0321, 0, -13.024)
 
 [node name="Roof" type="Node3D" parent="."]
-visible = false
 
 [node name="CeilingLowPoly" parent="Roof" instance=ExtResource("11_rqo3p")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -9.41613, 4.16656, -10.2414)
