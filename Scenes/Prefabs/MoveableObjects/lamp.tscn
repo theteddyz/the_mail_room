@@ -211,3 +211,5 @@ light = NodePath("../SpotLight3D")
 [node name="Button" type="CollisionShape3D" parent="ButtonRB"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00119783, -0.00622559, 0.0100346)
 shape = SubResource("BoxShape3D_jq0n2")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ButtonRB"]
