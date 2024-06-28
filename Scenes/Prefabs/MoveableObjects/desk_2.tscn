@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://jwepvxwg65b2"]
+[gd_scene load_steps=24 format=3 uid="uid://b2c5c47wnbu3f"]
 
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_jg2d3"]
 [ext_resource type="Texture2D" uid="uid://dgy6bdhr0juyx" path="res://Assets/Textures/BlenderTextures/Desk.png" id="2_et87b"]
