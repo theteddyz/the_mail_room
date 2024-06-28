@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://tw0mk31qdtge"]
+[gd_scene load_steps=15 format=3 uid="uid://tw0mk31qdtge"]
 
 [ext_resource type="Script" path="res://Scripts/Mailcart.gd" id="1_1hgo0"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="2_jjppu"]
 [ext_resource type="PackedScene" uid="uid://c08qc5mgsdt5y" path="res://Scenes/Prefabs/MoveableObjects/radio.tscn" id="3_mea2j"]
+[ext_resource type="AudioStream" uid="uid://c0t8xaftuek6t" path="res://Assets/Audio/SoundFX/Cart.mp3" id="4_eev6i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dt7j7"]
 size = Vector3(1.23438, 0.0488434, 0.947998)
@@ -126,3 +127,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10262e-05, 0.0962929, -0.0
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_8jcur")
 angular_damp = 3.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_eev6i")

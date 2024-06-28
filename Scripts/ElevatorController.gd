@@ -36,7 +36,6 @@ func call_elevator():
 				current_floor = player_floor
 				await anim.animation_finished
 				elevator_anim.play("door_open")
-				await elevator_anim.animation_finished
 				wall_anim.play("wall_door_open")
 				await wall_anim.animation_finished
 			else:
@@ -44,7 +43,6 @@ func call_elevator():
 				current_floor = player_floor
 				await anim.animation_finished
 				elevator_anim.play("door_open")
-				await elevator_anim.animation_finished
 				wall_anim.play("wall_door_open")
 				await wall_anim.animation_finished
 		else:
@@ -65,8 +63,12 @@ func move_floors():
 		anim.play("elevator_move_down")
 		await anim.animation_finished
 		if current_floor < 0:
+			var elevator_wall_anim = Elevator_Wall.find_child("wall_anim")
+			wall_anim.active = false
 			Elevator_Wall.visible = false
+			
 		else:
+			elevator_anim.active = true
 			Elevator_Wall.visible = true
 	else:
 		elevator_anim.play("door_close")
@@ -80,8 +82,11 @@ func move_floors():
 		anim.play("elevator_move_up")
 		await anim.animation_finished
 		if current_floor < 0:
+			wall_anim.active = false
 			Elevator_Wall.visible = false
+			
 		else:
+			wall_anim.active = true
 			Elevator_Wall.visible = true
 
 func set_floor(path,new_floor:int):

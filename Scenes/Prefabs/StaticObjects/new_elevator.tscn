@@ -1,9 +1,12 @@
-[gd_scene load_steps=47 format=3 uid="uid://cy7ngjicicj5t"]
+[gd_scene load_steps=50 format=3 uid="uid://cy7ngjicicj5t"]
 
 [ext_resource type="Texture2D" uid="uid://d24ont78p0umt" path="res://Assets/Textures/BlenderTextures/Elevator.png" id="1_8qflw"]
 [ext_resource type="Texture2D" uid="uid://6c28m22muuhm" path="res://Assets/Textures/BlenderTextures/ElevatorButtons.png" id="2_c1p2q"]
 [ext_resource type="Texture2D" uid="uid://cwo0wqxreionr" path="res://Assets/Textures/BlenderTextures/ElevatorDoor.png" id="3_8wwji"]
 [ext_resource type="Script" path="res://Scripts/ElevatorButton.gd" id="3_prkdp"]
+[ext_resource type="AudioStream" uid="uid://bfacn7yx3dikm" path="res://Assets/Audio/SoundFX/ElevatorCallButton.mp3" id="5_bnh6n"]
+[ext_resource type="AudioStream" uid="uid://bq5auign0crlc" path="res://Assets/Audio/SoundFX/ElevatorEntranceDoorClose.mp3" id="5_tkxhx"]
+[ext_resource type="AudioStream" uid="uid://dm58f7jko3fph" path="res://Assets/Audio/SoundFX/ElevatorEntranceDoorOpen.mp3" id="6_giinp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1fwr"]
 resource_name = "Elevator"
@@ -532,9 +535,34 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_mh7gq"]
 resource_name = "door_close"
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -542,14 +570,39 @@ tracks/0/path = NodePath("Elevator/Elevator_body/ElevatorDoor_001:blend_shapes/E
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.1, 1.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_bnh6n"), ExtResource("5_tkxhx")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
 
 [sub_resource type="Animation" id="Animation_4giti"]
 resource_name = "door_open"
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -557,10 +610,34 @@ tracks/0/path = NodePath("Elevator/Elevator_body/ElevatorDoor_001:blend_shapes/E
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_giinp")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2lqc0"]
@@ -789,3 +866,6 @@ shape = SubResource("BoxShape3D_u3qxv")
 libraries = {
 "": SubResource("AnimationLibrary_2lqc0")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.75098)

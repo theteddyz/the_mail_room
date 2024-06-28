@@ -1,9 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvcnb71rjht57"]
+[gd_scene load_steps=27 format=3 uid="uid://dvcnb71rjht57"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_dvx8u"]
 [ext_resource type="Texture2D" uid="uid://cflcp7dk343qt" path="res://Assets/Textures/BlenderTextures/ElevatorEntrance.png" id="2_khfgd"]
 [ext_resource type="Texture2D" uid="uid://cjvcemufdcvx8" path="res://Assets/Textures/BlenderTextures/ElevatorEntranceDoor.png" id="3_eja8a"]
 [ext_resource type="Texture2D" uid="uid://b7ccf5fmuf5wj" path="res://Assets/Textures/BlenderTextures/ElevatorIndicator.png" id="4_h75oa"]
+[ext_resource type="AudioStream" uid="uid://dtm40mm1ohrf4" path="res://Assets/Audio/SoundFX/ElevatorDoorClose.mp3" id="5_l2tgp"]
+[ext_resource type="AudioStream" uid="uid://b72go6j3qxspo" path="res://Assets/Audio/SoundFX/ElevatorDoorOpen.mp3" id="6_tyqn3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hmq8"]
 resource_name = "Wall"
@@ -250,9 +252,34 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-0.867, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_0kaka"]
 resource_name = "wall_door_close"
+length = 5.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -260,7 +287,7 @@ tracks/0/path = NodePath("Elevator_Wall/Right_Door:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0.831, 0, 0), Vector3(0, 0, 0)]
@@ -272,14 +299,39 @@ tracks/1/path = NodePath("Elevator_Wall/Left_Door:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-1.744, 0, 0), Vector3(-0.867, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_l2tgp")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_kocns"]
 resource_name = "wall_door_open"
+length = 4.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -287,7 +339,7 @@ tracks/0/path = NodePath("Elevator_Wall/Right_Door:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 3.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.831, 0, 0)]
@@ -299,10 +351,34 @@ tracks/1/path = NodePath("Elevator_Wall/Left_Door:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 3.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.867, 0, 0), Vector3(-1.744, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer3D:stream")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_tyqn3")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qiddu"]
@@ -368,3 +444,6 @@ shape = SubResource("BoxShape3D_weoej")
 libraries = {
 "": SubResource("AnimationLibrary_qiddu")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60718, 0)

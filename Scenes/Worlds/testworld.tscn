@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://m5qf43vcn1jl" path="res://Assets/TemporaryAssets/ezgif-3-50be972671-removebg-preview.png" id="7_h5xp5"]
 [ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Prefabs/MoveableObjects/package_template.tscn" id="12_c01f0"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="12_ty778"]
+[ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="15_2x2rp"]
 [ext_resource type="PackedScene" uid="uid://cauvpuh74hlme" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_002.tscn" id="16_bj7ur"]
-[ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator.tscn" id="19_8q8av"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
 albedo_texture = ExtResource("1_o8goe")
@@ -123,9 +123,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22661, 0.340293, 0)
 hand_rotation = Vector3(1.00531, -0.74002, 0)
 hand_position = Vector3(0.375, -0.48, 0)
 
-[node name="Elevator" parent="." instance=ExtResource("19_8q8av")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.00531387, -13)
-
 [node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.280565, -4)
 collision_layer = 18
@@ -133,3 +130,6 @@ physics_material_override = SubResource("PhysicsMaterial_bh3ib")
 
 [node name="wall_room_001" parent="." instance=ExtResource("16_bj7ur")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1, 0, -10)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("15_2x2rp")]
+transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, -6, 0, -10)

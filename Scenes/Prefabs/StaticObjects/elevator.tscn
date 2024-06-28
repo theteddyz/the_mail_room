@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://wd85mtseuke1"]
+[gd_scene load_steps=18 format=3 uid="uid://wd85mtseuke1"]
 
 [ext_resource type="Script" path="res://Scripts/ElevatorController.gd" id="1_4nay1"]
 [ext_resource type="PackedScene" uid="uid://dvcnb71rjht57" path="res://Scenes/Prefabs/StaticObjects/elevator_wall.tscn" id="2_36my7"]
@@ -6,16 +6,43 @@
 [ext_resource type="PackedScene" uid="uid://cy7ngjicicj5t" path="res://Scenes/Prefabs/StaticObjects/new_elevator.tscn" id="4_bmf7c"]
 [ext_resource type="Script" path="res://Scripts/Call_Elevator_Button.gd" id="5_2p1qo"]
 [ext_resource type="Script" path="res://Assets/Models/ElevatorObjectDetector.gd" id="5_be72g"]
+[ext_resource type="AudioStream" uid="uid://bwrmjdeydo5c8" path="res://Assets/Audio/SoundFX/ElevatorSound.mp3" id="6_c7nnn"]
+[ext_resource type="AudioStream" uid="uid://bfacn7yx3dikm" path="res://Assets/Audio/SoundFX/ElevatorCallButton.mp3" id="7_qkshq"]
+[ext_resource type="AudioStream" uid="uid://dlkb011irfogv" path="res://Assets/Audio/SoundFX/ElevatorDing.mp3" id="7_ttgwh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ks2cq"]
 size = Vector3(3.245, 3.715, 4.795)
 
 [sub_resource type="Animation" id="Animation_m8rxp"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elevator/AudioStreamPlayer3D2:stream")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elevator/AudioStreamPlayer3D2:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_5mk03"]
 resource_name = "elevator_call_down"
-length = 3.0
+length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,6 +54,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(2, 10, 0.75), Vector3(2, 1, 0.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elevator/AudioStreamPlayer3D2:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_c7nnn"), ExtResource("7_ttgwh")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Elevator/AudioStreamPlayer3D2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-2.4, 2.8, 3),
+"transitions": PackedFloat32Array(2.21914, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_0put5"]
@@ -44,6 +95,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(2, -3.5, 0.75), Vector3(2, 1, 0.75)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elevator/AudioStreamPlayer3D2:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_c7nnn"), ExtResource("7_ttgwh")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Elevator/AudioStreamPlayer3D2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
 
 [sub_resource type="Animation" id="Animation_3b418"]
 resource_name = "elevator_move_down"
@@ -60,6 +135,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(2, 1, 0.75), Vector3(2, -3.5, 0.75)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elevator/AudioStreamPlayer3D2:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_c7nnn")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Elevator/AudioStreamPlayer3D2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_r48pq"]
 resource_name = "elevator_move_up"
@@ -75,6 +174,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(2, 1, 0.75), Vector3(2, 10, 0.75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elevator/AudioStreamPlayer3D2:stream")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_ttgwh")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Elevator/AudioStreamPlayer3D2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4y204"]
@@ -120,6 +243,8 @@ script = ExtResource("5_be72g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300293, -0.169383, -0.60775)
 shape = SubResource("BoxShape3D_ks2cq")
 
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Elevator"]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_4y204")
@@ -134,6 +259,9 @@ script = ExtResource("5_2p1qo")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0160871, 0, 0.111794)
 shape = SubResource("SphereShape3D_yfroe")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Area3D"]
+stream = ExtResource("7_qkshq")
 
 [connection signal="body_entered" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_entered"]
 [connection signal="body_exited" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_exited"]

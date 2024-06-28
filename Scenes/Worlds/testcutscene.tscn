@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=24 format=3 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_u173c"]
 [ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_q6sdx"]
@@ -12,11 +12,12 @@
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="8_h3rhg"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="9_lovsk"]
 [ext_resource type="PackedScene" uid="uid://cxx4tf5grxfu8" path="res://Assets/Models/radio_model_2.tscn" id="10_r6ec6"]
-[ext_resource type="AudioStream" uid="uid://xwggf2hn0alx" path="res://Assets/Audio/579569__leonelmail__office-ambience-sharespace-2.mp3" id="11_1i41i"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_rgcp3"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="14_0rx2b"]
 [ext_resource type="VoxelGIData" uid="uid://crcnvap0du5j4" path="res://Assets/TemporaryAssets/voxelGITest/testcutscene.VoxelGI_data.res" id="17_bi161"]
+[ext_resource type="AudioStream" uid="uid://p0ckrxqcbt02" path="res://Assets/Audio/SoundFX/IntroFloorAmbience1.mp3" id="17_p43sr"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="17_ucf0v"]
+[ext_resource type="AudioStream" uid="uid://ce5jiafwp834b" path="res://Assets/Audio/SoundFX/IntroFloorAmbience2.mp3" id="18_7frdt"]
 
 [sub_resource type="Environment" id="Environment_mq4r4"]
 background_mode = 2
@@ -1349,10 +1350,6 @@ physics_material_override = SubResource("PhysicsMaterial_60xfd")
 [node name="Radio" parent="." instance=ExtResource("10_r6ec6")]
 transform = Transform3D(0.13379, 0, -0.197066, 0, 0.23819, 0, 0.197066, 0, 0.13379, -1.17844, 1.63531, -4.96646)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_1i41i")
-autoplay = true
-
 [node name="Player" parent="." instance=ExtResource("12_rgcp3")]
 transform = Transform3D(-0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, -0.669131, 0.139197, 0.5, -6.00579)
 collision_mask = 20
@@ -1380,3 +1377,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.067
 
 [node name="Elevator" parent="." instance=ExtResource("17_ucf0v")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.11262, 0.596205, 34.4045)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.894, 0, 0)
+stream = ExtResource("17_p43sr")
+autoplay = true
+max_distance = 100.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8305, 0, 0)
+stream = ExtResource("18_7frdt")
+autoplay = true
+max_distance = 100.0

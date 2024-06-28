@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=25 format=3 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_5vkla"]
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="1_salub"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://bwkdr1hhs71ee" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="18_uvktp"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="20_05muy"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="20_lrs3i"]
+[ext_resource type="AudioStream" uid="uid://dephvjlxfo3d1" path="res://Assets/Audio/SoundFX/MailRoomAmbience.mp3" id="21_i8rlw"]
+[ext_resource type="AudioStream" uid="uid://h5i1tvwidexw" path="res://Assets/Audio/SoundFX/MailRoomAmbience2.mp3" id="22_upigg"]
 
 [sub_resource type="Environment" id="Environment_j0hss"]
 ambient_light_color = Color(0.878431, 1, 1, 1)
@@ -44,6 +46,14 @@ volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0.878431, 1, 1, 1)
 adjustment_enabled = true
 adjustment_brightness = 0.77
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g57cg"]
+playback_mode = 2
+streams_count = 2
+stream_0/stream = ExtResource("21_i8rlw")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("22_upigg")
+stream_1/weight = 1.0
 
 [node name="world" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -682,7 +692,7 @@ transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608
 [node name="Walls" type="Node3D" parent="stage"]
 
 [node name="StaticBody3D14" parent="stage/Walls" instance=ExtResource("2_vsncc")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0.79569, 0, -6.931)
+transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, 0.79569, 0, -6.931)
 
 [node name="StaticBody3D15" parent="stage/Walls" instance=ExtResource("2_vsncc")]
 transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -13.1654, -0.00728297, -0.313556)
@@ -1039,3 +1049,7 @@ transform = Transform3D(-0.00603879, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.0060
 
 [node name="Elevator" parent="." instance=ExtResource("20_lrs3i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.4639, 0.116197, -7.179)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_g57cg")
+autoplay = true

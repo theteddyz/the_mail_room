@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/FirstFloorAmbience3.mp3-63f0ac31e6d76fa7a16da
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

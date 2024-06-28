@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=26 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly_no_light.tscn" id="11_ejcsp"]
 [ext_resource type="PackedScene" uid="uid://k8lfivepg4gx" path="res://Scenes/Prefabs/StaticObjects/wallWithArchway.tscn" id="11_hd2i0"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_46wmm"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2.tscn" id="13_srb8m"]
+[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2.tscn" id="13_srb8m"]
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="15_poj1m"]
 [ext_resource type="PackedScene" uid="uid://dui3j31sc1l58" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_011.tscn" id="16_vde3n"]
 [ext_resource type="PackedScene" uid="uid://4grqlanfjx0n" path="res://Scenes/Prefabs/StaticObjects/wall_with_door_opened.tscn" id="17_ky7o5"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cgldfdyb7utbo" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="21_1tw64"]
 [ext_resource type="PackedScene" uid="uid://ugwqaphpkcxp" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_long.tscn" id="22_w6t3o"]
 [ext_resource type="PackedScene" uid="uid://dpbefjvxerw8y" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_blue.tscn" id="23_8vvxq"]
+[ext_resource type="AudioStream" uid="uid://c202px4rfobxg" path="res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3" id="24_os1ty"]
 
 [sub_resource type="Environment" id="Environment_yy6pq"]
 background_mode = 2
@@ -1543,3 +1544,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 29.0448,
 
 [node name="CeilingLightOn2" parent="." instance=ExtResource("23_8vvxq")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 29.0412, 4.54925, 25.2938)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_os1ty")
+autoplay = true

@@ -6,23 +6,27 @@ class_name CartingState
 @onready var headbop_root = head.get_node("HeadbopRoot")
 @onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
 @onready var mailcart
+var cart_audio:AudioStreamPlayer3D
 
 @export var cart_movement_lerp_speed = 3.85
 @export var cart_sprinting_speed = 5.2
 @export var cart_walking_speed = 3.8
 @export var cart_turning_speed_modifier = 0.13
-
+@export var volume_fade_speed = 3.0  # Speed at which the volume fades
 var directionX = Vector3.ZERO
 var directionZ = Vector3.ZERO
 var direction = Vector3.ZERO
-
 var rotate = 0.0
-
+var was_moving = false
+var target_volume = -80.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mailcart = GameManager.get_mail_cart()
 	mailcart.reparent(persistent_state, true)
 	set_colliders_enabled("Carting_Collider",true)
+	cart_audio = mailcart.find_child("AudioStreamPlayer3D")
+	cart_audio.stream = preload("res://Assets/Audio/SoundFX/Cart.mp3")
+	cart_audio.volume_db = target_volume
 
 func _input(event):
 	# Mouse
@@ -94,8 +98,18 @@ func _process(delta):
 			releaseCart()
 		persistent_state.velocity.y = 0
 		persistent_state.move_and_slide()
+		var is_moving = persistent_state.velocity.length() > 0.1
+		if is_moving:
+			target_volume = 0.0 
+			if not was_moving:
+				start_cart_audio()
+		else:
+			target_volume = -80.0
+		was_moving = is_moving
+		cart_audio.volume_db = lerp(cart_audio.volume_db, target_volume, delta * volume_fade_speed)
 
 func releaseCart():
+	stop_cart_audio()
 	mailcart.reparent(persistent_state.get_parent())
 	persistent_state.set_collision_mask_value(5, true)
 	neck.position = Vector3(0, 1.8, 0)
@@ -108,5 +122,12 @@ func releaseCart():
 func set_colliders_enabled(group_name: String,enabled:bool) -> void:
 	for collider in get_tree().get_nodes_in_group(group_name):
 		collider.disabled = not enabled
+func start_cart_audio():
+	if cart_audio:
+		cart_audio.play()
 
+func stop_cart_audio():
+	if cart_audio:
+		cart_audio.stop()
+		
 
