@@ -133,3 +133,13 @@ func start_pickup_timer():
 func _on_pickup_timer_timeout():
 	pickup_timer.stop()
 
+
+
+func _on_body_entered(body):
+	print("HELLO")
+	freeze = false
+	sleeping = false
+
+
+func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	print("HELLo")
