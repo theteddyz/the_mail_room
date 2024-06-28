@@ -153,6 +153,7 @@ shape = SubResource("BoxShape3D_g88gj")
 
 [node name="WallMeetingRoomWithDoorGlass" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_q3788")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_8kdjq")

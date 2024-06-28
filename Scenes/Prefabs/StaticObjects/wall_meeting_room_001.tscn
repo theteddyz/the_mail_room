@@ -93,6 +93,7 @@ mesh = SubResource("ArrayMesh_uoate")
 skeleton = NodePath("")
 
 [node name="WallMeetingRoomGlass_001" type="MeshInstance3D" parent="WallMeetingRoom_001"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_07b3u")
 skeleton = NodePath("")
 
