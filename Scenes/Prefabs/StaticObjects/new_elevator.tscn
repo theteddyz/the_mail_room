@@ -841,11 +841,6 @@ skeleton = NodePath("")
 [node name="cart_pos" type="Node3D" parent="Elevator/Elevator_body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.639733, 0.996865)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Elevator/Elevator_body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69126, 0)
-light_energy = 0.75
-shadow_enabled = true
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58751, 0.648277, 0.117065)
 shape = SubResource("BoxShape3D_7qct4")
