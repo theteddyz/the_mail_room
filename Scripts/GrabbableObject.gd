@@ -105,9 +105,6 @@ func dropMe(throw:bool):
 		set_collision_mask_value(3, false)
 		if should_freeze:
 			sleeping = true
-func handle_mouse_motion(mouse_relative: Vector2):
-	angular_velocity.x = -mouse_relative.y * mouse_sensitivity
-	angular_velocity.y = -mouse_relative.x * mouse_sensitivity
 func pickmeUp():
 	if is_picked_up:
 		return
@@ -141,6 +138,9 @@ func start_pickup_timer():
 func _on_pickup_timer_timeout():
 	pickup_timer.stop()
 #Rotation Code
+func handle_mouse_motion(mouse_relative: Vector2):
+	angular_velocity.x = -mouse_relative.y * mouse_sensitivity
+	angular_velocity.y = -mouse_relative.x * mouse_sensitivity
 func update_rotation(delta):
 	if is_rotating:
 		var angular_impulse = angular_velocity * delta
