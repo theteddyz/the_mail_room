@@ -19,7 +19,7 @@ var throw_direction = Vector3.ZERO
 var force:Vector3 = Vector3.ZERO
 var timerAdded:bool = false
 #Rotating Variables
-@export var mouse_sensitivity: float = 0.1  # Adjust sensitivity as needed
+@export var mouse_sensitivity: float = 1  
 var is_rotating = false
 var initial_mouse_position = Vector2.ZERO
 #Interpolator

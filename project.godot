@@ -21,6 +21,14 @@ GameManager="*res://Scripts/GameManager.gd"
 EventBus="*res://Scripts/EventBus.gd"
 Gui="*res://Scenes/Prefabs/gui/gui.tscn"
 
+[display]
+
+window/size/viewport_width=600
+window/size/viewport_height=400
+window/energy_saving/keep_screen_on=false
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 forward={
