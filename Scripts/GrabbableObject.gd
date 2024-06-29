@@ -8,7 +8,7 @@ extends Grabbable
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
-
+@export var mouse_sensitivity: float = 0.1  # Adjust sensitivity as needed
 
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
@@ -21,7 +21,8 @@ var throw_direction = Vector3.ZERO
 var force:Vector3 = Vector3.ZERO
 var timerAdded:bool = false
 var Interpolator 
-
+var is_rotating = false
+var initial_mouse_position = Vector2.ZERO
 func _ready():
 	Interpolator = find_child("Interpolator")
 	var root = get_tree().root
@@ -35,17 +36,33 @@ func _ready():
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		if is_rotating:
+			rotate_object(event.relative)
+
 func _physics_process(delta):
-	if  Interpolator:
+	if Interpolator:
 		Interpolator.setUpdate(true)
-	if  is_picked_up:
+	if is_picked_up:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			update_position(delta)
+			if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+				if not is_rotating:
+					start_rotating()
+
+			else:
+				if is_rotating:
+					stop_rotating()
+				update_position(delta)
 			if Input.is_action_just_pressed("drive"):
+				if is_rotating:
+					stop_rotating()
 				dropMe(true)
 				apply_force(throw_direction * throw_strength, throw_direction)
 				is_picked_up = false
 		else:
+			if is_rotating:
+				stop_rotating()
 			dropMe(false)
 	if !is_picked_up and should_freeze:
 		if linear_velocity.length_squared() > 0.0001 or angular_velocity.length_squared() > 0.0001:
@@ -107,12 +124,7 @@ func update_position(delta):
 		var currentPosition:Vector3 = global_transform.origin
 		var directionTo:Vector3 = targetPosition - currentPosition
 		var distance:float = currentPosition.distance_to(targetPosition)
-		#parent.linear_damp = 55;
 		force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
-		#force.x = clamp(force.x, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
-		#force.y = clamp(force.y, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
-		#force.y -= parent.mass * 0.07
-		#force.z = clamp(force.z, -(max_force+player.velocity.length()), (max_force+player.velocity.length()))
 		
 		force = force.limit_length(max_force + (mass * 4) + player.velocity.length())
 		apply_central_force(force)
@@ -126,20 +138,31 @@ func update_position(delta):
 		else:
 			force_above_threshold_time = 0.0
 
+
+
+func rotate_object(mouse_relative):
+	rotate_x(deg_to_rad(-mouse_relative.y * mouse_sensitivity))
+	rotation.x = clamp(rotation.x, deg_to_rad(-89), deg_to_rad(89))
+	rotate(Vector3(0, 1, 0), deg_to_rad(-mouse_relative.x * mouse_sensitivity))
+
+func start_rotating():
+	is_rotating = true
+	axis_lock_linear_x = true
+	axis_lock_linear_y = true
+	axis_lock_linear_z = true
+	EventBus.emitCustomSignal("disable_player_movement",[true,false])
+	initial_mouse_position = get_viewport().get_mouse_position()
+
+func stop_rotating():
+	axis_lock_linear_x = false
+	axis_lock_linear_y = false
+	axis_lock_linear_z = false
+	EventBus.emitCustomSignal("disable_player_movement",[false,false])
+	is_rotating = false
+
 func start_pickup_timer():
 	pickup_timer.start(regrab_cooldown)
 
 
 func _on_pickup_timer_timeout():
 	pickup_timer.stop()
-
-
-
-func _on_body_entered(body):
-	print("HELLO")
-	freeze = false
-	sleeping = false
-
-
-func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print("HELLo")
