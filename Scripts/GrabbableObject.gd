@@ -1,5 +1,5 @@
 extends Grabbable
-
+#Grabbing Variables
 @export var throw_strength: float = 700.0  
 @export var weightLimit: float = 1000.0  
 @export var max_lift_height: float = 100.0
@@ -8,11 +8,9 @@ extends Grabbable
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
-@export var mouse_sensitivity: float = 0.1  # Adjust sensitivity as needed
-
+var is_picked_up = false
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
-var is_picked_up = false
 var player: CharacterBody3D
 var itemPos
 var playerHead
@@ -20,9 +18,15 @@ var camera:Camera3D
 var throw_direction = Vector3.ZERO
 var force:Vector3 = Vector3.ZERO
 var timerAdded:bool = false
-var Interpolator 
+#Rotating Variables
+@export var mouse_sensitivity: float = 0.1  # Adjust sensitivity as needed
 var is_rotating = false
 var initial_mouse_position = Vector2.ZERO
+#Interpolator
+var Interpolator 
+
+
+
 func _ready():
 	Interpolator = find_child("Interpolator")
 	var root = get_tree().root
@@ -35,41 +39,38 @@ func _ready():
 		camera = player.find_child("Camera")
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
-
+#Used by Both
 func _input(event):
-	if is_rotating:
-		if event is InputEventMouseMotion:
-			rotate_object(event.relative)
-
+	if is_rotating and event is InputEventMouseMotion:
+		handle_mouse_motion(event.relative)
 func _physics_process(delta):
 	if Interpolator:
 		Interpolator.setUpdate(true)
 	if is_picked_up:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-				if not is_rotating:
-					start_rotating()
-
-			else:
-				if is_rotating:
-					stop_rotating()
-				update_position(delta)
-			if Input.is_action_just_pressed("drive"):
-				if is_rotating:
-					stop_rotating()
-				dropMe(true)
-				apply_force(throw_direction * throw_strength, throw_direction)
-				is_picked_up = false
+		handle_pickup(delta)
+		update_rotation(delta)
+	elif should_freeze and is_at_rest():
+		freeze = true
+func handle_pickup(delta):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+			if not is_rotating:
+				start_rotating()
 		else:
 			if is_rotating:
 				stop_rotating()
-			dropMe(false)
-	if !is_picked_up and should_freeze:
-		if linear_velocity.length_squared() > 0.0001 or angular_velocity.length_squared() > 0.0001:
-			pass
-		else:
-			freeze = true
-
+			update_position(delta)
+		if Input.is_action_just_pressed("drive"):
+			if is_rotating:
+				stop_rotating()
+			dropMe(true)
+			apply_force(throw_direction * throw_strength, throw_direction)
+			is_picked_up = false
+	else:
+		if is_rotating:
+			stop_rotating()
+		dropMe(false)
+#Grabbing Code
 func interact():
 	player = GameManager.get_player()
 	if pickup_timer.is_stopped():
@@ -82,19 +83,6 @@ func interact():
 		if should_freeze:
 			freeze = false
 		pickmeUp()
-
-
-func pickmeUp():
-	if is_picked_up:
-		return
-	#if parent.mass <= weightLimit:
-	#TODO: Switch "null" to something "more" correct
-	angular_damp = 10
-	set_collision_mask_value(3, false)
-	EventBus.emitCustomSignal("object_held", [mass, get_parent()])
-	is_picked_up = true
-
-
 func dropMe(throw:bool):
 	if is_picked_up and throw == false:
 		EventBus.emitCustomSignal("dropped_object", [mass,self])
@@ -117,7 +105,18 @@ func dropMe(throw:bool):
 		set_collision_mask_value(3, false)
 		if should_freeze:
 			sleeping = true
-
+func handle_mouse_motion(mouse_relative: Vector2):
+	angular_velocity.x = -mouse_relative.y * mouse_sensitivity
+	angular_velocity.y = -mouse_relative.x * mouse_sensitivity
+func pickmeUp():
+	if is_picked_up:
+		return
+	#if parent.mass <= weightLimit:
+	#TODO: Switch "null" to something "more" correct
+	angular_damp = 10
+	set_collision_mask_value(3, false)
+	EventBus.emitCustomSignal("object_held", [mass, get_parent()])
+	is_picked_up = true
 func update_position(delta):
 	if is_picked_up:
 		var targetPosition:Vector3 = itemPos.global_transform.origin
@@ -137,32 +136,29 @@ func update_position(delta):
 				dropMe(false)
 		else:
 			force_above_threshold_time = 0.0
-
-
-
-func rotate_object(mouse_relative):
-	rotate_x(deg_to_rad(-mouse_relative.y * mouse_sensitivity))
-	rotation.x = clamp(rotation.x, deg_to_rad(-89), deg_to_rad(89))
-	rotate(Vector3(0, 1, 0), deg_to_rad(-mouse_relative.x * mouse_sensitivity))
-
-func start_rotating():
-	is_rotating = true
-	axis_lock_linear_x = true
-	axis_lock_linear_y = true
-	axis_lock_linear_z = true
-	EventBus.emitCustomSignal("disable_player_movement",[true,false])
-	initial_mouse_position = get_viewport().get_mouse_position()
-
-func stop_rotating():
-	axis_lock_linear_x = false
-	axis_lock_linear_y = false
-	axis_lock_linear_z = false
-	EventBus.emitCustomSignal("disable_player_movement",[false,false])
-	is_rotating = false
-
 func start_pickup_timer():
 	pickup_timer.start(regrab_cooldown)
-
-
 func _on_pickup_timer_timeout():
 	pickup_timer.stop()
+#Rotation Code
+func update_rotation(delta):
+	if is_rotating:
+		var angular_impulse = angular_velocity * delta
+		apply_torque_impulse(angular_impulse)
+		angular_velocity *= 0.9
+func start_rotating():
+	is_rotating = true
+	lock_axes(true)
+	EventBus.emitCustomSignal("disable_player_movement",[true,true])
+	initial_mouse_position = get_viewport().get_mouse_position()
+func stop_rotating():
+	lock_axes(false)
+	EventBus.emitCustomSignal("disable_player_movement",[false,false])
+	is_rotating = false
+	angular_velocity = Vector3.ZERO
+func lock_axes(lock: bool):
+	axis_lock_linear_x = lock
+	axis_lock_linear_y = lock
+	axis_lock_linear_z = lock
+func is_at_rest() -> bool:
+	return linear_velocity.length_squared() <= 0.0001 and angular_velocity.length_squared() <= 0.0001
