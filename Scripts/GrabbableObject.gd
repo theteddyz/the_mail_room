@@ -23,12 +23,12 @@ var timerAdded:bool = false
 var is_rotating = false
 var initial_mouse_position = Vector2.ZERO
 #Interpolator
-var Interpolator 
+var object_Interpolator 
 
 
 
 func _ready():
-	Interpolator = find_child("Interpolator")
+	object_Interpolator = find_child("Interpolator")
 	var root = get_tree().root
 	var current_scene = root.get_child(root.get_child_count() - 1)
 	if !should_freeze:
@@ -44,8 +44,8 @@ func _input(event):
 	if is_rotating and event is InputEventMouseMotion:
 		handle_mouse_motion(event.relative)
 func _physics_process(delta):
-	if Interpolator:
-		Interpolator.setUpdate(true)
+	if object_Interpolator:
+		object_Interpolator.setUpdate(true)
 	if is_picked_up:
 		handle_pickup(delta)
 		update_rotation(delta)
