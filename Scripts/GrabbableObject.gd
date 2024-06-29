@@ -37,8 +37,8 @@ func _ready():
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
 
 func _input(event):
-	if event is InputEventMouseMotion:
-		if is_rotating:
+	if is_rotating:
+		if event is InputEventMouseMotion:
 			rotate_object(event.relative)
 
 func _physics_process(delta):
