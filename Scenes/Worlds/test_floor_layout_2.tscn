@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=30 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -23,7 +23,11 @@
 [ext_resource type="PackedScene" uid="uid://cgldfdyb7utbo" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="21_1tw64"]
 [ext_resource type="PackedScene" uid="uid://ugwqaphpkcxp" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_long.tscn" id="22_w6t3o"]
 [ext_resource type="PackedScene" uid="uid://dpbefjvxerw8y" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_blue.tscn" id="23_8vvxq"]
+[ext_resource type="AudioStream" uid="uid://bled33c0654ky" path="res://Assets/Audio/SoundFX/FirstFloorAmbience1.mp3" id="24_ncp41"]
+[ext_resource type="PackedScene" uid="uid://fcuw17kn4sl1" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_flickering.tscn" id="24_ob748"]
 [ext_resource type="AudioStream" uid="uid://c202px4rfobxg" path="res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3" id="24_os1ty"]
+[ext_resource type="AudioStream" uid="uid://clv8mkhueiw82" path="res://Assets/Audio/SoundFX/FirstFloorAmbience2.mp3" id="25_qbrrx"]
+[ext_resource type="AudioStream" uid="uid://d036kpauudx33" path="res://Assets/Audio/SoundFX/FirstFloorAmbience4.mp3" id="27_m60pu"]
 
 [sub_resource type="Environment" id="Environment_yy6pq"]
 background_mode = 2
@@ -1542,9 +1546,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.23149, 0.0686443, -4.09316)
 [node name="CeilingLightOn" parent="." instance=ExtResource("23_8vvxq")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 29.0448, 4.54925, -0.202724)
 
-[node name="CeilingLightOn2" parent="." instance=ExtResource("23_8vvxq")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 29.0412, 4.54925, 25.2938)
+[node name="CeilingLightOn3" parent="." instance=ExtResource("24_ob748")]
+transform = Transform3D(0.216, 0, 0, 0, 0.216, 0, 0, 0, 0.216, 29.0412, 4.54925, 25.2938)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8177, 2.16094, -1.38949)
+stream = ExtResource("24_ncp41")
+autoplay = true
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2034, 2.16094, -1.38949)
+stream = ExtResource("25_qbrrx")
+autoplay = true
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.55508, 2.16094, -24.1781)
 stream = ExtResource("24_os1ty")
+autoplay = true
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.336, 0.719987, 25.1124)
+stream = ExtResource("27_m60pu")
 autoplay = true
