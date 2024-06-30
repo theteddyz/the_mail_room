@@ -17,6 +17,9 @@
 
 [node name="OfficeCubicle" type="Node3D"]
 
+[node name="Keyboard" parent="." instance=ExtResource("3_u2t8d")]
+transform = Transform3D(-0.622118, 0, -0.782923, 0, 1, 0, 0.782923, 0, -0.622118, 0.586226, 1.20544, 0.68502)
+
 [node name="Cubicle" parent="." instance=ExtResource("1_g8gtr")]
 
 [node name="GrabableObjectTemplate" parent="." instance=ExtResource("2_wogyr")]
@@ -27,7 +30,7 @@ physics_material_override = SubResource("PhysicsMaterial_gg5xj")
 transform = Transform3D(-0.00770315, 0, -0.00919947, 0, 0.0119988, 0, 0.00919947, 0, -0.00770315, 0.605024, 1.19578, 0.708205)
 
 [node name="Mouse" parent="." instance=ExtResource("4_utlkq")]
-transform = Transform3D(0.274724, 0, 0.328193, 0, 0.428, 0, -0.328193, 0, 0.274724, 0.279921, 1.22403, 1.04169)
+transform = Transform3D(0.641879, 0, 0.766806, 0, 1, 0, -0.766806, 0, 0.641879, 0.279921, 1.22403, 1.04169)
 
 [node name="Cables" parent="." instance=ExtResource("5_tqqw6")]
 transform = Transform3D(0.0042205, 0, 0.00578542, 0, 0.00716127, 0, -0.00578542, 0, 0.0042205, 0.394286, 1.69978, 2.0122)

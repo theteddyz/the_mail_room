@@ -46,7 +46,7 @@ shadow_mesh = SubResource("ArrayMesh_ccte1")
 [sub_resource type="BoxShape3D" id="BoxShape3D_gdow7"]
 size = Vector3(0.656799, 0.0468867, 0.213135)
 
-[node name="Grabbable" type="RigidBody3D"]
+[node name="Keyboard" type="RigidBody3D"]
 collision_layer = 3
 script = ExtResource("1_e31fv")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ce71rwirfiafw"]
+[gd_scene load_steps=23 format=3 uid="uid://ce71rwirfiafw"]
 
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_hork0"]
 [ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="2_2qwev"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="5_t6sno"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="6_huuqb"]
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="7_nth33"]
+[ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/StaticObjects/keyboard_low_poly_2.tscn" id="10_wk3io"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
 size = Vector3(2.69171, 0.0628052, 1.33755)
@@ -212,3 +213,6 @@ transform = Transform3D(-0.999968, 0, -0.00808077, 0, 1, 0, 0.00808077, 0, -0.99
 
 [node name="GarbageCan" parent="." instance=ExtResource("7_nth33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6194, 0.297667, 0.0209348)
+
+[node name="Keyboard" parent="." instance=ExtResource("10_wk3io")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15408, 1.14425, 0.442178)
