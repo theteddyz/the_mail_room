@@ -20,7 +20,6 @@ func calculate_collision_force(body):
 	var other_body_velocity = body.linear_velocity if body is RigidBody3D else Vector3.ZERO
 	var relative_velocity = get_parent().linear_velocity - other_body_velocity
 	impulse = parent_node.mass * relative_velocity.length()
-	print(impulse)
 	return impulse
 
 

@@ -6,11 +6,12 @@ var collision_threshold = 0.8
 @onready var lamp_arm = $"../LampArm"
 @onready var lamp_break_sound = $"../AudioStreamPlayer3D"
 @onready var lamp_break_sound_2 = $"../AudioStreamPlayer3D2"
+@onready var parent_node = get_parent()
 var broken:bool
 var grabbable_script = preload("res://Scripts/GrabbableObject.gd")
 func _on_lamp_base_body_entered(body):
 	if !broken:
-		var collision_force = get_parent().linear_velocity.length()
+		var collision_force = calculate_collision_force(body)
 		if collision_force > collision_threshold:
 			break_lamp()
 			broken = true
@@ -26,5 +27,13 @@ func break_lamp():
 		lamp_break_sound.play()
 		lamp_break_sound_2.play()
 		hinge_joint.queue_free()
-		get_parent().apply_impulse(Vector3(0, 10, 0), Vector3(0, 10, 0))
+		parent_node.apply_impulse(Vector3(0, 10, 0), Vector3(0, 10, 0))
 		lamp_arm.apply_impulse(Vector3(0, 10, 0), Vector3(0, 10, 0))
+
+
+func calculate_collision_force(body):
+	var impulse = 0.0
+	var other_body_velocity = body.linear_velocity if body is RigidBody3D else Vector3.ZERO
+	var relative_velocity = get_parent().linear_velocity - other_body_velocity
+	impulse = parent_node.mass * relative_velocity.length()
+	return impulse
