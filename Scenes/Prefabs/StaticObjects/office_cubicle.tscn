@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1pv5poqi0p1s"]
+[gd_scene load_steps=14 format=3 uid="uid://d1pv5poqi0p1s"]
 
 [ext_resource type="PackedScene" uid="uid://dhy137f2q5r8l" path="res://Scenes/Prefabs/StaticObjects/cubicle.tscn" id="1_g8gtr"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="2_wogyr"]
@@ -11,11 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="7_my7gv"]
 [ext_resource type="PackedScene" uid="uid://bc4e2pkwjrbhi" path="res://Scenes/Prefabs/StaticObjects/papers_tall.tscn" id="10_qm1qt"]
 [ext_resource type="PackedScene" uid="uid://cdj2vclj1i0vn" path="res://Scenes/Prefabs/StaticObjects/papers_low.tscn" id="11_cuvh8"]
-[ext_resource type="PackedScene" path="res://Assets/Models/mailbox_stand.tscn" id="12_4dkud"]
+[ext_resource type="PackedScene" uid="uid://bjb41uajsy3iw" path="res://Assets/Models/mailbox_stand.tscn" id="12_4dkud"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gg5xj"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d6yev"]
 
 [node name="OfficeCubicle" type="Node3D"]
 
@@ -45,7 +43,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60275, 0, -1.45313)
 
 [node name="Lamp" parent="." instance=ExtResource("7_my7gv")]
 transform = Transform3D(0.871881, 0, 0.489717, 0, 1, 0, -0.489717, 0, 0.871881, -0.0100938, 1.40059, 1.37435)
-physics_material_override = SubResource("PhysicsMaterial_d6yev")
 
 [node name="PapersTall" parent="." instance=ExtResource("10_qm1qt")]
 transform = Transform3D(0.0835411, 0, -0.1487, 0, 0.146489, 0, 0.105945, 0, 0.117255, -1.10079, 1.35499, 1.32315)
@@ -54,4 +51,4 @@ transform = Transform3D(0.0835411, 0, -0.1487, 0, 0.146489, 0, 0.105945, 0, 0.11
 transform = Transform3D(0.109635, 0, 0.11037, 0, 0.146489, 0, -0.0786357, 0, 0.15388, -0.482422, 1.2779, 1.26531)
 
 [node name="RigidBody3D" parent="." instance=ExtResource("12_4dkud")]
-transform = Transform3D(-0.1157, 0, 0.993284, 0, 1, 0, -0.993284, 0, -0.1157, 1.2728, 1.20068, -0.271863)
+transform = Transform3D(-0.1157, 0, 0.993284, 0, 1, 0, -0.993284, 0, -0.1157, 1.2728, 1.46968, -0.271863)

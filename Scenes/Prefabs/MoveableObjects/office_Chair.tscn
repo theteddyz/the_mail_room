@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://vuyggo5xvbr3"]
+[gd_scene load_steps=24 format=3 uid="uid://vuyggo5xvbr3"]
 
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_x4tsj"]
+[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="2_oevh8"]
 [ext_resource type="Texture2D" uid="uid://dkm7r1g2w10pc" path="res://Assets/Textures/BlenderTextures/ChairWheel.png" id="2_t5u3t"]
 [ext_resource type="Texture2D" uid="uid://gr821vyans0e" path="res://Assets/Textures/BlenderTextures/Chair.png" id="3_wjdcr"]
 
@@ -243,32 +244,35 @@ radius = 0.0651566
 angular_damp = 10.0
 script = ExtResource("1_x4tsj")
 
-[node name="Chair" type="MeshInstance3D" parent="."]
+[node name="Interpolator" type="Node3D" parent="."]
+script = ExtResource("2_oevh8")
+
+[node name="Chair" type="MeshInstance3D" parent="Interpolator"]
 transform = Transform3D(0.279, 0, 0, 0, 0.279, 0, 0, 0, 0.279, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yo818")
 skeleton = NodePath("")
 
-[node name="ChairWheel" type="MeshInstance3D" parent="Chair"]
+[node name="ChairWheel" type="MeshInstance3D" parent="Interpolator/Chair"]
 transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, 1.56576, -2.62481, 0.0110283)
 mesh = SubResource("ArrayMesh_ryxau")
 skeleton = NodePath("")
 
-[node name="ChairWheel_001" type="MeshInstance3D" parent="Chair"]
+[node name="ChairWheel_001" type="MeshInstance3D" parent="Interpolator/Chair"]
 transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, 0.389302, -2.62551, -1.61452)
 mesh = SubResource("ArrayMesh_jov1v")
 skeleton = NodePath("")
 
-[node name="ChairWheel_002" type="MeshInstance3D" parent="Chair"]
+[node name="ChairWheel_002" type="MeshInstance3D" parent="Interpolator/Chair"]
 transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, -1.52179, -2.62548, -0.993525)
 mesh = SubResource("ArrayMesh_0tfwd")
 skeleton = NodePath("")
 
-[node name="ChairWheel_003" type="MeshInstance3D" parent="Chair"]
+[node name="ChairWheel_003" type="MeshInstance3D" parent="Interpolator/Chair"]
 transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, -1.52229, -2.62563, 1.01614)
 mesh = SubResource("ArrayMesh_702no")
 skeleton = NodePath("")
 
-[node name="ChairWheel_004" type="MeshInstance3D" parent="Chair"]
+[node name="ChairWheel_004" type="MeshInstance3D" parent="Interpolator/Chair"]
 transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, 0.388974, -2.62534, 1.63556)
 mesh = SubResource("ArrayMesh_a2vmn")
 skeleton = NodePath("")

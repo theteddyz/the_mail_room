@@ -1,11 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dq6b3ab1wyhca"]
+[gd_scene load_steps=13 format=3 uid="uid://bjb41uajsy3iw"]
 
 [ext_resource type="Texture2D" uid="uid://bawy11xmnvil2" path="res://Assets/Textures/BlenderTextures/Mailbox.png" id="1_2skgq"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_kw6if"]
+[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="2_cshv3"]
 [ext_resource type="Texture2D" uid="uid://d0rpbmloe0xw" path="res://Assets/Textures/BlenderTextures/MailboxMesh.png" id="2_osjud"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xi8h3"]
-size = Vector3(0.539339, 0.529325, 0.531023)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpw6s"]
 resource_name = "Mailbox"
@@ -84,21 +82,40 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hab4u")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_21oyt"]
+size = Vector3(0.530006, 0.00489453, 0.538086)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g10qm"]
+size = Vector3(0.00463867, 0.520389, 0.536743)
+
 [node name="MailboxStand" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.268, 0)
 collision_layer = 7
 collision_mask = 5
 mass = 2.5
 script = ExtResource("1_kw6if")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00308111, 0.266359, 0.00247478)
-shape = SubResource("BoxShape3D_xi8h3")
+[node name="Interpolator" type="Node3D" parent="."]
+script = ExtResource("2_cshv3")
 
-[node name="MailboxStand" type="MeshInstance3D" parent="."]
-transform = Transform3D(15.178, 0, 0, 0, 15.178, 0, 0, 0, 15.178, 9.65595e-06, 0.268394, -0.000145078)
+[node name="MailboxStand" type="MeshInstance3D" parent="Interpolator"]
+transform = Transform3D(15.178, 0, 0, 0, 15.178, 0, 0, 0, 15.178, 0, 0, 0)
 mesh = SubResource("ArrayMesh_xox3k")
 skeleton = NodePath("")
 
-[node name="MailboxStand_001" type="MeshInstance3D" parent="MailboxStand"]
+[node name="MailboxStand_001" type="MeshInstance3D" parent="Interpolator"]
+transform = Transform3D(15.178, 0, 0, 0, 15.178, 0, 0, 0, 15.178, 0, 0, 0)
 mesh = SubResource("ArrayMesh_q3lxr")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.272693, 0)
+shape = SubResource("BoxShape3D_21oyt")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.266, 0, 0.001)
+shape = SubResource("BoxShape3D_g10qm")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258, 0, 0.001)
+shape = SubResource("BoxShape3D_g10qm")

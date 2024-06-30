@@ -32,9 +32,11 @@ func _ready():
 	var root = get_tree().root
 	var current_scene = root.get_child(root.get_child_count() - 1)
 	if !should_freeze:
-		freeze = false
+		#freeze = false
+		pass
 	else:
-		freeze = true
+		#freeze = true
+		pass
 	if player:
 		camera = player.find_child("Camera")
 	pickup_timer = Timer.new()
@@ -50,7 +52,8 @@ func _physics_process(delta):
 		handle_pickup(delta)
 		update_rotation(delta)
 	elif should_freeze and is_at_rest():
-		freeze = true
+		pass
+		#freeze = true
 func handle_pickup(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
@@ -81,7 +84,8 @@ func interact():
 		camera = player.find_child("Camera")
 		playerHead = player.find_child("Head")
 		if should_freeze:
-			freeze = false
+			##freeze = false
+			pass
 		pickmeUp()
 func dropMe(throw:bool):
 	if is_picked_up and throw == false:
@@ -95,7 +99,8 @@ func dropMe(throw:bool):
 		angular_damp = 1
 		set_collision_mask_value(3, false)
 		if should_freeze:
-			sleeping = true
+			#sleeping = true
+			pass
 	else:
 		throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
 		EventBus.emitCustomSignal("dropped_object",[mass,self])
@@ -104,7 +109,8 @@ func dropMe(throw:bool):
 		angular_damp = 1
 		set_collision_mask_value(3, false)
 		if should_freeze:
-			sleeping = true
+			pass
+			#sleeping = true
 func pickmeUp():
 	if is_picked_up:
 		return
@@ -162,3 +168,9 @@ func lock_axes(lock: bool):
 	axis_lock_linear_z = lock
 func is_at_rest() -> bool:
 	return linear_velocity.length_squared() <= 0.0001 and angular_velocity.length_squared() <= 0.0001
+
+
+func _on_body_entered(body):
+	print("HELLO")
+func _on_body_shape_entered(body):
+	print("HELLO2")
