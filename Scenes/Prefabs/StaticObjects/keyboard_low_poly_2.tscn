@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbytw1wtximmv"]
+[gd_scene load_steps=9 format=3 uid="uid://cbytw1wtximmv"]
 
 [ext_resource type="Texture2D" uid="uid://b57jpmwtrxcc3" path="res://Assets/Textures/BlenderTextures/KeyboardLowRez2.png" id="1_cxfyc"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_e31fv"]
 [ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="2_y4c32"]
+[ext_resource type="Script" path="res://Scripts/Key_Board_Collision_Handler.gd" id="4_4vt06"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrann"]
 resource_name = "LowresKeyboard2"
@@ -42,8 +43,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ccte1")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x8xbe"]
-size = Vector3(0.656799, 0.0272275, 0.213135)
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdow7"]
+size = Vector3(0.656799, 0.0468867, 0.213135)
 
 [node name="Grabbable" type="RigidBody3D"]
 collision_layer = 3
@@ -57,6 +58,11 @@ transform = Transform3D(0.0119987, 0, 0, 0, 0.0119988, 0, 0, 0, 0.0119987, 0, 0,
 mesh = SubResource("ArrayMesh_7d406")
 skeleton = NodePath("")
 
+[node name="Key_Board_Collision_Handler" type="Node3D" parent="."]
+script = ExtResource("4_4vt06")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 0.0233911, -0.0201416)
-shape = SubResource("BoxShape3D_x8xbe")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 0.0135615, -0.0201416)
+shape = SubResource("BoxShape3D_gdow7")
+
+[connection signal="body_entered" from="." to="Key_Board_Collision_Handler" method="_on_grabbable_body_entered"]

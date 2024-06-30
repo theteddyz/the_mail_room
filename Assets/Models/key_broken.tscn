@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://cci3yluv13ukm"]
+
+[ext_resource type="Texture2D" uid="uid://igbeho62sgj2" path="res://Assets/Textures/BlenderTextures/KeyboardBrokenLowRez.png" id="1_bw3ne"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wffpl"]
+albedo_texture = ExtResource("1_bw3ne")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayxeq"]
+resource_name = "KeyboardBrokenLowPoly"
+cull_mode = 2
+metallic = 1.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a6jvv"]
+_surfaces = [{
+"aabb": AABB(-1, -0.640199, -1, 2, 1.28041, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(5, 0, 1, 0, 0, 0, 5, 0, 4, 0, 1, 0, 4, 0, 3, 0, 1, 0, 4, 0, 6, 0, 3, 0, 6, 0, 2, 0, 3, 0, 6, 0, 7, 0, 2, 0, 7, 0, 0, 0, 2, 0, 7, 0, 5, 0, 0, 0, 3, 0, 0, 0, 1, 0, 3, 0, 2, 0, 0, 0, 7, 0, 4, 0, 5, 0, 7, 0, 6, 0, 4, 0),
+"name": "KeyboardBrokenLowPoly",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(153, 25, 254, 255, 101, 230, 0, 0, 153, 25, 254, 255, 153, 25, 0, 0, 101, 230, 254, 255, 101, 230, 0, 0, 101, 230, 254, 255, 153, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6506m"]
+resource_name = "desk_Cube_070"
+_surfaces = [{
+"aabb": AABB(-1, -0.640199, -1, 2, 1.28041, 2),
+"attribute_data": PackedByteArray(55, 223, 62, 10, 173, 215, 187, 6, 55, 223, 62, 10, 3, 224, 28, 7, 173, 215, 192, 12, 3, 224, 28, 7, 101, 226, 202, 10, 167, 209, 187, 6, 101, 226, 202, 10, 50, 227, 168, 7, 167, 209, 192, 12, 50, 227, 168, 7, 192, 218, 163, 2, 192, 218, 163, 2, 192, 218, 163, 2, 192, 218, 173, 15, 192, 218, 173, 15, 192, 218, 173, 15, 169, 231, 57, 2, 169, 231, 57, 2, 169, 231, 57, 2, 169, 231, 68, 15, 169, 231, 68, 15, 169, 231, 68, 15),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray(17, 0, 5, 0, 2, 0, 17, 0, 14, 0, 5, 0, 12, 0, 9, 0, 3, 0, 12, 0, 18, 0, 9, 0, 20, 0, 8, 0, 11, 0, 20, 0, 23, 0, 8, 0, 21, 0, 0, 0, 6, 0, 21, 0, 15, 0, 0, 0, 10, 0, 1, 0, 4, 0, 10, 0, 7, 0, 1, 0, 22, 0, 13, 0, 16, 0, 22, 0, 19, 0, 13, 0),
+"material": SubResource("StandardMaterial3D_ayxeq"),
+"name": "KeyboardBrokenLowPoly",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(153, 25, 254, 255, 101, 230, 25, 135, 153, 25, 254, 255, 101, 230, 255, 255, 153, 25, 254, 255, 101, 230, 150, 210, 153, 25, 254, 255, 153, 25, 175, 249, 153, 25, 254, 255, 153, 25, 255, 255, 153, 25, 254, 255, 153, 25, 189, 235, 101, 230, 254, 255, 101, 230, 81, 134, 101, 230, 254, 255, 101, 230, 255, 255, 101, 230, 254, 255, 101, 230, 156, 193, 101, 230, 254, 255, 153, 25, 176, 249, 101, 230, 254, 255, 153, 25, 255, 255, 101, 230, 254, 255, 153, 25, 254, 208, 0, 0, 0, 0, 0, 0, 175, 249, 0, 0, 0, 0, 0, 0, 1, 192, 0, 0, 0, 0, 0, 0, 1, 219, 0, 0, 0, 0, 255, 255, 91, 134, 0, 0, 0, 0, 255, 255, 1, 192, 0, 0, 0, 0, 255, 255, 198, 200, 255, 255, 0, 0, 0, 0, 175, 249, 255, 255, 0, 0, 0, 0, 1, 192, 255, 255, 0, 0, 0, 0, 177, 220, 255, 255, 0, 0, 255, 255, 192, 134, 255, 255, 0, 0, 255, 255, 1, 192, 255, 255, 0, 0, 255, 255, 241, 201, 182, 252, 69, 82, 255, 127, 255, 191, 169, 216, 87, 208, 107, 255, 136, 128, 255, 127, 255, 191, 244, 243, 187, 196, 184, 248, 129, 128, 255, 127, 255, 191, 255, 157, 41, 47, 24, 251, 184, 122, 255, 127, 255, 191, 188, 174, 132, 86, 13, 252, 168, 131, 245, 1, 235, 131, 175, 226, 20, 204, 238, 254, 52, 113, 245, 1, 235, 131, 164, 200, 40, 215, 206, 254, 183, 126, 245, 1, 235, 131, 177, 180, 132, 100, 199, 218, 173, 130, 245, 1, 235, 131, 219, 169, 10, 75)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_a6jvv")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7ckls"]
+points = PackedVector3Array(-1, -0.640199, -1, -1, -0.640199, 1, -0.800117, 0.640191, -0.800117, 1, -0.640199, -1, 1, -0.640199, 1, -0.800117, 0.640191, 0.799922, 0.799922, 0.640191, -0.800117, 0.799922, 0.640191, 0.799922)
+
+[node name="RigidBody3D2" type="RigidBody3D"]
+collision_layer = 0
+
+[node name="KeyBroken" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.011999, 9.01444e-11, 1.8073e-09, -9.01444e-11, 0.0119394, -0.001194, -1.8073e-09, -0.001194, -0.0119394, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wffpl")
+mesh = SubResource("ArrayMesh_6506m")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.011999, 9.01444e-11, 1.8073e-09, -9.01444e-11, 0.0119394, -0.001194, -1.8073e-09, -0.001194, -0.0119394, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_7ckls")

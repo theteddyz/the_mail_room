@@ -95,7 +95,7 @@ func dropMe(throw:bool):
 		#linear_damp = 0.1
 		force_above_threshold_time = 0.0
 		angular_damp = 1
-		set_collision_mask_value(3, false)
+		set_collision_mask_value(3, true)
 		if should_freeze:
 			sleeping = true
 	else:
@@ -104,7 +104,7 @@ func dropMe(throw:bool):
 		start_pickup_timer()
 		force_above_threshold_time = 0.0
 		angular_damp = 1
-		set_collision_mask_value(3, false)
+		set_collision_mask_value(3, true)
 		if should_freeze:
 			pass
 			#sleeping = true
