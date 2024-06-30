@@ -1,11 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=20 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
-[ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/Prefabs/gui/pauseMenu.tscn" id="1_u0m20"]
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_y5q3h"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
-[ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="2_pfcaa"]
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/Prefabs/gui/interactable_test.tscn" id="4_p0gx3"]
 [ext_resource type="Script" path="res://Scripts/readable_objectg.gd" id="5_s8sdp"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="5_tbsk3"]
@@ -13,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Prefabs/MoveableObjects/package_template.tscn" id="12_c01f0"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="12_ty778"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="15_2x2rp"]
+[ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="15_hp4l1"]
 [ext_resource type="PackedScene" uid="uid://cauvpuh74hlme" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_002.tscn" id="16_bj7ur"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
@@ -44,21 +43,6 @@ script = ExtResource("1_y5q3h")
 floor_num = -1
 
 [node name="ScareDirector" parent="." instance=ExtResource("1_faoyl")]
-
-[node name="GUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ItemReader" parent="GUI" instance=ExtResource("2_pfcaa")]
-visible = false
-layout_mode = 1
-
-[node name="pauseMenu" parent="GUI" instance=ExtResource("1_u0m20")]
-layout_mode = 1
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -133,3 +117,6 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1, 0, -10)
 
 [node name="StaticBody3D" parent="." instance=ExtResource("15_2x2rp")]
 transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, -6, 0, -10)
+
+[node name="Desk" parent="." instance=ExtResource("15_hp4l1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
