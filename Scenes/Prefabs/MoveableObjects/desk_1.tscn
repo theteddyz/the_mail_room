@@ -143,6 +143,7 @@ skeleton = NodePath("")
 
 [node name="MailboxStand" parent="." instance=ExtResource("4_nflhx")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.90258, 1.41466, -0.248536)
+sleeping = true
 
 [node name="DrawerTop" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.824136, 0.535279)
@@ -151,6 +152,7 @@ collision_mask = 0
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 gravity_scale = 0.0
+sleeping = true
 linear_damp = 6.0
 script = ExtResource("1_hork0")
 
@@ -180,6 +182,7 @@ collision_mask = 0
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 gravity_scale = 0.0
+sleeping = true
 linear_damp = 6.0
 script = ExtResource("1_hork0")
 
@@ -210,6 +213,7 @@ transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448
 
 [node name="Chair" parent="." instance=ExtResource("6_huuqb")]
 transform = Transform3D(-0.999968, 0, -0.00808077, 0, 1, 0, 0.00808077, 0, -0.999968, -0.403, 0.771339, 1.054)
+sleeping = true
 
 [node name="GarbageCan" parent="." instance=ExtResource("7_nth33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6194, 0.297667, 0.0209348)

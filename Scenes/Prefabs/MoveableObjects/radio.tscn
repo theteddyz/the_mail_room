@@ -51,6 +51,7 @@ shadow_mesh = SubResource("ArrayMesh_o4m80")
 [node name="Radio" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 2
+sleeping = true
 script = ExtResource("3_kk33k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

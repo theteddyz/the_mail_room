@@ -49,6 +49,7 @@ size = Vector3(0.127319, 0.16626, 0.106018)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0935703, 0)
 collision_layer = 7
 collision_mask = 7
+sleeping = true
 angular_damp = 1.0
 script = ExtResource("1_rtnu8")
 

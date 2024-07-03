@@ -106,8 +106,7 @@ func dropMe(throw:bool):
 		angular_damp = 1
 		set_collision_mask_value(3, true)
 		if should_freeze:
-			pass
-			#sleeping = true
+			sleeping = true
 func pickmeUp():
 	if is_picked_up:
 		return

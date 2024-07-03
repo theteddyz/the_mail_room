@@ -48,6 +48,7 @@ size = Vector3(0.656799, 0.0468867, 0.213135)
 
 [node name="Keyboard" type="RigidBody3D"]
 collision_layer = 3
+sleeping = true
 script = ExtResource("1_e31fv")
 
 [node name="Interpolator" type="Node3D" parent="."]

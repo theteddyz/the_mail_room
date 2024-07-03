@@ -49,6 +49,7 @@ size = Vector3(0.470276, 0.459717, 0.47699)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.241312, 0)
 collision_layer = 7
 collision_mask = 7
+sleeping = true
 angular_damp = 1.0
 script = ExtResource("1_sdwat")
 

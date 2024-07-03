@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="2_obbdd"]
 [ext_resource type="Texture2D" uid="uid://dv4g5c8vuwrtt" path="res://Assets/Textures/BlenderTextures/LampUpper.png" id="3_uc4mx"]
 [ext_resource type="Script" path="res://Scripts/LampCollisionDetector.gd" id="4_prjkr"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/DesklampButton.gd" id="4_ra0ww"]
+[ext_resource type="Script" path="res://Scripts/DesklampButton.gd" id="4_ra0ww"]
 [ext_resource type="AudioStream" uid="uid://xdsqfc7qegn6" path="res://Assets/Audio/SoundFX/DestructionLamp.mp3" id="7_65t1v"]
 [ext_resource type="AudioStream" uid="uid://w5heanp85nvb" path="res://Assets/Audio/SoundFX/ImpactLamp.mp3" id="7_p17op"]
 
@@ -158,6 +158,7 @@ size = Vector3(0.0808601, 0.0627443, 0.0787858)
 [node name="LampBase" type="RigidBody3D"]
 collision_layer = 3
 collision_mask = 3
+sleeping = true
 angular_damp = 20.0
 script = ExtResource("1_6ip5t")
 
