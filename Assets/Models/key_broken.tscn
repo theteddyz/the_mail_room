@@ -51,6 +51,7 @@ collision_layer = 0
 [node name="KeyBroken" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.011999, 9.01444e-11, 1.8073e-09, -9.01444e-11, 0.0119394, -0.001194, -1.8073e-09, -0.001194, -0.0119394, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_wffpl")
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_6506m")
 skeleton = NodePath("")
 

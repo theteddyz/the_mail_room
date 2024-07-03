@@ -2,15 +2,20 @@ extends Node3D
 
 
 
-@onready var broken_model = preload("res://Assets/Models/keyboard_broken_low_poly.tscn")
+@onready var broken_model = get_parent().find_child("Interpolator").find_child("KeyboardBrokenLowPoly")
+@onready var normal_model = get_parent().find_child("Interpolator").find_child("KeyboardLowPoly2")
 @onready var single_key_model = preload("res://Assets/Models/key_broken.tscn")
-var collision_threshold = 5.0
+var destruction_threshold = 5.0
+var impact_threshold = 0.5
 var parent_node
 func _ready():
 	parent_node = get_parent()
 func _on_grabbable_body_entered(body):
 	var collision_force = calculate_collision_force(body)
-	if collision_force > collision_threshold:
+	if collision_force > impact_threshold && collision_force <= destruction_threshold:
+		var biAudio = parent_node.find_child("Impact")
+		biAudio.play()
+	if collision_force > destruction_threshold:
 		break_keyboard()
 
 
@@ -24,18 +29,20 @@ func calculate_collision_force(body):
 
 
 func break_keyboard():
-	var broken_instance = broken_model.instantiate()
-	parent_node.get_parent().add_child(broken_instance)
-	broken_instance.global_transform = parent_node.global_transform  # Match the transform of the original keyboard
-	broken_instance.apply_impulse(Vector3(0, 3, 0), Vector3(0, 3, 0))
+	#var broken_instance = broken_model.instantiate()
+	#parent_node.get_parent().add_child(broken_instance)
+	#broken_instance.global_transform = parent_node.global_transform  # Match the transform of the original keyboard
+	#broken_instance.apply_impulse(Vector3(0, 3, 0), Vector3(0, 3, 0))
+	broken_model.visible = true
+	normal_model.visible = false
 	for i in range(10):
 		var key_instance = single_key_model.instantiate()
-		broken_instance.add_child(key_instance)
+		parent_node.add_child(key_instance)
 		var key_position = global_transform.origin + Vector3(randf() * 2 - 1, randf(), randf() * 2 - 1)
 		key_instance.global_transform.origin = key_position
 		var random_impulse = Vector3(randf() * 10 - 5, randf() * 10, randf() * 10 - 5)
 		key_instance.apply_impulse(random_impulse, Vector3.ZERO)
-	var biAudio = broken_instance.find_child("AudioStreamPlayer3D")
+	var biAudio = parent_node.find_child("Destruction")
 	biAudio.play()
-	parent_node.queue_free()
+	#parent_node.queue_free()
 
