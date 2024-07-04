@@ -1,18 +1,19 @@
 extends Node3D
 class_name Interpolator
-@onready var mesh = get_child(0)
-@onready var meshBroken = get_child(1)
 @onready var parent = get_parent()
+var mesh_instances = []
 var meshScale
 var update = false
 var prevPosition
 var currentPositon
-var originScale
+var origin_scales = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	originScale = mesh.scale
-	meshScale = mesh.scale
+	for child in get_children():
+		if child is MeshInstance3D:
+			mesh_instances.append(child)
+			origin_scales[child] = child.scale
 	prevPosition = parent.global_transform
 	currentPositon = parent.global_transform
 
@@ -27,15 +28,13 @@ func setUpdate(updated:bool):
 	update = updated
 
 func _process(delta):
-	mesh.scale = originScale
+	for mesh in mesh_instances:
+		mesh.scale = origin_scales[mesh]
 	
 	if update:
 		_update_transform()
 		update = false
 	var f = clamp(Engine.get_physics_interpolation_fraction(),0,1)
-	mesh.global_transform = prevPosition.interpolate_with(currentPositon,f)
-	if meshBroken != null:
-		meshBroken.global_transform = prevPosition.interpolate_with(currentPositon,f)
-		meshBroken.scale = meshScale
-	#Stupid temp fix for now
-	mesh.scale = meshScale
+	for mesh in mesh_instances:
+		mesh.global_transform = prevPosition.interpolate_with(currentPositon, f)
+		mesh.scale = origin_scales[mesh]
