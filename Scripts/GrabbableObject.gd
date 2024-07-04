@@ -8,6 +8,8 @@ extends Grabbable
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
+@export var collision_sounds: Array[AudioStream]
+var audio_player: AudioStreamPlayer
 var is_picked_up = false
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
@@ -25,13 +27,15 @@ var is_rotating = false
 var initial_mouse_position = Vector2.ZERO
 #Interpolator
 var object_Interpolator 
-
+signal collided(other_body)
 
 
 func _ready():
 	object_Interpolator = find_child("Interpolator")
 	var root = get_tree().root
 	var current_scene = root.get_child(root.get_child_count() - 1)
+	audio_player = AudioStreamPlayer.new()
+	add_child(audio_player)
 	if !should_freeze:
 		freeze = false
 	else:
@@ -40,6 +44,7 @@ func _ready():
 		camera = player.find_child("Camera")
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
+	connect("body_entered",Callable(self,"_on_body_entered"))
 #Used by Both
 func _input(event):
 	if is_rotating and event is InputEventMouseMotion:
@@ -168,3 +173,14 @@ func enable_collision_decection():
 	await get_tree().create_timer(1).timeout
 	set_contact_monitor(true)
 	set_max_contacts_reported(1)
+
+
+func _on_body_entered(body):
+	play_random_collision_sound()
+
+func play_random_collision_sound():
+	if collision_sounds.size() > 0:
+		var random_index = randi() % collision_sounds.size()
+		audio_player.stream = collision_sounds[random_index]
+		audio_player.play()
+

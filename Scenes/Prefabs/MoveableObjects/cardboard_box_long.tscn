@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ugwqaphpkcxp"]
+[gd_scene load_steps=9 format=3 uid="uid://ugwqaphpkcxp"]
 
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_7df47"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_dpqm0"]
 [ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="1_uumeq"]
+[ext_resource type="AudioStream" uid="uid://c0g6vygpih50f" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium.mp3" id="2_ahpa0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuv2q"]
 resource_name = "CardboardBox"
@@ -52,6 +53,7 @@ collision_mask = 7
 sleeping = true
 angular_damp = 1.0
 script = ExtResource("1_dpqm0")
+collision_sounds = Array[AudioStream]([ExtResource("2_ahpa0")])
 
 [node name="Interpolator" type="Node3D" parent="."]
 script = ExtResource("1_uumeq")
@@ -63,5 +65,3 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_ewwc8")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

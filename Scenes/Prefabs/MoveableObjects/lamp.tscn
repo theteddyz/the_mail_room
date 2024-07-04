@@ -255,5 +255,4 @@ stream = ExtResource("7_65t1v")
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_p17op")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="." to="LampCollisionDetector" method="_on_lamp_base_body_entered"]
