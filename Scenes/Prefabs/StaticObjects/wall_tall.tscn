@@ -52,6 +52,10 @@ collision_mask = 5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 5.99332, -0.00457764)
 shape = SubResource("BoxShape3D_i7mjw")
 
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0513534, -0.764224, 0.0177612)
+size = Vector3(8.75331, 10.4639, 0.317383)
+
 [node name="WallTall" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_358kq")
 skeleton = NodePath("")

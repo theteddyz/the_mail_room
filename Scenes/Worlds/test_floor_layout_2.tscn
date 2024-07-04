@@ -77,6 +77,9 @@ collision_mask = 5
 size = Vector3(25.7845, 1, 8.67335)
 material = ExtResource("3_s2g2k")
 
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="floor/CSGBox3D3"]
+size = Vector3(25.7845, 1, 8.67335)
+
 [node name="CSGBox3D8" type="CSGBox3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07458, -0.5, 1.41616)
 use_collision = true
@@ -84,6 +87,9 @@ collision_layer = 5
 collision_mask = 5
 size = Vector3(3.87566, 1, 3.63477)
 material = ExtResource("3_s2g2k")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="floor/CSGBox3D8"]
+size = Vector3(3.87566, 1, 3.63477)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4996, -0.5, -24.5219)
@@ -93,6 +99,9 @@ collision_mask = 5
 size = Vector3(25.2989, 1, 38.0128)
 material = ExtResource("3_s2g2k")
 
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="floor/CSGBox3D4"]
+size = Vector3(25.2989, 1, 38.0128)
+
 [node name="CSGBox3D6" type="CSGBox3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09952, -0.5, -20.6102)
 use_collision = true
@@ -100,6 +109,9 @@ collision_layer = 5
 collision_mask = 5
 size = Vector3(3.93471, 1, 30.2167)
 material = ExtResource("3_s2g2k")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="floor/CSGBox3D6"]
+size = Vector3(3.93471, 1, 30.2167)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9434, -0.5, -15.9764)
@@ -109,6 +121,9 @@ collision_mask = 5
 size = Vector3(31.8821, 1, 38.4565)
 material = ExtResource("3_s2g2k")
 
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="floor/CSGBox3D7"]
+size = Vector3(31.8821, 1, 38.4565)
+
 [node name="CSGBox3D5" type="CSGBox3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0684, -0.5, 18.1688)
 use_collision = true
@@ -116,6 +131,9 @@ collision_layer = 5
 collision_mask = 5
 size = Vector3(73.2669, 1, 30.4596)
 material = ExtResource("3_s2g2k")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="floor/CSGBox3D5"]
+size = Vector3(73.2669, 1, 30.4596)
 
 [node name="Objects" type="Node3D" parent="."]
 

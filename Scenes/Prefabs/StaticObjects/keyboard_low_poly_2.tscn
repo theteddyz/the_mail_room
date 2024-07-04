@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cbytw1wtximmv"]
+[gd_scene load_steps=27 format=3 uid="uid://cbytw1wtximmv"]
 
 [ext_resource type="Texture2D" uid="uid://b57jpmwtrxcc3" path="res://Assets/Textures/BlenderTextures/KeyboardLowRez2.png" id="1_cxfyc"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_e31fv"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://dk6wgfuaaebji" path="res://Assets/Audio/SoundFX/ImpactKeyboard3.mp3" id="8_mcjfd"]
 [ext_resource type="AudioStream" uid="uid://cm6glsbm01rrv" path="res://Assets/Audio/SoundFX/DestructionKeyboard2.mp3" id="10_smo7q"]
 [ext_resource type="AudioStream" uid="uid://cpm0jf72njux3" path="res://Assets/Audio/SoundFX/DestructionKeyboard3.mp3" id="11_m3yx3"]
+[ext_resource type="Material" uid="uid://dux2bi8ysymko" path="res://Assets/Models/key_broken_mat.tres" id="12_omiy1"]
+[ext_resource type="ArrayMesh" uid="uid://8rupd1qug4wy" path="res://Assets/Models/key_broken.tres" id="13_g2rmd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrann"]
 resource_name = "LowresKeyboard2"
@@ -115,6 +117,31 @@ stream_1/weight = 1.0
 stream_2/stream = ExtResource("11_m3yx3")
 stream_2/weight = 1.0
 
+[sub_resource type="Curve" id="Curve_jd8an"]
+_data = [Vector2(0, 0.824176), 0.0, 0.0, 0, 0, Vector2(0.823788, 0.824176), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.07875, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_q7bvd"]
+curve = SubResource("Curve_jd8an")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1c4hu"]
+emission_shape = 3
+emission_box_extents = Vector3(0.3, 0.01, 0.1)
+angle_min = -124.7
+angle_max = 113.4
+inherit_velocity_ratio = 0.811
+direction = Vector3(0, 1, 0)
+spread = 71.112
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+attractor_interaction_enabled = false
+scale_min = 0.02
+scale_max = 0.02
+scale_curve = SubResource("CurveTexture_q7bvd")
+collision_mode = 1
+collision_friction = 0.29
+collision_bounce = 0.25
+
 [node name="Keyboard" type="RigidBody3D"]
 collision_layer = 3
 sleeping = true
@@ -149,5 +176,17 @@ attenuation_model = 1
 [node name="Destruction" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_7ba51")
 attenuation_model = 1
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = ExtResource("12_omiy1")
+cast_shadow = 0
+emitting = false
+amount = 38
+lifetime = 10.0
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.02
+process_material = SubResource("ParticleProcessMaterial_1c4hu")
+draw_pass_1 = ExtResource("13_g2rmd")
 
 [connection signal="body_entered" from="." to="Key_Board_Collision_Handler" method="_on_grabbable_body_entered"]

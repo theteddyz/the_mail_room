@@ -35,13 +35,15 @@ func break_keyboard():
 	#broken_instance.apply_impulse(Vector3(0, 3, 0), Vector3(0, 3, 0))
 	broken_model.visible = true
 	normal_model.visible = false
-	for i in range(10):
-		var key_instance = single_key_model.instantiate()
-		parent_node.add_child(key_instance)
-		var key_position = global_transform.origin + Vector3(randf() * 2 - 1, randf(), randf() * 2 - 1)
-		key_instance.global_transform.origin = key_position
-		var random_impulse = Vector3(randf() * 10 - 5, randf() * 10, randf() * 10 - 5)
-		key_instance.apply_impulse(random_impulse, Vector3.ZERO)
+	parent_node.find_child("GPUParticles3D").emitting = false
+	parent_node.find_child("GPUParticles3D").emitting = true
+	#for i in range(10):
+	#	var key_instance = single_key_model.instantiate()
+	#	parent_node.add_child(key_instance)
+	#	var key_position = global_transform.origin + Vector3(randf() * 2 - 1, randf(), randf() * 2 - 1)
+	#	key_instance.global_transform.origin = key_position
+	#	var random_impulse = Vector3(randf() * 10 - 5, randf() * 10, randf() * 10 - 5)
+	#	key_instance.apply_impulse(random_impulse, Vector3.ZERO)
 	var biAudio = parent_node.find_child("Destruction")
 	biAudio.play()
 	#parent_node.queue_free()
