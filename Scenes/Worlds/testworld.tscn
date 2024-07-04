@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=27 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
@@ -51,6 +51,17 @@ albedo_color = Color(0.301961, 1, 0.6, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dih61"]
 size = Vector3(30.0029, 0.504028, 30.0212)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4ljw0"]
+playback_mode = 2
+random_pitch = 1.09
+streams_count = 3
+stream_0/stream = ExtResource("14_emhim")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_60dxw")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("13_ibr4c")
+stream_2/weight = 1.0
 
 [node name="world" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_y5q3h")
@@ -138,4 +149,4 @@ shape = SubResource("BoxShape3D_dih61")
 
 [node name="Cardboard_box_big" parent="." instance=ExtResource("12_ghnq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -2.18631)
-collision_sounds = Array[AudioStream]([ExtResource("13_ibr4c"), ExtResource("14_emhim"), ExtResource("15_60dxw")])
+collision_sounds_random = SubResource("AudioStreamRandomizer_4ljw0")

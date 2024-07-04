@@ -8,8 +8,8 @@ extends Grabbable
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
-@export var collision_sounds: Array[AudioStream]
-var audio_player: AudioStreamPlayer
+@export var collision_sounds_random: AudioStreamRandomizer
+var audio_player
 var is_picked_up = false
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
@@ -34,7 +34,8 @@ func _ready():
 	object_Interpolator = find_child("Interpolator")
 	var root = get_tree().root
 	var current_scene = root.get_child(root.get_child_count() - 1)
-	audio_player = AudioStreamPlayer.new()
+	audio_player = AudioStreamPlayer3D.new()
+	audio_player.stream = collision_sounds_random
 	add_child(audio_player)
 	if !should_freeze:
 		freeze = false
@@ -179,8 +180,5 @@ func _on_body_entered(body):
 	play_random_collision_sound()
 
 func play_random_collision_sound():
-	if collision_sounds.size() > 0:
-		var random_index = randi() % collision_sounds.size()
-		audio_player.stream = collision_sounds[random_index]
-		audio_player.play()
+	audio_player.play()
 
