@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=18 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="2_5t4wg"]
 [ext_resource type="Script" path="res://Scripts/HeadResourceSaver.gd" id="2_eyvdn"]
+[ext_resource type="Shader" path="res://Scripts/postposterizetest.gdshader" id="4_ktlx4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 
@@ -35,6 +36,12 @@ radius = 0.0937542
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vr3m2"]
 radius = 0.122298
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a0n4"]
+shader = ExtResource("4_ktlx4")
+shader_parameter/vignette_intensity = 1.0
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0heh4"]
 radius = 8.51913
@@ -133,7 +140,7 @@ script = ExtResource("2_eyvdn")
 
 [node name="Camera" type="Camera3D" parent="Neck/Head/HeadbopRoot"]
 doppler_tracking = 2
-fov = 55.0
+fov = 60.0
 
 [node name="ItemHolder" type="Marker3D" parent="Neck/Head/HeadbopRoot/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011888, 0.0205584, -1.24889)
@@ -159,6 +166,15 @@ grow_vertical = 2
 scale = Vector2(0.32, 0.32)
 texture = ExtResource("2_5t4wg")
 offset = Vector2(1.34, 42.685)
+
+[node name="ColorRect" type="ColorRect" parent="Neck/Head/HeadbopRoot/Camera"]
+material = SubResource("ShaderMaterial_5a0n4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -1.7)
