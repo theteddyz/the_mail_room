@@ -17,12 +17,12 @@ func _ready():
 	player = GameManager.player_reference
 	EventBus.connect("peaking_monster",enable_monster)
 
-func _input(event):
-	if event.is_action_pressed("sprint"):
-		peak_monster_scare = true
-		enable_monster()
-	if event.is_action_pressed("crouch") and peak_monster_scare:
-		black_out_scare()
+#func _input(event):
+	#if event.is_action_pressed("sprint"):
+		#peak_monster_scare = true
+		#enable_monster()
+	#if event.is_action_pressed("crouch") and peak_monster_scare:
+		#black_out_scare()
 
 func _process(delta):
 	if peak_monster_scare:
