@@ -14,14 +14,10 @@ func _ready():
 
 func _on_continue_pressed():
 	if is_paused and !is_reading:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		get_tree().paused = false
-		is_paused = false
+		_reset_pause_state()
 		hide()
 	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		get_tree().paused = false
-		is_paused = false
+		_reset_pause_state()
 		hide()
 
 

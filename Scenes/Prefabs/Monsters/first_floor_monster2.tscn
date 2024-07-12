@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5fq8t0f4ahf4"]
+
+[ext_resource type="Script" path="res://Scripts/First_Floor_Monster.gd" id="1_ngme3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vjsmp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yikjx"]
+albedo_color = Color(0.631373, 0.521569, 0.301961, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_be2i7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8bbho"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okchw"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="MonsterDirector" type="Node3D"]
+script = ExtResource("1_ngme3")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+
+[node name="Monster" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_vjsmp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_yikjx")
+
+[node name="Eye" type="MeshInstance3D" parent="CharacterBody3D/Monster"]
+transform = Transform3D(0.29, 0, 0, 0, 0.29, 0, 0, 0, 0.29, 0.400865, 0.478776, 0.164858)
+mesh = SubResource("SphereMesh_be2i7")
+skeleton = NodePath("../..")
+
+[node name="pupil" type="MeshInstance3D" parent="CharacterBody3D/Monster/Eye"]
+transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.204894, 0, 0.0427309)
+mesh = SubResource("SphereMesh_be2i7")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_8bbho")
+
+[node name="Eye2" type="MeshInstance3D" parent="CharacterBody3D/Monster"]
+transform = Transform3D(0.29, 0, 0, 0, 0.29, 0, 0, 0, 0.29, 0.400865, 0.478776, -0.131275)
+mesh = SubResource("SphereMesh_be2i7")
+skeleton = NodePath("../..")
+
+[node name="pupil" type="MeshInstance3D" parent="CharacterBody3D/Monster/Eye2"]
+transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.204894, 0, -0.0190623)
+mesh = SubResource("SphereMesh_be2i7")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_okchw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Monster"]

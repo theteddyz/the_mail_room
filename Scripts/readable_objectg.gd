@@ -1,6 +1,6 @@
 extends Interactable
 
-@onready var item_reader = $"../GUI/ItemReader"
+@onready var item_reader
 @export var image_path:Texture2D 
 @export var object_text:String
 
@@ -8,13 +8,9 @@ var startPosition = Vector3.ZERO
 
 func _ready():
 	startPosition = position
+	item_reader = Gui.get_item_reader()
 
 
-func _physics_process(delta):
-	rotate_x(1.35 * delta)
-	rotate_z(1.85 * delta)
-	
-	position = Vector3(position.x, startPosition.y + sin(Time.get_ticks_msec() * delta * 0.5) * 0.05, position.z)
 
 func interact():
-	item_reader.display_item("AHHHHHHHHHHHH IM BEING READ WOOOPIE",image_path)
+	item_reader.display_item(object_text,image_path)

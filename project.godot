@@ -100,5 +100,7 @@ inspect={
 
 [rendering]
 
+lights_and_shadows/directional_shadow/size=8192
 limits/opengl/max_lights_per_object=32
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+lights_and_shadows/positional_shadow/atlas_size=8192

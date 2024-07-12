@@ -14,6 +14,9 @@ signal disable_player_movement(l:bool,w:bool)
 signal  moved_to_floor(path:String,floor:int)
 #Signal for when game is paused
 signal game_paused()
+##First Floor Signals## 
+#Signal for the monster peaking over cubicle
+signal peaking_monster()
 ###############################################################################
 
 #Connecting Functions

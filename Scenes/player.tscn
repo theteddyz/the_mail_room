@@ -40,15 +40,15 @@ radius = 0.122298
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5a0n4"]
 shader = ExtResource("4_ktlx4")
 shader_parameter/vignette_intensity = 1.0
-shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_opacity = 0.3
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0heh4"]
 radius = 8.51913
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
-collision_layer = 4
-collision_mask = 17
+collision_layer = 20
+collision_mask = 20
 script = ExtResource("1_lsi20")
 
 [node name="standing_collision_shape" type="CollisionShape3D" parent="." groups=["Walking_Colliders"]]

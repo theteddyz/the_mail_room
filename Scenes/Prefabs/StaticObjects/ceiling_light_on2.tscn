@@ -90,7 +90,21 @@ skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -3.2654, 0)
+light_color = Color(0.996078, 0.968627, 0.905882, 1)
+light_energy = 0.8
+light_volumetric_fog_energy = 0.5
 shadow_enabled = true
 distance_fade_length = 200.0
-omni_range = 7.15
-omni_attenuation = 0.757858
+omni_range = 10.0
+omni_attenuation = 1.51572
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(4.61975, 0, 0, 0, -2.01936e-07, 4.61975, 0, -4.61975, -2.01936e-07, 0, -3.11426, 0)
+visible = false
+light_energy = 2.5
+light_volumetric_fog_energy = 0.2
+light_size = 1.0
+light_specular = 1.0
+spot_range = 8.41925
+spot_angle = 70.0
+spot_angle_attenuation = 0.707106

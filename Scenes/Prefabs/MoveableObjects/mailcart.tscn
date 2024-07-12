@@ -115,6 +115,7 @@ shape = SubResource("SphereShape3D_uf7kr")
 
 [node name="RadioPosition" type="Node3D" parent="."]
 transform = Transform3D(-0.0012043, 0, -0.999999, 0, 1, 0, 0.999999, 0, -0.0012043, 0.575468, 0.672807, 0)
+visible = false
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="RadioPosition"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254718, 0)
