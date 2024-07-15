@@ -26,7 +26,6 @@ visible = false
 layout_mode = 1
 
 [node name="look_icon" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
