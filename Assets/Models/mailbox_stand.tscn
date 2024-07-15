@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dq6b3ab1wyhca"]
 
 [ext_resource type="Texture2D" uid="uid://bawy11xmnvil2" path="res://Assets/Textures/BlenderTextures/Mailbox.png" id="1_2skgq"]
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_kw6if"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_kw6if"]
 [ext_resource type="Texture2D" uid="uid://d0rpbmloe0xw" path="res://Assets/Textures/BlenderTextures/MailboxMesh.png" id="2_osjud"]
 [ext_resource type="PackedScene" uid="uid://ckuwn1pv3gq2i" path="res://Scenes/Prefabs/package_destination.tscn" id="4_2yoek"]
 

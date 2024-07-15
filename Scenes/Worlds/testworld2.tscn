@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dgcuo40hsxb4d"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_c32a1"]
-[ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_fu55l"]
+[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_fu55l"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="5_xmmfr"]
 [ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator.tscn" id="6_ury8t"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="10_wfqjp"]
