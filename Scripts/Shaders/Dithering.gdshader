@@ -10,7 +10,7 @@ const float srgb = 2.2;
 
 // If you feel so inclined, make yourself some uniforms to toggle/interpolate between the behaviors
 
-//uniform float fiddler: hint_range(0.0, 1.0);
+uniform float fiddler: hint_range(0.0, 1.0);
 uniform float rows = 4.0; 
 uniform float cols = 4.0;
 

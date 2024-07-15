@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=54 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cauvpuh74hlme" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_002.tscn" id="19_iys74"]
 [ext_resource type="PackedScene" uid="uid://csbg8ispl6x18" path="res://Scenes/Prefabs/StaticObjects/desk_cubicle.tscn" id="20_a2fgk"]
 [ext_resource type="PackedScene" uid="uid://cjjmf8isxjpj2" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_001.tscn" id="20_mhv2g"]
-[ext_resource type="PackedScene" uid="uid://cgldfdyb7utbo" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="21_1tw64"]
+[ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="21_1tw64"]
 [ext_resource type="PackedScene" uid="uid://dsv2dauvh5oeq" path="res://Scenes/Prefabs/StaticObjects/ceiling_broken_2.tscn" id="21_ti3x1"]
 [ext_resource type="PackedScene" uid="uid://ugwqaphpkcxp" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_long.tscn" id="22_w6t3o"]
 [ext_resource type="PackedScene" uid="uid://dpbefjvxerw8y" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_blue.tscn" id="23_8vvxq"]
@@ -37,6 +37,7 @@
 [ext_resource type="AudioStream" uid="uid://bwb5copsj1jbv" path="res://Assets/Audio/SoundFX/FootstepsApproaching2.mp3" id="31_3d035"]
 [ext_resource type="PackedScene" uid="uid://qw2qebg60wqj" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/Dithering.gdshader" id="38_6je75"]
+[ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 
 [sub_resource type="Environment" id="Environment_yy6pq"]
 background_mode = 2
@@ -201,21 +202,23 @@ size = Vector3(2.81714, 1.82605, 9.05057)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xygke"]
 render_priority = 0
 shader = ExtResource("38_6je75")
-shader_parameter/rows = 4.0
-shader_parameter/cols = 4.0
-shader_parameter/dither_size = null
-shader_parameter/dither_amount = null
+shader_parameter/fiddler = null
+shader_parameter/rows = 10.0
+shader_parameter/cols = 10.0
+shader_parameter/dither_size = 1.0
+shader_parameter/dither_amount = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4m2ip"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovcbw"]
 render_priority = 0
 shader = ExtResource("38_6je75")
+shader_parameter/fiddler = null
 shader_parameter/rows = 4.0
 shader_parameter/cols = 4.0
 shader_parameter/dither_size = null
 shader_parameter/dither_amount = null
 
 [sub_resource type="BoxMesh" id="BoxMesh_wsdvk"]
-material = SubResource("ShaderMaterial_4m2ip")
+material = SubResource("ShaderMaterial_ovcbw")
 flip_faces = true
 size = Vector3(2, 2, 2)
 
@@ -345,7 +348,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.43
 [node name="OfficeCubicle11" parent="Objects" instance=ExtResource("4_gk0n2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.7306, 0, -10.2316)
 
-[node name="Lamp" parent="Objects/OfficeCubicle11" index="9"]
+[node name="Lamp" parent="Objects/OfficeCubicle11" index="8"]
 transform = Transform3D(0.709041, 0, 0.705166, 0, 1, 0, -0.705166, 0, 0.709041, 1.58416, 1.40059, -0.853801)
 
 [node name="LampArm" parent="Objects/OfficeCubicle11/Lamp" index="6"]
@@ -1838,7 +1841,7 @@ transform = Transform3D(-3.74867e-08, 0, 1, 0, 1, 0, -0.857595, 0, -4.37114e-08,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02003, 0, 1.159)
 
 [node name="Cubicle_wall_monster" parent="LowWalls" instance=ExtResource("15_poj1m")]
-transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 0.933191, 5.20752, -11.9826)
+transform = Transform3D(0.385, 0, 0, 0, 0.385, 0, 0, 0, 0.385, 0.882256, 5.20752, -11.9826)
 
 [node name="StaticBody3D3" parent="LowWalls" instance=ExtResource("15_poj1m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5144, 0, 1.159)
@@ -1912,11 +1915,12 @@ collision_mask = 19
 transform = Transform3D(-0.73341, 0, -0.679787, 0, 1, 0, 0.679787, 0, -0.73341, -15.7029, 1.20194, -8.90936)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 material_override = SubResource("ShaderMaterial_xygke")
-cast_shadow = 0
 extra_cull_margin = 16384.0
 mesh = SubResource("BoxMesh_wsdvk")
+
+[node name="Phone" parent="." instance=ExtResource("38_ikwgb")]
+transform = Transform3D(0.0601078, 0, 0.998192, 0, 1, 0, -0.998192, 0, 0.0601078, -3.6352, 0.949901, -6.33795)
 
 [connection signal="body_entered" from="MonsterDirector/CharacterBody3D/Area3D" to="MonsterDirector" method="_on_area_3d_body_entered"]
 

@@ -1,10 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://duwevejxlw37b"]
+[gd_scene load_steps=16 format=3 uid="uid://duwevejxlw37b"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_m84f3"]
 [ext_resource type="AudioStream" uid="uid://c6txdw12dxjcy" path="res://Assets/Audio/SoundFX/DoorOpened.mp3" id="2_0d3po"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="2_iitep"]
 [ext_resource type="Texture2D" uid="uid://cq76nrxbehxdk" path="res://Assets/Textures/BlenderTextures/DoorMailRoom.png" id="2_wb6se"]
 [ext_resource type="Texture2D" uid="uid://y2pmwstysa37" path="res://Assets/Textures/BlenderTextures/WallMailRoom.png" id="3_b3idl"]
+[ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="5_cmxth"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3h8b2"]
+radius = 0.569345
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vx72d"]
+size = Vector3(1.88333, 3.8623, 0.346191)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pae62"]
 resource_name = "DoorMailRoom"
@@ -45,9 +52,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2mtsc")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vx72d"]
-size = Vector3(1.88333, 3.8623, 0.346191)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pe81x"]
 size = Vector3(3.16969, 11.8827, 0.252686)
@@ -90,16 +94,53 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wnf43")
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[node name="Door" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
+collision_layer = 5
+collision_mask = 5
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 6
 collision_mask = 6
 axis_lock_linear_y = true
-mass = 10.0
-angular_damp = 50.0
+mass = 3.0
 script = ExtResource("1_m84f3")
+
+[node name="Door_Lock" type="Area3D" parent="RigidBody3D"]
+collision_layer = 130
+collision_mask = 130
+script = ExtResource("5_cmxth")
+locked = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Door_Lock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, 0.098477)
+shape = SubResource("SphereShape3D_3h8b2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D/Door_Lock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, -0.239974)
+shape = SubResource("SphereShape3D_3h8b2")
+
+[node name="door" type="StaticBody3D" parent="RigidBody3D"]
+disable_mode = 1
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D/door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434737, 2.01416, -0.0397949)
+shape = SubResource("BoxShape3D_vx72d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, 0.098477)
+shape = SubResource("SphereShape3D_3h8b2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, -0.239974)
+shape = SubResource("SphereShape3D_3h8b2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434737, 2.01416, -0.0397949)
+shape = SubResource("BoxShape3D_vx72d")
+disabled = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RigidBody3D"]
 transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.50384, 0)
@@ -111,10 +152,6 @@ script = ExtResource("2_iitep")
 transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.96591, 2.04469, 0)
 mesh = SubResource("ArrayMesh_cta0g")
 skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434737, 2.01416, -0.0397949)
-shape = SubResource("BoxShape3D_vx72d")
 
 [node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="."]
 limit_enabled = true
@@ -136,3 +173,5 @@ shape = SubResource("BoxShape3D_pe81x")
 [node name="WallMailRoomWithDoor" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_4iex4")
 skeleton = NodePath("")
+
+[connection signal="area_entered" from="RigidBody3D/Door_Lock" to="RigidBody3D/Door_Lock" method="_on_area_entered"]

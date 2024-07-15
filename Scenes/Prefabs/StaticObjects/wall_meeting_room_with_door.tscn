@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://5dnxe87nmekr"]
+[gd_scene load_steps=20 format=3 uid="uid://5dnxe87nmekr"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_76lnn"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_si1lf"]
@@ -6,6 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://c6txdw12dxjcy" path="res://Assets/Audio/SoundFX/DoorOpened.mp3" id="3_x35rg"]
 [ext_resource type="Material" uid="uid://cnc7prympsjb7" path="res://Assets/glass.tres" id="4_8kdjq"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="4_jaj0r"]
+
+[sub_resource type="GDScript" id="GDScript_k1vab"]
+script/source = "extends StaticBody3D
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65pkn"]
 resource_name = "Door"
@@ -137,6 +141,7 @@ size = Vector3(1.47119, 4.33597, 0.156738)
 [node name="meeting_room_wall_Door" type="StaticBody3D"]
 collision_layer = 5
 collision_mask = 5
+script = SubResource("GDScript_k1vab")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 6
