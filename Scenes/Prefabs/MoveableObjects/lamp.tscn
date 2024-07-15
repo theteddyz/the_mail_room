@@ -1,11 +1,11 @@
 [gd_scene load_steps=25 format=3 uid="uid://xy4w3c35frqw"]
 
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_6ip5t"]
-[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="1_88c58"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_6ip5t"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="1_88c58"]
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="2_obbdd"]
 [ext_resource type="Texture2D" uid="uid://dv4g5c8vuwrtt" path="res://Assets/Textures/BlenderTextures/LampUpper.png" id="3_uc4mx"]
-[ext_resource type="Script" path="res://Scripts/LampCollisionDetector.gd" id="4_prjkr"]
-[ext_resource type="Script" path="res://Scripts/DesklampButton.gd" id="4_ra0ww"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/LampCollisionDetector.gd" id="4_prjkr"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/DesklampButton.gd" id="4_ra0ww"]
 [ext_resource type="AudioStream" uid="uid://xdsqfc7qegn6" path="res://Assets/Audio/SoundFX/DestructionLamp.mp3" id="7_65t1v"]
 [ext_resource type="AudioStream" uid="uid://w5heanp85nvb" path="res://Assets/Audio/SoundFX/ImpactLamp.mp3" id="7_p17op"]
 

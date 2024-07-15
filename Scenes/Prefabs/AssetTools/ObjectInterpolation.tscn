@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://wb2kotjvj3vv"]
 
-[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="1_ewmfk"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="1_ewmfk"]
 
 [node name="Interpolator" type="Node3D"]
 script = ExtResource("1_ewmfk")

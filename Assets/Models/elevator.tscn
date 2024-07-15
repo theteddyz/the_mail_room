@@ -1,6 +1,6 @@
 [gd_scene load_steps=74 format=3 uid="uid://wt6476m6k8tc"]
 
-[ext_resource type="Script" path="res://Scripts/ElevatorController.gd" id="1_rvpeo"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/ElevatorController.gd" id="1_rvpeo"]
 [ext_resource type="Texture2D" uid="uid://d24ont78p0umt" path="res://Assets/Textures/BlenderTextures/Elevator.png" id="1_u6psm"]
 [ext_resource type="Texture2D" uid="uid://6c28m22muuhm" path="res://Assets/Textures/BlenderTextures/ElevatorButtons.png" id="2_h4dkc"]
 [ext_resource type="Texture2D" uid="uid://cwo0wqxreionr" path="res://Assets/Textures/BlenderTextures/ElevatorDoor.png" id="3_8bmgt"]
@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cflcp7dk343qt" path="res://Assets/Textures/BlenderTextures/ElevatorEntrance.png" id="5_kjdw3"]
 [ext_resource type="Texture2D" uid="uid://b7ccf5fmuf5wj" path="res://Assets/Textures/BlenderTextures/ElevatorIndicator.png" id="6_tnnhb"]
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="7_avskn"]
-[ext_resource type="Script" path="res://Scripts/Call_Elevator_Button.gd" id="9_agksa"]
-[ext_resource type="Script" path="res://Scripts/ElevatorButton.gd" id="9_mt8yi"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/Call_Elevator_Button.gd" id="9_agksa"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/ElevatorButton.gd" id="9_mt8yi"]
 [ext_resource type="Script" path="res://Assets/Models/ElevatorObjectDetector.gd" id="11_3vp34"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8j03"]

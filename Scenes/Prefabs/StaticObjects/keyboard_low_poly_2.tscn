@@ -1,9 +1,9 @@
 [gd_scene load_steps=27 format=3 uid="uid://cbytw1wtximmv"]
 
 [ext_resource type="Texture2D" uid="uid://b57jpmwtrxcc3" path="res://Assets/Textures/BlenderTextures/KeyboardLowRez2.png" id="1_cxfyc"]
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_e31fv"]
-[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="2_y4c32"]
-[ext_resource type="Script" path="res://Scripts/Key_Board_Collision_Handler.gd" id="4_4vt06"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_e31fv"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_y4c32"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Key_Board_Collision_Handler.gd" id="4_4vt06"]
 [ext_resource type="Texture2D" uid="uid://igbeho62sgj2" path="res://Assets/Textures/BlenderTextures/KeyboardBrokenLowRez.png" id="4_er51f"]
 [ext_resource type="AudioStream" uid="uid://te2s31axt3sw" path="res://Assets/Audio/SoundFX/DestructionKeyboard.mp3" id="5_tleov"]
 [ext_resource type="AudioStream" uid="uid://v1sncpv8gy3j" path="res://Assets/Audio/SoundFX/ImpactKeyboard.mp3" id="6_58xfp"]

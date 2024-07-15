@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://ccaqjm1sg3mgx"]
 
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_7cm3v"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_7cm3v"]
 [ext_resource type="Texture2D" uid="uid://igbeho62sgj2" path="res://Assets/Textures/BlenderTextures/KeyboardBrokenLowRez.png" id="2_ak2jy"]
-[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="2_s1sol"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_s1sol"]
 [ext_resource type="AudioStream" uid="uid://te2s31axt3sw" path="res://Assets/Audio/SoundFX/DestructionKeyboard.mp3" id="4_5pccp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgjbb"]

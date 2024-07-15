@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://qw2qebg60wqj"]
 
 [ext_resource type="Texture2D" uid="uid://dt3wgaigqqoj7" path="res://Assets/Textures/BlenderTextures/Papers.png" id="1_4ab0p"]
-[ext_resource type="Script" path="res://Scripts/readable_objectg.gd" id="1_hp6o8"]
+[ext_resource type="Script" path="res://Scripts/GUI/readable_objectg.gd" id="1_hp6o8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju2nc"]
 resource_name = "Papers"

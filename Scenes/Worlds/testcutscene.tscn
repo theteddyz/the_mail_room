@@ -1,8 +1,8 @@
 [gd_scene load_steps=24 format=3 uid="uid://bu1pxcldnehfp"]
 
-[ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_u173c"]
+[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_u173c"]
 [ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_q6sdx"]
-[ext_resource type="Script" path="res://Scripts/CutsceneCamera.gd" id="3_juhrl"]
+[ext_resource type="Script" path="res://Scripts/Misc/CutsceneCamera.gd" id="3_juhrl"]
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="4_msfst"]
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="5_ntyld"]
 [ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly.tscn" id="6_qvt04"]

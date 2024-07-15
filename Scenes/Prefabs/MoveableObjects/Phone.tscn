@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://bbrt2vrul43u7"]
 
-[ext_resource type="Script" path="res://Scripts/rope.gd" id="1_t8h8n"]
+[ext_resource type="Script" path="res://Scripts/Misc/rope.gd" id="1_t8h8n"]
 [ext_resource type="PackedScene" uid="uid://cyubn1mlgncfh" path="res://Assets/Models/Rope/RopeBody.tscn" id="2_5n5pp"]
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="3_ruqdl"]
-[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="4_26bcd"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="3_ruqdl"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="4_26bcd"]
 [ext_resource type="Texture2D" uid="uid://2f301eomwrmh" path="res://Assets/Textures/BlenderTextures/PhoneReciever.png" id="5_hxlhv"]
 [ext_resource type="Texture2D" uid="uid://dnxfsc1rrdlsq" path="res://Assets/Textures/BlenderTextures/Phone.png" id="6_sdxew"]
 

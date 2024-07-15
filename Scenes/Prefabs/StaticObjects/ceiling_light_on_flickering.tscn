@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://fcuw17kn4sl1"]
 
 [ext_resource type="Texture2D" uid="uid://b4lvvd23ey3q4" path="res://Assets/Textures/BlenderTextures/CeilingLight.png" id="1_k5omu"]
-[ext_resource type="Script" path="res://Scripts/FlickeringLight.gd" id="2_glm1s"]
+[ext_resource type="Script" path="res://Scripts/Misc/FlickeringLight.gd" id="2_glm1s"]
 [ext_resource type="AudioStream" uid="uid://bq2unlvrj6ltu" path="res://Assets/Audio/SoundFX/CeilingLightFlicker.mp3" id="3_wiq4w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1xv5"]

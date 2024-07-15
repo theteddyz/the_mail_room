@@ -4,7 +4,6 @@ class_name CartingState
 @onready var neck = get_parent().get_node("Neck")
 @onready var head = neck.get_node("Head")
 @onready var headbop_root = head.get_node("HeadbopRoot")
-@onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
 @onready var mailcart
 var cart_audio:AudioStreamPlayer3D
 

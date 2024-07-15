@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://ugwqaphpkcxp"]
 
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_7df47"]
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_dpqm0"]
-[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="1_uumeq"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_dpqm0"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="1_uumeq"]
 [ext_resource type="AudioStream" uid="uid://c0g6vygpih50f" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium.mp3" id="2_ahpa0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuv2q"]

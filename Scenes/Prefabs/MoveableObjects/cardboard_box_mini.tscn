@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dfbuid76trvb0"]
 
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_52xw1"]
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_rtnu8"]
-[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="2_6j4ly"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_rtnu8"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_6j4ly"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuv2q"]
 resource_name = "CardboardBox"

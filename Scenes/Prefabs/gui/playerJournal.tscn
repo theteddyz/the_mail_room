@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgmhjlb26b3v3"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerJournal.gd" id="1_b3fo8"]
+[ext_resource type="Script" path="res://Scripts/GUI/PlayerJournal.gd" id="1_b3fo8"]
 
 [node name="playerJournal" type="Control"]
 layout_mode = 3

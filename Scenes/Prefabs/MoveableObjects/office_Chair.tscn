@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://vuyggo5xvbr3"]
 
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_x4tsj"]
-[ext_resource type="Script" path="res://Scripts/ObjectInterpolation.gd" id="2_oevh8"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_x4tsj"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_oevh8"]
 [ext_resource type="Texture2D" uid="uid://dkm7r1g2w10pc" path="res://Assets/Textures/BlenderTextures/ChairWheel.png" id="2_t5u3t"]
 [ext_resource type="Texture2D" uid="uid://gr821vyans0e" path="res://Assets/Textures/BlenderTextures/Chair.png" id="3_wjdcr"]
 

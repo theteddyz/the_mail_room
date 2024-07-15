@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
-[ext_resource type="Script" path="res://Scripts/HeadResourceSaver.gd" id="2_eyvdn"]
-[ext_resource type="Shader" path="res://Scripts/postposterizetest.gdshader" id="4_qoilq"]
-[ext_resource type="Shader" path="res://Scripts/fisheyetest.gdshader" id="5_cu2ny"]
+[ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/postposterizetest.gdshader" id="4_qoilq"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/fisheyetest.gdshader" id="5_cu2ny"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 

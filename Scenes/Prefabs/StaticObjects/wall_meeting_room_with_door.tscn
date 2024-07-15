@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://5dnxe87nmekr"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_76lnn"]
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="2_si1lf"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_si1lf"]
 [ext_resource type="Texture2D" uid="uid://bgqnmx2g3lx72" path="res://Assets/Textures/BlenderTextures/Door.png" id="3_ertuc"]
 [ext_resource type="Material" uid="uid://cnc7prympsjb7" path="res://Assets/glass.tres" id="4_8kdjq"]
 

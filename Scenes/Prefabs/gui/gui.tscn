@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
-[ext_resource type="Script" path="res://Scripts/gui_manager.gd" id="1_udi3s"]
+[ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/Prefabs/gui/pauseMenu.tscn" id="2_j1350"]
-[ext_resource type="Script" path="res://Scripts/FPSMeter.gd" id="3_bccgp"]
+[ext_resource type="Script" path="res://Scripts/GUI/FPSMeter.gd" id="3_bccgp"]
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="4_bqt88"]
-[ext_resource type="Script" path="res://Scripts/IconManager.gd" id="4_w25uf"]
+[ext_resource type="Script" path="res://Scripts/GUI/IconManager.gd" id="4_w25uf"]
 [ext_resource type="Texture2D" uid="uid://dmaieugbx5o5v" path="res://Assets/TemporaryAssets/transparent-back-to-school-icon-idea-icon-light-bulb-icon-606d59b7138822.65835703161777912708-removebg-preview.png" id="6_vkuja"]
 
 [node name="GUI" type="Control"]

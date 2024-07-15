@@ -1,6 +1,6 @@
 [gd_scene load_steps=53 format=3 uid="uid://c8cepgeiphg46"]
 
-[ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_f8c1l"]
+[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
 [ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_mbmrt"]
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="3_s2g2k"]
@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://bwb5copsj1jbv" path="res://Assets/Audio/SoundFX/FootstepsApproaching2.mp3" id="31_3d035"]
 [ext_resource type="PackedScene" uid="uid://qw2qebg60wqj" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
-[ext_resource type="Shader" path="res://Scripts/Dithering.gdshader" id="38_6je75"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/Dithering.gdshader" id="38_6je75"]
 
 [sub_resource type="Environment" id="Environment_yy6pq"]
 background_mode = 2

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://biilk0erp2roe"]
 
-[ext_resource type="Script" path="res://Scripts/Tape.gd" id="1_gugkb"]
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="2_t2hbm"]
+[ext_resource type="Script" path="res://Scripts/MailCart/Tape.gd" id="1_gugkb"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_t2hbm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hjfl0"]
 size = Vector3(0.579134, 0.120361, 0.800568)

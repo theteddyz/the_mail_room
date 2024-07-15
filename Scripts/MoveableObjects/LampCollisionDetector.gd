@@ -8,7 +8,7 @@ var collision_threshold = 0.8
 @onready var lamp_break_sound_2 = $"../AudioStreamPlayer3D2"
 @onready var parent_node = get_parent()
 var broken:bool
-var grabbable_script = preload("res://Scripts/GrabbableObject.gd")
+var grabbable_script = preload("res://Scripts/MoveableObjects/GrabbableObject.gd")
 func _on_lamp_base_body_entered(body):
 	if !broken:
 		var collision_force = calculate_collision_force(body)

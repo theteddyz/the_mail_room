@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://duwevejxlw37b"]
 
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_m84f3"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_m84f3"]
 [ext_resource type="AudioStream" uid="uid://c6txdw12dxjcy" path="res://Assets/Audio/SoundFX/DoorOpened.mp3" id="2_0d3po"]
-[ext_resource type="Script" path="res://Scripts/door_audio.gd" id="2_iitep"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="2_iitep"]
 [ext_resource type="Texture2D" uid="uid://cq76nrxbehxdk" path="res://Assets/Textures/BlenderTextures/DoorMailRoom.png" id="2_wb6se"]
 [ext_resource type="Texture2D" uid="uid://y2pmwstysa37" path="res://Assets/Textures/BlenderTextures/WallMailRoom.png" id="3_b3idl"]
 

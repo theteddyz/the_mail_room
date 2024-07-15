@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://Scripts/GameManager.gd"
-EventBus="*res://Scripts/EventBus.gd"
+GameManager="*res://Scripts/GameManagement/GameManager.gd"
+EventBus="*res://Scripts/GameManagement/EventBus.gd"
 Gui="*res://Scenes/Prefabs/gui/gui.tscn"
 
 [display]
