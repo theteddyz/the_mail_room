@@ -6,7 +6,7 @@ const FILE_NAME = "user://game-data.json"
 var current_scene : Node
 var player_reference: Node
 var elevator_reference: Node
-var mail_cart_reference:Node
+var mail_cart_reference: Node
 #Quite a few script rely on these setter getter, proceed with caution if deleted
 func register_player(new_player):
 	player_reference = new_player

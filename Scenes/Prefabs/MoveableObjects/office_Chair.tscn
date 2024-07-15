@@ -244,7 +244,7 @@ angular_damp = 10.0
 script = ExtResource("1_x4tsj")
 
 [node name="Chair" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.279, 0, 0, 0, 0.279, 0, 0, 0, 0.279, 0, 0, 0)
+transform = Transform3D(0.279, -4.87819e-08, 0, 4.87819e-08, 0.279, 0, 0, 0, 0.279, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yo818")
 skeleton = NodePath("")
 

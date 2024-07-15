@@ -9,6 +9,9 @@ class_name WalkingState
 @onready var headbop_root = head.get_node("HeadbopRoot")
 @onready var interactable_finder: RayCast3D = head.get_node("InteractableFinder")
 @onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
+@onready var mailCrosshair = headbop_root.get_node("Camera").get_node("Control").get_node("MailCrosshair")
+
+@onready var package_name_label = get_tree().root.get_node("Gui").find_child("PackageNameLabel")
 var mailcart
 
 @onready var standing_obstruction_raycast_0 = head.get_node("StandingObstructionRaycasts").get_node("StandingObstructionRaycast0")
@@ -78,8 +81,10 @@ func _input(event):
 					print("ADDED PACKAGE")
 					interactable_finder.get_collider().add_package(object_last_held)
 					is_holding_object = false
-					#TODO: If we are not carrying a package we should grab the currently inspected package in the mailcart
 				else:
+					if(interactable_finder.is_colliding() and interactable_finder.get_collider().name == "MailboxStand"):
+						interactable_finder.get_collider().find_child("PackageDestination").deliver(object_last_held)
+						is_holding_object = false
 					dropped_package()
 		if event.is_action_released("interact") and is_holding_object and object_last_held.name == "Radio":
 			if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart":
@@ -128,8 +133,14 @@ func held_object(mass:float, object):
 func grabbed_package(package: Package):
 	is_holding_object = true
 	object_last_held = package
+	if(package_name_label != null):
+		package_name_label.text = package.package_address
+		package_name_label.visible = true
+		var timer = get_tree().create_timer(1.0)
+		timer.timeout.connect(func(): self.package_name_label.visible = false)
 	bind_package_to_player(package)
-	
+
+
 func bind_package_to_player(package: Package):
 	package.position = package.hand_position
 	package.rotation = package.hand_rotation
@@ -142,9 +153,10 @@ func dropped_package():
 	unbind_package_from_player()
 	
 func unbind_package_from_player():
-	object_last_held.freeze = false
-	persistent_state.find_child("PackageHolder").get_child(0).reparent(persistent_state.get_parent(), true)
-	# MOVE PACKAGE FROM PLAYER HERE
+	var child = persistent_state.find_child("PackageHolder").get_child(0)
+	if(child != null):
+		object_last_held.freeze = false	
+		child.reparent(persistent_state.get_parent(), true)
 
 func droppped_object(mass:float,object):
 	crouching_speed = 3.1
@@ -164,9 +176,26 @@ func _process(delta):
 	updateCartLookStatus()
 	
 	# Interactable Stuff
-	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object and !disable_look_movement:
-		crosshair.visible = true
+	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !disable_look_movement:
+		var collider = interactable_finder.get_collider()
+		# If we are holding a package...
+		if is_holding_object and object_last_held is Package:
+			# If we are checking a mailbox...
+			if collider.name == "MailboxStand":
+				var destination_name = collider.find_child("PackageDestination").accepts_package_named
+				var check = object_last_held.package_address == destination_name
+				# if this is the right mailbox...
+				if check:
+					#MAIL-DELIVERABLE CROSSHAIR
+					crosshair.visible = false
+					mailCrosshair.visible = true
+		elif !is_holding_object:
+			#INTERACT CROSSHAIR
+			mailCrosshair.visible = false
+			crosshair.visible = true
 	else: 
+		#NO CROSSHAIR
+		mailCrosshair.visible = false
 		crosshair.visible = false
 
 func checkObstructionRaycasts():

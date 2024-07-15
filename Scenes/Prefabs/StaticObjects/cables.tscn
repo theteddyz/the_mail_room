@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4pjt676komn4"]
+[gd_scene load_steps=4 format=3 uid="uid://cq3vkf11swts2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqiir"]
 resource_name = "Cables"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dq6b3ab1wyhca"]
+[gd_scene load_steps=12 format=3 uid="uid://dq6b3ab1wyhca"]
 
 [ext_resource type="Texture2D" uid="uid://bawy11xmnvil2" path="res://Assets/Textures/BlenderTextures/Mailbox.png" id="1_2skgq"]
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_kw6if"]
 [ext_resource type="Texture2D" uid="uid://d0rpbmloe0xw" path="res://Assets/Textures/BlenderTextures/MailboxMesh.png" id="2_osjud"]
+[ext_resource type="PackedScene" uid="uid://ckuwn1pv3gq2i" path="res://Scenes/Prefabs/package_destination.tscn" id="4_2yoek"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xi8h3"]
 size = Vector3(0.539339, 0.529325, 0.531023)
@@ -102,3 +103,5 @@ skeleton = NodePath("")
 [node name="MailboxStand_001" type="MeshInstance3D" parent="MailboxStand"]
 mesh = SubResource("ArrayMesh_q3lxr")
 skeleton = NodePath("")
+
+[node name="PackageDestination" parent="." instance=ExtResource("4_2yoek")]

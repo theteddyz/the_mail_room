@@ -44,9 +44,6 @@ func _process(delta):
 		else: 
 			current_speed = cart_walking_speed
 		
-		# TODO: Add FreeLook & Turn from player position		
-		
-		
 		# Get the input direction vector from input actions
 		var input_dir = Input.get_vector("left", "right", "forward", "backward")
 

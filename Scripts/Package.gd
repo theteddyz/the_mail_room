@@ -1,12 +1,15 @@
 extends Interactable
 class_name Package
 
+@export var package_address: String = ""
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 @export var cart_rotation = Vector3.ZERO
 @export var cart_position = Vector3.ZERO
 @export var hand_rotation = Vector3.ZERO
 @export var hand_position = Vector3.ZERO
+@export var delivered_rotation = Vector3.ZERO
+@export var delivered_position = Vector3.ZERO
 
 var is_picked_up = false
 var playerHead

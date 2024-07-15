@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgcfspn46prh2"]
+[gd_scene load_steps=16 format=3 uid="uid://gm2lkxghndvx"]
 
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_qka6u"]
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="2_osag6"]

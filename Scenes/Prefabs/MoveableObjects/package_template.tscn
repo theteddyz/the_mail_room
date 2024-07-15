@@ -8,11 +8,13 @@ size = Vector3(0.540103, 0.120361, 0.77594)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yj08l"]
 albedo_color = Color(0.839216, 0.764706, 0.639216, 1)
 
-[node name="PACKAGE_NEW" type="RigidBody3D"]
-collision_layer = 3
+[node name="Package" type="RigidBody3D"]
+collision_layer = 2
 script = ExtResource("1_1ubyf")
 cart_rotation = Vector3(0, 0, 90)
 cart_position = Vector3(0, 0.25, 0)
+delivered_rotation = Vector3(1.571, 0, 0)
+delivered_position = Vector3(0, 0, 0.189)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00698471, 0.00109863, -0.00308228)

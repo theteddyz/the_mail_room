@@ -38,3 +38,19 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.1, 0.1)
 color = Color(1, 1, 1, 0.490196)
+
+[node name="PackageNameLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = -57.0
+offset_right = 78.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "NO PACKAGE"
+horizontal_alignment = 1

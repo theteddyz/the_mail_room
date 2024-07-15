@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgldfdyb7utbo"]
+[gd_scene load_steps=9 format=3 uid="uid://dmy0v04imvkbv"]
 
 [ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_s1rcs"]
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_skhh8"]
