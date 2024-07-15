@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=24 format=3 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_u173c"]
 [ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_q6sdx"]
@@ -18,7 +18,6 @@
 [ext_resource type="AudioStream" uid="uid://p0ckrxqcbt02" path="res://Assets/Audio/SoundFX/IntroFloorAmbience1.mp3" id="17_p43sr"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="17_ucf0v"]
 [ext_resource type="AudioStream" uid="uid://ce5jiafwp834b" path="res://Assets/Audio/SoundFX/IntroFloorAmbience2.mp3" id="18_7frdt"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/Dithering.gdshader" id="19_gb7xt"]
 
 [sub_resource type="Environment" id="Environment_mq4r4"]
 background_mode = 2
@@ -145,20 +144,6 @@ _data = {
 }
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_60xfd"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2sixi"]
-render_priority = 0
-shader = ExtResource("19_gb7xt")
-shader_parameter/fiddler = 0.0
-shader_parameter/rows = 10.0
-shader_parameter/cols = 10.0
-shader_parameter/dither_size = 0.0
-shader_parameter/dither_amount = 0.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_e26vj"]
-lightmap_size_hint = Vector2i(24, 36)
-flip_faces = true
-size = Vector3(2, 2, 2)
 
 [node name="world" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_u173c")
@@ -1404,9 +1389,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8305, 0, 0)
 stream = ExtResource("18_7frdt")
 autoplay = true
 max_distance = 100.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("ShaderMaterial_2sixi")
-cast_shadow = 0
-extra_cull_margin = 16384.0
-mesh = SubResource("BoxMesh_e26vj")

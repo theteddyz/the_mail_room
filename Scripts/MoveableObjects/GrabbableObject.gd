@@ -165,7 +165,6 @@ func stop_rotating():
 	angular_velocity = Vector3.ZERO
 func lock_axes(lock: bool):
 	axis_lock_linear_x = lock
-	axis_lock_linear_y = lock
 	axis_lock_linear_z = lock
 func is_at_rest() -> bool:
 	return linear_velocity.length_squared() <= 0.0001 and angular_velocity.length_squared() <= 0.0001

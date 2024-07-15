@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpux5ntrihswe"]
+
+[ext_resource type="Shader" path="res://Scripts/Shaders/Dithering.gdshader" id="1_xjtif"]
+[ext_resource type="Texture2D" uid="uid://doe83q3xcjthr" path="res://Scenes/Worlds/empty-space-4-32x.png" id="2_aq1xq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7hqmn"]
+render_priority = 0
+shader = ExtResource("1_xjtif")
+shader_parameter/fiddler = null
+shader_parameter/rows = 6.0
+shader_parameter/cols = 6.0
+shader_parameter/dither_size = 1.0
+shader_parameter/dither_amount = 0.0
+shader_parameter/pal = ExtResource("2_aq1xq")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_im3gk"]
+flip_faces = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D"]
+visible = false
+material_override = SubResource("ShaderMaterial_7hqmn")
+extra_cull_margin = 16384.0
+mesh = SubResource("PlaneMesh_im3gk")

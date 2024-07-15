@@ -8,6 +8,7 @@ extends Node3D
 @export var rotation_speed: float = 1.0
 @onready var audio_player:AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var anim:AnimationPlayer = $"../CeilingLights/BlackOutLight/AnimationPlayer"
+@onready var anim_scare_2:AnimationPlayer = $"../CeilingLights/CeilingLightOn23/AnimationPlayer"
 @onready var scare_1_location = $Scare_1_Monster_location
 @onready var scare_2_location = $Scare_2_Monster_location
 var player: Node = null
@@ -54,8 +55,9 @@ func close_up_monster_scare():
 	monster_body.position = scare_2_location.position
 	monster_body.rotation = scare_2_location.rotation
 	peak_monster_scare = true
+	anim_scare_2.play("monster_scare_2")
 
 func _on_area_3d_body_entered(body):
 	if body.name == "Player" and peak_monster_scare:
-		visible = false
+		#visible = false
 		peak_monster_scare = false
