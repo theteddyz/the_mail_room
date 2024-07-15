@@ -13,12 +13,14 @@ extends Node3D
 var player: Node = null
 var peak_monster_scare:bool = false
 func _ready():
-	monster_body.visible = false
+	monster_body.visible = true
 	player = GameManager.player_reference
 	EventBus.connect("peaking_monster",enable_monster)
 
-#func _input(event):
-	#if event.is_action_pressed("sprint"):
+func _input(event):
+	if event.is_action_pressed("sprint"):
+		close_up_monster_scare()
+		monster_body.visible = true
 		#peak_monster_scare = true
 		#enable_monster()
 	#if event.is_action_pressed("crouch") and peak_monster_scare:
@@ -31,7 +33,7 @@ func enable_monster():
 	visible = true
 	peak_monster_scare = true
 func peak_monster(delta: float):
-	monster_body.position = scare_1_location.position
+	#monster_body.position = scare_1_location.position
 	monster_body.visible = true
 	var direction_to_player = (player.global_transform.origin - monster_body.global_transform.origin).normalized()
 	var current_forward = -monster_body.global_transform.basis.z.normalized()

@@ -27,6 +27,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if parent_node:
+		parent_node.angular_damp = 5
+		parent_node.linear_damp = 5
 		update_door_audio(parent_node.rotation_degrees.y)
 
 func update_door_audio(current_angle: float):

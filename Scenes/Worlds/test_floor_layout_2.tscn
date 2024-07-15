@@ -680,13 +680,13 @@ transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 16.3093,
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 12.8055, 0, -20.7156)
 
 [node name="StaticBody3D15" parent="Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.614708, 0, -9.49834)
+transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, -0.614708, 0, -9.49834)
 
 [node name="StaticBody3D34" parent="Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8495, 0, -9.49396)
 
 [node name="StaticBody3D63" parent="Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 8.412, 0, -9.494)
+transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, 8.412, 0, -9.494)
 
 [node name="StaticBody3D45" parent="Walls" instance=ExtResource("9_08ifg")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 22.7167, 0, -2.88465)
