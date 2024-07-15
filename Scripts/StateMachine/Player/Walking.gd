@@ -8,7 +8,7 @@ class_name WalkingState
 @onready var crouching_collision_shape = get_parent().get_node("crouching_collision_shape")
 @onready var headbop_root = head.get_node("HeadbopRoot")
 @onready var interactable_finder: RayCast3D = head.get_node("InteractableFinder")
-@onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
+var iconManager
 var mailcart
 
 @onready var standing_obstruction_raycast_0 = head.get_node("StandingObstructionRaycasts").get_node("StandingObstructionRaycast0")
@@ -55,7 +55,7 @@ func _ready():
 	starting_height = neck.position.y
 	crouching_depth = starting_height - 0.5
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	crosshair.visible = false
+	iconManager = Gui.get_icon_manager()
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
 	EventBus.connect("disable_player_movement",disable_movement_event)
@@ -93,6 +93,7 @@ func _input(event):
 				interact_cooldown = true
 				get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
 				if collider.name == "Handlebar" and !is_holding_object:
+					EventBus.emitCustomSignal("hide_icon",[])
 					change_state.call("grabcart")
 				elif collider.name == "Mailcart" and !is_holding_object:
 					collider.grab_current_package()
@@ -165,9 +166,13 @@ func _process(delta):
 	
 	# Interactable Stuff
 	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !is_holding_object and !disable_look_movement:
-		crosshair.visible = true
+		var collider = interactable_finder.get_collider()
+		if collider and "icon_type" in collider:
+			EventBus.emitCustomSignal("show_icon",[interactable_finder.get_collider().icon_type])
+		else:EventBus.emitCustomSignal("show_icon",["grab"])
+			
 	else: 
-		crosshair.visible = false
+		EventBus.emitCustomSignal("hide_icon",[])
 
 func checkObstructionRaycasts():
 	if standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding()or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding():

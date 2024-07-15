@@ -234,6 +234,7 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("4_ra0ww")
 light = NodePath("../LampArm/LampUpper/SpotLight3D")
+icon_type = "light"
 
 [node name="Button" type="CollisionShape3D" parent="ButtonRB2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00129512, 0.0158692, 0.00237997)

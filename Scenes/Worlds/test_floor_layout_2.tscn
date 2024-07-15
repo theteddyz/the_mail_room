@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=53 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://bwb5copsj1jbv" path="res://Assets/Audio/SoundFX/FootstepsApproaching2.mp3" id="31_3d035"]
 [ext_resource type="PackedScene" uid="uid://qw2qebg60wqj" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
+[ext_resource type="Shader" path="res://Scripts/Dithering.gdshader" id="38_6je75"]
 
 [sub_resource type="Environment" id="Environment_yy6pq"]
 background_mode = 2
@@ -196,6 +197,27 @@ size = Vector3(6.55966, 2.57471, 3.54968)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iinbb"]
 size = Vector3(2.81714, 1.82605, 9.05057)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xygke"]
+render_priority = 0
+shader = ExtResource("38_6je75")
+shader_parameter/rows = 4.0
+shader_parameter/cols = 4.0
+shader_parameter/dither_size = null
+shader_parameter/dither_amount = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4m2ip"]
+render_priority = 0
+shader = ExtResource("38_6je75")
+shader_parameter/rows = 4.0
+shader_parameter/cols = 4.0
+shader_parameter/dither_size = null
+shader_parameter/dither_amount = null
+
+[sub_resource type="BoxMesh" id="BoxMesh_wsdvk"]
+material = SubResource("ShaderMaterial_4m2ip")
+flip_faces = true
+size = Vector3(2, 2, 2)
 
 [node name="world" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -1646,13 +1668,21 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 17.6879,
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.573916, 4.21901, -18.4014)
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn23" index="1"]
+visible = true
 omni_attenuation = 0.840896
+
+[node name="SpotLight3D" parent="CeilingLights/CeilingLightOn23" index="2"]
+visible = false
 
 [node name="CeilingLightOn32" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.573916, 4.21901, -26.9364)
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn32" index="1"]
+visible = true
 omni_attenuation = 0.840897
+
+[node name="SpotLight3D" parent="CeilingLights/CeilingLightOn32" index="2"]
+visible = false
 
 [node name="CeilingLightOn27" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -14.5415, 4.21901, -14.4662)
@@ -1880,6 +1910,13 @@ collision_mask = 19
 
 [node name="Area3D" parent="." instance=ExtResource("34_88ps1")]
 transform = Transform3D(-0.73341, 0, -0.679787, 0, 1, 0, 0.679787, 0, -0.73341, -15.7029, 1.20194, -8.90936)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("ShaderMaterial_xygke")
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("BoxMesh_wsdvk")
 
 [connection signal="body_entered" from="MonsterDirector/CharacterBody3D/Area3D" to="MonsterDirector" method="_on_area_3d_body_entered"]
 

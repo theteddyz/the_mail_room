@@ -24,7 +24,7 @@ Gui="*res://Scenes/Prefabs/gui/gui.tscn"
 [display]
 
 window/energy_saving/keep_screen_on=false
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [input]
 

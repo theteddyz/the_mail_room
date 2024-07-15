@@ -1,70 +1,62 @@
-//based on https://godotshaders.com/shader/crt-shader-2/
-shader_type canvas_item;
-uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
-uniform float fisheye_strength = 1.0; // Adjust this to control the fisheye effect strength
+//THIS SHADER MUST BE APPLIED TO A QUAD (MeshInstance) WITH A SIZE OF (2, 2)
+//Extra Cull Margin on the quad should be turned up all the way!
 
-vec2 fisheye(vec2 uv) {
-    vec2 d = uv - 0.5;
-    float r = length(d);
-    float theta = atan(d.y, d.x);
-    float rf = pow(r, fisheye_strength) / pow(0.5, fisheye_strength - 1.0);
-    return vec2(0.5) + rf * normalize(d);
-}
+shader_type spatial;
+render_mode unshaded;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
+uniform int outline_mode : hint_range(1, 3, 1) = 3;
+uniform float outline_intensity : hint_range(0, 5) = 1;
+uniform bool _round = false;
+uniform float outline_bias : hint_range(-10, 10) = 0;
 
-vec2 curve(vec2 uv)
-{
-	uv = (uv - 0.5) * 2.0;
-	uv *= 1.1;
-	uv.x *= 1.0 + pow((abs(uv.y) / 5.0), 2.0);
-	uv.y *= 1.0 + pow((abs(uv.x) / 4.0), 2.0);
-	uv  = (uv / 2.0) + 0.5;
-	uv =  uv *0.92 + 0.04;
-	return uv;
+uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+
+void vertex() {
+	POSITION = vec4(VERTEX, 1.0);
 }
 
 void fragment() {
-    vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
-    vec2 q = FRAGCOORD.xy / iResolution.xy;
+	ALBEDO = outline_color.rgb;
+	
+	vec2 screen_size = vec2(textureSize(SCREEN_TEXTURE, 1));
+	
+	float px = 0.5/screen_size.x;
+	float py = 0.5/screen_size.y;
+	
+	float d = texture(DEPTH_TEXTURE, SCREEN_UV).x;
+	float du = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(0.0, py)).x;
+	float dd = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(0.0, -py)).x;
+	float dr = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(px, 0.0)).x;
+	float dl = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(-px, 0.0)).x;
+	
+	if (outline_mode == 1){
+		ALPHA = 0.0 + abs(abs(d)-abs(du)) + abs(abs(d)-abs(dd)) + abs(abs(d)-abs(dl)) + abs(abs(d)-abs(dr));
+			
+		ALPHA *= 1000.0*outline_intensity;
+	} else if (outline_mode == 2) {
+		ALPHA = 0.0 + abs(abs(abs(d)-abs(du)) - abs(abs(d)-abs(dd))) + abs(abs(abs(d)-abs(dl)) - abs(abs(d)-abs(dr)));
+		
+		ALPHA *= 3.0*50000.0*outline_intensity;
+	} else if (outline_mode == 3) {
+		float dq = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(-px, py)).x;
+		float de = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(px, py)).x;
+		float dz = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(-px, -py)).x;
+		float dc = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(px, -py)).x;
+		
+		ALPHA = 0.0 + abs(abs(abs(d)-abs(du)) - abs(abs(d)-abs(dd))) + abs(abs(abs(d)-abs(dl)) - abs(abs(d)-abs(dr))) + abs(abs(abs(d)-abs(dq)) - abs(abs(d)-abs(dc))) + abs(abs(abs(d)-abs(dz)) - abs(abs(d)-abs(de)));
 
-    // Apply fisheye distortion
-    q = fisheye(q);
-
-    vec2 uv = curve(q);
-    uv = curve( uv );
-    vec3 oricol = texture( screen_texture, vec2(q.x,q.y) ).xyz;
-    vec3 col;
-	float x =  sin(0.3*TIME+uv.y*21.0)*sin(0.7*TIME+uv.y*29.0)*sin(0.3+0.33*TIME+uv.y*31.0)*0.0017;
-
-    col.r = texture(screen_texture,vec2(x+uv.x+0.001,uv.y+0.001)).x+0.05;
-    col.g = texture(screen_texture,vec2(x+uv.x+0.000,uv.y-0.002)).y+0.05;
-    col.b = texture(screen_texture,vec2(x+uv.x-0.002,uv.y+0.000)).z+0.05;
-    col.r += 0.08*texture(screen_texture,0.75*vec2(x+0.025, -0.027)+vec2(uv.x+0.001,uv.y+0.001)).x;
-    col.g += 0.05*texture(screen_texture,0.75*vec2(x+-0.022, -0.02)+vec2(uv.x+0.000,uv.y-0.002)).y;
-    col.b += 0.08*texture(screen_texture,0.75*vec2(x+-0.02, -0.018)+vec2(uv.x-0.002,uv.y+0.000)).z;
-
-    col = clamp(col*0.6+0.4*col*col*1.0,0.0,1.0);
-
-    float vig = (0.0 + 1.0*16.0*uv.x*uv.y*(1.0-uv.x)*(1.0-uv.y));
-	col *= vec3(pow(vig,0.3));
-
-    col *= vec3(0.95,1.05,0.95);
-	col *= 2.8;
-
-	float scans = clamp( 0.35+0.35*sin(3.5*TIME+uv.y*iResolution.y*1.5), 0.0, 1.0);
-
-	float s = pow(scans,1.7);
-	col = col*vec3( 0.4+0.7*s) ;
-
-    col *= 1.0+0.01*sin(110.0*TIME);
-	if (uv.x < 0.0 || uv.x > 1.0)
-		col *= 0.0;
-	if (uv.y < 0.0 || uv.y > 1.0)
-		col *= 0.0;
-
-	col*=1.0-0.65*vec3(clamp((mod(FRAGCOORD.x, 2.0)-1.0)*2.0,0.0,1.0));
-
-    float comp = smoothstep( 0.1, 0.9, sin(TIME) );
-
-
-    COLOR = vec4(col,1.0);
+		ALPHA *= 50000.0*outline_intensity;
+	}
+	
+	ALPHA += outline_bias;
+	
+	if (_round) {
+		ALPHA = round(ALPHA);
+	}
+	
+	ALPHA *= outline_color.a;
+	ALPHA = clamp(ALPHA, 0.0, 1.0);
 }
+
+//Written by Warren Jennings
