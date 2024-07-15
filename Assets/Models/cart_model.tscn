@@ -297,9 +297,21 @@ mesh = SubResource("ArrayMesh_med7o")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CartLight2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.37644, 26.3136, -2.37938e-05)
+transform = Transform3D(99.7984, 0, 0, 0, 55.0667, 0, 0, 0, 99.7984, -17.9907, 52.5277, -2.37938e-05)
+visible = false
+light_energy = 1.5
+light_volumetric_fog_energy = 0.0
 shadow_enabled = true
-omni_range = 4.152
+omni_attenuation = 2.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CartLight2"]
+transform = Transform3D(1.616, 0, 0, 0, 0.300294, 0.981053, 0, -1.52063, 0.193738, -34.4742, 54.0132, 43.5988)
+light_energy = 3.5
+light_volumetric_fog_energy = 0.0
+spot_range = 12.0
+spot_attenuation = 2.0
+spot_angle = 89.0
+spot_angle_attenuation = 2.0
 
 [node name="Cube_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.495001, 0, 0, 0, 0.491438, -0.0952288, 0, 0.0592847, 0.789394, 0, -0.404683, 0.957192)

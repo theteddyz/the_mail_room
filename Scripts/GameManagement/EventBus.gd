@@ -1,5 +1,10 @@
 extends Node
 ##Signals##
+###GUI SIGNALS###
+#Signals to show the gui icon
+signal show_icon(name:String)
+#Signals to hide gui icon
+signal hide_icon()
 #Signals when an game object is held by player and feeds mass
 signal object_held(mass: float, object: Node3D)
 #Signals when we drop an object
@@ -14,6 +19,9 @@ signal disable_player_movement(l:bool,w:bool)
 signal  moved_to_floor(path:String,floor:int)
 #Signal for when game is paused
 signal game_paused()
+##First Floor Signals## 
+#Signal for the monster peaking over cubicle
+signal peaking_monster()
 ###############################################################################
 
 #Connecting Functions

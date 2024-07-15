@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=8 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
+[ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/Prefabs/gui/pauseMenu.tscn" id="2_j1350"]
+[ext_resource type="Script" path="res://Scripts/GUI/FPSMeter.gd" id="3_bccgp"]
+[ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="4_bqt88"]
+[ext_resource type="Script" path="res://Scripts/GUI/IconManager.gd" id="4_w25uf"]
+[ext_resource type="Texture2D" uid="uid://dmaieugbx5o5v" path="res://Assets/TemporaryAssets/transparent-back-to-school-icon-idea-icon-light-bulb-icon-606d59b7138822.65835703161777912708-removebg-preview.png" id="6_vkuja"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -10,8 +15,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_udi3s")
 
 [node name="pauseMenu" parent="." instance=ExtResource("2_j1350")]
+visible = false
 layout_mode = 1
 
 [node name="ItemReader" parent="." instance=ExtResource("1_4tqc1")]
@@ -25,32 +32,74 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="look_icon"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 37.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+color = Color(1, 1, 1, 0.490196)
+
+[node name="IconManager" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_w25uf")
 
-[node name="ColorRect" type="ColorRect" parent="look_icon"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.1, 0.1)
-color = Color(1, 1, 1, 0.490196)
-
-[node name="PackageNameLabel" type="Label" parent="."]
-visible = false
+[node name="grab" type="TextureRect" parent="IconManager"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -78.0
-offset_top = -57.0
-offset_right = 78.0
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -22.0
+offset_right = 88.0
+offset_bottom = 104.0
 grow_horizontal = 2
-grow_vertical = 0
-text = "NO PACKAGE"
-horizontal_alignment = 1
+grow_vertical = 2
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("4_bqt88")
+
+[node name="light" type="TextureRect" parent="IconManager"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_vkuja")
+expand_mode = 1
+
+[node name="FPSMeter" type="Label" parent="."]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_bccgp")

@@ -11,15 +11,20 @@ config_version=5
 [application]
 
 config/name="the-mail-room"
-run/main_scene="res://Scenes/Worlds/testcutscene.tscn"
+run/main_scene="res://Scenes/Worlds/test_floor_layout_2.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://Scripts/GameManager.gd"
-EventBus="*res://Scripts/EventBus.gd"
+GameManager="*res://Scripts/GameManagement/GameManager.gd"
+EventBus="*res://Scripts/GameManagement/EventBus.gd"
 Gui="*res://Scenes/Prefabs/gui/gui.tscn"
+
+[display]
+
+window/energy_saving/keep_screen_on=false
+window/stretch/mode="viewport"
 
 [input]
 
@@ -95,5 +100,7 @@ inspect={
 
 [rendering]
 
+lights_and_shadows/directional_shadow/size=8192
 limits/opengl/max_lights_per_object=32
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+lights_and_shadows/positional_shadow/atlas_size=8192

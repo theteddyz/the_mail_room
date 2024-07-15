@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://drnom5veksi45"]
 
-[ext_resource type="Script" path="res://Scripts/TestworldResourceSaver.gd" id="1_8bgbg"]
+[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_8bgbg"]
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="2_uafa1"]
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="3_fi8sc"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/Prefabs/gui/pauseMenu.tscn" id="4_d1jk4"]

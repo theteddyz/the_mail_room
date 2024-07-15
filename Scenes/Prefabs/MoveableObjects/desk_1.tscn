@@ -1,13 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://ce71rwirfiafw"]
+[gd_scene load_steps=23 format=3 uid="uid://ce71rwirfiafw"]
 
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_hork0"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_hork0"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_2qwev"]
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="2_rbvap"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="3_ee5i4"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="4_6fufh"]
-[ext_resource type="PackedScene" path="res://Assets/Models/mailbox_stand.tscn" id="4_nflhx"]
+[ext_resource type="PackedScene" uid="uid://bjb41uajsy3iw" path="res://Assets/Models/mailbox_stand.tscn" id="4_nflhx"]
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="5_t6sno"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="6_huuqb"]
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="7_nth33"]
+[ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/StaticObjects/keyboard_low_poly_2.tscn" id="10_wk3io"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
 size = Vector3(2.69171, 0.0628052, 1.33755)
@@ -131,13 +133,17 @@ shape = SubResource("BoxShape3D_40acm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829035, 0.597112, -0.0114136)
 shape = SubResource("BoxShape3D_xtl34")
 
-[node name="Desk2" type="MeshInstance3D" parent="."]
+[node name="Interpolator" type="Node3D" parent="."]
+script = ExtResource("2_2qwev")
+
+[node name="Desk2" type="MeshInstance3D" parent="Interpolator"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = SubResource("ArrayMesh_m48u0")
 skeleton = NodePath("")
 
 [node name="MailboxStand" parent="." instance=ExtResource("4_nflhx")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.90258, 1.14083, -0.248536)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.90258, 1.41466, -0.248536)
+sleeping = true
 
 [node name="DrawerTop" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.824136, 0.535279)
@@ -146,10 +152,14 @@ collision_mask = 0
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 gravity_scale = 0.0
+sleeping = true
 linear_damp = 6.0
 script = ExtResource("1_hork0")
 
-[node name="CabinetDesk2" type="MeshInstance3D" parent="DrawerTop"]
+[node name="Interpolator" type="Node3D" parent="DrawerTop"]
+script = ExtResource("2_2qwev")
+
+[node name="CabinetDesk2" type="MeshInstance3D" parent="DrawerTop/Interpolator"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = SubResource("ArrayMesh_qr8se")
 skeleton = NodePath("")
@@ -172,10 +182,14 @@ collision_mask = 0
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 gravity_scale = 0.0
+sleeping = true
 linear_damp = 6.0
 script = ExtResource("1_hork0")
 
-[node name="CabinetDesk2" type="MeshInstance3D" parent="DrawerBottom"]
+[node name="Interpolator" type="Node3D" parent="DrawerBottom"]
+script = ExtResource("2_2qwev")
+
+[node name="CabinetDesk2" type="MeshInstance3D" parent="DrawerBottom/Interpolator"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = SubResource("ArrayMesh_qr8se")
 skeleton = NodePath("")
@@ -199,6 +213,10 @@ transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448
 
 [node name="Chair" parent="." instance=ExtResource("6_huuqb")]
 transform = Transform3D(-0.999968, 0, -0.00808077, 0, 1, 0, 0.00808077, 0, -0.999968, -0.403, 0.771339, 1.054)
+sleeping = true
 
 [node name="GarbageCan" parent="." instance=ExtResource("7_nth33")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6194, 0.297667, 0.0209348)
+
+[node name="Keyboard" parent="." instance=ExtResource("10_wk3io")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15408, 1.14425, 0.442178)

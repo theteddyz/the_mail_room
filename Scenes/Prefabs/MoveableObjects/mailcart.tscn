@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://tw0mk31qdtge"]
 
-[ext_resource type="Script" path="res://Scripts/Mailcart.gd" id="1_1hgo0"]
+[ext_resource type="Script" path="res://Scripts/MailCart/Mailcart.gd" id="1_1hgo0"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="2_jjppu"]
 [ext_resource type="PackedScene" uid="uid://c08qc5mgsdt5y" path="res://Scenes/Prefabs/MoveableObjects/radio.tscn" id="3_mea2j"]
 [ext_resource type="AudioStream" uid="uid://c0t8xaftuek6t" path="res://Assets/Audio/SoundFX/Cart.mp3" id="4_eev6i"]
@@ -115,6 +115,7 @@ shape = SubResource("SphereShape3D_uf7kr")
 
 [node name="RadioPosition" type="Node3D" parent="."]
 transform = Transform3D(-0.0012043, 0, -0.999999, 0, 1, 0, 0.999999, 0, -0.0012043, 0.575468, 0.672807, 0)
+visible = false
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="RadioPosition"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254718, 0)

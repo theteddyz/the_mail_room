@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://5vwkanc2n0u0"]
 
-[ext_resource type="Script" path="res://Scripts/TestMonster.gd" id="1_8puf2"]
-[ext_resource type="Script" path="res://Scripts/VisionCone.gd" id="2_pov0b"]
+[ext_resource type="Script" path="res://Scripts/MonsterAI/TestMonster.gd" id="1_8puf2"]
+[ext_resource type="Script" path="res://Scripts/MonsterAI/VisionCone.gd" id="2_pov0b"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5x1el"]
 

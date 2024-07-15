@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://wiqce4mvixol"]
+[gd_scene load_steps=9 format=3 uid="uid://wiqce4mvixol"]
 
 [ext_resource type="Texture2D" uid="uid://dxnsmau13ap8j" path="res://Assets/Textures/BlenderTextures/TrackBall.png" id="1_57e1d"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Grabbable.gd" id="1_aemuw"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_bhxbj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fsh4"]
 resource_name = "TrackBall"
@@ -42,7 +44,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_psx5s")
 
-[node name="Trackball" type="MeshInstance3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_h12u7"]
+radius = 0.0344741
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6nhnu"]
+size = Vector3(0.106201, 0.0346069, 0.146362)
+
+[node name="Grabbable" type="RigidBody3D"]
+script = ExtResource("1_aemuw")
+
+[node name="Interpolator" type="Node3D" parent="."]
+script = ExtResource("2_bhxbj")
+
+[node name="Trackball" type="MeshInstance3D" parent="Interpolator"]
 transform = Transform3D(0.428186, 0, 0, 0, 0.428186, 0, 0, 0, 0.428186, 0, 0, 0)
 mesh = SubResource("ArrayMesh_icn7c")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0152552)
+shape = SubResource("SphereShape3D_h12u7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00012207, -0.0143127, 0.00286865)
+shape = SubResource("BoxShape3D_6nhnu")

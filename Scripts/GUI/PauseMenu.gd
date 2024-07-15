@@ -2,8 +2,10 @@ extends Control
 
 var is_paused = false
 var is_reading = false
+var world
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	world = get_tree().root.get_child(3)
 	hide()
 	is_paused = false
 	get_tree().paused = false
@@ -12,14 +14,10 @@ func _ready():
 
 func _on_continue_pressed():
 	if is_paused and !is_reading:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		get_tree().paused = false
-		is_paused = false
+		_reset_pause_state()
 		hide()
 	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		get_tree().paused = false
-		is_paused = false
+		_reset_pause_state()
 		hide()
 
 
@@ -30,7 +28,7 @@ func _on_options_pressed():
 
 func _on_restart_pressed():
 	if is_paused:
-		var current_scene = get_tree().current_scene
+		_reset_pause_state()
 		get_tree().reload_current_scene()
 
 
@@ -47,3 +45,9 @@ func game_paused():
 
 func is_player_reading(_is_reading:bool):
 	is_reading = _is_reading
+
+func _reset_pause_state():
+	is_paused = false
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hide()

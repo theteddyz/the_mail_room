@@ -59,10 +59,22 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02299, 3.89726, -0.00457764)
 shape = SubResource("BoxShape3D_y4g4g")
 
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CollisionShape3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0225372, -0.00949121, -0.00159835)
+size = Vector3(1.57297, 7.75824, 0.217522)
+
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04573, 3.89726, -0.00457764)
 shape = SubResource("BoxShape3D_y4g4g")
 
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CollisionShape3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0225372, -0.00949121, -0.00159835)
+size = Vector3(1.57297, 7.75824, 0.217522)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0200195, 5.1553, 0.00344849)
 shape = SubResource("BoxShape3D_505d4")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.043438, 0.630997, -0.00159835)
+size = Vector3(2.67461, 6.47726, 0.217522)

@@ -2,6 +2,7 @@ extends Control
 
 @onready var object_text:RichTextLabel = $VBoxContainer/ScrollContainer/RichTextLabel
 @onready var background_image:TextureRect = $TextureRect
+@onready var pause_menu = $"../pauseMenu"
 var skip_typewriter_effect: bool = false
 var player 
 func _ready():
@@ -10,7 +11,7 @@ func _ready():
 
 func display_item(text:String,img_path:Texture2D):
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	var player = $"../../Player"
+	player = GameManager.get_player()
 	player.state.is_reading = true
 	set_text(text,img_path)
 	EventBus.emitCustomSignal("player_reading",[is_reading(0)])
@@ -19,6 +20,11 @@ func display_item(text:String,img_path:Texture2D):
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		skip_typewriter_effect = true
+	if event.is_action_pressed("escape") and pause_menu.is_reading:
+		hide()
+		player.state.is_reading = false
+		EventBus.emitCustomSignal("player_reading",[is_reading(1)])
+		pause_menu.is_player_reading(false)
 
 func set_text(text:String,img_path:Texture2D):
 	var delay = 0.03
@@ -38,12 +44,10 @@ func display_text_with_typewriter_effect(text: String, delay: float):
 		await get_tree().create_timer(delay).timeout
 
 func is_reading(caller:int)->bool:
-	var is_reading
 	if caller == 0:
-		is_reading = true
+		return true
 	else:
-		is_reading = false
-	return is_reading
+		return false
 func _on_button_pressed():
 	hide()
 	EventBus.emitCustomSignal("player_reading",[is_reading(1)])

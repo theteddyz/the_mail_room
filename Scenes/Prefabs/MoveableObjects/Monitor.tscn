@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dicq0w2sau0cw"]
 
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_s0ban"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_s0ban"]
 [ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/Prefabs/AssetTools/ObjectInterpolation.tscn" id="2_veer4"]
 [ext_resource type="PackedScene" uid="uid://d3hn5glhsxdca" path="res://Assets/Models/computer.tscn" id="3_gdndj"]
 
@@ -12,6 +12,7 @@ collision_layer = 7
 collision_mask = 12295
 mass = 3.0
 center_of_mass_mode = 1
+sleeping = true
 angular_damp = 10.0
 script = ExtResource("1_s0ban")
 

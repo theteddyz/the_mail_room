@@ -1,9 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://xy4w3c35frqw"]
+[gd_scene load_steps=25 format=3 uid="uid://xy4w3c35frqw"]
 
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_6ip5t"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_6ip5t"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="1_88c58"]
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="2_obbdd"]
 [ext_resource type="Texture2D" uid="uid://dv4g5c8vuwrtt" path="res://Assets/Textures/BlenderTextures/LampUpper.png" id="3_uc4mx"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/DesklampButton.gd" id="4_ra0ww"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/LampCollisionDetector.gd" id="4_prjkr"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/DesklampButton.gd" id="4_ra0ww"]
+[ext_resource type="AudioStream" uid="uid://xdsqfc7qegn6" path="res://Assets/Audio/SoundFX/DestructionLamp.mp3" id="7_65t1v"]
+[ext_resource type="AudioStream" uid="uid://w5heanp85nvb" path="res://Assets/Audio/SoundFX/ImpactLamp.mp3" id="7_p17op"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aq0mx"]
 resource_name = "LAMP"
@@ -44,6 +48,16 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ntcs7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fiq8b"]
+size = Vector3(0.03479, 0.137451, 0.0407715)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tkwb3"]
+height = 0.0406438
+radius = 0.130563
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ycq22"]
+size = Vector3(0.0280304, 0.3927, 0.0335121)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ivnm"]
 resource_name = "LAMP.001"
@@ -131,85 +145,115 @@ shadow_mesh = SubResource("ArrayMesh_dhn4u")
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fiq8b"]
-size = Vector3(0.03479, 0.137451, 0.0407715)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ycq22"]
-size = Vector3(0.0280304, 0.3927, 0.0335121)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_tkwb3"]
-height = 0.0276704
-radius = 0.129818
+[sub_resource type="SphereShape3D" id="SphereShape3D_jyuxr"]
+radius = 0.0879218
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ggja8"]
-height = 0.501833
+height = 0.417455
 radius = 0.0237673
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_jyuxr"]
-radius = 0.149317
+[sub_resource type="BoxShape3D" id="BoxShape3D_824yd"]
+size = Vector3(0.0808601, 0.0627443, 0.0787858)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jq0n2"]
-size = Vector3(0.152542, 0.106934, 0.130573)
-
-[node name="Lamp" type="RigidBody3D"]
+[node name="LampBase" type="RigidBody3D"]
 collision_layer = 3
-angular_damp = 10.0
+collision_mask = 3
+sleeping = true
+angular_damp = 20.0
 script = ExtResource("1_6ip5t")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.513781, 0.857921, 0, -0.857921, 0.513781, -0.35734, 0.551337, -0.149551)
-visible = false
-light_color = Color(0.847059, 0.643137, 0.298039, 1)
-light_energy = 0.747
+[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="."]
+limit_enabled = true
+limit_upper = 0.945968
+limit_lower = -0.141372
+limit_spring_frequency = 2.0
+limit_spring_damping = 10.0
+motor_enabled = true
+motor_target_velocity = 0.00174533
+motor_max_torque = 5.0
+node_a = NodePath("..")
+node_b = NodePath("../LampArm")
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.150949, 0.236461)
 
-[node name="Lamp2" type="MeshInstance3D" parent="."]
+[node name="Interpolator" type="Node3D" parent="."]
+script = ExtResource("1_88c58")
+
+[node name="Lamp2" type="MeshInstance3D" parent="Interpolator"]
 transform = Transform3D(0.136544, 0, 0, 0, 0.136544, 0, 0, 0, 0.136544, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6leig")
 skeleton = NodePath("")
-
-[node name="LampUpper" type="MeshInstance3D" parent="Lamp2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8147e-06, 1.22477, 1.75383)
-mesh = SubResource("ArrayMesh_hku2b")
-skeleton = NodePath("")
-
-[node name="LampLight" type="MeshInstance3D" parent="Lamp2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8147e-06, 1.22477, 1.75383)
-mesh = SubResource("ArrayMesh_itnbh")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_r5eeg")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00177002, -0.101685, -0.0611572)
 shape = SubResource("BoxShape3D_fiq8b")
 
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00144704, -0.185127, -0.125956)
+shape = SubResource("CylinderShape3D_tkwb3")
+
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.609703, -0.79263, 0, 0.79263, 0.609703, -0.00579071, 0.069498, 0.114424)
 shape = SubResource("BoxShape3D_ycq22")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00144704, -0.188642, -0.134778)
-shape = SubResource("CylinderShape3D_tkwb3")
+[node name="LampCollisionDetector" type="Node3D" parent="."]
+script = ExtResource("4_prjkr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.461609, 0.887083, 0, -0.887083, 0.461609, 0, 0.268826, 0.0440827)
-shape = SubResource("CylinderShape3D_ggja8")
+[node name="LampArm" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168053, 0.228108)
+gravity_scale = 0.1
+angular_damp = 1.0
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.841662, -0.540005, 0, 0.540005, 0.841662, -0.00787917, 0.383946, -0.286674)
+[node name="LampUpper" type="MeshInstance3D" parent="LampArm"]
+transform = Transform3D(0.136544, 0, 0, 0, 0.136544, 0, 0, 0, 0.136544, 0, 0, 0)
+mesh = SubResource("ArrayMesh_hku2b")
+skeleton = NodePath("")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="LampArm/LampUpper"]
+transform = Transform3D(1, 0, 0, 0, 0.513781, 0.857921, 0, -0.857921, 0.513781, -2.61703, 2.81303, -2.84909)
+visible = false
+light_color = Color(0.847059, 0.643137, 0.298039, 1)
+light_energy = 0.747
+
+[node name="LampLight" type="MeshInstance3D" parent="LampArm/LampUpper"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
+mesh = SubResource("ArrayMesh_itnbh")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_r5eeg")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="LampArm"]
+transform = Transform3D(1, 0, 0, 0, 0.841662, -0.540005, 0, 0.540005, 0.841662, -0.00787917, 0.148086, -0.528982)
 shape = SubResource("SphereShape3D_jyuxr")
 
-[node name="ButtonRB" type="RigidBody3D" parent="." node_paths=PackedStringArray("light")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LampArm"]
+transform = Transform3D(1, 0, 0, 0, 0.461609, 0.887083, 0, -0.887083, 0.461609, 5.68434e-14, 0.106975, -0.203281)
+shape = SubResource("CylinderShape3D_ggja8")
+
+[node name="ButtonRB2" type="StaticBody3D" parent="." node_paths=PackedStringArray("light")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14468, -0.213288)
 collision_layer = 2
-collision_mask = 0
-gravity_scale = 0.0
-lock_rotation = true
-freeze = true
+collision_mask = 2
 script = ExtResource("4_ra0ww")
-light = NodePath("../SpotLight3D")
+light = NodePath("../LampArm/LampUpper/SpotLight3D")
+icon_type = "light"
 
-[node name="Button" type="CollisionShape3D" parent="ButtonRB"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00119783, -0.00622559, 0.0100346)
-shape = SubResource("BoxShape3D_jq0n2")
+[node name="Button" type="CollisionShape3D" parent="ButtonRB2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00129512, 0.0158692, 0.00237997)
+shape = SubResource("BoxShape3D_824yd")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ButtonRB"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ButtonRB2"]
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.841662, -0.540005, 0, 0.540005, 0.841662, -0.00787917, 0.283334, -0.294064)
+shape = SubResource("SphereShape3D_jyuxr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.461609, 0.887083, 0, -0.887083, 0.461609, 5.68434e-14, 0.274296, 0.0226711)
+shape = SubResource("CylinderShape3D_ggja8")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_65t1v")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_p17op")
+
+[connection signal="body_entered" from="." to="LampCollisionDetector" method="_on_lamp_base_body_entered"]

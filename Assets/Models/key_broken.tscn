@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cci3yluv13ukm"]
+
+[ext_resource type="Material" uid="uid://dux2bi8ysymko" path="res://Assets/Models/key_broken_mat.tres" id="1_4jygm"]
+[ext_resource type="ArrayMesh" uid="uid://8rupd1qug4wy" path="res://Assets/Models/key_broken.tres" id="2_aipsd"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7ckls"]
+points = PackedVector3Array(-1, -0.640199, -1, -1, -0.640199, 1, -0.800117, 0.640191, -0.800117, 1, -0.640199, -1, 1, -0.640199, 1, -0.800117, 0.640191, 0.799922, 0.799922, 0.640191, -0.800117, 0.799922, 0.640191, 0.799922)
+
+[node name="RigidBody3D2" type="RigidBody3D"]
+collision_layer = 0
+
+[node name="KeyBroken" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.011999, 9.01444e-11, 1.8073e-09, -9.01444e-11, 0.0119394, -0.001194, -1.8073e-09, -0.001194, -0.0119394, 0, 0, 0)
+material_override = ExtResource("1_4jygm")
+cast_shadow = 0
+mesh = ExtResource("2_aipsd")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.011999, 9.01444e-11, 1.8073e-09, -9.01444e-11, 0.0119394, -0.001194, -1.8073e-09, -0.001194, -0.0119394, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_7ckls")

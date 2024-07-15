@@ -6,7 +6,7 @@ var decayRate:float = 0.1
 var events: Dictionary = {
 	"sound_event":2.0,
 	"environment_change":3.0,
-	"monster_encounter":4.0
+	"monster_encounter":4.0,
 }
 
 var scare_log: Array = []

@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://wd85mtseuke1"]
 
-[ext_resource type="Script" path="res://Scripts/ElevatorController.gd" id="1_4nay1"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/ElevatorController.gd" id="1_4nay1"]
 [ext_resource type="PackedScene" uid="uid://dvcnb71rjht57" path="res://Scenes/Prefabs/StaticObjects/elevator_wall.tscn" id="2_36my7"]
 [ext_resource type="PackedScene" uid="uid://bmjy1n0uwnbhb" path="res://Scenes/Prefabs/StaticObjects/elevator_shaft.tscn" id="3_nwkyn"]
 [ext_resource type="PackedScene" uid="uid://cy7ngjicicj5t" path="res://Scenes/Prefabs/StaticObjects/new_elevator.tscn" id="4_bmf7c"]
-[ext_resource type="Script" path="res://Scripts/Call_Elevator_Button.gd" id="5_2p1qo"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/Call_Elevator_Button.gd" id="5_2p1qo"]
 [ext_resource type="Script" path="res://Assets/Models/ElevatorObjectDetector.gd" id="5_be72g"]
 [ext_resource type="AudioStream" uid="uid://bwrmjdeydo5c8" path="res://Assets/Audio/SoundFX/ElevatorSound.mp3" id="6_c7nnn"]
 [ext_resource type="AudioStream" uid="uid://bfacn7yx3dikm" path="res://Assets/Audio/SoundFX/ElevatorCallButton.mp3" id="7_qkshq"]
@@ -228,7 +228,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7.92886, 0.825366)
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 2, 15.5687, 0.825366)
 
 [node name="Elevator" parent="." instance=ExtResource("4_bmf7c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10, 0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0.75)
 
 [node name="ElevatorOrigin" type="Marker3D" parent="Elevator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.903498, 0)

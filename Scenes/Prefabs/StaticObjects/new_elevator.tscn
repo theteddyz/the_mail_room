@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d24ont78p0umt" path="res://Assets/Textures/BlenderTextures/Elevator.png" id="1_8qflw"]
 [ext_resource type="Texture2D" uid="uid://6c28m22muuhm" path="res://Assets/Textures/BlenderTextures/ElevatorButtons.png" id="2_c1p2q"]
 [ext_resource type="Texture2D" uid="uid://cwo0wqxreionr" path="res://Assets/Textures/BlenderTextures/ElevatorDoor.png" id="3_8wwji"]
-[ext_resource type="Script" path="res://Scripts/ElevatorButton.gd" id="3_prkdp"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/ElevatorButton.gd" id="3_prkdp"]
 [ext_resource type="AudioStream" uid="uid://bfacn7yx3dikm" path="res://Assets/Audio/SoundFX/ElevatorCallButton.mp3" id="5_bnh6n"]
 [ext_resource type="AudioStream" uid="uid://bq5auign0crlc" path="res://Assets/Audio/SoundFX/ElevatorEntranceDoorClose.mp3" id="5_tkxhx"]
 [ext_resource type="AudioStream" uid="uid://dm58f7jko3fph" path="res://Assets/Audio/SoundFX/ElevatorEntranceDoorOpen.mp3" id="6_giinp"]

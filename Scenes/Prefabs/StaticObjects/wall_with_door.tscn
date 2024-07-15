@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ceasmrd6qawc5"]
+[gd_scene load_steps=15 format=3 uid="uid://ceasmrd6qawc5"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_iji0o"]
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="2_0c8nb"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_0c8nb"]
+[ext_resource type="AudioStream" uid="uid://c6txdw12dxjcy" path="res://Assets/Audio/SoundFX/DoorOpened.mp3" id="3_ynfod"]
 [ext_resource type="Texture2D" uid="uid://bgqnmx2g3lx72" path="res://Assets/Textures/BlenderTextures/Door.png" id="3_yvhl6"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="4_ntfiu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65pkn"]
 resource_name = "Door"
@@ -93,6 +95,8 @@ size = Vector3(2.30151, 7.90474, 0.376526)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
+collision_layer = 5
+collision_mask = 5
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 6
@@ -109,10 +113,15 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434737, 2.01416, -0.0397949)
 shape = SubResource("BoxShape3D_dbf1i")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RigidBody3D"]
+transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.50384, 0)
+stream = ExtResource("3_ynfod")
+max_distance = 25.0
+script = ExtResource("4_ntfiu")
+
 [node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="."]
 limit_enabled = true
 limit_upper = 1.5708
-limit_lower = -1.5708
 node_a = NodePath("..")
 node_b = NodePath("../RigidBody3D")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.873866, 0.0510877, -0.0904708)

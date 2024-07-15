@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://csbg8ispl6x18"]
 
 [ext_resource type="Texture2D" uid="uid://bkvlvm2p6x0ad" path="res://Assets/Textures/BlenderTextures/CubicleDesk.png" id="2_qmrou"]
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="3_gwlcn"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="3_gwlcn"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="4_optrj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdi4w"]

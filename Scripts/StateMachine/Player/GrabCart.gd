@@ -4,7 +4,6 @@ class_name GrabCartState
 @onready var neck = get_parent().get_node("Neck")
 @onready var head = neck.get_node("Head")
 @onready var headbop_root = head.get_node("HeadbopRoot")
-@onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
 @onready var mailcart
 
 var is_assuming_cart_position = true
@@ -17,7 +16,6 @@ func _ready():
 	mailcart = GameManager.get_mail_cart()
 	print("Grab Cart State Ready")
 	mailcart.reparent(persistent_state.get_parent())
-	crosshair.visible = false
 	initial_cart_rotation = mailcart.rotation
 	initial_head_position = neck.position
 	persistent_state.set_collision_mask_value(5, false)

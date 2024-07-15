@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8iui7iq0t8y6"]
+[gd_scene load_steps=8 format=3 uid="uid://b8iui7iq0t8y6"]
 
-[ext_resource type="Script" path="res://Scripts/GrabbableObject.gd" id="1_fgjb5"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_fgjb5"]
 [ext_resource type="Texture2D" uid="uid://b1aua8leky6kp" path="res://Assets/Textures/BlenderTextures/TrashCan.png" id="1_h8v2l"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_aoghf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvgnn"]
 resource_name = "TrashCan"
@@ -49,10 +50,14 @@ points = PackedVector3Array(-0.58272, 0.582767, -0.0622864, -0.548952, 0.582767,
 [node name="GarbageCan" type="RigidBody3D"]
 collision_layer = 3
 collision_mask = 3
+sleeping = true
 angular_damp = 10.0
 script = ExtResource("1_fgjb5")
 
-[node name="TrashCan" type="MeshInstance3D" parent="."]
+[node name="Interpolator" type="Node3D" parent="."]
+script = ExtResource("2_aoghf")
+
+[node name="TrashCan" type="MeshInstance3D" parent="Interpolator"]
 transform = Transform3D(0.487262, 0, 0, 0, 0.487262, 0, 0, 0, 0.487262, 0, 0, 0)
 mesh = SubResource("ArrayMesh_sts1l")
 skeleton = NodePath("")
