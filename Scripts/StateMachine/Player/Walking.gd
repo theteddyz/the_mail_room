@@ -8,8 +8,6 @@ class_name WalkingState
 @onready var crouching_collision_shape = get_parent().get_node("crouching_collision_shape")
 @onready var headbop_root = head.get_node("HeadbopRoot")
 @onready var interactable_finder: RayCast3D = head.get_node("InteractableFinder")
-@onready var crosshair = headbop_root.get_node("Camera").get_node("Control").get_node("Crosshair")
-@onready var mailCrosshair = headbop_root.get_node("Camera").get_node("Control").get_node("MailCrosshair")
 
 @onready var package_name_label = get_tree().root.get_node("Gui").find_child("PackageNameLabel")
 var mailcart
@@ -58,7 +56,6 @@ func _ready():
 	starting_height = neck.position.y
 	crouching_depth = starting_height - 0.5
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	crosshair.visible = false
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
 	EventBus.connect("disable_player_movement",disable_movement_event)
@@ -187,16 +184,17 @@ func _process(delta):
 				# if this is the right mailbox...
 				if check:
 					#MAIL-DELIVERABLE CROSSHAIR
-					crosshair.visible = false
-					mailCrosshair.visible = true
+					EventBus.emitCustomSignal("hide_icon")
+					EventBus.emitCustomSignal("show_icon",["deliverable"])
 		elif !is_holding_object:
 			#INTERACT CROSSHAIR
-			mailCrosshair.visible = false
-			crosshair.visible = true
+			if collider and "icon_type" in collider:
+				EventBus.emitCustomSignal("show_icon",[interactable_finder.get_collider().icon_type])
+			else:
+				EventBus.emitCustomSignal("show_icon",["grab"])
 	else: 
 		#NO CROSSHAIR
-		mailCrosshair.visible = false
-		crosshair.visible = false
+		EventBus.emitCustomSignal("hide_icon")
 
 func checkObstructionRaycasts():
 	if standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding()or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding():

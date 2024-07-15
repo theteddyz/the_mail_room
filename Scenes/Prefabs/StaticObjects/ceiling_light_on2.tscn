@@ -108,4 +108,4 @@ light_specular = 1.0
 shadow_enabled = true
 spot_range = 8.41925
 spot_angle = 70.0
-spot_angle_attenuation = 0.707106
+spot_angle_attenuation = 0.435275

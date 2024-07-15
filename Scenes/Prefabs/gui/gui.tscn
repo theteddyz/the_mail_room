@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=9 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="4_bqt88"]
 [ext_resource type="Script" path="res://Scripts/GUI/IconManager.gd" id="4_w25uf"]
 [ext_resource type="Texture2D" uid="uid://dmaieugbx5o5v" path="res://Assets/TemporaryAssets/transparent-back-to-school-icon-idea-icon-light-bulb-icon-606d59b7138822.65835703161777912708-removebg-preview.png" id="6_vkuja"]
+[ext_resource type="Texture2D" uid="uid://clelsume2xjky" path="res://Assets/TemporaryAssets/transparnetmailicon.png" id="7_0rb4o"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -96,6 +97,22 @@ offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_vkuja")
+expand_mode = 1
+
+[node name="deliverable" type="TextureRect" parent="IconManager"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_0rb4o")
 expand_mode = 1
 
 [node name="FPSMeter" type="Label" parent="."]
