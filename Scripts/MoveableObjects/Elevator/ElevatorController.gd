@@ -18,7 +18,7 @@ var cart:bool = false
 
 func _ready():
 	elevator_anim = Elevator.find_child("Elevator_Anim")
-	#wall_anim = Elevator_Wall.find_child("wall_anim")
+	wall_anim = Elevator_Wall.find_child("wall_anim")
 	GameManager.register_elevator(self)
 	EventBus.connect("moved_to_floor",set_floor)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
