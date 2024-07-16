@@ -75,14 +75,15 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.is_action_released("interact") and is_holding_object and object_last_held is Package:
 				if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart":
-					print("ADDED PACKAGE")
+					print("ADDED:",object_last_held)
 					interactable_finder.get_collider().add_package(object_last_held)
+					object_last_held = null
 					is_holding_object = false
-				else:
-					if(interactable_finder.is_colliding() and interactable_finder.get_collider().name == "MailboxStand"):
+				else: if(interactable_finder.is_colliding() and interactable_finder.get_collider().name == "MailboxStand"):
 						interactable_finder.get_collider().find_child("PackageDestination").deliver(object_last_held)
+						object_last_held = null
 						is_holding_object = false
-					dropped_package()
+				else:dropped_package()
 		if event.is_action_released("interact") and is_holding_object and object_last_held.name == "Radio":
 			if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart":
 				interactable_finder.get_collider().add_radio(object_last_held)
@@ -97,6 +98,7 @@ func _input(event):
 				if collider.name == "Handlebar" and !is_holding_object:
 					change_state.call("grabcart")
 				elif collider.name == "Mailcart" and !is_holding_object:
+					print("hello")
 					collider.grab_current_package()
 				elif !is_holding_object: 
 					collider.interact()
@@ -114,11 +116,13 @@ func _input(event):
 				
 			if event.is_action_pressed("scroll package down") and collider.name == "Radio":
 				var parent = collider.get_parent()
-				parent.change_station_up()
+				##TODO: Redo how the radio works on the cart
+				#parent.change_station_up()
 				
 			if event.is_action_pressed("scroll package up") and collider.name == "Radio":
 				var parent = collider.get_parent()
-				parent.change_station_down()
+				##TODO: Redo how the radio works on the cart
+				#parent.change_station_down()
 
 func held_object(mass:float, object):
 	is_holding_object = true
@@ -139,10 +143,12 @@ func grabbed_package(package: Package):
 
 
 func bind_package_to_player(package: Package):
+	print("binding",package)
+	package.reparent(persistent_state.find_child("PackageHolder"), false)
 	package.position = package.hand_position
 	package.rotation = package.hand_rotation
+	
 	package.freeze = true
-	package.reparent(persistent_state.find_child("PackageHolder"), false)
 	# MOVE PACKAGE TO PLAYER HERE
 	
 func dropped_package():
@@ -150,6 +156,7 @@ func dropped_package():
 	unbind_package_from_player()
 	
 func unbind_package_from_player():
+	print("unbinding")
 	var child = persistent_state.find_child("PackageHolder").get_child(0)
 	if(child != null):
 		object_last_held.freeze = false	
@@ -177,6 +184,7 @@ func _process(delta):
 		var collider = interactable_finder.get_collider()
 		# If we are holding a package...
 		if is_holding_object and object_last_held is Package:
+			EventBus.emitCustomSignal("show_icon",["deliverable"])
 			# If we are checking a mailbox...
 			if collider.name == "MailboxStand":
 				var destination_name = collider.find_child("PackageDestination").accepts_package_named

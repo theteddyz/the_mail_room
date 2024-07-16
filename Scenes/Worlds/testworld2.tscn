@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_c32a1"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_fu55l"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="5_xmmfr"]
-[ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator.tscn" id="6_ury8t"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="10_wfqjp"]
+[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="10_wyyub"]
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="11_cn52c"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="11_f05hf"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="14_b87ve"]
@@ -53,9 +53,6 @@ collision_mask = 5
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_0h2ln")
 
-[node name="Elevator" parent="NavigationRegion3D" instance=ExtResource("6_ury8t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14.7784)
-
 [node name="environment" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment"]
@@ -73,25 +70,21 @@ disable = true
 
 [node name="Package" parent="." instance=ExtResource("15_jqvbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22661, 0.340293, 0)
-package_address = "test1"
 hand_rotation = Vector3(1.00531, -0.74002, 0)
 hand_position = Vector3(0.375, -0.48, 0)
 
 [node name="Package2" parent="." instance=ExtResource("15_jqvbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86244, 0.340293, 0)
-package_address = "test2"
 hand_rotation = Vector3(1.00531, -0.74002, 0)
 hand_position = Vector3(0.375, -0.48, 0)
 
 [node name="Package3" parent="." instance=ExtResource("15_jqvbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.49908, 0.340293, 0)
-package_address = "test3"
 hand_rotation = Vector3(1.00531, -0.74002, 0)
 hand_position = Vector3(0.375, -0.48, 0)
 
 [node name="Package4" parent="." instance=ExtResource("15_jqvbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.19017, 0.340293, 0)
-package_address = "test4"
 hand_rotation = Vector3(1.00531, -0.74002, 0)
 hand_position = Vector3(0.375, -0.48, 0)
 
@@ -99,13 +92,13 @@ hand_position = Vector3(0.375, -0.48, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315001, 0, 3.39669)
 
 [node name="Mailcart" parent="." instance=ExtResource("11_f05hf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.28541, 0.244515, 0)
+transform = Transform3D(-0.0505929, 0, 0.998719, 0, 1, 0, -0.998719, 0, -0.0505929, 3.28541, 0.244515, 0)
 
 [node name="OfficeCubicle" parent="." instance=ExtResource("11_cn52c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62517, 0, 6.80775)
 
 [node name="PackageDestination" parent="OfficeCubicle/MailboxStand" index="2"]
-accepts_package_named = "test1"
+accepts_package_named = "Package2"
 
 [node name="OfficeCubicle2" parent="." instance=ExtResource("11_cn52c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75306, 0, 6.59513)
@@ -127,6 +120,39 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.5911
 
 [node name="OfficeCubicle8" parent="." instance=ExtResource("11_cn52c")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.09888, 9.53674e-07, -5.64708)
+
+[node name="Package5" parent="." instance=ExtResource("10_wyyub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80739, 0.0944527, 2.10138)
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+
+[node name="Package6" parent="." instance=ExtResource("10_wyyub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.15342, 0.0944527, 2.10138)
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+
+[node name="Package7" parent="." instance=ExtResource("10_wyyub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.15342, 0.0944527, 2.98509)
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+
+[node name="Package8" parent="." instance=ExtResource("10_wyyub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.99525, 0.0944527, 2.10138)
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+
+[node name="Package9" parent="." instance=ExtResource("10_wyyub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34128, 0.0944527, 2.10138)
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+
+[node name="Package10" parent="." instance=ExtResource("10_wyyub")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34128, 0.0944527, 2.98509)
+package_address = "Package2"
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+delivered_position = Vector3(0, -0.25, 0)
+package_num = 2
 
 [editable path="OfficeCubicle"]
 [editable path="OfficeCubicle/MailboxStand"]

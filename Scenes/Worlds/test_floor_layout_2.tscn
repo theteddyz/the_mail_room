@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=59 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://qw2qebg60wqj" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
 [ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="38_kxagi"]
+[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 
 [sub_resource type="Environment" id="Environment_yy6pq"]
 background_mode = 2
@@ -544,6 +545,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.936
 
 [node name="Desk3" parent="Objects" instance=ExtResource("6_5x7jy")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.4445, 0, -31.358)
+
+[node name="PackageDestination" parent="Objects/Desk3/MailboxStand" index="2"]
+accepts_package_named = "2"
 
 [node name="Desk4" parent="Objects" instance=ExtResource("5_6umw1")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.2829, -2.38419e-07, -25.8579)
@@ -2011,11 +2015,19 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -10.76
 [node name="Area3D" parent="Key" index="2"]
 unlock_num = 1
 
+[node name="Package" parent="." instance=ExtResource("40_jab1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.182976, 0.206767, 8.60729)
+package_address = "2"
+cart_position = Vector3(0, 0.5, 0)
+package_num = 2
+
 [connection signal="area_entered" from="Walls/StaticBody3D63/RigidBody3D/Door_Lock" to="Walls/StaticBody3D63/RigidBody3D/Door_Lock" method="_on_area_entered"]
 [connection signal="body_entered" from="MonsterDirector/CharacterBody3D/Area3D" to="MonsterDirector" method="_on_area_3d_body_entered"]
 
 [editable path="Objects/OfficeCubicle11"]
 [editable path="Objects/OfficeCubicle11/Lamp"]
+[editable path="Objects/Desk3"]
+[editable path="Objects/Desk3/MailboxStand"]
 [editable path="Walls/StaticBody3D63"]
 [editable path="Roof/CeilingLightOn3"]
 [editable path="CeilingLights/CeilingLightOn13"]

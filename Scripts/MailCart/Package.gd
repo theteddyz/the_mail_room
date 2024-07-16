@@ -10,6 +10,7 @@ class_name Package
 @export var hand_position = Vector3.ZERO
 @export var delivered_rotation = Vector3.ZERO
 @export var delivered_position = Vector3.ZERO
+@export var package_num:int = 0
 
 var is_picked_up = false
 var playerHead
