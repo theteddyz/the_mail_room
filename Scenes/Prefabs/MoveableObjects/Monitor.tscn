@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dicq0w2sau0cw"]
+[gd_scene load_steps=9 format=3 uid="uid://dicq0w2sau0cw"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_s0ban"]
 [ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/Prefabs/AssetTools/ObjectInterpolation.tscn" id="2_veer4"]
 [ext_resource type="PackedScene" uid="uid://d3hn5glhsxdca" path="res://Assets/Models/computer.tscn" id="3_gdndj"]
+[ext_resource type="Material" uid="uid://can2su0sw3v80" path="res://Assets/Materials/monitor_screen_off.tres" id="4_hcodb"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_tyhgj"]
+[ext_resource type="AudioStream" uid="uid://xdsqfc7qegn6" path="res://Assets/Audio/SoundFX/DestructionLamp.mp3" id="6_wfs68"]
+[ext_resource type="AudioStream" uid="uid://w5heanp85nvb" path="res://Assets/Audio/SoundFX/ImpactLamp.mp3" id="7_ntag3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e7wfd"]
 size = Vector3(0.690308, 0.80896, 0.574829)
@@ -18,9 +22,34 @@ script = ExtResource("1_s0ban")
 
 [node name="Interpolator" parent="." instance=ExtResource("2_veer4")]
 
-[node name="Computer2" parent="Interpolator" instance=ExtResource("3_gdndj")]
+[node name="ComputerOn" parent="Interpolator" instance=ExtResource("3_gdndj")]
 transform = Transform3D(0.403, 0, 0, 0, 0.403, 0, 0, 0, 0.403, 0, 0, 0)
+
+[node name="ComputerOff" parent="Interpolator" instance=ExtResource("3_gdndj")]
+transform = Transform3D(0.403, 0, 0, 0, 0.403, 0, 0, 0, 0.403, 0, 0, 0)
+visible = false
+
+[node name="Screen" parent="Interpolator/ComputerOff" index="0"]
+material_override = ExtResource("4_hcodb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00201416, -0.00274658, -0.0255737)
 shape = SubResource("BoxShape3D_e7wfd")
+
+[node name="Monitor_Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("broken_models", "normal_model", "impact_audios", "destruction_audios")]
+script = ExtResource("4_tyhgj")
+breakable = true
+broken_models = [NodePath("../Interpolator/ComputerOff")]
+normal_model = NodePath("../Interpolator/ComputerOn")
+impact_audios = NodePath("../ImpactAudioPlayer")
+destruction_audios = NodePath("../BreakageAudioPlayer")
+
+[node name="BreakageAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_wfs68")
+
+[node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_ntag3")
+
+[connection signal="body_entered" from="." to="Monitor_Collision_Handler" method="_on_body_entered"]
+
+[editable path="Interpolator/ComputerOff"]

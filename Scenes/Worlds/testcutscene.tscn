@@ -218,6 +218,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 48
 text = "The Mail Room"
 
+[node name="Player" parent="." instance=ExtResource("12_rgcp3")]
+transform = Transform3D(-0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, -0.669131, 0.139197, 0.5, -6.00579)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.669001, 0, -0.743262, 0, 1, 0, 0.743262, 0, -0.669001, 5.03, 2.3, 10.738)
 current = true
@@ -1365,9 +1368,6 @@ physics_material_override = SubResource("PhysicsMaterial_60xfd")
 
 [node name="Radio" parent="." instance=ExtResource("10_r6ec6")]
 transform = Transform3D(0.13379, 0, -0.197066, 0, 0.23819, 0, 0.197066, 0, 0.13379, -1.17844, 1.63531, -4.96646)
-
-[node name="Player" parent="." instance=ExtResource("12_rgcp3")]
-transform = Transform3D(-0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, -0.669131, 0.139197, 0.5, -6.00579)
 
 [node name="Desks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -5)

@@ -1,18 +1,20 @@
-[gd_scene load_steps=27 format=3 uid="uid://cbytw1wtximmv"]
+[gd_scene load_steps=29 format=3 uid="uid://cbytw1wtximmv"]
 
 [ext_resource type="Texture2D" uid="uid://b57jpmwtrxcc3" path="res://Assets/Textures/BlenderTextures/KeyboardLowRez2.png" id="1_cxfyc"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_e31fv"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_y4c32"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/Key_Board_Collision_Handler.gd" id="4_4vt06"]
 [ext_resource type="Texture2D" uid="uid://igbeho62sgj2" path="res://Assets/Textures/BlenderTextures/KeyboardBrokenLowRez.png" id="4_er51f"]
-[ext_resource type="AudioStream" uid="uid://te2s31axt3sw" path="res://Assets/Audio/SoundFX/DestructionKeyboard.mp3" id="5_tleov"]
 [ext_resource type="AudioStream" uid="uid://v1sncpv8gy3j" path="res://Assets/Audio/SoundFX/ImpactKeyboard.mp3" id="6_58xfp"]
 [ext_resource type="AudioStream" uid="uid://bovrhou23w10e" path="res://Assets/Audio/SoundFX/ImpactKeyboard2.mp3" id="7_7dyeu"]
 [ext_resource type="AudioStream" uid="uid://dk6wgfuaaebji" path="res://Assets/Audio/SoundFX/ImpactKeyboard3.mp3" id="8_mcjfd"]
-[ext_resource type="AudioStream" uid="uid://cm6glsbm01rrv" path="res://Assets/Audio/SoundFX/DestructionKeyboard2.mp3" id="10_smo7q"]
-[ext_resource type="AudioStream" uid="uid://cpm0jf72njux3" path="res://Assets/Audio/SoundFX/DestructionKeyboard3.mp3" id="11_m3yx3"]
-[ext_resource type="Material" uid="uid://dux2bi8ysymko" path="res://Assets/Models/key_broken_mat.tres" id="12_omiy1"]
-[ext_resource type="ArrayMesh" uid="uid://8rupd1qug4wy" path="res://Assets/Models/key_broken.tres" id="13_g2rmd"]
+[ext_resource type="AudioStream" uid="uid://c2ogg8vuga7y0" path="res://Assets/Audio/SoundFX/ImpactKey.mp3" id="9_ajo5v"]
+[ext_resource type="AudioStream" uid="uid://drfn1olnt3pk2" path="res://Assets/Audio/SoundFX/ImpactKey2.mp3" id="10_fowfc"]
+[ext_resource type="AudioStream" uid="uid://nofos1dpjyv" path="res://Assets/Audio/SoundFX/ImpactKey3.mp3" id="11_uebkx"]
+[ext_resource type="AudioStream" uid="uid://be4jr5086ma7q" path="res://Assets/Audio/SoundFX/ImpactKey4.mp3" id="12_8kn6c"]
+[ext_resource type="Material" path="res://Assets/Models/key_broken_mat.tres" id="12_omiy1"]
+[ext_resource type="AudioStream" uid="uid://ywvj2274edsm" path="res://Assets/Audio/SoundFX/ImpactKey5.mp3" id="13_7q265"]
+[ext_resource type="ArrayMesh" uid="uid://bhutryyktfuw5" path="res://Assets/Models/key_broken.tres" id="13_g2rmd"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="14_y1cj2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrann"]
 resource_name = "LowresKeyboard2"
@@ -109,13 +111,17 @@ stream_2/weight = 1.0
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7ba51"]
 playback_mode = 2
 random_pitch = 1.09
-streams_count = 3
-stream_0/stream = ExtResource("5_tleov")
+streams_count = 5
+stream_0/stream = ExtResource("9_ajo5v")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("10_smo7q")
+stream_1/stream = ExtResource("10_fowfc")
 stream_1/weight = 1.0
-stream_2/stream = ExtResource("11_m3yx3")
+stream_2/stream = ExtResource("11_uebkx")
 stream_2/weight = 1.0
+stream_3/stream = ExtResource("12_8kn6c")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("13_7q265")
+stream_4/weight = 1.0
 
 [sub_resource type="Curve" id="Curve_jd8an"]
 _data = [Vector2(0, 0.824176), 0.0, 0.0, 0, 0, Vector2(0.823788, 0.824176), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.07875, 0.0, 0, 0]
@@ -162,8 +168,14 @@ material_override = SubResource("StandardMaterial3D_54ars")
 mesh = SubResource("ArrayMesh_adb7y")
 skeleton = NodePath("")
 
-[node name="Key_Board_Collision_Handler" type="Node3D" parent="."]
-script = ExtResource("4_4vt06")
+[node name="Key_Board_Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("broken_models", "normal_model", "impact_audios", "destruction_audios", "breakage_particles")]
+script = ExtResource("14_y1cj2")
+breakable = true
+broken_models = [NodePath("../Interpolator/KeyboardBrokenLowPoly")]
+normal_model = NodePath("../Interpolator/KeyboardLowPoly2")
+impact_audios = NodePath("../Impact")
+destruction_audios = NodePath("../Destruction")
+breakage_particles = [NodePath("../GPUParticles3D")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 0.0135615, -0.0201416)
@@ -174,6 +186,10 @@ stream = SubResource("AudioStreamRandomizer_fkdpg")
 attenuation_model = 1
 
 [node name="Destruction" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_7ba51")
+attenuation_model = 1
+
+[node name="ParticleCollision" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_7ba51")
 attenuation_model = 1
 
@@ -189,4 +205,4 @@ collision_base_size = 0.02
 process_material = SubResource("ParticleProcessMaterial_1c4hu")
 draw_pass_1 = ExtResource("13_g2rmd")
 
-[connection signal="body_entered" from="." to="Key_Board_Collision_Handler" method="_on_grabbable_body_entered"]
+[connection signal="body_entered" from="." to="Key_Board_Collision_Handler" method="_on_body_entered"]

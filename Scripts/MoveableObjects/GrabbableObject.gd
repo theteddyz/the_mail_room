@@ -8,8 +8,6 @@ extends Grabbable
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
-@export var collision_sounds_random: AudioStreamRandomizer
-var audio_player
 var is_picked_up = false
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
@@ -31,12 +29,10 @@ signal collided(other_body)
 
 
 func _ready():
+	player = GameManager.get_player()
 	object_Interpolator = find_child("Interpolator")
 	var root = get_tree().root
 	var current_scene = root.get_child(root.get_child_count() - 1)
-	audio_player = AudioStreamPlayer3D.new()
-	audio_player.stream = collision_sounds_random
-	add_child(audio_player)
 	if !should_freeze:
 		freeze = false
 	else:
@@ -79,7 +75,6 @@ func handle_pickup(delta):
 		dropMe(false)
 #Grabbing Code
 func interact():
-	player = GameManager.get_player()
 	if pickup_timer.is_stopped():
 		if !timerAdded:
 			add_child(pickup_timer)
@@ -174,11 +169,3 @@ func enable_collision_decection():
 	await get_tree().create_timer(1).timeout
 	set_contact_monitor(true)
 	set_max_contacts_reported(1)
-
-
-func _on_body_entered(body):
-	play_random_collision_sound()
-
-func play_random_collision_sound():
-	audio_player.play()
-

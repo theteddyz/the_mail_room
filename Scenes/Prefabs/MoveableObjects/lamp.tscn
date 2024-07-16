@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="1_88c58"]
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="2_obbdd"]
 [ext_resource type="Texture2D" uid="uid://dv4g5c8vuwrtt" path="res://Assets/Textures/BlenderTextures/LampUpper.png" id="3_uc4mx"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/LampCollisionDetector.gd" id="4_prjkr"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_a2cyg"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/DesklampButton.gd" id="4_ra0ww"]
 [ext_resource type="AudioStream" uid="uid://xdsqfc7qegn6" path="res://Assets/Audio/SoundFX/DestructionLamp.mp3" id="7_65t1v"]
 [ext_resource type="AudioStream" uid="uid://w5heanp85nvb" path="res://Assets/Audio/SoundFX/ImpactLamp.mp3" id="7_p17op"]
@@ -195,8 +195,14 @@ shape = SubResource("CylinderShape3D_tkwb3")
 transform = Transform3D(1, 0, 0, 0, 0.609703, -0.79263, 0, 0.79263, 0.609703, -0.00579071, 0.069498, 0.114424)
 shape = SubResource("BoxShape3D_ycq22")
 
-[node name="LampCollisionDetector" type="Node3D" parent="."]
-script = ExtResource("4_prjkr")
+[node name="LampCollisionDetector" type="Node3D" parent="." node_paths=PackedStringArray("seperation_breakage_models", "impact_audios", "destruction_audios")]
+script = ExtResource("4_a2cyg")
+breakable = true
+seperation_breakage_models = [NodePath("../LampArm")]
+destruction_threshold = 2.0
+impact_threshold = 1.2
+impact_audios = NodePath("../ImpactAudioPlayer")
+destruction_audios = NodePath("../BreakageAudioPlayer")
 
 [node name="LampArm" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168053, 0.228108)
@@ -250,10 +256,10 @@ shape = SubResource("SphereShape3D_jyuxr")
 transform = Transform3D(1, 0, 0, 0, 0.461609, 0.887083, 0, -0.887083, 0.461609, 5.68434e-14, 0.274296, 0.0226711)
 shape = SubResource("CylinderShape3D_ggja8")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="BreakageAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_65t1v")
 
-[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+[node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_p17op")
 
-[connection signal="body_entered" from="." to="LampCollisionDetector" method="_on_lamp_base_body_entered"]
+[connection signal="body_entered" from="." to="LampCollisionDetector" method="_on_body_entered"]
