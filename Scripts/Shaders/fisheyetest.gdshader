@@ -1,6 +1,3 @@
-//THIS SHADER MUST BE APPLIED TO A QUAD (MeshInstance) WITH A SIZE OF (2, 2)
-//Extra Cull Margin on the quad should be turned up all the way!
-
 shader_type spatial;
 render_mode unshaded;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
@@ -29,7 +26,10 @@ void fragment() {
 	float dd = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(0.0, -py)).x;
 	float dr = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(px, 0.0)).x;
 	float dl = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(-px, 0.0)).x;
-	
+
+	float luminance = dot(texture(SCREEN_TEXTURE, SCREEN_UV).rgb, vec3(0.299, 0.587, 0.114));
+	float luminance_factor = clamp(luminance, 0.0, 1.0);
+
 	if (outline_mode == 1){
 		ALPHA = 0.0 + abs(abs(d)-abs(du)) + abs(abs(d)-abs(dd)) + abs(abs(d)-abs(dl)) + abs(abs(d)-abs(dr));
 			
@@ -54,9 +54,10 @@ void fragment() {
 	if (_round) {
 		ALPHA = round(ALPHA);
 	}
-	
+
 	ALPHA *= outline_color.a;
 	ALPHA = clamp(ALPHA, 0.0, 1.0);
-}
 
-//Written by Warren Jennings
+	// Modulate the alpha by the inverse luminance factor
+	ALPHA *= 1.0 - luminance_factor;
+}

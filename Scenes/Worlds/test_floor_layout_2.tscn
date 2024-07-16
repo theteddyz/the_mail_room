@@ -1990,7 +1990,7 @@ stream = ExtResource("31_3d035")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6543, 1.45121, -11.5621)
 
 [node name="Scare_2_Monster_location" type="Node3D" parent="MonsterDirector"]
-transform = Transform3D(0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0, 1, -0.507421, 0.25, -19.9378)
+transform = Transform3D(0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0, 1, -0.507421, 0.25, -19.2774)
 
 [node name="Mailcart" parent="." instance=ExtResource("30_gqjq2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.521, 0.267288, 7.169)
@@ -2000,7 +2000,7 @@ collision_mask = 19
 transform = Transform3D(-0.73341, 0, -0.679787, 0, 1, 0, 0.679787, 0, -0.73341, -15.7029, 1.20194, -8.90936)
 
 [node name="Phone" parent="." instance=ExtResource("38_ikwgb")]
-transform = Transform3D(0.0601078, 0, 0.998192, 0, 1, 0, -0.998192, 0, 0.0601078, -4.14577, 0.949901, -8.38116)
+transform = Transform3D(0.0601078, 0, 0.998192, 0, 1, 0, -0.998192, 0, 0.0601078, -4.18737, 1.61422, -11.8804)
 
 [node name="Desk" parent="." instance=ExtResource("5_6umw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7655, 0.00402761, 19.0649)
