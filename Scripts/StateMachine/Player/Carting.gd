@@ -26,6 +26,7 @@ func _ready():
 	cart_audio = mailcart.find_child("AudioStreamPlayer3D")
 	cart_audio.stream = preload("res://Assets/Audio/SoundFX/Cart.mp3")
 	cart_audio.volume_db = target_volume
+	EventBus.emitCustomSignal("hide_icon")
 
 func _input(event):
 	# Mouse

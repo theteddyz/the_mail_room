@@ -22,6 +22,8 @@ signal game_paused()
 ##First Floor Signals## 
 #Signal for the monster peaking over cubicle
 signal peaking_monster()
+#Signal for when a package is delivered
+signal package_delivered(package_num:int)
 ###############################################################################
 
 #Connecting Functions

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=59 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://k8lfivepg4gx" path="res://Scenes/Prefabs/StaticObjects/wallWithArchway.tscn" id="11_hd2i0"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_46wmm"]
 [ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2.tscn" id="13_srb8m"]
+[ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="15_0vqac"]
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="15_poj1m"]
 [ext_resource type="PackedScene" uid="uid://dui3j31sc1l58" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_011.tscn" id="16_vde3n"]
 [ext_resource type="PackedScene" uid="uid://4grqlanfjx0n" path="res://Scenes/Prefabs/StaticObjects/wall_with_door_opened.tscn" id="17_ky7o5"]
@@ -32,12 +33,13 @@
 [ext_resource type="AudioStream" uid="uid://c202px4rfobxg" path="res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3" id="24_os1ty"]
 [ext_resource type="AudioStream" uid="uid://clv8mkhueiw82" path="res://Assets/Audio/SoundFX/FirstFloorAmbience2.mp3" id="25_qbrrx"]
 [ext_resource type="AudioStream" uid="uid://d036kpauudx33" path="res://Assets/Audio/SoundFX/FirstFloorAmbience4.mp3" id="27_m60pu"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/Monsters/first_floor_monster2.tscn" id="29_m82p6"]
+[ext_resource type="PackedScene" uid="uid://c5fq8t0f4ahf4" path="res://Scenes/Prefabs/Monsters/first_floor_monster2.tscn" id="29_m82p6"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://bwb5copsj1jbv" path="res://Assets/Audio/SoundFX/FootstepsApproaching2.mp3" id="31_3d035"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/Dithering.gdshader" id="38_6je75"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
+[ext_resource type="PackedScene" uid="uid://qw2qebg60wqj" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
+[ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
+[ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="38_kxagi"]
+[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 
 [sub_resource type="Environment" id="Environment_yy6pq"]
 background_mode = 2
@@ -107,6 +109,76 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8irr7")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_isnx6"]
+radius = 0.569345
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3gjrh"]
+size = Vector3(1.88333, 3.8623, 0.346191)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_373dp"]
+radius = 0.107743
+
+[sub_resource type="Animation" id="Animation_hokj3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CeilingLightOnLight:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xu8g5"]
+resource_name = "monster_scare_2"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.6, 2.3, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.8, 0.0, 0.8, 0.0, 0.3, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CeilingLightOnLight:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.6, 2.3, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 1.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikqns"]
+_data = {
+"RESET": SubResource("Animation_hokj3"),
+"monster_scare_2": SubResource("Animation_xu8g5")
+}
 
 [sub_resource type="Animation" id="Animation_mvsvw"]
 length = 0.001
@@ -198,29 +270,6 @@ size = Vector3(6.55966, 2.57471, 3.54968)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iinbb"]
 size = Vector3(2.81714, 1.82605, 9.05057)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xygke"]
-render_priority = 0
-shader = ExtResource("38_6je75")
-shader_parameter/fiddler = null
-shader_parameter/rows = 10.0
-shader_parameter/cols = 10.0
-shader_parameter/dither_size = 1.0
-shader_parameter/dither_amount = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovcbw"]
-render_priority = 0
-shader = ExtResource("38_6je75")
-shader_parameter/fiddler = null
-shader_parameter/rows = 4.0
-shader_parameter/cols = 4.0
-shader_parameter/dither_size = null
-shader_parameter/dither_amount = null
-
-[sub_resource type="BoxMesh" id="BoxMesh_wsdvk"]
-material = SubResource("ShaderMaterial_ovcbw")
-flip_faces = true
-size = Vector3(2, 2, 2)
 
 [node name="world" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -497,6 +546,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.936
 [node name="Desk3" parent="Objects" instance=ExtResource("6_5x7jy")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.4445, 0, -31.358)
 
+[node name="PackageDestination" parent="Objects/Desk3/MailboxStand" index="2"]
+accepts_package_named = "2"
+
 [node name="Desk4" parent="Objects" instance=ExtResource("5_6umw1")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.2829, -2.38419e-07, -25.8579)
 
@@ -690,6 +742,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8495, 0, -9.49396)
 
 [node name="StaticBody3D63" parent="Walls" instance=ExtResource("9_08ifg")]
 transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, 8.412, 0, -9.494)
+
+[node name="Door_Lock" type="Area3D" parent="Walls/StaticBody3D63/RigidBody3D" index="3"]
+collision_layer = 130
+collision_mask = 130
+script = ExtResource("15_0vqac")
+locked = true
+unlock_number = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D63/RigidBody3D/Door_Lock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, 0.098477)
+shape = SubResource("SphereShape3D_isnx6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls/StaticBody3D63/RigidBody3D/Door_Lock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, -0.239974)
+shape = SubResource("SphereShape3D_isnx6")
+
+[node name="door" type="StaticBody3D" parent="Walls/StaticBody3D63/RigidBody3D" index="4"]
+disable_mode = 1
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls/StaticBody3D63/RigidBody3D/door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434737, 2.01416, -0.0397949)
+shape = SubResource("BoxShape3D_3gjrh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D63/RigidBody3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.855921, 2.03357, -0.217922)
+shape = SubResource("SphereShape3D_373dp")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls/StaticBody3D63/RigidBody3D" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.855921, 2.03357, 0.105071)
+shape = SubResource("SphereShape3D_373dp")
 
 [node name="StaticBody3D45" parent="Walls" instance=ExtResource("9_08ifg")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 22.7167, 0, -2.88465)
@@ -1677,12 +1761,17 @@ omni_attenuation = 0.840896
 [node name="SpotLight3D" parent="CeilingLights/CeilingLightOn23" index="2"]
 visible = false
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn23"]
+libraries = {
+"": SubResource("AnimationLibrary_ikqns")
+}
+
 [node name="CeilingLightOn32" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.573916, 4.21901, -26.9364)
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn32" index="1"]
 visible = true
-omni_attenuation = 0.840897
+omni_attenuation = 1.07178
 
 [node name="SpotLight3D" parent="CeilingLights/CeilingLightOn32" index="2"]
 visible = false
@@ -1905,7 +1994,7 @@ stream = ExtResource("31_3d035")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6543, 1.45121, -11.5621)
 
 [node name="Scare_2_Monster_location" type="Node3D" parent="MonsterDirector"]
-transform = Transform3D(0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0, 1, 1.996, 0.25, -23.843)
+transform = Transform3D(0.984808, -0.173648, 0, 0.173648, 0.984808, 0, 0, 0, 1, -0.507421, 0.25, -19.2774)
 
 [node name="Mailcart" parent="." instance=ExtResource("30_gqjq2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.521, 0.267288, 7.169)
@@ -1914,18 +2003,32 @@ collision_mask = 19
 [node name="Area3D" parent="." instance=ExtResource("34_88ps1")]
 transform = Transform3D(-0.73341, 0, -0.679787, 0, 1, 0, 0.679787, 0, -0.73341, -15.7029, 1.20194, -8.90936)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("ShaderMaterial_xygke")
-extra_cull_margin = 16384.0
-mesh = SubResource("BoxMesh_wsdvk")
-
 [node name="Phone" parent="." instance=ExtResource("38_ikwgb")]
-transform = Transform3D(0.0601078, 0, 0.998192, 0, 1, 0, -0.998192, 0, 0.0601078, -3.6352, 0.949901, -6.33795)
+transform = Transform3D(0.0601078, 0, 0.998192, 0, 1, 0, -0.998192, 0, 0.0601078, -4.18737, 1.61422, -11.8804)
 
+[node name="Desk" parent="." instance=ExtResource("5_6umw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7655, 0.00402761, 19.0649)
+
+[node name="Key" parent="." instance=ExtResource("38_kxagi")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -10.765, 1.24558, 19.3958)
+
+[node name="Area3D" parent="Key" index="2"]
+unlock_num = 1
+
+[node name="Package" parent="." instance=ExtResource("40_jab1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.182976, 0.206767, 8.60729)
+package_address = "2"
+cart_position = Vector3(0, 0.5, 0)
+package_num = 2
+
+[connection signal="area_entered" from="Walls/StaticBody3D63/RigidBody3D/Door_Lock" to="Walls/StaticBody3D63/RigidBody3D/Door_Lock" method="_on_area_entered"]
 [connection signal="body_entered" from="MonsterDirector/CharacterBody3D/Area3D" to="MonsterDirector" method="_on_area_3d_body_entered"]
 
 [editable path="Objects/OfficeCubicle11"]
 [editable path="Objects/OfficeCubicle11/Lamp"]
+[editable path="Objects/Desk3"]
+[editable path="Objects/Desk3/MailboxStand"]
+[editable path="Walls/StaticBody3D63"]
 [editable path="Roof/CeilingLightOn3"]
 [editable path="CeilingLights/CeilingLightOn13"]
 [editable path="CeilingLights/CeilingLightOn16"]
@@ -1936,3 +2039,4 @@ transform = Transform3D(0.0601078, 0, 0.998192, 0, 1, 0, -0.998192, 0, 0.0601078
 [editable path="CeilingLights/BlackOutLight"]
 [editable path="CeilingLights/CeilingLightOn46"]
 [editable path="MonsterDirector"]
+[editable path="Key"]

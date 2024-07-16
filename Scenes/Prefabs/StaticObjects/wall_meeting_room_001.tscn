@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjjmf8isxjpj2"]
+[gd_scene load_steps=11 format=3 uid="uid://cjjmf8isxjpj2"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_1o385"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/glass.gdshader" id="2_vgxsq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0sys"]
 resource_name = "Wall"
@@ -42,9 +43,23 @@ shadow_mesh = SubResource("ArrayMesh_kjivn")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7wxg"]
 resource_name = "Glass"
+render_priority = 1
 transparency = 4
-albedo_color = Color(0.850882, 0.937818, 1, 0.227273)
-roughness = 0.0
+albedo_color = Color(0.85098, 0.937255, 1, 0.117647)
+metallic = 0.1
+metallic_specular = 0.0
+anisotropy = 1.0
+ao_light_affect = 0.2
+subsurf_scatter_strength = 0.14
+texture_filter = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_upwsk"]
+render_priority = 0
+shader = ExtResource("2_vgxsq")
+shader_parameter/albedo = Color(1, 1, 1, 0.121569)
+shader_parameter/specular = 0.2
+shader_parameter/offset = 0.05
+shader_parameter/opacity = 0.9
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_iw1cd"]
 _surfaces = [{
@@ -53,6 +68,7 @@ _surfaces = [{
 "index_count": 36,
 "index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0, 8, 0, 11, 0, 9, 0, 8, 0, 10, 0, 11, 0, 0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0, 4, 0, 7, 0, 6, 0, 4, 0, 5, 0, 7, 0, 8, 0, 11, 0, 10, 0, 8, 0, 9, 0, 11, 0),
 "lods": [1.44802, PackedByteArray(0, 0, 2, 0, 3, 0, 4, 0, 6, 0, 7, 0, 8, 0, 11, 0, 9, 0, 8, 0, 10, 0, 11, 0, 0, 0, 3, 0, 2, 0, 4, 0, 7, 0, 6, 0, 8, 0, 11, 0, 10, 0, 8, 0, 9, 0, 11, 0)],
+"material": SubResource("ShaderMaterial_upwsk"),
 "name": "Glass",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -77,7 +93,6 @@ _surfaces = [{
 "vertex_count": 24,
 "vertex_data": PackedByteArray(85, 85, 0, 0, 0, 0, 255, 127, 150, 170, 0, 0, 0, 0, 255, 127, 85, 85, 255, 255, 26, 6, 255, 127, 150, 170, 255, 255, 26, 6, 255, 127, 0, 0, 0, 0, 0, 0, 255, 127, 64, 85, 0, 0, 0, 0, 255, 127, 0, 0, 255, 255, 26, 6, 255, 127, 64, 85, 255, 255, 26, 6, 255, 127, 190, 170, 0, 0, 0, 0, 255, 127, 255, 255, 0, 0, 0, 0, 255, 127, 190, 170, 255, 255, 26, 6, 255, 127, 255, 255, 255, 255, 26, 6, 255, 127, 85, 85, 0, 0, 0, 0, 255, 255, 150, 170, 0, 0, 0, 0, 255, 255, 85, 85, 255, 255, 26, 6, 255, 255, 150, 170, 255, 255, 26, 6, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 64, 85, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 26, 6, 255, 255, 64, 85, 255, 255, 26, 6, 255, 255, 190, 170, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 190, 170, 255, 255, 26, 6, 255, 255, 255, 255, 255, 255, 26, 6, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
 }]
-blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_iw1cd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jqptp"]
@@ -93,7 +108,7 @@ mesh = SubResource("ArrayMesh_uoate")
 skeleton = NodePath("")
 
 [node name="WallMeetingRoomGlass_001" type="MeshInstance3D" parent="WallMeetingRoom_001"]
-cast_shadow = 0
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_07b3u")
 skeleton = NodePath("")
 

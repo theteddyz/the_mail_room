@@ -110,7 +110,6 @@ script = ExtResource("1_m84f3")
 collision_layer = 130
 collision_mask = 130
 script = ExtResource("5_cmxth")
-locked = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Door_Lock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, 0.098477)

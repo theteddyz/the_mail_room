@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://07r80s3tkw3"]
+
+[ext_resource type="Shader" path="res://Scripts/Shaders/postposterizetest.gdshader" id="1_brdxd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a0n4"]
+shader = ExtResource("1_brdxd")
+shader_parameter/contrast = 0.0
+shader_parameter/brightness = 1.0
+shader_parameter/uTime1 = 1.0
+shader_parameter/uTime2 = 2.0
+shader_parameter/uTime3 = 4.0
+shader_parameter/colors = 16.0
+
+[node name="ColorRect" type="ColorRect"]
+material = SubResource("ShaderMaterial_5a0n4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

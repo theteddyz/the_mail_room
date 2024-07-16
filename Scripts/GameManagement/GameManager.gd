@@ -25,6 +25,10 @@ func get_elevator()->Node:
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
+	if mail_cart_reference == null:
+		mail_cart_reference = current_scene.find_child("Mailcart")
+	if player_reference == null:
+		player_reference = current_scene.find_child("Player")
 	load_game()
 	
 func load_game():

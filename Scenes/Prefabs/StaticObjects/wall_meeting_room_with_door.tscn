@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://5dnxe87nmekr"]
+[gd_scene load_steps=21 format=3 uid="uid://5dnxe87nmekr"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_76lnn"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_si1lf"]
@@ -51,8 +51,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v2ctk")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_g88gj"]
-size = Vector3(1.22773, 2.45911, 0.346191)
+[sub_resource type="BoxShape3D" id="BoxShape3D_48bvk"]
+size = Vector3(1.10229, 2.3811, 0.346191)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ll8bm"]
+radius = 0.0615146
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0wsh"]
 resource_name = "Glass"
@@ -154,15 +157,34 @@ transform = Transform3D(1.102, 0, 0, 0, 1.102, 0, 0, 0, 1.102, 0.615013, 1.31162
 mesh = SubResource("ArrayMesh_ler1d")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0204976, 1.31256, -0.0397949)
-shape = SubResource("BoxShape3D_g88gj")
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RigidBody3D"]
 transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.50384, 0)
 stream = ExtResource("3_x35rg")
 max_distance = 25.0
 script = ExtResource("4_jaj0r")
+
+[node name="door" type="StaticBody3D" parent="RigidBody3D"]
+disable_mode = 1
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D/door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0038009, 1.30847, -0.0397949)
+shape = SubResource("BoxShape3D_48bvk")
+disabled = true
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0241256, 1.30847, -0.0397949)
+shape = SubResource("BoxShape3D_48bvk")
+disabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.565355, 1.32251, 0.098477)
+shape = SubResource("SphereShape3D_ll8bm")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.536893, 1.33396, -0.1601)
+shape = SubResource("SphereShape3D_ll8bm")
 
 [node name="WallMeetingRoomWithDoorGlass" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)

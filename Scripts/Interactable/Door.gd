@@ -18,6 +18,8 @@ func interact():
 func _on_area_entered(area):
 	if area and "unlock_num" in area:
 		if area.unlock_num == unlock_number:
+			EventBus.emitCustomSignal("dropped_object", [area.get_parent().mass,area.get_parent()])
 			area.get_parent().queue_free()
 			locked = false
 			parent.lock_axes(false)
+			queue_free()

@@ -8,14 +8,20 @@ extends Node3D
 @export var rotation_speed: float = 1.0
 @onready var audio_player:AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var anim:AnimationPlayer = $"../CeilingLights/BlackOutLight/AnimationPlayer"
+@onready var anim_scare_2:AnimationPlayer = $"../CeilingLights/CeilingLightOn23/AnimationPlayer"
 @onready var scare_1_location = $Scare_1_Monster_location
 @onready var scare_2_location = $Scare_2_Monster_location
 var player: Node = null
 var peak_monster_scare:bool = false
 func _ready():
-	monster_body.visible = true
+	monster_body.visible = false
 	player = GameManager.player_reference
 	EventBus.connect("peaking_monster",enable_monster)
+	EventBus.connect("package_delivered",update_monster)
+
+func update_monster(pack_num):
+	if pack_num == 2:
+		peak_monster_scare = true
 
 func _input(event):
 	if event.is_action_pressed("sprint"):
@@ -33,7 +39,7 @@ func enable_monster():
 	visible = true
 	peak_monster_scare = true
 func peak_monster(delta: float):
-	#monster_body.position = scare_1_location.position
+	monster_body.position = scare_1_location.position
 	monster_body.visible = true
 	var direction_to_player = (player.global_transform.origin - monster_body.global_transform.origin).normalized()
 	var current_forward = -monster_body.global_transform.basis.z.normalized()
@@ -54,8 +60,9 @@ func close_up_monster_scare():
 	monster_body.position = scare_2_location.position
 	monster_body.rotation = scare_2_location.rotation
 	peak_monster_scare = true
+	anim_scare_2.play("monster_scare_2")
 
 func _on_area_3d_body_entered(body):
 	if body.name == "Player" and peak_monster_scare:
-		visible = false
+		#visible = false
 		peak_monster_scare = false

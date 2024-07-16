@@ -10,7 +10,6 @@ var current_index = 0
 
 # If we want to highlight packages
 var is_being_looked_at = false
-
 var highlight_lerp_speed = 8.2
 var unhighlight_lerp_speed = 8.2
 
@@ -24,7 +23,7 @@ func _ready():
 
 func _process(delta):
 	if is_being_looked_at and game_objects.size() != 0:
-		game_objects[current_index].position.y = lerp(game_objects[current_index].position.y, 0.5, highlight_lerp_speed * delta)
+		game_objects[current_index].position.y = lerp(game_objects[current_index].position.y, 0.8, highlight_lerp_speed * delta)
 		lowerOtherPackages(delta)
 	else:
 		lowerAllPackages(delta)
@@ -65,6 +64,7 @@ func grab_current_package():
 	if game_objects.size() > 0:
 		var current_package = game_objects[current_index]
 		game_objects.remove_at(current_index)
+		print(game_objects.size())
 		current_index = 0
 		player.state.grabbed_package(current_package)
 		if game_objects.size() > 0:
@@ -75,16 +75,18 @@ func grab_current_package():
 
 # Function to add a package to the game_objects array
 func add_package(package: Package):
-	game_objects.append(package)
-	calculate_spacing()
+		if !game_objects.has(package):
+			package.set_collision_layer_value(2,false)
+			game_objects.append(package)
+			calculate_spacing()
 
 func calculate_spacing():
 	# Calculate the spacing
 	var total_packages = game_objects.size()
 	if total_packages > 1:
-		var step = 1.5 / (total_packages - 1)  # Total range is 1.5 (from 0.75 to -0.75)
+		var step = 1.1 / (total_packages - 1)  # Total range is 1.5 (from 0.75 to -0.75)
 		for i in range(total_packages):
-			var position = 0.75 - i * step
+			var position = 0.45 - i * step
 			print("Package ", i, " position: ", position)
 			move_package_to_cart(game_objects[i], position)
 			
@@ -96,7 +98,7 @@ func calculate_spacing():
 func move_package_to_cart(package: Package, position: float):
 	package.reparent(self, false)
 	package.rotation_degrees = package.cart_rotation
-	package.position = Vector3(position, package.cart_position.y, 0)
+	package.position = Vector3(0, package.cart_position.y, position)
 	pass
 
 
