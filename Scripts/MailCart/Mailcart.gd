@@ -62,7 +62,6 @@ func scroll_package_down():
 # Function to grab the current package
 func grab_current_package():
 	if game_objects.size() > 0:
-		print("REMOVING PACKAGE SHOULD BE CALLED 1 TIME")
 		var current_package = game_objects[current_index]
 		game_objects.remove_at(current_index)
 		print(game_objects.size())
@@ -97,7 +96,6 @@ func calculate_spacing():
 
 # Placeholder function to move package to cart
 func move_package_to_cart(package: Package, position: float):
-	print("ADDING PACKAGE TO CART SHOULD ONLY BE CALLED 1 TIME")
 	package.reparent(self, false)
 	package.rotation_degrees = package.cart_rotation
 	package.position = Vector3(0, package.cart_position.y, position)

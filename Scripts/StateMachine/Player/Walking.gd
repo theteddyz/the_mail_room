@@ -75,7 +75,6 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.is_action_released("interact") and is_holding_object and object_last_held is Package:
 				if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart":
-					print("ADDED:",object_last_held)
 					interactable_finder.get_collider().add_package(object_last_held)
 					object_last_held = null
 					is_holding_object = false
@@ -98,8 +97,7 @@ func _input(event):
 				if collider.name == "Handlebar" and !is_holding_object:
 					change_state.call("grabcart")
 				elif collider.name == "Mailcart" and !is_holding_object:
-					print("hello")
-					collider.grab_current_package()
+					collider.grab_scurrent_package()
 				elif !is_holding_object: 
 					collider.interact()
 					
@@ -143,7 +141,6 @@ func grabbed_package(package: Package):
 
 
 func bind_package_to_player(package: Package):
-	print("binding",package)
 	package.reparent(persistent_state.find_child("PackageHolder"), false)
 	package.position = package.hand_position
 	package.rotation = package.hand_rotation
@@ -156,7 +153,6 @@ func dropped_package():
 	unbind_package_from_player()
 	
 func unbind_package_from_player():
-	print("unbinding")
 	var child = persistent_state.find_child("PackageHolder").get_child(0)
 	if(child != null):
 		object_last_held.freeze = false	
