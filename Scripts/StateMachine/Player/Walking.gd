@@ -97,7 +97,7 @@ func _input(event):
 				if collider.name == "Handlebar" and !is_holding_object:
 					change_state.call("grabcart")
 				elif collider.name == "Mailcart" and !is_holding_object:
-					collider.grab_scurrent_package()
+					collider.grab_current_package()
 				elif !is_holding_object: 
 					collider.interact()
 					
