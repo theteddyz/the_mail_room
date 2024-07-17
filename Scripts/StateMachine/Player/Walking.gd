@@ -58,6 +58,8 @@ func _ready():
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
 	EventBus.connect("disable_player_movement",disable_movement_event)
+	EventBus.connect("package_failed_delivery",dropped_package)
+	EventBus.connect("dropped_key",dropped_key)
 	gui_anim = Gui.get_control_displayer()
 
 
@@ -91,11 +93,11 @@ func handle_interact_release():
 	if is_holding_object and object_last_held:
 		if object_last_held is Package:
 			handle_package_interaction()
+		if object_last_held is Key:
+			handle_key_interaction()
 		elif object_last_held.name == "Radio":
 			handle_radio_interaction()
 
-#func handle_interact_pressed(event):
-	#
 
 func handle_package_interaction():
 	var collider = interactable_finder.get_interactable()
@@ -114,9 +116,21 @@ func handle_package_interaction():
 	else:
 		dropped_package()
 
+func handle_key_interaction():
+	var collider = interactable_finder.get_interactable()
+	if collider != null:
+		if collider.name == "Door_Lock":
+			collider.check_key(object_last_held)
+		else:
+			dropped_key()
+	else:
+		dropped_key()
+
 func handle_radio_interaction():
 	if interactable_finder.is_interactable("Mailcart"):
 		interactable_finder.get_interactable().add_radio(object_last_held)
+
+
 func handle_general_interaction():
 	var collider = interactable_finder.get_interactable()
 	if collider and !is_holding_object:
@@ -125,6 +139,7 @@ func handle_general_interaction():
 				change_state.call("grabcart")
 			"Mailcart":
 				collider.grab_current_package()
+				gui_anim.show_icon(false)
 			_:
 				collider.interact()
 
@@ -176,27 +191,53 @@ func grabbed_package(package: Package):
 	object_last_held = package
 	bind_package_to_player(package)
 
-func show_label(text:String):
-	text_displayer.show_text()
-	text_displayer.set_text(text)
 
 func bind_package_to_player(package: Package):
 	package.reparent(persistent_state.find_child("PackageHolder"), false)
 	package.position = package.hand_position
 	package.rotation = package.hand_rotation
-	
 	package.freeze = true
 	# MOVE PACKAGE TO PLAYER HERE
-	
+
 func dropped_package():
 	is_holding_object = false
 	unbind_package_from_player()
-	
+
+func show_label(text:String):
+	text_displayer.show_text()
+	text_displayer.set_text(text)
+
+
+func grabbed_key(key:Key):
+	is_holding_object = true
+	object_last_held = key
+	bind_key_to_player(key)
+
+func bind_key_to_player(key:Key):
+	key.reparent(persistent_state.find_child("PackageHolder"), false)
+	key.position =Vector3.ZERO
+	key.rotation = Vector3.ZERO
+	key.freeze = true
+
+
+func dropped_key():
+	is_holding_object = false
+	unbind_key_from_player()
+
+
+func unbind_key_from_player():
+	var child = persistent_state.find_child("PackageHolder").get_child(0)
+	if(child != null):
+		child.set_collision_layer_value(2,true)
+		object_last_held.freeze = false
+		child.reparent(persistent_state.get_parent(), true)
+
+
 func unbind_package_from_player():
 	var child = persistent_state.find_child("PackageHolder").get_child(0)
 	if(child != null):
 		child.set_collision_layer_value(2,true)
-		object_last_held.freeze = false	
+		object_last_held.freeze = false
 		child.reparent(persistent_state.get_parent(), true)
 
 func droppped_object(_mass:float,_object):
@@ -296,7 +337,7 @@ func regularMove(delta):
 		else:
 			persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
 			persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
-			
+
 func updateCartLookStatus():
 	if mailcart:
 		if !is_holding_object:
@@ -307,7 +348,7 @@ func updateCartLookStatus():
 				if(mailcart != null):
 					mailcart.is_being_looked_at = false
 					gui_anim.show_icon(false)
-			
+
 
 func disable_movement_event(l:bool,w:bool):
 	disable_look_movement = l

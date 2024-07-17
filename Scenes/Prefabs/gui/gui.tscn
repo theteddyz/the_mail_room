@@ -248,13 +248,14 @@ script = ExtResource("3_bccgp")
 
 [node name="Adress_Displayer" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -61.0
+anchor_bottom = 0.5
+offset_top = 174.0
+offset_bottom = 174.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 script = ExtResource("9_2tsae")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Adress_Displayer"]
@@ -265,7 +266,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "[center]dsafdsafsdafs"
+text = "[center]Wendell Hanson
+Finance Department
+Cubicle Row 1
+Cubicle Number 4"
 fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Adress_Displayer"]

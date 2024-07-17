@@ -46,6 +46,11 @@ func lowerOtherPackages(delta):
 func remove_package():
 	pass
 
+func sort_packages_by_order():
+	game_objects.sort_custom(Callable(self,"_sort_packages"))
+
+func _sort_packages(a: Package, b: Package) -> bool:
+	return a.package_num > b.package_num
 # Function to scroll the package up
 func scroll_package_up():
 	if current_index < game_objects.size() - 1:
@@ -82,6 +87,7 @@ func add_package(package: Package):
 		if !game_objects.has(package):
 			package.set_collision_layer_value(2,false)
 			game_objects.append(package)
+			sort_packages_by_order()
 			calculate_spacing()
 
 func calculate_spacing():

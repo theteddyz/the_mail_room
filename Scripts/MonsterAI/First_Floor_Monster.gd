@@ -22,6 +22,10 @@ func _ready():
 func update_monster(pack_num):
 	if pack_num == 2:
 		peak_monster_scare = true
+	if pack_num == 3:
+		black_out_scare()
+	if pack_num == 4:
+		close_up_monster_scare()
 
 func _input(event):
 	if event.is_action_pressed("sprint"):
@@ -39,7 +43,6 @@ func enable_monster():
 	visible = true
 	peak_monster_scare = true
 func peak_monster(delta: float):
-	monster_body.position = scare_1_location.position
 	monster_body.visible = true
 	var direction_to_player = (player.global_transform.origin - monster_body.global_transform.origin).normalized()
 	var current_forward = -monster_body.global_transform.basis.z.normalized()

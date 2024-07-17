@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=58 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -38,7 +38,6 @@
 [ext_resource type="AudioStream" uid="uid://bwb5copsj1jbv" path="res://Assets/Audio/SoundFX/FootstepsApproaching2.mp3" id="31_3d035"]
 [ext_resource type="PackedScene" uid="uid://qw2qebg60wqj" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
 [ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
-[ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="38_kxagi"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 
 [sub_resource type="Environment" id="Environment_yy6pq"]
@@ -390,6 +389,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0361, 0, 10.8373)
 [node name="OfficeCubicle4" parent="Objects" instance=ExtResource("4_gk0n2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.4379, 0, 3.42496)
 
+[node name="PackageDestination" parent="Objects/OfficeCubicle4/MailboxStand" index="2"]
+accepts_package_named = "Wendell Hanson
+Finance Department
+Cubicle Row 1
+Cubicle Number 4"
+accepted_num = 1
+
 [node name="OfficeCubicle5" parent="Objects" instance=ExtResource("4_gk0n2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.7306, 0, 3.42496)
 
@@ -413,6 +419,14 @@ transform = Transform3D(0.136544, 0, -3.72529e-09, 0, 0.136544, 0, 3.72529e-09, 
 
 [node name="SpotLight3D" parent="Objects/OfficeCubicle11/Lamp/LampArm/LampUpper" index="0"]
 visible = true
+
+[node name="PackageDestination" parent="Objects/OfficeCubicle11/MailboxStand" index="2"]
+accepts_package_named = "Package 6
+John Bogart
+Finance Department
+Cubicle Row 2
+Cubicle Number 5"
+accepted_num = 6
 
 [node name="PostItNotes_011" type="MeshInstance3D" parent="Objects/OfficeCubicle11"]
 transform = Transform3D(3.79333e-09, 0, -0.0212138, 0, 0.0212138, 0, 0.0212138, 0, 3.79333e-09, -0.57951, 1.85222, 1.93995)
@@ -518,6 +532,17 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.630
 [node name="Desk37" parent="Objects" instance=ExtResource("5_6umw1")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 32.5937, 0, -29.3992)
 
+[node name="PackageDestination" parent="Objects/Desk37/MailboxStand" index="2"]
+accepts_package_named = "Package 5
+Mack Hampton
+Marketing Department
+Desk Row 2
+Desk Number 4"
+accepted_num = 5
+
+[node name="ImpactAudioPlayer" parent="Objects/Desk37/MailboxStand" index="4"]
+transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 0, -1.86265e-09, 0, 1, 0, 0, 0)
+
 [node name="Desk38" parent="Objects" instance=ExtResource("5_6umw1")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 29.1443, 0, -29.3992)
 
@@ -545,6 +570,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.23149, 0.0686443, -4.09316)
 [node name="Desk" parent="Objects" instance=ExtResource("5_6umw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9366, 2.38419e-07, -14.1167)
 
+[node name="PackageDestination" parent="Objects/Desk/MailboxStand" index="2"]
+accepted_num = 3
+
 [node name="Desk2" parent="Objects" instance=ExtResource("5_6umw1")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.9366, 2.38419e-07, -10.2383)
 
@@ -552,7 +580,11 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.936
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.4445, 0, -31.358)
 
 [node name="PackageDestination" parent="Objects/Desk3/MailboxStand" index="2"]
-accepts_package_named = "2"
+accepts_package_named = "Package 2
+Lori Hughes
+Finance Department
+Office 3"
+accepted_num = 2
 
 [node name="Desk4" parent="Objects" instance=ExtResource("5_6umw1")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.2829, -2.38419e-07, -25.8579)
@@ -2016,23 +2048,93 @@ transform = Transform3D(0.0601078, 0, 0.998192, 0, 1, 0, -0.998192, 0, 0.0601078
 [node name="Desk" parent="." instance=ExtResource("5_6umw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7655, 0.00402761, 19.0649)
 
-[node name="Key" parent="." instance=ExtResource("38_kxagi")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -10.765, 1.24558, 19.3958)
-
-[node name="Area3D" parent="Key" index="2"]
-unlock_num = 1
-
 [node name="Package" parent="." instance=ExtResource("40_jab1w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.182976, 0.206767, 8.60729)
-package_address = "2"
-cart_position = Vector3(0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09099, 0.206767, 6.64522)
+package_address = "Package 1
+Wendell Hanson
+Finance Department
+Cubicle Row 1
+Cubicle Number 4"
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+package_num = 1
+
+[node name="Package2" parent="." instance=ExtResource("40_jab1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34233, 0.206767, 6.65115)
+package_address = "Package 2
+Lori Hughes
+Finance Department
+Office 3"
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
 package_num = 2
+
+[node name="Package3" parent="." instance=ExtResource("40_jab1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06459, 0.206767, 5.91962)
+package_address = "Package 3
+Bill Ding
+Finance Department
+Room 2"
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+package_num = 3
+
+[node name="Package4" parent="." instance=ExtResource("40_jab1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94756, 0.206767, 8.60729)
+package_address = "Package 4
+Seth Bradley
+Accounting Department
+[b]Special Instuctions[/b]
+Deliver to Confrence room 3"
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+package_num = 4
+
+[node name="Package5" parent="." instance=ExtResource("40_jab1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.351411, 0.206767, 8.60729)
+package_address = "Package 5
+Mack Hampton
+Marketing Department
+Desk Row 2
+Desk Number 4"
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+package_num = 5
+
+[node name="Package6" parent="." instance=ExtResource("40_jab1w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.917248, 0.206767, 8.60729)
+package_address = "Package 6
+John Bogart
+Finance Department
+Cubicle Row 2
+Cubicle Number 5"
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+package_num = 6
+
+[node name="Desk2" parent="." instance=ExtResource("6_5x7jy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.616909, 0.00402784, -29.2966)
+
+[node name="PackageDestination" parent="Desk2/MailboxStand" index="2"]
+accepts_package_named = "Package 4
+Seth Bradley
+Accounting Department
+[b]Special Instuctions[/b]
+Deliver to Confrence room 3"
+accepted_num = 4
 
 [connection signal="area_entered" from="Walls/StaticBody3D63/RigidBody3D/Door_Lock" to="Walls/StaticBody3D63/RigidBody3D/Door_Lock" method="_on_area_entered"]
 [connection signal="body_entered" from="MonsterDirector/CharacterBody3D/Area3D" to="MonsterDirector" method="_on_area_3d_body_entered"]
 
+[editable path="Objects/OfficeCubicle4"]
+[editable path="Objects/OfficeCubicle4/MailboxStand"]
 [editable path="Objects/OfficeCubicle11"]
 [editable path="Objects/OfficeCubicle11/Lamp"]
+[editable path="Objects/OfficeCubicle11/MailboxStand"]
+[editable path="Objects/Desk37"]
+[editable path="Objects/Desk37/MailboxStand"]
+[editable path="Objects/Desk"]
+[editable path="Objects/Desk/MailboxStand"]
 [editable path="Objects/Desk3"]
 [editable path="Objects/Desk3/MailboxStand"]
 [editable path="Walls/StaticBody3D63"]
@@ -2046,4 +2148,5 @@ package_num = 2
 [editable path="CeilingLights/BlackOutLight"]
 [editable path="CeilingLights/CeilingLightOn46"]
 [editable path="MonsterDirector"]
-[editable path="Key"]
+[editable path="Desk2"]
+[editable path="Desk2/MailboxStand"]

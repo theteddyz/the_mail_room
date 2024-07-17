@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=28 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
@@ -9,11 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Prefabs/MoveableObjects/package_template.tscn" id="12_c01f0"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="12_ghnq1"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="12_ty778"]
-[ext_resource type="AudioStream" uid="uid://cbd42qbrc0oo0" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxLarge2.mp3" id="13_ibr4c"]
-[ext_resource type="AudioStream" uid="uid://bvefoql60memf" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxLarge3.mp3" id="14_emhim"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="15_2x2rp"]
-[ext_resource type="AudioStream" uid="uid://t4pnta4oxcj6" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxLarge.mp3" id="15_60dxw"]
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="15_hp4l1"]
+[ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="15_tm150"]
 [ext_resource type="PackedScene" uid="uid://cauvpuh74hlme" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_002.tscn" id="16_bj7ur"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/outline_test.gdshader" id="16_boyhi"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="17_ma4ii"]
@@ -53,17 +51,6 @@ albedo_color = Color(0.301961, 1, 0.6, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dih61"]
 size = Vector3(30.0029, 0.504028, 30.0212)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4ljw0"]
-playback_mode = 2
-random_pitch = 1.09
-streams_count = 3
-stream_0/stream = ExtResource("14_emhim")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("15_60dxw")
-stream_1/weight = 1.0
-stream_2/stream = ExtResource("13_ibr4c")
-stream_2/weight = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fpoe6"]
 render_priority = 0
@@ -165,7 +152,6 @@ shape = SubResource("BoxShape3D_dih61")
 
 [node name="Cardboard_box_big" parent="." instance=ExtResource("12_ghnq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -2.18631)
-collision_sounds_random = SubResource("AudioStreamRandomizer_4ljw0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46989, 0)
@@ -178,10 +164,12 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5, 0, -10)
 unlock_number = 1
 
 [node name="Key" parent="." instance=ExtResource("17_ma4ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.24024, -1.85113)
-
-[node name="Area3D" parent="Key" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0553, 1.14425, -1.6986)
+collision_layer = 131
+collision_mask = 131
 unlock_num = 1
 
+[node name="meeting_room_wall_Door" parent="." instance=ExtResource("15_tm150")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9019, 0.00402808, -9.7911)
+
 [editable path="StaticBody3D3"]
-[editable path="Key"]

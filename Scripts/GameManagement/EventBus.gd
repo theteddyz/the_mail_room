@@ -24,6 +24,9 @@ signal game_paused()
 signal peaking_monster()
 #Signal for when a package is delivered
 signal package_delivered(package_num:int)
+signal package_failed_delivery()
+signal picked_up_key()
+signal dropped_key()
 ###############################################################################
 
 #Connecting Functions

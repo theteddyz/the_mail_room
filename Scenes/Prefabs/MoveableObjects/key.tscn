@@ -1,32 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://ksn67lit7pjy"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_vlyki"]
 [ext_resource type="Script" path="res://Scripts/Interactable/key.gd" id="2_mguxb"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_pqbld"]
-size = Vector3(0.2, 0.2, 1)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0jwl6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e8e4q"]
 size = Vector3(0.0535889, 0.0732422, 0.168381)
 
-[node name="Key" type="RigidBody3D"]
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("1_vlyki")
+[sub_resource type="BoxMesh" id="BoxMesh_pqbld"]
+size = Vector3(0.2, 0.2, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.262778, 0, 0, 0, 0.372335, 0, 0, 0, 0.168017, 0, 0, 0)
-mesh = SubResource("BoxMesh_pqbld")
+[node name="Key" type="RigidBody3D"]
+collision_layer = 130
+collision_mask = 130
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_0jwl6")
+script = ExtResource("2_mguxb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.999491, 0, 0, 0, 0.999491, 0, 0, 0, 0.999491, 6.10352e-05, 0.000488281, -0.000175476)
 shape = SubResource("BoxShape3D_e8e4q")
 
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 128
-collision_mask = 128
-script = ExtResource("2_mguxb")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(0.999491, 0, 0, 0, 0.999491, 0, 0, 0, 0.999491, 6.10352e-05, 0.000488281, -0.000175476)
-shape = SubResource("BoxShape3D_e8e4q")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.262778, 0, 0, 0, 0.372335, 0, 0, 0, 0.168017, 0, 0, 0)
+mesh = SubResource("BoxMesh_pqbld")
+skeleton = NodePath("")

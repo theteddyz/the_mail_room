@@ -1,7 +1,7 @@
 extends Interactable
 class_name Package
 
-@export var package_address: String = ""
+@export_multiline var package_address: String = ""
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 @export var cart_rotation = Vector3.ZERO
@@ -17,7 +17,6 @@ var playerHead
 var player: CharacterBody3D
 
 func _ready():
-	print(get_parent())
 	player = get_parent().find_child("Player")
 
 func interact():

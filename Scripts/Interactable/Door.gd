@@ -15,11 +15,14 @@ func interact():
 	print("CLICKED")
 
 
-func _on_area_entered(area):
-	if area and "unlock_num" in area:
-		if area.unlock_num == unlock_number:
-			EventBus.emitCustomSignal("dropped_object", [area.get_parent().mass,area.get_parent()])
-			area.get_parent().queue_free()
-			locked = false
-			parent.lock_axes(false)
-			queue_free()
+func check_key(key):
+	if key.unlock_num == unlock_number:
+		EventBus.emitCustomSignal("dropped_object", [key.mass,key])
+		EventBus.emitCustomSignal("dropped_key")
+		key.queue_free()
+		locked = false
+		parent.lock_axes(false)
+		queue_free()
+	else:
+		print("FALED")
+
