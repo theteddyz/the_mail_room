@@ -24,7 +24,7 @@ var crouching_speed:float = 3.1
 var crouching_lerp_speed:float = 0.18
 # var current_speed = 5, this variable is used by parent
 var direction:Vector3 = Vector3.ZERO
-
+var gui_anim:Control
 # Others
 var starting_height:float
 var crouching_depth:float
@@ -58,72 +58,9 @@ func _ready():
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
 	EventBus.connect("disable_player_movement",disable_movement_event)
+	gui_anim = Gui.get_control_displayer()
 
-#func _input(event):
-	## Mouse
-	#if event is InputEventMouseMotion && !is_reading && !disable_look_movement:
-		#persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
-		#head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
-		#head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
-	#if interactable_finder.is_colliding() and Input.is_action_just_pressed("drive"):
-		#var collider = interactable_finder.get_collider()
-		#if collider and !is_holding_object:
-			#if collider.name == "Radio":
-				#var parent = collider.get_parent()
-				#parent.check_tape()
-	#if event is InputEventMouseButton:
-		#if event.is_action_released("interact") and is_holding_object and object_last_held is Package:
-				#if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart":
-					#interactable_finder.get_collider().add_package(object_last_held)
-					#object_last_held = null
-					#is_holding_object = false
-				#else: if(interactable_finder.is_colliding() and interactable_finder.get_collider().name == "MailboxStand"):
-						#interactable_finder.get_collider().find_child("PackageDestination").deliver(object_last_held)
-						#object_last_held = null
-						#is_holding_object = false
-				#else:dropped_package()
-		#if event.is_action_released("interact") and is_holding_object and object_last_held.name == "Radio":
-			#if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart":
-				#interactable_finder.get_collider().add_radio(object_last_held)
-		#if event.is_action_released("interact") and is_holding_object and object_last_held:
-			#pass
-		#if interactable_finder.is_colliding():
-			#var collider = interactable_finder.get_collider()
-			## Handle Interaction
-			#if Input.is_action_just_pressed("interact") and !interact_cooldown and !is_reading:
-				#interact_cooldown = true
-				#get_tree().create_timer(0.5).connect("timeout", turnOffInteractCooldown)
-				#if collider.name == "Handlebar" and !is_holding_object:
-					#change_state.call("grabcart")
-				#elif collider.name == "Mailcart" and !is_holding_object:
-					#collider.grab_current_package()
-				#elif !is_holding_object: 
-					#collider.interact()
-					#
-			#if event.is_action_pressed("inspect") and collider.name == "Mailcart":
-				#print("Inspect pressed on MAILCART (will inspect package)")
-				##TODO: The player should cease all movement (Different state?) and call a new function, mailcart.inspect()
-				## which zooms the playercamera to inspect the highlighted package
-	#
-			#if event.is_action_pressed("scroll package down") and collider.name == "Mailcart":
-				#collider.scroll_package_down()
-#
-			#if event.is_action_pressed("scroll package up") and collider.name == "Mailcart":
-				#collider.scroll_package_up()
-				#
-			#if event.is_action_pressed("scroll package down") and collider.name == "Radio":
-				#var parent = collider.get_parent()
-				###TODO: Redo how the radio works on the cart
-				##parent.change_station_up()
-				#
-			#if event.is_action_pressed("scroll package up") and collider.name == "Radio":
-				#var parent = collider.get_parent()
-				###TODO: Redo how the radio works on the cart
-				##parent.change_station_down()
-		#if event.is_action_pressed("inspect")and is_holding_object and object_last_held is Package:
-			#if text_displayer == null:
-				#text_displayer = Gui.get_address_displayer()
-			#show_label(object_last_held.package_address)
+
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -211,15 +148,18 @@ func handle_inspect():
 
 func handle_scroll(is_down):
 	var collider = interactable_finder.get_interactable()
-	match collider.name:
-		"Mailcart":
-			if is_down:
-				collider.scroll_package_down()
-			else:
-				collider.scroll_package_up()
-		"Radio":
-			#TODO:Handle Radio Functionality
-			var _parent = collider.get_parent()
+	if collider:
+		match collider.name:
+			"Mailcart":
+				if is_down:
+					gui_anim.scroll_down()
+					collider.scroll_package_down()
+				else:
+					gui_anim.scroll_up()
+					collider.scroll_package_up()
+			"Radio":
+				#TODO:Handle Radio Functionality
+				var _parent = collider.get_parent()
 
 func turnOffInteractCooldown():
 	interact_cooldown = false
@@ -273,7 +213,6 @@ func _process(delta):
 	checkObstructionRaycasts()
 	regularMove(delta)
 	updateCartLookStatus()
-	
 	# Interactable Stuff
 	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !disable_look_movement:
 		var collider = interactable_finder.get_collider()
@@ -363,9 +302,11 @@ func updateCartLookStatus():
 		if !is_holding_object:
 			if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart" and !is_holding_object:
 				interactable_finder.get_collider().is_being_looked_at = true
+				gui_anim.show_icon(true)
 			else:
 				if(mailcart != null):
 					mailcart.is_being_looked_at = false
+					gui_anim.show_icon(false)
 			
 
 func disable_movement_event(l:bool,w:bool):

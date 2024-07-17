@@ -3,8 +3,11 @@ extends Control
 var is_paused = false
 var is_reading = false
 var world
+var Icon_Manager 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var parent = get_parent()
+	Icon_Manager = parent.find_child("IconManager")
 	world = get_tree().root.get_child(3)
 	hide()
 	is_paused = false
@@ -14,9 +17,11 @@ func _ready():
 
 func _on_continue_pressed():
 	if is_paused and !is_reading:
+		Icon_Manager.show()
 		_reset_pause_state()
 		hide()
 	else:
+		Icon_Manager.show()
 		_reset_pause_state()
 		hide()
 
@@ -41,6 +46,12 @@ func game_paused():
 	is_paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
+	var controls = get_parent().find_child("Controls")
+	
+	Icon_Manager.hide()
+	if controls.visible == true:
+		controls.hide()
+	
 	show()
 
 func is_player_reading(_is_reading:bool):

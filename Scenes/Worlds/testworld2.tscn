@@ -135,7 +135,7 @@ cart_position = Vector3(0, 0.65, 0)
 
 [node name="Package7" parent="." instance=ExtResource("10_wyyub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.15342, 0.0944527, 2.98509)
-package_address = "Package3"
+package_address = "Hog Rider"
 cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 

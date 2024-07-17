@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=24 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -9,21 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://dmaieugbx5o5v" path="res://Assets/TemporaryAssets/transparent-back-to-school-icon-idea-icon-light-bulb-icon-606d59b7138822.65835703161777912708-removebg-preview.png" id="6_vkuja"]
 [ext_resource type="Texture2D" uid="uid://clelsume2xjky" path="res://Assets/TemporaryAssets/transparnetmailicon.png" id="7_0rb4o"]
 [ext_resource type="Script" path="res://Scripts/GUI/AdressDisplayer.gd" id="9_2tsae"]
+[ext_resource type="Script" path="res://Scripts/GUI/gui_control_icons.gd" id="10_s8154"]
+[ext_resource type="Texture2D" uid="uid://c1ejeekg61xg3" path="res://Assets/TemporaryAssets/mouse_white.png" id="11_0nyau"]
+[ext_resource type="Texture2D" uid="uid://ovxqhwrf47me" path="res://Assets/TemporaryAssets/mouse_white_highlighted.png" id="11_kxefn"]
+[ext_resource type="Texture2D" uid="uid://c3i16yjxpwk16" path="res://Assets/TemporaryAssets/IconSet_1  (40).png" id="12_2kc41"]
 
-[sub_resource type="Animation" id="Animation_a4pfn"]
-resource_name = "fade_out"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RichTextLabel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
+[sub_resource type="Gradient" id="Gradient_10so2"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aqccv"]
+gradient = SubResource("Gradient_10so2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_de5p4"]
+texture = SubResource("GradientTexture2D_aqccv")
 
 [sub_resource type="Animation" id="Animation_v6jfl"]
 length = 0.001
@@ -40,10 +37,127 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_a4pfn"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pk61x"]
 _data = {
 "RESET": SubResource("Animation_v6jfl"),
 "fade_out": SubResource("Animation_a4pfn")
+}
+
+[sub_resource type="Animation" id="Animation_32o43"]
+resource_name = "scroll_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("11_0nyau"), ExtResource("11_0nyau"), ExtResource("11_kxefn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/TextureRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(22.7233, 18.2099), Vector2(22.723, 0), Vector2(22.7233, 18.2099)]
+}
+
+[sub_resource type="Animation" id="Animation_371lm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_kxefn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/TextureRect2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(22.7233, 18.2099)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/TextureRect3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(48.7719, 19.1358)]
+}
+
+[sub_resource type="Animation" id="Animation_lfrrs"]
+resource_name = "scroll_down"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("11_0nyau"), ExtResource("11_kxefn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/TextureRect3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(48.7719, 19.1358), Vector2(48.772, 30), Vector2(48.772, 19.136)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tojdy"]
+_data = {
+"RESET": SubResource("Animation_371lm"),
+"scroll_down": SubResource("Animation_lfrrs"),
+"scroll_up": SubResource("Animation_32o43")
 }
 
 [node name="GUI" type="Control"]
@@ -54,6 +168,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_udi3s")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_de5p4")
 
 [node name="pauseMenu" parent="." instance=ExtResource("2_j1350")]
 visible = false
@@ -177,6 +301,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
+text = "[center]dsafdsafsdafs"
+fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Adress_Displayer"]
 libraries = {
@@ -186,5 +312,78 @@ libraries = {
 [node name="Timer" type="Timer" parent="Adress_Displayer"]
 wait_time = 5.0
 one_shot = true
+
+[node name="Controls" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 62.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_s8154")
+
+[node name="Control" type="Control" parent="Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -13.0
+offset_right = -2.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.849, 1.66)
+
+[node name="TextureRect" type="TextureRect" parent="Controls/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.279903, 0.308536)
+texture = ExtResource("11_kxefn")
+
+[node name="TextureRect2" type="TextureRect" parent="Controls/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -17.2767
+offset_top = -1.79013
+offset_right = 108.725
+offset_bottom = 116.21
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5708
+scale = Vector2(0.160539, 0.211035)
+texture = ExtResource("12_2kc41")
+
+[node name="TextureRect3" type="TextureRect" parent="Controls/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.7719
+offset_top = -0.864191
+offset_right = 134.772
+offset_bottom = 117.136
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.160539, 0.211035)
+texture = ExtResource("12_2kc41")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Controls"]
+libraries = {
+"": SubResource("AnimationLibrary_tojdy")
+}
 
 [connection signal="timeout" from="Adress_Displayer/Timer" to="Adress_Displayer" method="_on_timer_timeout"]
