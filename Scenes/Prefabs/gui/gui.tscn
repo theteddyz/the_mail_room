@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=13 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -9,6 +9,42 @@
 [ext_resource type="Texture2D" uid="uid://dmaieugbx5o5v" path="res://Assets/TemporaryAssets/transparent-back-to-school-icon-idea-icon-light-bulb-icon-606d59b7138822.65835703161777912708-removebg-preview.png" id="6_vkuja"]
 [ext_resource type="Texture2D" uid="uid://clelsume2xjky" path="res://Assets/TemporaryAssets/transparnetmailicon.png" id="7_0rb4o"]
 [ext_resource type="Script" path="res://Scripts/GUI/AdressDisplayer.gd" id="9_2tsae"]
+
+[sub_resource type="Animation" id="Animation_a4pfn"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v6jfl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pk61x"]
+_data = {
+"RESET": SubResource("Animation_v6jfl"),
+"fade_out": SubResource("Animation_a4pfn")
+}
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -141,3 +177,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Adress_Displayer"]
+libraries = {
+"": SubResource("AnimationLibrary_pk61x")
+}
+
+[node name="Timer" type="Timer" parent="Adress_Displayer"]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Adress_Displayer/Timer" to="Adress_Displayer" method="_on_timer_timeout"]
