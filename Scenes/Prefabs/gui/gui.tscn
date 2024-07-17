@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://clelsume2xjky" path="res://Assets/TemporaryAssets/transparnetmailicon.png" id="7_0rb4o"]
 [ext_resource type="Script" path="res://Scripts/GUI/AdressDisplayer.gd" id="9_2tsae"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_control_icons.gd" id="10_s8154"]
-[ext_resource type="Texture2D" uid="uid://c1ejeekg61xg3" path="res://Assets/TemporaryAssets/mouse_white.png" id="11_0nyau"]
-[ext_resource type="Texture2D" uid="uid://ovxqhwrf47me" path="res://Assets/TemporaryAssets/mouse_white_highlighted.png" id="11_kxefn"]
-[ext_resource type="Texture2D" uid="uid://c3i16yjxpwk16" path="res://Assets/TemporaryAssets/IconSet_1  (40).png" id="12_2kc41"]
+[ext_resource type="Texture2D" uid="uid://bkw37ucvregly" path="res://Assets/TemporaryAssets/M_MOUSE.png" id="11_ebd1s"]
+[ext_resource type="Texture2D" uid="uid://bsw0k3ptpy4jk" path="res://Assets/TemporaryAssets/Up Arrow.png" id="12_cgfu7"]
+[ext_resource type="Texture2D" uid="uid://j86xbk4osway" path="res://Assets/TemporaryAssets/Down Arrow.png" id="13_h5gkl"]
 
 [sub_resource type="Gradient" id="Gradient_10so2"]
 
@@ -64,26 +64,14 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/TextureRect:texture")
+tracks/0/path = NodePath("Control/TextureRect2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [ExtResource("11_0nyau"), ExtResource("11_0nyau"), ExtResource("11_kxefn")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/TextureRect2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(22.7233, 18.2099), Vector2(22.723, 0), Vector2(22.7233, 18.2099)]
+"values": [Vector2(8, 6), Vector2(8, 1), Vector2(8, 6)]
 }
 
 [sub_resource type="Animation" id="Animation_371lm"]
@@ -91,14 +79,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/TextureRect:texture")
+tracks/0/path = NodePath("Control/TextureRect3:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("11_kxefn")]
+"update": 0,
+"values": [Vector2(8, 40)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -110,19 +98,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(22.7233, 18.2099)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Control/TextureRect3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(48.7719, 19.1358)]
+"values": [Vector2(8, 6)]
 }
 
 [sub_resource type="Animation" id="Animation_lfrrs"]
@@ -131,26 +107,14 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/TextureRect:texture")
+tracks/0/path = NodePath("Control/TextureRect3:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("11_0nyau"), ExtResource("11_kxefn")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/TextureRect3:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.2, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(48.7719, 19.1358), Vector2(48.772, 30), Vector2(48.772, 19.136)]
+"values": [Vector2(8, 40), Vector2(8, 45), Vector2(8, 40)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tojdy"]
@@ -315,12 +279,9 @@ one_shot = true
 
 [node name="Controls" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = 62.0
-offset_bottom = 62.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_s8154")
@@ -332,20 +293,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -42.0
-offset_top = -13.0
-offset_right = -2.0
-offset_bottom = 27.0
+offset_top = 24.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.849, 1.66)
 
 [node name="TextureRect" type="TextureRect" parent="Controls/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(0.279903, 0.308536)
-texture = ExtResource("11_kxefn")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_right = 461.0
+offset_bottom = 512.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.15684, 0.172402)
+texture = ExtResource("11_ebd1s")
 
 [node name="TextureRect2" type="TextureRect" parent="Controls/Control"]
 layout_mode = 1
@@ -354,15 +320,14 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -17.2767
-offset_top = -1.79013
-offset_right = 108.725
-offset_bottom = 116.21
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 520.0
+offset_bottom = 518.0
 grow_horizontal = 0
 grow_vertical = 2
-rotation = -1.5708
-scale = Vector2(0.160539, 0.211035)
-texture = ExtResource("12_2kc41")
+scale = Vector2(0.062, 0.08)
+texture = ExtResource("12_cgfu7")
 
 [node name="TextureRect3" type="TextureRect" parent="Controls/Control"]
 layout_mode = 1
@@ -371,15 +336,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 8.7719
-offset_top = -0.864191
-offset_right = 134.772
-offset_bottom = 117.136
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 520.0
+offset_bottom = 552.0
 grow_horizontal = 0
 grow_vertical = 2
-rotation = 1.5708
-scale = Vector2(0.160539, 0.211035)
-texture = ExtResource("12_2kc41")
+scale = Vector2(0.062, 0.082)
+mouse_filter = 2
+texture = ExtResource("13_h5gkl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Controls"]
 libraries = {
