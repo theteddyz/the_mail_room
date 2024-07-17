@@ -1,17 +1,17 @@
 extends Node3D
 
 # Array to hold game objects
-var game_objects = []
-var radio_position
-var player
+var game_objects:Array = []
+var radio_position:Node3D
+var player:CharacterBody3D
 
 # Pointer to track the current index in the game_objects array
-var current_index = 0
-var text_displayer
+var current_index:int = 0
+var text_displayer:Node
 # If we want to highlight packages
-var is_being_looked_at = false
-var highlight_lerp_speed = 8.2
-var unhighlight_lerp_speed = 8.2
+var is_being_looked_at:bool = false
+var highlight_lerp_speed:float = 8.2
+var unhighlight_lerp_speed:float = 8.2
 
 func _ready():
 	# Initialize the array with game objects if needed
@@ -90,19 +90,19 @@ func calculate_spacing():
 	if total_packages > 1:
 		var step = 1.1 / (total_packages - 1)  # Total range is 1.5 (from 0.75 to -0.75)
 		for i in range(total_packages):
-			var position = 0.45 - i * step
-			print("Package ", i, " position: ", position)
-			move_package_to_cart(game_objects[i], position)
+			var _position = 0.45 - i * step
+			print("Package ", i, " position: ", _position)
+			move_package_to_cart(game_objects[i], _position)
 			
 	else:
 		print("Package 0 position: 0")
 		move_package_to_cart(game_objects[0], 0)
 
 # Placeholder function to move package to cart
-func move_package_to_cart(package: Package, position: float):
+func move_package_to_cart(package: Package, _position: float):
 	package.reparent(self, false)
 	package.rotation_degrees = package.cart_rotation
-	package.position = Vector3(0, package.cart_position.y, position)
+	package.position = Vector3(0, package.cart_position.y, _position)
 	pass
 
 

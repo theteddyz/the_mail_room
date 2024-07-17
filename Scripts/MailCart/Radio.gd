@@ -16,7 +16,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if held_tape:
 		held_tape.global_position = global_position
 
@@ -74,11 +74,11 @@ func remove_from_cart():
 	root.add_child(self)
 	attached_to_cart = false
 
-func check_dropped(smass,object):
+func check_dropped(_mass,object):
 	if object.name == "Radio":
 		print("dropped")
 		collider.disabled = false
-func check_held(mass,object):
+func check_held(_mass,object):
 	if object.name == "Radio":
 		being_held = true
 		collider.disabled = true

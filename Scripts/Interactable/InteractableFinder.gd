@@ -8,9 +8,9 @@ func get_interactable():
 	return null
 
 
-func is_interactable(name):
+func is_interactable():
 	var collider = get_interactable()
-	return collider and collider.name == name
+	return collider
 
 
 func interact():

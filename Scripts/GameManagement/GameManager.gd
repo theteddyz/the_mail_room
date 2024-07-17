@@ -89,7 +89,6 @@ func save():
 
 func goto_scene(path, floor = null):
 	if current_scene.get_scene_file_path() != path:
-		var elevatorMove = false
 		if(floor != null):
 			call_deferred("_deferred_goto_scene", path, true)
 		else:
@@ -104,12 +103,12 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 		assert(false, "Could not load scene: " + path + ", not valid path?")
 	
 	var mailcart_in_elevator = elevator_reference.get_node("Elevator").get_node("ObjectDetectionShape").mailcart_exists_in_elevator
-	var elevator_reference_origin = elevator_reference.get_node("Elevator").get_node("ElevatorOrigin")
-	var player_relative_to_elevator = player_reference.global_position - elevator_reference_origin.global_position
-	var player_relativerotation_to_elevator = player_reference.rotation - elevator_reference.rotation
-	if mail_cart_reference:
-		var mailcart_relative_to_elevator = mail_cart_reference.global_position - elevator_reference_origin.global_position
-		var mailcart_relativerotation_to_elevator = mail_cart_reference.rotation - elevator_reference.rotation
+	#var elevator_reference_origin = elevator_reference.get_node("Elevator").get_node("ElevatorOrigin")
+	#var player_relative_to_elevator = player_reference.global_position - elevator_reference_origin.global_position
+	#var player_relativerotation_to_elevator = player_reference.rotation - elevator_reference.rotation
+	#if mail_cart_reference:
+		#var mailcart_relative_to_elevator = mail_cart_reference.global_position - elevator_reference_origin.global_position
+		#var mailcart_relativerotation_to_elevator = mail_cart_reference.rotation - elevator_reference.rotation
 	
 	# Change to the new scene
 	var old_scene = current_scene
@@ -138,7 +137,7 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 	
 	# Find and replace the elevator node
 	var new_elevator = current_scene.find_child("Elevator")
-	var new_elevator_rotation = new_elevator.rotation
+	#var new_elevator_rotation = new_elevator.rotation
 	elevator_reference.reparent(current_scene, false)
 	elevator_reference.owner = current_scene
 	

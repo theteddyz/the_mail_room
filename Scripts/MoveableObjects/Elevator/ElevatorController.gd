@@ -21,7 +21,7 @@ func _ready():
 	GameManager.register_elevator(self)
 	EventBus.connect("moved_to_floor",set_floor)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
@@ -53,7 +53,7 @@ func move_floors():
 		elevator_anim.play("door_close")
 		wall_anim.play("wall_door_close")
 		var player = GameManager.get_player()
-		var elevatorbody = Elevator.find_child("Elevator_body")
+		#var elevatorbody = Elevator.find_child("Elevator_body")
 		player.reparent(Elevator,true)
 		if detector.mailcart_exists_in_elevator == true:
 			var mail_cart = GameManager.get_mail_cart()
@@ -62,7 +62,7 @@ func move_floors():
 		anim.play("elevator_move_down")
 		await anim.animation_finished
 		if current_floor < 0:
-			var elevator_wall_anim = Elevator_Wall.find_child("wall_anim")
+			#var elevator_wall_anim = Elevator_Wall.find_child("wall_anim")
 			wall_anim.active = false
 			Elevator_Wall.visible = false
 			

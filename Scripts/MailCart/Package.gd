@@ -22,9 +22,3 @@ func _ready():
 
 func interact():
 	player.state.grabbed_package(self)
-
-func drop():
-	pass
-		
-func update_position(delta):
-	pass

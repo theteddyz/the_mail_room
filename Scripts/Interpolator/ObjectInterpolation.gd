@@ -27,7 +27,7 @@ func _update_transform():
 func setUpdate(updated:bool):
 	update = updated
 
-func _process(delta):
+func _process(_delta):
 	for mesh in mesh_instances:
 		mesh.scale = origin_scales[mesh]
 	

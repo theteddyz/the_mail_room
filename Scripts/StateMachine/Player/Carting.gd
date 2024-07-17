@@ -63,8 +63,8 @@ func _process(delta):
 		var velocity_difference := (Quaternion.from_euler(global_rotation).inverse() * persistent_state.velocity);
 		if horizontal_input.length() > 0.1 && input_dir.y != 0:
 			# Calculate the target rotation based on the horizontal input
-			var target_rotation = atan2(horizontal_input.x, horizontal_input.y)
-			var current_rotation = persistent_state.rotation.y
+			#var target_rotation = atan2(horizontal_input.x, horizontal_input.y)
+			#var current_rotation = persistent_state.rotation.y
 			
 			#Calculate relative velocity
 			
@@ -120,6 +120,7 @@ func set_colliders_enabled(group_name: String,enabled:bool) -> void:
 	for collider in get_tree().get_nodes_in_group(group_name):
 		collider.disabled = not enabled
 func start_cart_audio():
+	print("playing")
 	if cart_audio:
 		cart_audio.play()
 

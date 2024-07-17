@@ -9,15 +9,6 @@ var persistent_state: CharacterBody3D
 var mouse_sense = 0.25
 
 # Called when a new instance of any state is created
-func setup(change_state, persistent_state):
-	self.change_state = change_state
-	self.persistent_state = persistent_state
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+func setup(_change_state, _persistent_state):
+	self.change_state = _change_state
+	self.persistent_state = _persistent_state

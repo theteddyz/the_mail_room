@@ -25,24 +25,24 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if parent_node:
 		parent_node.angular_damp = 5
 		parent_node.linear_damp = 5
 		update_door_audio(parent_node.rotation_degrees.y)
 
-func update_door_audio(current_angle: float):
-	var angle_difference = current_angle - initial_angle
-	var open_ratio = clamp(abs(angle_difference) / open_angle, 0.0, 1.0)
+func update_door_audio(_current_angle: float):
+	var _angle_difference = _current_angle - initial_angle
+	var open_ratio = clamp(abs(_angle_difference) / open_angle, 0.0, 1.0)
 	pitch_scale = lerp(1.0, 1.5, open_ratio)
 	volume_db = lerp(-10, 0, open_ratio)
-	if current_angle > previous_angle and open_ratio > 0.1 and not is_playing_open:
+	if _current_angle > previous_angle and open_ratio > 0.1 and not is_playing_open:
 		play_door_open_sound()
-	elif abs(angle_difference) <= close_threshold and not is_playing_close:
+	elif abs(_angle_difference) <= close_threshold and not is_playing_close:
 		play_door_close_sound()
-	elif open_ratio <= 0.1 and not abs(angle_difference) <= close_threshold:
+	elif open_ratio <= 0.1 and not abs(_angle_difference) <= close_threshold:
 		stop_door_sounds()
-	previous_angle = current_angle
+	previous_angle = _current_angle
 
 
 func play_door_open_sound():

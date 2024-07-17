@@ -33,7 +33,7 @@ func _ready()->void:
 	_add_pin_joint(ROPE_BODIES[ROPE_BODIES.size()-1],phone_body)
 	_add_pin_joint(ROPE_BODIES[0],phone_reciever)
 	
-func _physics_process(delta:float)->void:
+func _physics_process(_delta:float)->void:
 	#Making the bones move as the rigidbodies move. 
 	for i in skeleton.get_bone_count(): 
 		var bone_name =skeleton.get_bone_name(i)

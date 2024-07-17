@@ -31,8 +31,6 @@ signal collided(other_body)
 func _ready():
 	player = GameManager.get_player()
 	object_Interpolator = find_child("Interpolator")
-	var root = get_tree().root
-	var current_scene = root.get_child(root.get_child_count() - 1)
 	if !should_freeze:
 		freeze = false
 	else:
@@ -126,7 +124,7 @@ func update_position(delta):
 	
 	force = force.limit_length(max_force + (mass * 4) + player.velocity.length())
 	apply_central_force(force)
-	var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
+	#var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
 	
 	apply_central_force(-linear_velocity * 20) #* angleBetweenForceAndVelocity)		
 	if distance > distance_threshold:

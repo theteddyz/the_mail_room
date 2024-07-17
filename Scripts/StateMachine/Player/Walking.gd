@@ -139,18 +139,18 @@ func handle_mouse_motion(event):
 
 func handle_mouse_button(event):
 	if event.is_action_released("interact"):
-		handle_interact_release(event)
+		handle_interact_release()
 	elif  event.is_action_pressed("interact"):
 		handle_general_interaction()
 	elif event.is_action_pressed("inspect"):
-		handle_inspect(event)
+		handle_inspect()
 	elif event.is_action_pressed("scroll package down"):
-		handle_scroll(event, true)
+		handle_scroll(true)
 	elif event.is_action_pressed("scroll package up"):
-		handle_scroll(event, false)
+		handle_scroll(false)
 
 
-func handle_interact_release(event):
+func handle_interact_release():
 	if is_holding_object and object_last_held:
 		if object_last_held is Package:
 			handle_package_interaction()
@@ -191,7 +191,7 @@ func handle_general_interaction():
 			_:
 				collider.interact()
 
-func handle_inspect(event):
+func handle_inspect():
 	var collider = interactable_finder.get_interactable()
 	if collider:
 		match collider:
@@ -209,7 +209,7 @@ func handle_inspect(event):
 				text_displayer = Gui.get_address_displayer()
 			show_label(object_last_held.package_address)
 
-func handle_scroll(event, is_down):
+func handle_scroll(is_down):
 	var collider = interactable_finder.get_interactable()
 	match collider.name:
 		"Mailcart":
@@ -218,7 +218,8 @@ func handle_scroll(event, is_down):
 			else:
 				collider.scroll_package_up()
 		"Radio":
-			var parent = collider.get_parent()
+			#TODO:Handle Radio Functionality
+			var _parent = collider.get_parent()
 
 func turnOffInteractCooldown():
 	interact_cooldown = false
@@ -258,7 +259,7 @@ func unbind_package_from_player():
 		object_last_held.freeze = false	
 		child.reparent(persistent_state.get_parent(), true)
 
-func droppped_object(mass:float,object):
+func droppped_object(_mass:float,_object):
 	crouching_speed = 3.1
 	walking_speed = 5.0
 	sprinting_speed = 10.0
