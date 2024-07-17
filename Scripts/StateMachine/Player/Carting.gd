@@ -7,17 +7,17 @@ class_name CartingState
 @onready var mailcart
 var cart_audio:AudioStreamPlayer3D
 
-@export var cart_movement_lerp_speed = 3.85
-@export var cart_sprinting_speed = 5.2
-@export var cart_walking_speed = 3.8
-@export var cart_turning_speed_modifier = 0.13
-@export var volume_fade_speed = 3.0  # Speed at which the volume fades
-var directionX = Vector3.ZERO
-var directionZ = Vector3.ZERO
-var direction = Vector3.ZERO
-var rotate = 0.0
-var was_moving = false
-var target_volume = -80.0
+@export var cart_movement_lerp_speed:float = 3.85
+@export var cart_sprinting_speed:float = 5.2
+@export var cart_walking_speed:float = 3.8
+@export var cart_turning_speed_modifier:float = 0.13
+@export var volume_fade_speed:float = 3.0  # Speed at which the volume fades
+var directionX:Vector3 = Vector3.ZERO
+var directionZ:Vector3 = Vector3.ZERO
+var direction:Vector3 = Vector3.ZERO
+var _rotate:float = 0.0
+var was_moving:bool = false
+var target_volume:float = -80.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	mailcart = GameManager.get_mail_cart()
@@ -70,22 +70,22 @@ func _process(delta):
 			
 			
 			if velocity_difference.z < 0:
-				rotate = lerp(rotate, deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length()), delta*5)
+				_rotate = lerp(_rotate, deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length()), delta*5)
 				#rotate = deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length())
-				persistent_state.rotate_y(rotate)
+				persistent_state.rotate_y(_rotate)
 			else :
-				rotate = lerp(rotate, deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length()), delta*5)
+				_rotate = lerp(_rotate, deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length()), delta*5)
 				#rotate = deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length())
-				persistent_state.rotate_y(rotate)
+				persistent_state.rotate_y(_rotate)
 		else:
 			if velocity_difference.z < 0:
-				rotate = lerp(rotate, deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length()), delta*5)
+				_rotate = lerp(_rotate, deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length()), delta*5)
 				#rotate = deg_to_rad(0.5 * -input_dir.x * persistent_state.velocity.length())
-				persistent_state.rotate_y(rotate)
+				persistent_state.rotate_y(_rotate)
 			else :
-				rotate = lerp(rotate, deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length()), delta*5)
+				_rotate = lerp(_rotate, deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length()), delta*5)
 				#rotate = deg_to_rad(0.5 * input_dir.x * persistent_state.velocity.length())
-				persistent_state.rotate_y(rotate)
+				persistent_state.rotate_y(_rotate)
 			
 			#persistent_state.rotate_y(rotate)
 			persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, delta*2)

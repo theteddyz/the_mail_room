@@ -17,7 +17,8 @@ func show_icon(object_name):
 	if object_name in icons:
 		icons[object_name].show()
 	else:
-		icons["grab"].show
+		pass
+		#icons["grab"].show
 
 
 func hide_icon(object_name):

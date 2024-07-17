@@ -87,9 +87,9 @@ func save():
 		# Store the save dictionary as a new line in the save file.
 		save_game.store_line(json_string)
 
-func goto_scene(path, floor = null):
+func goto_scene(path, _floor):
 	if current_scene.get_scene_file_path() != path:
-		if(floor != null):
+		if(_floor != null):
 			call_deferred("_deferred_goto_scene", path, true)
 		else:
 			call_deferred("_deferred_goto_scene", path)
