@@ -6,7 +6,6 @@ var pause_menu
 # Privates
 var state: State
 var state_factory: StateFactory
-var standing_is_blocked = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

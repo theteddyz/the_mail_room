@@ -1,7 +1,7 @@
 extends Control
 
 
-var icons = {}
+var icons:Dictionary = {}
 
 
 func _ready():

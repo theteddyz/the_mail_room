@@ -1,7 +1,7 @@
 extends Control
-@onready var text_object = $RichTextLabel
-@onready var animation_player = $AnimationPlayer
-@onready var timer = $Timer
+@onready var text_object:RichTextLabel = $RichTextLabel
+@onready var animation_player:AnimationPlayer = $AnimationPlayer
+@onready var timer:Timer = $Timer
 
 func set_text(text:String):
 	text_object.text = ("[center]" + text)

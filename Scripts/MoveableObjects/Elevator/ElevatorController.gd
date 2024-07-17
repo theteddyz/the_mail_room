@@ -1,16 +1,15 @@
 extends Node3D
 
-var current_floor = 4
-var previous_floor
+var current_floor:int = 4
+var previous_floor:int
 var floors:Dictionary = {-2: 81.5, -1: 64, 0: 49, 1: 30.5, 2: 10.5, 3: -7, 4: -27, 5: -46, 6: -64, 7: -84}
-var is_called = false
+var is_called:bool = false
 @onready var anim:AnimationPlayer = $AnimationPlayer
 @onready var Elevator_Wall = $Elevator_Wall
 @onready var Elevator = $Elevator
 @onready var detector = $Elevator/ObjectDetectionShape
 var elevator_anim:AnimationPlayer
 var wall_anim:AnimationPlayer
-var target_path
 var cart:bool = false
 #@onready var floor_indicator: MeshInstance3D = $WallWithElevatorEntrance/ElevatorEntrance/ElevatorEntranceIndicator
 # Called when the node enters the scene tree for the first time.
