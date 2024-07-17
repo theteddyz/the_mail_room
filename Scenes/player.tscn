@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=18 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
 [ext_resource type="PackedScene" uid="uid://07r80s3tkw3" path="res://Assets/Shaders/dither_shader2.tscn" id="3_6orpg"]
 [ext_resource type="PackedScene" uid="uid://8uuomvgrmu1b" path="res://Assets/Shaders/outline_shader.tscn" id="4_ao0s0"]
+[ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 
@@ -150,6 +151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319181, -0.331, -0.969561)
 target_position = Vector3(0, 0, -1.7)
 collision_mask = 8194
 collide_with_areas = true
+script = ExtResource("5_fh3d4")
 
 [node name="StandingObstructionRaycasts" type="Node3D" parent="Neck/Head"]
 

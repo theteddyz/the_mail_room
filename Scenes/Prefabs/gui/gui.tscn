@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=10 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/GUI/IconManager.gd" id="4_w25uf"]
 [ext_resource type="Texture2D" uid="uid://dmaieugbx5o5v" path="res://Assets/TemporaryAssets/transparent-back-to-school-icon-idea-icon-light-bulb-icon-606d59b7138822.65835703161777912708-removebg-preview.png" id="6_vkuja"]
 [ext_resource type="Texture2D" uid="uid://clelsume2xjky" path="res://Assets/TemporaryAssets/transparnetmailicon.png" id="7_0rb4o"]
+[ext_resource type="Script" path="res://Scripts/GUI/AdressDisplayer.gd" id="9_2tsae"]
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -120,3 +121,23 @@ layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("3_bccgp")
+
+[node name="Adress_Displayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -61.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("9_2tsae")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Adress_Displayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true

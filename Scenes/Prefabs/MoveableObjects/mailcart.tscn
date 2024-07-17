@@ -113,19 +113,13 @@ transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.0041
 shape = SubResource("SphereShape3D_uf7kr")
 
 [node name="RadioPosition" type="Node3D" parent="."]
-transform = Transform3D(-0.0012043, 0, -0.999999, 0, 1, 0, 0.999999, 0, -0.0012043, 0.575468, 0.672807, 0)
-visible = false
-
-[node name="HingeJoint3D" type="HingeJoint3D" parent="RadioPosition"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.254718, 0)
-node_a = NodePath("../..")
-node_b = NodePath("../Radio")
-angular_limit/enable = true
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 0.0370467, 0.186138, 0.942496)
 
 [node name="Radio" parent="RadioPosition" instance=ExtResource("3_mea2j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10262e-05, 0.0962929, -0.0340668)
+transform = Transform3D(1.17, 0, 0, 0, 1.17, 0, 0, 0, 1.17, 0.0598234, 0.072022, -0.00438499)
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_8jcur")
+freeze = true
 angular_damp = 3.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

@@ -7,7 +7,7 @@ var player
 
 # Pointer to track the current index in the game_objects array
 var current_index = 0
-
+var text_displayer
 # If we want to highlight packages
 var is_being_looked_at = false
 var highlight_lerp_speed = 8.2
@@ -20,10 +20,14 @@ func _ready():
 	radio_position = find_child("RadioPosition")
 	is_being_looked_at = false
 	player = GameManager.get_player()
+	text_displayer = Gui.get_address_displayer()
+	
 
 func _process(delta):
 	if is_being_looked_at and game_objects.size() != 0:
 		game_objects[current_index].position.y = lerp(game_objects[current_index].position.y, 0.8, highlight_lerp_speed * delta)
+		text_displayer.show_text()
+		text_displayer.set_text(game_objects[current_index].package_address)
 		lowerOtherPackages(delta)
 	else:
 		lowerAllPackages(delta)

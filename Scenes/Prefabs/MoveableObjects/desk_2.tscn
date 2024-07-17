@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b2c5c47wnbu3f"]
+[gd_scene load_steps=25 format=3 uid="uid://b2c5c47wnbu3f"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_jg2d3"]
 [ext_resource type="Texture2D" uid="uid://dgy6bdhr0juyx" path="res://Assets/Textures/BlenderTextures/Desk.png" id="2_et87b"]
@@ -9,8 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="7_ls0s4"]
 [ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/StaticObjects/keyboard_low_poly_2.tscn" id="8_thyg7"]
 [ext_resource type="PackedScene" uid="uid://c26hbiaufc6xb" path="res://Scenes/Prefabs/StaticObjects/mouse.tscn" id="9_1wexv"]
-[ext_resource type="PackedScene" uid="uid://c4pjt676komn4" path="res://Scenes/Prefabs/StaticObjects/cables.tscn" id="10_8x7js"]
+[ext_resource type="PackedScene" uid="uid://cq3vkf11swts2" path="res://Scenes/Prefabs/StaticObjects/cables.tscn" id="10_8x7js"]
 [ext_resource type="PackedScene" uid="uid://bxl6cnj04eefh" path="res://Scenes/Prefabs/StaticObjects/cables_001.tscn" id="11_k7g63"]
+[ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="12_x1ixq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
 size = Vector3(2.45619, 0.0628052, 1.15861)
@@ -220,3 +221,6 @@ transform = Transform3D(-0.00716127, 0, -6.26058e-10, 0, 0.00716127, 0, 6.26058e
 
 [node name="Cables_001" parent="." instance=ExtResource("11_k7g63")]
 transform = Transform3D(-0.0103461, 0, -9.04485e-10, 0, 0.0103461, 0, 9.04485e-10, 0, -0.0103461, 1.23608, 1.80742, -0.390357)
+
+[node name="MailboxStand" parent="." instance=ExtResource("12_x1ixq")]
+transform = Transform3D(-0.999752, 0, -0.022286, 0, 1, 0, 0.022286, 0, -0.999752, -0.889354, 1.13881, -0.239794)
