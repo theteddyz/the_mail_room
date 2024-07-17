@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_fu55l"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="5_xmmfr"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="10_wfqjp"]
-[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="10_wyyub"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="10_wyyub"]
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="11_cn52c"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="11_f05hf"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="14_b87ve"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dnfmnbicbn22y"]
+[gd_scene load_steps=26 format=3 uid="uid://cx5gsthk0qbjm"]
 
 [ext_resource type="Texture2D" uid="uid://ddag5iky3ec3m" path="res://Assets/Textures/BlenderTextures/Cart.png" id="1_l14w8"]
 [ext_resource type="Texture2D" uid="uid://c6ajcb8q4d2y7" path="res://Assets/Textures/BlenderTextures/CartLight.png" id="2_uinkh"]

@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8iui7iq0t8y6"]
+[gd_scene load_steps=13 format=3 uid="uid://b8iui7iq0t8y6"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_fgjb5"]
 [ext_resource type="Texture2D" uid="uid://b1aua8leky6kp" path="res://Assets/Textures/BlenderTextures/TrashCan.png" id="1_h8v2l"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_aoghf"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_1bdfq"]
+[ext_resource type="AudioStream" uid="uid://cokyag3t67y54" path="res://Assets/Audio/SoundFX/ImpactOfficeChair2.mp3" id="5_80ipc"]
+[ext_resource type="AudioStream" uid="uid://bilw50ieo1kh3" path="res://Assets/Audio/SoundFX/ImpactOfficeChair3.mp3" id="6_nki12"]
+[ext_resource type="AudioStream" uid="uid://dt0hb1ah75n6w" path="res://Assets/Audio/SoundFX/ImpactOfficeChair.mp3" id="7_fbyrn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvgnn"]
 resource_name = "TrashCan"
@@ -47,6 +51,15 @@ shadow_mesh = SubResource("ArrayMesh_vevad")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5f1gf"]
 points = PackedVector3Array(-0.58272, 0.582767, -0.0622864, -0.548952, 0.582767, 0.216643, -0.58272, 0.632684, -0.0622864, -0.483128, 0.582767, -0.325022, -0.457688, -0.632703, -0.0489231, -0.389354, 0.582767, 0.447896, -0.548952, 0.632684, 0.216643, -0.431108, -0.632703, 0.170098, -0.483128, 0.632684, -0.325022, -0.272879, 0.582767, -0.511315, -0.214356, -0.632703, -0.401577, -0.379429, -0.632703, -0.255261, -0.140546, 0.582767, 0.578471, -0.389354, 0.632684, 0.447896, -0.305734, -0.632703, 0.351635, -0.110429, -0.632703, 0.454238, -0.272879, 0.632684, -0.511315, -0.000114083, 0.582767, -0.578471, -0.000114083, -0.632703, -0.454351, 0.140432, 0.582767, 0.578471, -0.140546, 0.632684, 0.578471, 0.110315, -0.632703, 0.454238, -0.000114083, 0.632684, -0.578471, 0.272765, 0.582767, -0.511315, 0.214128, -0.632703, -0.401577, 0.389126, 0.582767, 0.447896, 0.140432, 0.632684, 0.578471, 0.30562, -0.632703, 0.351635, 0.272765, 0.632684, -0.511315, 0.483014, 0.582767, -0.325022, 0.379315, -0.632703, -0.255261, 0.548838, 0.582767, 0.216643, 0.389126, 0.632684, 0.447896, 0.430993, -0.632703, 0.170098, 0.483014, 0.632684, -0.325022, 0.58272, 0.582767, -0.0622864, 0.457574, -0.632703, -0.0489231, 0.548838, 0.632684, 0.216643, 0.58272, 0.632684, -0.0622864)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rrpps"]
+streams_count = 3
+stream_0/stream = ExtResource("5_80ipc")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_nki12")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_fbyrn")
+stream_2/weight = 1.0
+
 [node name="GarbageCan" type="RigidBody3D"]
 collision_layer = 3
 collision_mask = 3
@@ -65,3 +78,14 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.487262, 0, 0, 0, 0.487262, 0, 0, 0, 0.487262, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_5f1gf")
+
+[node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios", "destruction_audios")]
+script = ExtResource("4_1bdfq")
+impact_threshold = 0.35
+impact_audios = NodePath("../ImpactAudioPlayer")
+destruction_audios = NodePath("")
+
+[node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_rrpps")
+
+[connection signal="body_entered" from="." to="Collision_Handler" method="_on_body_entered"]

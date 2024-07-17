@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_5vkla"]
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="1_salub"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="2_vsncc"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall.tscn" id="3_hxukh"]
+[ext_resource type="PackedScene" uid="uid://uuhrokgnd64l" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall.tscn" id="3_hxukh"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="6_rd5j2"]
 [ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_without_light.tscn" id="7_84et1"]
 [ext_resource type="VoxelGIData" uid="uid://dkai54woqnuir" path="res://Assets/TemporaryAssets/voxelGITest/mail_room.VoxelGI_data.res" id="10_vwxva"]

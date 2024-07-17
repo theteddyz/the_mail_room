@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dicq0w2sau0cw"]
+[gd_scene load_steps=15 format=3 uid="uid://dicq0w2sau0cw"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_s0ban"]
 [ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/Prefabs/AssetTools/ObjectInterpolation.tscn" id="2_veer4"]
@@ -6,10 +6,30 @@
 [ext_resource type="Material" uid="uid://can2su0sw3v80" path="res://Assets/Materials/monitor_screen_off.tres" id="4_hcodb"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_tyhgj"]
 [ext_resource type="AudioStream" uid="uid://xdsqfc7qegn6" path="res://Assets/Audio/SoundFX/DestructionLamp.mp3" id="6_wfs68"]
-[ext_resource type="AudioStream" uid="uid://w5heanp85nvb" path="res://Assets/Audio/SoundFX/ImpactLamp.mp3" id="7_ntag3"]
+[ext_resource type="AudioStream" uid="uid://batn5vnkweh7n" path="res://Assets/Audio/SoundFX/ImpactComputer.mp3" id="7_t3ufp"]
+[ext_resource type="AudioStream" uid="uid://dc7uvwggouwhj" path="res://Assets/Audio/SoundFX/ImpactComputer2.mp3" id="8_h8fwj"]
+[ext_resource type="AudioStream" uid="uid://hhkh5wwplqt5" path="res://Assets/Audio/SoundFX/ImpactComputer3.mp3" id="9_rgm8s"]
+[ext_resource type="AudioStream" uid="uid://c3o1w0k2nmxql" path="res://Assets/Audio/SoundFX/ImpactComputer4.mp3" id="10_xvxx2"]
+[ext_resource type="AudioStream" uid="uid://bxtc04ia8pi8" path="res://Assets/Audio/SoundFX/ImpactComputer5.mp3" id="11_rdu3j"]
+[ext_resource type="AudioStream" uid="uid://hhwvwau3w4b1" path="res://Assets/Audio/SoundFX/ImpactComputer6.mp3" id="12_12c5h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e7wfd"]
 size = Vector3(0.690308, 0.80896, 0.574829)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v3hii"]
+streams_count = 6
+stream_0/stream = ExtResource("7_t3ufp")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("8_h8fwj")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("9_rgm8s")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("10_xvxx2")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("11_rdu3j")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("12_12c5h")
+stream_5/weight = 1.0
 
 [node name="Monitor" type="RigidBody3D"]
 collision_layer = 7
@@ -48,7 +68,7 @@ destruction_audios = NodePath("../BreakageAudioPlayer")
 stream = ExtResource("6_wfs68")
 
 [node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("7_ntag3")
+stream = SubResource("AudioStreamRandomizer_v3hii")
 
 [connection signal="body_entered" from="." to="Monitor_Collision_Handler" method="_on_body_entered"]
 
