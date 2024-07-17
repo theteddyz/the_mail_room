@@ -347,6 +347,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_iv7tc")
 mesh = SubResource("BoxMesh_wlml0")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="floor/floor5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4849, -0.5, 16.0994)
+material_override = SubResource("StandardMaterial3D_iv7tc")
+mesh = SubResource("BoxMesh_wlml0")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor/floor5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00203133, -0.247986, 0.0198975)
 shape = SubResource("BoxShape3D_g35xb")
@@ -1781,9 +1786,11 @@ transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0,
 
 [node name="CeilingLightOn35" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -14.542, 4.216, -7.077)
+visible = false
 
 [node name="CeilingLightOn37" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -14.542, 4.216, 7.006)
+visible = false
 
 [node name="CeilingLightOn30" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -14.5084, 4.21901, -9.98304)
