@@ -32,13 +32,13 @@
 [ext_resource type="AudioStream" uid="uid://c202px4rfobxg" path="res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3" id="24_os1ty"]
 [ext_resource type="AudioStream" uid="uid://clv8mkhueiw82" path="res://Assets/Audio/SoundFX/FirstFloorAmbience2.mp3" id="25_qbrrx"]
 [ext_resource type="AudioStream" uid="uid://d036kpauudx33" path="res://Assets/Audio/SoundFX/FirstFloorAmbience4.mp3" id="27_m60pu"]
-[ext_resource type="PackedScene" uid="uid://c5fq8t0f4ahf4" path="res://Scenes/Prefabs/Monsters/first_floor_monster2.tscn" id="29_m82p6"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/Monsters/first_floor_monster2.tscn" id="29_m82p6"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://bwb5copsj1jbv" path="res://Assets/Audio/SoundFX/FootstepsApproaching2.mp3" id="31_3d035"]
-[ext_resource type="PackedScene" uid="uid://qw2qebg60wqj" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
-[ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
+[ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="39_spw8m"]
-[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 
 [sub_resource type="Environment" id="Environment_yy6pq"]
 background_mode = 2

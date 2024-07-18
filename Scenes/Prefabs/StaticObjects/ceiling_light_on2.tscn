@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://fupc50qetuxi"]
+[gd_scene load_steps=9 format=3 uid="uid://fupc50qetuxi"]
 
 [ext_resource type="Texture2D" uid="uid://b4lvvd23ey3q4" path="res://Assets/Textures/BlenderTextures/CeilingLight.png" id="1_xnbkj"]
 
@@ -79,6 +79,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yo1yu")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_g3xmj"]
+size = Vector3(2.07477, 1, 7.01355)
+
 [node name="CeilingLightOn" type="MeshInstance3D"]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 2.23969, 0)
 mesh = SubResource("ArrayMesh_ub12d")
@@ -94,7 +97,6 @@ visible = false
 light_color = Color(0.996078, 0.968627, 0.905882, 1)
 light_energy = 0.8
 light_volumetric_fog_energy = 0.5
-shadow_enabled = true
 distance_fade_length = 200.0
 omni_range = 10.0
 omni_attenuation = 1.51572
@@ -104,8 +106,15 @@ transform = Transform3D(4.61975, 0, 0, 0, -2.01936e-07, 4.61975, 0, -4.61975, -2
 light_volumetric_fog_energy = 0.2
 light_size = 1.0
 light_specular = 1.0
-shadow_enabled = true
 spot_range = 8.41925
 spot_attenuation = 0.241485
 spot_angle = 75.14
 spot_angle_attenuation = 0.277392
+
+[node name="LightDetectionArea" type="Area3D" parent="."]
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightDetectionArea"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_g3xmj")

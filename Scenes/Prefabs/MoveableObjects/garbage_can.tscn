@@ -79,11 +79,10 @@ skeleton = NodePath("")
 transform = Transform3D(0.487262, 0, 0, 0, 0.487262, 0, 0, 0, 0.487262, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_5f1gf")
 
-[node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios", "destruction_audios")]
+[node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
 script = ExtResource("4_1bdfq")
 impact_threshold = 0.35
 impact_audios = NodePath("../ImpactAudioPlayer")
-destruction_audios = NodePath("")
 
 [node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_rrpps")
