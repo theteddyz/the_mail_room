@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=57 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://k8lfivepg4gx" path="res://Scenes/Prefabs/StaticObjects/wallWithArchway.tscn" id="11_hd2i0"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_46wmm"]
 [ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2.tscn" id="13_srb8m"]
-[ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="15_0vqac"]
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="15_poj1m"]
 [ext_resource type="PackedScene" uid="uid://dui3j31sc1l58" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_011.tscn" id="16_vde3n"]
 [ext_resource type="PackedScene" uid="uid://4grqlanfjx0n" path="res://Scenes/Prefabs/StaticObjects/wall_with_door_opened.tscn" id="17_ky7o5"]
@@ -38,6 +37,7 @@
 [ext_resource type="AudioStream" uid="uid://bwb5copsj1jbv" path="res://Assets/Audio/SoundFX/FootstepsApproaching2.mp3" id="31_3d035"]
 [ext_resource type="PackedScene" uid="uid://qw2qebg60wqj" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
 [ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
+[ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="39_spw8m"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 
 [sub_resource type="Environment" id="Environment_yy6pq"]
@@ -61,6 +61,12 @@ volumetric_fog_enabled = true
 adjustment_enabled = true
 adjustment_contrast = 1.2
 adjustment_saturation = 1.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3gjrh"]
+size = Vector3(1.88333, 3.8623, 0.346191)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_373dp"]
+radius = 0.107743
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iv7tc"]
 albedo_texture = ExtResource("4_6vebi")
@@ -108,15 +114,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8irr7")
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_isnx6"]
-radius = 0.569345
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3gjrh"]
-size = Vector3(1.88333, 3.8623, 0.346191)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_373dp"]
-radius = 0.107743
 
 [sub_resource type="Animation" id="Animation_hokj3"]
 length = 0.001
@@ -286,6 +283,23 @@ shadow_enabled = true
 
 [node name="Elevator" parent="." instance=ExtResource("2_hir56")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0836515, 0)
+
+[node name="Walls_StaticBody3D63_RigidBody3D#door" type="StaticBody3D" parent="."]
+disable_mode = 1
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls_StaticBody3D63_RigidBody3D#door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434737, 2.01416, -0.0397949)
+shape = SubResource("BoxShape3D_3gjrh")
+
+[node name="Walls_StaticBody3D63_RigidBody3D#CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.855921, 2.03357, -0.217922)
+shape = SubResource("SphereShape3D_373dp")
+
+[node name="Walls_StaticBody3D63_RigidBody3D#CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.855921, 2.03357, 0.105071)
+shape = SubResource("SphereShape3D_373dp")
 
 [node name="floor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.57693)
@@ -757,10 +771,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1495, 0, 35.3866)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.6206, 0, 35.3866)
 
 [node name="meeting_room_wall_Door3" parent="Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.68884, 0, 16.1906)
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -7.68884, 0, 16.1906)
 
 [node name="meeting_room_wall_Door4" parent="Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.676134, 0, 24.1634)
+transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.647, -0.676134, 0, 24.1634)
 
 [node name="meeting_room_wall_Door5" parent="Walls" instance=ExtResource("8_74j6v")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 10.6291, 0, 24.1634)
@@ -769,7 +783,7 @@ transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 10.6291,
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 16.3093, 0, 24.1634)
 
 [node name="meeting_room_wall_Door7" parent="Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 12.8055, 0, -20.7156)
+transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.647, 12.8055, 0, -20.7156)
 
 [node name="StaticBody3D15" parent="Walls" instance=ExtResource("9_08ifg")]
 transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, -0.614708, 0, -9.49834)
@@ -778,39 +792,12 @@ transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8495, 0, -9.49396)
 
 [node name="StaticBody3D63" parent="Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, 8.412, 0, -9.494)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 8.412, 0, -9.494)
 
-[node name="Door_Lock" type="Area3D" parent="Walls/StaticBody3D63/RigidBody3D" index="3"]
+[node name="Door_Lock" parent="Walls/StaticBody3D63/RigidBody3D2" index="0"]
 collision_layer = 130
-collision_mask = 130
-script = ExtResource("15_0vqac")
 locked = true
 unlock_number = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D63/RigidBody3D/Door_Lock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, 0.098477)
-shape = SubResource("SphereShape3D_isnx6")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls/StaticBody3D63/RigidBody3D/Door_Lock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, -0.239974)
-shape = SubResource("SphereShape3D_isnx6")
-
-[node name="door" type="StaticBody3D" parent="Walls/StaticBody3D63/RigidBody3D" index="4"]
-disable_mode = 1
-collision_layer = 17
-collision_mask = 17
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls/StaticBody3D63/RigidBody3D/door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434737, 2.01416, -0.0397949)
-shape = SubResource("BoxShape3D_3gjrh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/StaticBody3D63/RigidBody3D" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.855921, 2.03357, -0.217922)
-shape = SubResource("SphereShape3D_373dp")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls/StaticBody3D63/RigidBody3D" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.855921, 2.03357, 0.105071)
-shape = SubResource("SphereShape3D_373dp")
 
 [node name="StaticBody3D45" parent="Walls" instance=ExtResource("9_08ifg")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 22.7167, 0, -2.88465)
@@ -1167,19 +1154,19 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.120
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06814, 0, -20.7264)
 
 [node name="meeting_room_wall_Door11" parent="Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 3.36383, 0, -20.7156)
+transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.647, 3.36383, 0, -20.7156)
 
 [node name="StaticBody3D38" parent="Walls" instance=ExtResource("20_mhv2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.592551, 0, -20.7264)
 
 [node name="meeting_room_wall_Door12" parent="Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.8055, 0, -24.4761)
+transform = Transform3D(-0.647, 0, -9.76943e-08, 0, 0.647, 0, 9.76943e-08, 0, -0.647, 12.8055, 0, -24.4761)
 
 [node name="StaticBody3D39" parent="Walls" instance=ExtResource("20_mhv2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06814, 0, -24.4869)
 
 [node name="meeting_room_wall_Door13" parent="Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.36383, 0, -24.4761)
+transform = Transform3D(-0.647, 0, -9.76943e-08, 0, 0.647, 0, 9.76943e-08, 0, -0.647, 3.36383, 0, -24.4761)
 
 [node name="StaticBody3D40" parent="Walls" instance=ExtResource("20_mhv2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.592551, 0, -24.4869)
@@ -2123,7 +2110,10 @@ Accounting Department
 Deliver to Confrence room 3"
 accepted_num = 4
 
-[connection signal="area_entered" from="Walls/StaticBody3D63/RigidBody3D/Door_Lock" to="Walls/StaticBody3D63/RigidBody3D/Door_Lock" method="_on_area_entered"]
+[node name="Key" parent="." instance=ExtResource("39_spw8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6956, 1.14828, 19.3435)
+unlock_num = 1
+
 [connection signal="body_entered" from="MonsterDirector/CharacterBody3D/Area3D" to="MonsterDirector" method="_on_area_3d_body_entered"]
 
 [editable path="Objects/OfficeCubicle4"]

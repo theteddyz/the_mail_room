@@ -1,14 +1,16 @@
 extends Interactable
 
 @export var locked:bool
-
-var parent:RigidBody3D
+var parent
 @export var unlock_number:int
-@onready var hinge:JoltHingeJoint3D = $"../../JoltHingeJoint3D"
 func _ready():
 	parent = get_parent()
 	if locked:
-		parent.lock_axes(true)
+		parent.should_freeze = true
+		parent.freeze = true
+		parent.lock_rotation = true
+	else:
+		queue_free()
 
 
 func interact():
@@ -21,7 +23,9 @@ func check_key(key):
 		EventBus.emitCustomSignal("dropped_key")
 		key.queue_free()
 		locked = false
-		parent.lock_axes(false)
+		parent.freeze = false
+		parent.should_freeze = false
+		parent.lock_rotation = false
 		queue_free()
 	else:
 		print("FALED")

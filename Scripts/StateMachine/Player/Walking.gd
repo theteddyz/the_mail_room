@@ -228,8 +228,7 @@ func dropped_key():
 func unbind_key_from_player():
 	var child = persistent_state.find_child("PackageHolder").get_child(0)
 	if(child != null):
-		child.set_collision_layer_value(2,true)
-		object_last_held.freeze = false
+		child.freeze = false
 		child.reparent(persistent_state.get_parent(), true)
 
 
@@ -269,6 +268,11 @@ func _process(delta):
 					#MAIL-DELIVERABLE CROSSHAIR
 					EventBus.emitCustomSignal("hide_icon")
 					EventBus.emitCustomSignal("show_icon",["deliverable"])
+		elif is_holding_object and object_last_held is Key:
+			EventBus.emitCustomSignal("show_icon",["key"])
+			if collider.name == "Door_Lock":
+				if object_last_held.unlock_num == collider.unlock_number:
+					EventBus.emitCustomSignal("show_icon",["key"])
 		elif !is_holding_object:
 			#INTERACT CROSSHAIR
 			if collider and "icon_type" in collider:
@@ -339,15 +343,15 @@ func regularMove(delta):
 			persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
 
 func updateCartLookStatus():
-	if mailcart:
-		if !is_holding_object:
-			if interactable_finder.is_colliding() and interactable_finder.get_collider().name == "Mailcart" and !is_holding_object:
+	if interactable_finder.is_colliding() and interactable_finder.get_collider().name != null:
+		if interactable_finder.get_collider().name == "Mailcart":
+			if !is_holding_object:
 				interactable_finder.get_collider().is_being_looked_at = true
 				gui_anim.show_icon(true)
-			else:
-				if(mailcart != null):
-					mailcart.is_being_looked_at = false
-					gui_anim.show_icon(false)
+	else:
+			mailcart.is_being_looked_at = false
+			gui_anim.show_icon(false)
+
 
 
 func disable_movement_event(l:bool,w:bool):

@@ -16,6 +16,7 @@ collision_mask = 130
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_0jwl6")
 script = ExtResource("2_mguxb")
+icon_type = "key"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.999491, 0, 0, 0, 0.999491, 0, 0, 0, 0.999491, 6.10352e-05, 0.000488281, -0.000175476)

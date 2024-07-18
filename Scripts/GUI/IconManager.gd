@@ -14,6 +14,7 @@ func _ready():
 
 
 func show_icon(object_name):
+	hide_all_icons()
 	if object_name in icons:
 		icons[object_name].show()
 	else:

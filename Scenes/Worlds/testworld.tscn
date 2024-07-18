@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=29 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="15_2x2rp"]
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="15_hp4l1"]
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="15_tm150"]
-[ext_resource type="PackedScene" uid="uid://cauvpuh74hlme" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_002.tscn" id="16_bj7ur"]
+[ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/wall_with_door.tscn" id="15_toag5"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/outline_test.gdshader" id="16_boyhi"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="17_ma4ii"]
 
@@ -68,6 +68,8 @@ shader_parameter/distance_fade_blend = 20.0
 material = SubResource("ShaderMaterial_fpoe6")
 flip_faces = true
 size = Vector3(2, 2, 2)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gqob6"]
 
 [node name="world" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_y5q3h")
@@ -129,12 +131,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.
 collision_layer = 18
 physics_material_override = SubResource("PhysicsMaterial_bh3ib")
 
-[node name="wall_room_001" parent="." instance=ExtResource("16_bj7ur")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -1, 0, -10)
-
-[node name="StaticBody3D" parent="." instance=ExtResource("15_2x2rp")]
-transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, -6, 0, -10)
-
 [node name="Desk" parent="." instance=ExtResource("15_hp4l1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
 
@@ -160,16 +156,30 @@ mesh = SubResource("BoxMesh_guow0")
 [node name="StaticBody3D3" parent="." instance=ExtResource("15_2x2rp")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5, 0, -10)
 
+[node name="RigidBody3D" parent="StaticBody3D3" index="0"]
+physics_material_override = SubResource("PhysicsMaterial_gqob6")
+should_freeze = true
+
 [node name="Door_Lock" parent="StaticBody3D3/RigidBody3D" index="0"]
+locked = true
 unlock_number = 1
+
+[node name="door" parent="StaticBody3D3/RigidBody3D" index="1"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="Key" parent="." instance=ExtResource("17_ma4ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0553, 1.14425, -1.6986)
+disable_mode = 1
 collision_layer = 131
 collision_mask = 131
+physics_material_override = null
 unlock_num = 1
 
 [node name="meeting_room_wall_Door" parent="." instance=ExtResource("15_tm150")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9019, 0.00402808, -9.7911)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.6894, 0.00402808, -9.97101)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("15_toag5")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.70716, 0.0040288, -10.007)
 
 [editable path="StaticBody3D3"]

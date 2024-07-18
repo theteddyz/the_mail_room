@@ -3,10 +3,7 @@ extends Node3D
 @export_multiline var accepts_package_named: String
 @export var accepted_num: int = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	
-	print(accepts_package_named)
+
 
 func deliver(package: Package):
 	if(package.package_num == accepted_num):
