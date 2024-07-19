@@ -136,13 +136,49 @@ transform = Transform3D(-0.6, 0, 9.05975e-08, 0, 0.6, 0, -9.05975e-08, 0, -0.6, 
 mesh = SubResource("ArrayMesh_de3rh")
 skeleton = NodePath("")
 
+[node name="Joint1" type="JoltSliderJoint3D" parent="."]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 3.0
+node_a = NodePath("../StaticBody3D")
+node_b = NodePath("../Drawer1")
+transform = Transform3D(-4.37111e-08, 0, -1, 0, 1, 0, 1, 0, -4.37111e-08, 2.27608, 1.4118, -2.48191)
+
+[node name="Joint2" type="JoltSliderJoint3D" parent="."]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 3.0
+node_a = NodePath("../StaticBody3D")
+node_b = NodePath("../Drawer2")
+transform = Transform3D(-4.3711e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711e-08, 2.35912, 0.669069, -2.46862)
+
+[node name="Joint3" type="JoltSliderJoint3D" parent="."]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 3.0
+node_a = NodePath("../StaticBody3D")
+node_b = NodePath("../Drawer3")
+transform = Transform3D(1, 0, 2.70006e-13, 0, 1, 0, -2.70006e-13, 0, 1, -2.51178, 1.38896, 2.49092)
+
+[node name="Joint4" type="JoltSliderJoint3D" parent="."]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 3.0
+node_a = NodePath("../StaticBody3D")
+node_b = NodePath("../Drawer4")
+transform = Transform3D(1, 0, 2.70006e-13, 0, 1, 0, -2.70006e-13, 0, 1, -2.49668, 0.669069, 2.42611)
+
 [node name="CubicleDesk" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_v52a6")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CubicleDesk"]
-transform = Transform3D(1.00162, 0, 2.84217e-14, 0, 1.00162, 0, -2.84217e-14, 0, 1.00162, 0, 0, 0)
+transform = Transform3D(1.00162, 0, 7.10543e-14, 0, 1.00162, 0, -7.10543e-14, 0, 1.00162, 0, 0, 0)
 collision_layer = 5
 collision_mask = 5
 
@@ -150,106 +186,83 @@ collision_mask = 5
 shape = SubResource("ConcavePolygonShape3D_0l8nu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 1.42109e-14, 0, 1, 0, -1.42109e-14, 0, 1, 0, 0, 0)
 collision_layer = 5
 collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3ib5a")
 
-[node name="RigidBody3D6" type="RigidBody3D" parent="."]
+[node name="Drawer1" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 1.98952e-13, 0, 1, 0, -1.98952e-13, 0, 1, 2.37741, 1.5006, -1.16487)
-collision_layer = 2
-collision_mask = 0
-axis_lock_linear_x = true
-axis_lock_linear_y = true
+collision_layer = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_q3bsi")
 
-[node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D6"]
+[node name="CabinetDesk2" type="MeshInstance3D" parent="Drawer1"]
 transform = Transform3D(1, 0, 2.84217e-14, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_172jy")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D6"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer1"]
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D2" type="SliderJoint3D" parent="RigidBody3D6"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.389631)
-node_a = NodePath("../../StaticBody3D")
-node_b = NodePath("..")
-linear_limit/upper_distance = 0.7
-linear_limit/lower_distance = 0.0
-
-[node name="RigidBody3D5" type="RigidBody3D" parent="."]
+[node name="Drawer2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 3.69482e-13, 0, 1, 0, -3.69482e-13, 0, 1, 2.38178, 0.691243, -1.17513)
-collision_layer = 2
-collision_mask = 0
-axis_lock_linear_x = true
-axis_lock_linear_y = true
+collision_layer = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_q3bsi")
 
-[node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D5"]
+[node name="CabinetDesk2" type="MeshInstance3D" parent="Drawer2"]
 transform = Transform3D(1, 0, 2.84217e-14, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_172jy")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D5"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer2"]
 transform = Transform3D(1, 0, -2.36848e-14, 0, 1, 0, 2.36848e-14, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D" type="SliderJoint3D" parent="RigidBody3D5"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.393412)
-node_a = NodePath("../../StaticBody3D")
-node_b = NodePath("..")
-linear_limit/upper_distance = 0.7
-linear_limit/lower_distance = 0.0
-
-[node name="RigidBody3D7" type="RigidBody3D" parent="."]
+[node name="Drawer3" type="RigidBody3D" parent="."]
 transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -1.16305, 1.47777, 2.38959)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_q3bsi")
 
-[node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D7"]
+[node name="CabinetDesk2" type="MeshInstance3D" parent="Drawer3"]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_172jy")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D7"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer3"]
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D2" type="SliderJoint3D" parent="RigidBody3D7"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.389631)
-node_a = NodePath("../../StaticBody3D")
-node_b = NodePath("..")
-linear_limit/upper_distance = 0.7
-linear_limit/lower_distance = 0.0
-
-[node name="RigidBody3D8" type="RigidBody3D" parent="."]
+[node name="Drawer4" type="RigidBody3D" parent="."]
 transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -1.18748, 0.691243, 2.40345)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_q3bsi")
 
-[node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D8"]
+[node name="CabinetDesk2" type="MeshInstance3D" parent="Drawer4"]
 transform = Transform3D(1, 0, 2.84217e-14, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_172jy")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D8"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer4"]
 transform = Transform3D(1, 0, -2.36848e-14, 0, 1, 0, 2.36848e-14, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
-
-[node name="SliderJoint3D" type="SliderJoint3D" parent="RigidBody3D8"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.393412)
-node_a = NodePath("../../StaticBody3D")
-node_b = NodePath("..")
-linear_limit/upper_distance = 0.7
-linear_limit/lower_distance = 0.0

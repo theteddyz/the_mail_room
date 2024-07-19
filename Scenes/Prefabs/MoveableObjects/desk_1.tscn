@@ -147,8 +147,10 @@ sleeping = true
 
 [node name="DrawerTop" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.824136, 0.535279)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 gravity_scale = 0.0
@@ -168,17 +170,19 @@ skeleton = NodePath("")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cvogw")
 
-[node name="SliderJoint3D2" type="SliderJoint3D" parent="DrawerTop"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.389631)
+[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="DrawerTop"]
+limit_enabled = true
+limit_upper = 0.5
 node_a = NodePath("../..")
 node_b = NodePath("..")
-linear_limit/upper_distance = 0.7
-linear_limit/lower_distance = 0.0
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246593, -0.000298202, -0.529209)
 
 [node name="DrawerBottom" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.354336, 0.535279)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 3
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 gravity_scale = 0.0
@@ -198,12 +202,14 @@ skeleton = NodePath("")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cvogw")
 
-[node name="SliderJoint3D2" type="SliderJoint3D" parent="DrawerBottom"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.393412)
+[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="DrawerBottom"]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 3.0
 node_a = NodePath("../..")
 node_b = NodePath("..")
-linear_limit/upper_distance = 0.7
-linear_limit/lower_distance = 0.0
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.574206)
 
 [node name="GrabableObjectTemplate" parent="." instance=ExtResource("4_6fufh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0862904, 1.54579, -0.245461)
