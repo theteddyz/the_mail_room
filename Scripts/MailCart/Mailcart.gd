@@ -23,7 +23,9 @@ func _ready():
 	player = GameManager.get_player()
 	text_displayer = Gui.get_address_displayer()
 	gui_anim = Gui.get_control_displayer()
-
+func _process(delta):
+	if !is_being_looked_at:
+		lowerAllPackages(delta)
 func mailcart_hover(delta):
 	if game_objects.size() != 0:
 		gui_anim.show_icon(true)
