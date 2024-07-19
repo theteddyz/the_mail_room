@@ -6,6 +6,19 @@ func _ready():
 	player = get_parent().find_child("Player")
 
 func interact():
-	player.state.grabbed_key(self)
-	
-	EventBus.emit_signal("picked_up_key")
+	grabbed()
+
+
+func grabbed():
+	reparent(player.find_child("PackageHolder"), false)
+	EventBus.emitCustomSignal("object_held", [self.mass,self])
+	EventBus.emitCustomSignal("picked_up_key")
+	position =Vector3.ZERO
+	rotation = Vector3.ZERO
+	self.freeze = true
+
+func dropped():
+	self.freeze = false
+	reparent(player.get_parent(), true)
+	EventBus.emitCustomSignal("dropped_key")
+	EventBus.emitCustomSignal("dropped_object",[self.mass,self])

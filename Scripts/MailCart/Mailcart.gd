@@ -12,7 +12,8 @@ var text_displayer:Node
 var is_being_looked_at:bool = false
 var highlight_lerp_speed:float = 8.2
 var unhighlight_lerp_speed:float = 8.2
-
+var package_picked_up
+var gui_anim
 func _ready():
 	# Initialize the array with game objects if needed
 	# For example, game_objects.append(some_game_object)
@@ -21,17 +22,21 @@ func _ready():
 	is_being_looked_at = false
 	player = GameManager.get_player()
 	text_displayer = Gui.get_address_displayer()
-	
+	gui_anim = Gui.get_control_displayer()
 
-func _process(delta):
-	if is_being_looked_at and game_objects.size() != 0:
-		game_objects[current_index].position.y = lerp(game_objects[current_index].position.y, 0.8, highlight_lerp_speed * delta)
+func handle_mailcart_interaction(delta):
+	if game_objects.size() != 0:
+		gui_anim.show_icon(true)
+		highlight_current_package(delta)
 		text_displayer.show_text()
-		text_displayer.set_text(game_objects[current_index].package_address)
+		text_displayer.set_text(game_objects[current_index].package_partial_address)
 		lowerOtherPackages(delta)
 	else:
+		gui_anim.show_icon(false)
 		lowerAllPackages(delta)
-	
+func highlight_current_package(delta):
+	game_objects[current_index].position.y = lerp(game_objects[current_index].position.y, 0.8, highlight_lerp_speed * delta)
+
 func lowerAllPackages(delta):
 	for index in game_objects.size():
 		var package = game_objects[index]
@@ -57,7 +62,6 @@ func scroll_package_up():
 		current_index += 1
 	else:
 		current_index = 0
-	print("Current Index after scrolling up: ", current_index)
 
 # Function to scroll the package down
 func scroll_package_down():
@@ -66,16 +70,17 @@ func scroll_package_down():
 			current_index -= 1
 		else:
 			current_index = game_objects.size() - 1
-	print("Current Index after scrolling down: ", current_index)
 
 # Function to grab the current package
 func grab_current_package():
 	if game_objects.size() > 0:
 		var current_package = game_objects[current_index]
 		game_objects.remove_at(current_index)
-		print(game_objects.size())
 		current_index = 0
-		player.state.grabbed_package(current_package)
+		current_package.set_collision_layer_value(2,true)
+		current_package.grabbed()
+		package_picked_up = true
+		text_displayer.hide_text()
 		if game_objects.size() > 0:
 			calculate_spacing() 
 		#current_package.reparent(player, false)
@@ -97,15 +102,14 @@ func calculate_spacing():
 		var step = 1.1 / (total_packages - 1)  # Total range is 1.5 (from 0.75 to -0.75)
 		for i in range(total_packages):
 			var _position = 0.45 - i * step
-			print("Package ", i, " position: ", _position)
 			move_package_to_cart(game_objects[i], _position)
 			
 	else:
-		print("Package 0 position: 0")
 		move_package_to_cart(game_objects[0], 0)
 
 # Placeholder function to move package to cart
 func move_package_to_cart(package: Package, _position: float):
+	package_picked_up = false
 	package.reparent(self, false)
 	package.rotation_degrees = package.cart_rotation
 	package.position = Vector3(0, package.cart_position.y, _position)
@@ -119,7 +123,7 @@ func add_radio(radio:RigidBody3D):
 	radio.global_position = radio_position.global_position
 	radio.set_gravity_scale(0)
 	radio.attached_to_cart = true
-	
+
 func save():
 	var save_dict = {
 		"nodepath" : get_parent().name + "/" + name,

@@ -13,7 +13,6 @@ func _on_area_entered(area):
 		for light in lights:
 			light.shadow_enabled = true
 			counter += 1
-			print(counter)
 			
 
 
@@ -29,4 +28,3 @@ func _on_area_exited(area):
 		for light in lights:
 			light.shadow_enabled = false
 			counter -= 1
-			print(counter)
