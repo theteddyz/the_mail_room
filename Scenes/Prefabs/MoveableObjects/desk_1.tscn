@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/StaticObjects/keyboard_low_poly_2.tscn" id="10_wk3io"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
-size = Vector3(2.69171, 0.0628052, 1.33755)
+size = Vector3(2.69171, 0.0732727, 1.33755)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ixxc"]
 size = Vector3(0.0406456, 1.07336, 1.12402)
@@ -114,7 +114,7 @@ script = ExtResource("1_hork0")
 should_freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.11285, -0.0246124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.11808, -0.0246124)
 shape = SubResource("BoxShape3D_c71w3")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
