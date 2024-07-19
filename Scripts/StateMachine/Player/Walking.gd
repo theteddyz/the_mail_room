@@ -18,9 +18,12 @@ var mailcart
 
 # Speeds
 var sprinting_speed:float = 10.0
+var previous_sprinting_speed:float
 var walking_speed:float = 5.0
+var previous_walk_speed:float
 var movement_lerp_speed:float = 8.2
 var crouching_speed:float = 3.1
+var previous_crouching_speed:float
 var crouching_lerp_speed:float = 0.18
 # var current_speed = 5, this variable is used by parent
 var direction:Vector3 = Vector3.ZERO
@@ -48,12 +51,10 @@ const head_bopping_crouching_intensity:float = 0.05
 var head_bopping_vector:Vector2 = Vector2.ZERO
 var head_bopping_index:float = 0.0
 var head_bopping_current:float = 0.0
-var text_displayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	package_holder = persistent_state.find_child("PackageHolder")
-	text_displayer = Gui.get_address_displayer()
 	mailcart = GameManager.get_mail_cart()
 	starting_height = neck.position.y
 	crouching_depth = starting_height - 0.5
@@ -84,6 +85,8 @@ func handle_mouse_button(event):
 		handle_general_interaction()
 	elif event.is_action_pressed("inspect"):
 		handle_inspect()
+	elif event.is_action_released("inspect"):
+		handle_inspect_released()
 	elif event.is_action_pressed("scroll package down"):
 		handle_scroll(true)
 	elif event.is_action_pressed("scroll package up"):
@@ -146,6 +149,12 @@ func handle_general_interaction():
 			_:
 				collider.interact()
 
+func handle_inspect_released():
+	walking_speed = previous_walk_speed
+	sprinting_speed = previous_sprinting_speed
+	crouching_speed = previous_crouching_speed
+	object_last_held.stop_inspect()
+
 func handle_inspect():
 	var collider = interactable_finder.get_interactable()
 	if collider:
@@ -155,14 +164,17 @@ func handle_inspect():
 				# TODO: Implement mailcart.inspect()
 			_:
 				if is_holding_object and object_last_held is Package:
-					if text_displayer == null:
-						text_displayer = Gui.get_address_displayer()
-					show_label(object_last_held.package_full_address)
+					pass
 	else:
 		if is_holding_object and object_last_held is Package:
-			if text_displayer == null:
-				text_displayer = Gui.get_address_displayer()
-			show_label(object_last_held.package_full_address)
+			previous_walk_speed = walking_speed
+			previous_crouching_speed = crouching_speed
+			previous_sprinting_speed = sprinting_speed
+			walking_speed = 3
+			sprinting_speed = 5
+			crouching_speed = 2
+			object_last_held.inspect()
+
 
 func handle_scroll(is_down):
 	var collider = interactable_finder.get_interactable()
@@ -190,9 +202,7 @@ func held_object(mass:float, object):
 	crouching_speed = (crouching_speed/mass) + 1
 
 
-func show_label(text:String):
-	text_displayer.show_text()
-	text_displayer.set_text(text)
+
 
 
 func droppped_object(_mass:float,_object):
@@ -297,8 +307,8 @@ func handle_head_bopping(delta):
 		head_bopping_vector.x = sin(head_bopping_index / 2) + 0.5
 		headbop_root.position.y = lerp(headbop_root.position.y, head_bopping_vector.y * (head_bopping_current / 2.0), delta * movement_lerp_speed)
 		headbop_root.position.x = lerp(headbop_root.position.x, head_bopping_vector.x * (head_bopping_current), delta * movement_lerp_speed)
-		if is_holding_object and object_last_held is Package:
-			object_last_held.position = object_last_held.hand_position - headbop_root.position
+		#if is_holding_object and object_last_held is Package:
+			#object_last_held.position = object_last_held.hand_position - headbop_root.position
 	else:
 		headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
 

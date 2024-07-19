@@ -173,9 +173,6 @@ collision_mask = 0
 [node name="Key" parent="." instance=ExtResource("17_ma4ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0553, 1.14425, -1.6986)
 disable_mode = 1
-collision_layer = 131
-collision_mask = 131
-physics_material_override = null
 unlock_num = 1
 
 [node name="meeting_room_wall_Door" parent="." instance=ExtResource("15_tm150")]
