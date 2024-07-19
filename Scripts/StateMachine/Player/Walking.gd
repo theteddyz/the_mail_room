@@ -216,29 +216,29 @@ func handle_hovers(delta):
 	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !disable_look_movement:
 		var collider = interactable_finder.get_collider()
 		if !is_holding_object:
-				handle_general_hover(collider,delta)
+				general_hover(collider,delta)
 		else:
 			if is_holding_object and object_last_held is Package:
-				handle_package_hover(collider)
+				package_hover(collider)
 			elif is_holding_object and object_last_held is Key:
-				handle_key_hover(collider)
+				key_hover(collider)
 	else:
 		gui_anim.show_icon(false)
 		EventBus.emitCustomSignal("hide_icon")
 
 func handle_mailcart_hover(collider, delta):
-	collider.handle_mailcart_interaction(delta)
+	collider.mailcart_hover(delta)
 
 
-func handle_package_hover(collider):
+func package_hover(collider):
 	if collider.name == "MailboxStand" or collider.name == "Mailcart":
 		EventBus.emitCustomSignal("show_icon", ["deliverable"])
 
-func handle_key_hover(collider):
+func key_hover(collider):
 	if collider.name == "Door_Lock":
 		EventBus.emitCustomSignal("show_icon", ["key"])
 
-func handle_general_hover(collider,delta):
+func general_hover(collider,delta):
 	if collider.name == "Mailcart":
 		handle_mailcart_hover(collider,delta)
 	if collider and "icon_type" in collider:

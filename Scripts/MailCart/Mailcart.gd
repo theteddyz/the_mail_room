@@ -24,7 +24,7 @@ func _ready():
 	text_displayer = Gui.get_address_displayer()
 	gui_anim = Gui.get_control_displayer()
 
-func handle_mailcart_interaction(delta):
+func mailcart_interaction(delta):
 	if game_objects.size() != 0:
 		gui_anim.show_icon(true)
 		highlight_current_package(delta)
