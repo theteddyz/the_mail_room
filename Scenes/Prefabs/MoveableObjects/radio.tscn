@@ -51,7 +51,6 @@ size = Vector3(0.510742, 0.275742, 0.0707397)
 [node name="Radio" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 2
-sleeping = true
 script = ExtResource("3_kk33k")
 
 [node name="Interpolator" parent="." instance=ExtResource("1_m8eq4")]

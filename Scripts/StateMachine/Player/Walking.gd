@@ -249,12 +249,13 @@ func key_hover(collider):
 		EventBus.emitCustomSignal("show_icon", ["key"])
 
 func general_hover(collider,delta):
-	if collider.name == "Mailcart":
-		handle_mailcart_hover(collider,delta)
-	if collider and "icon_type" in collider:
-		EventBus.emitCustomSignal("show_icon", [interactable_finder.get_collider().icon_type])
-	else:
-		EventBus.emitCustomSignal("show_icon", ["grab"])
+	if collider != null:
+		if collider.name == "Mailcart":
+			handle_mailcart_hover(collider,delta)
+		if collider and "icon_type" in collider:
+			EventBus.emitCustomSignal("show_icon", [interactable_finder.get_collider().icon_type])
+		else:
+			EventBus.emitCustomSignal("show_icon", ["grab"])
 
 func check_obstruction_raycasts():
 	standing_is_blocked = standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding() or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding()

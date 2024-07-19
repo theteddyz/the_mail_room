@@ -24,7 +24,7 @@ var direction: Vector3 = Vector3.ZERO
 var _rotate: float = 0.0
 var was_moving: bool = false
 var target_volume: float = -80.0
-
+var hinge_joint
 # GUI and carting state
 var gui_anim
 var is_carting
@@ -40,7 +40,7 @@ func _ready():
 	EventBus.emitCustomSignal("hide_icon")
 	gui_anim = Gui.get_control_displayer()
 	is_carting = true
-	
+	hinge_joint = find_child("HingeJoint")
 
 func _input(event):
 	# Mouse
