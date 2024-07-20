@@ -11,4 +11,3 @@ ground_energy_multiplier = 2.0
 
 [resource]
 sky_material = SubResource("ProceduralSkyMaterial_vlblk")
-process_mode = 3

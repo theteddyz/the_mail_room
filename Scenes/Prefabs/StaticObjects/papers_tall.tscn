@@ -22,7 +22,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_m5017"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_7i8h7"]
 resource_name = "desk_Cube_043"
 _surfaces = [{
 "aabb": AABB(-1.54615, -1.02956, -1.49529, 3.09231, 2.05911, 2.99058),
@@ -43,5 +43,5 @@ shadow_mesh = SubResource("ArrayMesh_ihvrh")
 
 [node name="PapersTall" type="MeshInstance3D"]
 transform = Transform3D(0.13492, 0, 0, 0, 0.146489, 0, 0, 0, 0.189369, 0, 0, 0)
-mesh = SubResource("ArrayMesh_m5017")
+mesh = SubResource("ArrayMesh_7i8h7")
 skeleton = NodePath("")

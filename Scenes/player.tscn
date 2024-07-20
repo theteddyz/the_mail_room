@@ -43,7 +43,7 @@ radius = 0.122298
 radius = 8.51913
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_06j8k"]
-size = Vector3(22.375, 12.44, 45)
+size = Vector3(16.6539, 12.44, 40.1273)
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
 collision_layer = 20
@@ -161,7 +161,7 @@ script = ExtResource("5_ic8gt")
 shape = SubResource("SphereShape3D_0heh4")
 
 [node name="Cone" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/LightOptimizerDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -21.2193)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129657, 0, -19.5101)
 shape = SubResource("BoxShape3D_06j8k")
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
