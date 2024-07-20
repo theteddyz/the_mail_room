@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ksn67lit7pjy"]
+[gd_scene load_steps=4 format=3 uid="uid://ksn67lit7pjy"]
 
 [ext_resource type="Script" path="res://Scripts/Interactable/key.gd" id="2_mguxb"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0jwl6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e8e4q"]
 size = Vector3(0.0535889, 0.0732422, 0.168381)
@@ -11,10 +9,8 @@ size = Vector3(0.0535889, 0.0732422, 0.168381)
 size = Vector3(0.2, 0.2, 1)
 
 [node name="Key" type="RigidBody3D"]
-collision_layer = 130
-collision_mask = 130
-mass = 0.2
-physics_material_override = SubResource("PhysicsMaterial_0jwl6")
+collision_layer = 131
+collision_mask = 131
 script = ExtResource("2_mguxb")
 icon_type = "key"
 

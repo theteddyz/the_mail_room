@@ -29,7 +29,6 @@ func _on_area_entered(area):
 			l.distance_fade_length = 13.45
 			
 			counter += 1
-			print(counter)
 			
 
 
@@ -45,4 +44,3 @@ func _on_area_exited(area):
 		for light in lights:
 			light.shadow_enabled = false
 			counter -= 1
-			print(counter)

@@ -15,6 +15,5 @@ func deliver(package: Package):
 		package.get_child(0).disabled = true
 		EventBus.emit_signal("package_delivered",package.package_num)
 	else:
-		EventBus.emit_signal("package_failed_delivery")
-
+		package.dropped()
 

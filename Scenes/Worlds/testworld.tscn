@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=30 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="15_hp4l1"]
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="15_tm150"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/wall_with_door.tscn" id="15_toag5"]
+[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="16_54d50"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/outline_test.gdshader" id="16_boyhi"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="17_ma4ii"]
 
@@ -165,15 +166,13 @@ locked = true
 unlock_number = 1
 
 [node name="door" parent="StaticBody3D3/RigidBody3D" index="1"]
+visible = false
 collision_layer = 0
 collision_mask = 0
 
 [node name="Key" parent="." instance=ExtResource("17_ma4ii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0553, 1.14425, -1.6986)
 disable_mode = 1
-collision_layer = 131
-collision_mask = 131
-physics_material_override = null
 unlock_num = 1
 
 [node name="meeting_room_wall_Door" parent="." instance=ExtResource("15_tm150")]
@@ -181,5 +180,11 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.6894, 0.004028
 
 [node name="StaticBody3D" parent="." instance=ExtResource("15_toag5")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.70716, 0.0040288, -10.007)
+
+[node name="Package" parent="." instance=ExtResource("16_54d50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9884, 0.0040288, -0.797034)
+package_full_address = "THIS IS AN ADRESS
+I AM SHOWING STUFF 
+YAY"
 
 [editable path="StaticBody3D3"]

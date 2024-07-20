@@ -118,10 +118,12 @@ shape = SubResource("ConcavePolygonShape3D_3ib5a")
 
 [node name="RigidBody3D6" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 1.98952e-13, 0, 1, 0, -1.98952e-13, 0, 1, 2.37741, 1.5006, -1.16487)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 3
 axis_lock_linear_x = true
 axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_gwlcn")
@@ -134,19 +136,23 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D6"]
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D2" type="SliderJoint3D" parent="RigidBody3D6"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.389631)
+[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="RigidBody3D6"]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 3.0
 node_a = NodePath("../../StaticBody3D")
 node_b = NodePath("..")
-linear_limit/upper_distance = 0.7
-linear_limit/lower_distance = 0.0
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.584183)
 
 [node name="RigidBody3D5" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 3.69482e-13, 0, 1, 0, -3.69482e-13, 0, 1, 2.38178, 0.691243, -1.17513)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 3
 axis_lock_linear_x = true
 axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_gwlcn")
@@ -160,17 +166,23 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -2.36848e-14, 0, 1, 0, 2.36848e-14, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D" type="SliderJoint3D" parent="RigidBody3D5"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.393412)
+[node name="SliderJoint3D" type="JoltSliderJoint3D" parent="RigidBody3D5"]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 3.0
 node_a = NodePath("../../StaticBody3D")
 node_b = NodePath("..")
-linear_limit/upper_distance = 0.7
-linear_limit/lower_distance = 0.0
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226641, -0.0221735, -0.668024)
 
 [node name="RigidBody3D7" type="RigidBody3D" parent="."]
 transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -1.16305, 1.47777, 2.38959)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 3
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_gwlcn")
@@ -183,17 +195,23 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D7"]
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D2" type="SliderJoint3D" parent="RigidBody3D7"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.389631)
+[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="RigidBody3D7"]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 3.0
 node_a = NodePath("../../StaticBody3D")
 node_b = NodePath("..")
-linear_limit/upper_distance = 0.7
-linear_limit/lower_distance = 0.0
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.683189)
 
 [node name="RigidBody3D8" type="RigidBody3D" parent="."]
 transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -1.18748, 0.691243, 2.40345)
-collision_layer = 2
-collision_mask = 0
+collision_layer = 3
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_gwlcn")
@@ -207,9 +225,11 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -2.36848e-14, 0, 1, 0, 2.36848e-14, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D" type="SliderJoint3D" parent="RigidBody3D8"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.393412)
+[node name="SliderJoint3D" type="JoltSliderJoint3D" parent="RigidBody3D8"]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 3.0
 node_a = NodePath("../../StaticBody3D")
 node_b = NodePath("..")
-linear_limit/upper_distance = 0.7
-linear_limit/lower_distance = 0.0
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226641, -0.0221735, -0.627111)

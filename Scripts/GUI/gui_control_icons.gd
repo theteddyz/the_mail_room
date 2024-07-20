@@ -2,7 +2,7 @@ extends Control
 @onready var anim:AnimationPlayer = $AnimationPlayer
 
 func _ready():
-	#hide()
+	hide()
 	pass
 
 func show_icon(b:bool):

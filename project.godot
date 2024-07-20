@@ -24,7 +24,7 @@ Gui="*res://Scenes/Prefabs/gui/gui.tscn"
 [display]
 
 window/energy_saving/keep_screen_on=false
-window/stretch/aspect="ignore"
+window/stretch/mode="viewport"
 
 [input]
 
@@ -103,4 +103,5 @@ inspect={
 lights_and_shadows/directional_shadow/size=8192
 lightmapping/primitive_meshes/texel_size=7.46
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/msaa_3d=2
 lights_and_shadows/positional_shadow/atlas_size=8192
