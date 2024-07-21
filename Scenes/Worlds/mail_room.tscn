@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=25 format=3 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_5vkla"]
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="1_salub"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="20_05muy"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="20_lrs3i"]
 [ext_resource type="AudioStream" uid="uid://dephvjlxfo3d1" path="res://Assets/Audio/SoundFX/MailRoomAmbience.mp3" id="21_i8rlw"]
+[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="22_o4qlx"]
 
 [sub_resource type="Environment" id="Environment_j0hss"]
 ambient_light_color = Color(0.878431, 1, 1, 1)
@@ -108,16 +109,28 @@ transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -27.1407, 0.55690
 transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -31.1407, 0.556907, -4.93296)
 
 [node name="IndustrialTable5" parent="stage/Objects" instance=ExtResource("12_haqay")]
-transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -19.1407, 0.556907, 1.2837)
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -20.1407, 0.556907, 1.2837)
+
+[node name="IndustrialTable9" parent="stage/Objects" instance=ExtResource("12_haqay")]
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -27.2246, 0.3257, 1.2837)
+
+[node name="IndustrialTable10" parent="stage/Objects" instance=ExtResource("12_haqay")]
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -32.2964, 0.556907, 1.2837)
 
 [node name="IndustrialTable6" parent="stage/Objects" instance=ExtResource("12_haqay")]
 transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -19.1407, 0.556907, -11.1793)
 
+[node name="IndustrialTable7" parent="stage/Objects" instance=ExtResource("12_haqay")]
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -27.0003, 0.556907, -11.1793)
+
+[node name="IndustrialTable8" parent="stage/Objects" instance=ExtResource("12_haqay")]
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -32.2938, 0.556907, -11.1793)
+
 [node name="StaticBody3D" parent="stage/Objects" instance=ExtResource("11_duifo")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.998, 2.72705, -11.9293)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.1634, 2.72705, -11.9293)
 
 [node name="StaticBody3D6" parent="stage/Objects" instance=ExtResource("11_duifo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.998, 2.72705, 1.91074)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0678, 2.72705, 1.8957)
 
 [node name="StaticBody3D2" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27.061, 2.72705, -11.9293)
@@ -1056,3 +1069,27 @@ autoplay = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, -8)
 stream = SubResource("AudioStreamRandomizer_g57cg")
 autoplay = true
+
+[node name="Package" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -19.9377, 2.37412, 1.83842)
+collision_mask = 3
+
+[node name="Package2" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -19.9377, 2.49173, 1.67145)
+collision_mask = 3
+
+[node name="Package3" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 2.67684, 1.99393)
+collision_mask = 3
+
+[node name="Package4" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 3.02079, 1.99393)
+collision_mask = 3
+
+[node name="Package5" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 3.21096, 1.99393)
+collision_mask = 3
+
+[node name="Package6" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 2.85979, 1.99393)
+collision_mask = 3

@@ -305,9 +305,11 @@ shadow_enabled = true
 omni_attenuation = 2.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CartLight2"]
-transform = Transform3D(1.616, 0, 0, 0, 0.300294, 0.981053, 0, -1.52063, 0.193738, -34.4742, 54.0132, 43.5988)
+transform = Transform3D(99.7984, 0, 0, 0, 18.5556, 51.8462, 0, -93.9619, 33.6287, -34.4742, 46.8933, 31.6791)
 light_energy = 3.5
 light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+shadow_bias = 0.2
 spot_range = 12.0
 spot_attenuation = 2.0
 spot_angle = 89.0

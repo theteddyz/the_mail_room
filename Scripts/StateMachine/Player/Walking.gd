@@ -84,9 +84,11 @@ func handle_mouse_button(event):
 	elif  event.is_action_pressed("interact"):
 		handle_general_interaction()
 	elif event.is_action_pressed("inspect"):
-		handle_inspect()
+		if is_holding_object and object_last_held is Package:
+			handle_inspect()
 	elif event.is_action_released("inspect"):
-		handle_inspect_released()
+		if is_holding_object and object_last_held is Package:
+			handle_inspect_released()
 	elif event.is_action_pressed("scroll package down"):
 		handle_scroll(true)
 	elif event.is_action_pressed("scroll package up"):
@@ -150,6 +152,7 @@ func handle_general_interaction():
 				collider.interact()
 
 func handle_inspect_released():
+	
 	walking_speed = previous_walk_speed
 	sprinting_speed = previous_sprinting_speed
 	crouching_speed = previous_crouching_speed
