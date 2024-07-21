@@ -122,6 +122,7 @@ collision_mask = 6
 axis_lock_linear_y = true
 mass = 3.0
 script = ExtResource("2_0c8nb")
+can_rotate = false
 
 [node name="Door_Lock" type="Area3D" parent="RigidBody3D2"]
 collision_layer = 0
