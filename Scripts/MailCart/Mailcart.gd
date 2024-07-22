@@ -80,6 +80,7 @@ func grab_current_package():
 		game_objects.remove_at(current_index)
 		current_index = 0
 		current_package.set_collision_layer_value(2,true)
+		current_package.inside_mail_cart = false
 		current_package.grabbed()
 		package_picked_up = true
 		text_displayer.hide_text()
@@ -92,7 +93,10 @@ func grab_current_package():
 # Function to add a package to the game_objects array
 func add_package(package: Package):
 		if !game_objects.has(package):
+			package.global_position = Vector3.ZERO
+			package.global_rotation = Vector3.ZERO
 			package.set_collision_layer_value(2,false)
+			package.inside_mail_cart = true
 			game_objects.append(package)
 			sort_packages_by_order()
 			calculate_spacing()

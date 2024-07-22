@@ -2348,7 +2348,7 @@ transform = Transform3D(0.0601078, 0, 0.998192, 0, 1, 0, -0.998192, 0, 0.0601078
 [node name="Desk" parent="." instance=ExtResource("5_6umw1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7655, 0.00402761, 19.0649)
 
-[node name="Package" parent="." instance=ExtResource("40_jab1w")]
+[node name="Package" parent="." groups=["Persist"] instance=ExtResource("40_jab1w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09099, 0.206767, 6.64522)
 package_full_address = "Package 1
 Wendell Hanson
@@ -2361,7 +2361,7 @@ cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 1
 
-[node name="Package2" parent="." instance=ExtResource("40_jab1w")]
+[node name="Package2" parent="." groups=["Persist"] instance=ExtResource("40_jab1w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34233, 0.206767, 6.65115)
 package_full_address = "Package 2
 Lori Hughes
@@ -2373,7 +2373,7 @@ cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 2
 
-[node name="Package3" parent="." instance=ExtResource("40_jab1w")]
+[node name="Package3" parent="." groups=["Persist"] instance=ExtResource("40_jab1w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06459, 0.206767, 5.91962)
 package_full_address = "Package 3
 Bill Ding
@@ -2385,7 +2385,7 @@ cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 3
 
-[node name="Package4" parent="." instance=ExtResource("40_jab1w")]
+[node name="Package4" parent="." groups=["Persist"] instance=ExtResource("40_jab1w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94756, 0.206767, 8.60729)
 package_full_address = "Package 4
 Seth Bradley
@@ -2398,7 +2398,7 @@ cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 4
 
-[node name="Package5" parent="." instance=ExtResource("40_jab1w")]
+[node name="Package5" parent="." groups=["Persist"] instance=ExtResource("40_jab1w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.351411, 0.206767, 8.60729)
 package_full_address = "Package 5
 Mack Hampton
@@ -2411,7 +2411,7 @@ cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 5
 
-[node name="Package6" parent="." instance=ExtResource("40_jab1w")]
+[node name="Package6" parent="." groups=["Persist"] instance=ExtResource("40_jab1w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.917248, 0.206767, 8.60729)
 package_full_address = "Package 6
 John Bogart
