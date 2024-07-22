@@ -187,7 +187,12 @@ func load_node_variables():
 		# Get the object, update it
 		if(!node_data.has("levelpath")):
 			var new_object = get_node("/root/" + node_data["nodepath"])
-			new_object.position = Vector3(node_data["pos_x"], node_data["pos_y"], node_data["pos_z"])
+			if node_data.has("inside_mail_cart"):
+				if node_data["inside_mail_cart"] == true:
+					mail_cart_reference.add_package(new_object)
+					print(mail_cart_reference.game_objects.size())
+				else:
+					new_object.position = Vector3(node_data["pos_x"], node_data["pos_y"], node_data["pos_z"])
 			# Now we set the remaining variables.
 			for i in node_data.keys():
 				if blacklist.has(i):

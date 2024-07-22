@@ -1,8 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwkdr1hhs71ee"]
+[gd_scene load_steps=14 format=3 uid="uid://bwkdr1hhs71ee"]
 
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="1_5vcgn"]
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_i66kl"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_nk5b2"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_502s3"]
+[ext_resource type="AudioStream" uid="uid://dako4mxrtfujo" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxSmall.mp3" id="5_ujam3"]
+[ext_resource type="AudioStream" uid="uid://d2be8311jqr06" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxSmall2.mp3" id="6_cmumc"]
+[ext_resource type="AudioStream" uid="uid://ckcdwiicqyq4" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxSmall3.mp3" id="7_gtcqg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ll5ie"]
+rough = true
+bounce = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuv2q"]
 resource_name = "CardboardBox"
@@ -45,12 +53,21 @@ shadow_mesh = SubResource("ArrayMesh_8aumi")
 [sub_resource type="BoxShape3D" id="BoxShape3D_pmrp0"]
 size = Vector3(0.364807, 0.370392, 0.379608)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8tf42"]
+streams_count = 3
+stream_0/stream = ExtResource("5_ujam3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_cmumc")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_gtcqg")
+stream_2/weight = 1.0
+
 [node name="cardboard_box_small" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.185272, 0)
 disable_mode = 2
 collision_layer = 3
 collision_mask = 3
-sleeping = true
+physics_material_override = SubResource("PhysicsMaterial_ll5ie")
 script = ExtResource("1_nk5b2")
 
 [node name="Interpolator" type="Node3D" parent="."]
@@ -63,3 +80,12 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_pmrp0")
+
+[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
+script = ExtResource("4_502s3")
+impact_audios = NodePath("../AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8tf42")
+
+[connection signal="body_entered" from="." to="Node3D" method="_on_body_entered"]

@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://drfn1olnt3pk2" path="res://Assets/Audio/SoundFX/ImpactKey2.mp3" id="10_fowfc"]
 [ext_resource type="AudioStream" uid="uid://nofos1dpjyv" path="res://Assets/Audio/SoundFX/ImpactKey3.mp3" id="11_uebkx"]
 [ext_resource type="AudioStream" uid="uid://be4jr5086ma7q" path="res://Assets/Audio/SoundFX/ImpactKey4.mp3" id="12_8kn6c"]
-[ext_resource type="Material" path="res://Assets/Models/key_broken_mat.tres" id="12_omiy1"]
+[ext_resource type="Material" uid="uid://dux2bi8ysymko" path="res://Assets/Models/key_broken_mat.tres" id="12_omiy1"]
 [ext_resource type="AudioStream" uid="uid://ywvj2274edsm" path="res://Assets/Audio/SoundFX/ImpactKey5.mp3" id="13_7q265"]
 [ext_resource type="ArrayMesh" uid="uid://bhutryyktfuw5" path="res://Assets/Models/key_broken.tres" id="13_g2rmd"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="14_y1cj2"]

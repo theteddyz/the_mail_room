@@ -13,7 +13,7 @@ config_version=5
 config/name="the-mail-room"
 run/main_scene="res://Scenes/Worlds/test_floor_layout_2.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -24,7 +24,7 @@ Gui="*res://Scenes/Prefabs/gui/gui.tscn"
 [display]
 
 window/energy_saving/keep_screen_on=false
-window/stretch/aspect="ignore"
+window/stretch/mode="viewport"
 
 [input]
 
@@ -101,6 +101,7 @@ inspect={
 [rendering]
 
 lights_and_shadows/directional_shadow/size=8192
-limits/opengl/max_lights_per_object=32
+lightmapping/primitive_meshes/texel_size=7.46
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/msaa_3d=2
 lights_and_shadows/positional_shadow/atlas_size=8192

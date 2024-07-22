@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmy0v04imvkbv"]
+[gd_scene load_steps=14 format=3 uid="uid://dmy0v04imvkbv"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_s1rcs"]
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_skhh8"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_sofgt"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_uq7kf"]
+[ext_resource type="AudioStream" uid="uid://cbd42qbrc0oo0" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxLarge2.mp3" id="5_xxvwm"]
+[ext_resource type="AudioStream" uid="uid://bvefoql60memf" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxLarge3.mp3" id="6_4qsq7"]
+[ext_resource type="AudioStream" uid="uid://t4pnta4oxcj6" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxLarge.mp3" id="7_hty0j"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a3mem"]
 
@@ -47,6 +51,15 @@ shadow_mesh = SubResource("ArrayMesh_5iol4")
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcr3g"]
 size = Vector3(0.640778, 0.637268, 0.636597)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2r2oc"]
+streams_count = 3
+stream_0/stream = ExtResource("5_xxvwm")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_4qsq7")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_hty0j")
+stream_2/weight = 1.0
+
 [node name="Cardboard_box_big" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305338, 0)
 collision_layer = 7
@@ -66,3 +79,12 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_rcr3g")
+
+[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
+script = ExtResource("4_uq7kf")
+impact_audios = NodePath("../AudioStreamPlayer3D")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_2r2oc")
+
+[connection signal="body_entered" from="." to="Node3D" method="_on_body_entered"]

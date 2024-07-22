@@ -8,6 +8,7 @@ extends Grabbable
 @export var drop_time_threshold: float = 0.5
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
+@export var can_rotate:bool = true
 var is_picked_up = false
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
@@ -147,10 +148,11 @@ func update_rotation(delta):
 		apply_torque_impulse(angular_impulse)
 		angular_velocity *= 0.9
 func start_rotating():
-	is_rotating = true
-	lock_axes(true)
-	EventBus.emitCustomSignal("disable_player_movement",[true,true])
-	initial_mouse_position = get_viewport().get_mouse_position()
+	if can_rotate:
+		is_rotating = true
+		lock_axes(true)
+		EventBus.emitCustomSignal("disable_player_movement",[true,true])
+		initial_mouse_position = get_viewport().get_mouse_position()
 func stop_rotating():
 	lock_axes(false)
 	EventBus.emitCustomSignal("disable_player_movement",[false,false])
@@ -160,13 +162,10 @@ func lock_axes(lock: bool):
 	axis_lock_linear_x = lock
 	axis_lock_linear_z = lock
 	axis_lock_linear_y = lock
-	axis_lock_angular_x = lock
-	axis_lock_angular_y = lock
-	axis_lock_angular_z = lock
 func is_at_rest() -> bool:
 	return linear_velocity.length_squared() <= 0.0001 and angular_velocity.length_squared() <= 0.0001
 
 func enable_collision_decection():
 	await get_tree().create_timer(1).timeout
 	set_contact_monitor(true)
-	set_max_contacts_reported(1)
+	set_max_contacts_reported(10)
