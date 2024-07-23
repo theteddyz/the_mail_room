@@ -1331,6 +1331,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5863, 0, -28.6874)
 [node name="StaticBody3D158" parent="Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.987, 0, -28.68)
 
+[node name="StaticBody3D172" parent="Walls" instance=ExtResource("7_uf3w4")]
+transform = Transform3D(0.00842986, 0, -0.999964, 0, 1, 0, 0.999964, 0, 0.00842986, -21.2679, 0, -36.9068)
+
 [node name="StaticBody3D159" parent="Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.586, 0, -34.381)
 
@@ -1351,6 +1354,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.32
 
 [node name="StaticBody3D36" parent="Walls" instance=ExtResource("17_ky7o5")]
 transform = Transform3D(4.88471e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, 4.88471e-08, -16.854, 0, -19.9837)
+
+[node name="RigidBody3D" parent="Walls/StaticBody3D36" index="0"]
+transform = Transform3D(0.0383878, 0, 0.999263, 0, 1, 0, -0.999263, 0, 0.0383878, 0.931, 0, 0.786)
+
+[node name="Door_001" parent="Walls/StaticBody3D36/RigidBody3D" index="0"]
+transform = Transform3D(1.7, 0, 1.42109e-14, 0, 1.7, 0, -1.42109e-14, 0, 1.7, 0.965912, 2.04469, 0)
 
 [node name="wall_room_001" parent="Walls" instance=ExtResource("19_iys74")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94165, 0, 24.1636)
@@ -2120,6 +2129,10 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -8.55233
 [node name="CeilingLightOn29" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.7431, 4.21901, -36.2961)
 
+[node name="OmniLight3D" parent="CeilingLights/CeilingLightOn29" index="1"]
+visible = false
+light_bake_mode = 2
+
 [node name="CeilingLightOn17" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 22.5972, 4.2381, -4.91382)
 
@@ -2465,6 +2478,7 @@ unlock_num = 1
 [editable path="Walls/StaticBody3D65"]
 [editable path="Walls/StaticBody3D84"]
 [editable path="Walls/StaticBody3D111"]
+[editable path="Walls/StaticBody3D36"]
 [editable path="Roof/CeilingLightOn3"]
 [editable path="CeilingLights/CeilingLightOn13"]
 [editable path="CeilingLights/CeilingLightOn16"]
@@ -2472,6 +2486,7 @@ unlock_num = 1
 [editable path="CeilingLights/CeilingLightOn23"]
 [editable path="CeilingLights/CeilingLightOn32"]
 [editable path="CeilingLights/CeilingLightOn30"]
+[editable path="CeilingLights/CeilingLightOn29"]
 [editable path="CeilingLights/HallwayLight1"]
 [editable path="CeilingLights/HallwayLight2"]
 [editable path="CeilingLights/HallwayLight3"]
