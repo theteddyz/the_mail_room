@@ -84,9 +84,9 @@ func handle_mouse_button(event):
 	elif  event.is_action_pressed("interact"):
 		handle_general_interaction()
 	elif event.is_action_pressed("inspect"):
-		handle_inspect()
+			handle_inspect()
 	elif event.is_action_released("inspect"):
-		handle_inspect_released()
+			handle_inspect_released()
 	elif event.is_action_pressed("scroll package down"):
 		handle_scroll(true)
 	elif event.is_action_pressed("scroll package up"):
@@ -150,10 +150,14 @@ func handle_general_interaction():
 				collider.interact()
 
 func handle_inspect_released():
-	walking_speed = previous_walk_speed
-	sprinting_speed = previous_sprinting_speed
-	crouching_speed = previous_crouching_speed
-	object_last_held.stop_inspect()
+	if object_last_held is Package:
+		walking_speed = previous_walk_speed
+		sprinting_speed = previous_sprinting_speed
+		crouching_speed = previous_crouching_speed
+		object_last_held.stop_inspect()
+	else:
+		if object_last_held.has_method("stop_rotating"):
+			object_last_held.stop_rotating()
 
 func handle_inspect():
 	var collider = interactable_finder.get_interactable()
@@ -163,8 +167,8 @@ func handle_inspect():
 				print("Inspect pressed on MAILCART (will inspect package)")
 				# TODO: Implement mailcart.inspect()
 			_:
-				if is_holding_object and object_last_held is Package:
-					pass
+				if object_last_held.has_method("start_rotating"):
+					object_last_held.start_rotating()
 	else:
 		if is_holding_object and object_last_held is Package:
 			previous_walk_speed = walking_speed
@@ -316,5 +320,6 @@ func handle_head_bopping(delta):
 
 
 func disable_movement_event(l:bool,w:bool):
+	persistent_state.velocity = Vector3.ZERO
 	disable_look_movement = l
 	disable_walk_movement = w

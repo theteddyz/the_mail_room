@@ -4,10 +4,12 @@ extends Grabbable
 @export var weightLimit: float = 1000.0  
 @export var max_lift_height: float = 100.0
 @export var max_force:float = 300.0
-@export var distance_threshold: float = 1.0
+@export var distance_threshold: float = 6.0
 @export var drop_time_threshold: float = 0.5
+@export var tether_distance: float = 2.5
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
+@export var can_rotate:bool = true
 var is_picked_up = false
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
@@ -44,6 +46,20 @@ func _ready():
 func _input(event):
 	if is_rotating and event is InputEventMouseMotion:
 		handle_mouse_motion(event.relative)
+		
+func _process(delta): #Tether the player to the object
+	if is_picked_up:
+		var playerPosition:Vector3 = player.transform.origin;
+		playerPosition.y = 0;
+		var objectPosition:Vector3 = global_transform.origin;
+		objectPosition.y = 0;
+		var directionTo:Vector3 = playerPosition - objectPosition;
+		directionTo = directionTo.normalized();
+		var distance:float = playerPosition.distance_to(objectPosition);
+		if distance > tether_distance:
+			var destination = objectPosition + directionTo*tether_distance;
+			player.transform.origin.x = destination.x;
+			player.transform.origin.z = destination.z;
 func _physics_process(delta):
 	if object_Interpolator:
 		object_Interpolator.setUpdate(true)
@@ -122,7 +138,7 @@ func update_position(delta):
 	var distance:float = currentPosition.distance_to(targetPosition)
 	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
 	
-	force = force.limit_length(max_force + (mass * 4) + player.velocity.length())
+	force = force.limit_length(max_force + (mass * 5) + player.velocity.length())
 	apply_central_force(force)
 	#var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
 	
@@ -147,10 +163,11 @@ func update_rotation(delta):
 		apply_torque_impulse(angular_impulse)
 		angular_velocity *= 0.9
 func start_rotating():
-	is_rotating = true
-	lock_axes(true)
-	EventBus.emitCustomSignal("disable_player_movement",[true,true])
-	initial_mouse_position = get_viewport().get_mouse_position()
+	if can_rotate:
+		is_rotating = true
+		lock_axes(true)
+		EventBus.emitCustomSignal("disable_player_movement",[true,true])
+		initial_mouse_position = get_viewport().get_mouse_position()
 func stop_rotating():
 	lock_axes(false)
 	EventBus.emitCustomSignal("disable_player_movement",[false,false])
@@ -160,12 +177,10 @@ func lock_axes(lock: bool):
 	axis_lock_linear_x = lock
 	axis_lock_linear_z = lock
 	axis_lock_linear_y = lock
-	axis_lock_angular_x = lock
-	axis_lock_angular_z = lock
 func is_at_rest() -> bool:
 	return linear_velocity.length_squared() <= 0.0001 and angular_velocity.length_squared() <= 0.0001
 
 func enable_collision_decection():
 	await get_tree().create_timer(1).timeout
 	set_contact_monitor(true)
-	set_max_contacts_reported(1)
+	set_max_contacts_reported(10)

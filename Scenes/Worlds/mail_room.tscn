@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=25 format=3 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_5vkla"]
 [ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="1_salub"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="20_05muy"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="20_lrs3i"]
 [ext_resource type="AudioStream" uid="uid://dephvjlxfo3d1" path="res://Assets/Audio/SoundFX/MailRoomAmbience.mp3" id="21_i8rlw"]
+[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="22_o4qlx"]
 
 [sub_resource type="Environment" id="Environment_j0hss"]
 ambient_light_color = Color(0.878431, 1, 1, 1)
@@ -59,6 +60,12 @@ floor_num = -1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j0hss")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20004, 5.14948, 3.68872)
+quality = 2
+bounces = 16
+bias = 0.04035
 
 [node name="VoxelGI" type="VoxelGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20004, 5.14948, 3.68872)
@@ -108,16 +115,28 @@ transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -27.1407, 0.55690
 transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -31.1407, 0.556907, -4.93296)
 
 [node name="IndustrialTable5" parent="stage/Objects" instance=ExtResource("12_haqay")]
-transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -19.1407, 0.556907, 1.2837)
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -20.1407, 0.556907, 1.2837)
+
+[node name="IndustrialTable9" parent="stage/Objects" instance=ExtResource("12_haqay")]
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -27.2246, 0.3257, 1.2837)
+
+[node name="IndustrialTable10" parent="stage/Objects" instance=ExtResource("12_haqay")]
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -32.2964, 0.556907, 1.2837)
 
 [node name="IndustrialTable6" parent="stage/Objects" instance=ExtResource("12_haqay")]
 transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -19.1407, 0.556907, -11.1793)
 
+[node name="IndustrialTable7" parent="stage/Objects" instance=ExtResource("12_haqay")]
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -27.0003, 0.556907, -11.1793)
+
+[node name="IndustrialTable8" parent="stage/Objects" instance=ExtResource("12_haqay")]
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -32.2938, 0.556907, -11.1793)
+
 [node name="StaticBody3D" parent="stage/Objects" instance=ExtResource("11_duifo")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -21.998, 2.72705, -11.9293)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.1634, 2.72705, -11.9293)
 
 [node name="StaticBody3D6" parent="stage/Objects" instance=ExtResource("11_duifo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.998, 2.72705, 1.91074)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0678, 2.72705, 1.8957)
 
 [node name="StaticBody3D2" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27.061, 2.72705, -11.9293)
@@ -823,48 +842,56 @@ transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0,
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn3" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn19" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -38.8443, 4.60039, -10.685)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn19" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn20" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -38.7774, 4.58633, 0.705129)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn20" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn21" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -39.31, 4.58633, -5.00331)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn21" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn4" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -33.0298, 4.64341, -2.11326)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn4" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn5" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -27.4744, 4.58633, -7.7134)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn5" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn6" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -27.8816, 4.64341, -2.11326)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn6" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn12" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -23.877, 4.58633, -7.7134)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn12" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn23" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -18.8684, 4.58633, -7.7134)
@@ -873,6 +900,7 @@ transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.10638, 0)
 light_color = Color(0.858824, 0.941176, 0.976471, 1)
 light_size = 0.295
+light_bake_mode = 1
 shadow_enabled = true
 shadow_blur = 3.051
 omni_range = 8.522
@@ -885,78 +913,91 @@ transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0,
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn13" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn22" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -16.7232, 4.64341, -2.11326)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn22" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn14" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.7236, 4.52438, -0.452828)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn14" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn7" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -16.3109, 4.541, -5.04403)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn7" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn8" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.616, 4.541, -5.04403)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn8" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn9" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -4.91562, 4.541, -5.04403)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn9" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn15" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -4.91562, 4.541, -9.90721)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn15" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn17" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.7841, 4.541, -9.907)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn17" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn18" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 6.4731, 4.541, -9.907)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn18" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn16" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.6269, 4.541, -9.907)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn16" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn10" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.78725, 4.541, -5.04403)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn10" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn11" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 6.48715, 4.541, -5.04403)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn11" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="CeilingLightOn24" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 10.8083, 4.541, -5.04403)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn24" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+light_bake_mode = 1
 
 [node name="Roof" type="Node3D" parent="stage"]
 
@@ -1056,3 +1097,27 @@ autoplay = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39, 0, -8)
 stream = SubResource("AudioStreamRandomizer_g57cg")
 autoplay = true
+
+[node name="Package" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -19.9377, 2.37412, 1.83842)
+collision_mask = 3
+
+[node name="Package2" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -19.9377, 2.49173, 1.67145)
+collision_mask = 3
+
+[node name="Package3" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 2.67684, 1.99393)
+collision_mask = 3
+
+[node name="Package4" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 3.02079, 1.99393)
+collision_mask = 3
+
+[node name="Package5" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 3.21096, 1.99393)
+collision_mask = 3
+
+[node name="Package6" parent="." instance=ExtResource("22_o4qlx")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 2.85979, 1.99393)
+collision_mask = 3

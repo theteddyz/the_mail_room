@@ -21,9 +21,13 @@ var player: CharacterBody3D
 var is_inspecting = false
 var is_returning = false
 var lerp_speed = 2.0
+var inside_mail_cart:bool
+var starting_path
 func _ready():
+	starting_path =  get_parent().name + "/" + name
 	player = get_parent().find_child("Player")
 	text_displayer = Gui.get_address_displayer()
+
 
 func _process(delta):
 	if is_inspecting:
@@ -76,3 +80,27 @@ func hide_label():
 func show_label(text:String):
 	text_displayer.show_text()
 	text_displayer.set_text(text)
+
+func save():
+	if !inside_mail_cart:
+		var save_dict = {
+		"nodepath" : get_parent().name + "/" + name,
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"pos_z" : position.z,
+		"rotation.y" : rotation.y,
+		"inside_mail_cart":inside_mail_cart
+		}
+		return save_dict
+	else:
+		var save_dict = {
+		"nodepath" : starting_path,
+		"pos_x" : cart_position.x, # Vector2 is not supported by JSON
+		"pos_y" : cart_position.y,
+		"pos_z" : cart_position.z,
+		"rotation.y" : rotation.y,
+		"inside_mail_cart":inside_mail_cart,
+		}
+		return save_dict
+	
+
