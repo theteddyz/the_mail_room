@@ -4,8 +4,9 @@ extends Grabbable
 @export var weightLimit: float = 1000.0  
 @export var max_lift_height: float = 100.0
 @export var max_force:float = 300.0
-@export var distance_threshold: float = 1.0
+@export var distance_threshold: float = 6.0
 @export var drop_time_threshold: float = 0.5
+@export var tether_distance: float = 2.5
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
 @export var can_rotate:bool = true
@@ -45,6 +46,20 @@ func _ready():
 func _input(event):
 	if is_rotating and event is InputEventMouseMotion:
 		handle_mouse_motion(event.relative)
+		
+func _process(delta): #Tether the player to the object
+	if is_picked_up:
+		var playerPosition:Vector3 = player.transform.origin;
+		playerPosition.y = 0;
+		var objectPosition:Vector3 = global_transform.origin;
+		objectPosition.y = 0;
+		var directionTo:Vector3 = playerPosition - objectPosition;
+		directionTo = directionTo.normalized();
+		var distance:float = playerPosition.distance_to(objectPosition);
+		if distance > tether_distance:
+			var destination = objectPosition + directionTo*tether_distance;
+			player.transform.origin.x = destination.x;
+			player.transform.origin.z = destination.z;
 func _physics_process(delta):
 	if object_Interpolator:
 		object_Interpolator.setUpdate(true)
@@ -123,7 +138,7 @@ func update_position(delta):
 	var distance:float = currentPosition.distance_to(targetPosition)
 	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
 	
-	force = force.limit_length(max_force + (mass * 4) + player.velocity.length())
+	force = force.limit_length(max_force + (mass * 5) + player.velocity.length())
 	apply_central_force(force)
 	#var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
 	
