@@ -373,4 +373,32 @@ libraries = {
 "": SubResource("AnimationLibrary_tojdy")
 }
 
+[node name="DEBUGGING" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -103.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="DEBUGGING"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 103.0
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="DEBUGGING"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [connection signal="timeout" from="Adress_Displayer/Timer" to="Adress_Displayer" method="_on_timer_timeout"]
