@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=31 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="12_ghnq1"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="12_ty778"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="15_2x2rp"]
+[ext_resource type="PackedScene" uid="uid://d3hypnxt5rga4" path="res://Scenes/Prefabs/StaticObjects/light_switch.tscn" id="15_fahho"]
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="15_hp4l1"]
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="15_tm150"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/wall_with_door.tscn" id="15_toag5"]
@@ -178,6 +179,15 @@ unlock_num = 1
 [node name="meeting_room_wall_Door" parent="." instance=ExtResource("15_tm150")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.6894, 0.00402808, -9.97101)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="meeting_room_wall_Door"]
+transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 4.31258, 2.79558)
+
+[node name="LightSwitch" parent="meeting_room_wall_Door/OmniLight3D" instance=ExtResource("15_fahho")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.59648, -1.50046, -1.65935)
+collision_layer = 2
+collision_mask = 2
+icon_type = "light"
+
 [node name="StaticBody3D" parent="." instance=ExtResource("15_toag5")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.70716, 0.0040288, -10.007)
 
@@ -188,3 +198,4 @@ I AM SHOWING STUFF
 YAY"
 
 [editable path="StaticBody3D3"]
+[editable path="meeting_room_wall_Door"]

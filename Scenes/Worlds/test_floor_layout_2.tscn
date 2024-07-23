@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=65 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://bwb5copsj1jbv" path="res://Assets/Audio/SoundFX/FootstepsApproaching2.mp3" id="31_3d035"]
 [ext_resource type="AudioStream" uid="uid://cqtfocys05ytu" path="res://Assets/Audio/SoundFX/DestructionLamp2.mp3" id="31_ok8u3"]
+[ext_resource type="PackedScene" uid="uid://d3hypnxt5rga4" path="res://Scenes/Prefabs/StaticObjects/light_switch.tscn" id="31_pv8rn"]
 [ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
 [ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="39_spw8m"]
@@ -1182,9 +1183,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9131, 9.53674e-07, -2.8839
 [node name="StaticBody3D64" parent="Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.482, 0, -14.9)
 
-[node name="Wall2" parent="Walls/StaticBody3D64" index="0"]
-gi_mode = 0
-
 [node name="StaticBody3D65" parent="Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9527, 0, -14.9078)
 
@@ -1266,9 +1264,6 @@ gi_mode = 0
 
 [node name="StaticBody3D111" parent="Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.4799, 0, -12.306)
-
-[node name="Wall2" parent="Walls/StaticBody3D111" index="0"]
-gi_mode = 0
 
 [node name="StaticBody3D120" parent="Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.7115, 0, -17.7492)
@@ -2093,6 +2088,10 @@ transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -3.34684
 light_bake_mode = 2
 omni_attenuation = 1.07178
 
+[node name="LightSwitch" parent="CeilingLights/CeilingLightOn32/OmniLight3D" index="0" node_paths=PackedStringArray("light_mesh") instance=ExtResource("31_pv8rn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.36112, -2.35392, 1.02114)
+light_mesh = NodePath("../../CeilingLightOnLight")
+
 [node name="CeilingLightOn27" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -14.5415, 4.21901, -14.4662)
 
@@ -2183,6 +2182,13 @@ libraries = {
 
 [node name="CeilingLightOn36" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.733882, 4.2381, -12.4255)
+
+[node name="OmniLight3D" parent="CeilingLights/CeilingLightOn36" index="1"]
+light_bake_mode = 2
+
+[node name="LightSwitch" parent="CeilingLights/CeilingLightOn36/OmniLight3D" index="0" node_paths=PackedStringArray("light_mesh") instance=ExtResource("31_pv8rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.403389, -2.32812, 2.80011)
+light_mesh = NodePath("../../CeilingLightOnLight")
 
 [node name="CeilingLightOn22" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 40.4256, 4.2381, 28.0424)
@@ -2470,6 +2476,7 @@ unlock_num = 1
 [editable path="CeilingLights/HallwayLight2"]
 [editable path="CeilingLights/HallwayLight3"]
 [editable path="CeilingLights/BlackOutLight"]
+[editable path="CeilingLights/CeilingLightOn36"]
 [editable path="CeilingLights/CeilingLightOn46"]
 [editable path="MonsterDirector"]
 [editable path="Desk2"]
