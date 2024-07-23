@@ -1,18 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://07r80s3tkw3"]
 
-[ext_resource type="Shader" path="res://Scripts/Shaders/postposterizetest.gdshader" id="1_brdxd"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/VHSLook.gdshader" id="1_0mrfu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5a0n4"]
-shader = ExtResource("1_brdxd")
-shader_parameter/contrast = 0.0
-shader_parameter/brightness = 1.0
-shader_parameter/uTime1 = 1.0
-shader_parameter/uTime2 = 2.0
-shader_parameter/uTime3 = 4.0
-shader_parameter/colors = 16.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxhbw"]
+shader = ExtResource("1_0mrfu")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 1.0
+shader_parameter/blur_samples = 15
 
 [node name="ColorRect" type="ColorRect"]
-material = SubResource("ShaderMaterial_5a0n4")
+material = SubResource("ShaderMaterial_rxhbw")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

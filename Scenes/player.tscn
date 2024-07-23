@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=23 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
 [ext_resource type="PackedScene" uid="uid://07r80s3tkw3" path="res://Assets/Shaders/dither_shader2.tscn" id="3_6orpg"]
 [ext_resource type="PackedScene" uid="uid://8uuomvgrmu1b" path="res://Assets/Shaders/outline_shader.tscn" id="4_ao0s0"]
+[ext_resource type="Texture2D" uid="uid://b15bwfsdmmpi3" path="res://Assets/Textures/rgba-noise-medium.png" id="4_qxcjk"]
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/PlayerLightOptimization.gd" id="5_ic8gt"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/VHSLook2.gdshader" id="5_vfdu0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 
@@ -38,6 +40,23 @@ radius = 0.0937542
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vr3m2"]
 radius = 0.122298
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkmqj"]
+shader = ExtResource("5_vfdu0")
+shader_parameter/vhs_resolution = Vector2(320, 240)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 1.0
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.1
+shader_parameter/tape_crease_smear = 0.2
+shader_parameter/tape_crease_intensity = 0.0
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 0.5
+shader_parameter/bottom_border_thickness = 6.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 0.5
+shader_parameter/noise_texture = ExtResource("4_qxcjk")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0heh4"]
 radius = 8.51913
@@ -146,6 +165,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011888, 0.0205584, -1.248
 
 [node name="PackageHolder" type="Marker3D" parent="Neck/Head/HeadbopRoot/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319181, -0.331, -0.969561)
+
+[node name="ColorRect2" type="ColorRect" parent="Neck/Head/HeadbopRoot/Camera"]
+visible = false
+material = SubResource("ShaderMaterial_lkmqj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorRect" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("3_6orpg")]
 
