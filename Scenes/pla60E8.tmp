@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=20 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://8uuomvgrmu1b" path="res://Assets/Shaders/outline_shader.tscn" id="4_ao0s0"]
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/PlayerLightOptimization.gd" id="5_ic8gt"]
-[ext_resource type="Script" path="res://Scenes/LightDetector.gd" id="7_geagn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 
@@ -197,16 +196,5 @@ target_position = Vector3(0, 1.095, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72236, 0)
 current = true
 
-[node name="LightDetection" type="Node3D" parent="." node_paths=PackedStringArray("player", "camera", "timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23667, 0)
-script = ExtResource("7_geagn")
-player = NodePath("..")
-camera = NodePath("../Neck/Head/HeadbopRoot/Camera")
-timer = NodePath("Refresh Timer")
-
-[node name="Refresh Timer" type="Timer" parent="LightDetection"]
-autostart = true
-
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]
-[connection signal="timeout" from="LightDetection/Refresh Timer" to="LightDetection" method="timerdown"]

@@ -26,6 +26,7 @@ Gui="*res://Scenes/Prefabs/gui/gui.tscn"
 
 window/energy_saving/keep_screen_on=false
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [input]
 
