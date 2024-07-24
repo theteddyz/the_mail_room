@@ -286,7 +286,7 @@ func handle_hovers(delta):
 		if !is_holding_object and !is_holding_package:
 				general_hover(collider,delta)
 		elif is_holding_package:
-			if is_holding_package and package_last_held is Package:
+			if is_holding_package and package_last_held is Package and collider != package_last_held:
 				package_hover(collider,delta)
 			elif is_holding_package and package_last_held is Key:
 				key_hover(collider,delta)

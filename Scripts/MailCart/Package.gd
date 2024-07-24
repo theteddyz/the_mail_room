@@ -20,7 +20,7 @@ var playerHead
 var player: CharacterBody3D
 var is_inspecting = false
 var is_returning = false
-var lerp_speed = 2.0
+var lerp_speed = 5.0
 var inside_mail_cart:bool
 var starting_path
 func _ready():
