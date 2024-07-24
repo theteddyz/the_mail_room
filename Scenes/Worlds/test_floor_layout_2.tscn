@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=70 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_007.tscn" id="42_ee2c8"]
 [ext_resource type="PackedScene" uid="uid://ct3hpc3g723ed" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
+[ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="46_1nv5r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3gjrh"]
 size = Vector3(1.88333, 3.8623, 0.346191)
@@ -136,6 +137,66 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8irr7")
+
+[sub_resource type="Animation" id="Animation_vcocu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jbhds"]
+resource_name = "slam_door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody3D2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hrqat"]
+_data = {
+"RESET": SubResource("Animation_vcocu"),
+"slam_door": SubResource("Animation_jbhds")
+}
 
 [sub_resource type="Animation" id="Animation_hokj3"]
 length = 0.001
@@ -504,6 +565,9 @@ size = Vector3(6.55966, 2.57471, 3.54968)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iinbb"]
 size = Vector3(2.81714, 1.82605, 9.05057)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_05mjm"]
+size = Vector3(3.88452, 3.91785, 3.15088)
 
 [node name="world" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -969,7 +1033,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.882, 0, 18.671)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47293, 0, 18.6723)
 
 [node name="StaticBody3D21" parent="Walls" instance=ExtResource("7_uf3w4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82251, 0, -9.49396)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25115, 0, -9.49396)
 
 [node name="StaticBody3D150" parent="Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8653, 0, 18.6723)
@@ -1022,9 +1086,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1495, 0, 35.3866)
 [node name="StaticBody3D148" parent="Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.6206, 0, 35.3866)
 
-[node name="meeting_room_wall_Door3" parent="Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -7.68884, 0, 16.1906)
-
 [node name="meeting_room_wall_Door4" parent="Walls" instance=ExtResource("8_74j6v")]
 transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.647, -0.676134, 0, 24.1634)
 
@@ -1040,14 +1101,11 @@ transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.6
 [node name="StaticBody3D15" parent="Walls" instance=ExtResource("9_08ifg")]
 transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, -0.614708, 0, -9.49834)
 
-[node name="StaticBody3D34" parent="Walls" instance=ExtResource("7_uf3w4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8495, 0, -9.49396)
-
-[node name="Wall2" parent="Walls/StaticBody3D34" index="0"]
-gi_mode = 0
+[node name="StaticBody3D127" parent="Walls" instance=ExtResource("9_08ifg")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -7.689, 0, 16.258)
 
 [node name="StaticBody3D63" parent="Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 8.412, 0, -9.494)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 7.16003, 0, -9.494)
 
 [node name="Door_Lock" parent="Walls/StaticBody3D63/RigidBody3D2" index="0"]
 collision_layer = 130
@@ -1263,7 +1321,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.711
 gi_mode = 0
 
 [node name="StaticBody3D111" parent="Walls" instance=ExtResource("7_uf3w4")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.4799, 0, -12.306)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.95074, 0, -12.306)
+
+[node name="StaticBody3D130" parent="Walls" instance=ExtResource("7_uf3w4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.24603, 0, -12.306)
+
+[node name="Wall2" parent="Walls/StaticBody3D130" index="0"]
+cast_shadow = 0
+gi_mode = 2
 
 [node name="StaticBody3D120" parent="Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15.7115, 0, -17.7492)
@@ -1343,6 +1408,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9874, 0, -34.3799)
 [node name="StaticBody3D161" parent="Walls" instance=ExtResource("9_08ifg")]
 transform = Transform3D(8.48438e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, 8.48438e-08, -16.854, 0, -31.5954)
 
+[node name="Scare1" type="AnimationPlayer" parent="Walls/StaticBody3D161"]
+libraries = {
+"": SubResource("AnimationLibrary_hrqat")
+}
+
 [node name="StaticBody3D162" parent="Walls" instance=ExtResource("9_08ifg")]
 transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, -14.8521, 0, -38.1529)
 
@@ -1389,7 +1459,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 22.770
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8516, 0, 27.0637)
 
 [node name="wall_room_013" parent="Walls" instance=ExtResource("19_iys74")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 29.9713, 0, 27.0637)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 29.971, 0, 27.06)
 
 [node name="wall_room_014" parent="Walls" instance=ExtResource("19_iys74")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 27.604, 0, 27.0637)
@@ -2080,6 +2150,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 17.6879,
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.573916, 4.21901, -18.4014)
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn23" index="1"]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.67959, 0)
 light_energy = 0.8
 light_bake_mode = 2
 omni_attenuation = 0.840896
@@ -2098,7 +2169,7 @@ light_bake_mode = 2
 omni_attenuation = 1.07178
 
 [node name="LightSwitch" parent="CeilingLights/CeilingLightOn32/OmniLight3D" index="0" node_paths=PackedStringArray("light_mesh") instance=ExtResource("31_pv8rn")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.36112, -2.35392, 1.02114)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.36112, -2.19602, 1.02114)
 light_mesh = NodePath("../../CeilingLightOnLight")
 
 [node name="CeilingLightOn27" parent="CeilingLights" instance=ExtResource("13_srb8m")]
@@ -2180,9 +2251,11 @@ stream = ExtResource("31_ok8u3")
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 11.8815, 4.2381, -12.4255)
 
 [node name="OmniLight3D" parent="CeilingLights/BlackOutLight" index="1"]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.67959, 0)
 light_energy = 1.0
 light_specular = 0.276
 light_bake_mode = 2
+shadow_enabled = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CeilingLights/BlackOutLight"]
 stream = ExtResource("24_i2gyq")
@@ -2198,6 +2271,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.733882
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn36" index="1"]
 light_bake_mode = 2
+omni_attenuation = 0.933033
 
 [node name="LightSwitch" parent="CeilingLights/CeilingLightOn36/OmniLight3D" index="0" node_paths=PackedStringArray("light_mesh") instance=ExtResource("31_pv8rn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.403389, -2.32812, 2.80011)
@@ -2233,6 +2307,15 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.08925
 
 [node name="CeilingLightOn51" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.4967, 4.20832, 16.3974)
+
+[node name="OmniLight3D" parent="CeilingLights/CeilingLightOn51" index="1"]
+light_bake_mode = 2
+
+[node name="CeilingLightOn52" parent="CeilingLights" instance=ExtResource("13_srb8m")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.4967, 4.20832, 23.413)
+
+[node name="OmniLight3D" parent="CeilingLights/CeilingLightOn52" index="1"]
+light_bake_mode = 2
 
 [node name="LowWalls" type="Node3D" parent="."]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -14.9073, -3.38617, -0.465742)
@@ -2343,6 +2426,15 @@ shape = SubResource("BoxShape3D_v8r5x")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="MonsterDirector/CharacterBody3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.08408, -0.695307, 13.3193)
 shape = SubResource("BoxShape3D_iinbb")
+
+[node name="Scare_1_Collider" type="Area3D" parent="MonsterDirector/CharacterBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.2425)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MonsterDirector/CharacterBody3D/Scare_1_Collider"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16077, 0.473158, -1.07544)
+shape = SubResource("BoxShape3D_05mjm")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="MonsterDirector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.14039, 0.304497, -0.86543)
@@ -2458,7 +2550,11 @@ accepted_num = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6956, 1.14828, 19.3435)
 unlock_num = 1
 
+[node name="WallMeetingRoom_006" parent="." instance=ExtResource("46_1nv5r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8578, 0.00400001, -9.494)
+
 [connection signal="body_entered" from="MonsterDirector/CharacterBody3D/Area3D" to="MonsterDirector" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="MonsterDirector/CharacterBody3D/Scare_1_Collider" to="MonsterDirector" method="_on_scare_1_collider_body_entered"]
 
 [editable path="floor/ACTUAL FLOOR"]
 [editable path="Objects/OfficeCubicle4"]
@@ -2472,12 +2568,13 @@ unlock_num = 1
 [editable path="Objects/Desk/MailboxStand"]
 [editable path="Objects/Desk3"]
 [editable path="Objects/Desk3/MailboxStand"]
-[editable path="Walls/StaticBody3D34"]
 [editable path="Walls/StaticBody3D63"]
 [editable path="Walls/StaticBody3D64"]
 [editable path="Walls/StaticBody3D65"]
 [editable path="Walls/StaticBody3D84"]
 [editable path="Walls/StaticBody3D111"]
+[editable path="Walls/StaticBody3D130"]
+[editable path="Walls/StaticBody3D161"]
 [editable path="Walls/StaticBody3D36"]
 [editable path="Roof/CeilingLightOn3"]
 [editable path="CeilingLights/CeilingLightOn13"]
@@ -2493,6 +2590,9 @@ unlock_num = 1
 [editable path="CeilingLights/BlackOutLight"]
 [editable path="CeilingLights/CeilingLightOn36"]
 [editable path="CeilingLights/CeilingLightOn46"]
+[editable path="CeilingLights/CeilingLightOn8"]
+[editable path="CeilingLights/CeilingLightOn51"]
+[editable path="CeilingLights/CeilingLightOn52"]
 [editable path="MonsterDirector"]
 [editable path="Desk2"]
 [editable path="Desk2/MailboxStand"]

@@ -11,6 +11,7 @@ extends Node3D
 @onready var anim_scare_2:AnimationPlayer = $"../CeilingLights/CeilingLightOn23/AnimationPlayer"
 @onready var scare_1_location = $Scare_1_Monster_location
 @onready var scare_2_location = $Scare_2_Monster_location
+@onready var scare_1_anim:AnimationPlayer = $"../Walls/StaticBody3D161/Scare1"
 var player: Node = null
 var peak_monster_scare:bool = false
 func _ready():
@@ -29,19 +30,26 @@ func update_monster(pack_num):
 
 func _input(event):
 	if event.is_action_pressed("sprint"):
-		close_up_monster_scare()
-		monster_body.visible = true
+		#close_up_monster_scare()
+		#monster_body.visible = true
+		pass
 		#peak_monster_scare = true
 		#enable_monster()
 	#if event.is_action_pressed("crouch") and peak_monster_scare:
 		#black_out_scare()
-
+func first_monster_event():
+	scare_1_anim.play("slam_door")
+	await get_tree().create_timer(1).timeout
+	disable_monster()
 func _process(delta):
 	if peak_monster_scare:
 		peak_monster(delta)
 func enable_monster():
 	visible = true
 	peak_monster_scare = true
+func disable_monster():
+	monster_body.visible = false
+	peak_monster_scare = false
 func peak_monster(delta: float):
 	monster_body.visible = true
 	var direction_to_player = (player.global_transform.origin - monster_body.global_transform.origin).normalized()
@@ -69,3 +77,7 @@ func _on_area_3d_body_entered(body):
 	if body.name == "Player" and peak_monster_scare:
 		#visible = false
 		peak_monster_scare = false
+
+
+func _on_scare_1_collider_body_entered(_body):
+	first_monster_event()
