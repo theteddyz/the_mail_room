@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=28 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/GUI/gui_control_icons.gd" id="10_s8154"]
 [ext_resource type="Texture2D" uid="uid://cntqxoykqfoth" path="res://Assets/TemporaryAssets/F.png" id="10_x2084"]
 [ext_resource type="Texture2D" uid="uid://bkw37ucvregly" path="res://Assets/TemporaryAssets/M_MOUSE.png" id="11_ebd1s"]
+[ext_resource type="Texture2D" uid="uid://cfw8cgui6o6an" path="res://Assets/TemporaryAssets/IconSet_2 (2).png" id="11_v6kpy"]
 [ext_resource type="Texture2D" uid="uid://bsw0k3ptpy4jk" path="res://Assets/TemporaryAssets/Up Arrow.png" id="12_cgfu7"]
 [ext_resource type="Texture2D" uid="uid://j86xbk4osway" path="res://Assets/TemporaryAssets/Down Arrow.png" id="13_h5gkl"]
 
@@ -292,6 +293,31 @@ offset_top = 36.9999
 offset_right = 70.0001
 offset_bottom = 76.9999
 rotation = -1.5708
+texture = ExtResource("10_x2084")
+expand_mode = 1
+
+[node name="Drive" type="TextureRect" parent="IconManager"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -21.0
+offset_right = 19.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_v6kpy")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="IconManager/Drive"]
+layout_mode = 0
+offset_left = 1.00001
+offset_top = 31.0
+offset_right = 41.0
+offset_bottom = 71.0
 texture = ExtResource("10_x2084")
 expand_mode = 1
 

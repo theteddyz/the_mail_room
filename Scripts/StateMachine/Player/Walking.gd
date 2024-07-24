@@ -315,7 +315,7 @@ func general_hover(collider,delta):
 		if collider.name == "Mailcart":
 			handle_mailcart_hover(collider,delta)
 		elif collider.name == "Handlebar":
-			EventBus.emitCustomSignal("show_icon", ["light"])
+			EventBus.emitCustomSignal("show_icon", ["Drive"])
 		elif collider and "icon_type" in collider:
 			EventBus.emitCustomSignal("show_icon", [collider.icon_type])
 
