@@ -139,16 +139,15 @@ func handle_radio_interaction():
 
 func handle_general_interaction():
 	var collider = interactable_finder.get_interactable()
-	if collider.has_method("interact") or collider.has_method("grab_current_package"):
-		if collider and !is_holding_object:
-			match collider.name:
-				"Handlebar":
-					change_state.call("grabcart")
-				"Mailcart":
-					collider.grab_current_package()
-					gui_anim.show_icon(false)
-				_:
-					collider.interact()
+	if collider and !is_holding_object:
+		match collider.name:
+			"Handlebar":
+				change_state.call("grabcart")
+			"Mailcart":
+				collider.grab_current_package()
+				gui_anim.show_icon(false)
+			_:
+				collider.interact()
 
 func handle_inspect_released():
 	if object_last_held is Package:
@@ -228,19 +227,15 @@ func apply_movement(delta):
 	regular_move(delta)
 
 func handle_hovers(delta):
-	if interactable_finder.is_colliding() and !interact_cooldown and !is_reading and !disable_look_movement:
+	if interactable_finder.get_interactable() != null and !interact_cooldown and !is_reading and !disable_look_movement:
 		var collider = interactable_finder.get_collider()
-		if collider.has_method("interact") or collider.has_method("grab_current_package"):
-			if !is_holding_object:
-					general_hover(collider,delta)
-			else:
-				if is_holding_object and object_last_held is Package:
-					package_hover(collider)
-				elif is_holding_object and object_last_held is Key:
-					key_hover(collider)
+		if !is_holding_object:
+				general_hover(collider,delta)
 		else:
-			gui_anim.show_icon(false)
-			EventBus.emitCustomSignal("hide_icon")
+			if is_holding_object and object_last_held is Package:
+				package_hover(collider)
+			elif is_holding_object and object_last_held is Key:
+				key_hover(collider)
 	else:
 		gui_anim.show_icon(false)
 		EventBus.emitCustomSignal("hide_icon")

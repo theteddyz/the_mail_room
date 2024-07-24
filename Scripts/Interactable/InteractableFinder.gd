@@ -5,8 +5,10 @@ func _ready():
 	EventBus.connect("dropped_key",on_key_dropped)
 
 func get_interactable():
-	if is_colliding():
-		return get_collider()
+	if is_colliding() :
+		var collider = get_collider()
+		if collider and (collider.collision_layer & 2) != 0:
+			return collider
 	return null
 
 
