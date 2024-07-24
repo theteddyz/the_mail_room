@@ -51,13 +51,19 @@ const head_bopping_crouching_intensity:float = 0.05
 var head_bopping_vector:Vector2 = Vector2.ZERO
 var head_bopping_index:float = 0.0
 var head_bopping_current:float = 0.0
-
+#Leaning
+var lean_angle:float = 0.0
+const max_lean_angle:float = 15.0
+const lean_speed:float = 5.0
+var is_leaning:bool = false
+var original_neck_position:Vector3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	package_holder = persistent_state.find_child("PackageHolder")
 	mailcart = GameManager.get_mail_cart()
 	starting_height = neck.position.y
 	crouching_depth = starting_height - 0.5
+	original_neck_position = neck.position
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
@@ -71,6 +77,8 @@ func _input(event):
 		handle_mouse_motion(event)
 	elif event is InputEventMouseButton:
 		handle_mouse_button(event)
+	elif event is InputEventKey:
+		handle_keyboard_press(event)
 
 func handle_mouse_motion(event):
 	if !is_reading and !disable_look_movement:
@@ -93,6 +101,7 @@ func handle_mouse_button(event):
 		handle_scroll(false)
 
 
+
 func handle_interact_release():
 	if object_last_held != null:
 		if object_last_held.name != null:
@@ -104,6 +113,13 @@ func handle_interact_release():
 				#elif object_last_held.name == "Radio":
 					#handle_radio_interaction()
 
+func handle_keyboard_press(event):
+	if event.is_action_pressed("lean_left"):
+		lean_left()
+	elif event.is_action_pressed("lean_right"):
+		lean_right()
+	elif event.is_action_released("lean_left") or event.is_action_released("lean_right"):
+		stop_leaning()
 
 func handle_package_interaction():
 	var collider = interactable_finder.get_interactable()
@@ -150,14 +166,15 @@ func handle_general_interaction():
 				collider.interact()
 
 func handle_inspect_released():
-	if object_last_held is Package:
-		walking_speed = previous_walk_speed
-		sprinting_speed = previous_sprinting_speed
-		crouching_speed = previous_crouching_speed
-		object_last_held.stop_inspect()
-	else:
-		if object_last_held.has_method("stop_rotating"):
-			object_last_held.stop_rotating()
+	if object_last_held:
+		if object_last_held is Package:
+			walking_speed = previous_walk_speed
+			sprinting_speed = previous_sprinting_speed
+			crouching_speed = previous_crouching_speed
+			object_last_held.stop_inspect()
+		else:
+			if object_last_held.has_method("stop_rotating"):
+				object_last_held.stop_rotating()
 
 func handle_inspect():
 	var collider = interactable_finder.get_interactable()
@@ -215,10 +232,20 @@ func droppped_object(_mass:float,_object):
 	sprinting_speed = 10.0
 	is_holding_object = false
 
+func lean_left():
+	lean_angle = max_lean_angle
+	is_leaning = true
+func lean_right():
+	lean_angle = -max_lean_angle
+	is_leaning = true
+func stop_leaning():
+	lean_angle = 0.0
+	is_leaning = false
 
 func _process(delta):
 	apply_movement(delta)
 	handle_hovers(delta)
+	apply_leaning(delta)
 
 func apply_movement(delta):
 	persistent_state.velocity.y = 0
@@ -317,7 +344,24 @@ func handle_head_bopping(delta):
 	else:
 		headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
 
-
+func apply_leaning(delta):
+	if is_leaning:
+		var lean_offset = Vector3()
+		if lean_angle > 0:
+			lean_offset.x = -0.3  # Move left
+		elif lean_angle < 0:
+			lean_offset.x = 0.3   # Move right
+		neck.position = neck.position.lerp(original_neck_position + lean_offset, delta * lean_speed)
+		var current_rotation_quat = Quaternion().from_euler(neck.rotation)
+		var target_rotation_quat = Quaternion(Vector3(0, 0, 1), deg_to_rad(lean_angle))
+		var interpolated_rotation_quat = current_rotation_quat.slerp(target_rotation_quat, delta * lean_speed)
+		neck.rotation = interpolated_rotation_quat.get_euler()
+	else:
+		neck.position = neck.position.lerp(original_neck_position, delta * lean_speed)
+		var current_rotation_quat = Quaternion().from_euler(neck.rotation)
+		var target_rotation_quat = Quaternion(Vector3(0, 0, 1), deg_to_rad(lean_angle))
+		var interpolated_rotation_quat = current_rotation_quat.slerp(target_rotation_quat, delta * lean_speed)
+		neck.rotation = interpolated_rotation_quat.get_euler()
 
 func disable_movement_event(l:bool,w:bool):
 	persistent_state.velocity = Vector3.ZERO

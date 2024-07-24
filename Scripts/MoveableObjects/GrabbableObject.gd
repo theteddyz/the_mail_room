@@ -47,7 +47,7 @@ func _input(event):
 	if is_rotating and event is InputEventMouseMotion:
 		handle_mouse_motion(event.relative)
 		
-func _process(delta): #Tether the player to the object
+func _process(_delta): #Tether the player to the object
 	if is_picked_up:
 		var playerPosition:Vector3 = player.transform.origin;
 		playerPosition.y = 0;
