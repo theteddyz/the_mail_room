@@ -6,7 +6,7 @@
 shader = ExtResource("1_0mrfu")
 shader_parameter/wiggle = 0.03
 shader_parameter/wiggle_speed = 25.0
-shader_parameter/smear = 1.0
+shader_parameter/smear = 0.7
 shader_parameter/blur_samples = 15
 
 [node name="ColorRect" type="ColorRect"]
