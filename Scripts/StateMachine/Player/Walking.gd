@@ -172,9 +172,6 @@ func handle_general_interaction():
 	var collider = interactable_finder.get_interactable()
 	if collider and !is_holding_object:
 		match collider.name:
-			"Mailcart":
-				collider.grab_current_package()
-				gui_anim.show_icon(false)
 			_:
 				if collider.has_method("grab"):
 					collider.grab()

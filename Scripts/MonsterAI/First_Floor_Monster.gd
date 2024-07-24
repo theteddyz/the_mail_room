@@ -1,5 +1,5 @@
 extends Node3D
-@onready var monster_body:CharacterBody3D = $CharacterBody3D
+@onready var monster_body:CharacterBody3D = $monster
 @onready var black_out_light = $"../CeilingLights/BlackOutLight"
 @onready var cubicle_wall = $"../LowWalls/Cubicle_wall_monster"
 @onready var hallwayLight1 = $"../CeilingLights/HallwayLight1"
@@ -14,11 +14,13 @@ extends Node3D
 @onready var scare_1_anim:AnimationPlayer = $"../Walls/StaticBody3D161/Scare1"
 var player: Node = null
 var peak_monster_scare:bool = false
+var monster_seen_:bool = false
 func _ready():
 	monster_body.visible = false
 	player = GameManager.player_reference
 	EventBus.connect("peaking_monster",enable_monster)
 	EventBus.connect("package_delivered",update_monster)
+	EventBus.connect("monster_seen", monster_seen)
 
 func update_monster(pack_num):
 	if pack_num == 2:
@@ -38,9 +40,11 @@ func _input(event):
 	#if event.is_action_pressed("crouch") and peak_monster_scare:
 		#black_out_scare()
 func first_monster_event():
-	scare_1_anim.play("slam_door")
-	await get_tree().create_timer(1).timeout
-	disable_monster()
+	if monster_seen_:
+		scare_1_anim.play("slam_door")
+		audio_player.play()
+		await get_tree().create_timer(1).timeout
+		disable_monster()
 func _process(delta):
 	if peak_monster_scare:
 		peak_monster(delta)
@@ -48,6 +52,8 @@ func enable_monster():
 	visible = true
 	peak_monster_scare = true
 func disable_monster():
+	var col = monster_body.find_child("CollisionShape3D")
+	col.position = Vector3.ZERO
 	monster_body.visible = false
 	peak_monster_scare = false
 func peak_monster(delta: float):
@@ -74,10 +80,8 @@ func close_up_monster_scare():
 	anim_scare_2.play("monster_scare_2")
 
 func _on_area_3d_body_entered(body):
-	if body.name == "Player" and peak_monster_scare:
-		#visible = false
-		peak_monster_scare = false
-
-
-func _on_scare_1_collider_body_entered(_body):
 	first_monster_event()
+
+func monster_seen():
+	if monster_body.visible == true:
+		monster_seen_ = true

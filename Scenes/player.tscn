@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=24 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://8uuomvgrmu1b" path="res://Assets/Shaders/outline_shader.tscn" id="4_ao0s0"]
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/PlayerLightOptimization.gd" id="5_ic8gt"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Player/VisionArea.gd" id="6_f3pv2"]
+[ext_resource type="PackedScene" uid="uid://c2urey7cs28p7" path="res://Assets/TemporaryAssets/cone.tscn" id="6_n1vqh"]
 [ext_resource type="Script" path="res://Scenes/LightDetector.gd" id="7_geagn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
@@ -45,6 +47,9 @@ radius = 8.51913
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_06j8k"]
 size = Vector3(16.6539, 12.44, 40.1273)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ol6wy"]
+points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.980814, -0.000195742, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
 collision_layer = 20
@@ -169,6 +174,26 @@ shape = SubResource("SphereShape3D_0heh4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129657, 0, -19.5101)
 shape = SubResource("BoxShape3D_06j8k")
 
+[node name="VisionArea" type="Area3D" parent="Neck/Head/HeadbopRoot"]
+collision_layer = 4096
+collision_mask = 4096
+script = ExtResource("6_f3pv2")
+
+[node name="Cone" parent="Neck/Head/HeadbopRoot/VisionArea" instance=ExtResource("6_n1vqh")]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, -9.80388)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/VisionArea"]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, -9.80388)
+shape = SubResource("ConvexPolygonShape3D_ol6wy")
+
+[node name="Vision_Timer" type="Timer" parent="Neck/Head/HeadbopRoot/VisionArea"]
+wait_time = 0.25
+autostart = true
+
+[node name="VisionRayCast" type="RayCast3D" parent="Neck/Head/HeadbopRoot/VisionArea"]
+target_position = Vector3(0, 7.08, -100)
+
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 8323
@@ -209,4 +234,5 @@ autostart = true
 
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]
+[connection signal="timeout" from="Neck/Head/HeadbopRoot/VisionArea/Vision_Timer" to="Neck/Head/HeadbopRoot/VisionArea" method="_on_vision_timer_timeout"]
 [connection signal="timeout" from="LightDetection/Refresh Timer" to="LightDetection" method="timerdown"]
