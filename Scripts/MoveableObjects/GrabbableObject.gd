@@ -88,7 +88,7 @@ func handle_pickup(delta):
 			stop_rotating()
 		dropMe(false)
 #Grabbing Code
-func interact():
+func grab():
 	if pickup_timer.is_stopped():
 		if !timerAdded:
 			add_child(pickup_timer)

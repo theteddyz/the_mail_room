@@ -20,7 +20,7 @@ var playerHead
 var player: CharacterBody3D
 var is_inspecting = false
 var is_returning = false
-var lerp_speed = 2.0
+var lerp_speed = 5.0
 var inside_mail_cart:bool
 var starting_path
 func _ready():
@@ -31,7 +31,6 @@ func _ready():
 
 func _process(delta):
 	if is_inspecting:
-		
 		position = position.lerp(inspect_position, lerp_speed * delta)
 		rotation = rotation.lerp(inspect_rotation, lerp_speed * delta)
 		if position.distance_to(inspect_position) < 0.1 and rotation.distance_to(inspect_rotation) < 0.1:
@@ -58,13 +57,19 @@ func grabbed():
 
 func dropped():
 	if is_inspecting or is_returning:
-		self.linear_velocity = Vector3.ZERO 
-		self.angular_velocity = Vector3.ZERO
 		is_inspecting = false
 		is_returning = false
-	self.freeze = false
-	reparent(player.get_parent(), true)
-	EventBus.emitCustomSignal("dropped_object",[self.mass,self])
+		self.linear_velocity = Vector3.ZERO 
+		self.angular_velocity = Vector3.ZERO
+		self.freeze = false
+		reparent(player.get_parent(), true)
+		EventBus.emitCustomSignal("dropped_object",[self.mass,self])
+	else:
+		is_inspecting = false
+		is_returning = false
+		self.freeze = false
+		reparent(player.get_parent(), true)
+		EventBus.emitCustomSignal("dropped_object",[self.mass,self])
 
 func inspect():
 	is_inspecting = true

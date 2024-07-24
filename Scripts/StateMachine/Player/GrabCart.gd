@@ -41,11 +41,11 @@ func _process(delta):
 			change_state.call("carting")
 	
 	
-	if Input.is_action_pressed("drive"):
-		is_assuming_cart_position = false
-		neck.position.y = initial_head_position.y
-		persistent_state.set_collision_mask_value(5, true)	
-		change_state.call("walking")
+	#if Input.is_action_pressed("drive"):
+		#is_assuming_cart_position = false
+		#neck.position.y = initial_head_position.y
+		#persistent_state.set_collision_mask_value(5, true)	
+		#change_state.call("walking")
 	
 #func _physics_process(delta):
 	

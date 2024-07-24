@@ -36,8 +36,10 @@ var is_reading:bool = false
 var standing_is_blocked:bool = false
 var held_mass:float
 var is_holding_object:bool = false
+var is_holding_package:bool = false
 var is_looking_at_mailcart:bool = false
 var object_last_held = null
+var package_last_held = null
 var disable_look_movement:bool = false
 var disable_walk_movement:bool = false
 var package_holder
@@ -88,7 +90,7 @@ func handle_mouse_motion(event):
 
 func handle_mouse_button(event):
 	if event.is_action_released("interact"):
-		handle_interact_release()
+		pass
 	elif  event.is_action_pressed("interact"):
 		handle_general_interaction()
 	elif event.is_action_pressed("inspect"):
@@ -102,16 +104,7 @@ func handle_mouse_button(event):
 
 
 
-func handle_interact_release():
-	if object_last_held != null:
-		if object_last_held.name != null:
-			if is_holding_object and object_last_held:
-				if object_last_held is Package:
-					handle_package_interaction()
-				if object_last_held is Key:
-					handle_key_interaction()
-				#elif object_last_held.name == "Radio":
-					#handle_radio_interaction()
+
 
 func handle_keyboard_press(event):
 	if event.is_action_pressed("lean_left"):
@@ -120,33 +113,55 @@ func handle_keyboard_press(event):
 		lean_right()
 	elif event.is_action_released("lean_left") or event.is_action_released("lean_right"):
 		stop_leaning()
+	elif event.is_action_pressed("drive"):
+		var collider = interactable_finder.get_interactable()
+		if package_last_held and package_last_held is Package:
+			if collider != null and collider.name == "ButtonRB2":
+				collider.interact()
+			else:
+				handle_package_interaction()
+		elif package_last_held and package_last_held is Key:
+			if collider != null and collider.name == "ButtonRB2":
+				collider.interact()
+			else:
+				handle_key_interaction()
+		elif collider:
+			if collider.name == "Mailcart":
+				collider.grab_current_package()
+				gui_anim.show_icon(false)
+			if collider.name == "Handlebar":
+				change_state.call("grabcart")
+			elif collider.has_method("interact"):
+				collider.interact()
 
 func handle_package_interaction():
 	var collider = interactable_finder.get_interactable()
 	if collider != null:
 		match collider.name:
 			"Mailcart":
-				collider.add_package(object_last_held)
-				object_last_held = null
-				is_holding_object = false
+				collider.add_package(package_last_held)
+				package_last_held = null
+				is_holding_package = false
 			"MailboxStand":
-				collider.find_child("PackageDestination").deliver(object_last_held)
-				object_last_held = null
-				is_holding_object = false
+				collider.find_child("PackageDestination").deliver(package_last_held)
+				package_last_held = null
+				is_holding_package = false
 			_:
-				object_last_held.dropped()
+				package_last_held.dropped()
 	else:
-		object_last_held.dropped()
+		package_last_held.dropped()
+		package_last_held = null
+		is_holding_package = false
 
 func handle_key_interaction():
 	var collider = interactable_finder.get_interactable()
 	if collider != null:
 		if collider.name == "Door_Lock":
-			collider.check_key(object_last_held)
+			collider.check_key(package_last_held)
 		else:
-			object_last_held.dropped()
+			package_last_held.dropped()
 	else:
-		object_last_held.dropped()
+		package_last_held.dropped()
 
 func handle_radio_interaction():
 	if interactable_finder.is_interactable("Mailcart"):
@@ -157,44 +172,41 @@ func handle_general_interaction():
 	var collider = interactable_finder.get_interactable()
 	if collider and !is_holding_object:
 		match collider.name:
-			"Handlebar":
-				change_state.call("grabcart")
 			"Mailcart":
 				collider.grab_current_package()
 				gui_anim.show_icon(false)
 			_:
-				collider.interact()
+				if collider.has_method("grab"):
+					collider.grab()
 
 func handle_inspect_released():
-	if object_last_held:
-		if object_last_held is Package:
+	if package_last_held:
+		if package_last_held is Package:
 			walking_speed = previous_walk_speed
 			sprinting_speed = previous_sprinting_speed
 			crouching_speed = previous_crouching_speed
-			object_last_held.stop_inspect()
-		else:
-			if object_last_held.has_method("stop_rotating"):
-				object_last_held.stop_rotating()
+			package_last_held.stop_inspect()
+	elif object_last_held:
+		if object_last_held.has_method("stop_rotating"):
+			object_last_held.stop_rotating()
 
 func handle_inspect():
 	var collider = interactable_finder.get_interactable()
 	if collider:
 		match collider:
-			var col when col.name == "Mailcart":
-				print("Inspect pressed on MAILCART (will inspect package)")
-				# TODO: Implement mailcart.inspect()
 			_:
-				if object_last_held.has_method("start_rotating"):
-					object_last_held.start_rotating()
+				if object_last_held:
+					if object_last_held.has_method("start_rotating"):
+						object_last_held.start_rotating()
 	else:
-		if is_holding_object and object_last_held is Package:
+		if is_holding_package and package_last_held is Package:
 			previous_walk_speed = walking_speed
 			previous_crouching_speed = crouching_speed
 			previous_sprinting_speed = sprinting_speed
 			walking_speed = 3
 			sprinting_speed = 5
 			crouching_speed = 2
-			object_last_held.inspect()
+			package_last_held.inspect()
 
 
 func handle_scroll(is_down):
@@ -216,21 +228,36 @@ func turnOffInteractCooldown():
 	interact_cooldown = false
 
 func held_object(mass:float, object):
-	is_holding_object = true
-	object_last_held = object
-	walking_speed = (walking_speed/mass) + 1
-	sprinting_speed = (sprinting_speed/mass) + 1
-	crouching_speed = (crouching_speed/mass) + 1
+	if object is Package or object is Key:
+		package_last_held = object
+		is_holding_package = true
+		walking_speed = (walking_speed/mass) + 1
+		sprinting_speed = (sprinting_speed/mass) + 1
+		crouching_speed = (crouching_speed/mass) + 1
+	else:
+		is_holding_object = true
+		object_last_held = object
+		walking_speed = (walking_speed/mass) + 1
+		sprinting_speed = (sprinting_speed/mass) + 1
+		crouching_speed = (crouching_speed/mass) + 1
 
 
 
 
 
 func droppped_object(_mass:float,_object):
-	crouching_speed = 3.1
-	walking_speed = 5.0
-	sprinting_speed = 10.0
-	is_holding_object = false
+	if _object is Package or _object is Key:
+		is_holding_package = false
+		package_last_held = null
+		crouching_speed = 3.1
+		walking_speed = 5.0
+		sprinting_speed = 10.0
+	else:
+		crouching_speed = 3.1
+		walking_speed = 5.0
+		sprinting_speed = 10.0
+		is_holding_object = false
+		object_last_held = null
 
 func lean_left():
 	lean_angle = max_lean_angle
@@ -256,13 +283,13 @@ func apply_movement(delta):
 func handle_hovers(delta):
 	if interactable_finder.get_interactable() != null and !interact_cooldown and !is_reading and !disable_look_movement:
 		var collider = interactable_finder.get_collider()
-		if !is_holding_object:
+		if !is_holding_object and !is_holding_package:
 				general_hover(collider,delta)
-		else:
-			if is_holding_object and object_last_held is Package:
-				package_hover(collider)
-			elif is_holding_object and object_last_held is Key:
-				key_hover(collider)
+		elif is_holding_package:
+			if is_holding_package and package_last_held is Package and collider != package_last_held:
+				package_hover(collider,delta)
+			elif is_holding_package and package_last_held is Key:
+				key_hover(collider,delta)
 	else:
 		gui_anim.show_icon(false)
 		EventBus.emitCustomSignal("hide_icon")
@@ -271,22 +298,26 @@ func handle_mailcart_hover(collider, delta):
 	collider.mailcart_hover(delta)
 
 
-func package_hover(collider):
+func package_hover(collider,delta):
 	if collider.name == "MailboxStand" or collider.name == "Mailcart":
 		EventBus.emitCustomSignal("show_icon", ["deliverable"])
+	else:
+		general_hover(collider,delta)
 
-func key_hover(collider):
+func key_hover(collider,delta):
 	if collider.name == "Door_Lock":
 		EventBus.emitCustomSignal("show_icon", ["key"])
+	else:
+		general_hover(collider,delta)
 
 func general_hover(collider,delta):
 	if collider != null:
 		if collider.name == "Mailcart":
 			handle_mailcart_hover(collider,delta)
-		if collider and "icon_type" in collider:
-			EventBus.emitCustomSignal("show_icon", [interactable_finder.get_collider().icon_type])
-		else:
-			EventBus.emitCustomSignal("show_icon", ["grab"])
+		elif collider.name == "Handlebar":
+			EventBus.emitCustomSignal("show_icon", ["Drive"])
+		elif collider and "icon_type" in collider:
+			EventBus.emitCustomSignal("show_icon", [collider.icon_type])
 
 func check_obstruction_raycasts():
 	standing_is_blocked = standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding() or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding()
@@ -352,13 +383,13 @@ func apply_leaning(delta):
 		elif lean_angle < 0:
 			lean_offset.x = 0.3   # Move right
 		neck.position = neck.position.lerp(original_neck_position + lean_offset, delta * lean_speed)
-		var current_rotation_quat = Quaternion().from_euler(neck.rotation)
+		var current_rotation_quat = Quaternion.from_euler(neck.rotation)
 		var target_rotation_quat = Quaternion(Vector3(0, 0, 1), deg_to_rad(lean_angle))
 		var interpolated_rotation_quat = current_rotation_quat.slerp(target_rotation_quat, delta * lean_speed)
 		neck.rotation = interpolated_rotation_quat.get_euler()
 	else:
 		neck.position = neck.position.lerp(original_neck_position, delta * lean_speed)
-		var current_rotation_quat = Quaternion().from_euler(neck.rotation)
+		var current_rotation_quat = Quaternion.from_euler(neck.rotation)
 		var target_rotation_quat = Quaternion(Vector3(0, 0, 1), deg_to_rad(lean_angle))
 		var interpolated_rotation_quat = current_rotation_quat.slerp(target_rotation_quat, delta * lean_speed)
 		neck.rotation = interpolated_rotation_quat.get_euler()
