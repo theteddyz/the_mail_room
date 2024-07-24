@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=27 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -6,11 +6,13 @@
 [ext_resource type="Script" path="res://Scripts/GUI/FPSMeter.gd" id="3_bccgp"]
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="4_bqt88"]
 [ext_resource type="Script" path="res://Scripts/GUI/IconManager.gd" id="4_w25uf"]
+[ext_resource type="Texture2D" uid="uid://betep1m6vblv0" path="res://Assets/TemporaryAssets/L_MOUSE.png" id="6_rp1kh"]
 [ext_resource type="Texture2D" uid="uid://dmaieugbx5o5v" path="res://Assets/TemporaryAssets/transparent-back-to-school-icon-idea-icon-light-bulb-icon-606d59b7138822.65835703161777912708-removebg-preview.png" id="6_vkuja"]
 [ext_resource type="Texture2D" uid="uid://clelsume2xjky" path="res://Assets/TemporaryAssets/transparnetmailicon.png" id="7_0rb4o"]
 [ext_resource type="Texture2D" uid="uid://noleeqf87dxj" path="res://Assets/TemporaryAssets/Key_20220327175502.png" id="8_tht5l"]
 [ext_resource type="Script" path="res://Scripts/GUI/AdressDisplayer.gd" id="9_2tsae"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_control_icons.gd" id="10_s8154"]
+[ext_resource type="Texture2D" uid="uid://cntqxoykqfoth" path="res://Assets/TemporaryAssets/F.png" id="10_x2084"]
 [ext_resource type="Texture2D" uid="uid://bkw37ucvregly" path="res://Assets/TemporaryAssets/M_MOUSE.png" id="11_ebd1s"]
 [ext_resource type="Texture2D" uid="uid://bsw0k3ptpy4jk" path="res://Assets/TemporaryAssets/Up Arrow.png" id="12_cgfu7"]
 [ext_resource type="Texture2D" uid="uid://j86xbk4osway" path="res://Assets/TemporaryAssets/Down Arrow.png" id="13_h5gkl"]
@@ -209,6 +211,15 @@ grow_vertical = 2
 scale = Vector2(0.305, 0.305)
 texture = ExtResource("4_bqt88")
 
+[node name="TextureRect" type="TextureRect" parent="IconManager/grab"]
+layout_mode = 0
+offset_left = 6.55738
+offset_top = 118.033
+offset_right = 106.557
+offset_bottom = 218.033
+texture = ExtResource("6_rp1kh")
+expand_mode = 1
+
 [node name="light" type="TextureRect" parent="IconManager"]
 layout_mode = 1
 anchors_preset = 8
@@ -223,6 +234,14 @@ offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_vkuja")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="IconManager/light"]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 40.0
+offset_bottom = 70.0
+texture = ExtResource("10_x2084")
 expand_mode = 1
 
 [node name="deliverable" type="TextureRect" parent="IconManager"]
@@ -241,6 +260,14 @@ grow_vertical = 2
 texture = ExtResource("7_0rb4o")
 expand_mode = 1
 
+[node name="TextureRect" type="TextureRect" parent="IconManager/deliverable"]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 40.0
+offset_bottom = 70.0
+texture = ExtResource("10_x2084")
+expand_mode = 1
+
 [node name="key" type="TextureRect" parent="IconManager"]
 layout_mode = 1
 anchors_preset = 8
@@ -256,6 +283,16 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5708
 texture = ExtResource("8_tht5l")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="IconManager/key"]
+layout_mode = 0
+offset_left = 30.0001
+offset_top = 36.9999
+offset_right = 70.0001
+offset_bottom = 76.9999
+rotation = -1.5708
+texture = ExtResource("10_x2084")
 expand_mode = 1
 
 [node name="FPSMeter" type="Label" parent="."]
@@ -315,8 +352,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = 24.0
-offset_bottom = 24.0
+offset_left = -1.0
+offset_top = 38.0
+offset_right = -1.0
+offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 

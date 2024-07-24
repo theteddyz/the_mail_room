@@ -116,13 +116,21 @@ func handle_keyboard_press(event):
 	elif event.is_action_pressed("drive"):
 		var collider = interactable_finder.get_interactable()
 		if package_last_held and package_last_held is Package:
-			handle_package_interaction()
+			if collider != null and collider.name == "ButtonRB2":
+				collider.interact()
+			else:
+				handle_package_interaction()
 		elif package_last_held and package_last_held is Key:
-			handle_key_interaction()
+			if collider != null and collider.name == "ButtonRB2":
+				collider.interact()
+			else:
+				handle_key_interaction()
 		elif collider:
 			if collider.name == "Mailcart":
 				collider.grab_current_package()
 				gui_anim.show_icon(false)
+			if collider.name == "Handlebar":
+				change_state.call("grabcart")
 			elif collider.has_method("interact"):
 				collider.interact()
 
@@ -164,8 +172,6 @@ func handle_general_interaction():
 	var collider = interactable_finder.get_interactable()
 	if collider and !is_holding_object:
 		match collider.name:
-			"Handlebar":
-				change_state.call("grabcart")
 			"Mailcart":
 				collider.grab_current_package()
 				gui_anim.show_icon(false)
@@ -188,12 +194,10 @@ func handle_inspect():
 	var collider = interactable_finder.get_interactable()
 	if collider:
 		match collider:
-			var col when col.name == "Mailcart":
-				print("Inspect pressed on MAILCART (will inspect package)")
-				# TODO: Implement mailcart.inspect()
 			_:
-				if object_last_held.has_method("start_rotating"):
-					object_last_held.start_rotating()
+				if object_last_held:
+					if object_last_held.has_method("start_rotating"):
+						object_last_held.start_rotating()
 	else:
 		if is_holding_package and package_last_held is Package:
 			previous_walk_speed = walking_speed
@@ -310,10 +314,10 @@ func general_hover(collider,delta):
 	if collider != null:
 		if collider.name == "Mailcart":
 			handle_mailcart_hover(collider,delta)
-		if collider and "icon_type" in collider:
-			EventBus.emitCustomSignal("show_icon", [interactable_finder.get_collider().icon_type])
-		else:
-			EventBus.emitCustomSignal("show_icon", ["grab"])
+		elif collider.name == "Handlebar":
+			EventBus.emitCustomSignal("show_icon", ["light"])
+		elif collider and "icon_type" in collider:
+			EventBus.emitCustomSignal("show_icon", [collider.icon_type])
 
 func check_obstruction_raycasts():
 	standing_is_blocked = standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding() or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding()
