@@ -2253,6 +2253,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 11.8815,
 [node name="OmniLight3D" parent="CeilingLights/BlackOutLight" index="1"]
 transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.67959, 0)
 light_energy = 1.0
+light_volumetric_fog_energy = 0.0
 light_specular = 0.276
 light_bake_mode = 2
 shadow_enabled = true

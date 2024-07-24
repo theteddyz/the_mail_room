@@ -170,7 +170,7 @@ shape = SubResource("BoxShape3D_06j8k")
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -2)
-collision_mask = 8322
+collision_mask = 8323
 collide_with_areas = true
 script = ExtResource("5_fh3d4")
 
