@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/PlayerLightOptimization.gd" id="5_ic8gt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/VisionArea.gd" id="6_f3pv2"]
-[ext_resource type="PackedScene" path="res://Assets/TemporaryAssets/cone.tscn" id="6_n1vqh"]
+[ext_resource type="PackedScene" uid="uid://c2urey7cs28p7" path="res://Assets/TemporaryAssets/cone.tscn" id="6_n1vqh"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
@@ -146,6 +146,7 @@ script = ExtResource("2_eyvdn")
 [node name="Camera" type="Camera3D" parent="Neck/Head/HeadbopRoot"]
 cull_mask = 524287
 doppler_tracking = 2
+current = true
 fov = 60.0
 
 [node name="ItemHolder" type="Marker3D" parent="Neck/Head/HeadbopRoot/Camera"]
@@ -200,10 +201,6 @@ camera = NodePath("../Camera")
 timer = NodePath("Refresh Timer")
 closelight = NodePath("SpotLight3D")
 
-[node name="SpotLight3D" parent="Neck/Head/HeadbopRoot/LightDetection" index="1"]
-spot_range = 2.5
-spot_angle = 75.0
-
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 8323
@@ -230,7 +227,6 @@ target_position = Vector3(0, 1.095, 0)
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72236, 0)
-current = true
 
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]
