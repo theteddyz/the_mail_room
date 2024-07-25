@@ -11,7 +11,7 @@ extends Node3D
 @onready var anim_scare_2:AnimationPlayer = $"../CeilingLights/CeilingLightOn23/AnimationPlayer"
 @onready var scare_1_location = $Scare_1_Monster_location
 @onready var scare_2_location = $Scare_2_Monster_location
-@onready var scare_1_anim:AnimationPlayer = $"../Walls/StaticBody3D161/Scare1"
+@onready var scare_1_anim:AnimationPlayer = $"../NavigationRegion3D/Walls/StaticBody3D161/Scare1"
 var player: Node = null
 var peak_monster_scare:bool = false
 var monster_seen_:bool = false
