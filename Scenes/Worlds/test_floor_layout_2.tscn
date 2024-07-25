@@ -611,8 +611,48 @@ transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813
 start_position = Vector3(0, 0, -1.575)
 end_position = Vector3(0, 0, 0.83)
 
+[node name="NavigationLink3D4" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -12.7878, 0, -26.0204)
+start_position = Vector3(0, 0, -1.575)
+end_position = Vector3(0, 0, 0.83)
+
+[node name="NavigationLink3D5" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -12.7878, 0, -31.7425)
+start_position = Vector3(0, 0, -1.575)
+end_position = Vector3(0, 0, 0.83)
+
+[node name="NavigationLink3D6" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -16.4795, 0, -31.7425)
+start_position = Vector3(0, 0, -1.575)
+end_position = Vector3(0, 0, 0.83)
+
+[node name="NavigationLink3D7" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -16.4795, 0, -25.6786)
+start_position = Vector3(0, 0, -1.575)
+end_position = Vector3(0, 0, 0.83)
+
+[node name="NavigationLink3D9" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -7.56801, 0, 16.5086)
+start_position = Vector3(0, 0, -1.575)
+end_position = Vector3(0, 0, 0.83)
+
+[node name="NavigationLink3D10" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(-0.646766, 0, 0.017388, 0, 0.647, 0, -0.017388, 0, -0.646766, -0.747933, 0, 23.8926)
+start_position = Vector3(0, 0, -1.575)
+end_position = Vector3(0, 0, 0.83)
+
+[node name="NavigationLink3D8" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -16.56, 0, -20.0095)
+start_position = Vector3(0, 0, -2.785)
+end_position = Vector3(0, 0, 0.83)
+
 [node name="NavigationLink3D2" type="NavigationLink3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 28.4739, 0, -2.5795)
+start_position = Vector3(0, 0, -1.575)
+end_position = Vector3(0, 0, 0.83)
+
+[node name="NavigationLink3D3" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 22.4489, 0, -2.5795)
 start_position = Vector3(0, 0, -1.575)
 end_position = Vector3(0, 0, 0.83)
 
@@ -1403,7 +1443,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7306, 0, -2.55262)
 
 [node name="OfficeCubicle9" parent="Objects" instance=ExtResource("4_gk0n2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0361, 0, -2.55262)
-visible = false
 
 [node name="Desk10" parent="Objects" instance=ExtResource("6_5x7jy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5977, 0, 3.55321)
