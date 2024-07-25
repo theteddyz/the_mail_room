@@ -27,6 +27,7 @@ signal package_delivered(package_num:int)
 signal package_failed_delivery()
 signal picked_up_key()
 signal dropped_key()
+signal monster_seen()
 ###############################################################################
 
 #Connecting Functions
