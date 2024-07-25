@@ -3,6 +3,7 @@ extends Control
 @onready var icon_manager:Node = $IconManager
 @onready var adress_Displayer:Node= $Adress_Displayer
 @onready var controls_Displayer:Node = $Controls
+@onready var stamina_bar:Node = $Stamina
 func get_item_reader()->Node:
 	return item_reader
 func get_icon_manager() ->Node:
@@ -12,3 +13,5 @@ func get_address_displayer() -> Node:
 	return adress_Displayer
 func get_control_displayer() -> Node:
 	return controls_Displayer
+func get_stamina_bar() -> Node:
+	return stamina_bar

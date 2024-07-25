@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=29 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cfw8cgui6o6an" path="res://Assets/TemporaryAssets/IconSet_2 (2).png" id="11_v6kpy"]
 [ext_resource type="Texture2D" uid="uid://bsw0k3ptpy4jk" path="res://Assets/TemporaryAssets/Up Arrow.png" id="12_cgfu7"]
 [ext_resource type="Texture2D" uid="uid://j86xbk4osway" path="res://Assets/TemporaryAssets/Down Arrow.png" id="13_h5gkl"]
+[ext_resource type="Script" path="res://Scripts/GUI/Stamina.gd" id="18_rhd6x"]
 
 [sub_resource type="Gradient" id="Gradient_10so2"]
 
@@ -467,5 +468,34 @@ anchor_bottom = 1.0
 offset_left = -107.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="Stamina" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+script = ExtResource("18_rhd6x")
+
+[node name="ProgressBar" type="ProgressBar" parent="Stamina"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -110.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 200.0
+fill_mode = 3
+show_percentage = false
+
+[node name="TextureRect" type="TextureRect" parent="Stamina"]
+layout_mode = 0
+offset_top = -608.0
+offset_right = 40.0
+offset_bottom = -568.0
 
 [connection signal="timeout" from="Adress_Displayer/Timer" to="Adress_Displayer" method="_on_timer_timeout"]

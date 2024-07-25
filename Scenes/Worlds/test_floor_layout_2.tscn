@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=70 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -563,6 +563,9 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lj4tk"]
 size = Vector3(3.98169, 2.98938, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d5cxc"]
+size = Vector3(5.68506, 2.65576, 1.86023)
 
 [node name="world" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -2434,6 +2437,20 @@ collision_mask = 16
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MonsterDirector/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109253, 0.99469, 0.308744)
 shape = SubResource("BoxShape3D_lj4tk")
+
+[node name="Area3D2" type="Area3D" parent="MonsterDirector/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9754, 0, 23.1175)
+
+[node name="Ambient_scare_1" type="Area3D" parent="MonsterDirector"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MonsterDirector/Ambient_scare_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7645, 1.35289, -17.4852)
+shape = SubResource("BoxShape3D_d5cxc")
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="MonsterDirector/Ambient_scare_1"]
+stream = ExtResource("24_os1ty")
 
 [node name="Mailcart" parent="." instance=ExtResource("30_gqjq2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.521, 0.267288, 7.169)

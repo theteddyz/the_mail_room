@@ -28,6 +28,13 @@ var crouching_lerp_speed:float = 0.18
 # var current_speed = 5, this variable is used by parent
 var direction:Vector3 = Vector3.ZERO
 var gui_anim:Control
+#Sprint Stamina 
+var max_stamina:float = 200.0
+var current_stamina:float = 200.0
+var stamina_depletion_rate:float = 20.0
+var stamina_recovery_rate:float = 10.0
+var is_sprinting:bool = false
+var can_sprint:bool = true
 # Others
 var starting_height:float
 var crouching_depth:float
@@ -60,6 +67,7 @@ const lean_speed:float = 5.0
 var is_leaning:bool = false
 var original_neck_position:Vector3
 # Called when the node enters the scene tree for the first time.
+var stamina_bar
 func _ready():
 	package_holder = persistent_state.find_child("PackageHolder")
 	mailcart = GameManager.get_mail_cart()
@@ -71,7 +79,7 @@ func _ready():
 	EventBus.connect("dropped_object",droppped_object)
 	EventBus.connect("disable_player_movement",disable_movement_event)
 	gui_anim = Gui.get_control_displayer()
-
+	stamina_bar = Gui.get_stamina_bar()
 
 
 func _input(event):
@@ -101,9 +109,6 @@ func handle_mouse_button(event):
 		handle_scroll(true)
 	elif event.is_action_pressed("scroll package up"):
 		handle_scroll(false)
-
-
-
 
 
 func handle_keyboard_press(event):
@@ -270,6 +275,8 @@ func _process(delta):
 	apply_movement(delta)
 	handle_hovers(delta)
 	apply_leaning(delta)
+	recover_stamina(delta)
+	stamina_bar.update_stamina_bar(current_stamina)
 
 func apply_movement(delta):
 	persistent_state.velocity.y = 0
@@ -314,6 +321,7 @@ func general_hover(collider,delta):
 		if collider.name == "Mailcart":
 			handle_mailcart_hover(collider,delta)
 		elif collider.name == "Handlebar":
+			gui_anim.show_icon(false)
 			EventBus.emitCustomSignal("show_icon", ["Drive"])
 		elif collider and "icon_type" in collider:
 			EventBus.emitCustomSignal("show_icon", [collider.icon_type])
@@ -353,14 +361,25 @@ func stand_or_walk(delta):
 	standing_collision_shape.disabled = false
 	crouching_collision_shape.disabled = true
 	neck.position.y = lerp(neck.position.y, starting_height, crouching_lerp_speed)
-	if Input.is_action_pressed("sprint"):
-		current_speed = sprinting_speed
-		head_bopping_current = head_bopping_sprinting_intensity
-		head_bopping_index += head_bopping_sprinting_speed * delta
+	if Input.is_action_pressed("sprint") and can_sprint:
+		if current_stamina > 0:
+			current_speed = sprinting_speed
+			head_bopping_current = head_bopping_sprinting_intensity
+			head_bopping_index += head_bopping_sprinting_speed * delta
+			is_sprinting = true
+			current_stamina -= stamina_depletion_rate * delta
+		else:
+			current_speed = walking_speed
+			head_bopping_current = head_bopping_walking_intensity
+			head_bopping_index += head_bopping_walking_speed * delta
+			is_sprinting = false
 	else:
 		current_speed = walking_speed
 		head_bopping_current = head_bopping_walking_intensity
 		head_bopping_index += head_bopping_walking_speed * delta
+		is_sprinting = false
+	if not Input.is_action_pressed("sprint"):
+		can_sprint = true
 
 func handle_head_bopping(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
@@ -392,6 +411,14 @@ func apply_leaning(delta):
 		var target_rotation_quat = Quaternion(Vector3(0, 0, 1), deg_to_rad(lean_angle))
 		var interpolated_rotation_quat = current_rotation_quat.slerp(target_rotation_quat, delta * lean_speed)
 		neck.rotation = interpolated_rotation_quat.get_euler()
+
+
+func recover_stamina(delta):
+	if not is_sprinting and current_stamina < max_stamina:
+		current_stamina += stamina_recovery_rate * delta
+		if current_stamina > max_stamina:
+			current_stamina = max_stamina
+
 
 func disable_movement_event(l:bool,w:bool):
 	persistent_state.velocity = Vector3.ZERO
