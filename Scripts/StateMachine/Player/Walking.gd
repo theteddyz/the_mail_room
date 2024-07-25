@@ -292,6 +292,8 @@ func handle_hovers(delta):
 		EventBus.emitCustomSignal("hide_icon")
 
 func handle_mailcart_hover(collider, delta):
+	if mailcart.game_objects.size() > 0:
+		EventBus.emitCustomSignal("show_icon", ["deliverable"])
 	collider.mailcart_hover(delta)
 
 
