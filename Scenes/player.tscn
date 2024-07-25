@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/PlayerLightOptimization.gd" id="5_ic8gt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/VisionArea.gd" id="6_f3pv2"]
-[ext_resource type="PackedScene" uid="uid://c2urey7cs28p7" path="res://Assets/TemporaryAssets/cone.tscn" id="6_n1vqh"]
-[ext_resource type="Script" path="res://Scenes/LightDetector.gd" id="7_geagn"]
+[ext_resource type="PackedScene" path="res://Assets/TemporaryAssets/cone.tscn" id="6_n1vqh"]
+[ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 
@@ -194,6 +194,12 @@ autostart = true
 [node name="VisionRayCast" type="RayCast3D" parent="Neck/Head/HeadbopRoot/VisionArea"]
 target_position = Vector3(0, 7.08, -100)
 
+[node name="LightDetection" parent="Neck/Head/HeadbopRoot" node_paths=PackedStringArray("player", "camera", "timer", "closelight") instance=ExtResource("8_6f6ef")]
+player = NodePath("../../../..")
+camera = NodePath("../Camera")
+timer = NodePath("Refresh Timer")
+closelight = NodePath("SpotLight3D")
+
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 8323
@@ -222,17 +228,8 @@ target_position = Vector3(0, 1.095, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72236, 0)
 current = true
 
-[node name="LightDetection" type="Node3D" parent="." node_paths=PackedStringArray("player", "camera", "timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23667, 0)
-script = ExtResource("7_geagn")
-player = NodePath("..")
-camera = NodePath("../Neck/Head/HeadbopRoot/Camera")
-timer = NodePath("Refresh Timer")
-
-[node name="Refresh Timer" type="Timer" parent="LightDetection"]
-autostart = true
-
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]
 [connection signal="timeout" from="Neck/Head/HeadbopRoot/VisionArea/Vision_Timer" to="Neck/Head/HeadbopRoot/VisionArea" method="_on_vision_timer_timeout"]
-[connection signal="timeout" from="LightDetection/Refresh Timer" to="LightDetection" method="timerdown"]
+
+[editable path="Neck/Head/HeadbopRoot/LightDetection"]
