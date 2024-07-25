@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/PlayerLightOptimization.gd" id="5_ic8gt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/VisionArea.gd" id="6_f3pv2"]
-[ext_resource type="PackedScene" uid="uid://c2urey7cs28p7" path="res://Assets/TemporaryAssets/cone.tscn" id="6_n1vqh"]
+[ext_resource type="PackedScene" path="res://Assets/TemporaryAssets/cone.tscn" id="6_n1vqh"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
@@ -199,6 +199,10 @@ player = NodePath("../../../..")
 camera = NodePath("../Camera")
 timer = NodePath("Refresh Timer")
 closelight = NodePath("SpotLight3D")
+
+[node name="SpotLight3D" parent="Neck/Head/HeadbopRoot/LightDetection" index="1"]
+spot_range = 2.5
+spot_angle = 75.0
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -2)
