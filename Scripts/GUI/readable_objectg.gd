@@ -2,7 +2,7 @@ extends Interactable
 
 @onready var item_reader
 @export var image_path:Texture2D 
-@export var object_text:String
+@export_multiline var object_text:String
 
 var startPosition = Vector3.ZERO
 
