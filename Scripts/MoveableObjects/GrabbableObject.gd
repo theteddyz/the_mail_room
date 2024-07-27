@@ -27,6 +27,8 @@ var is_rotating = false
 var initial_mouse_position = Vector2.ZERO
 #Interpolator
 var object_Interpolator 
+var player_raycast:RayCast3D
+var grab_offset: Vector3 = Vector3.ZERO
 signal collided(other_body)
 
 
@@ -39,6 +41,7 @@ func _ready():
 		freeze = true
 	if player:
 		camera = player.find_child("Camera")
+		player_raycast = player.find_child("InteractableFinder")
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
 	connect("body_entered",Callable(self,"_on_body_entered"))
@@ -98,8 +101,10 @@ func grab():
 		playerHead = player.find_child("Head")
 		if should_freeze:
 			freeze = false
-		pickmeUp()
-		enable_collision_decection()
+		if player_raycast.is_colliding():
+			grab_offset = player_raycast.get_collision_point() - global_transform.origin
+			pickmeUp()
+			enable_collision_decection()
 func dropMe(throw:bool):
 	if is_picked_up and throw == false:
 		EventBus.emitCustomSignal("dropped_object", [mass,self])
@@ -119,6 +124,7 @@ func dropMe(throw:bool):
 		start_pickup_timer()
 		force_above_threshold_time = 0.0
 		angular_damp = 1
+		apply_torque_impulse(calculate_torque_impulse())
 		set_collision_mask_value(3, true)
 		if should_freeze:
 			sleeping = true
@@ -132,7 +138,7 @@ func pickmeUp():
 	EventBus.emitCustomSignal("object_held", [mass, get_parent()])
 	is_picked_up = true
 func update_position(delta):
-	var targetPosition:Vector3 = itemPos.global_transform.origin
+	var targetPosition: Vector3 = itemPos.global_transform.origin + -grab_offset
 	var currentPosition:Vector3 = global_transform.origin
 	var directionTo:Vector3 = targetPosition - currentPosition
 	var distance:float = currentPosition.distance_to(targetPosition)
@@ -179,6 +185,17 @@ func lock_axes(lock: bool):
 	axis_lock_linear_y = lock
 func is_at_rest() -> bool:
 	return linear_velocity.length_squared() <= 0.0001 and angular_velocity.length_squared() <= 0.0001
+
+func calculate_torque_impulse() -> Vector3:
+	var player_velocity = player.velocity
+	var torque_impulse = Vector3(
+		throw_direction.y * player_velocity.z - throw_direction.z * player_velocity.y,
+		throw_direction.z * player_velocity.x - throw_direction.x * player_velocity.z,
+		throw_direction.x * player_velocity.y - throw_direction.y * player_velocity.x
+	)
+	var random_factor = Vector3(randf_range(-0.5, 0.5), randf_range(-0.5, 0.5), randf_range(-0.5, 0.5))
+	torque_impulse += random_factor
+	return torque_impulse * 3
 
 func enable_collision_decection():
 	await get_tree().create_timer(1).timeout
