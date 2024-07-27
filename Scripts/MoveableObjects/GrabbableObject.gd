@@ -54,7 +54,8 @@ func _process(_delta): #Tether the player to the object
 	if is_picked_up:
 		var playerPosition:Vector3 = player.transform.origin;
 		playerPosition.y = 0;
-		var objectPosition:Vector3 = global_transform.origin;
+		#var targetPosition: Vector3 = itemPos.global_transform.origin + -grab_offset
+		var objectPosition:Vector3 = global_transform.origin + grab_offset;
 		objectPosition.y = 0;
 		var directionTo:Vector3 = playerPosition - objectPosition;
 		directionTo = directionTo.normalized();
