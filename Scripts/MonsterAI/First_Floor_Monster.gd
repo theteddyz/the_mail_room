@@ -79,7 +79,7 @@ func close_up_monster_scare():
 	peak_monster_scare = true
 	anim_scare_2.play("monster_scare_2")
 
-func _on_area_3d_body_entered(body):
+func _on_area_3d_body_entered(_body):
 	first_monster_event()
 
 func monster_seen():

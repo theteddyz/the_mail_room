@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b2c5c47wnbu3f"]
+[gd_scene load_steps=26 format=3 uid="uid://b2c5c47wnbu3f"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_jg2d3"]
 [ext_resource type="Texture2D" uid="uid://dgy6bdhr0juyx" path="res://Assets/Textures/BlenderTextures/Desk.png" id="2_et87b"]
@@ -107,6 +107,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_87ivx")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a835v"]
+size = Vector3(2.45142, 0.537109, 1.15601)
 
 [node name="Desk" type="RigidBody3D"]
 collision_layer = 7
@@ -232,3 +235,11 @@ transform = Transform3D(-0.0103461, 0, -9.04485e-10, 0, 0.0103461, 0, 9.04485e-1
 
 [node name="MailboxStand" parent="." instance=ExtResource("12_x1ixq")]
 transform = Transform3D(-0.999752, 0, -0.022286, 0, 1, 0, 0.022286, 0, -0.999752, -0.889354, 1.13881, -0.239794)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00720215, 0.231445, 0.0113525)
+shape = SubResource("BoxShape3D_a835v")

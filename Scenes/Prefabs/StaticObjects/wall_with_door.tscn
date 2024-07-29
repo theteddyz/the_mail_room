@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ceasmrd6qawc5"]
+[gd_scene load_steps=20 format=3 uid="uid://ceasmrd6qawc5"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_iji0o"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_0c8nb"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://c6txdw12dxjcy" path="res://Assets/Audio/SoundFX/DoorOpened.mp3" id="3_ynfod"]
 [ext_resource type="Texture2D" uid="uid://bgqnmx2g3lx72" path="res://Assets/Textures/BlenderTextures/Door.png" id="3_yvhl6"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="4_ntfiu"]
+[ext_resource type="Script" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="6_12o50"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_awmmr"]
 size = Vector3(3.20605, 11.8827, 0.252686)
@@ -57,6 +58,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hsori")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2gtk4"]
+size = Vector3(1.88855, 3.82867, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykqxa"]
 size = Vector3(3.16969, 11.8827, 0.252686)
@@ -171,11 +175,19 @@ transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.96591, 2.04469, 0)
 mesh = SubResource("ArrayMesh_kwu7s")
 skeleton = NodePath("")
 
+[node name="Monster_Detector" type="Area3D" parent="RigidBody3D2"]
+collision_layer = 4096
+collision_mask = 4096
+script = ExtResource("6_12o50")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2/Monster_Detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0072632, 2.0184, 0)
+shape = SubResource("BoxShape3D_2gtk4")
+
 [node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="."]
 limit_enabled = true
 limit_upper = 1.5708
 limit_spring_enabled = true
-limit_spring_damping = 50.0
 node_a = NodePath("../RigidBody3D2")
 node_b = NodePath("..")
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
@@ -193,3 +205,4 @@ mesh = SubResource("ArrayMesh_yr636")
 skeleton = NodePath("")
 
 [connection signal="area_entered" from="RigidBody3D2/Door_Lock" to="RigidBody3D2/Door_Lock" method="_on_area_entered"]
+[connection signal="body_entered" from="RigidBody3D2/Monster_Detector" to="RigidBody3D2/Monster_Detector" method="_on_body_entered"]
