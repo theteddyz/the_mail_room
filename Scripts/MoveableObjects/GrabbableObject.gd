@@ -14,7 +14,7 @@ var is_picked_up = false
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
 var player: CharacterBody3D
-var itemPos
+#var itemPos
 var playerHead
 var camera:Camera3D
 var throw_direction = Vector3.ZERO
@@ -29,6 +29,8 @@ var initial_mouse_position = Vector2.ZERO
 var object_Interpolator 
 var player_raycast:RayCast3D
 var grab_offset: Vector3 = Vector3.ZERO
+var grab_distance: float = 0
+var is_tether_max_range: bool = false
 signal collided(other_body)
 
 
@@ -64,6 +66,9 @@ func _process(_delta): #Tether the player to the object
 			var destination = objectPosition + directionTo*tether_distance;
 			player.transform.origin.x = destination.x;
 			player.transform.origin.z = destination.z;
+			is_tether_max_range = true;
+		else:
+			is_tether_max_range = false;
 func _physics_process(delta):
 	if object_Interpolator:
 		object_Interpolator.setUpdate(true)
@@ -97,13 +102,19 @@ func grab():
 		if !timerAdded:
 			add_child(pickup_timer)
 			timerAdded=true
-		itemPos = player.find_child("ItemHolder")
+		#itemPos = player.find_child("ItemHolder")
 		camera = player.find_child("Camera")
 		playerHead = player.find_child("Head")
 		if should_freeze:
 			freeze = false
 		if player_raycast.is_colliding():
 			grab_offset = player_raycast.get_collision_point() - global_transform.origin
+			
+			var playerPosition:Vector3 = camera.global_transform.origin;
+			var objectPosition:Vector3 = player_raycast.get_collision_point();
+			grab_distance = playerPosition.distance_to(objectPosition);
+			
+			print("Grab distance: " , grab_distance);
 			pickmeUp()
 			enable_collision_decection()
 func dropMe(throw:bool):
@@ -139,14 +150,19 @@ func pickmeUp():
 	EventBus.emitCustomSignal("object_held", [mass, get_parent()])
 	is_picked_up = true
 func update_position(delta):
-	var targetPosition: Vector3 = itemPos.global_transform.origin + -grab_offset
+	var forward = -camera.global_transform.basis.z
+	var targetPosition: Vector3 = (camera.global_transform.origin + forward.normalized()*grab_distance) + -grab_offset
 	var currentPosition:Vector3 = global_transform.origin
 	var directionTo:Vector3 = targetPosition - currentPosition
 	var distance:float = currentPosition.distance_to(targetPosition)
 	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
 	
-	force = force.limit_length(max_force + (mass * 5) + player.velocity.length())
+	force = force.limit_length(max_force + (mass * 15) + player.velocity.length())
 	apply_central_force(force)
+	
+	if is_tether_max_range:
+		force = (camera.global_transform.origin - currentPosition).normalized() * mass * 15
+		apply_central_force(force)
 	#var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
 	
 	apply_central_force(-linear_velocity * 20) #* angleBetweenForceAndVelocity)		

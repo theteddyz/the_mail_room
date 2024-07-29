@@ -233,15 +233,15 @@ func held_object(mass:float, object):
 	if object is Package or object is Key:
 		package_last_held = object
 		is_holding_package = true
-		walking_speed = (walking_speed/mass) + 1
-		sprinting_speed = (sprinting_speed/mass) + 1
-		crouching_speed = (crouching_speed/mass) + 1
+		walking_speed = (walking_speed/(1+mass*0.2)) + 1
+		sprinting_speed = (sprinting_speed/(1+mass*0.2)) + 1
+		crouching_speed = (crouching_speed/(1+mass*0.2)) + 1
 	else:
 		is_holding_object = true
 		object_last_held = object
-		walking_speed = (walking_speed/mass) + 1
-		sprinting_speed = (sprinting_speed/mass) + 1
-		crouching_speed = (crouching_speed/mass) + 1
+		walking_speed = (walking_speed/(1+mass*0.2)) + 1
+		sprinting_speed = (sprinting_speed/(1+mass*0.2)) + 1
+		crouching_speed = (crouching_speed/(1+mass*0.2)) + 1
 
 
 
