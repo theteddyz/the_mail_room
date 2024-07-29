@@ -21,8 +21,8 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("p"):
 		disabled = false
-func _physics_process(delta):
-	if target_position:
+func _physics_process(_delta):
+	if target_position and !disabled:
 		move_to_target()
 
 func move_to_target():
@@ -53,14 +53,12 @@ func _on_timer_timeout():
 func chase_player():
 	if !chasing:
 		chasing = true
-		disabled = false
 		nav_timer.start()
 
 
 func stop_chasing_player():
 	if chasing:
 		chasing = false
-		disabled = true
 		nav_timer.stop()
 
 
