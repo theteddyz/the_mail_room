@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://5dnxe87nmekr"]
+[gd_scene load_steps=23 format=3 uid="uid://5dnxe87nmekr"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_76lnn"]
 [ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="2_ejart"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c6txdw12dxjcy" path="res://Assets/Audio/SoundFX/DoorOpened.mp3" id="3_x35rg"]
 [ext_resource type="Material" uid="uid://cnc7prympsjb7" path="res://Assets/glass.tres" id="4_8kdjq"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="4_jaj0r"]
+[ext_resource type="Script" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="8_f53fw"]
 
 [sub_resource type="GDScript" id="GDScript_k1vab"]
 script/source = "extends StaticBody3D
@@ -56,6 +57,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v2ctk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rxe0f"]
+size = Vector3(1.88855, 3.82867, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q17be"]
 size = Vector3(3.16969, 11.8827, 0.252686)
@@ -196,6 +200,15 @@ transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.96591, 2.04469, 0)
 mesh = SubResource("ArrayMesh_efiga")
 skeleton = NodePath("")
 
+[node name="Monster_Detector" type="Area3D" parent="RigidBody3D2"]
+collision_layer = 4096
+collision_mask = 4096
+script = ExtResource("8_f53fw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2/Monster_Detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0072632, 2.0184, 0)
+shape = SubResource("BoxShape3D_rxe0f")
+
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79594, 6.02398, 0.00671387)
 shape = SubResource("BoxShape3D_q17be")
@@ -215,14 +228,13 @@ mesh = SubResource("ArrayMesh_r83n0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_8kdjq")
 
-[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="."]
+[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="."]
 limit_enabled = true
 limit_upper = 1.5708
 limit_spring_enabled = true
-limit_spring_frequency = 10.0
-limit_spring_damping = 50.0
 node_a = NodePath("../RigidBody3D2")
 node_b = NodePath("..")
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
 
 [connection signal="area_entered" from="RigidBody3D2/Door_Lock" to="RigidBody3D2/Door_Lock" method="_on_area_entered"]
+[connection signal="body_entered" from="RigidBody3D2/Monster_Detector" to="RigidBody3D2/Monster_Detector" method="_on_body_entered"]

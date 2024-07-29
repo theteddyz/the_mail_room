@@ -202,3 +202,8 @@ func enable_collision_decection():
 	await get_tree().create_timer(1).timeout
 	set_contact_monitor(true)
 	set_max_contacts_reported(10)
+
+func _on_body_entered(body):
+	if body.name == "monster":
+		var direction = (global_transform.origin - body.global_transform.origin).normalized()
+		apply_impulse(transform.basis.z * 100,direction)

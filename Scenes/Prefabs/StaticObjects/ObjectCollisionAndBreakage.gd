@@ -32,6 +32,7 @@ func _on_body_entered(body):
 	if collision_force > impact_threshold && collision_force <= destruction_threshold:
 		if(impact_audios != null):
 			impact_audios.play()
+			spawn_sound_event()
 	if collision_force > destruction_threshold and !broken and breakable:
 		break_object()
 		
@@ -44,7 +45,7 @@ func calculate_collision_force(body):
 	
 func break_object():
 	broken = true
-	
+	spawn_sound_event()
 	if(impact_audios != null):
 		impact_audios.play()
 	if(destruction_audios != null):
@@ -65,3 +66,20 @@ func break_object():
 		model.set_collision_layer_value(2,true)
 		model.set_script(grabbable_script)
 		model.call("_ready")
+
+func spawn_sound_event():
+	var sound_event_area = Area3D.new()
+	var shape = SphereShape3D.new()
+	var collision_shape:CollisionShape3D = CollisionShape3D.new()
+	shape.radius = 23
+	collision_shape.shape = shape
+	sound_event_area.add_child(collision_shape)
+	sound_event_area.connect("body_entered", Callable(self, "_on_sound_event_area_body_entered"))
+	get_tree().root.add_child(sound_event_area)
+	sound_event_area.global_position = global_position
+	await get_tree().create_timer(1).timeout
+	sound_event_area.queue_free()
+
+func _on_sound_event_area_body_entered(body):
+	if body.has_method("on_hearing_sound"):
+		body.on_hearing_sound(global_position)

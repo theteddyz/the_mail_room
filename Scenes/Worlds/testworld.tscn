@@ -178,6 +178,16 @@ unlock_num = 1
 [node name="meeting_room_wall_Door" parent="." instance=ExtResource("15_tm150")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.6894, 0.00402808, -9.97101)
 
+[node name="CollisionShape3D" parent="meeting_room_wall_Door/RigidBody3D2" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849284, 2.0413, 0.0984774)
+
+[node name="CollisionShape3D2" parent="meeting_room_wall_Door/RigidBody3D2" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849284, 2.0413, -0.239973)
+
+[node name="WallMeetingRoomWithDoorGlass" parent="meeting_room_wall_Door" index="4"]
+transform = Transform3D(0.999997, 0.00253072, 0, -0.00253072, 0.999997, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = null
+
 [node name="OmniLight3D" type="OmniLight3D" parent="meeting_room_wall_Door"]
 transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 4.31258, 2.79558)
 
