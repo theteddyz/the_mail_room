@@ -96,24 +96,22 @@ skeleton = NodePath("")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.67959, 0)
 light_color = Color(0.996078, 0.968627, 0.905882, 1)
-light_energy = 0.359
+light_energy = 0.5
 light_indirect_energy = 0.263
-light_volumetric_fog_energy = 1.416
-light_specular = 0.733
+light_volumetric_fog_energy = 0.77
+light_specular = 0.0
 light_bake_mode = 1
-shadow_enabled = true
-shadow_bias = 4.0
-distance_fade_enabled = true
+shadow_bias = 0.0
 distance_fade_begin = 50.0
 distance_fade_shadow = 17.75
 distance_fade_length = 13.45
-omni_range = 9.501
-omni_attenuation = 0.812253
+omni_range = 10.334
+omni_attenuation = 0.659754
 omni_shadow_mode = 0
 
 [node name="LightDetectionArea" type="Area3D" parent="."]
-collision_layer = 524288
-collision_mask = 0
+collision_layer = 0
+collision_mask = 524288
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LightDetectionArea"]
 transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)

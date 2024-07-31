@@ -226,7 +226,7 @@ skeleton = NodePath("")
 
 [node name="WallMeetingRoomWithDoorGlass" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.21246e-08, 0, 0)
-cast_shadow = 0
+cast_shadow = 3
 mesh = SubResource("ArrayMesh_r83n0")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("4_8kdjq")

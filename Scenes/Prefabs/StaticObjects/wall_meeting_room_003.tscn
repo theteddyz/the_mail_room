@@ -140,6 +140,7 @@ mesh = SubResource("ArrayMesh_1xjxo")
 skeleton = NodePath("")
 
 [node name="WallMeetingRoomGlass_002" type="MeshInstance3D" parent="WallWindow_001"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_clchy")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_1n3yb")
