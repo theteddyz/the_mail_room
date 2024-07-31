@@ -4,9 +4,10 @@
 
 [resource]
 background_mode = 2
+background_energy_multiplier = 1.09
 sky = ExtResource("1_yr187")
 ambient_light_source = 1
-ambient_light_color = Color(0.489622, 0.489622, 0.489622, 1)
+ambient_light_color = Color(0.980392, 0.964706, 0.886275, 1)
 reflected_light_source = 1
 tonemap_mode = 2
 tonemap_exposure = 0.72

@@ -231,6 +231,7 @@ visible = false
 light_color = Color(0.847059, 0.643137, 0.298039, 1)
 light_energy = 0.747
 light_bake_mode = 0
+shadow_enabled = true
 
 [node name="LampLight" type="MeshInstance3D" parent="LampArm/LampUpper"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
