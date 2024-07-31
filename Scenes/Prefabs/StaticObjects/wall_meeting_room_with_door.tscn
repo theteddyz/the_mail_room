@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://5dnxe87nmekr"]
+[gd_scene load_steps=24 format=3 uid="uid://5dnxe87nmekr"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_76lnn"]
 [ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="2_ejart"]
@@ -62,7 +62,7 @@ shadow_mesh = SubResource("ArrayMesh_v2ctk")
 size = Vector3(1.88855, 3.82867, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q17be"]
-size = Vector3(3.16969, 11.8827, 0.252686)
+size = Vector3(3.19324, 11.99, 0.252686)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w0sys"]
 resource_name = "Wall"
@@ -141,6 +141,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_aicxx")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ggre"]
+size = Vector3(2.42728, 6.45963, 0.345215)
+
 [node name="meeting_room_wall_Door" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
 collision_layer = 5
@@ -210,7 +213,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0072632, 2.0184, 0)
 shape = SubResource("BoxShape3D_rxe0f")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79594, 6.02398, 0.00671387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80772, 5.97035, 0.00671387)
 shape = SubResource("BoxShape3D_q17be")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
@@ -235,6 +238,10 @@ limit_spring_enabled = true
 node_a = NodePath("../RigidBody3D2")
 node_b = NodePath("..")
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026152, 8.73049, -0.0511495)
+shape = SubResource("BoxShape3D_1ggre")
 
 [connection signal="area_entered" from="RigidBody3D2/Door_Lock" to="RigidBody3D2/Door_Lock" method="_on_area_entered"]
 [connection signal="body_entered" from="RigidBody3D2/Monster_Detector" to="RigidBody3D2/Monster_Detector" method="_on_body_entered"]

@@ -95,7 +95,7 @@ _surfaces = [{
 shadow_mesh = SubResource("ArrayMesh_iw1cd")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jqptp"]
-size = Vector3(5.61701, 7.65326, 0.252686)
+size = Vector3(5.61701, 7.76805, 0.252686)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 collision_layer = 5
@@ -108,9 +108,10 @@ skeleton = NodePath("")
 
 [node name="WallMeetingRoomGlass_001" type="MeshInstance3D" parent="WallMeetingRoom_001"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_7xynq")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0132346, 3.90926, 0.00671387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0132346, 3.87483, 0.00671387)
 shape = SubResource("BoxShape3D_jqptp")

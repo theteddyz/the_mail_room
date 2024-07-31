@@ -41,7 +41,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0i45b")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7ywv"]
-size = Vector3(5.57593, 7.65998, 0.318298)
+size = Vector3(5.73676, 7.74063, 0.318298)
 
 [node name="wall_room_001" type="StaticBody3D"]
 collision_layer = 5
@@ -53,5 +53,5 @@ mesh = SubResource("ArrayMesh_ss0cm")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0192394, 3.91262, 0.0188904)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0311722, 3.87229, 0.0188904)
 shape = SubResource("BoxShape3D_d7ywv")
