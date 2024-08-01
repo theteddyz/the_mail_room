@@ -40,20 +40,21 @@ func timerdown():
 	
 # Make camera not read the added on luminance value
 func _process(delta):
-	if(darken):
-		we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we_saturation_dark, delta * 1.25)
-		#we.environment.adjustment_brightness = lerp(we.environment.adjustment_brightness, we_brightness_dark, delta * 1.25)
-		we.environment.adjustment_contrast = lerp(we.environment.adjustment_contrast, we_contrast_dark, delta * 1.25)
-		closelight.light_energy = lerp(closelight.light_energy, 0.82, delta * 1.25)
-		if(lightvalue >= 0.038):
-			darken = false
-	else:
-		we.environment.adjustment_contrast = lerp(we.environment.adjustment_contrast, we_contrast_bright, delta * 1.25)
-		#we.environment.adjustment_brightness = lerp(we.environment.adjustment_brightness, we_brightness_bright, delta * 1.25)
-		we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we_saturation_bright, delta * 1.25)
-		closelight.light_energy = lerp(closelight.light_energy, 0.0, delta * 1.25)
-		if(lightvalue <= 0.01):
-			darken = true
+	if (we != null):
+		if(darken):
+			we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we_saturation_dark, delta * 1.25)
+			#we.environment.adjustment_brightness = lerp(we.environment.adjustment_brightness, we_brightness_dark, delta * 1.25)
+			we.environment.adjustment_contrast = lerp(we.environment.adjustment_contrast, we_contrast_dark, delta * 1.25)
+			closelight.light_energy = lerp(closelight.light_energy, 0.82, delta * 1.25)
+			if(lightvalue >= 0.038):
+				darken = false
+		else:
+			we.environment.adjustment_contrast = lerp(we.environment.adjustment_contrast, we_contrast_bright, delta * 1.25)
+			#we.environment.adjustment_brightness = lerp(we.environment.adjustment_brightness, we_brightness_bright, delta * 1.25)
+			we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we_saturation_bright, delta * 1.25)
+			closelight.light_energy = lerp(closelight.light_energy, 0.0, delta * 1.25)
+			if(lightvalue <= 0.01):
+				darken = true
 
 func get_average_color(texture: ViewportTexture):
 	var image = texture.get_image()

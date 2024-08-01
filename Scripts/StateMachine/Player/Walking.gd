@@ -180,6 +180,8 @@ func handle_general_interaction():
 			_:
 				if collider.has_method("grab"):
 					collider.grab()
+				elif collider.has_method("check_key"):
+					collider.get_parent().grab()
 
 func handle_inspect_released():
 	if package_last_held:
@@ -311,7 +313,7 @@ func package_hover(collider,delta):
 		general_hover(collider,delta)
 
 func key_hover(collider,delta):
-	if collider.name == "Door_Lock":
+	if collider.name == "Door_Lock" and collider.unlock_number == package_last_held.unlock_num:
 		EventBus.emitCustomSignal("show_icon", ["key"])
 	else:
 		general_hover(collider,delta)
@@ -323,8 +325,11 @@ func general_hover(collider,delta):
 		elif collider.name == "Handlebar":
 			gui_anim.show_icon(false)
 			EventBus.emitCustomSignal("show_icon", ["Drive"])
+		elif collider.name == "Door_Lock":
+			EventBus.emitCustomSignal("show_icon", [collider.get_parent().icon_type])
 		elif collider and "icon_type" in collider:
 			EventBus.emitCustomSignal("show_icon", [collider.icon_type])
+
 
 func check_obstruction_raycasts():
 	standing_is_blocked = standing_obstruction_raycast_0.is_colliding() or standing_obstruction_raycast_1.is_colliding() or standing_obstruction_raycast_2.is_colliding() or standing_obstruction_raycast_3.is_colliding()

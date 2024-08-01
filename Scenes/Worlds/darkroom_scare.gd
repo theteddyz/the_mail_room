@@ -18,6 +18,7 @@ func _process(delta):
 
 func activate_scare(key_num:int):
 	if key_num == 1:
+		
 		door_slam_anim.play("door_open")
 		lock_door_area.monitoring = true
 		print("SCARE ACTIVATED!")
@@ -25,6 +26,7 @@ func activate_scare(key_num:int):
 # Sent when player walks forward into area in the middle of the room
 func _on_door_slam_starter_body_entered(body):
 	if(!scare_active):
+		doorlock.locked = true
 		scare_active = true
 		print("DOOR LOCKING!")
 		flickeranimationplayer.pause()		
@@ -34,4 +36,5 @@ func _on_door_slam_starter_body_entered(body):
 
 func _on_animation_player_animation_finished(anim_name):
 	if(anim_name == "door_lock"):
+		doorlock.locked = false
 		queue_free()

@@ -26,7 +26,7 @@ func _process(_delta):
 
 
 func call_elevator():
-	var player_floor = get_tree().root.get_child(3).floor_num
+	var player_floor = get_tree().root.get_child(4).floor_num
 	if !is_called:
 		is_called = true
 		if current_floor != player_floor:
@@ -104,13 +104,13 @@ func load_floor():
 	if previous_floor > current_floor:
 		anim.play("elevator_call_down")
 		await anim.animation_finished
-		player.reparent(get_tree().root.get_child(3),true)
+		player.reparent(get_tree().root.get_child(4),true)
 		elevator_anim.play("door_open")
 		wall_anim.play("wall_door_open")
 	else:
 		anim.play("elevator_call_up")
 		await anim.animation_finished
-		player.reparent(get_tree().root.get_child(3),true)
+		player.reparent(get_tree().root.get_child(4),true)
 		elevator_anim.play("door_open")
 		wall_anim.play("wall_door_open")
 #func move_indicator(floor:int):

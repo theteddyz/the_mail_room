@@ -75,6 +75,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_5vkla")
 floor_num = -1
 
+[node name="Player" parent="." instance=ExtResource("20_05muy")]
+transform = Transform3D(-0.00603879, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.00603879, 4.837, 0, -5.319)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j0hss")
 
@@ -1044,9 +1047,6 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 3.63174, 4.541, -
 
 [node name="Ceiling38" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 9.3371, 4.541, -10.6646)
-
-[node name="Player" parent="." instance=ExtResource("20_05muy")]
-transform = Transform3D(-0.00603879, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.00603879, 4.837, 0, -5.319)
 
 [node name="Elevator" parent="." instance=ExtResource("20_lrs3i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.4639, 0.116197, -7.179)

@@ -30,6 +30,7 @@ var object_Interpolator
 var player_raycast:RayCast3D
 var grab_offset: Vector3 = Vector3.ZERO
 var grab_distance: float = 0
+var starting_angular_damp:float
 var is_tether_max_range: bool = false
 signal collided(other_body)
 
@@ -37,6 +38,7 @@ signal collided(other_body)
 func _ready():
 	player = GameManager.get_player()
 	object_Interpolator = find_child("Interpolator")
+	starting_angular_damp = angular_damp
 	if !should_freeze:
 		freeze = false
 	else:
@@ -106,6 +108,7 @@ func grab():
 		camera = player.find_child("Camera")
 		playerHead = player.find_child("Head")
 		set_collision_mask_value(3, false)
+		set_collision_layer_value(3,false)
 		if should_freeze:
 			freeze = false
 		if player_raycast.is_colliding():
@@ -127,8 +130,9 @@ func dropMe(throw:bool):
 		global_position = currentPos
 		#linear_damp = 0.1
 		force_above_threshold_time = 0.0
-		angular_damp = 1
+		angular_damp = starting_angular_damp
 		set_collision_mask_value(3, true)
+		set_collision_layer_value(3,true)
 		if should_freeze:
 			sleeping = true
 	else:
@@ -136,9 +140,10 @@ func dropMe(throw:bool):
 		EventBus.emitCustomSignal("dropped_object",[mass,self])
 		start_pickup_timer()
 		force_above_threshold_time = 0.0
-		angular_damp = 1
+		angular_damp = starting_angular_damp
 		apply_torque_impulse(calculate_torque_impulse())
 		set_collision_mask_value(3, true)
+		set_collision_layer_value(3,true)
 		if should_freeze:
 			sleeping = true
 func pickmeUp():
@@ -148,6 +153,7 @@ func pickmeUp():
 	#TODO: Switch "null" to something "more" correct
 	angular_damp = 10
 	set_collision_mask_value(3, false)
+	set_collision_layer_value(3,false)
 	EventBus.emitCustomSignal("object_held", [mass, get_parent()])
 	is_picked_up = true
 func update_position(delta):
