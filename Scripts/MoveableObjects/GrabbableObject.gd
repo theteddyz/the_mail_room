@@ -105,6 +105,7 @@ func grab():
 		#itemPos = player.find_child("ItemHolder")
 		camera = player.find_child("Camera")
 		playerHead = player.find_child("Head")
+		set_collision_mask_value(3, false)
 		if should_freeze:
 			freeze = false
 		if player_raycast.is_colliding():

@@ -7,12 +7,11 @@ radius = 1.0
 
 [node name="OmniLight3D" type="OmniLight3D"]
 light_color = Color(0.858824, 0.941176, 0.976471, 1)
-light_energy = 0.75
-light_size = 0.295
-light_bake_mode = 0
-shadow_enabled = true
-shadow_blur = 3.051
-omni_range = 7.5
+light_energy = 0.5
+light_indirect_energy = 0.5
+light_bake_mode = 1
+omni_range = 10.0
+omni_attenuation = 0.535887
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 512

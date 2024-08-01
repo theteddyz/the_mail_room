@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=31 format=3 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_u173c"]
+[ext_resource type="LightmapGIData" uid="uid://csepdxhb2v4q8" path="res://Scenes/Worlds/testcutscene.lmbake" id="2_e3did"]
 [ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_q6sdx"]
 [ext_resource type="Script" path="res://Scripts/Misc/CutsceneCamera.gd" id="3_juhrl"]
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="4_msfst"]
@@ -9,23 +10,20 @@
 [ext_resource type="PackedScene" uid="uid://dh384hg87l3em" path="res://Scenes/Prefabs/StaticObjects/cubicle_empty.tscn" id="7_cavj3"]
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="7_gmjtd"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly_no_light.tscn" id="7_uqp7y"]
-[ext_resource type="Material" uid="uid://dv85ty0lupp5r" path="res://Scenes/Prefabs/MoveableObjects/Floor.tres" id="8_h3rhg"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="9_lovsk"]
 [ext_resource type="PackedScene" uid="uid://cxx4tf5grxfu8" path="res://Assets/Models/radio_model_2.tscn" id="10_r6ec6"]
+[ext_resource type="Texture2D" uid="uid://dyq5dddljok30" path="res://grey-barcode-carpet-stack-1800-mm-architextures.jpg" id="11_bn35o"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_rgcp3"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="14_0rx2b"]
-[ext_resource type="VoxelGIData" uid="uid://crcnvap0du5j4" path="res://Assets/TemporaryAssets/voxelGITest/testcutscene.VoxelGI_data.res" id="17_bi161"]
 [ext_resource type="AudioStream" uid="uid://p0ckrxqcbt02" path="res://Assets/Audio/SoundFX/IntroFloorAmbience1.mp3" id="17_p43sr"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="17_ucf0v"]
 [ext_resource type="AudioStream" uid="uid://ce5jiafwp834b" path="res://Assets/Audio/SoundFX/IntroFloorAmbience2.mp3" id="18_7frdt"]
 
 [sub_resource type="Environment" id="Environment_mq4r4"]
 background_mode = 2
-background_energy_multiplier = 2.33
 sky = ExtResource("2_q6sdx")
-tonemap_exposure = 0.89
+tonemap_exposure = 0.55
 ssao_radius = 0.91
-sdfgi_enabled = true
 glow_enabled = true
 glow_levels/6 = 0.98
 glow_levels/7 = 0.2
@@ -143,6 +141,30 @@ _data = {
 "Scene": SubResource("Animation_03a06")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7thp8"]
+albedo_texture = ExtResource("11_bn35o")
+uv1_scale = Vector3(75, 75, 75)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l5j1c"]
+lightmap_size_hint = Vector2i(10, 13)
+add_uv2 = true
+size = Vector2(59.745, 88.19)
+
+[sub_resource type="BoxMesh" id="BoxMesh_04oj8"]
+size = Vector3(67.18, 1, 90.88)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_li20f"]
+data = PackedVector3Array(-33.59, 0.5, 45.44, 33.59, 0.5, 45.44, -33.59, -0.5, 45.44, 33.59, 0.5, 45.44, 33.59, -0.5, 45.44, -33.59, -0.5, 45.44, 33.59, 0.5, -45.44, -33.59, 0.5, -45.44, 33.59, -0.5, -45.44, -33.59, 0.5, -45.44, -33.59, -0.5, -45.44, 33.59, -0.5, -45.44, 33.59, 0.5, 45.44, 33.59, 0.5, -45.44, 33.59, -0.5, 45.44, 33.59, 0.5, -45.44, 33.59, -0.5, -45.44, 33.59, -0.5, 45.44, -33.59, 0.5, -45.44, -33.59, 0.5, 45.44, -33.59, -0.5, -45.44, -33.59, 0.5, 45.44, -33.59, -0.5, 45.44, -33.59, -0.5, -45.44, 33.59, 0.5, 45.44, -33.59, 0.5, 45.44, 33.59, 0.5, -45.44, -33.59, 0.5, 45.44, -33.59, 0.5, -45.44, 33.59, 0.5, -45.44, -33.59, -0.5, 45.44, 33.59, -0.5, 45.44, -33.59, -0.5, -45.44, 33.59, -0.5, 45.44, 33.59, -0.5, -45.44, -33.59, -0.5, -45.44)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ths37"]
+size = Vector3(60.525, 1, 32.03)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rkfob"]
+size = Vector3(36.205, 1, 15.905)
+
+[sub_resource type="BoxMesh" id="BoxMesh_svwsv"]
+size = Vector3(22.165, 1, 15.905)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_60xfd"]
 
 [node name="world" type="Node3D" groups=["Persist"]]
@@ -151,17 +173,15 @@ script = ExtResource("1_u173c")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.0324375, -0.0583124, 0.997771, -0.000168012, 0.998297, 0.0583377, -0.999474, 0.00172469, -0.032392, 196.62, 40.3983, 0)
 light_color = Color(0.968627, 0.764706, 0.509804, 1)
-light_energy = 7.141
+light_energy = 4.879
 shadow_enabled = true
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+bounces = 8
+light_data = ExtResource("2_e3did")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mq4r4")
-
-[node name="VoxelGI" type="VoxelGI" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.545349, 0, 23.2567)
-subdiv = 2
-size = Vector3(58.0739, 20, 87.7271)
-data = ExtResource("17_bi161")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -269,7 +289,7 @@ transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0,
 transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 20.182, 1.43051e-06, 55.6783)
 
 [node name="WallTall42" parent="stage/Walls" instance=ExtResource("4_msfst")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, -1.86977, 9.53674e-07, 60.5993)
+transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, -1.83112, 0, 60.599)
 
 [node name="WallTall43" parent="stage/Walls" instance=ExtResource("4_msfst")]
 transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 20.182, 1.43051e-06, 60.6137)
@@ -1214,137 +1234,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58402, -0.0473671, 60.5192
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08271, -0.0473671, 60.5192)
 
 [node name="Floor" type="Node3D" parent="stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.172698, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.507, -0.5, -10.1434)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(32.25, 1, 20)
-material = ExtResource("8_h3rhg")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="stage/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.821, 0.151, 23.781)
+material_override = SubResource("StandardMaterial3D_7thp8")
+mesh = SubResource("PlaneMesh_l5j1c")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8413, -0.5, -10.1434)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(26.4466, 1, 20)
-material = ExtResource("8_h3rhg")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="stage/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.507277, 23.2349)
+mesh = SubResource("BoxMesh_04oj8")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8675, -0.5, 9.84722)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(26.4991, 1, 20)
-material = ExtResource("8_h3rhg")
+[node name="StaticBody3D" type="StaticBody3D" parent="stage/Floor/MeshInstance3D2"]
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.505, -0.5, 9.84722)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(32.2643, 1, 20)
-material = ExtResource("8_h3rhg")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7228, -0.5, 33.2412)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(35.966, 1, 26.7939)
-material = ExtResource("8_h3rhg")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6247, -0.5, 25.1243)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(25.2813, 1, 10.5601)
-material = ExtResource("8_h3rhg")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5161, -0.5, 48.6632)
-use_collision = true
-collision_layer = 7
-collision_mask = 7
-size = Vector3(19.0895, 1, 36.5659)
-material = ExtResource("8_h3rhg")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.44011, -0.5, 56.7598)
-use_collision = true
-collision_layer = 7
-collision_mask = 7
-size = Vector3(44.3308, 1, 20.6459)
-material = ExtResource("8_h3rhg")
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="stage/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1347, -0.5, 41.5594)
-use_collision = true
-collision_layer = 7
-collision_mask = 7
-size = Vector3(3.71274, 1, 10.4623)
-material = ExtResource("8_h3rhg")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/Floor/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_li20f")
 
 [node name="CeilingBlockingLight" type="Node3D" parent="stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.26044, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38202, -0.5, -10.1434)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(20, 1, 20)
-material = ExtResource("8_h3rhg")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="stage/CeilingBlockingLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99971, 0, 5.20817)
+mesh = SubResource("BoxMesh_ths37")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1166, -0.5, -10.1434)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(20.9972, 1, 20)
-material = ExtResource("8_h3rhg")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="stage/CeilingBlockingLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99971, 0, 52.3296)
+mesh = SubResource("BoxMesh_ths37")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1166, -0.5, 9.84722)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(20.9972, 1, 20)
-material = ExtResource("8_h3rhg")
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="stage/CeilingBlockingLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8691, 0, 28.8241)
+mesh = SubResource("BoxMesh_rkfob")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.87144, -0.5, 9.84722)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(20.9972, 1, 20)
-material = ExtResource("8_h3rhg")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.38202, -0.5, 29.8442)
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(20, 1, 20)
-material = ExtResource("8_h3rhg")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1166, -0.5, 49.8348)
-use_collision = true
-collision_layer = 7
-collision_mask = 7
-size = Vector3(20.9972, 1, 20)
-material = ExtResource("8_h3rhg")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.87144, -0.5, 49.8348)
-use_collision = true
-collision_layer = 7
-collision_mask = 7
-size = Vector3(20.9972, 1, 20)
-material = ExtResource("8_h3rhg")
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="stage/CeilingBlockingLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0498, 0, 28.8241)
+mesh = SubResource("BoxMesh_svwsv")
 
 [node name="Mailcart" parent="." instance=ExtResource("9_lovsk")]
 transform = Transform3D(0.0488149, 0, -0.998808, 0, 1, 0, 0.998808, 0, 0.0488149, 2.22359, 0.78271, 27.75)
@@ -1352,7 +1275,7 @@ collision_mask = 19
 physics_material_override = SubResource("PhysicsMaterial_60xfd")
 
 [node name="Radio" parent="." instance=ExtResource("10_r6ec6")]
-transform = Transform3D(0.13379, 0, -0.197066, 0, 0.23819, 0, 0.197066, 0, 0.13379, -1.17844, 1.63531, -4.96646)
+transform = Transform3D(0.13379, 0, -0.197066, 0.000887375, 0.238188, 0.000602448, 0.197064, -0.00107255, 0.133789, -1.17844, 1.63531, -4.96646)
 
 [node name="Desks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -5)

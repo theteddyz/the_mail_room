@@ -5,9 +5,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ohyoc"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hjfl0"]
-size = Vector3(0.482243, 0.120361, 0.373753)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mf6n4"]
 resource_name = "Package"
 cull_mode = 2
@@ -48,6 +45,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1xtus")
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4fwmf"]
+points = PackedVector3Array(0.183616, 0.0182666, 0.129157, -0.148109, -0.0186114, -0.153471, -0.147818, -0.0062546, -0.153167, -0.172612, 0.018267, 0.1353, -0.0455127, 0.101472, 0.000172228, 0.150271, -0.0480961, -0.132658, -0.0960401, -0.0532194, 0.1254, 0.12564, 0.0363494, -0.138152, 0.168657, -0.0421531, 0.13925, -0.190786, 0.0539908, -0.0889016, -0.18071, -0.0476951, -0.0838254, 0.151937, 0.0426804, 0.146659, 0.190063, 0.0428485, 0.0924358, -0.142417, 0.0478945, 0.12423, 0.190386, -0.0248766, -0.0737576, -0.190847, -0.0185472, 0.116751, -0.111264, -0.0309172, 0.15387, 0.156329, -0.054142, -0.0964326, -0.107841, -0.0531376, -0.124918, -0.169459, 0.0363836, -0.138467, -0.0455127, 0.101472, 0.032209, -0.191653, 0.0428811, 0.0864235, 0.166239, 0.0421787, -0.053451, -0.198667, -0.0064995, -0.111189, 0.14947, -0.0537383, 0.120246, 0.115837, 0.0182718, -0.153145, -0.0518987, 0.0822219, -0.0639012, -0.115169, 0.0243284, 0.150899, 0.158669, -0.0246148, 0.153373, 0.196377, -0.0186703, 0.0925045, 0.164028, 0.0121821, -0.134036, -0.179361, -0.0372228, 0.117285)
+
 [node name="Package" type="RigidBody3D"]
 collision_layer = 2
 mass = 1.2
@@ -58,11 +58,11 @@ inspect_position = Vector3(-0.25, 0.25, 0)
 inspect_rotation = Vector3(-0.823795, 1.51844, 1.43641)
 icon_type = "deliverable"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00225213, 0.00109863, 9.49949e-06)
-shape = SubResource("BoxShape3D_hjfl0")
-
 [node name="Package" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.8371e-08, 0, 1.33537, 0, 1.33537, 0, -1.33537, 0, -5.8371e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_t2iqw")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-5.8371e-08, 0, 1.33537, 0, 1.33537, 0, -1.33537, 0, -5.8371e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_4fwmf")
