@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c26hbiaufc6xb"]
+[gd_scene load_steps=9 format=3 uid="uid://c26hbiaufc6xb"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_0sutp"]
 [ext_resource type="Texture2D" uid="uid://bcwwtsc4ei0vy" path="res://Assets/Textures/BlenderTextures/Mouse.png" id="1_lpbor"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_ajn7e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rctak"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_slcbu"]
 resource_name = "Material.004"
@@ -49,6 +51,7 @@ size = Vector3(0.0917969, 0.0378113, 0.141876)
 
 [node name="Grabbable" type="RigidBody3D"]
 collision_layer = 3
+physics_material_override = SubResource("PhysicsMaterial_rctak")
 sleeping = true
 script = ExtResource("1_0sutp")
 
