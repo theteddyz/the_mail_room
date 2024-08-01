@@ -146,7 +146,7 @@ albedo_texture = ExtResource("11_bn35o")
 uv1_scale = Vector3(75, 75, 75)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l5j1c"]
-lightmap_size_hint = Vector2i(2024, 2024)
+lightmap_size_hint = Vector2i(10, 13)
 add_uv2 = true
 size = Vector2(59.745, 88.19)
 
@@ -173,6 +173,7 @@ script = ExtResource("1_u173c")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.0324375, -0.0583124, 0.997771, -0.000168012, 0.998297, 0.0583377, -0.999474, 0.00172469, -0.032392, 196.62, 40.3983, 0)
 light_color = Color(0.968627, 0.764706, 0.509804, 1)
+light_energy = 4.879
 shadow_enabled = true
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
@@ -288,7 +289,7 @@ transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0,
 transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 20.182, 1.43051e-06, 55.6783)
 
 [node name="WallTall42" parent="stage/Walls" instance=ExtResource("4_msfst")]
-transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, -1.86977, 9.53674e-07, 60.5993)
+transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, -1.83112, 0, 60.599)
 
 [node name="WallTall43" parent="stage/Walls" instance=ExtResource("4_msfst")]
 transform = Transform3D(-2.82772e-08, 0, 0.646906, 0, 0.646906, 0, -0.646906, 0, -2.82772e-08, 20.182, 1.43051e-06, 60.6137)
