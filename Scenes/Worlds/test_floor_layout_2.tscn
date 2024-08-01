@@ -33,13 +33,13 @@
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://cqtfocys05ytu" path="res://Assets/Audio/SoundFX/DestructionLamp2.mp3" id="31_ok8u3"]
 [ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
+[ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="39_spw8m"]
 [ext_resource type="LightmapGIData" uid="uid://b47apowergxcs" path="res://Scenes/Worlds/test_floor_layout_2.lmbake" id="40_ifclc"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 [ext_resource type="AudioStream" uid="uid://c63x30unvtimj" path="res://Assets/Audio/SoundFX/DoorClosed3.mp3" id="40_lmkw4"]
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_007.tscn" id="42_ee2c8"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
+[ext_resource type="PackedScene" uid="uid://ct3hpc3g723ed" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
 [ext_resource type="PlaneMesh" uid="uid://bsjvgx14rrdbw" path="res://floor_mesh_1stfloor.tres" id="45_td67j"]
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="46_1nv5r"]
 [ext_resource type="PackedScene" uid="uid://b00a88gvywty0" path="res://Scenes/Prefabs/Monsters/debug_monster.tscn" id="48_v4enk"]
@@ -944,10 +944,10 @@ transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.6
 transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.647, 16.3093, 0, 24.1634)
 
 [node name="meeting_room_wall_Door7" parent="NavigationRegion3D/Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.647, 12.8055, 0, -20.7156)
+transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, 12.8055, 0, -20.7156)
 
 [node name="StaticBody3D15" parent="NavigationRegion3D/Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, -0.614708, 0, -9.49834)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.614708, 0, -9.49834)
 
 [node name="StaticBody3D127" parent="NavigationRegion3D/Walls" instance=ExtResource("9_08ifg")]
 transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -7.689, 0, 16.258)
@@ -962,7 +962,7 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 22.7167, 0, -2.88
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 28.3879, 0, -2.88465)
 
 [node name="StaticBody3D91" parent="NavigationRegion3D/Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -12.7878, 0, -20.0171)
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -12.7878, 0, -20.0171)
 
 [node name="StaticBody3D19" parent="NavigationRegion3D/Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97891, 0, -22.9261)
@@ -974,7 +974,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.019, 0, -22.92)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.45811, 0, -25.7653)
 
 [node name="StaticBody3D95" parent="NavigationRegion3D/Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -12.7878, 0, -25.8368)
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -12.7878, 0, -25.8368)
 
 [node name="StaticBody3D96" parent="NavigationRegion3D/Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97891, 0, -28.7403)
@@ -1004,7 +1004,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.458
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.77684, 0, -37.1422)
 
 [node name="StaticBody3D99" parent="NavigationRegion3D/Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -12.7878, 0, -31.651)
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -12.7878, 0, -31.651)
 
 [node name="StaticBody3D68" parent="NavigationRegion3D/Walls" instance=ExtResource("7_uf3w4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4856, 0, 26.9974)
@@ -1133,7 +1133,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.503
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.503, 0, -14.8065)
 
 [node name="StaticBody3D42" parent="NavigationRegion3D/Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 32.7956, 1.90735e-06, 25.6455)
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, 32.7956, 1.90735e-06, 25.6455)
 
 [node name="StaticBody3D10" parent="NavigationRegion3D/Walls" instance=ExtResource("11_hd2i0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.66489, -4.76837e-07, 6.95955)
@@ -1208,7 +1208,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.586, 0, -22.901)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9874, 0, -22.9)
 
 [node name="StaticBody3D156" parent="NavigationRegion3D/Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(8.48438e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, 8.48438e-08, -16.854, 0, -25.808)
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -16.854, 0, -25.808)
 
 [node name="StaticBody3D32" parent="NavigationRegion3D/Walls" instance=ExtResource("16_vde3n")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.772, 0, -25.8044)
@@ -1229,7 +1229,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.586, 0, -34.381)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9874, 0, -34.3799)
 
 [node name="StaticBody3D161" parent="NavigationRegion3D/Walls" instance=ExtResource("9_08ifg")]
-transform = Transform3D(8.48438e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, 8.48438e-08, -16.854, 0, -31.5954)
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -16.854, 0, -31.5954)
 
 [node name="DoorSlam" type="AnimationPlayer" parent="NavigationRegion3D/Walls/StaticBody3D161"]
 libraries = {
@@ -1294,19 +1294,19 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.011
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06814, 0, -20.7264)
 
 [node name="meeting_room_wall_Door11" parent="NavigationRegion3D/Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.647, 3.36383, 0, -20.7156)
+transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, 3.36383, 0, -20.7156)
 
 [node name="StaticBody3D38" parent="NavigationRegion3D/Walls" instance=ExtResource("20_mhv2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.592551, 0, -20.7264)
 
 [node name="meeting_room_wall_Door12" parent="NavigationRegion3D/Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(-0.647, 0, -9.76943e-08, 0, 0.647, 0, 9.76943e-08, 0, -0.647, 12.8055, 0, -24.4761)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 12.8055, 0, -24.4761)
 
 [node name="StaticBody3D39" parent="NavigationRegion3D/Walls" instance=ExtResource("20_mhv2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06814, 0, -24.4869)
 
 [node name="meeting_room_wall_Door13" parent="NavigationRegion3D/Walls" instance=ExtResource("8_74j6v")]
-transform = Transform3D(-0.647, 0, -9.76943e-08, 0, 0.647, 0, 9.76943e-08, 0, -0.647, 3.36383, 0, -24.4761)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 3.36383, 0, -24.4761)
 
 [node name="StaticBody3D40" parent="NavigationRegion3D/Walls" instance=ExtResource("20_mhv2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.602753, 0, -24.4832)

@@ -12,7 +12,7 @@ func deliver(package: Package):
 		package.rotation = Vector3.ZERO
 		package.position = package.delivered_position
 		package.rotation = package.delivered_rotation
-		package.get_child(0).disabled = true
+		package.get_child(1).disabled = true
 		ScareDirector.emit_signal("package_delivered",package.package_num)
 	else:
 		package.dropped()

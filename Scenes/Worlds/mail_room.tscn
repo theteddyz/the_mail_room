@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_5vkla"]
 [ext_resource type="LightmapGIData" uid="uid://dbto1ave1h2ee" path="res://Scenes/Worlds/mail_room.lmbake" id="2_gp4ix"]
-[ext_resource type="Texture2D" uid="uid://c2wgmw6pumtii" path="res://Scenes/Worlds/old-cement-wall-texture.jpg" id="2_gyuap"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="2_vsncc"]
 [ext_resource type="PackedScene" uid="uid://uuhrokgnd64l" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall.tscn" id="3_hxukh"]
+[ext_resource type="Texture2D" uid="uid://msnqdvouarns" path="res://Scenes/Worlds/dirty-metal-texture.jpg" id="3_o2qoi"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="6_rd5j2"]
 [ext_resource type="PackedScene" uid="uid://doveq38wiuloa" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_without_light.tscn" id="7_84et1"]
 [ext_resource type="PackedScene" uid="uid://bbp38gl3c7dir" path="res://Scenes/Prefabs/StaticObjects/mail_room_shelf.tscn" id="11_3qslt"]
@@ -52,12 +52,12 @@ size = Vector3(80.645, 1, 50)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1dbhk"]
 data = PackedVector3Array(-40.3225, 0.5, 25, 40.3225, 0.5, 25, -40.3225, -0.5, 25, 40.3225, 0.5, 25, 40.3225, -0.5, 25, -40.3225, -0.5, 25, 40.3225, 0.5, -25, -40.3225, 0.5, -25, 40.3225, -0.5, -25, -40.3225, 0.5, -25, -40.3225, -0.5, -25, 40.3225, -0.5, -25, 40.3225, 0.5, 25, 40.3225, 0.5, -25, 40.3225, -0.5, 25, 40.3225, 0.5, -25, 40.3225, -0.5, -25, 40.3225, -0.5, 25, -40.3225, 0.5, -25, -40.3225, 0.5, 25, -40.3225, -0.5, -25, -40.3225, 0.5, 25, -40.3225, -0.5, 25, -40.3225, -0.5, -25, 40.3225, 0.5, 25, -40.3225, 0.5, 25, 40.3225, 0.5, -25, -40.3225, 0.5, 25, -40.3225, 0.5, -25, 40.3225, 0.5, -25, -40.3225, -0.5, 25, 40.3225, -0.5, 25, -40.3225, -0.5, -25, 40.3225, -0.5, 25, 40.3225, -0.5, -25, -40.3225, -0.5, -25)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48vlc"]
-albedo_texture = ExtResource("2_gyuap")
-uv1_scale = Vector3(25, 25, 25)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ux36e"]
+albedo_texture = ExtResource("3_o2qoi")
+uv1_scale = Vector3(15, 15, 15)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3ta1d"]
-lightmap_size_hint = Vector2i(2048, 2048)
+lightmap_size_hint = Vector2i(11, 8)
 add_uv2 = true
 size = Vector2(73.72, 50)
 
@@ -80,8 +80,7 @@ environment = SubResource("Environment_j0hss")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20004, 5.14948, 3.68872)
-quality = 2
-bounces = 16
+bounces = 8
 interior = true
 light_data = ExtResource("2_gp4ix")
 
@@ -102,7 +101,7 @@ shape = SubResource("ConcavePolygonShape3D_1dbhk")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="stage/floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.046, -0.029, 0)
-material_override = SubResource("StandardMaterial3D_48vlc")
+material_override = SubResource("StandardMaterial3D_ux36e")
 mesh = SubResource("PlaneMesh_3ta1d")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stage/floor/MeshInstance3D2"]
@@ -1065,25 +1064,71 @@ autoplay = true
 [node name="Package" parent="." instance=ExtResource("22_o4qlx")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -19.9377, 2.37412, 1.83842)
 collision_mask = 3
+package_full_address = "Package 1
+Wendell Hanson
+Finance Department
+Cubicle Row 1
+Cubicle Number 4"
+package_partial_address = "Package 1
+Wendell Hanson"
+package_num = 1
 
 [node name="Package2" parent="." instance=ExtResource("22_o4qlx")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -19.9377, 2.49173, 1.67145)
 collision_mask = 3
+package_full_address = "Package 2
+Lori Hughes
+Finance Department
+Office 3"
+package_partial_address = "Package 2
+Lori Hughes"
+package_num = 2
 
 [node name="Package3" parent="." instance=ExtResource("22_o4qlx")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 2.67684, 1.99393)
 collision_mask = 3
+package_full_address = "Package 3
+Bill Ding
+Finance Department
+Room 2"
+package_partial_address = "Package 3
+Bill Ding"
+package_num = 3
 
 [node name="Package4" parent="." instance=ExtResource("22_o4qlx")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 3.02079, 1.99393)
 collision_mask = 3
+package_full_address = "Package 4
+Seth Bradley
+Accounting Department
+[b]Special Instuctions[/b]
+Deliver to Confrence room 3"
+package_partial_address = "Package 4
+Seth Bradley"
+package_num = 4
 
 [node name="Package5" parent="." instance=ExtResource("22_o4qlx")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 3.21096, 1.99393)
 collision_mask = 3
+package_full_address = "Package 5
+Mack Hampton
+Marketing Department
+Desk Row 2
+Desk Number 4"
+package_partial_address = "Package 5
+Mack Hampton"
+package_num = 5
 
 [node name="Package6" parent="." instance=ExtResource("22_o4qlx")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 2.85979, 1.99393)
 collision_mask = 3
+package_full_address = "Package 6
+John Bogart
+Finance Department
+Cubicle Row 2
+Cubicle Number 5"
+package_partial_address = "Package 6
+John Bogart"
+package_num = 6
 
 [editable path="stage/Lights/CeilingLightOn22/OmniLight3D2"]

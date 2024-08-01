@@ -49,7 +49,12 @@ func interact():
 
 
 func grabbed():
-	reparent(player.find_child("PackageHolder"), false)
+	if player:
+		reparent(player.find_child("PackageHolder"), false)
+	else :
+		var parent = get_parent()
+		player = parent.find_child("Player")
+		reparent(player.find_child("PackageHolder"), false)
 	EventBus.emitCustomSignal("object_held", [self.mass,self])
 	position = hand_position
 	rotation = hand_rotation
