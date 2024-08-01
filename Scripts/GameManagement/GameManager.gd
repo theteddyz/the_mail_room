@@ -7,6 +7,7 @@ var current_scene : Node
 var player_reference: Node
 var elevator_reference: Node
 var mail_cart_reference: Node
+var scare_director_reference: Node
 #Quite a few script rely on these setter getter, proceed with caution if deleted
 func register_player(new_player):
 	player_reference = new_player
@@ -14,6 +15,8 @@ func register_mail_cart(cart):
 	mail_cart_reference = cart
 func register_elevator(elevator):
 	elevator_reference = elevator
+func register_scaredirector(director):
+	scare_director_reference = director
 	
 func get_mail_cart()->Node:
 	return mail_cart_reference

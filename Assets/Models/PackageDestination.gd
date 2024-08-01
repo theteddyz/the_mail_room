@@ -13,7 +13,7 @@ func deliver(package: Package):
 		package.position = package.delivered_position
 		package.rotation = package.delivered_rotation
 		package.get_child(0).disabled = true
-		EventBus.emit_signal("package_delivered",package.package_num)
+		ScareDirector.emit_signal("package_delivered",package.package_num)
 	else:
 		package.dropped()
 

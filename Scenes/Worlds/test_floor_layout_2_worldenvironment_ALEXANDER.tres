@@ -16,7 +16,6 @@ ssil_enabled = true
 ssil_intensity = 1.28
 sdfgi_use_occlusion = true
 sdfgi_read_sky_light = false
-glow_enabled = true
 glow_levels/1 = 0.27
 glow_levels/3 = 0.51
 glow_levels/4 = 0.43

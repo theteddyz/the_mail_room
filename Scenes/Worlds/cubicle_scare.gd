@@ -1,0 +1,49 @@
+extends Node3D
+
+var player: Node = null
+var door_slam_available: bool = false
+var monster_seen: bool = false
+var scare_finish_available: bool = false
+@onready var monster_body:CharacterBody3D = $peaking_monster
+@onready var door_slam_anim:AnimationPlayer = $"../../NavigationRegion3D/Walls/StaticBody3D161/DoorSlam"
+@onready var audio_player:AudioStreamPlayer3D = $DoorSlamSoundPlayer
+@onready var door_slam_area: Area3D = $door_slam_starter
+
+func _ready():
+	monster_body.visible = false
+	player = GameManager.player_reference
+	door_slam_area.monitoring = false
+	ScareDirector.connect("package_delivered", activate_scare)
+	ScareDirector.connect("monster_seen", monster_seen_function)
+
+func monster_seen_function(boolean: bool):
+	print("MONSTER: " , boolean)
+	monster_seen = boolean
+	
+func activate_scare(package_num:int):
+	if package_num == 2:
+		monster_body.visible = true
+		door_slam_area.monitoring = true
+		print("SCARE ACTIVATED!")
+
+func _process(delta):
+	if(door_slam_available and monster_seen and monster_body.visible):
+		print("DOOR SLAMMED!")
+		door_slam_anim.play("slam_door")
+		audio_player.play()
+		door_slam_available = false
+		scare_finish_available = true
+	
+	if(scare_finish_available and !monster_seen):
+		print("HIDING MONSTER!")
+		scare_finish_available = false
+		_hide_monster()
+
+# Player has entered door_slam_started collider, sent from area3D
+func _on_door_slam_starter_body_entered(body):
+	print("DOOR SLAM AVAILABLE.....!")
+	door_slam_available = true
+	
+func _hide_monster():
+	monster_body.visible = false
+	queue_free()

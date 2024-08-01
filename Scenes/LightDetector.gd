@@ -4,7 +4,7 @@ extends Node3D
 @export var camera: Camera3D
 @export var timer: Timer
 @export var closelight: SpotLight3D
-@onready var we : WorldEnvironment = get_tree().root.get_child(3).find_child("WorldEnvironment")
+@onready var we : WorldEnvironment = get_tree().root.get_child(4).find_child("WorldEnvironment")
 @onready var we_saturation_bright = 1.34
 @onready var we_contrast_bright = 1.16
 #@onready var we_brightness_bright = 0.95
@@ -36,7 +36,6 @@ func timerdown():
 	color_rect.color = color
 	
 	lightvalue = color.get_luminance()
-	print(lightvalue)
 	
 	
 # Make camera not read the added on luminance value

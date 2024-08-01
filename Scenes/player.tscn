@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://8uuomvgrmu1b" path="res://Assets/Shaders/outline_shader.tscn" id="4_ao0s0"]
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/PlayerLightOptimization.gd" id="5_ic8gt"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/Player/VisionArea.gd" id="6_f3pv2"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
 [ext_resource type="PackedScene" uid="uid://c2urey7cs28p7" path="res://Assets/TemporaryAssets/cone.tscn" id="6_n1vqh"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 
@@ -177,24 +177,24 @@ shape = SubResource("SphereShape3D_0heh4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129657, 0, -19.5101)
 shape = SubResource("BoxShape3D_06j8k")
 
-[node name="VisionArea" type="Area3D" parent="Neck/Head/HeadbopRoot"]
+[node name="MonsterDetector" type="Area3D" parent="Neck/Head/HeadbopRoot"]
 collision_layer = 4096
 collision_mask = 4096
 script = ExtResource("6_f3pv2")
 
-[node name="Cone" parent="Neck/Head/HeadbopRoot/VisionArea" instance=ExtResource("6_n1vqh")]
+[node name="Cone" parent="Neck/Head/HeadbopRoot/MonsterDetector" instance=ExtResource("6_n1vqh")]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, -9.80388)
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/VisionArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, -9.80388)
 shape = SubResource("ConvexPolygonShape3D_ol6wy")
 
-[node name="Vision_Timer" type="Timer" parent="Neck/Head/HeadbopRoot/VisionArea"]
+[node name="Vision_Timer" type="Timer" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 wait_time = 0.25
 autostart = true
 
-[node name="VisionRayCast" type="RayCast3D" parent="Neck/Head/HeadbopRoot/VisionArea"]
+[node name="VisionRayCast" type="RayCast3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 target_position = Vector3(0, 7.08, -100)
 
 [node name="LightDetection" parent="Neck/Head/HeadbopRoot" node_paths=PackedStringArray("player", "camera", "timer", "closelight") instance=ExtResource("8_6f6ef")]
@@ -237,6 +237,6 @@ shape = SubResource("SphereShape3D_75rh5")
 
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]
-[connection signal="timeout" from="Neck/Head/HeadbopRoot/VisionArea/Vision_Timer" to="Neck/Head/HeadbopRoot/VisionArea" method="_on_vision_timer_timeout"]
+[connection signal="timeout" from="Neck/Head/HeadbopRoot/MonsterDetector/Vision_Timer" to="Neck/Head/HeadbopRoot/MonsterDetector" method="_on_vision_timer_timeout"]
 
 [editable path="Neck/Head/HeadbopRoot/LightDetection"]
