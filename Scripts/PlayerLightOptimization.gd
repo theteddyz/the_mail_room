@@ -43,6 +43,7 @@ func _on_area_exited(area):
 			
 	if !lights.is_empty():
 		for light in lights:
-			light.shadow_enabled = false
-			counter -= 1
-			print(counter)
+			if(!light.is_in_group("alwaysshadow")):
+				light.shadow_enabled = false
+				counter -= 1
+				print(counter)

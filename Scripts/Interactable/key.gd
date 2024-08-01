@@ -13,6 +13,7 @@ func grabbed():
 	reparent(player.find_child("PackageHolder"), false)
 	EventBus.emitCustomSignal("object_held", [self.mass,self])
 	EventBus.emitCustomSignal("picked_up_key")
+	ScareDirector.emit_signal("key_pickedup", unlock_num)
 	position =Vector3.ZERO
 	rotation = Vector3.ZERO
 	self.freeze = true

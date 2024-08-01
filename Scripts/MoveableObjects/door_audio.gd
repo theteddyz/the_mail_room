@@ -35,7 +35,7 @@ func update_door_audio(_current_angle: float):
 	var _angle_difference = _current_angle - initial_angle
 	var open_ratio = clamp(abs(_angle_difference) / open_angle, 0.0, 1.0)
 	pitch_scale = lerp(1.0, 1.5, open_ratio)
-	volume_db = lerp(-10, 0, open_ratio)
+	volume_db = lerp(-30, -16, open_ratio)
 	if _current_angle > previous_angle and open_ratio > 0.1 and not is_playing_open:
 		play_door_open_sound()
 	elif abs(_angle_difference) <= close_threshold and not is_playing_close:
