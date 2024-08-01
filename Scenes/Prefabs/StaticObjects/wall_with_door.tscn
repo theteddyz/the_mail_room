@@ -124,6 +124,7 @@ shape = SubResource("BoxShape3D_4h6yd")
 collision_layer = 6
 collision_mask = 6
 axis_lock_linear_y = true
+mass = 3.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 script = ExtResource("2_0c8nb")

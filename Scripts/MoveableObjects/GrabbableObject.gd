@@ -222,5 +222,7 @@ func enable_collision_decection():
 
 func _on_body_entered(body):
 	if body.name == "monster":
+		freeze = false
+		sleeping = false
 		var direction = (global_transform.origin - body.global_transform.origin).normalized()
-		apply_impulse(transform.basis.z * 100,direction)
+		apply_impulse(transform.basis.z * (100 + mass),direction)
