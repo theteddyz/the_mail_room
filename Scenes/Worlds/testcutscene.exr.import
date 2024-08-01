@@ -1,0 +1,26 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://ck7y7g028tnu3"
+path="res://.godot/imported/testcutscene.exr-3d6b6ca68cd133fb2289163aa0fbebff.ctexarray"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Scenes/Worlds/testcutscene.exr"
+dest_files=["res://.godot/imported/testcutscene.exr-3d6b6ca68cd133fb2289163aa0fbebff.ctexarray"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=8
