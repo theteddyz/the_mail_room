@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca274kjhcr4uy"]
+[gd_scene load_steps=3 format=3 uid="uid://clyhxm4o0nn4j"]
 
 [ext_resource type="PackedScene" uid="uid://b00a88gvywty0" path="res://Scenes/Prefabs/Monsters/debug_monster.tscn" id="2_8jwdj"]
 
