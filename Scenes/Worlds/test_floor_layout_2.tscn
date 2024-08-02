@@ -710,9 +710,11 @@ stream = ExtResource("40_lmkw4")
 pitch_scale = 0.75
 
 [node name="MonsterRunSoundPlayer" type="AudioStreamPlayer3D" parent="1ST FLOOR SCARES/DARKROOM SCARE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92812, 1.18554, -23.0498)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.87815, 1.18554, -25.0178)
 stream = ExtResource("7_4pg6e")
-unit_size = 0.5
+volume_db = 3.78
+unit_size = 1.6
+pitch_scale = 0.9
 panning_strength = 2.15
 
 [node name="LampBreakSoundPlayer" type="AudioStreamPlayer3D" parent="1ST FLOOR SCARES/DARKROOM SCARE"]
@@ -1458,7 +1460,7 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 3.36383, 0, -24.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.602753, 0, -24.4832)
 
 [node name="StaticBody3D25" parent="NavigationRegion3D/Walls" instance=ExtResource("42_ee2c8")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.9577, 0.00402784, 24.1367)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8862, 0.00402784, 24.1367)
 
 [node name="StaticBody3D26" parent="NavigationRegion3D/Walls" instance=ExtResource("42_ee2c8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.316182, -0.198558, 27.064)
@@ -2403,12 +2405,16 @@ libraries = {
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.08925, 4.20832, -12.4516)
 
 [node name="CeilingLightOn52" parent="CeilingLights" instance=ExtResource("13_srb8m")]
-transform = Transform3D(-0.216462, 0, -1.89237e-08, 0, 0.216462, 0, 1.89237e-08, 0, -0.216462, -10.8185, 4.20832, 19.905)
+transform = Transform3D(-0.216462, 0, -1.89237e-08, 0, 0.216462, 0, 1.89237e-08, 0, -0.216462, -11.1826, 4.20832, 19.905)
 script = ExtResource("30_0tqww")
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn52" index="1" groups=["alwaysshadow"]]
 light_bake_mode = 2
 shadow_enabled = true
+shadow_bias = 0.015
+shadow_transmittance_bias = -4.945
+distance_fade_enabled = true
+omni_shadow_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn52"]
 libraries = {

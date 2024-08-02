@@ -1,5 +1,6 @@
 extends Node3D
 
+var has_been_executed = false
 @onready var lock_door_area: Area3D = $door_slam_starter
 @onready var door_slam_anim: AnimationPlayer = $AnimationPlayer
 @onready var doorlock = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2/Door_Lock"
@@ -21,7 +22,7 @@ func _process(delta):
 
 func activate_scare(key_num:int):
 	if key_num == 1:
-		
+		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		door_slam_anim.play("door_open")
 		lock_door_area.monitoring = true
 		print("SCARE ACTIVATED!")
