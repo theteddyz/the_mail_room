@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ksn67lit7pjy"]
+[gd_scene load_steps=5 format=3 uid="uid://ksn67lit7pjy"]
 
+[ext_resource type="Material" uid="uid://l75of2qmrq1n" path="res://Assets/Materials/item_hover.tres" id="2_lt1bd"]
 [ext_resource type="Script" path="res://Scripts/Interactable/key.gd" id="2_mguxb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e8e4q"]
@@ -20,5 +21,6 @@ shape = SubResource("BoxShape3D_e8e4q")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.262778, 0, 0, 0, 0.372335, 0, 0, 0, 0.168017, 0, 0, 0)
+material_overlay = ExtResource("2_lt1bd")
 mesh = SubResource("BoxMesh_pqbld")
 skeleton = NodePath("")

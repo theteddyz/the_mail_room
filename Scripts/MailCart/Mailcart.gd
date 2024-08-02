@@ -23,9 +23,13 @@ func _ready():
 	player = GameManager.get_player()
 	text_displayer = Gui.get_address_displayer()
 	gui_anim = Gui.get_control_displayer()
+	EventBus.connect("object_looked_at",on_being_looked_at)
+	EventBus.connect("no_object_found",not_being_looked_at)
 func _process(delta):
 	if !is_being_looked_at:
 		lowerAllPackages(delta)
+	else:
+		mailcart_hover(delta)
 func mailcart_hover(delta):
 	if game_objects.size() != 0:
 		gui_anim.show_icon(true)
@@ -98,6 +102,7 @@ func add_package(package: Package):
 			package.set_collision_layer_value(2,false)
 			package.inside_mail_cart = true
 			game_objects.append(package)
+			EventBus.emitCustomSignal("dropped_object", [0,package])
 			sort_packages_by_order()
 			calculate_spacing()
 
@@ -129,6 +134,16 @@ func add_radio(radio:RigidBody3D):
 	radio.global_position = radio_position.global_position
 	radio.set_gravity_scale(0)
 	radio.attached_to_cart = true
+
+func on_being_looked_at(node):
+	if node == self:
+		is_being_looked_at = true
+
+func not_being_looked_at(node):
+	if is_being_looked_at:
+		gui_anim.show_icon(false)
+		is_being_looked_at = false
+
 
 func save():
 	var save_dict = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=79 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://caiwom5hlt84f" path="res://Scenes/Prefabs/StaticObjects/floor.tscn" id="5_vxcvf"]
 [ext_resource type="Script" path="res://Scenes/Worlds/darkroom_scare.gd" id="6_2ofty"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="6_5x7jy"]
+[ext_resource type="AudioStream" uid="uid://cyww6gpli30iu" path="res://Assets/Audio/SoundFX/FootstepsApproaching.mp3" id="7_4pg6e"]
 [ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/wall.tscn" id="7_uf3w4"]
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="8_74j6v"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/wall_with_door.tscn" id="9_08ifg"]
@@ -34,13 +35,13 @@
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://cqtfocys05ytu" path="res://Assets/Audio/SoundFX/DestructionLamp2.mp3" id="31_ok8u3"]
 [ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
-[ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="39_spw8m"]
 [ext_resource type="LightmapGIData" uid="uid://b47apowergxcs" path="res://Scenes/Worlds/test_floor_layout_2.lmbake" id="40_ifclc"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 [ext_resource type="AudioStream" uid="uid://c63x30unvtimj" path="res://Assets/Audio/SoundFX/DoorClosed3.mp3" id="40_lmkw4"]
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_007.tscn" id="42_ee2c8"]
-[ext_resource type="PackedScene" uid="uid://ct3hpc3g723ed" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
 [ext_resource type="PlaneMesh" uid="uid://bsjvgx14rrdbw" path="res://floor_mesh_1stfloor.tres" id="45_td67j"]
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="46_1nv5r"]
 [ext_resource type="PackedScene" uid="uid://b00a88gvywty0" path="res://Scenes/Prefabs/Monsters/debug_monster.tscn" id="48_v4enk"]
@@ -466,6 +467,68 @@ size = Vector3(1.88333, 3.8623, 0.346191)
 [sub_resource type="SphereShape3D" id="SphereShape3D_373dp"]
 radius = 0.107743
 
+[sub_resource type="Animation" id="Animation_31p30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CeilingLightOnLight:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_43uwa"]
+resource_name = "flicker"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 1.1, 1.3, 2, 2.1, 2.2, 2.3, 2.4, 2.6, 3, 3.5, 4.7, 4.8, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.5, 0.0, 0.5, 0.5, 0.0, 0.5, 0.74, 0.0, 0.5, 0.5, 0.0, 0.0, 0.5, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CeilingLightOnLight:transparency")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 1.1, 1.3, 2, 2.1, 2.2, 2.3, 2.4, 2.6, 3, 3.5, 4.7, 4.8, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_353qi"]
+_data = {
+"RESET": SubResource("Animation_31p30"),
+"flicker": SubResource("Animation_43uwa")
+}
+
 [sub_resource type="Animation" id="Animation_cqbv5"]
 length = 0.001
 tracks/0/type = "value"
@@ -645,6 +708,14 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.39576, 1.18554, -1.85595)
 stream = ExtResource("40_lmkw4")
 pitch_scale = 0.75
+
+[node name="MonsterRunSoundPlayer" type="AudioStreamPlayer3D" parent="1ST FLOOR SCARES/DARKROOM SCARE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.87815, 1.18554, -25.0178)
+stream = ExtResource("7_4pg6e")
+volume_db = 3.78
+unit_size = 1.6
+pitch_scale = 0.9
+panning_strength = 2.15
 
 [node name="LampBreakSoundPlayer" type="AudioStreamPlayer3D" parent="1ST FLOOR SCARES/DARKROOM SCARE"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.474056, 3.87447, 1.39164)
@@ -1389,7 +1460,7 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 3.36383, 0, -24.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.602753, 0, -24.4832)
 
 [node name="StaticBody3D25" parent="NavigationRegion3D/Walls" instance=ExtResource("42_ee2c8")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.9577, 0.00402784, 24.1367)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.8862, 0.00402784, 24.1367)
 
 [node name="StaticBody3D26" parent="NavigationRegion3D/Walls" instance=ExtResource("42_ee2c8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.316182, -0.198558, 27.064)
@@ -2321,16 +2392,29 @@ shadow_enabled = true
 [node name="CeilingLightOn8" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.08925, 4.20832, -4.09988)
 
+[node name="OmniLight3D" parent="CeilingLights/CeilingLightOn8" index="1" groups=["alwaysshadow"]]
+light_bake_mode = 2
+shadow_enabled = true
+
+[node name="FlickeringLight" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn8"]
+libraries = {
+"": SubResource("AnimationLibrary_353qi")
+}
+
 [node name="CeilingLightOn10" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.08925, 4.20832, -12.4516)
 
 [node name="CeilingLightOn52" parent="CeilingLights" instance=ExtResource("13_srb8m")]
-transform = Transform3D(-0.216462, 0, -1.89237e-08, 0, 0.216462, 0, 1.89237e-08, 0, -0.216462, -10.8185, 4.20832, 19.905)
+transform = Transform3D(-0.216462, 0, -1.89237e-08, 0, 0.216462, 0, 1.89237e-08, 0, -0.216462, -11.1826, 4.20832, 19.905)
 script = ExtResource("30_0tqww")
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn52" index="1" groups=["alwaysshadow"]]
 light_bake_mode = 2
 shadow_enabled = true
+shadow_bias = 0.015
+shadow_transmittance_bias = -4.945
+distance_fade_enabled = true
+omni_shadow_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn52"]
 libraries = {
@@ -2592,6 +2676,7 @@ mesh = SubResource("BoxMesh_f3ave")
 [editable path="CeilingLights/CeilingLightOn46"]
 [editable path="CeilingLights/CeilingLightOn4"]
 [editable path="CeilingLights/CeilingLightOn7"]
+[editable path="CeilingLights/CeilingLightOn8"]
 [editable path="CeilingLights/CeilingLightOn52"]
 [editable path="Desk2"]
 [editable path="Desk2/MailboxStand"]

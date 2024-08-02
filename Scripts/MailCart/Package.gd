@@ -14,6 +14,8 @@ class_name Package
 @export var inspect_position = Vector3.ZERO
 @export var inspect_rotation = Vector3.ZERO
 @export var package_num:int = 0
+var package_material:MeshInstance3D
+var shader_material
 var text_displayer
 var is_picked_up = false
 var playerHead
@@ -23,13 +25,28 @@ var is_returning = false
 var lerp_speed = 5.0
 var inside_mail_cart:bool
 var starting_path
+var is_being_looked_at:bool
 func _ready():
+	package_material = get_child(0)
 	starting_path =  get_parent().name + "/" + name
 	player = get_parent().find_child("Player")
 	text_displayer = Gui.get_address_displayer()
+	EventBus.connect("object_looked_at",debug_print_1)
+	EventBus.connect("no_object_found",debug_print_2)
 
+func debug_print_1(node):
+	if node == self:
+		is_being_looked_at = true
+
+func debug_print_2(node):
+	if is_being_looked_at:
+		is_being_looked_at = false
 
 func _process(delta):
+	if is_being_looked_at:
+		highlight(delta)
+	else:
+		reset_highlight()
 	if is_inspecting:
 		position = position.lerp(inspect_position, lerp_speed * delta)
 		rotation = rotation.lerp(inspect_rotation, lerp_speed * delta)
@@ -44,10 +61,30 @@ func _process(delta):
 			is_returning = false
 	
 
+
+func _on_object_hovered(node):
+	if node == self:
+		is_being_looked_at = true
+
+func _on_object_unhovered(node):
+	is_being_looked_at = false
+
+
 func interact():
 	grabbed()
 
+func highlight(delta):
+	is_being_looked_at = true
+	if shader_material == null:
+		shader_material = package_material.material_overlay.duplicate()
+		package_material.material_overlay = shader_material
+		package_material.material_overlay.set_shader_parameter("outline_width",5)
+	else:
+		package_material.material_overlay.set_shader_parameter("outline_width",5)
 
+func reset_highlight():
+	if shader_material:
+		package_material.material_overlay.set_shader_parameter("outline_width", 0)
 func grabbed():
 	if player:
 		reparent(player.find_child("PackageHolder"), false)

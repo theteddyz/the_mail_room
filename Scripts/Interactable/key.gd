@@ -8,7 +8,8 @@ func _ready():
 func interact():
 	grabbed()
 
-
+func highlight():
+	pass
 func grabbed():
 	reparent(player.find_child("PackageHolder"), false)
 	EventBus.emitCustomSignal("object_held", [self.mass,self])

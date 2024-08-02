@@ -25,6 +25,8 @@ signal game_paused()
 signal package_failed_delivery()
 signal picked_up_key()
 signal dropped_key()
+signal object_looked_at(node)
+signal no_object_found(node)
 ###############################################################################
 
 #Connecting Functions

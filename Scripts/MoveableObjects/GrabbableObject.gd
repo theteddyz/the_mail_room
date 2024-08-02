@@ -32,6 +32,7 @@ var grab_offset: Vector3 = Vector3.ZERO
 var grab_distance: float = 0
 var starting_angular_damp:float
 var is_tether_max_range: bool = false
+var is_being_looked_at
 signal collided(other_body)
 
 
