@@ -68,6 +68,8 @@ var is_leaning:bool = false
 var original_neck_position:Vector3
 # Called when the node enters the scene tree for the first time.
 var stamina_bar
+signal object_hovered(node)
+signal object_unhovered()
 func _ready():
 	package_holder = persistent_state.find_child("PackageHolder")
 	mailcart = GameManager.get_mail_cart()
@@ -246,9 +248,6 @@ func held_object(mass:float, object):
 		crouching_speed = (crouching_speed/(1+mass*0.2)) + 1
 
 
-
-
-
 func droppped_object(_mass:float,_object):
 	if _object is Package or _object is Key:
 		is_holding_package = false
@@ -275,7 +274,6 @@ func stop_leaning():
 
 func _process(delta):
 	apply_movement(delta)
-	handle_hovers(delta)
 	apply_leaning(delta)
 	recover_stamina(delta)
 	stamina_bar.update_stamina_bar(current_stamina)
@@ -285,50 +283,6 @@ func apply_movement(delta):
 	persistent_state.move_and_slide()
 	check_obstruction_raycasts()
 	regular_move(delta)
-
-func handle_hovers(delta):
-	if interactable_finder.get_interactable() != null and !interact_cooldown and !is_reading and !disable_look_movement:
-		var collider = interactable_finder.get_collider()
-		if !is_holding_object and !is_holding_package:
-				general_hover(collider,delta)
-		elif is_holding_package:
-			if is_holding_package and package_last_held is Package and collider != package_last_held:
-				package_hover(collider,delta)
-			elif is_holding_package and package_last_held is Key:
-				key_hover(collider,delta)
-	else:
-		gui_anim.show_icon(false)
-		EventBus.emitCustomSignal("hide_icon")
-
-func handle_mailcart_hover(collider, delta):
-	if mailcart.game_objects.size() > 0:
-		EventBus.emitCustomSignal("show_icon", ["deliverable"])
-	collider.mailcart_hover(delta)
-
-
-func package_hover(collider,delta):
-	if collider.name == "MailboxStand" or collider.name == "Mailcart":
-		EventBus.emitCustomSignal("show_icon", ["deliverable"])
-	else:
-		general_hover(collider,delta)
-
-func key_hover(collider,delta):
-	if collider.name == "Door_Lock" and collider.unlock_number == package_last_held.unlock_num:
-		EventBus.emitCustomSignal("show_icon", ["key"])
-	else:
-		general_hover(collider,delta)
-
-func general_hover(collider,delta):
-	if collider != null:
-		if collider.name == "Mailcart":
-			handle_mailcart_hover(collider,delta)
-		elif collider.name == "Handlebar":
-			gui_anim.show_icon(false)
-			EventBus.emitCustomSignal("show_icon", ["Drive"])
-		elif collider.name == "Door_Lock":
-			EventBus.emitCustomSignal("show_icon", [collider.get_parent().icon_type])
-		elif collider and "icon_type" in collider:
-			EventBus.emitCustomSignal("show_icon", [collider.icon_type])
 
 
 func check_obstruction_raycasts():
@@ -393,8 +347,6 @@ func handle_head_bopping(delta):
 		head_bopping_vector.x = sin(head_bopping_index / 2) + 0.5
 		headbop_root.position.y = lerp(headbop_root.position.y, head_bopping_vector.y * (head_bopping_current / 2.0), delta * movement_lerp_speed)
 		headbop_root.position.x = lerp(headbop_root.position.x, head_bopping_vector.x * (head_bopping_current), delta * movement_lerp_speed)
-		#if is_holding_object and object_last_held is Package:
-			#object_last_held.position = object_last_held.hand_position - headbop_root.position
 	else:
 		headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
 
@@ -416,7 +368,6 @@ func apply_leaning(delta):
 		var target_rotation_quat = Quaternion(Vector3(0, 0, 1), deg_to_rad(lean_angle))
 		var interpolated_rotation_quat = current_rotation_quat.slerp(target_rotation_quat, delta * lean_speed)
 		neck.rotation = interpolated_rotation_quat.get_euler()
-
 
 func recover_stamina(delta):
 	if not is_sprinting and current_stamina < max_stamina:

@@ -15,7 +15,7 @@ func _on_vision_timer_timeout():
 					if(bit == 1):
 						bit = 0
 						called = false
-						var col = $VisionRayCast.get_collider()
+						var _col = $VisionRayCast.get_collider()
 						if(!called):
 							ScareDirector.emit_signal("monster_seen", true)
 	else:
