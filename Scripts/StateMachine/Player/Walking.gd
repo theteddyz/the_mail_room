@@ -127,11 +127,6 @@ func handle_keyboard_press(event):
 				collider.interact()
 			else:
 				handle_package_interaction()
-		elif package_last_held and package_last_held is Key:
-			if collider != null and collider.name == "ButtonRB2":
-				collider.interact()
-			else:
-				handle_key_interaction()
 		elif collider:
 			if collider.name == "Mailcart":
 				collider.grab_current_package()
@@ -160,15 +155,7 @@ func handle_package_interaction():
 		package_last_held = null
 		is_holding_package = false
 
-func handle_key_interaction():
-	var collider = interactable_finder.get_interactable()
-	if collider != null:
-		if collider.name == "Door_Lock":
-			collider.check_key(package_last_held)
-		else:
-			package_last_held.dropped()
-	else:
-		package_last_held.dropped()
+
 
 func handle_radio_interaction():
 	if interactable_finder.is_interactable("Mailcart"):
@@ -234,7 +221,7 @@ func turnOffInteractCooldown():
 	interact_cooldown = false
 
 func held_object(mass:float, object):
-	if object is Package or object is Key:
+	if object is Package:
 		package_last_held = object
 		is_holding_package = true
 		walking_speed = (walking_speed/(1+mass*0.2)) + 1
@@ -249,7 +236,7 @@ func held_object(mass:float, object):
 
 
 func droppped_object(_mass:float,_object):
-	if _object is Package or _object is Key:
+	if _object is Package:
 		is_holding_package = false
 		package_last_held = null
 		crouching_speed = 3.1

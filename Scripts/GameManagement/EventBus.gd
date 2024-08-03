@@ -23,7 +23,7 @@ signal game_paused()
 
 #Signal for when a package is delivered
 signal package_failed_delivery()
-signal picked_up_key()
+signal picked_up_key(node)
 signal dropped_key()
 signal object_looked_at(node)
 signal no_object_found(node)

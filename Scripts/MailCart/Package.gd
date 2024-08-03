@@ -31,14 +31,14 @@ func _ready():
 	starting_path =  get_parent().name + "/" + name
 	player = get_parent().find_child("Player")
 	text_displayer = Gui.get_address_displayer()
-	EventBus.connect("object_looked_at",debug_print_1)
-	EventBus.connect("no_object_found",debug_print_2)
+	EventBus.connect("object_looked_at",on_seen)
+	EventBus.connect("no_object_found",on_unseen)
 
-func debug_print_1(node):
+func on_seen(node):
 	if node == self:
 		is_being_looked_at = true
 
-func debug_print_2(node):
+func on_unseen(node):
 	if is_being_looked_at:
 		is_being_looked_at = false
 

@@ -70,7 +70,6 @@ transform = Transform3D(-5.8371e-08, 0, 1.33537, 0, 1.33537, 0, -1.33537, 0, -5.
 material_overlay = SubResource("ShaderMaterial_31ia4")
 mesh = SubResource("ArrayMesh_t2iqw")
 skeleton = NodePath("")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-5.8371e-08, 0, 1.33537, 0, 1.33537, 0, -1.33537, 0, -5.8371e-08, 0, 0, 0)

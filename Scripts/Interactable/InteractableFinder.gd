@@ -1,8 +1,7 @@
 extends RayCast3D
 var object_being_looked_at
 func _ready():
-	EventBus.connect("picked_up_key",on_key_picked_up)
-	EventBus.connect("dropped_key",on_key_dropped)
+	pass
 
 func _process(delta):
 	_check_for_interactables()
@@ -35,10 +34,3 @@ func interact():
 	var collider = get_interactable()
 	if collider and collider.has_method("interact"):
 		collider.interact()
-
-
-func on_key_picked_up():
-	set_collision_mask_value(2,false)
-
-func on_key_dropped():
-	set_collision_mask_value(2,true)

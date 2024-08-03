@@ -3,11 +3,11 @@
 [ext_resource type="Material" uid="uid://l75of2qmrq1n" path="res://Assets/Materials/item_hover.tres" id="2_lt1bd"]
 [ext_resource type="Script" path="res://Scripts/Interactable/key.gd" id="2_mguxb"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_e8e4q"]
-size = Vector3(0.0535889, 0.0732422, 0.168381)
-
 [sub_resource type="BoxMesh" id="BoxMesh_pqbld"]
 size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e8e4q"]
+size = Vector3(0.0535889, 0.0732422, 0.168381)
 
 [node name="Key" type="RigidBody3D"]
 collision_layer = 131
@@ -15,12 +15,12 @@ collision_mask = 131
 script = ExtResource("2_mguxb")
 icon_type = "key"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.999491, 0, 0, 0, 0.999491, 0, 0, 0, 0.999491, 6.10352e-05, 0.000488281, -0.000175476)
-shape = SubResource("BoxShape3D_e8e4q")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.262778, 0, 0, 0, 0.372335, 0, 0, 0, 0.168017, 0, 0, 0)
 material_overlay = ExtResource("2_lt1bd")
 mesh = SubResource("BoxMesh_pqbld")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999491, 0, 0, 0, 0.999491, 0, 0, 0, 0.999491, 6.10352e-05, 0.000488281, -0.000175476)
+shape = SubResource("BoxShape3D_e8e4q")

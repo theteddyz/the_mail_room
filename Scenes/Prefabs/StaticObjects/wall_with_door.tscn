@@ -14,11 +14,11 @@ size = Vector3(3.20605, 11.8827, 0.252686)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4h6yd"]
 size = Vector3(2.30151, 7.90474, 0.376526)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_7ostt"]
-radius = 0.109715
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_f20wo"]
 size = Vector3(1.88333, 3.8623, 0.346191)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7ostt"]
+radius = 0.109715
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65pkn"]
 resource_name = "Door"
@@ -130,18 +130,8 @@ center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 script = ExtResource("2_0c8nb")
 can_rotate = false
 
-[node name="Door_Lock" type="Area3D" parent="RigidBody3D2"]
-collision_layer = 0
-collision_mask = 130
+[node name="Door_Lock" type="Node" parent="RigidBody3D2"]
 script = ExtResource("2_y36kb")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2/Door_Lock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, 0.098477)
-shape = SubResource("SphereShape3D_7ostt")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D2/Door_Lock"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849285, 2.0413, -0.239974)
-shape = SubResource("SphereShape3D_7ostt")
 
 [node name="door" type="StaticBody3D" parent="RigidBody3D2"]
 disable_mode = 1
@@ -206,5 +196,4 @@ shape = SubResource("BoxShape3D_ykqxa")
 mesh = SubResource("ArrayMesh_yr636")
 skeleton = NodePath("")
 
-[connection signal="area_entered" from="RigidBody3D2/Door_Lock" to="RigidBody3D2/Door_Lock" method="_on_area_entered"]
 [connection signal="body_entered" from="RigidBody3D2/Monster_Detector" to="RigidBody3D2/Monster_Detector" method="_on_body_entered"]

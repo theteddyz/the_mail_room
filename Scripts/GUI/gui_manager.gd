@@ -4,11 +4,13 @@ extends Control
 @onready var adress_Displayer:Node= $Adress_Displayer
 @onready var controls_Displayer:Node = $Controls
 @onready var stamina_bar:Node = $Stamina
+@onready var item_icon:Node = $ItemIcon
 func get_item_reader()->Node:
 	return item_reader
 func get_icon_manager() ->Node:
 	return icon_manager
-
+func get_item_icon_displayer()-> Node:
+	return item_icon
 func get_address_displayer() -> Node:
 	return adress_Displayer
 func get_control_displayer() -> Node:

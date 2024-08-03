@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=30 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cntqxoykqfoth" path="res://Assets/TemporaryAssets/F.png" id="10_x2084"]
 [ext_resource type="Texture2D" uid="uid://bkw37ucvregly" path="res://Assets/TemporaryAssets/M_MOUSE.png" id="11_ebd1s"]
 [ext_resource type="Texture2D" uid="uid://cfw8cgui6o6an" path="res://Assets/TemporaryAssets/IconSet_2 (2).png" id="11_v6kpy"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/gui/ItemIcons.gd" id="12_2i7yx"]
 [ext_resource type="Texture2D" uid="uid://bsw0k3ptpy4jk" path="res://Assets/TemporaryAssets/Up Arrow.png" id="12_cgfu7"]
 [ext_resource type="Texture2D" uid="uid://j86xbk4osway" path="res://Assets/TemporaryAssets/Down Arrow.png" id="13_h5gkl"]
 [ext_resource type="Script" path="res://Scripts/GUI/Stamina.gd" id="18_rhd6x"]
@@ -320,6 +321,28 @@ offset_top = 31.0
 offset_right = 41.0
 offset_bottom = 71.0
 texture = ExtResource("10_x2084")
+expand_mode = 1
+
+[node name="ItemIcon" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -78.0
+offset_right = 98.0
+grow_vertical = 0
+script = ExtResource("12_2i7yx")
+
+[node name="KeyIcon" type="TextureRect" parent="ItemIcon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 37.0
+offset_right = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_tht5l")
 expand_mode = 1
 
 [node name="FPSMeter" type="Label" parent="."]
