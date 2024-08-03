@@ -244,7 +244,7 @@ layout_mode = 0
 offset_top = 30.0
 offset_right = 40.0
 offset_bottom = 70.0
-texture = ExtResource("10_x2084")
+texture = ExtResource("6_rp1kh")
 expand_mode = 1
 
 [node name="deliverable" type="TextureRect" parent="IconManager"]
@@ -268,7 +268,7 @@ layout_mode = 0
 offset_top = 30.0
 offset_right = 40.0
 offset_bottom = 70.0
-texture = ExtResource("10_x2084")
+texture = ExtResource("6_rp1kh")
 expand_mode = 1
 
 [node name="key" type="TextureRect" parent="IconManager"]
@@ -295,7 +295,7 @@ offset_top = 36.9999
 offset_right = 70.0001
 offset_bottom = 76.9999
 rotation = -1.5708
-texture = ExtResource("10_x2084")
+texture = ExtResource("6_rp1kh")
 expand_mode = 1
 
 [node name="Drive" type="TextureRect" parent="IconManager"]

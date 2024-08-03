@@ -12,13 +12,8 @@ var scare_active: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	lock_door_area.monitoring = false
-	hallwayflickeranimationplayer
 	ScareDirector.connect("key_pickedup", activate_scare)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
 
 func activate_scare(key_num:int):
 	if key_num == 1:
@@ -28,7 +23,7 @@ func activate_scare(key_num:int):
 		print("SCARE ACTIVATED!")
 
 # Sent when player walks forward into area in the middle of the room
-func _on_door_slam_starter_body_entered(body):
+func _on_door_slam_starter_body_entered(_body):
 	if(!scare_active):
 		doorlock.locked = true
 		scare_active = true

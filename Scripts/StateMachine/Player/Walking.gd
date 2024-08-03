@@ -122,38 +122,28 @@ func handle_keyboard_press(event):
 		stop_leaning()
 	elif event.is_action_pressed("drive"):
 		var collider = interactable_finder.get_interactable()
-		if package_last_held and package_last_held is Package:
-			if collider != null and collider.name == "ButtonRB2":
-				collider.interact()
-			else:
-				handle_package_interaction()
-		elif collider:
-			if collider.name == "Mailcart":
-				collider.grab_current_package()
-				gui_anim.show_icon(false)
-			if collider.name == "Handlebar":
-				change_state.call("grabcart")
-			elif collider.has_method("interact"):
-				collider.interact()
+		if collider.name == "Handlebar" and !is_holding_package or !is_holding_object:
+			change_state.call("grabcart")
 
-func handle_package_interaction():
-	var collider = interactable_finder.get_interactable()
-	if collider != null:
-		match collider.name:
-			"Mailcart":
-				collider.add_package(package_last_held)
-				package_last_held = null
-				is_holding_package = false
-			"MailboxStand":
-				collider.find_child("PackageDestination").deliver(package_last_held)
-				package_last_held = null
-				is_holding_package = false
-			_:
-				package_last_held.dropped()
-	else:
-		package_last_held.dropped()
-		package_last_held = null
-		is_holding_package = false
+
+#func handle_package_interaction():
+	#var collider = interactable_finder.get_interactable()
+	#if collider != null:
+		#match collider.name:
+			#"Mailcart":
+				#collider.add_package(package_last_held)
+				#package_last_held = null
+				#is_holding_package = false
+			#"MailboxStand":
+				#collider.find_child("PackageDestination").deliver(package_last_held)
+				#package_last_held = null
+				#is_holding_package = false
+			#_:
+				#package_last_held.dropped()
+	#else:
+		#package_last_held.dropped()
+		#package_last_held = null
+		#is_holding_package = false
 
 
 
@@ -166,11 +156,29 @@ func handle_general_interaction():
 	var collider = interactable_finder.get_interactable()
 	if collider and !is_holding_object:
 		match collider.name:
+			mailcart.name:
+				if is_holding_package:
+					collider.add_package(package_last_held)
+					package_last_held = null
+					is_holding_package = false
+				else:
+					collider.grab_current_package()
+					gui_anim.show_icon(false)
+			"MailboxStand":
+				if is_holding_package:
+					collider.find_child("PackageDestination").deliver(package_last_held)
+					package_last_held = null
+			"ButtonRB2":
+				collider.interact()
 			_:
 				if collider.has_method("grab"):
 					collider.grab()
 				elif collider.has_method("check_key"):
 					collider.get_parent().grab()
+				elif collider.has_method("interact"):
+					collider.interact()
+	elif !collider and is_holding_package:
+		package_last_held.dropped()
 
 func handle_inspect_released():
 	if package_last_held:

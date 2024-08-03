@@ -29,7 +29,7 @@ func activate_scare(package_num:int):
 		door_slam_area.monitoring = true
 		print("SCARE ACTIVATED!")
 
-func _process(delta):
+func _process(_delta):
 	if(door_slam_available and monster_seen and monster_body.visible):
 		print("DOOR SLAMMED!")
 		door_slam_anim.play("slam_door")
@@ -43,7 +43,7 @@ func _process(delta):
 		_hide_monster()
 
 # Player has entered door_slam_started collider, sent from area3D
-func _on_door_slam_starter_body_entered(body):
+func _on_door_slam_starter_body_entered(_body):
 	print("DOOR SLAM AVAILABLE.....!")
 	door_slam_available = true
 	

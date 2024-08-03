@@ -38,7 +38,7 @@ func on_seen(node):
 	if node == self:
 		is_being_looked_at = true
 
-func on_unseen(node):
+func on_unseen(_node):
 	if is_being_looked_at:
 		is_being_looked_at = false
 
@@ -66,14 +66,14 @@ func _on_object_hovered(node):
 	if node == self:
 		is_being_looked_at = true
 
-func _on_object_unhovered(node):
+func _on_object_unhovered(_node):
 	is_being_looked_at = false
 
 
 func interact():
 	grabbed()
 
-func highlight(delta):
+func highlight(_delta):
 	is_being_looked_at = true
 	if shader_material == null:
 		shader_material = package_material.material_overlay.duplicate()

@@ -139,7 +139,7 @@ func on_being_looked_at(node):
 	if node == self:
 		is_being_looked_at = true
 
-func not_being_looked_at(node):
+func not_being_looked_at(_node):
 	if is_being_looked_at:
 		gui_anim.show_icon(false)
 		is_being_looked_at = false

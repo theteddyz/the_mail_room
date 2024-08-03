@@ -24,7 +24,7 @@ func on_seen(node):
 	else:
 		is_being_looked_at = false
 
-func on_unseen(node):
+func on_unseen(_node):
 	if is_being_looked_at:
 		is_being_looked_at = false
 
@@ -34,7 +34,7 @@ func interact():
 	EventBus.emitCustomSignal("picked_up_key",[self])
 	ScareDirector.emit_signal("key_pickedup", unlock_num)
 
-func highlight(delta):
+func highlight(_delta):
 	is_being_looked_at = true
 	if shader_material == null:
 		shader_material = key_material.material_overlay.duplicate()

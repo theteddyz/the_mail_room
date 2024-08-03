@@ -47,13 +47,13 @@ func hide_icon(object):
 			icons[object_name].hide()
 
 
-func hide_all_icons(object):
+func hide_all_icons(_object):
 	for icon in icons.values():
 		icon.hide()
 
 
-func held_object(var1,var2):
+func held_object(_var1,var2):
 	object_held = var2
 
-func dropped_object(var1,var2):
+func dropped_object(_var1,_var2):
 	object_held = null

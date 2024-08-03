@@ -3,7 +3,7 @@ var object_being_looked_at
 func _ready():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	_check_for_interactables()
 
 
