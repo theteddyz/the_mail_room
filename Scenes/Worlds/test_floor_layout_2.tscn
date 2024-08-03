@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=82 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -31,7 +31,9 @@
 [ext_resource type="AudioStream" uid="uid://c202px4rfobxg" path="res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3" id="24_os1ty"]
 [ext_resource type="AudioStream" uid="uid://clv8mkhueiw82" path="res://Assets/Audio/SoundFX/FirstFloorAmbience2.mp3" id="25_qbrrx"]
 [ext_resource type="AudioStream" uid="uid://d036kpauudx33" path="res://Assets/Audio/SoundFX/FirstFloorAmbience4.mp3" id="27_m60pu"]
+[ext_resource type="PackedScene" uid="uid://c7e4imgjbdx46" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_1.tscn" id="29_qdyt5"]
 [ext_resource type="Script" path="res://Scripts/Misc/FlickeringLight.gd" id="30_0tqww"]
+[ext_resource type="PackedScene" uid="uid://dg80c1mna2ycx" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_2.tscn" id="30_60fxr"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://cqtfocys05ytu" path="res://Assets/Audio/SoundFX/DestructionLamp2.mp3" id="31_ok8u3"]
 [ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
@@ -46,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="46_1nv5r"]
 [ext_resource type="PackedScene" uid="uid://b00a88gvywty0" path="res://Scenes/Prefabs/Monsters/debug_monster.tscn" id="48_v4enk"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="49_78w3q"]
+[ext_resource type="PackedScene" uid="uid://belfg414pqah4" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_3.tscn" id="49_dco3s"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vjsmp"]
 
@@ -1754,6 +1757,36 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.920
 
 [node name="Desk8" parent="Objects" instance=ExtResource("5_6umw1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.62079, -2.38419e-07, -31.7774)
+
+[node name="File_Cabinet" parent="Objects" instance=ExtResource("29_qdyt5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.13, 0.876865, -19.7)
+
+[node name="File_Cabinet2" parent="Objects" instance=ExtResource("29_qdyt5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.13, 0.876865, -20.2281)
+
+[node name="File_Cabinet3" parent="Objects" instance=ExtResource("29_qdyt5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.13, 0.876865, -13.9457)
+
+[node name="File_Cabinet4" parent="Objects" instance=ExtResource("29_qdyt5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.13, 0.876865, -14.4738)
+
+[node name="File_Cabinet5" parent="Objects" instance=ExtResource("29_qdyt5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.13, 0.876865, 2.05143)
+
+[node name="File_Cabinet6" parent="Objects" instance=ExtResource("29_qdyt5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.13, 0.876865, 1.52331)
+
+[node name="File_Cabinet7" parent="Objects" instance=ExtResource("30_60fxr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.8841, 0.838077, -2.12932)
+
+[node name="File_Cabinet8" parent="Objects" instance=ExtResource("30_60fxr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.8841, 0.838077, -2.69161)
+
+[node name="File_cabinet" parent="." instance=ExtResource("49_dco3s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.94205, 0.857596, -3.28528)
+
+[node name="File_cabinet2" parent="." instance=ExtResource("49_dco3s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.94205, 0.857596, -3.9073)
 
 [node name="Roof" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.332915, 0)
