@@ -883,7 +883,7 @@ points = PackedVector3Array(-0.00110476, 0.0386846, -0.0252219, 0.0167937, 0.047
 height = 0.231489
 radius = 0.128214
 
-[node name="Grabbable" type="RigidBody3D"]
+[node name="Plant" type="RigidBody3D"]
 collision_layer = 6
 collision_mask = 6
 mass = 3.0

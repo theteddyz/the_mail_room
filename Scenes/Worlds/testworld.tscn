@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=36 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
@@ -13,8 +13,14 @@
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="15_tm150"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/wall_with_door.tscn" id="15_toag5"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/outline_test.gdshader" id="16_boyhi"]
+[ext_resource type="PackedScene" uid="uid://c7e4imgjbdx46" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_1.tscn" id="16_mi2oa"]
 [ext_resource type="PackedScene" uid="uid://bwnbou1pjcf8l" path="res://Scenes/Prefabs/MoveableObjects/plant.tscn" id="17_b78s4"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="17_ma4ii"]
+[ext_resource type="PackedScene" uid="uid://dq1i3ji76iunj" path="res://Scenes/Prefabs/AssetTools/scary.tscn" id="17_mcry2"]
+[ext_resource type="PackedScene" uid="uid://dg80c1mna2ycx" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_2.tscn" id="18_j273n"]
+[ext_resource type="PackedScene" uid="uid://belfg414pqah4" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_3.tscn" id="19_dmey1"]
+[ext_resource type="PackedScene" uid="uid://brfqkckspyesq" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_4.tscn" id="20_m3i6s"]
+[ext_resource type="PackedScene" uid="uid://cpjr5i4iv2yaf" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_5.tscn" id="21_0vp5e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
 albedo_texture = ExtResource("1_o8goe")
@@ -190,6 +196,25 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.70716, 0.00402
 
 [node name="Grabbable" parent="." instance=ExtResource("17_b78s4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2745, 0.173332, -2.422)
+
+[node name="File_Cabinet" parent="." instance=ExtResource("16_mi2oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60168, 0.850205, -4.07855)
+
+[node name="Node3D" parent="." instance=ExtResource("17_mcry2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8383, 0.061534, -4.88282)
+collision_mask = 6
+
+[node name="RigidBody3D" parent="." instance=ExtResource("18_j273n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88983, 0.875768, -4)
+
+[node name="File_cabinet" parent="." instance=ExtResource("19_dmey1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88121, 0.853168, -4.06447)
+
+[node name="File_Cabinet2" parent="." instance=ExtResource("20_m3i6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73767, 0.865987, -4.07479)
+
+[node name="File_Cabinet3" parent="." instance=ExtResource("21_0vp5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6006, 1.38917, -4.3951)
 
 [editable path="StaticBody3D3"]
 [editable path="meeting_room_wall_Door"]

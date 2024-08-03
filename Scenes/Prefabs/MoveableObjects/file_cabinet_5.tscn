@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpjr5i4iv2yaf"]
+[gd_scene load_steps=20 format=3 uid="uid://cpjr5i4iv2yaf"]
 
 [ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="1_agqrh"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_p6oug"]
 [ext_resource type="Texture2D" uid="uid://f21t4ualvxjr" path="res://Assets/Textures/BlenderTextures/FileCabinetDrawer.png" id="2_gk1qw"]
+[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="3_i4d5p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3sv2b"]
 resource_name = "FileCabinet.005"
@@ -41,6 +43,20 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gnm6k")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uoarp"]
+size = Vector3(0.0163727, 1.62463, 0.569214)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dyjma"]
+size = Vector3(0.506714, 0.0909729, 0.610962)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ukycq"]
+size = Vector3(0.506714, 0.0525284, 0.624023)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fr2kb"]
+size = Vector3(0.506714, 1.62348, 0.0101318)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xnch7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75uax"]
 resource_name = "FileCabinetDrawer.004"
@@ -83,12 +99,248 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_syt8p")
 
-[node name="FileCabinet_004" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55489, 0.764307, 0.444519)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ukpye"]
+size = Vector3(0.456646, 0.361084, 0.0119629)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0rs3v"]
+size = Vector3(0.416748, 0.0189819, 0.573486)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vdvx4"]
+size = Vector3(0.418316, 0.319839, 0.0119629)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v3i63"]
+size = Vector3(0.0128282, 0.294437, 0.572388)
+
+[node name="File_Cabinet" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3837, 0)
+collision_layer = 6
+collision_mask = 6
+mass = 50.0
+freeze = true
+script = ExtResource("1_p6oug")
+should_freeze = true
+
+[node name="FileCabinet_004" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.554064, 0.345407)
 mesh = SubResource("ArrayMesh_rjh7b")
 skeleton = NodePath("")
 
-[node name="FileCabinetDrawer_004" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.554064, -0.345407)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.246117, -0.570705, 0.303297)
+shape = SubResource("BoxShape3D_uoarp")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.244171, -0.570705, 0.319838)
+shape = SubResource("BoxShape3D_uoarp")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10352e-05, -1.33827, 0.304335)
+shape = SubResource("BoxShape3D_dyjma")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10352e-05, 0.216382, 0.303053)
+shape = SubResource("BoxShape3D_ukycq")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10352e-05, -0.569096, 0.610661)
+shape = SubResource("BoxShape3D_fr2kb")
+
+[node name="Drawer" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00565952, -0.00113794)
+collision_layer = 6
+collision_mask = 6
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_xnch7")
+linear_damp = 2.0
+angular_damp = 2.0
+script = ExtResource("1_p6oug")
+
+[node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer"]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 2.0
+node_a = NodePath("../..")
+node_b = NodePath("..")
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
+
+[node name="Interpolator" type="Node3D" parent="Drawer"]
+script = ExtResource("3_i4d5p")
+
+[node name="FileCabinetDrawer_004" type="MeshInstance3D" parent="Drawer/Interpolator"]
 mesh = SubResource("ArrayMesh_pnxp7")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
+shape = SubResource("BoxShape3D_ukpye")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Drawer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020752, -0.148879, 0.304549)
+shape = SubResource("BoxShape3D_0rs3v")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Drawer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00465584, -0.0033257, 0.596131)
+shape = SubResource("BoxShape3D_vdvx4")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Drawer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.207693, -0.0172398, 0.301683)
+shape = SubResource("BoxShape3D_v3i63")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Drawer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.301683)
+shape = SubResource("BoxShape3D_v3i63")
+
+[node name="Drawer2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.378549, -0.00113794)
+collision_layer = 6
+collision_mask = 6
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_xnch7")
+linear_damp = 2.0
+angular_damp = 2.0
+script = ExtResource("1_p6oug")
+
+[node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer2"]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 2.0
+node_a = NodePath("../..")
+node_b = NodePath("..")
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
+
+[node name="Interpolator" type="Node3D" parent="Drawer2"]
+script = ExtResource("3_i4d5p")
+
+[node name="FileCabinetDrawer_004" type="MeshInstance3D" parent="Drawer2/Interpolator"]
+mesh = SubResource("ArrayMesh_pnxp7")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
+shape = SubResource("BoxShape3D_ukpye")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Drawer2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020752, -0.148879, 0.304549)
+shape = SubResource("BoxShape3D_0rs3v")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Drawer2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00465584, -0.0033257, 0.596131)
+shape = SubResource("BoxShape3D_vdvx4")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Drawer2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.207693, -0.0172398, 0.301683)
+shape = SubResource("BoxShape3D_v3i63")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Drawer2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.301683)
+shape = SubResource("BoxShape3D_v3i63")
+
+[node name="Drawer3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.753538, -0.00113794)
+collision_layer = 6
+collision_mask = 6
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_xnch7")
+linear_damp = 2.0
+angular_damp = 2.0
+script = ExtResource("1_p6oug")
+
+[node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer3"]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 2.0
+node_a = NodePath("../..")
+node_b = NodePath("..")
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
+
+[node name="Interpolator" type="Node3D" parent="Drawer3"]
+script = ExtResource("3_i4d5p")
+
+[node name="FileCabinetDrawer_004" type="MeshInstance3D" parent="Drawer3/Interpolator"]
+mesh = SubResource("ArrayMesh_pnxp7")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
+shape = SubResource("BoxShape3D_ukpye")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Drawer3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020752, -0.148879, 0.304549)
+shape = SubResource("BoxShape3D_0rs3v")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Drawer3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00465584, -0.0033257, 0.596131)
+shape = SubResource("BoxShape3D_vdvx4")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Drawer3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.207693, -0.0172398, 0.301683)
+shape = SubResource("BoxShape3D_v3i63")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Drawer3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.301683)
+shape = SubResource("BoxShape3D_v3i63")
+
+[node name="Drawer4" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.11106, -0.00113794)
+collision_layer = 6
+collision_mask = 6
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_xnch7")
+linear_damp = 2.0
+angular_damp = 2.0
+script = ExtResource("1_p6oug")
+
+[node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer4"]
+limit_enabled = true
+limit_upper = 0.5
+limit_spring_enabled = true
+limit_spring_damping = 2.0
+node_a = NodePath("../..")
+node_b = NodePath("..")
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
+
+[node name="Interpolator" type="Node3D" parent="Drawer4"]
+script = ExtResource("3_i4d5p")
+
+[node name="FileCabinetDrawer_004" type="MeshInstance3D" parent="Drawer4/Interpolator"]
+mesh = SubResource("ArrayMesh_pnxp7")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00132561, -0.00279927, 0.00371051)
+shape = SubResource("BoxShape3D_ukpye")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Drawer4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020752, -0.148879, 0.304549)
+shape = SubResource("BoxShape3D_0rs3v")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Drawer4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00465584, -0.0033257, 0.596131)
+shape = SubResource("BoxShape3D_vdvx4")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Drawer4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.207693, -0.0172398, 0.301683)
+shape = SubResource("BoxShape3D_v3i63")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Drawer4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.301683)
+shape = SubResource("BoxShape3D_v3i63")
