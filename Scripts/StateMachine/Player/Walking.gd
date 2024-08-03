@@ -122,8 +122,9 @@ func handle_keyboard_press(event):
 		stop_leaning()
 	elif event.is_action_pressed("drive"):
 		var collider = interactable_finder.get_interactable()
-		if collider.name == "Handlebar" and !is_holding_package or !is_holding_object:
-			change_state.call("grabcart")
+		if collider and collider.name == "Handlebar":
+			if !is_holding_package and !is_holding_object:
+				change_state.call("grabcart")
 
 
 #func handle_package_interaction():
