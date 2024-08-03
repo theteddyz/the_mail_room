@@ -6,15 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/Prefabs/gui/interactable_test.tscn" id="4_p0gx3"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="5_tbsk3"]
-[ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Prefabs/MoveableObjects/package_template.tscn" id="12_c01f0"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="12_ghnq1"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="12_ty778"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="15_2x2rp"]
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="15_hp4l1"]
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="15_tm150"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/wall_with_door.tscn" id="15_toag5"]
-[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="16_54d50"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/outline_test.gdshader" id="16_boyhi"]
+[ext_resource type="PackedScene" uid="uid://bwnbou1pjcf8l" path="res://Scenes/Prefabs/MoveableObjects/plant.tscn" id="17_b78s4"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="17_ma4ii"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
@@ -40,6 +39,8 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bh3ib"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_roxmm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gthm"]
 albedo_texture = ExtResource("1_o8goe")
@@ -117,16 +118,6 @@ collision_layer = 4101
 collision_mask = 4101
 disable = true
 
-[node name="PACKAGE_NEW" parent="." instance=ExtResource("12_c01f0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02809, 0.340293, 0)
-hand_rotation = Vector3(1.00531, -0.74002, 0)
-hand_position = Vector3(0.375, -0.48, 0)
-
-[node name="PACKAGE_NEW2" parent="." instance=ExtResource("12_c01f0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22661, 0.340293, 0)
-hand_rotation = Vector3(1.00531, -0.74002, 0)
-hand_position = Vector3(0.375, -0.48, 0)
-
 [node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.280565, -4)
 collision_layer = 18
@@ -136,6 +127,9 @@ physics_material_override = SubResource("PhysicsMaterial_bh3ib")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
+collision_layer = 7
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_roxmm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -194,11 +188,8 @@ transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 4.31258, 2.
 [node name="StaticBody3D" parent="." instance=ExtResource("15_toag5")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.70716, 0.0040288, -10.007)
 
-[node name="Package" parent="." instance=ExtResource("16_54d50")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9884, 0.0040288, -0.797034)
-package_full_address = "THIS IS AN ADRESS
-I AM SHOWING STUFF 
-YAY"
+[node name="Grabbable" parent="." instance=ExtResource("17_b78s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2745, 0.173332, -2.422)
 
 [editable path="StaticBody3D3"]
 [editable path="meeting_room_wall_Door"]
