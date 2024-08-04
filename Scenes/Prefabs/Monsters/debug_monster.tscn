@@ -4,20 +4,20 @@
 [ext_resource type="Script" path="res://Scripts/MonsterAI/Monster_Cone.gd" id="2_3lncr"]
 [ext_resource type="PackedScene" uid="uid://c2urey7cs28p7" path="res://Assets/TemporaryAssets/cone.tscn" id="3_xvyhf"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_vjsmp"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qnes3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yikjx"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnp51"]
 albedo_color = Color(0.631373, 0.521569, 0.301961, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_be2i7"]
+[sub_resource type="SphereMesh" id="SphereMesh_syxdw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8bbho"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqk3q"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okchw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5gwc2"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_h6l5l"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ankw5"]
 points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c5yhr"]
@@ -30,37 +30,37 @@ script = ExtResource("1_u1m0k")
 
 [node name="Monster" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_vjsmp")
+mesh = SubResource("CapsuleMesh_qnes3")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_yikjx")
+surface_material_override/0 = SubResource("StandardMaterial3D_pnp51")
 
 [node name="Eye" type="MeshInstance3D" parent="Monster"]
 transform = Transform3D(0.29, 0, 0, 0, 0.29, 0, 0, 0, 0.29, 0.400865, 0.478776, 0.164858)
-mesh = SubResource("SphereMesh_be2i7")
+mesh = SubResource("SphereMesh_syxdw")
 skeleton = NodePath("../..")
 
 [node name="pupil" type="MeshInstance3D" parent="Monster/Eye"]
 transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.204894, 0, 0.0427309)
-mesh = SubResource("SphereMesh_be2i7")
+mesh = SubResource("SphereMesh_syxdw")
 skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_8bbho")
+surface_material_override/0 = SubResource("StandardMaterial3D_wqk3q")
 
 [node name="Eye2" type="MeshInstance3D" parent="Monster"]
 transform = Transform3D(0.29, 0, 0, 0, 0.29, 0, 0, 0, 0.29, 0.400865, 0.478776, -0.131275)
-mesh = SubResource("SphereMesh_be2i7")
+mesh = SubResource("SphereMesh_syxdw")
 skeleton = NodePath("../..")
 
 [node name="pupil" type="MeshInstance3D" parent="Monster/Eye2"]
 transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, 0.204894, 0, -0.0190623)
-mesh = SubResource("SphereMesh_be2i7")
+mesh = SubResource("SphereMesh_syxdw")
 skeleton = NodePath("../../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_okchw")
+surface_material_override/0 = SubResource("StandardMaterial3D_5gwc2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Monster"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
-shape = SubResource("ConvexPolygonShape3D_h6l5l")
+shape = SubResource("ConvexPolygonShape3D_ankw5")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_height_offset = 0.5
