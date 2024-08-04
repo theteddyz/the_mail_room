@@ -30,6 +30,7 @@ var object_Interpolator
 var player_raycast:RayCast3D
 var grab_offset: Vector3 = Vector3.ZERO
 var grab_distance: float = 0
+var initial_basis = Basis()  # To store the initial rotation basis
 var starting_angular_damp:float
 var is_tether_max_range: bool = false
 var is_being_looked_at
@@ -40,6 +41,7 @@ func _ready():
 	player = GameManager.get_player()
 	object_Interpolator = find_child("Interpolator")
 	starting_angular_damp = angular_damp
+	
 	if !should_freeze:
 		freeze = false
 	else:
@@ -119,6 +121,8 @@ func grab():
 			var objectPosition:Vector3 = player_raycast.get_collision_point();
 			grab_distance = playerPosition.distance_to(objectPosition);
 			
+			initial_basis = global_transform.basis
+			
 			print("Grab distance: " , grab_distance);
 			pickmeUp()
 			enable_collision_decection()
@@ -157,23 +161,36 @@ func pickmeUp():
 	set_collision_layer_value(3,false)
 	EventBus.emitCustomSignal("object_held", [mass, get_parent()])
 	is_picked_up = true
+
+func rotate_vector_global(offset: Vector3) -> Vector3:
+	# Get the object's global transform
+	var global_transform = self.global_transform
+	# Extract the basis (rotation matrix) from the global transform
+	var basisen = global_transform.basis
+	
+	var relative_basis = basisen * initial_basis.inverse()
+	
+	return (relative_basis * offset)
+	
 func update_position(delta):
+	var rotation_offset = rotate_vector_global(grab_offset)
 	var forward = -camera.global_transform.basis.z
-	var targetPosition: Vector3 = (camera.global_transform.origin + forward.normalized()*grab_distance) + -grab_offset
+	var targetPosition: Vector3 = (camera.global_transform.origin + forward.normalized()*grab_distance) + -rotation_offset
 	var currentPosition:Vector3 = global_transform.origin
 	var directionTo:Vector3 = targetPosition - currentPosition
 	var distance:float = currentPosition.distance_to(targetPosition)
 	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
 	
 	force = force.limit_length(max_force + (mass * 15) + player.velocity.length())
-	apply_central_force(force)
+	
+	apply_force(force, rotation_offset)
 	
 	if is_tether_max_range:
 		force = (camera.global_transform.origin - currentPosition).normalized() * mass * 15
 		apply_central_force(force)
 	#var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
 	
-	apply_central_force(-linear_velocity * 20) #* angleBetweenForceAndVelocity)		
+	apply_force(-linear_velocity * 20, rotation_offset) #* angleBetweenForceAndVelocity)		
 	if distance > distance_threshold:
 		force_above_threshold_time += delta
 		if force_above_threshold_time >= drop_time_threshold:
