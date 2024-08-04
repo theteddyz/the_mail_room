@@ -20,19 +20,29 @@ func _ready():
 func show_icon(object):
 	hide_all_icons(self)
 	var object_name
-	if !object_held or object_held is Package:
+	if !object_held:
 		if "icon_type" in object:
 			object_name = object.icon_type
 		elif object.name == "Handlebar":
 			object_name = "Drive"
-		elif object.name == "Mailcart" and object_held is Package:
-			print(object_held)
-			object_name = "deliverable"
-		if object_name != null:
-			if object_name in icons:
-				icons[object_name].show()
-			else:
-				pass
+		else:
+			pass
+	elif object_held is Package:
+		match object.name:
+			"Mailcart":
+				object_name = "deliverable"
+			"MailboxStand":
+				object_name = "deliverable"
+			_:
+				if "icon_type" in object:
+					object_name = object.icon_type
+				else:
+					pass
+	if object_name != null:
+		if object_name in icons:
+			icons[object_name].show()
+		else:
+			pass
 			#icons["grab"].show
 
 
@@ -56,4 +66,5 @@ func held_object(_var1,var2):
 	object_held = var2
 
 func dropped_object(_var1,_var2):
+	hide_all_icons(_var1)
 	object_held = null

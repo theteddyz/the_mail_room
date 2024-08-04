@@ -126,28 +126,6 @@ func handle_keyboard_press(event):
 			if !is_holding_package and !is_holding_object:
 				change_state.call("grabcart")
 
-
-#func handle_package_interaction():
-	#var collider = interactable_finder.get_interactable()
-	#if collider != null:
-		#match collider.name:
-			#"Mailcart":
-				#collider.add_package(package_last_held)
-				#package_last_held = null
-				#is_holding_package = false
-			#"MailboxStand":
-				#collider.find_child("PackageDestination").deliver(package_last_held)
-				#package_last_held = null
-				#is_holding_package = false
-			#_:
-				#package_last_held.dropped()
-	#else:
-		#package_last_held.dropped()
-		#package_last_held = null
-		#is_holding_package = false
-
-
-
 func handle_radio_interaction():
 	if interactable_finder.is_interactable("Mailcart"):
 		interactable_finder.get_interactable().add_radio(object_last_held)
@@ -169,7 +147,7 @@ func handle_general_interaction():
 				if is_holding_package:
 					collider.find_child("PackageDestination").deliver(package_last_held)
 					package_last_held = null
-					is_holding_object = false
+					is_holding_package = false
 			"ButtonRB2":
 				collider.interact()
 			_:
