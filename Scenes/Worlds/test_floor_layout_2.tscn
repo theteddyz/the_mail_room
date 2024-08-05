@@ -2288,9 +2288,13 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.620
 
 [node name="File_Cabinet" parent="Objects" instance=ExtResource("29_qdyt5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.13, 0.876865, -19.7)
+collision_layer = 7
+collision_mask = 7
 
 [node name="File_Cabinet2" parent="Objects" instance=ExtResource("29_qdyt5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.13, 0.876865, -20.2281)
+collision_layer = 7
+collision_mask = 7
 
 [node name="File_Cabinet3" parent="Objects" instance=ExtResource("29_qdyt5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.13, 0.876865, -13.9457)

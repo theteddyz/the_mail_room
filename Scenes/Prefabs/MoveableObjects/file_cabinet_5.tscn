@@ -113,8 +113,8 @@ size = Vector3(0.0128282, 0.294437, 0.572388)
 
 [node name="File_Cabinet" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3837, 0)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 7
+collision_mask = 7
 mass = 50.0
 freeze = true
 script = ExtResource("1_p6oug")

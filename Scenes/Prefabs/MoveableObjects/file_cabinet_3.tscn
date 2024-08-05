@@ -131,8 +131,8 @@ shadow_mesh = SubResource("ArrayMesh_fgdmd")
 
 [node name="File_cabinet" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841611, 0)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 7
+collision_mask = 7
 mass = 50.0
 freeze = true
 script = ExtResource("3_872i5")
