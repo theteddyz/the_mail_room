@@ -20,6 +20,7 @@ func _ready():
 func show_icon(object):
 	hide_all_icons(self)
 	var object_name
+	
 	if !object_held:
 		if "icon_type" in object:
 			object_name = object.icon_type
@@ -27,6 +28,8 @@ func show_icon(object):
 			object_name = "Drive"
 		else:
 			pass
+	elif object == object_held:
+		pass
 	elif object_held is Package:
 		match object.name:
 			"Mailcart":

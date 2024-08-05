@@ -74,13 +74,14 @@ func interact():
 	grabbed()
 
 func highlight(_delta):
-	is_being_looked_at = true
-	if shader_material == null:
-		shader_material = package_material.material_overlay.duplicate()
-		package_material.material_overlay = shader_material
-		package_material.material_overlay.set_shader_parameter("outline_width",5)
-	else:
-		package_material.material_overlay.set_shader_parameter("outline_width",5)
+	if !is_inspecting:
+		is_being_looked_at = true
+		if shader_material == null:
+			shader_material = package_material.material_overlay.duplicate()
+			package_material.material_overlay = shader_material
+			package_material.material_overlay.set_shader_parameter("outline_width",5)
+		else:
+			package_material.material_overlay.set_shader_parameter("outline_width",5)
 
 func reset_highlight():
 	if shader_material:
