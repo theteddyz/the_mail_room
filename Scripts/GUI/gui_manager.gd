@@ -5,6 +5,7 @@ extends Control
 @onready var controls_Displayer:Node = $Controls
 @onready var stamina_bar:Node = $Stamina
 @onready var item_icon:Node = $ItemIcon
+@onready var cross_hair:Node = $look_icon 
 func get_item_reader()->Node:
 	return item_reader
 func get_icon_manager() ->Node:
@@ -17,3 +18,6 @@ func get_control_displayer() -> Node:
 	return controls_Displayer
 func get_stamina_bar() -> Node:
 	return stamina_bar
+
+func get_crosshair() -> Node:
+	return cross_hair

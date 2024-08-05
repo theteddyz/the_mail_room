@@ -36,13 +36,14 @@ var starting_angular_damp:float
 var is_tether_max_range: bool = false
 var is_being_looked_at
 var grab_point_indicator
+var player_cross_hair
 signal collided(other_body)
 
 func _ready():
 	player = GameManager.get_player()
 	object_Interpolator = find_child("Interpolator")
 	starting_angular_damp = angular_damp
-	
+	player_cross_hair = Gui.get_crosshair()
 	if !should_freeze:
 		freeze = false
 	else:
@@ -261,9 +262,11 @@ func add_grab_point_indicator():
 		var local_collision_point = to_local(collision_point)
 		grab_point_indicator = grab_icon.instantiate()
 		grab_point_indicator.transform.origin = local_collision_point
+		player_cross_hair.hide()
 		add_child(grab_point_indicator)
 
 func remove_grab_point_indicator():
 	if grab_point_indicator:
 		grab_point_indicator.queue_free()
+		player_cross_hair.show()
 
