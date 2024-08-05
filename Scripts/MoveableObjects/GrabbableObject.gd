@@ -10,6 +10,7 @@ extends Grabbable
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
 @export var can_rotate:bool = true
+@onready var grab_icon = preload("res://Scenes/Prefabs/MoveableObjects/grab_icon.tscn")
 var is_picked_up = false
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
@@ -34,8 +35,8 @@ var initial_basis = Basis()  # To store the initial rotation basis
 var starting_angular_damp:float
 var is_tether_max_range: bool = false
 var is_being_looked_at
+var grab_point_indicator
 signal collided(other_body)
-
 
 func _ready():
 	player = GameManager.get_player()
@@ -52,6 +53,7 @@ func _ready():
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
 	connect("body_entered",Callable(self,"_on_body_entered"))
+
 #Used by Both
 func _input(event):
 	if is_rotating and event is InputEventMouseMotion:
@@ -126,6 +128,7 @@ func grab():
 			print("Grab distance: " , grab_distance);
 			pickmeUp()
 			enable_collision_decection()
+			add_grab_point_indicator()
 func dropMe(throw:bool):
 	if is_picked_up and throw == false:
 		EventBus.emitCustomSignal("dropped_object", [mass,self])
@@ -151,6 +154,7 @@ func dropMe(throw:bool):
 		set_collision_layer_value(3,true)
 		if should_freeze:
 			sleeping = true
+	remove_grab_point_indicator()
 func pickmeUp():
 	if is_picked_up:
 		return
@@ -250,3 +254,16 @@ func _on_body_entered(body):
 		sleeping = false
 		var direction = (global_transform.origin - body.global_transform.origin).normalized()
 		apply_impulse(transform.basis.z * (100 + mass),direction)
+
+func add_grab_point_indicator():
+	if player_raycast.is_colliding():
+		var collision_point = player_raycast.get_collision_point()
+		var local_collision_point = to_local(collision_point)
+		grab_point_indicator = grab_icon.instantiate()
+		grab_point_indicator.transform.origin = local_collision_point
+		add_child(grab_point_indicator)
+
+func remove_grab_point_indicator():
+	if grab_point_indicator:
+		grab_point_indicator.queue_free()
+

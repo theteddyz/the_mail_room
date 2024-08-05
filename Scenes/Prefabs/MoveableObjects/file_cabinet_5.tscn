@@ -115,7 +115,7 @@ size = Vector3(0.0128282, 0.294437, 0.572388)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3837, 0)
 collision_layer = 7
 collision_mask = 7
-mass = 50.0
+mass = 10.0
 freeze = true
 script = ExtResource("1_p6oug")
 should_freeze = true
@@ -147,8 +147,8 @@ shape = SubResource("BoxShape3D_fr2kb")
 
 [node name="Drawer" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00565952, -0.00113794)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 7
+collision_mask = 7
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -197,8 +197,8 @@ shape = SubResource("BoxShape3D_v3i63")
 
 [node name="Drawer2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.378549, -0.00113794)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 7
+collision_mask = 7
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -247,8 +247,8 @@ shape = SubResource("BoxShape3D_v3i63")
 
 [node name="Drawer3" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.753538, -0.00113794)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 7
+collision_mask = 7
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -297,8 +297,8 @@ shape = SubResource("BoxShape3D_v3i63")
 
 [node name="Drawer4" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.11106, -0.00113794)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 7
+collision_mask = 7
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_y = true
