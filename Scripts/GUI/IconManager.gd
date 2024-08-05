@@ -24,6 +24,8 @@ func show_icon(object):
 	if !object_held:
 		if "icon_type" in object:
 			object_name = object.icon_type
+			if object is Package:
+				object.show_label(object.package_partial_address)
 		elif object.name == "Handlebar":
 			object_name = "Drive"
 		else:
