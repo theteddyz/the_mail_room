@@ -1070,6 +1070,7 @@ shadow_bias = 0.19
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000230312, -0.022237, 0.0125418)
+visible = false
 bounces = 8
 bounce_indirect_energy = 0.45
 bias = 0.04035

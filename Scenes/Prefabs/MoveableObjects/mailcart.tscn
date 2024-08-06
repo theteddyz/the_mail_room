@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://tw0mk31qdtge"]
+[gd_scene load_steps=16 format=3 uid="uid://tw0mk31qdtge"]
 
 [ext_resource type="Script" path="res://Scripts/MailCart/Mailcart.gd" id="1_1hgo0"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="2_jjppu"]
@@ -33,6 +33,9 @@ radius = 0.0937542
 radius = 0.122298
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8jcur"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pbic7"]
+size = Vector3(1, 0.900818, 1.60547)
 
 [node name="Mailcart" type="StaticBody3D" groups=["Persist"]]
 collision_layer = 19
@@ -128,7 +131,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.5633
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.64666, 0.625213, 0.0192857)
 
 [node name="Radio" parent="RadioPosition" instance=ExtResource("3_mea2j")]
-transform = Transform3D(1.17, 0, 0, 0, 1.17, 0, 0, 0, 1.17, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 mass = 3.0
@@ -138,3 +140,14 @@ freeze_mode = 1
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17162, 0)
 stream = ExtResource("4_eev6i")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.586491, 0)
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0580783, 0.0283203)
+shape = SubResource("BoxShape3D_pbic7")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

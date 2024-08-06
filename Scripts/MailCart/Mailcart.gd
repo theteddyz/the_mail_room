@@ -154,3 +154,9 @@ func save():
 		"rotation.y" : rotation.y,
 	}
 	return save_dict
+
+
+func _on_area_3d_body_entered(body):
+	print(body)
+	if body is Package:
+		add_package(body)
