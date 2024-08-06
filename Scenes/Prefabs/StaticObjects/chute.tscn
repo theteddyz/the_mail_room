@@ -1,14 +1,24 @@
-[gd_scene load_steps=13 format=3 uid="uid://c88sba6h6nwvq"]
+[gd_scene load_steps=22 format=3 uid="uid://c88sba6h6nwvq"]
 
 [ext_resource type="Texture2D" uid="uid://735qypucag6c" path="res://Assets/Textures/BlenderTextures/Chute.png" id="1_pn477"]
+[ext_resource type="Script" path="res://Scripts/Misc/mail_chute.gd" id="1_r8fjp"]
 [ext_resource type="Texture2D" uid="uid://cg5f0ebefke62" path="res://Assets/Textures/BlenderTextures/ChuteHatch.png" id="2_1ymbx"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_ghinr"]
+[ext_resource type="Script" path="res://Scripts/Misc/chute_button.gd" id="2_wrsxc"]
+[ext_resource type="Material" uid="uid://b0yx07qq8bo8u" path="res://Assets/Materials/chute_green.tres" id="5_xwsom"]
+[ext_resource type="AudioStream" uid="uid://cf736082w06w6" path="res://Assets/Audio/SoundFX/package_drop_chute.mp3" id="7_m12ih"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gd484"]
 friction = 0.0
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qrfwh"]
 data = PackedVector3Array(-0.5121, -0.812, -0.1447, -0.5121, -0.1627, -0.8152, -0.5121, 0.1991, -0.1609, -0.5121, -0.812, -0.1447, -0.5121, -1.181, -0.8152, -0.5121, -0.1627, -0.8152, 0.5121, -0.1627, -0.8152, -0.5121, 0.1991, -0.1609, -0.5121, -0.1627, -0.8152, 0.5121, -0.1627, -0.8152, 0.5121, 0.1991, -0.1609, -0.5121, 0.1991, -0.1609, -0.5121, -1.181, -0.8152, 0.5121, -0.812, -0.1447, 0.5121, -1.181, -0.8152, -0.5121, -1.181, -0.8152, -0.5121, -0.812, -0.1447, 0.5121, -0.812, -0.1447, 0.5121, -1.181, -0.8152, 0.5121, 0.1991, -0.1609, 0.5121, -0.1627, -0.8152, 0.5121, -1.181, -0.8152, 0.5121, -0.812, -0.1447, 0.5121, 0.1991, -0.1609, -0.5121, -0.341, 0.6977, -0.5121, 0.1991, -0.1609, -0.5121, 0.6629, 0.6977, -0.5121, -0.341, 0.6977, -0.5121, -0.812, -0.1447, -0.5121, 0.1991, -0.1609, 0.5121, 0.1991, -0.1609, -0.5121, 0.5797, -0.1652, -0.5121, 0.1991, -0.1609, 0.5121, 0.1991, -0.1609, 0.5121, 0.5797, -0.1652, -0.5121, 0.5797, -0.1652, 0.5121, 0.6629, 0.6977, 0.5121, 0.5797, -0.1652, 0.5121, 0.1991, -0.1609, 0.5121, 0.6629, 0.6977, 0.5121, 1.0554, 0.6977, 0.5121, 0.5797, -0.1652, -0.5121, 0.1991, -0.1609, -0.5121, 1.0554, 0.6977, -0.5121, 0.6629, 0.6977, -0.5121, 0.1991, -0.1609, -0.5121, 0.5797, -0.1652, -0.5121, 1.0554, 0.6977, 0.5121, 0.5797, -0.1652, -0.5121, 1.0554, 0.6977, -0.5121, 0.5797, -0.1652, 0.5121, 0.5797, -0.1652, 0.5121, 1.0554, 0.6977, -0.5121, 1.0554, 0.6977, -0.5121, -0.812, -0.1447, 0.5121, -0.341, 0.6977, 0.5121, -0.812, -0.1447, -0.5121, -0.812, -0.1447, -0.5121, -0.341, 0.6977, 0.5121, -0.341, 0.6977, 0.5121, -0.812, -0.1447, 0.5121, 0.6629, 0.6977, 0.5121, 0.1991, -0.1609, 0.5121, -0.812, -0.1447, 0.5121, -0.341, 0.6977, 0.5121, 0.6629, 0.6977, -0.4966, -0.7996, -0.1515, -0.4966, -0.1732, -0.8152, -0.4966, -1.1665, -0.8152, -0.4966, -0.7996, -0.1515, -0.4966, 0.1936, -0.1515, -0.4966, -0.1732, -0.8152, 0.4966, -0.1732, -0.8152, -0.4966, 0.1936, -0.1515, 0.4966, 0.1936, -0.1515, 0.4966, -0.1732, -0.8152, -0.4966, -0.1732, -0.8152, -0.4966, 0.1936, -0.1515, -0.4966, -1.1665, -0.8152, 0.4966, -0.7997, -0.1515, -0.4966, -0.7996, -0.1515, -0.4966, -1.1665, -0.8152, 0.4966, -1.1665, -0.8152, 0.4966, -0.7997, -0.1515, 0.4966, -1.1665, -0.8152, 0.4966, 0.1936, -0.1515, 0.4966, -0.7997, -0.1515, 0.4966, -1.1665, -0.8152, 0.4966, -0.1732, -0.8152, 0.4966, 0.1936, -0.1515, -0.4966, -0.3304, 0.6977, -0.4966, 0.1936, -0.1515, -0.4966, -0.7996, -0.1515, -0.4966, -0.3304, 0.6977, -0.4966, 0.6629, 0.6977, -0.4966, 0.1936, -0.1515, 0.4966, 0.1936, -0.1515, -0.4966, 0.5716, -0.1515, 0.4966, 0.5716, -0.1515, 0.4966, 0.1936, -0.1515, -0.4966, 0.1936, -0.1515, -0.4966, 0.5716, -0.1515, 0.4966, 0.6629, 0.6977, 0.4966, 0.5716, -0.1515, 0.4966, 1.0409, 0.6977, 0.4966, 0.6629, 0.6977, 0.4966, 0.1936, -0.1515, 0.4966, 0.5716, -0.1515, -0.4966, 0.1936, -0.1515, -0.4966, 1.0409, 0.6977, -0.4966, 0.5716, -0.1515, -0.4966, 0.1936, -0.1515, -0.4966, 0.6629, 0.6977, -0.4966, 1.0409, 0.6977, 0.4966, 0.5716, -0.1515, -0.4966, 1.0409, 0.6977, 0.4966, 1.0409, 0.6977, 0.4966, 0.5716, -0.1515, -0.4966, 0.5716, -0.1515, -0.4966, 1.0409, 0.6977, -0.4966, -0.7996, -0.1515, 0.4966, -0.3304, 0.6977, -0.4966, -0.3304, 0.6977, -0.4966, -0.7996, -0.1515, 0.4966, -0.7997, -0.1515, 0.4966, -0.3304, 0.6977, 0.4966, -0.7997, -0.1515, 0.4966, 0.6629, 0.6977, 0.4966, -0.3304, 0.6977, 0.4966, -0.7997, -0.1515, 0.4966, 0.1936, -0.1515, 0.4966, 0.6629, 0.6977, -0.5121, -1.181, -0.8152, -0.4966, -0.1732, -0.8152, -0.5121, -0.1627, -0.8152, -0.5121, -1.181, -0.8152, -0.4966, -1.1665, -0.8152, -0.4966, -0.1732, -0.8152, 0.5121, -1.181, -0.8152, -0.4966, -1.1665, -0.8152, -0.5121, -1.181, -0.8152, 0.5121, -1.181, -0.8152, 0.4966, -1.1665, -0.8152, -0.4966, -1.1665, -0.8152, -0.5121, -0.1627, -0.8152, 0.4966, -0.1732, -0.8152, 0.5121, -0.1627, -0.8152, -0.5121, -0.1627, -0.8152, -0.4966, -0.1732, -0.8152, 0.4966, -0.1732, -0.8152, 0.5121, -0.1627, -0.8152, 0.4966, -1.1665, -0.8152, 0.5121, -1.181, -0.8152, 0.5121, -0.1627, -0.8152, 0.4966, -0.1732, -0.8152, 0.4966, -1.1665, -0.8152)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xpri5"]
+radius = 0.244831
+
+[sub_resource type="BoxMesh" id="BoxMesh_svrnl"]
+size = Vector3(0.195, 0.18, 0.045)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_621d6"]
 resource_name = "Chute"
@@ -89,11 +99,38 @@ shadow_mesh = SubResource("ArrayMesh_wqlta")
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1mck"]
 size = Vector3(1, 0.995544, 0.0209351)
 
-[node name="Chute" type="StaticBody3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_twtpo"]
+size = Vector3(1, 0.275, 0.095)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qurdv"]
+size = Vector3(1.115, 0.36, 0.295)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tg1xq"]
+albedo_color = Color(0, 0, 0, 1)
+clearcoat_roughness = 0.12
+backlight_enabled = true
+
+[node name="Chute" type="StaticBody3D" node_paths=PackedStringArray("game_objects")]
 physics_material_override = SubResource("PhysicsMaterial_gd484")
+script = ExtResource("1_r8fjp")
+game_objects = [null, null, null, null, null, null]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_qrfwh")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_wrsxc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08675, -1.11842, 0.675219)
+shape = SubResource("SphereShape3D_xpri5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08675, -1.11842, 0.675219)
+mesh = SubResource("BoxMesh_svrnl")
+skeleton = NodePath("../..")
 
 [node name="Chute" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_uf3mt")
@@ -120,3 +157,38 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chute/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.494981, 0.00112009)
 shape = SubResource("BoxShape3D_v1mck")
+
+[node name="Chute_Light" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44169, 0.622054)
+material_override = ExtResource("5_xwsom")
+mesh = SubResource("BoxMesh_twtpo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Chute_Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.105303)
+mesh = SubResource("BoxMesh_qurdv")
+surface_material_override/0 = SubResource("StandardMaterial3D_tg1xq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Chute_Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.450718)
+visible = false
+light_color = Color(0.721569, 0.105882, 0.054902, 1)
+light_volumetric_fog_energy = 0.0
+light_size = 0.114
+shadow_enabled = true
+shadow_normal_bias = 0.0
+omni_range = 10.0
+omni_attenuation = 0.34151
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Chute_Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.450718)
+visible = false
+light_color = Color(0, 0.521569, 0.317647, 1)
+light_volumetric_fog_energy = 0.0
+light_size = 0.114
+shadow_enabled = true
+shadow_normal_bias = 0.0
+omni_range = 10.0
+omni_attenuation = 0.34151
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_m12ih")

@@ -254,6 +254,8 @@ stream_2/stream = ExtResource("8_rikp2")
 stream_2/weight = 1.0
 
 [node name="Chair" type="RigidBody3D"]
+collision_layer = 7
+collision_mask = 7
 angular_damp = 10.0
 script = ExtResource("1_x4tsj")
 
