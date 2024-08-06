@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=108 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -54,6 +54,9 @@
 [ext_resource type="PackedScene" uid="uid://b00a88gvywty0" path="res://Scenes/Prefabs/Monsters/debug_monster.tscn" id="48_v4enk"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="49_78w3q"]
 [ext_resource type="PackedScene" uid="uid://belfg414pqah4" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_3.tscn" id="49_dco3s"]
+[ext_resource type="PackedScene" uid="uid://t1wa5n6nculj" path="res://meeting_room_table.tscn" id="55_5510o"]
+[ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="56_vyteq"]
+[ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="57_hxdn6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vjsmp"]
 
@@ -1069,8 +1072,7 @@ shadow_enabled = true
 shadow_bias = 0.19
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000230312, -0.022237, 0.0125418)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0750089, -0.121828, 0.0485926)
 bounces = 8
 bounce_indirect_energy = 0.45
 bias = 0.04035
@@ -2311,6 +2313,107 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.884
 [node name="File_Cabinet8" parent="Objects" instance=ExtResource("30_60fxr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.8841, 0.838077, -2.69161)
 
+[node name="MeetingRoomTable" parent="Objects" instance=ExtResource("55_5510o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.573, -0.0615216, 21.471)
+
+[node name="MeetingRoomTable2" parent="Objects" instance=ExtResource("55_5510o")]
+transform = Transform3D(-3.36406e-08, 0, -0.811375, 0, 1, 0, 0.769607, 0, -3.54663e-08, 0.867764, -0.090962, -27.3887)
+
+[node name="MeetingRoomTable4" parent="Objects" instance=ExtResource("55_5510o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.2673, -0.090962, -17.6007)
+
+[node name="MeetingRoomTable5" parent="Objects" instance=ExtResource("55_5510o")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.2673, -0.090962, -27.2416)
+
+[node name="Chair" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.4695, 0.807087, 22.2773)
+
+[node name="Chair2" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.4695, 0.807087, 20.7325)
+
+[node name="Chair3" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.4695, 0.807087, 19.3368)
+
+[node name="Chair5" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.9574, 0.807087, 19.3368)
+
+[node name="Chair9" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3888, 0.807087, 18.9743)
+
+[node name="Chair10" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.9219, 0.807087, 24.2788)
+
+[node name="Chair6" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.9574, 0.807087, 20.6607)
+
+[node name="Chair7" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.9574, 0.807087, 22.4241)
+
+[node name="Chair8" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.9574, 0.807087, 23.6863)
+
+[node name="Chair4" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10.4695, 0.807087, 23.6691)
+
+[node name="Chair11" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.18162, 0.843536, -26.5624)
+
+[node name="Chair12" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.817166, 0.843536, -26.4442)
+
+[node name="Chair13" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.877978, 0.843536, -26.5219)
+
+[node name="Chair16" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06065, 0.843536, -28.4066)
+
+[node name="Chair17" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.698634, 0.843536, -28.4066)
+
+[node name="Chair18" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.710018, 0.843536, -28.4066)
+
+[node name="MeetingRoomTable3" parent="Objects" instance=ExtResource("55_5510o")]
+transform = Transform3D(-3.36406e-08, 0, -0.811375, 0, 1, 0, 0.769607, 0, -3.54663e-08, 0.867764, -0.090962, -17.7829)
+
+[node name="Chair14" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.18162, 0.843536, -16.9566)
+
+[node name="Chair15" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.817166, 0.843536, -16.8384)
+
+[node name="Chair19" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.877978, 0.843536, -16.9162)
+
+[node name="Chair20" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06065, 0.843536, -18.8009)
+
+[node name="Chair21" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.698634, 0.843536, -18.8009)
+
+[node name="Chair22" parent="Objects" instance=ExtResource("56_vyteq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.710018, 0.843536, -18.8009)
+
+[node name="MailboxStand" parent="Objects" instance=ExtResource("57_hxdn6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.863078, 1.11964, -27.433)
+
+[node name="CollisionShape3D" parent="Objects/MailboxStand" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00308037, 0.266359, 0.00247478)
+
+[node name="MailboxStand_001" parent="Objects/MailboxStand/MailboxStand" index="0"]
+transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)
+
+[node name="PackageDestination" parent="Objects/MailboxStand" index="2"]
+accepts_package_named = "Package 4
+Seth Bradley
+Accounting Department
+[b]Special Instuctions[/b]
+Deliver to Confrence room 3"
+accepted_num = 4
+
+[node name="MailboxStand3" parent="Objects" instance=ExtResource("57_hxdn6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.5225, 1.11964, 21.6695)
+
 [node name="File_cabinet" parent="." instance=ExtResource("49_dco3s")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.94205, 0.857596, -3.28528)
 
@@ -3101,9 +3204,6 @@ transform = Transform3D(-0.73341, 0, -0.679787, 0, 1, 0, 0.679787, 0, -0.73341, 
 [node name="Phone" parent="." instance=ExtResource("38_ikwgb")]
 transform = Transform3D(0.0601078, 0, 0.998192, 0, 1, 0, -0.998192, 0, 0.0601078, -4.18737, 1.61422, -11.8804)
 
-[node name="Desk" parent="." instance=ExtResource("5_6umw1")]
-transform = Transform3D(-1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, -1, -11.2645, 0.00402761, 26.2251)
-
 [node name="Package" parent="." groups=["Persist"] instance=ExtResource("40_jab1w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09099, 0.206767, 6.64522)
 package_full_address = "Package 1
@@ -3180,19 +3280,8 @@ cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 6
 
-[node name="Desk2" parent="." instance=ExtResource("6_5x7jy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.616909, 0.00402784, -29.2966)
-
-[node name="PackageDestination" parent="Desk2/MailboxStand" index="2"]
-accepts_package_named = "Package 4
-Seth Bradley
-Accounting Department
-[b]Special Instuctions[/b]
-Deliver to Confrence room 3"
-accepted_num = 4
-
 [node name="Key" parent="." instance=ExtResource("39_spw8m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9822, 1.18187, 25.8825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9989, 1.19442, 23.8485)
 unlock_num = 1
 
 [node name="WallMeetingRoom_006" parent="." instance=ExtResource("46_1nv5r")]
@@ -3252,6 +3341,7 @@ mesh = SubResource("BoxMesh_f3ave")
 [editable path="Objects/Desk/MailboxStand"]
 [editable path="Objects/Desk3"]
 [editable path="Objects/Desk3/MailboxStand"]
+[editable path="Objects/MailboxStand"]
 [editable path="Roof/CeilingLightOn3"]
 [editable path="CeilingLights/CeilingLightOn13"]
 [editable path="CeilingLights/CeilingLightOn16"]
@@ -3264,5 +3354,3 @@ mesh = SubResource("BoxMesh_f3ave")
 [editable path="CeilingLights/CeilingLightOn7"]
 [editable path="CeilingLights/CeilingLightOn8"]
 [editable path="CeilingLights/CeilingLightOn52"]
-[editable path="Desk2"]
-[editable path="Desk2/MailboxStand"]
