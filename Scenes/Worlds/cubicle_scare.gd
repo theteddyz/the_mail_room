@@ -5,7 +5,7 @@ var player: Node = null
 var door_slam_available: bool = false
 var monster_seen: bool = false
 var scare_finish_available: bool = false
-@onready var monster_body:CharacterBody3D = $peaking_monster
+@onready var monster_body = $godot_rig
 @onready var door_slam_anim:AnimationPlayer = $"../../NavigationRegion3D/Walls/StaticBody3D161/DoorSlam"
 @onready var audio_player:AudioStreamPlayer3D = $DoorSlamSoundPlayer
 @onready var door_slam_area: Area3D = $door_slam_starter
@@ -20,12 +20,16 @@ func _ready():
 
 func monster_seen_function(boolean: bool):
 	print("MONSTER: " , boolean)
+	var anim = monster_body.get_child(1)
+	anim.play("Action Stash]_003")
 	monster_seen = boolean
 	
 func activate_scare(package_num:int):
 	if package_num == 2 and darkroom_scare != null and !darkroom_scare.has_been_executed:
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		monster_body.visible = true
+		
+		
 		door_slam_area.monitoring = true
 		print("SCARE ACTIVATED!")
 

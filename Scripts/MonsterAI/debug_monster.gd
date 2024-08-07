@@ -8,12 +8,14 @@ extends CharacterBody3D
 @export var aggro_timeout: float = 5.0
 @onready var aggro_timer: Timer = $Aggro_Timer
 @export var stop_threshold: float = 1.0
-
+@onready var monster_body = $godot_rig
+var monster_anim:AnimationPlayer
 var target_position
 var chasing:bool
 var player
 
 func _ready():
+	monster_anim = monster_body.get_child(1)
 	player = GameManager.get_player()
 	aggro_timer.wait_time = aggro_timeout
 
@@ -29,8 +31,10 @@ func move_to_target():
 	var destination = nav.get_next_path_position()
 	var local_destination = destination - global_position
 	var direction = local_destination.normalized()
+	
 	if local_destination.length() < stop_threshold:
 		target_position = null
+		monster_anim.stop()
 		return
 	velocity = direction * speed
 	apply_push_force(direction)
@@ -52,6 +56,7 @@ func _on_timer_timeout():
 
 func chase_player():
 	if !chasing:
+		monster_anim.play("Action Stash]_001")
 		chasing = true
 		nav_timer.start()
 
