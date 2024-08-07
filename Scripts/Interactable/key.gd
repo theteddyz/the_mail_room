@@ -12,7 +12,7 @@ var item_icon_manager
 func _ready():
 	key_material = get_child(0)
 	item_icon_manager = Gui.get_item_icon_displayer()
-	player = get_parent().find_child("Player")
+	player = GameManager.player_reference
 	lerp_pos = player.find_child("ItemHolder")
 	EventBus.connect("object_looked_at",on_seen)
 	EventBus.connect("no_object_found",on_unseen)

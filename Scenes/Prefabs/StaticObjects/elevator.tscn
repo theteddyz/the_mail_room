@@ -228,7 +228,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7.92886, 0.825366)
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 2, 15.5687, 0.825366)
 
 [node name="Elevator" parent="." instance=ExtResource("4_bmf7c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 9.30392, 0.75)
 
 [node name="ElevatorOrigin" type="Marker3D" parent="Elevator"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.903498, 0)
@@ -244,6 +244,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300293, -0.169383, -0.6077
 shape = SubResource("BoxShape3D_ks2cq")
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Elevator"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Elevator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72555, 0)
+light_energy = 0.543
+shadow_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

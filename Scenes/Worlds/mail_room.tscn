@@ -135,30 +135,25 @@ transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586
 [node name="IndustrialTable6" parent="stage/Objects" instance=ExtResource("12_haqay")]
 transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -17.2939, 0.556907, -11.2531)
 
-[node name="StaticBody3D" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
+[node name="StaticBody3D" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.5187, 2.72705, -11.9021)
-game_objects = [null, null, null, null, null, null]
 
 [node name="StaticBody3D6" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0678, 2.72705, 1.8957)
 active = true
 game_objects = [NodePath("../../../Package"), NodePath("../../../Package2"), NodePath("../../../Package3"), NodePath("../../../Package4"), NodePath("../../../Package5"), NodePath("../../../Package6")]
 
-[node name="StaticBody3D2" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
+[node name="StaticBody3D2" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27.061, 2.72705, -11.904)
-game_objects = [null, null, null, null, null, null]
 
-[node name="StaticBody3D5" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
+[node name="StaticBody3D5" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.061, 2.72705, 1.87034)
-game_objects = [null, null, null, null, null, null]
 
-[node name="StaticBody3D3" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
+[node name="StaticBody3D3" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.2804, 2.72705, -11.9021)
-game_objects = [null, null, null, null, null, null]
 
-[node name="StaticBody3D4" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
+[node name="StaticBody3D4" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2804, 2.72705, 1.83474)
-game_objects = [null, null, null, null, null, null]
 
 [node name="Desk" parent="stage/Objects" instance=ExtResource("12_r5uwn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14.5062, -1.19209e-07, -9.52926)
@@ -895,7 +890,7 @@ shadow_blur = 3.051
 omni_range = 8.522
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn25" instance=ExtResource("17_0ceh8")]
-transform = Transform3D(4.61975, 0, -8.52651e-14, 0, 4.61975, 0, 8.52651e-14, 0, 4.61975, 0, -4.17296, -0.981712)
+transform = Transform3D(1, 0, -1.84566e-14, 0, 1, 0, 1.84566e-14, 0, 1, 0, -4.17296, -0.981712)
 light_energy = 1.0
 
 [node name="CeilingLightOn14" parent="stage/Lights" instance=ExtResource("7_84et1")]

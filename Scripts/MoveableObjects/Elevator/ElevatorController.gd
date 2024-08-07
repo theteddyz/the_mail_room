@@ -58,7 +58,10 @@ func move_floors():
 		if detector.mailcart_exists_in_elevator == true:
 			var mail_cart = GameManager.get_mail_cart()
 			mail_cart.reparent(Elevator,true)
-		await wall_anim.animation_finished
+		if Elevator_Wall.visible:
+			await wall_anim.animation_finished
+		else:
+			await elevator_anim.animation_finished
 		anim.play("elevator_move_down")
 		await anim.animation_finished
 		if current_floor < 0:
@@ -77,12 +80,15 @@ func move_floors():
 			mail_cart.reparent(Elevator,true)
 		var player = GameManager.get_player()
 		player.reparent(Elevator,true)
-		await wall_anim.animation_finished
-		anim.play("elevator_move_up")
+		if Elevator_Wall.visible:
+			await wall_anim.animation_finished
+		else:
+			await anim.animation_finished
+		anim.play("elaevator_move_up")
 		await anim.animation_finished
 		if current_floor < 0:
-			wall_anim.active = false
-			Elevator_Wall.visible = false
+			wall_anim.active = true
+			Elevator_Wall.visible = true
 			
 		else:
 			wall_anim.active = true

@@ -1058,7 +1058,7 @@ size = Vector3(30, 0.2, 12)
 [node name="world" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_f8c1l")
-floor_num = 4
+floor_num = 6
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_sdhj6")
@@ -1455,6 +1455,9 @@ transform = Transform3D(2.31, 0, 0, 0, 2.31, 0, 0, 0, 2.31, 9.54, 0.4, -6.055)
 
 [node name="Floor" parent="NavigationRegion3D/floor/ACTUAL FLOOR" index="0"]
 mesh = SubResource("ArrayMesh_i22ym")
+
+[node name="CollisionShape3D" parent="NavigationRegion3D/floor/ACTUAL FLOOR" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Walls" type="Node3D" parent="NavigationRegion3D"]
 

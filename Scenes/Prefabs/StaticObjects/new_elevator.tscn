@@ -474,7 +474,6 @@ blend_shape_mode = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyj6f"]
 resource_name = "ElevatorLight"
-cull_mode = 2
 albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
@@ -687,7 +686,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.373051, 0)
 collision_layer = 3
 script = ExtResource("3_prkdp")
-target_scene_path = "res://Scenes/Worlds/Finance.tscn"
+target_scene_path = "res://Scenes/Worlds/test_floor_layout_2.tscn"
 floor_num = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/Elevator_body/ElevatorFloors/Finance/Area3D"]
