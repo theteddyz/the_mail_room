@@ -212,7 +212,7 @@ tracks/0/path = NodePath("../../NavigationRegion3D/Walls/StaticBody3D127/RigidBo
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.05, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7),
+"times": PackedFloat32Array(0.05, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.174, 0, -0.689), Vector3(0.485867, 0, -0.915487), Vector3(0.438587, 1.19209e-07, -0.850714), Vector3(0.322851, 1.78814e-07, -0.720211), Vector3(0.389885, 1.19209e-07, -0.783278), Vector3(0.324736, 1.19209e-07, -0.750599), Vector3(0.147947, 1.19209e-07, -0.616933), Vector3(0.0322475, 0, -0.44523), Vector3(0, 0, 0)]
@@ -224,7 +224,7 @@ tracks/1/path = NodePath("../../NavigationRegion3D/Walls/StaticBody3D127/RigidBo
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7),
+"times": PackedFloat32Array(0.05, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, -0.762709, 0), Vector3(0, -0.762709, 0), Vector3(0, -0.861099, 0), Vector3(0, -1.04894, 0), Vector3(0, -0.865762, 0), Vector3(0, -0.79587, 0), Vector3(0, -0.7274, 0), Vector3(0, -0.492514, 0), Vector3(0, 0, 0)]
@@ -236,7 +236,7 @@ tracks/2/path = NodePath("DoorSlamSoundPlayer:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.7),
+"times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -272,7 +272,7 @@ tracks/5/path = NodePath("LampBreakSoundPlayer:playing")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.7),
+"times": PackedFloat32Array(0.65),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -333,7 +333,7 @@ tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "clips": PackedStringArray("DoorSlam"),
-"times": PackedFloat32Array(0.1)
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_avnte"]
