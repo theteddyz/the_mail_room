@@ -106,6 +106,15 @@ mass = 3.0
 script = ExtResource("1_m84f3")
 can_rotate = false
 
+[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="RigidBody3D"]
+limit_enabled = true
+limit_upper = 1.5708
+limit_spring_enabled = true
+limit_spring_damping = 50.0
+node_a = NodePath("../..")
+node_b = NodePath("..")
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
+
 [node name="Door_Lock" type="Area3D" parent="RigidBody3D"]
 collision_layer = 130
 collision_mask = 130
@@ -151,15 +160,6 @@ script = ExtResource("2_iitep")
 transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.96591, 2.04469, 0)
 mesh = SubResource("ArrayMesh_shnmu")
 skeleton = NodePath("")
-
-[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="."]
-limit_enabled = true
-limit_upper = 1.5708
-limit_spring_enabled = true
-limit_spring_damping = 50.0
-node_a = NodePath("..")
-node_b = NodePath("../RigidBody3D")
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79594, 6.02398, 0.00671387)
