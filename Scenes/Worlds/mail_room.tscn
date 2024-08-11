@@ -32,7 +32,6 @@ ssao_horizon = 0.56
 ssil_radius = 0.01
 ssil_intensity = 7.35
 sdfgi_use_occlusion = true
-sdfgi_energy = 4.0
 glow_enabled = true
 glow_normalized = true
 glow_bloom = 0.5
@@ -58,7 +57,7 @@ albedo_texture = ExtResource("3_o2qoi")
 uv1_scale = Vector3(15, 15, 15)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3ta1d"]
-lightmap_size_hint = Vector2i(11, 8)
+lightmap_size_hint = Vector2i(2048, 2048)
 add_uv2 = true
 size = Vector2(73.72, 50)
 
@@ -84,6 +83,7 @@ environment = SubResource("Environment_j0hss")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20004, 5.14948, 3.68872)
+visible = false
 bounces = 8
 interior = true
 light_data = ExtResource("2_gp4ix")
@@ -912,28 +912,31 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -4.91562
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn15" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
-light_energy = 1.0
+visible = false
+light_energy = 0.0
 
 [node name="CeilingLightOn17" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.7841, 4.541, -9.907)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn17" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
-light_energy = 1.0
+visible = false
+light_energy = 0.0
 
 [node name="CeilingLightOn18" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 6.4731, 4.541, -9.907)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn18" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
-light_energy = 1.0
+visible = false
+light_energy = 0.0
 
 [node name="CeilingLightOn16" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.6269, 4.541, -9.907)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn16" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
-light_energy = 1.0
+light_energy = 0.0
 
 [node name="CeilingLightOn10" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -0.718985, 4.541, -5.04403)
