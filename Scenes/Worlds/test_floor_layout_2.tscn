@@ -1,8 +1,8 @@
-[gd_scene load_steps=115 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=116 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
-[ext_resource type="Environment" uid="uid://ci5wfbrfskeiu" path="res://Scenes/Worlds/test_floor_layout_2_worldenvironment_ALEXANDER.tres" id="2_sdhj6"]
+[ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_q5amt"]
 [ext_resource type="Script" path="res://Scenes/Worlds/cubicle_scare.gd" id="4_2dy4y"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="4_6vebi"]
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="4_gk0n2"]
@@ -44,7 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
 [ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="39_spw8m"]
-[ext_resource type="LightmapGIData" uid="uid://b47apowergxcs" path="res://Scenes/Worlds/test_floor_layout_2.lmbake" id="40_ifclc"]
+[ext_resource type="LightmapGIData" uid="uid://coop0ql4uttgo" path="res://Scenes/Worlds/test_floor_layout_2.lmbake" id="40_ifclc"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 [ext_resource type="AudioStream" uid="uid://c63x30unvtimj" path="res://Assets/Audio/SoundFX/DoorClosed3.mp3" id="40_lmkw4"]
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_007.tscn" id="42_ee2c8"]
@@ -62,6 +62,42 @@
 [ext_resource type="PackedScene" uid="uid://bdvhb1nhdbexm" path="res://Scenes/Prefabs/StaticObjects/Bathroom_stall_main.tscn" id="59_872xm"]
 [ext_resource type="PackedScene" uid="uid://cnus2pwbp1koj" path="res://Scenes/Prefabs/StaticObjects/half_stall.tscn" id="60_n0a47"]
 [ext_resource type="Texture2D" uid="uid://byp086pac7m6k" path="res://Scenes/Prefabs/StaticObjects/floor_tiles_06_diff_1k.jpg" id="62_nca5g"]
+
+[sub_resource type="Environment" id="Environment_1vnpb"]
+background_mode = 2
+background_energy_multiplier = 1.09
+sky = ExtResource("2_q5amt")
+ambient_light_source = 1
+ambient_light_color = Color(0.980392, 0.964706, 0.886275, 1)
+reflected_light_source = 1
+tonemap_mode = 2
+tonemap_exposure = 0.72
+ssao_radius = 1.95
+ssil_enabled = true
+ssil_intensity = 1.28
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+glow_levels/1 = 0.27
+glow_levels/3 = 0.51
+glow_levels/4 = 0.43
+glow_levels/5 = 0.33
+glow_levels/6 = 0.23
+glow_levels/7 = 0.13
+glow_normalized = true
+glow_intensity = 0.63
+glow_strength = 1.05
+glow_bloom = 0.5
+glow_blend_mode = 0
+fog_aerial_perspective = 0.615
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0392
+volumetric_fog_anisotropy = 0.57
+volumetric_fog_length = 7.58
+volumetric_fog_sky_affect = 0.0
+adjustment_enabled = true
+adjustment_brightness = 0.95
+adjustment_contrast = 1.16
+adjustment_saturation = 1.35
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vjsmp"]
 
@@ -1077,7 +1113,7 @@ roughness = 0.0
 uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yarfa"]
-lightmap_size_hint = Vector2i(4, 3)
+lightmap_size_hint = Vector2i(78, 65)
 add_uv2 = true
 size = Vector2(15.375, 12.645)
 
@@ -1087,7 +1123,11 @@ script = ExtResource("1_f8c1l")
 floor_num = 6
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("2_sdhj6")
+environment = SubResource("Environment_1vnpb")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+bounces = 8
+light_data = ExtResource("40_ifclc")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.00438749, 0.245584, -0.969365, 0.000671603, 0.969375, 0.245584, 0.99999, 0.000426467, -0.00441806, 196.62, 40.3983, 0)
@@ -1096,13 +1136,6 @@ light_energy = 0.63
 light_volumetric_fog_energy = 12.255
 shadow_enabled = true
 shadow_bias = 0.19
-
-[node name="LightmapGI" type="LightmapGI" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0750089, -0.121828, 0.0485926)
-bounces = 8
-bounce_indirect_energy = 0.45
-bias = 0.04035
-light_data = ExtResource("40_ifclc")
 
 [node name="1ST FLOOR SCARES" type="Node" parent="."]
 
@@ -3808,7 +3841,6 @@ visible = false
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn16" index="1"]
 light_bake_mode = 0
-shadow_enabled = true
 shadow_bias = 0.03
 omni_shadow_mode = 1
 
@@ -3822,7 +3854,6 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.573916
 transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.67959, 0)
 light_energy = 0.49
 light_bake_mode = 2
-shadow_enabled = true
 shadow_bias = 0.015
 omni_range = 11.576
 omni_shadow_mode = 1
@@ -3837,7 +3868,6 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.573916
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn32" index="1"]
 light_bake_mode = 2
-shadow_enabled = true
 shadow_bias = 0.015
 omni_range = 11.629
 omni_shadow_mode = 1
@@ -3913,7 +3943,6 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 11.9696,
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn29" index="1"]
 light_bake_mode = 2
-shadow_enabled = true
 shadow_bias = 0.101
 omni_shadow_mode = 1
 
@@ -3924,7 +3953,6 @@ transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0,
 transform = Transform3D(4.61975, 0, -1.42109e-14, 0, 4.61975, 0, 1.42109e-14, 0, 4.61975, 0, -2.67959, 0)
 light_energy = 0.652
 light_bake_mode = 2
-shadow_enabled = true
 shadow_bias = 0.095
 omni_shadow_mode = 1
 
@@ -3933,7 +3961,6 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.08925
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn4" index="1" groups=["alwaysshadow"]]
 light_bake_mode = 2
-shadow_enabled = true
 shadow_bias = 0.19
 omni_shadow_mode = 1
 
@@ -3945,14 +3972,12 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.08925
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn7" index="1" groups=["alwaysshadow"]]
 light_bake_mode = 2
-shadow_enabled = true
 
 [node name="CeilingLightOn8" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.08925, 4.20832, -4.09988)
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn8" index="1" groups=["alwaysshadow"]]
 light_bake_mode = 2
-shadow_enabled = true
 
 [node name="FlickeringLight" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn8"]
 libraries = {
@@ -3968,7 +3993,6 @@ script = ExtResource("30_0tqww")
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn52" index="1" groups=["alwaysshadow"]]
 light_bake_mode = 2
-shadow_enabled = true
 shadow_bias = 0.015
 shadow_transmittance_bias = -4.945
 distance_fade_enabled = true

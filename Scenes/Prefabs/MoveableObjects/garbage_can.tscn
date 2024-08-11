@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b8iui7iq0t8y6"]
+[gd_scene load_steps=37 format=3 uid="uid://b8iui7iq0t8y6"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_fgjb5"]
 [ext_resource type="Texture2D" uid="uid://b1aua8leky6kp" path="res://Assets/Textures/BlenderTextures/TrashCan.png" id="1_h8v2l"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://cokyag3t67y54" path="res://Assets/Audio/SoundFX/ImpactOfficeChair2.mp3" id="5_80ipc"]
 [ext_resource type="AudioStream" uid="uid://bilw50ieo1kh3" path="res://Assets/Audio/SoundFX/ImpactOfficeChair3.mp3" id="6_nki12"]
 [ext_resource type="AudioStream" uid="uid://dt0hb1ah75n6w" path="res://Assets/Audio/SoundFX/ImpactOfficeChair.mp3" id="7_fbyrn"]
-[ext_resource type="PackedScene" uid="uid://cp3vbfvy03meb" path="res://Scenes/Prefabs/MoveableObjects/crumpled_paper.tscn" id="8_pm0j5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i76eg"]
 
@@ -250,10 +249,5 @@ impact_audios = NodePath("../ImpactAudioPlayer")
 
 [node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_rrpps")
-
-[node name="RigidBody3D" parent="." instance=ExtResource("8_pm0j5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00564076, -0.0548726, 0.0421185)
-collision_layer = 7
-collision_mask = 7
 
 [connection signal="body_entered" from="." to="Collision_Handler" method="_on_body_entered"]

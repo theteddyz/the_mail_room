@@ -83,7 +83,6 @@ environment = SubResource("Environment_j0hss")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20004, 5.14948, 3.68872)
-visible = false
 bounces = 8
 interior = true
 light_data = ExtResource("2_gp4ix")
@@ -156,7 +155,16 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.28
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2804, 2.72705, 1.83474)
 
 [node name="Desk" parent="stage/Objects" instance=ExtResource("12_r5uwn")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -14.5062, -1.19209e-07, -9.52926)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.3918, -1.19209e-07, -5.62017)
+
+[node name="ComputerOn" parent="stage/Objects/Desk/GrabableObjectTemplate/Interpolator" index="0"]
+gi_mode = 2
+
+[node name="ComputerOff" parent="stage/Objects/Desk/GrabableObjectTemplate/Interpolator" index="1"]
+gi_mode = 2
+
+[node name="Screen" parent="stage/Objects/Desk/GrabableObjectTemplate/Interpolator/ComputerOff" index="0"]
+gi_mode = 2
 
 [node name="Desk2" parent="stage/Objects" instance=ExtResource("13_smksi")]
 transform = Transform3D(-0.00181511, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00181511, -9.82366, 0, -0.469987)
@@ -848,12 +856,14 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -27.0934
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn3" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 light_energy = 1.0
+shadow_enabled = true
 
 [node name="CeilingLightOn19" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -38.8443, 4.60039, -10.685)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn19" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
+shadow_enabled = true
 
 [node name="CeilingLightOn20" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -38.7774, 4.58633, 0.705129)
@@ -861,6 +871,7 @@ transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0,
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn20" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 light_energy = 1.0
+shadow_enabled = true
 
 [node name="CeilingLightOn21" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -39.31, 4.58633, -5.00331)
@@ -868,6 +879,7 @@ transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0,
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn21" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 light_energy = 1.0
+shadow_enabled = true
 
 [node name="CeilingLightOn5" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -31.9712, 4.58633, -4.98716)
@@ -875,6 +887,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -31.9712
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn5" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 light_energy = 1.0
+shadow_enabled = true
 
 [node name="CeilingLightOn25" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -18.1035, 4.58633, -4.98716)
@@ -892,6 +905,7 @@ omni_range = 8.522
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn25" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, -1.84566e-14, 0, 1, 0, 1.84566e-14, 0, 1, 0, -4.17296, -0.981712)
 light_energy = 1.0
+shadow_enabled = true
 
 [node name="CeilingLightOn14" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.7236, 4.52438, -0.452828)
@@ -899,6 +913,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.7236
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn14" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 light_energy = 1.0
+shadow_enabled = true
 
 [node name="CeilingLightOn8" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.09, 4.541, -5.04403)
@@ -906,6 +921,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.09, 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn8" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 light_energy = 1.0
+shadow_enabled = true
 
 [node name="CeilingLightOn15" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -4.91562, 4.541, -9.90721)
@@ -914,6 +930,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -4.91562
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 visible = false
 light_energy = 0.0
+shadow_enabled = true
 
 [node name="CeilingLightOn17" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.7841, 4.541, -9.907)
@@ -922,6 +939,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.7841, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 visible = false
 light_energy = 0.0
+shadow_enabled = true
 
 [node name="CeilingLightOn18" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 6.4731, 4.541, -9.907)
@@ -930,6 +948,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 6.4731, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 visible = false
 light_energy = 0.0
+shadow_enabled = true
 
 [node name="CeilingLightOn16" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.6269, 4.541, -9.907)
@@ -937,6 +956,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.6269
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn16" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 light_energy = 0.0
+shadow_enabled = true
 
 [node name="CeilingLightOn10" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -0.718985, 4.541, -5.04403)
@@ -944,6 +964,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -0.71898
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn10" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 light_energy = 1.0
+shadow_enabled = true
 
 [node name="CeilingLightOn24" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 7.92471, 4.541, -5.04403)
@@ -951,6 +972,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 7.92471,
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn24" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17297, 0)
 light_energy = 1.0
+shadow_enabled = true
 
 [node name="Roof" type="Node3D" parent="stage"]
 
@@ -1144,3 +1166,7 @@ package_num = 6
 
 [node name="Mailcart" parent="." instance=ExtResource("23_swn7f")]
 transform = Transform3D(0.0671446, 0, 0.997743, 0, 1, 0, -0.997743, 0, 0.0671446, -0.184902, 0.291614, -5.19861)
+
+[editable path="stage/Objects/Desk"]
+[editable path="stage/Objects/Desk/GrabableObjectTemplate"]
+[editable path="stage/Objects/Desk/GrabableObjectTemplate/Interpolator/ComputerOff"]
