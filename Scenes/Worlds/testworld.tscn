@@ -161,11 +161,11 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5, 0, -10)
 physics_material_override = SubResource("PhysicsMaterial_gqob6")
 should_freeze = true
 
-[node name="Door_Lock" parent="StaticBody3D3/RigidBody3D" index="0"]
+[node name="Door_Lock" parent="StaticBody3D3/RigidBody3D" index="1"]
 locked = true
 unlock_number = 1
 
-[node name="door" parent="StaticBody3D3/RigidBody3D" index="1"]
+[node name="door" parent="StaticBody3D3/RigidBody3D" index="2"]
 visible = false
 collision_layer = 0
 collision_mask = 0
@@ -178,10 +178,10 @@ unlock_num = 1
 [node name="meeting_room_wall_Door" parent="." instance=ExtResource("15_tm150")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.6894, 0.00402808, -9.97101)
 
-[node name="CollisionShape3D" parent="meeting_room_wall_Door/RigidBody3D2" index="2"]
+[node name="CollisionShape3D" parent="meeting_room_wall_Door/RigidBody3D2" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849284, 2.0413, 0.0984774)
 
-[node name="CollisionShape3D2" parent="meeting_room_wall_Door/RigidBody3D2" index="3"]
+[node name="CollisionShape3D2" parent="meeting_room_wall_Door/RigidBody3D2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849284, 2.0413, -0.239973)
 
 [node name="WallMeetingRoomWithDoorGlass" parent="meeting_room_wall_Door" index="4"]
