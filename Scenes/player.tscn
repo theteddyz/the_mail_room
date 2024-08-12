@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
+radius = 0.3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ia68h"]
+radius = 0.3
 height = 1.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j34qt"]
