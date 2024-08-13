@@ -136,7 +136,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_htf31")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fdql5"]
-size = Vector3(0.402893, 0.0451813, 0.621246)
+size = Vector3(0.46376, 0.0655594, 0.621246)
 
 [node name="Toilet" type="StaticBody3D"]
 collision_layer = 21
@@ -189,7 +189,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.010
 shape = SubResource("BoxShape3D_tfgmv")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0204636, 0, -0.00762612)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0209717, 0, -0.00762612)
 collision_layer = 7
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_vpaw0")
@@ -202,7 +202,7 @@ mesh = SubResource("ArrayMesh_gd3wn")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0281677, 0.534678, -0.0197331)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00565338, 0.524489, -0.0197331)
 shape = SubResource("BoxShape3D_fdql5")
 
 [node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="RigidBody3D"]
