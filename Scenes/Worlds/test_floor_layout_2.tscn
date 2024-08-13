@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=124 format=3 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -42,19 +42,20 @@
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://cqtfocys05ytu" path="res://Assets/Audio/SoundFX/DestructionLamp2.mp3" id="31_ok8u3"]
 [ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
-[ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="39_spw8m"]
 [ext_resource type="LightmapGIData" uid="uid://coop0ql4uttgo" path="res://Scenes/Worlds/test_floor_layout_2.lmbake" id="40_ifclc"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 [ext_resource type="AudioStream" uid="uid://c63x30unvtimj" path="res://Assets/Audio/SoundFX/DoorClosed3.mp3" id="40_lmkw4"]
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_007.tscn" id="42_ee2c8"]
-[ext_resource type="PackedScene" uid="uid://ct3hpc3g723ed" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
+[ext_resource type="Texture2D" uid="uid://cabgoqnkirs6s" path="res://Scenes/Prefabs/StaticObjects/Metal011_1K-JPG_Color.jpg" id="43_5wuyx"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
 [ext_resource type="PlaneMesh" uid="uid://bsjvgx14rrdbw" path="res://floor_mesh_1stfloor.tres" id="45_td67j"]
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="46_1nv5r"]
 [ext_resource type="PackedScene" uid="uid://b00a88gvywty0" path="res://Scenes/Prefabs/Monsters/debug_monster.tscn" id="48_v4enk"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="49_78w3q"]
 [ext_resource type="PackedScene" uid="uid://belfg414pqah4" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_3.tscn" id="49_dco3s"]
-[ext_resource type="PackedScene" uid="uid://t1wa5n6nculj" path="res://meeting_room_table.tscn" id="55_5510o"]
+[ext_resource type="PackedScene" path="res://meeting_room_table.tscn" id="55_5510o"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="56_vyteq"]
 [ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="57_hxdn6"]
 [ext_resource type="PackedScene" uid="uid://bn0klf1dot74d" path="res://Assets/Models/john_model.tscn" id="58_id03k"]
@@ -62,6 +63,9 @@
 [ext_resource type="PackedScene" uid="uid://bdvhb1nhdbexm" path="res://Scenes/Prefabs/StaticObjects/Bathroom_stall_main.tscn" id="59_872xm"]
 [ext_resource type="PackedScene" uid="uid://cnus2pwbp1koj" path="res://Scenes/Prefabs/StaticObjects/half_stall.tscn" id="60_n0a47"]
 [ext_resource type="Texture2D" uid="uid://byp086pac7m6k" path="res://Scenes/Prefabs/StaticObjects/floor_tiles_06_diff_1k.jpg" id="62_nca5g"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/toilet.tscn" id="63_j7avt"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/bathroom_sink.tscn" id="64_hij51"]
+[ext_resource type="PackedScene" uid="uid://csml3h8jd6hni" path="res://Scenes/Prefabs/StaticObjects/ceiling_broken_3.tscn" id="65_l2u3i"]
 
 [sub_resource type="Environment" id="Environment_1vnpb"]
 background_mode = 2
@@ -696,6 +700,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lmwlx")
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_33f24"]
+data = PackedVector3Array(-1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1)
+
 [sub_resource type="Animation" id="Animation_vcocu"]
 length = 0.001
 tracks/0/type = "value"
@@ -823,6 +830,16 @@ size = Vector3(1.88333, 3.8623, 0.346191)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_373dp"]
 radius = 0.107743
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k62d"]
+albedo_texture = ExtResource("43_5wuyx")
+uv1_scale = Vector3(15.835, 15.835, 15.835)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nc3td"]
+size = Vector3(22.085, 1, 12.94)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3518h"]
+size = Vector3(0.715, 10, 12.94)
 
 [sub_resource type="Animation" id="Animation_k5fj2"]
 length = 0.001
@@ -1109,13 +1126,15 @@ size = Vector3(30, 0.2, 12)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yk2ba"]
 albedo_texture = ExtResource("62_nca5g")
+metallic_specular = 0.0
 roughness = 0.0
-uv1_scale = Vector3(10, 10, 10)
+uv1_scale = Vector3(3, 3, 3)
+texture_filter = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yarfa"]
-lightmap_size_hint = Vector2i(78, 65)
+lightmap_size_hint = Vector2i(1024, 1024)
 add_uv2 = true
-size = Vector2(15.375, 12.645)
+size = Vector2(14.345, 11.465)
 
 [node name="world" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -2366,10 +2385,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0688543, 0, -0.0495453)
 size = Vector3(30.114, 1, 29.1384)
 
 [node name="ACTUAL FLOOR" parent="NavigationRegion3D/floor" instance=ExtResource("5_vxcvf")]
-transform = Transform3D(2.31, 0, 0, 0, 2.31, 0, 0, 0, 2.31, 9.54, 0.4, -6.055)
+transform = Transform3D(2.31, 0, 0, 0, 2.31, 0, 0, 0, 2.31, 9.54, 0.418599, -6.055)
 
 [node name="Floor" parent="NavigationRegion3D/floor/ACTUAL FLOOR" index="0"]
+visible = false
 mesh = SubResource("ArrayMesh_i22ym")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D/floor/ACTUAL FLOOR/Floor" index="1"]
+collision_layer = 21
+collision_mask = 21
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/floor/ACTUAL FLOOR/Floor/StaticBody3D2"]
+shape = SubResource("ConcavePolygonShape3D_33f24")
 
 [node name="Walls" type="Node3D" parent="NavigationRegion3D"]
 
@@ -3155,7 +3182,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.936
 [node name="Desk3" parent="Objects" instance=ExtResource("6_5x7jy")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21.4445, 0, -31.358)
 
-[node name="MailboxStand" parent="Objects/Desk3" index="6"]
+[node name="MailboxStand" parent="Objects/Desk3" index="7"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.902578, 1.14846, -0.248535)
 
 [node name="PackageDestination" parent="Objects/Desk3/MailboxStand" index="2"]
@@ -3719,9 +3746,6 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 40.4125,
 [node name="CeilingLowPoly135" parent="Roof" instance=ExtResource("11_ejcsp")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 40.4125, 4.16656, 18.442)
 
-[node name="CeilingLowPoly136" parent="Roof" instance=ExtResource("11_ejcsp")]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 40.4125, 4.16656, 24.1308)
-
 [node name="CeilingLowPoly137" parent="Roof" instance=ExtResource("11_ejcsp")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 40.4125, 4.16656, -15.6806)
 
@@ -3756,7 +3780,7 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 46.0948,
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 46.0948, 4.16656, 18.442)
 
 [node name="CeilingLowPoly148" parent="Roof" instance=ExtResource("11_ejcsp")]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 46.0948, 4.16656, 24.1308)
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 44.3539, 4.16, 24.1308)
 
 [node name="CeilingLowPoly157" parent="Roof" instance=ExtResource("11_ejcsp")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 29.0335, 4.16656, 29.816)
@@ -3765,19 +3789,19 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 29.0335,
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 29.0335, 4.16656, 35.5048)
 
 [node name="CeilingLowPoly159" parent="Roof" instance=ExtResource("11_ejcsp")]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 34.7254, 4.16656, 29.816)
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 34.7254, 4.16656, 29.2859)
 
 [node name="CeilingLowPoly160" parent="Roof" instance=ExtResource("11_ejcsp")]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 34.7254, 4.16656, 35.5048)
-
-[node name="CeilingLowPoly161" parent="Roof" instance=ExtResource("11_ejcsp")]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 40.4125, 4.16656, 29.816)
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 34.7254, 4.16656, 34.9463)
 
 [node name="CeilingLowPoly162" parent="Roof" instance=ExtResource("11_ejcsp")]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 40.4125, 4.16656, 35.5048)
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 40.4125, 4.16656, 32.1215)
+
+[node name="CeilingLowPoly166" parent="Roof" instance=ExtResource("11_ejcsp")]
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 40.4125, 4.16656, 37.6835)
 
 [node name="CeilingLowPoly163" parent="Roof" instance=ExtResource("11_ejcsp")]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 46.0948, 4.16656, 29.816)
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 44.3539, 4.16, 29.816)
 
 [node name="CeilingLowPoly164" parent="Roof" instance=ExtResource("11_ejcsp")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 46.0948, 4.16656, 35.5048)
@@ -3816,6 +3840,27 @@ shadow_blur = 0.0
 
 [node name="AudioStreamPlayer3D" parent="Roof/CeilingLightOn3" index="3"]
 volume_db = -9.0
+
+[node name="CeilingLightOn4" parent="Roof" instance=ExtResource("24_ob748")]
+transform = Transform3D(0.216, 0, 0, 0, 0.202289, 0.0757295, 0, -0.0757295, 0.202289, 38.7702, 3.99183, 27.3469)
+
+[node name="OmniLight3D" parent="Roof/CeilingLightOn4" index="1"]
+transform = Transform3D(4.62963, 0, 0, 0, 4.62963, 0, 0, 0, 4.62963, 0, -3.17776, 0)
+shadow_bias = 0.19
+shadow_blur = 0.0
+
+[node name="AudioStreamPlayer3D" parent="Roof/CeilingLightOn4" index="3"]
+volume_db = -9.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.4692, 5.56254, 29.9152)
+material_override = SubResource("StandardMaterial3D_7k62d")
+mesh = SubResource("BoxMesh_nc3td")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.4689, 3.63483, 33.5451)
+material_override = SubResource("StandardMaterial3D_7k62d")
+mesh = SubResource("BoxMesh_3518h")
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -3917,26 +3962,17 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.733882
 light_energy = 0.195
 shadow_bias = 0.1
 
-[node name="CeilingLightOn22" parent="CeilingLights" instance=ExtResource("13_srb8m")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 37.2604, 4.2381, 26.8135)
-
-[node name="CeilingLightOn39" parent="CeilingLights" instance=ExtResource("13_srb8m")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 43.3429, 4.2381, 26.8135)
-
-[node name="CeilingLightOn38" parent="CeilingLights" instance=ExtResource("13_srb8m")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 34.7398, 4.2381, 31.8681)
-
-[node name="CeilingLightOn34" parent="CeilingLights" instance=ExtResource("13_srb8m")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 46.1272, 4.20979, 31.8681)
-
 [node name="CeilingLightOn40" parent="CeilingLights" instance=ExtResource("13_srb8m")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 43.2902, 4.25415, 31.8681)
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 40.4047, 4.25415, 31.8681)
+visible = false
 
-[node name="CeilingLightOn41" parent="CeilingLights" instance=ExtResource("13_srb8m")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 40.3766, 4.25415, 31.8681)
-
-[node name="CeilingLightOn42" parent="CeilingLights" instance=ExtResource("13_srb8m")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 37.607, 4.13362, 31.8681)
+[node name="OmniLight3D" parent="CeilingLights/CeilingLightOn40" index="1"]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.67959, 0)
+light_energy = 0.3
+light_bake_mode = 2
+shadow_bias = 0.1
+omni_range = 10.0
+omni_shadow_mode = 1
 
 [node name="CeilingLightOn29" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 11.9696, 4.2381, -12.2969)
@@ -4166,7 +4202,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8578, 0.00400001, -9.494)
 [node name="Floor_Meshes" type="Node3D" parent="."]
 
 [node name="FLoor1" type="MeshInstance3D" parent="Floor_Meshes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5678, 0, -10.4366)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5678, -0.0490756, -10.4366)
 layers = 1023
 material_override = SubResource("StandardMaterial3D_1xnay")
 mesh = ExtResource("45_td67j")
@@ -4206,10 +4242,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.251, -0.056, 24.52)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.6023, -0.056, 24.5282)
 
 [node name="Bathroom_wall11" parent="Bathroom" instance=ExtResource("59_6cyoi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5695, -0.056, 28.8281)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5695, -0.123939, 28.8281)
 
 [node name="Bathroom_wall12" parent="Bathroom" instance=ExtResource("59_6cyoi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9831, -0.056, 28.8339)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9831, -0.123939, 28.8339)
 
 [node name="Bathroom_wall8" parent="Bathroom" instance=ExtResource("59_6cyoi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.7377, -0.056, 24.514)
@@ -4260,9 +4296,42 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.069
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.662, 0.0489749, 33.299)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bathroom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.6176, 0.030671, 30.9796)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9356, -0.045356, 29.8765)
 material_override = SubResource("StandardMaterial3D_yk2ba")
 mesh = SubResource("PlaneMesh_yarfa")
+
+[node name="Toilet" parent="Bathroom" instance=ExtResource("63_j7avt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 38.3661, 0.104483, 34.6699)
+
+[node name="Toilet5" parent="Bathroom" instance=ExtResource("63_j7avt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 39.7463, 0.104483, 34.6699)
+
+[node name="Toilet6" parent="Bathroom" instance=ExtResource("63_j7avt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 41.1378, 0.104483, 34.6699)
+
+[node name="Toilet7" parent="Bathroom" instance=ExtResource("63_j7avt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42.4818, 0.104483, 34.6699)
+
+[node name="Toilet8" parent="Bathroom" instance=ExtResource("63_j7avt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 43.9748, 0.104483, 34.6699)
+
+[node name="Toilet9" parent="Bathroom" instance=ExtResource("63_j7avt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 45.4584, 0.104483, 34.6699)
+
+[node name="Toilet2" parent="Bathroom" instance=ExtResource("63_j7avt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 37.0036, 0.104483, 34.6699)
+
+[node name="Toilet3" parent="Bathroom" instance=ExtResource("63_j7avt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 35.5742, 0.104483, 34.6699)
+
+[node name="Toilet4" parent="Bathroom" instance=ExtResource("63_j7avt")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 34.2007, 0.104483, 34.6699)
+
+[node name="StaticBody3D10" parent="Bathroom" instance=ExtResource("64_hij51")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3438, 1.22573, 29.3604)
+
+[node name="CeilingBroken3" parent="Bathroom" instance=ExtResource("65_l2u3i")]
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 38.6669, 4.49744, 26.4748)
 
 [connection signal="body_entered" from="1ST FLOOR SCARES/CUBICLE SCARE/door_slam_starter" to="1ST FLOOR SCARES/CUBICLE SCARE" method="_on_door_slam_starter_body_entered"]
 [connection signal="animation_finished" from="1ST FLOOR SCARES/DARKROOM SCARE/AnimationPlayer" to="1ST FLOOR SCARES/DARKROOM SCARE" method="_on_animation_player_animation_finished"]
@@ -4290,11 +4359,13 @@ mesh = SubResource("PlaneMesh_yarfa")
 [editable path="Objects/Desk3/MailboxStand"]
 [editable path="Objects/MailboxStand"]
 [editable path="Roof/CeilingLightOn3"]
+[editable path="Roof/CeilingLightOn4"]
 [editable path="CeilingLights/CeilingLightOn13"]
 [editable path="CeilingLights/CeilingLightOn16"]
 [editable path="CeilingLights/CeilingLightOn23"]
 [editable path="CeilingLights/CeilingLightOn32"]
 [editable path="CeilingLights/CeilingLightOn36"]
+[editable path="CeilingLights/CeilingLightOn40"]
 [editable path="CeilingLights/CeilingLightOn29"]
 [editable path="CeilingLights/CeilingLightOn46"]
 [editable path="CeilingLights/CeilingLightOn4"]

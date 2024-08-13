@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjn3lnnygqyua"]
+
+[ext_resource type="Texture2D" uid="uid://bj6bss8y6myf8" path="res://Assets/Textures/BlenderTextures/PostItNotes15.png" id="1_tvdp8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvkab"]
+resource_name = "PostItNotes.014"
+cull_mode = 2
+albedo_texture = ExtResource("1_tvdp8")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8pfpw"]
+_surfaces = [{
+"aabb": AABB(-0.69213, -5.53101, -3.02138, 0.692151, 5.99566, 6.04274),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(4, 0, 3, 0, 1, 0, 4, 0, 5, 0, 3, 0, 0, 0, 5, 0, 4, 0, 0, 0, 2, 0, 5, 0, 4, 0, 3, 0, 5, 0, 4, 0, 1, 0, 3, 0, 0, 0, 5, 0, 2, 0, 0, 0, 4, 0, 5, 0),
+"lods": [2.66339, PackedByteArray(4, 0, 5, 0, 3, 0, 0, 0, 5, 0, 4, 0, 4, 0, 3, 0, 5, 0, 0, 0, 4, 0, 5, 0)],
+"name": "PostItNotes.014",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 255, 255, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 255, 255, 81, 216, 254, 255, 0, 0, 255, 255, 81, 216, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5w3ed"]
+resource_name = "desk_Cube_119"
+_surfaces = [{
+"aabb": AABB(-0.69213, -5.53101, -3.02138, 0.692151, 5.99566, 6.04274),
+"attribute_data": PackedByteArray(64, 173, 18, 167, 64, 173, 223, 86, 115, 253, 18, 167, 115, 253, 223, 86, 64, 173, 52, 99, 64, 173, 52, 99, 115, 253, 52, 99, 115, 253, 52, 99, 41, 168, 140, 166, 41, 168, 89, 86, 246, 87, 140, 166, 246, 87, 89, 86, 41, 168, 174, 98, 41, 168, 174, 98, 246, 87, 174, 98, 246, 87, 174, 98),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray(5, 0, 3, 0, 1, 0, 5, 0, 7, 0, 3, 0, 0, 0, 6, 0, 4, 0, 0, 0, 2, 0, 6, 0, 13, 0, 11, 0, 15, 0, 13, 0, 9, 0, 11, 0, 8, 0, 14, 0, 10, 0, 8, 0, 12, 0, 14, 0),
+"lods": [2.66339, PackedByteArray(4, 0, 6, 0, 3, 0, 0, 0, 6, 0, 4, 0, 12, 0, 11, 0, 14, 0, 8, 0, 12, 0, 14, 0)],
+"material": SubResource("StandardMaterial3D_mvkab"),
+"name": "PostItNotes.014",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 21, 252, 254, 255, 255, 255, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 21, 252, 254, 255, 255, 255, 0, 0, 255, 255, 255, 255, 81, 216, 254, 255, 21, 252, 255, 255, 81, 216, 254, 255, 255, 255, 255, 255, 81, 216, 0, 0, 21, 252, 255, 255, 81, 216, 0, 0, 255, 255, 0, 0, 0, 0, 254, 255, 21, 252, 254, 255, 255, 255, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 21, 252, 254, 255, 255, 255, 0, 0, 255, 255, 255, 255, 81, 216, 254, 255, 21, 252, 255, 255, 81, 216, 254, 255, 255, 255, 255, 255, 81, 216, 0, 0, 21, 252, 255, 255, 81, 216, 0, 0, 255, 255, 201, 251, 228, 61, 255, 63, 255, 127, 201, 251, 228, 61, 255, 63, 255, 127, 201, 251, 228, 61, 255, 63, 255, 127, 201, 251, 228, 61, 255, 63, 255, 127, 53, 4, 26, 194, 255, 191, 255, 127, 53, 4, 26, 194, 255, 191, 255, 127, 53, 4, 26, 194, 255, 191, 255, 127, 53, 4, 26, 194, 255, 191, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8pfpw")
+
+[node name="PostItNotes_016" type="MeshInstance3D"]
+transform = Transform3D(0.0212138, 0, 0, 0, 0.0212138, 0, 0, 0, 0.0212138, 0, 0, 0)
+mesh = SubResource("ArrayMesh_5w3ed")
+skeleton = NodePath("")
