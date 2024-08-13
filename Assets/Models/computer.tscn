@@ -75,6 +75,5 @@ mesh = SubResource("ArrayMesh_d2wmv")
 skeleton = NodePath("")
 
 [node name="Screen2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yfifj")
 skeleton = NodePath("")
