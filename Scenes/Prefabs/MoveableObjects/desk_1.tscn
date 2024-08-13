@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ce71rwirfiafw"]
+[gd_scene load_steps=26 format=3 uid="uid://ce71rwirfiafw"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_hork0"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_2qwev"]
@@ -61,6 +61,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_eqkyc")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_78s4l"]
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8mkc3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7job2"]
@@ -105,6 +107,10 @@ shadow_mesh = SubResource("ArrayMesh_3s30w")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cvogw"]
 points = PackedVector3Array(0.520555, 0.387969, -8.73804e-05, -1.96695e-06, 0.234543, 0.117251, 0.0232335, 0.224973, 0.117251, -1.96695e-06, 0.201656, 0.12622, 0.520555, -0.387969, -8.73804e-05, 0.520555, 0.387969, -0.0508162, -0.520559, 0.387969, -8.73804e-05, -0.0233394, 0.224973, 0.117251, -0.520559, -0.387969, -8.73804e-05, 0.520555, -0.387969, -0.0508162, 0.500581, 0.224821, -1.37594, -0.520559, 0.387969, -0.0508162, -0.520559, -0.387969, -0.0508162, 0.500581, -0.363816, -1.37594, -0.500687, 0.224821, -1.37594, -0.500687, -0.363816, -1.37594)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8prsp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0jhtq"]
+
 [node name="Desk" type="RigidBody3D"]
 collision_layer = 7
 collision_mask = 5
@@ -144,6 +150,7 @@ script = ExtResource("2_2qwev")
 
 [node name="MailboxStand" parent="." instance=ExtResource("4_nflhx")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.90258, 1.41466, -0.248536)
+physics_material_override = SubResource("PhysicsMaterial_78s4l")
 sleeping = true
 
 [node name="DrawerTop" type="RigidBody3D" parent="."]
@@ -214,9 +221,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022
 
 [node name="GrabableObjectTemplate" parent="." instance=ExtResource("4_6fufh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0862904, 1.54579, -0.245461)
+physics_material_override = SubResource("PhysicsMaterial_8prsp")
 
 [node name="Lamp" parent="." instance=ExtResource("5_t6sno")]
-transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448, 1.05325, 1.3523, -0.335846)
+transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448, 1.05325, 1.37807, -0.335846)
 
 [node name="Chair" parent="." instance=ExtResource("6_huuqb")]
 transform = Transform3D(-0.999968, 0, -0.00808077, 0, 1, 0, 0.00808077, 0, -0.999968, -0.403, 0.886213, 1.054)
@@ -227,3 +235,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78488, 0.334743, 0.0209348
 
 [node name="Keyboard" parent="." instance=ExtResource("10_wk3io")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15408, 1.16596, 0.442178)
+physics_material_override = SubResource("PhysicsMaterial_0jhtq")
