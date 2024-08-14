@@ -15,7 +15,7 @@ var chasing:bool
 var player
 
 func _ready():
-	monster_anim = monster_body.get_child(1)
+	monster_anim = monster_body.find_child("AnimationPlayer")
 	player = GameManager.get_player()
 	aggro_timer.wait_time = aggro_timeout
 

@@ -12,10 +12,9 @@ var scare_active: bool = false
 var monster_anim:AnimationPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	monster_anim = monster_body.get_child(1)
+	monster_anim = monster_body.find_child("AnimationPlayer")
 	ScareDirector.connect("key_pickedup", activate_scare)
 	ScareDirector.connect("monster_seen", monster_seen_event)
-
 
 func activate_scare(key_num:int):
 	if key_num == 1:
@@ -26,6 +25,7 @@ func activate_scare(key_num:int):
 		door_slam_anim.play("door_open")
 		scare_active = true
 		print("SCARE ACTIVATED!")
+		
 func monster_seen_event(test):
 	if(scare_active):
 		doorlock.locked = true

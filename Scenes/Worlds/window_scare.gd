@@ -2,7 +2,7 @@ extends Node3D
 
 var has_been_executed = false
 var ready_to_start = false
-@onready var monster_body = $monster
+@onready var monster_body = $godot_rig
 @onready var door_lock = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/RigidBody3D2/Door_Lock"
 @onready var light_flicker_firstroom = $"../../CeilingLights/CeilingLightOn23/LightFlickering"
 @onready var door_close = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/DoorClose"
@@ -10,15 +10,16 @@ var ready_to_start = false
 @onready var scare_anim = $jumpscare
 @onready var sighting_sound = $SightingSound
 @onready var sighting_ambience = $SightingAmbiance
+var monster_anim
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	monster_body.visible = false
+	monster_anim = monster_body.find_child("AnimationPlayer")
 	ScareDirector.connect("package_delivered", activate_scare)
 	ScareDirector.connect("monster_seen", monster_seen_function)
 
 func monster_seen_function(boolean: bool):
-	print("MONSTER: " , boolean)
 	if(ready_to_start):
 		ready_to_start = false
 		start_scare()
@@ -28,6 +29,7 @@ func activate_scare(package_num):
 		ready_to_start = true
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		monster_body.visible = true
+		monster_anim.play("Idle")
 		door_lock.locked = true	
 		door_close.play("close")
 

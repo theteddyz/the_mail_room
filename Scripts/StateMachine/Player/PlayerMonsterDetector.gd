@@ -11,12 +11,12 @@ func _on_vision_timer_timeout():
 				var monsterPosition = overlap.global_transform.origin
 				$VisionRayCast.look_at(monsterPosition)
 				$VisionRayCast.force_raycast_update()
-				if $VisionRayCast.is_colliding():
+				if $VisionRayCast.is_colliding() and $VisionRayCast.get_collider().name == overlap.name:
 					if(bit == 1):
 						bit = 0
 						called = false
 						var _col = $VisionRayCast.get_collider()
-						if(!called):
+						if(!called and _col.is_visible_in_tree()):
 							ScareDirector.emit_signal("monster_seen", true)
 	else:
 		if(bit == 0):

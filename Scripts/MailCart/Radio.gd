@@ -1,5 +1,5 @@
-extends Area3D
-
+extends Interactable
+class_name Radio
 @onready var audio:AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var collider:CollisionShape3D = $CollisionShape3D
 @export var has_tape = false
@@ -8,19 +8,38 @@ var power = false
 var radio_stations = []
 var current_index = 0
 var attached_to_cart = false
-var being_held = false
+var is_being_looked_at = false
 func _ready():
-	power = true
-	EventBus.connect("object_held",check_held)
-	EventBus.connect("dropped_object",check_dropped)
+	EventBus.connect("object_looked_at",on_seen)
+	EventBus.connect("no_object_found",on_unseen)
 
+
+func on_seen(node):
+	if node == self:
+		is_being_looked_at = true
+
+func on_unseen(_node):
+	if is_being_looked_at:
+		is_being_looked_at = false
+
+func interact():
+	if !power:
+		power = true
+		print("power on")
+	else:
+		power = false
+		print("power off")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if held_tape:
-		held_tape.global_position = global_position
+	pass
 
 
+func _input(event):
+	if event.is_action("scroll package up"):
+		change_station_up()
+	if event.is_action("scroll package down"):
+		change_station_down()
 
 func change_station_up():
 	if current_index < radio_stations.size() - 1:
@@ -65,22 +84,3 @@ func toggle_power():
 		audio.play()
 	else:
 		audio.stop()
-
-func remove_from_cart():
-	var root = get_tree().root.get_child(1)
-	var mailcart = root.find_child("Mailcart")
-	var mailcartPosition = mailcart.find_child("RadioPosition")
-	mailcartPosition.remove_child(self)
-	root.add_child(self)
-	attached_to_cart = false
-
-func check_dropped(_mass,object):
-	if object.name == "Radio":
-		print("dropped")
-		collider.disabled = false
-func check_held(_mass,object):
-	if object.name == "Radio":
-		being_held = true
-		collider.disabled = true
-		if attached_to_cart:
-			remove_from_cart()

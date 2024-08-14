@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/Prefabs/gui/interactable_test.tscn" id="4_p0gx3"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="5_tbsk3"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="12_ghnq1"]
-[ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="12_ty778"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="15_2x2rp"]
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="15_hp4l1"]
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="15_tm150"]
@@ -21,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://belfg414pqah4" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_3.tscn" id="19_dmey1"]
 [ext_resource type="PackedScene" uid="uid://brfqkckspyesq" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_4.tscn" id="20_m3i6s"]
 [ext_resource type="PackedScene" uid="uid://cpjr5i4iv2yaf" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_5.tscn" id="21_0vp5e"]
+[ext_resource type="PackedScene" uid="uid://biilk0erp2roe" path="res://Scenes/Prefabs/MoveableObjects/tape_template.tscn" id="22_p3lgw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
 albedo_texture = ExtResource("1_o8goe")
@@ -118,12 +118,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2092, 0, 3.54039)
 [node name="InteractableTest" parent="." instance=ExtResource("4_p0gx3")]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 1.5, -5.82439)
 
-[node name="monster" parent="." instance=ExtResource("12_ty778")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.746, 0, -6.619)
-collision_layer = 4101
-collision_mask = 4101
-disable = true
-
 [node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.280565, -4)
 collision_layer = 18
@@ -215,6 +209,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73767, 0.865987, -4.07479)
 
 [node name="File_Cabinet3" parent="." instance=ExtResource("21_0vp5e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6006, 1.38917, -4.3951)
+
+[node name="TAPE_NEW" parent="." instance=ExtResource("22_p3lgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113563, 1.16132, -1.59701)
+collision_layer = 2
+collision_mask = 2
 
 [editable path="StaticBody3D3"]
 [editable path="meeting_room_wall_Door"]

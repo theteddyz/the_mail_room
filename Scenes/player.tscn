@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=24 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/PlayerLightOptimization.gd" id="5_ic8gt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
-[ext_resource type="PackedScene" uid="uid://c2urey7cs28p7" path="res://Assets/TemporaryAssets/cone.tscn" id="6_n1vqh"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
@@ -184,10 +183,6 @@ collision_layer = 4096
 collision_mask = 4096
 script = ExtResource("6_f3pv2")
 
-[node name="Cone" parent="Neck/Head/HeadbopRoot/MonsterDetector" instance=ExtResource("6_n1vqh")]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, -9.80388)
-visible = false
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 transform = Transform3D(12.5, 0, 0, 0, -5.46392e-07, -12.5, 0, 12.5, -5.46392e-07, 0, 0, -12.5007)
 shape = SubResource("ConvexPolygonShape3D_ol6wy")
@@ -198,6 +193,7 @@ autostart = true
 
 [node name="VisionRayCast" type="RayCast3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 target_position = Vector3(0, 7.08, -100)
+collision_mask = 4097
 
 [node name="LightDetection" parent="Neck/Head/HeadbopRoot" node_paths=PackedStringArray("player", "camera", "timer", "closelight") instance=ExtResource("8_6f6ef")]
 player = NodePath("../../../..")
