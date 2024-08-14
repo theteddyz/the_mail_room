@@ -42,20 +42,20 @@
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://cqtfocys05ytu" path="res://Assets/Audio/SoundFX/DestructionLamp2.mp3" id="31_ok8u3"]
 [ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
+[ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="39_spw8m"]
 [ext_resource type="LightmapGIData" uid="uid://coop0ql4uttgo" path="res://Scenes/Worlds/test_floor_layout_2.lmbake" id="40_ifclc"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 [ext_resource type="AudioStream" uid="uid://c63x30unvtimj" path="res://Assets/Audio/SoundFX/DoorClosed3.mp3" id="40_lmkw4"]
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_007.tscn" id="42_ee2c8"]
 [ext_resource type="Texture2D" uid="uid://cabgoqnkirs6s" path="res://Scenes/Prefabs/StaticObjects/Metal011_1K-JPG_Color.jpg" id="43_5wuyx"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
+[ext_resource type="PackedScene" uid="uid://ct3hpc3g723ed" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
 [ext_resource type="PlaneMesh" uid="uid://bsjvgx14rrdbw" path="res://floor_mesh_1stfloor.tres" id="45_td67j"]
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="46_1nv5r"]
 [ext_resource type="PackedScene" uid="uid://b00a88gvywty0" path="res://Scenes/Prefabs/Monsters/debug_monster.tscn" id="48_v4enk"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="49_78w3q"]
 [ext_resource type="PackedScene" uid="uid://belfg414pqah4" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_3.tscn" id="49_dco3s"]
-[ext_resource type="PackedScene" path="res://meeting_room_table.tscn" id="55_5510o"]
+[ext_resource type="PackedScene" uid="uid://t1wa5n6nculj" path="res://meeting_room_table.tscn" id="55_5510o"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="56_vyteq"]
 [ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="57_hxdn6"]
 [ext_resource type="PackedScene" uid="uid://bn0klf1dot74d" path="res://Assets/Models/john_model.tscn" id="58_id03k"]
@@ -63,8 +63,8 @@
 [ext_resource type="PackedScene" uid="uid://bdvhb1nhdbexm" path="res://Scenes/Prefabs/StaticObjects/Bathroom_stall_main.tscn" id="59_872xm"]
 [ext_resource type="PackedScene" uid="uid://cnus2pwbp1koj" path="res://Scenes/Prefabs/StaticObjects/half_stall.tscn" id="60_n0a47"]
 [ext_resource type="Texture2D" uid="uid://byp086pac7m6k" path="res://Scenes/Prefabs/StaticObjects/floor_tiles_06_diff_1k.jpg" id="62_nca5g"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/toilet.tscn" id="63_j7avt"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/bathroom_sink.tscn" id="64_hij51"]
+[ext_resource type="PackedScene" uid="uid://drg2uvvenxq80" path="res://Scenes/Prefabs/StaticObjects/toilet.tscn" id="63_j7avt"]
+[ext_resource type="PackedScene" uid="uid://b6si5578kuvne" path="res://Scenes/Prefabs/StaticObjects/bathroom_sink.tscn" id="64_hij51"]
 [ext_resource type="PackedScene" uid="uid://csml3h8jd6hni" path="res://Scenes/Prefabs/StaticObjects/ceiling_broken_3.tscn" id="65_l2u3i"]
 
 [sub_resource type="Environment" id="Environment_1vnpb"]
@@ -1533,16 +1533,16 @@ bones/388/position = Vector3(1.31169, 0.486537, -0.0874861)
 bones/388/rotation = Quaternion(-0.416554, 0.323511, 0.573743, 0.626612)
 
 [node name="TeethLowPoly_001" parent="1ST FLOOR SCARES/CUBICLE SCARE/godot_rig/godot_rig/Skeleton3D" index="0"]
-transform = Transform3D(0.000907096, 0.00349776, 0.0034765, 0.000437265, 0.00729292, -0.00180743, -0.00383643, 0.00165822, 0.000615984, 0.455757, 1.9225, 0.167905)
+transform = Transform3D(0.000907097, 0.00349776, 0.00347649, 0.000437264, 0.00729292, -0.00180743, -0.00383643, 0.00165822, 0.000615984, 0.455757, 1.9225, 0.167905)
 
 [node name="Eyes" parent="1ST FLOOR SCARES/CUBICLE SCARE/godot_rig/godot_rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.00803272, 0.0166196, -0.00433644, -0.0167485, -0.00864045, -0.00209034, -0.00380819, 0.0029448, 0.0183403, 0.482373, 2.03737, 0.191953)
+transform = Transform3D(-0.00803272, 0.0166196, -0.00433644, -0.0167485, -0.00864046, -0.00209034, -0.00380819, 0.0029448, 0.0183403, 0.482373, 2.03737, 0.191953)
 
 [node name="Eyes_001" parent="1ST FLOOR SCARES/CUBICLE SCARE/godot_rig/godot_rig/Skeleton3D" index="2"]
-transform = Transform3D(-0.00803272, 0.0166196, -0.00433644, -0.0167485, -0.00864045, -0.00209034, -0.00380819, 0.0029448, 0.0183403, 0.485307, 2.03584, 0.192473)
+transform = Transform3D(-0.00803272, 0.0166196, -0.00433644, -0.0167485, -0.00864046, -0.00209034, -0.00380819, 0.0029448, 0.0183403, 0.485307, 2.03584, 0.192473)
 
 [node name="Hair" parent="1ST FLOOR SCARES/CUBICLE SCARE/godot_rig/godot_rig/Skeleton3D" index="3"]
-transform = Transform3D(0.00284047, 0.00526164, 0.0108863, 0.00136922, 0.0109707, -0.00565972, -0.0120134, 0.00249446, 0.00192891, 0.5287, 2.13328, 0.209176)
+transform = Transform3D(0.00284048, 0.00526164, 0.0108862, 0.00136922, 0.0109707, -0.00565972, -0.0120134, 0.00249446, 0.00192891, 0.5287, 2.13328, 0.209176)
 
 [node name="TeethLowPoly" parent="1ST FLOOR SCARES/CUBICLE SCARE/godot_rig/godot_rig/Skeleton3D" index="4"]
 transform = Transform3D(0.000907096, 0.00599678, 0.00347649, 0.000437257, 0.0125035, -0.00180741, -0.00383643, 0.00284298, 0.000615992, 0.468688, 1.95042, 0.174145)
@@ -1572,6 +1572,21 @@ transform = Transform3D(-0.0962279, 0, -0.995359, 0, 1, 0, 0.995359, 0, -0.09622
 visible = false
 
 [node name="JohnCharacterBody" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig" index="0" groups=["monster"]]
+
+[node name="TeethLowPoly_001" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="0"]
+transform = Transform3D(0.00393575, -7.35041e-05, 0.000490739, 0.000238835, 0.00748539, -0.00165672, -0.000430157, 0.00348358, 0.00357023, -0.035089, 0.486871, 3.29317)
+
+[node name="Eyes" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="1"]
+transform = Transform3D(0.000168831, 0.00234602, -0.0188151, -0.0171904, -0.00792001, -0.00114178, -0.0080001, 0.0170678, 0.00205636, -0.0437388, 0.603742, 3.32051)
+
+[node name="Eyes_001" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="2"]
+transform = Transform3D(0.000168831, 0.00234602, -0.0188151, -0.0171904, -0.00792001, -0.00114178, -0.0080001, 0.0170678, 0.00205636, -0.0433247, 0.602345, 3.32352)
+
+[node name="Hair" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="3"]
+transform = Transform3D(0.0123244, -0.000110588, 0.00153671, 0.000747898, 0.0112601, -0.00518781, -0.00134697, 0.00524027, 0.0111798, -0.0402763, 0.701929, 3.36512)
+
+[node name="TeethLowPoly" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="4"]
+transform = Transform3D(0.00393574, -0.000126039, 0.000490742, 0.000238839, 0.0128334, -0.00165671, -0.000430152, 0.00597242, 0.00357024, -0.0354207, 0.51551, 3.30604)
 
 [node name="door_slam_starter" type="Area3D" parent="1ST FLOOR SCARES/DARKROOM SCARE"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212686, 2.20424)
@@ -1900,7 +1915,6 @@ bones/222/scale = Vector3(1, 0.881571, 1)
 bones/225/rotation = Quaternion(0.25501, -0.0119658, 0.0103435, 0.966809)
 bones/226/rotation = Quaternion(-0.141925, -0.00906369, -0.0939038, 0.985372)
 bones/227/rotation = Quaternion(-0.259231, 0.00925945, -0.0299526, 0.965306)
-bones/228/rotation = Quaternion(0.192498, 0.0341269, 0.126574, 0.972501)
 bones/232/rotation = Quaternion(0.196248, 0.727135, 0.457223, -0.472979)
 bones/233/scale = Vector3(1.05703, 1.05703, 1.05703)
 bones/234/position = Vector3(0.21704, -0.0450473, 0.116361)
@@ -2065,19 +2079,19 @@ bones/388/position = Vector3(-0.219163, 0.479095, 4.48034)
 bones/388/rotation = Quaternion(-0.368083, -0.0090159, 0.00625899, 0.929728)
 
 [node name="TeethLowPoly_001" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="0"]
-transform = Transform3D(0.00393623, 0.00044842, -0.000438026, -0.00032548, 0.00793273, -0.00105075, 0.000363778, 0.0022455, 0.0037995, -0.0452989, 2.00707, 5.15236)
+transform = Transform3D(0.00393623, 0.000448421, -0.000438026, -0.00032548, 0.00793273, -0.00105075, 0.000363778, 0.0022455, 0.0037995, -0.0452989, 2.00707, 5.15236)
 
 [node name="Eyes" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.00102979, -0.00209403, -0.0188174, -0.0182178, -0.00502317, 0.00155597, -0.00515682, 0.0181638, -0.00173908, -0.040598, 2.12709, 5.1597)
+transform = Transform3D(-0.0010298, -0.00209403, -0.0188174, -0.0182178, -0.00502317, 0.00155597, -0.00515682, 0.0181638, -0.00173908, -0.040598, 2.12709, 5.1597)
 
 [node name="Eyes_001" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="2"]
-transform = Transform3D(-0.00102979, -0.00209403, -0.0188174, -0.0182178, -0.00502317, 0.00155597, -0.00515682, 0.0181638, -0.00173908, -0.0409677, 2.1262, 5.16291)
+transform = Transform3D(-0.0010298, -0.00209403, -0.0188174, -0.0182178, -0.00502317, 0.00155597, -0.00515682, 0.0181638, -0.00173908, -0.0409676, 2.1262, 5.16291)
 
 [node name="Hair" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="3"]
-transform = Transform3D(0.0123259, 0.000674541, -0.00137164, -0.0010192, 0.0119331, -0.00329031, 0.00113914, 0.00337785, 0.0118977, -0.03022, 2.23041, 5.18902)
+transform = Transform3D(0.0123259, 0.000674543, -0.00137164, -0.0010192, 0.0119331, -0.00329031, 0.00113914, 0.00337785, 0.0118977, -0.03022, 2.23041, 5.18902)
 
 [node name="TeethLowPoly" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="4"]
-transform = Transform3D(0.00393623, 0.000768785, -0.000438029, -0.000325477, 0.0136003, -0.00105075, 0.000363781, 0.00384979, 0.0037995, -0.0435473, 2.03734, 5.16049)
+transform = Transform3D(0.00393623, 0.000768787, -0.000438028, -0.000325477, 0.0136003, -0.00105075, 0.00036378, 0.00384979, 0.0037995, -0.0435473, 2.03734, 5.16049)
 
 [node name="jumpscare" type="AnimationPlayer" parent="1ST FLOOR SCARES/WINDOW SCARE"]
 libraries = {
@@ -2119,6 +2133,7 @@ navigation_mesh = SubResource("NavigationMesh_itqcm")
 
 [node name="monster" parent="NavigationRegion3D" instance=ExtResource("48_v4enk")]
 transform = Transform3D(0.0813644, 0, -0.996684, 0, 1, 0, 0.996684, 0, 0.0813644, -1.94294, 0.0896937, -10.8958)
+visible = false
 collision_layer = 4101
 collision_mask = 4101
 
@@ -3876,7 +3891,7 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 17.7106,
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 6.25833, 4.2381, -6.43332)
 
 [node name="CeilingLightOn21" parent="CeilingLights" instance=ExtResource("13_srb8m")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 17.7106, 4.2381, -6.44199)
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 17.7106, 4.2381, -6.09635)
 
 [node name="CeilingLightOn26" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 28.3713, 4.782, -0.252527)
