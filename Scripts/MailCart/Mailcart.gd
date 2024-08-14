@@ -2,7 +2,6 @@ extends Node3D
 
 # Array to hold game objects
 var game_objects:Array = []
-var radio_position:Node3D
 var player:CharacterBody3D
 
 # Pointer to track the current index in the game_objects array
@@ -18,7 +17,6 @@ func _ready():
 	# Initialize the array with game objects if needed
 	# For example, game_objects.append(some_game_object)
 	GameManager.register_mail_cart(self)
-	radio_position = find_child("RadioPosition")
 	is_being_looked_at = false
 	player = GameManager.get_player()
 	text_displayer = Gui.get_address_displayer()
@@ -127,13 +125,6 @@ func move_package_to_cart(package: Package, _position: float):
 	pass
 
 
-func add_radio(radio:RigidBody3D):
-	var root = get_tree().root.get_child(1)
-	root.remove_child(radio)
-	radio_position.add_child(radio)
-	radio.global_position = radio_position.global_position
-	radio.set_gravity_scale(0)
-	radio.attached_to_cart = true
 
 func on_being_looked_at(node):
 	if node == self:

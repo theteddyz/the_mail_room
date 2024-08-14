@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://c08qc5mgsdt5y"]
+[gd_scene load_steps=7 format=3 uid="uid://c08qc5mgsdt5y"]
 
 [ext_resource type="Script" path="res://Scripts/MailCart/Radio.gd" id="1_bg5d2"]
-[ext_resource type="PackedScene" uid="uid://wb2kotjvj3vv" path="res://Scenes/Prefabs/AssetTools/ObjectInterpolation.tscn" id="1_m8eq4"]
 [ext_resource type="Texture2D" uid="uid://bpmaq4gl82cgl" path="res://Assets/Textures/BlenderTextures/Radio2.png" id="3_ibgl5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxi58"]
@@ -54,9 +53,7 @@ script = ExtResource("1_bg5d2")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
-[node name="Interpolator" parent="." instance=ExtResource("1_m8eq4")]
-
-[node name="Radio_002" type="MeshInstance3D" parent="Interpolator"]
+[node name="Radio_002" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.285781, 0, 0, 0, 0.285781, 0, 0, 0, 0.285781, 0, 0, 0)
 mesh = SubResource("ArrayMesh_r6dam")
 skeleton = NodePath("")
