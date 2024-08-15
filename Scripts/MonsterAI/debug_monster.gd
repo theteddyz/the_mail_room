@@ -56,7 +56,7 @@ func _on_timer_timeout():
 
 func chase_player():
 	if !chasing:
-		monster_anim.play("Action Stash]_001")
+		monster_anim.play("Run")
 		chasing = true
 		nav_timer.start()
 
@@ -79,9 +79,6 @@ func on_player_out_of_vision():
 func _on_aggro_timer_timeout():
 	if chasing:
 		stop_chasing_player()
-
-
-
 
 func on_hearing_sound(sound_position):
 	if !chasing:

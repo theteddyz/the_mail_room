@@ -9,6 +9,7 @@ var has_been_executed = false
 @onready var monster_run_soundplayer:AudioStreamPlayer3D = $MonsterRunSoundPlayer
 var scare_active: bool = false
 @onready var monster_body = $godot_rig
+@onready var wall_to_nuke = $"../../LowWalls/Cubicle_wall_monster"
 var monster_anim:AnimationPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,6 +29,8 @@ func activate_scare(key_num:int):
 		
 func monster_seen_event(test):
 	if(scare_active):
+		scare_active = false
+		wall_to_nuke.queue_free()
 		doorlock.locked = true
 		print("DOOR LOCKING!")
 		flickeranimationplayer.pause()		
