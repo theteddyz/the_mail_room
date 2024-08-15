@@ -2,6 +2,7 @@ extends Area3D
 
 var called = false
 var bit = 0
+@onready var raycaster = $VisionRayCast
 
 func _on_vision_timer_timeout():
 	var overlaps = get_overlapping_bodies()
@@ -9,9 +10,11 @@ func _on_vision_timer_timeout():
 		for overlap in overlaps:
 			if overlap.is_in_group("monster"):
 				var monsterPosition = overlap.global_transform.origin
-				$VisionRayCast.look_at(monsterPosition)
-				$VisionRayCast.force_raycast_update()
-				if $VisionRayCast.is_colliding() and $VisionRayCast.get_collider().name == overlap.name:
+				raycaster.look_at(monsterPosition)
+				raycaster.force_raycast_update()
+				if raycaster.is_colliding():
+					print(raycaster.get_collider().name)
+				if raycaster.is_colliding() and raycaster.get_collider().name == overlap.name:
 					if(bit == 1):
 						bit = 0
 						called = false
