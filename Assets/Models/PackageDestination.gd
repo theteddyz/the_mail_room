@@ -18,4 +18,3 @@ func deliver(package: Package):
 		ScareDirector.emit_signal("package_delivered",package.package_num)
 	else:
 		package.dropped()
-

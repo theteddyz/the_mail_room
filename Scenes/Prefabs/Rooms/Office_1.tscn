@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dui3j31sc1l58" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_011.tscn" id="4_78dag"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="5_xvadp"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="7_h28uc"]
-[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2.tscn" id="9_66s85"]
+[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2_LEVEL1.tscn" id="9_66s85"]
 
 [node name="Office" type="Node3D"]
 

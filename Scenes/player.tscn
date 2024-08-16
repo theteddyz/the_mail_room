@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://07r80s3tkw3" path="res://Assets/Shaders/dither_shader2.tscn" id="3_6orpg"]
 [ext_resource type="PackedScene" uid="uid://8uuomvgrmu1b" path="res://Assets/Shaders/outline_shader.tscn" id="4_ao0s0"]
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
-[ext_resource type="Script" path="res://Scripts/PlayerLightOptimization.gd" id="5_ic8gt"]
+[ext_resource type="Script" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 
@@ -196,11 +196,14 @@ autostart = true
 target_position = Vector3(0, 7.08, -100)
 collision_mask = 4097
 
-[node name="LightDetection" parent="Neck/Head/HeadbopRoot" node_paths=PackedStringArray("player", "camera", "timer", "closelight") instance=ExtResource("8_6f6ef")]
+[node name="LightLevelDetection" parent="Neck/Head/HeadbopRoot" node_paths=PackedStringArray("player", "camera", "timer", "closelight") instance=ExtResource("8_6f6ef")]
 player = NodePath("../../../..")
 camera = NodePath("../Camera")
 timer = NodePath("Refresh Timer")
 closelight = NodePath("SpotLight3D")
+
+[node name="Refresh Timer" parent="Neck/Head/HeadbopRoot/LightLevelDetection" index="0"]
+wait_time = 0.75
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -2)
@@ -238,4 +241,4 @@ shape = SubResource("SphereShape3D_75rh5")
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]
 [connection signal="timeout" from="Neck/Head/HeadbopRoot/MonsterDetector/Vision_Timer" to="Neck/Head/HeadbopRoot/MonsterDetector" method="_on_vision_timer_timeout"]
 
-[editable path="Neck/Head/HeadbopRoot/LightDetection"]
+[editable path="Neck/Head/HeadbopRoot/LightLevelDetection"]

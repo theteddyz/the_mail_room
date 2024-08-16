@@ -12,8 +12,6 @@ func _on_vision_timer_timeout():
 				var monsterPosition = overlap.global_transform.origin
 				raycaster.look_at(monsterPosition)
 				raycaster.force_raycast_update()
-				if raycaster.is_colliding():
-					print(raycaster.get_collider().name)
 				if raycaster.is_colliding() and raycaster.get_collider().name == overlap.name:
 					if(bit == 1):
 						bit = 0

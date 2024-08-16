@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/wall_with_door.tscn" id="8_lyt8p"]
 [ext_resource type="PackedScene" uid="uid://cajnk2cjds60w" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room.tscn" id="9_o8lsr"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly_no_light.tscn" id="11_rqo3p"]
-[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2.tscn" id="12_2baux"]
+[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2_LEVEL1.tscn" id="12_2baux"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_kkf5n"]
 
 [sub_resource type="Environment" id="Environment_1mbsx"]

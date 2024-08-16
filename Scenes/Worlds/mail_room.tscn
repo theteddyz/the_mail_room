@@ -44,7 +44,6 @@ data = PackedVector3Array(-40.3225, 0.5, 25, 40.3225, 0.5, 25, -40.3225, -0.5, 2
 playback_mode = 2
 streams_count = 1
 stream_0/stream = ExtResource("21_i8rlw")
-stream_0/weight = 1.0
 
 [node name="world2" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -101,30 +100,25 @@ transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586
 [node name="IndustrialTable6" parent="stage/Objects" instance=ExtResource("12_haqay")]
 transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -17.2939, 0.556907, -11.2531)
 
-[node name="StaticBody3D" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
+[node name="StaticBody3D" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.5187, 2.72705, -11.9021)
-game_objects = [null, null, null, null, null, null]
 
 [node name="StaticBody3D6" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0678, 2.72705, 1.8957)
 active = true
 game_objects = [NodePath("../../../Package"), NodePath("../../../Package2"), NodePath("../../../Package3"), NodePath("../../../Package4"), NodePath("../../../Package5"), NodePath("../../../Package6")]
 
-[node name="StaticBody3D2" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
+[node name="StaticBody3D2" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -27.061, 2.72705, -11.904)
-game_objects = [null, null, null, null, null, null]
 
-[node name="StaticBody3D5" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
+[node name="StaticBody3D5" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.061, 2.72705, 1.87034)
-game_objects = [null, null, null, null, null, null]
 
-[node name="StaticBody3D3" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
+[node name="StaticBody3D3" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -32.2804, 2.72705, -11.9021)
-game_objects = [null, null, null, null, null, null]
 
-[node name="StaticBody3D4" parent="stage/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("11_duifo")]
+[node name="StaticBody3D4" parent="stage/Objects" instance=ExtResource("11_duifo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2804, 2.72705, 1.83474)
-game_objects = [null, null, null, null, null, null]
 
 [node name="Desk2" parent="stage/Objects" instance=ExtResource("13_smksi")]
 transform = Transform3D(-0.00181511, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00181511, -9.82366, 0, -0.469987)

@@ -68,5 +68,3 @@ func stop_parent_velocity():
 	if parent_node:
 		parent_node.linear_velocity = Vector3.ZERO
 		parent_node.angular_velocity = Vector3.ZERO
-
-

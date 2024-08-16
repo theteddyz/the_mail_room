@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=4 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=125 format=4 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://bm3nm1l6pmfn7" path="res://Assets/Audio/SoundFX/DestructionComputer.mp3" id="11_rvky7"]
 [ext_resource type="AudioStream" uid="uid://dlkb011irfogv" path="res://Assets/Audio/SoundFX/ElevatorDing.mp3" id="11_ug3ak"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_46wmm"]
-[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2.tscn" id="13_srb8m"]
+[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2_LEVEL1.tscn" id="13_srb8m"]
 [ext_resource type="Script" path="res://Scenes/Worlds/scripted_chase_floor1_scare.gd" id="15_0aoq6"]
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="15_poj1m"]
 [ext_resource type="PackedScene" uid="uid://dui3j31sc1l58" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_011.tscn" id="16_vde3n"]
@@ -44,20 +44,21 @@
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="30_gqjq2"]
 [ext_resource type="AudioStream" uid="uid://cqtfocys05ytu" path="res://Assets/Audio/SoundFX/DestructionLamp2.mp3" id="31_ok8u3"]
 [ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
-[ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="39_spw8m"]
 [ext_resource type="LightmapGIData" uid="uid://coop0ql4uttgo" path="res://Scenes/Worlds/test_floor_layout_2.lmbake" id="40_ifclc"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
 [ext_resource type="AudioStream" uid="uid://c63x30unvtimj" path="res://Assets/Audio/SoundFX/DoorClosed3.mp3" id="40_lmkw4"]
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_007.tscn" id="42_ee2c8"]
 [ext_resource type="Texture2D" uid="uid://cabgoqnkirs6s" path="res://Scenes/Prefabs/StaticObjects/Metal011_1K-JPG_Color.jpg" id="43_5wuyx"]
-[ext_resource type="PackedScene" uid="uid://ct3hpc3g723ed" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="43_rsa7f"]
+[ext_resource type="Script" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="45_k08h7"]
 [ext_resource type="PlaneMesh" uid="uid://bsjvgx14rrdbw" path="res://floor_mesh_1stfloor.tres" id="45_td67j"]
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="46_1nv5r"]
 [ext_resource type="PackedScene" uid="uid://b00a88gvywty0" path="res://Scenes/Prefabs/Monsters/john_ai.tscn" id="48_v4enk"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="49_78w3q"]
 [ext_resource type="PackedScene" uid="uid://belfg414pqah4" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_3.tscn" id="49_dco3s"]
-[ext_resource type="PackedScene" uid="uid://t1wa5n6nculj" path="res://meeting_room_table.tscn" id="55_5510o"]
+[ext_resource type="PackedScene" path="res://meeting_room_table.tscn" id="55_5510o"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="56_vyteq"]
 [ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="57_hxdn6"]
 [ext_resource type="PackedScene" uid="uid://bn0klf1dot74d" path="res://Assets/Models/john_model.tscn" id="58_id03k"]
@@ -65,8 +66,8 @@
 [ext_resource type="PackedScene" uid="uid://bdvhb1nhdbexm" path="res://Scenes/Prefabs/StaticObjects/Bathroom_stall_main.tscn" id="59_872xm"]
 [ext_resource type="PackedScene" uid="uid://cnus2pwbp1koj" path="res://Scenes/Prefabs/StaticObjects/half_stall.tscn" id="60_n0a47"]
 [ext_resource type="Texture2D" uid="uid://byp086pac7m6k" path="res://Scenes/Prefabs/StaticObjects/floor_tiles_06_diff_1k.jpg" id="62_nca5g"]
-[ext_resource type="PackedScene" uid="uid://drg2uvvenxq80" path="res://Scenes/Prefabs/StaticObjects/toilet.tscn" id="63_j7avt"]
-[ext_resource type="PackedScene" uid="uid://b6si5578kuvne" path="res://Scenes/Prefabs/StaticObjects/bathroom_sink.tscn" id="64_hij51"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/toilet.tscn" id="63_j7avt"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/bathroom_sink.tscn" id="64_hij51"]
 [ext_resource type="PackedScene" uid="uid://csml3h8jd6hni" path="res://Scenes/Prefabs/StaticObjects/ceiling_broken_3.tscn" id="65_l2u3i"]
 
 [sub_resource type="Environment" id="Environment_1vnpb"]
@@ -914,6 +915,9 @@ size = Vector3(1.88333, 3.8623, 0.346191)
 [sub_resource type="SphereShape3D" id="SphereShape3D_373dp"]
 radius = 0.107743
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lmv14"]
+size = Vector3(2.07477, 1, 7.01355)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k62d"]
 albedo_texture = ExtResource("43_5wuyx")
 uv1_scale = Vector3(15.835, 15.835, 15.835)
@@ -1013,18 +1017,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.89]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../1ST FLOOR SCARES/WINDOW SCARE/SightingAmbiance:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_1qrpm"]
 resource_name = "tone"
@@ -1048,22 +1040,10 @@ tracks/1/path = NodePath("../../1ST FLOOR SCARES/WINDOW SCARE/SightingAmbiance:p
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.5, 4.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.26667, 4.46667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.89, 2.24]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../1ST FLOOR SCARES/WINDOW SCARE/SightingAmbiance:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(4.7),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [0.89, 0.89, 2.54]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ns5yp"]
@@ -1684,21 +1664,6 @@ visible = false
 
 [node name="JohnCharacterBody" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig" index="0" groups=["monster"]]
 
-[node name="TeethLowPoly_001" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="0"]
-transform = Transform3D(0.00396639, 1.8065e-10, -1.16157e-10, -8.74225e-11, 0.0081992, -0.000467747, 1.16806e-10, 0.000973117, 0.00393863, 0.0220963, 2.07107, 0.0597126)
-
-[node name="Eyes" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="1"]
-transform = Transform3D(4.68915e-10, -3.58431e-09, -0.0189615, -0.0188293, -0.00223539, -4.28473e-11, -0.00223542, 0.0188293, -3.61192e-09, 0.0175861, 2.19081, 0.0484759)
-
-[node name="Eyes_001" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="2"]
-transform = Transform3D(4.68915e-10, -3.58431e-09, -0.0189615, -0.0188293, -0.00223539, -4.28473e-11, -0.00223542, 0.0188293, -3.61192e-09, 0.0175861, 2.19041, 0.0517997)
-
-[node name="Hair" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="3"]
-transform = Transform3D(0.0124203, -3.94889e-10, -1.94014e-11, 3.89691e-10, 0.0123337, -0.00146424, 6.40594e-11, 0.00146426, 0.0123337, 0.0220963, 2.29791, 0.0607608)
-
-[node name="TeethLowPoly" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="4"]
-transform = Transform3D(0.00396638, -3.60219e-10, 2.9801e-10, 1.35312e-10, 0.0140569, -0.000467601, -2.84595e-10, 0.00166884, 0.00393873, 0.0220962, 2.10231, 0.0630023)
-
 [node name="door_slam_starter" type="Area3D" parent="1ST FLOOR SCARES/DARKROOM SCARE"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212686, 2.20424)
 collision_layer = 16
@@ -2004,19 +1969,19 @@ bones/377/rotation = Quaternion(-7.06262e-22, 3.70577e-22, -0.0930803, 0.995659)
 bones/388/rotation = Quaternion(-0.740982, -1.85228e-08, -2.3675e-08, 0.671525)
 
 [node name="TeethLowPoly_001" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="0"]
-transform = Transform3D(0.00396639, 1.8065e-10, -1.16157e-10, -8.74225e-11, 0.0081992, -0.000467747, 1.16806e-10, 0.000973117, 0.00393863, 0.0220963, 2.07107, 0.0597126)
+transform = Transform3D(0.00396639, 1.80679e-10, -1.16229e-10, -8.74509e-11, 0.0081992, -0.000467747, 1.16849e-10, 0.000973116, 0.00393863, 0.0220963, 2.07107, 0.0597125)
 
 [node name="Eyes" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="1"]
-transform = Transform3D(4.68915e-10, -3.58431e-09, -0.0189615, -0.0188293, -0.00223539, -4.28473e-11, -0.00223542, 0.0188293, -3.61192e-09, 0.0175861, 2.19081, 0.0484759)
+transform = Transform3D(4.68923e-10, -3.58438e-09, -0.0189615, -0.0188293, -0.00223539, -4.28821e-11, -0.00223542, 0.0188293, -3.61199e-09, 0.0175861, 2.19081, 0.0484759)
 
 [node name="Eyes_001" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="2"]
-transform = Transform3D(4.68915e-10, -3.58431e-09, -0.0189615, -0.0188293, -0.00223539, -4.28473e-11, -0.00223542, 0.0188293, -3.61192e-09, 0.0175861, 2.19041, 0.0517997)
+transform = Transform3D(4.68923e-10, -3.58438e-09, -0.0189615, -0.0188293, -0.00223539, -4.28821e-11, -0.00223542, 0.0188293, -3.61199e-09, 0.0175861, 2.19041, 0.0517997)
 
 [node name="Hair" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="3"]
-transform = Transform3D(0.0124203, -3.94889e-10, -1.94014e-11, 3.89691e-10, 0.0123337, -0.00146424, 6.40594e-11, 0.00146426, 0.0123337, 0.0220963, 2.29791, 0.0607608)
+transform = Transform3D(0.0124203, -3.94895e-10, -1.94464e-11, 3.89714e-10, 0.0123337, -0.00146424, 6.41052e-11, 0.00146426, 0.0123337, 0.0220963, 2.29791, 0.0607608)
 
 [node name="TeethLowPoly" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="4"]
-transform = Transform3D(0.00396638, -3.60219e-10, 2.9801e-10, 1.35312e-10, 0.0140569, -0.000467601, -2.84595e-10, 0.00166884, 0.00393873, 0.0220962, 2.10231, 0.0630023)
+transform = Transform3D(0.00396638, -3.60226e-10, 2.97995e-10, 1.35319e-10, 0.0140569, -0.000467601, -2.84581e-10, 0.00166884, 0.00393873, 0.0220962, 2.10231, 0.0630022)
 
 [node name="jumpscare" type="AnimationPlayer" parent="1ST FLOOR SCARES/WINDOW SCARE"]
 libraries = {
@@ -2078,6 +2043,7 @@ bones/4/scale = Vector3(1.10772, 1.04987, 1.10674)
 bones/5/rotation = Quaternion(0.185323, 0.0172693, 0.0409301, 0.981673)
 bones/5/scale = Vector3(0.893457, 0.893452, 0.893457)
 bones/6/rotation = Quaternion(-0.0502312, -0.0967415, -0.0984033, 0.989159)
+bones/10/rotation = Quaternion(-0.608553, -0.344797, -0.352662, 0.621617)
 bones/11/rotation = Quaternion(-0.173829, 0.541438, -0.547544, 0.61386)
 bones/11/scale = Vector3(0.853198, 0.979759, 0.853198)
 bones/12/rotation = Quaternion(-0.0710374, 0.0100442, -0.106185, 0.991755)
@@ -2111,6 +2077,7 @@ bones/25/rotation = Quaternion(0.540635, -0.0209735, -0.0119437, 0.840911)
 bones/26/rotation = Quaternion(0.196247, 0.727134, 0.457224, -0.472979)
 bones/27/rotation = Quaternion(0.407932, -0.0776659, -0.0237051, 0.909394)
 bones/28/rotation = Quaternion(0.229964, 0.0232762, 0.0972195, 0.968051)
+bones/29/rotation = Quaternion(-0.608553, 0.344797, 0.352662, 0.621617)
 bones/30/rotation = Quaternion(-0.250241, -0.648423, 0.0250149, 0.718541)
 bones/30/scale = Vector3(0.966612, 0.763334, 0.966612)
 bones/31/rotation = Quaternion(0.743043, -0.0287178, 0.133361, 0.655192)
@@ -2148,6 +2115,7 @@ bones/44/scale = Vector3(1.00004, 1.08252, 1.01531)
 bones/45/rotation = Quaternion(-0.569339, 0.284075, 0.52489, 0.565371)
 bones/46/rotation = Quaternion(0.407979, 0.180632, -0.0228625, 0.894652)
 bones/47/rotation = Quaternion(0.438853, 0.187849, -0.0878898, 0.874297)
+bones/49/rotation = Quaternion(-1.10674e-07, 0.699347, 0.714783, 4.86547e-08)
 bones/50/rotation = Quaternion(0.955526, -0.0657244, -0.0318654, 0.285718)
 bones/50/scale = Vector3(0.943885, 1.12244, 0.943884)
 bones/51/rotation = Quaternion(0.261774, -0.0112721, 0.0665778, 0.962764)
@@ -2248,6 +2216,7 @@ bones/145/scale = Vector3(0.893456, 0.893455, 0.893455)
 bones/146/rotation = Quaternion(0.834532, 1.1434e-07, 2.08774e-07, 0.550959)
 bones/147/rotation = Quaternion(0.84785, 0.0162794, -0.0413322, -0.528372)
 bones/148/rotation = Quaternion(0.806518, 0.0504934, -0.174082, 0.562739)
+bones/157/rotation = Quaternion(-0.608553, -0.344797, -0.352662, 0.621617)
 bones/158/rotation = Quaternion(-0.222997, 0.557339, -0.562018, 0.569019)
 bones/158/scale = Vector3(0.929081, 0.929081, 0.929081)
 bones/159/rotation = Quaternion(0.0009096, 9.39658e-08, 8.2079e-08, 1)
@@ -2282,10 +2251,20 @@ bones/174/scale = Vector3(1.00004, 0.879135, 1.19275)
 bones/175/rotation = Quaternion(0.654486, -0.027542, -0.00812539, 0.755528)
 bones/175/scale = Vector3(1.00034, 1.07251, 1.13638)
 bones/176/position = Vector3(0.0329417, 0.142587, 0.0415702)
+bones/176/rotation = Quaternion(0.0146566, 0.888015, -0.0728001, 0.453778)
+bones/177/rotation = Quaternion(0.0465747, 0.923712, -0.0507281, 0.376847)
 bones/178/position = Vector3(-0.00182812, 0.124234, -0.0586512)
+bones/178/rotation = Quaternion(0.0337615, 0.832644, -0.0306011, 0.551931)
 bones/179/position = Vector3(0.00459105, 0.141521, -0.0258454)
+bones/179/rotation = Quaternion(0.0440419, 0.84161, -0.0325443, 0.537302)
+bones/180/rotation = Quaternion(0.209877, 0.63756, 0.640026, -0.373946)
 bones/183/position = Vector3(0.0329421, 0.142587, 0.04157)
 bones/183/rotation = Quaternion(0.0203028, 0.818368, -0.067411, 0.570366)
+bones/184/rotation = Quaternion(-4.26406e-07, 0.125151, 1.44326e-07, 0.992138)
+bones/185/rotation = Quaternion(0.34322, -0.116729, 0.0454252, 0.930866)
+bones/186/rotation = Quaternion(-1.37843e-06, 0.107477, 1.71718e-07, 0.994208)
+bones/187/rotation = Quaternion(0.372211, -0.101117, 0.036043, 0.921919)
+bones/188/rotation = Quaternion(1.11025e-06, 0.0595631, -1.96859e-07, 0.998225)
 bones/189/rotation = Quaternion(0.117859, 1.8791e-09, 0.99303, 6.91162e-09)
 bones/190/rotation = Quaternion(0.0654751, -0.0594324, -0.011559, 0.996016)
 bones/191/rotation = Quaternion(0.0748726, -0.107169, -0.00922807, 0.991375)
@@ -2295,12 +2274,23 @@ bones/192/rotation = Quaternion(0.00991226, 0.746337, -0.0654144, 0.662271)
 bones/192/scale = Vector3(1, 0.901513, 1)
 bones/193/position = Vector3(0.0178541, 0.14441, 0.0100595)
 bones/193/rotation = Quaternion(0.0528045, 0.824585, -0.0355218, 0.562148)
+bones/194/rotation = Quaternion(1.85264e-06, 0.207411, -2.98698e-07, 0.978254)
+bones/195/rotation = Quaternion(0.51878, -0.169128, 0.122421, 0.829021)
+bones/196/rotation = Quaternion(-1.00374e-07, 0.180772, 6.24969e-08, 0.983525)
+bones/197/rotation = Quaternion(0.496672, -0.171022, 0.0653495, 0.848409)
+bones/198/rotation = Quaternion(-9.82264e-07, 0.171891, 2.5762e-07, 0.985116)
 bones/200/rotation = Quaternion(0.063586, -0.171527, -0.0133892, 0.983034)
 bones/201/rotation = Quaternion(0.0507923, -0.180525, -0.0125245, 0.982178)
 bones/202/position = Vector3(0.0229373, 0.145379, 0.00541649)
 bones/202/rotation = Quaternion(0.0345427, 0.694392, -0.0267272, 0.71827)
 bones/202/scale = Vector3(1, 0.875277, 1)
 bones/203/position = Vector3(-0.00182765, 0.124235, -0.0586514)
+bones/203/rotation = Quaternion(0.0258036, 0.881185, -0.0313757, 0.471023)
+bones/204/rotation = Quaternion(1.17127e-06, -0.0945839, 1.09923e-07, 0.995517)
+bones/205/rotation = Quaternion(0.604239, 0.0770461, -0.0547247, 0.791179)
+bones/206/rotation = Quaternion(1.61357e-06, -0.116553, 5.6717e-08, 0.993185)
+bones/207/rotation = Quaternion(0.632598, 0.0858728, -0.0796849, 0.765569)
+bones/208/rotation = Quaternion(-1.96728e-07, -0.174334, -1.27684e-07, 0.984687)
 bones/210/rotation = Quaternion(0.0713594, 0.173888, 0.00502247, 0.982164)
 bones/210/scale = Vector3(1, 1.0693, 1)
 bones/211/rotation = Quaternion(0.0480042, 0.116403, 0.0154514, 0.991921)
@@ -2310,12 +2300,22 @@ bones/212/rotation = Quaternion(0.00459303, 0.884197, 0.00685382, 0.467042)
 bones/212/scale = Vector3(0.999999, 0.837425, 1)
 bones/213/position = Vector3(0.00459149, 0.141522, -0.0258456)
 bones/213/rotation = Quaternion(0.037439, 0.869384, -0.033748, 0.491559)
+bones/214/rotation = Quaternion(-2.70943e-07, -0.0539136, 6.73861e-08, 0.998546)
+bones/215/rotation = Quaternion(0.577355, 0.046564, -0.0263517, 0.814739)
+bones/216/rotation = Quaternion(-4.28718e-07, -0.120105, -4.22151e-08, 0.992761)
+bones/217/rotation = Quaternion(0.531317, 0.095787, -0.073438, 0.838531)
+bones/218/rotation = Quaternion(1.44197e-06, -0.130806, 2.81818e-08, 0.991408)
 bones/220/rotation = Quaternion(0.0653148, 0.130524, 0.00380513, 0.989284)
 bones/221/rotation = Quaternion(0.0592823, 0.119889, 0.00926882, 0.990972)
 bones/222/position = Vector3(0.0110762, 0.142063, -0.0282932)
 bones/222/rotation = Quaternion(0.0210335, 0.872676, -0.0064561, 0.487804)
 bones/222/scale = Vector3(1, 0.861161, 1)
+bones/223/rotation = Quaternion(0.209871, 0.637558, 0.640026, -0.373952)
+bones/224/rotation = Quaternion(0.210809, -0.116756, 0.0795656, 0.967263)
+bones/225/rotation = Quaternion(0.529374, -0.00837395, 0.013418, 0.848241)
 bones/226/rotation = Quaternion(-0.141925, -0.00906373, -0.0939038, 0.985372)
+bones/227/rotation = Quaternion(0.0376646, -7.26289e-06, -0.0313512, 0.998799)
+bones/228/rotation = Quaternion(0.192498, 0.0341269, 0.126574, 0.972501)
 bones/232/rotation = Quaternion(0.196247, 0.727135, 0.457224, -0.472978)
 bones/233/scale = Vector3(0.970076, 0.970076, 0.970076)
 bones/234/position = Vector3(-0.0434669, 0.0159733, 0.0288331)
@@ -2333,6 +2333,7 @@ bones/248/rotation = Quaternion(0.000909593, 9.9038e-08, 6.34096e-08, 1)
 bones/248/scale = Vector3(0.99132, 0.99132, 0.99132)
 bones/249/rotation = Quaternion(-0.228414, 0.551817, -0.559837, 0.574375)
 bones/249/scale = Vector3(0.893456, 0.893456, 0.893456)
+bones/251/rotation = Quaternion(-0.608553, 0.344797, 0.352662, 0.621617)
 bones/252/rotation = Quaternion(-0.309028, -0.6882, 0.0842009, 0.650994)
 bones/252/scale = Vector3(0.8368, 0.8368, 0.8368)
 bones/253/rotation = Quaternion(0.782614, -1.99435e-08, -1.41256e-08, 0.622508)
@@ -2388,7 +2389,9 @@ bones/277/rotation = Quaternion(0.222042, -0.777987, 0.459549, 0.3664)
 bones/278/position = Vector3(-0.00251829, 0.00684711, 0.0107611)
 bones/278/rotation = Quaternion(0.0539904, -0.315654, -0.129105, 0.938499)
 bones/279/rotation = Quaternion(0.274806, 0.119716, -0.0368398, 0.953306)
+bones/280/rotation = Quaternion(-1.38557e-06, -0.107477, -2.08251e-07, 0.994208)
 bones/281/rotation = Quaternion(0.30437, 0.103465, -0.0286146, 0.946486)
+bones/282/rotation = Quaternion(1.10838e-06, -0.0595631, 2.12719e-07, 0.998225)
 bones/283/rotation = Quaternion(-0.117859, -1.41716e-08, 0.99303, 1.27654e-09)
 bones/284/rotation = Quaternion(0.0654757, 0.0594324, 0.0115585, 0.996016)
 bones/285/rotation = Quaternion(0.0765799, 0.107156, 0.00875978, 0.99125)
@@ -2398,8 +2401,11 @@ bones/286/rotation = Quaternion(0.214673, -0.596594, 0.551787, 0.541777)
 bones/286/scale = Vector3(1, 0.922053, 1)
 bones/287/position = Vector3(-0.0178536, 0.14441, 0.0100597)
 bones/287/rotation = Quaternion(0.289319, -0.829057, 0.297643, 0.374657)
+bones/288/rotation = Quaternion(1.84693e-06, -0.207411, 3.30353e-07, 0.978254)
 bones/289/rotation = Quaternion(0.409285, 0.183307, -0.0999487, 0.888197)
+bones/290/rotation = Quaternion(-9.09046e-08, -0.180772, -6.39173e-08, 0.983525)
 bones/291/rotation = Quaternion(0.384894, 0.177937, -0.0430988, 0.90462)
+bones/292/rotation = Quaternion(-9.98336e-07, -0.171891, -2.58802e-07, 0.985116)
 bones/294/rotation = Quaternion(0.0635867, 0.171527, 0.0133894, 0.983034)
 bones/295/rotation = Quaternion(0.0581701, 0.180454, 0.0113516, 0.981796)
 bones/295/scale = Vector3(1, 0.951477, 1)
@@ -2408,8 +2414,11 @@ bones/296/rotation = Quaternion(0.155582, -0.631395, 0.376035, 0.6601)
 bones/296/scale = Vector3(1, 0.900219, 1)
 bones/297/position = Vector3(0.00182823, 0.124234, -0.058651)
 bones/297/rotation = Quaternion(-0.121016, 0.834319, -0.330253, -0.424501)
+bones/298/rotation = Quaternion(1.26529e-06, 0.0945839, -1.6278e-07, 0.995517)
 bones/299/rotation = Quaternion(0.436706, -0.0863096, 0.0384906, 0.894627)
+bones/300/rotation = Quaternion(1.62406e-06, 0.116553, -6.14569e-08, 0.993185)
 bones/301/rotation = Quaternion(0.46955, -0.0998761, 0.0612254, 0.875099)
+bones/302/rotation = Quaternion(-2.51584e-07, 0.174334, 1.19172e-07, 0.984687)
 bones/304/rotation = Quaternion(0.0713584, -0.173888, -0.00502361, 0.982164)
 bones/304/scale = Vector3(1, 1.06929, 1)
 bones/305/rotation = Quaternion(0.0687797, -0.116267, -0.0116801, 0.990765)
@@ -2419,8 +2428,11 @@ bones/306/rotation = Quaternion(-0.110737, 0.835261, -0.318286, -0.434476)
 bones/306/scale = Vector3(1, 0.87465, 1)
 bones/307/position = Vector3(-0.00459129, 0.141521, -0.0258455)
 bones/307/rotation = Quaternion(-0.0993238, 0.820186, -0.391541, -0.405124)
+bones/308/rotation = Quaternion(-2.57886e-07, 0.0539135, -8.72055e-08, 0.998546)
 bones/309/rotation = Quaternion(0.37755, -0.0513267, 0.0151055, 0.924442)
+bones/310/rotation = Quaternion(-4.15584e-07, 0.120105, 7.69253e-08, 0.992761)
 bones/311/rotation = Quaternion(0.327316, -0.109945, 0.0498025, 0.937175)
+bones/312/rotation = Quaternion(1.44949e-06, 0.130806, -3.05303e-08, 0.991408)
 bones/314/rotation = Quaternion(0.0653142, -0.130524, -0.00380513, 0.989284)
 bones/315/rotation = Quaternion(0.0745148, -0.119769, -0.00575213, 0.989985)
 bones/315/scale = Vector3(1, 0.96089, 1)
@@ -2429,7 +2441,9 @@ bones/316/rotation = Quaternion(-0.0782693, 0.803644, -0.389881, -0.442744)
 bones/316/scale = Vector3(1, 0.909481, 1)
 bones/317/rotation = Quaternion(-0.236509, 0.680843, 0.626885, 0.295857)
 bones/318/rotation = Quaternion(-0.0876279, 0.12501, -0.55505, 0.817688)
+bones/319/rotation = Quaternion(0.529374, 0.00837396, -0.013418, 0.848241)
 bones/320/rotation = Quaternion(-0.141925, 0.00906368, 0.0939038, 0.985372)
+bones/321/rotation = Quaternion(0.0376646, 7.25071e-06, 0.0313512, 0.998799)
 bones/322/rotation = Quaternion(0.411284, 0.170549, -0.122267, 0.887023)
 bones/326/rotation = Quaternion(-0.569339, 0.284075, 0.524891, 0.565371)
 bones/327/scale = Vector3(1.05673, 1.05673, 1.05673)
@@ -2447,6 +2461,8 @@ bones/341/scale = Vector3(0.936588, 0.936589, 0.936589)
 bones/342/rotation = Quaternion(0.782614, -4.87733e-08, -1.19396e-08, 0.622508)
 bones/342/scale = Vector3(1.01038, 1.01038, 1.01038)
 bones/343/rotation = Quaternion(-0.315123, -0.629688, 0.0573226, 0.707747)
+bones/349/rotation = Quaternion(-0.608553, -0.344797, -0.352662, 0.621617)
+bones/350/rotation = Quaternion(-0.608553, 0.344797, 0.352662, 0.621617)
 bones/352/position = Vector3(1.47834, 1.69713, -0.490708)
 bones/353/position = Vector3(-1.02638, 0.339661, -0.534788)
 bones/353/rotation = Quaternion(-0.415371, 0.540187, -0.48927, 0.544317)
@@ -2473,19 +2489,19 @@ bones/388/position = Vector3(1.31169, 0.486537, -0.0874861)
 bones/388/rotation = Quaternion(-0.416554, 0.323511, 0.573743, 0.626612)
 
 [node name="TeethLowPoly_001" parent="NavigationRegion3D/monster/godot_rig/godot_rig/Skeleton3D" index="0"]
-transform = Transform3D(0.000907097, 0.00349776, 0.00347649, 0.000437264, 0.00729292, -0.00180743, -0.00383643, 0.00165822, 0.000615984, 0.455757, 1.9225, 0.167905)
+transform = Transform3D(0.000907096, 0.00349776, 0.0034765, 0.000437265, 0.00729292, -0.00180743, -0.00383643, 0.00165822, 0.000615984, 0.455757, 1.9225, 0.167905)
 
 [node name="Eyes" parent="NavigationRegion3D/monster/godot_rig/godot_rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.00803272, 0.0166196, -0.00433644, -0.0167485, -0.00864046, -0.00209034, -0.00380819, 0.0029448, 0.0183403, 0.482373, 2.03737, 0.191953)
+transform = Transform3D(-0.00803272, 0.0166196, -0.00433644, -0.0167485, -0.00864045, -0.00209034, -0.00380819, 0.0029448, 0.0183403, 0.482373, 2.03737, 0.191953)
 
 [node name="Eyes_001" parent="NavigationRegion3D/monster/godot_rig/godot_rig/Skeleton3D" index="2"]
-transform = Transform3D(-0.00803272, 0.0166196, -0.00433644, -0.0167485, -0.00864046, -0.00209034, -0.00380819, 0.0029448, 0.0183403, 0.485307, 2.03584, 0.192473)
+transform = Transform3D(-0.00803272, 0.0166196, -0.00433644, -0.0167485, -0.00864045, -0.00209034, -0.00380819, 0.0029448, 0.0183403, 0.485307, 2.03584, 0.192473)
 
 [node name="Eyes_001" parent="NavigationRegion3D/monster/godot_rig/godot_rig/Skeleton3D/Eyes_001" index="0"]
 material_override = SubResource("StandardMaterial3D_s2v7x")
 
 [node name="Hair" parent="NavigationRegion3D/monster/godot_rig/godot_rig/Skeleton3D" index="3"]
-transform = Transform3D(0.00284048, 0.00526164, 0.0108862, 0.00136922, 0.0109707, -0.00565972, -0.0120134, 0.00249446, 0.00192891, 0.5287, 2.13328, 0.209176)
+transform = Transform3D(0.00284047, 0.00526164, 0.0108863, 0.00136922, 0.0109707, -0.00565972, -0.0120134, 0.00249446, 0.00192891, 0.5287, 2.13328, 0.209176)
 
 [node name="TeethLowPoly" parent="NavigationRegion3D/monster/godot_rig/godot_rig/Skeleton3D" index="4"]
 transform = Transform3D(0.000907096, 0.00599678, 0.00347649, 0.000437257, 0.0125035, -0.00180741, -0.00383643, 0.00284298, 0.000615992, 0.468688, 1.95042, 0.174145)
@@ -3362,6 +3378,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0.168053, 0.2281
 transform = Transform3D(0.136544, 0, -3.72529e-09, 0, 0.136544, 0, 3.72529e-09, 0, 0.136544, 0, 0, 0)
 
 [node name="SpotLight3D" parent="Objects/OfficeCubicle11/Lamp/LampArm/LampUpper" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.513781, 0.857921, 0, -0.857921, 0.513781, 0.0485865, 0.949975, -3.80431)
 visible = true
 
 [node name="PackageDestination" parent="Objects/OfficeCubicle11/MailboxStand" index="2"]
@@ -4170,9 +4187,23 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 46.0948,
 transform = Transform3D(0.216, 0, 0, 0, 0.216, 0, 0, 0, 0.216, 29.0412, 4.21634, 25.2938)
 
 [node name="OmniLight3D" parent="Roof/CeilingLightOn3" index="1"]
-transform = Transform3D(4.62963, 0, 0, 0, 4.62963, 0, 0, 0, 4.62963, 0, -3.17776, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.17776, 0)
 shadow_bias = 0.19
 shadow_blur = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 35.0
+distance_fade_shadow = 16.0
+distance_fade_length = 8.0
+script = ExtResource("45_k08h7")
+
+[node name="LightDetectionArea" type="Area3D" parent="Roof/CeilingLightOn3/OmniLight3D" index="0"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Roof/CeilingLightOn3/OmniLight3D/LightDetectionArea"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
 
 [node name="AudioStreamPlayer3D" parent="Roof/CeilingLightOn3" index="3"]
 volume_db = -9.0
@@ -4181,9 +4212,19 @@ volume_db = -9.0
 transform = Transform3D(0.216, 0, 0, 0, 0.202289, 0.0757295, 0, -0.0757295, 0.202289, 38.7702, 3.99183, 27.3469)
 
 [node name="OmniLight3D" parent="Roof/CeilingLightOn4" index="1"]
-transform = Transform3D(4.62963, 0, 0, 0, 4.62963, 0, 0, 0, 4.62963, 0, -3.17776, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.17776, 0)
 shadow_bias = 0.19
 shadow_blur = 0.0
+script = ExtResource("45_k08h7")
+
+[node name="LightDetectionArea" type="Area3D" parent="Roof/CeilingLightOn4/OmniLight3D" index="0"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Roof/CeilingLightOn4/OmniLight3D/LightDetectionArea"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
 
 [node name="AudioStreamPlayer3D" parent="Roof/CeilingLightOn4" index="3"]
 volume_db = -9.0
@@ -4216,6 +4257,15 @@ visible = false
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn13" index="1"]
 light_bake_mode = 0
 
+[node name="LightDetectionArea2" type="Area3D" parent="CeilingLights/CeilingLightOn13/OmniLight3D" index="1"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingLights/CeilingLightOn13/OmniLight3D/LightDetectionArea2"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
+
 [node name="CeilingLightOn16" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 11.7591, 4.21901, -26.9252)
 visible = false
@@ -4225,6 +4275,15 @@ light_bake_mode = 0
 shadow_bias = 0.03
 omni_shadow_mode = 1
 
+[node name="LightDetectionArea2" type="Area3D" parent="CeilingLights/CeilingLightOn16/OmniLight3D" index="1"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingLights/CeilingLightOn16/OmniLight3D/LightDetectionArea2"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
+
 [node name="CeilingLightOn25" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 17.6879, 4.21901, -21.4429)
 
@@ -4232,12 +4291,20 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 17.6879,
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.573916, 4.21901, -18.4014)
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn23" index="1"]
-transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.67959, 0)
 light_energy = 0.49
 light_bake_mode = 2
 shadow_bias = 0.015
 omni_range = 11.576
 omni_shadow_mode = 1
+
+[node name="LightDetectionArea2" type="Area3D" parent="CeilingLights/CeilingLightOn23/OmniLight3D" index="1"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingLights/CeilingLightOn23/OmniLight3D/LightDetectionArea2"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
 
 [node name="LightFlickering" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn23"]
 libraries = {
@@ -4247,16 +4314,22 @@ libraries = {
 [node name="CeilingLightOn32" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.573916, 4.21901, -26.9364)
 
-[node name="CeilingLightOnLight" parent="CeilingLights/CeilingLightOn32" index="0"]
-transparency = 1.0
-
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn32" index="1"]
 light_bake_mode = 2
 shadow_bias = 0.015
 omni_range = 11.629
 omni_shadow_mode = 1
 
-[node name="Toner" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn32"]
+[node name="LightDetectionArea2" type="Area3D" parent="CeilingLights/CeilingLightOn32/OmniLight3D" index="1"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingLights/CeilingLightOn32/OmniLight3D/LightDetectionArea2"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
+
+[node name="WINDOW_SCARE_TONER" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn32"]
 libraries = {
 "": SubResource("AnimationLibrary_ns5yp")
 }
@@ -4306,12 +4379,20 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 40.4047,
 visible = false
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn40" index="1"]
-transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.67959, 0)
 light_energy = 0.3
 light_bake_mode = 2
 shadow_bias = 0.1
 omni_range = 10.0
 omni_shadow_mode = 1
+
+[node name="LightDetectionArea2" type="Area3D" parent="CeilingLights/CeilingLightOn40/OmniLight3D" index="1"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingLights/CeilingLightOn40/OmniLight3D/LightDetectionArea2"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
 
 [node name="CeilingLightOn29" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 11.9696, 4.2381, -12.2969)
@@ -4321,11 +4402,20 @@ light_bake_mode = 2
 shadow_bias = 0.101
 omni_shadow_mode = 1
 
+[node name="LightDetectionArea2" type="Area3D" parent="CeilingLights/CeilingLightOn29/OmniLight3D" index="1"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingLights/CeilingLightOn29/OmniLight3D/LightDetectionArea2"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
+
 [node name="CeilingLightOn46" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, 10.284, 4.20614, 21.2689)
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn46" index="1"]
-transform = Transform3D(4.61975, 0, -1.42109e-14, 0, 4.61975, 0, 1.42109e-14, 0, 4.61975, 0, -2.67959, 0)
+transform = Transform3D(1, 0, -3.07612e-15, 0, 1, 0, 3.07612e-15, 0, 1, 0, -2.67959, 0)
 light_energy = 0.652
 light_bake_mode = 2
 shadow_bias = 0.095
@@ -4339,6 +4429,15 @@ light_bake_mode = 2
 shadow_bias = 0.19
 omni_shadow_mode = 1
 
+[node name="LightDetectionArea2" type="Area3D" parent="CeilingLights/CeilingLightOn4/OmniLight3D" index="1"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingLights/CeilingLightOn4/OmniLight3D/LightDetectionArea2"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
+
 [node name="CeilingLightOn5" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.08925, 4.20832, 4.22891)
 
@@ -4348,11 +4447,29 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.08925
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn7" index="1" groups=["alwaysshadow"]]
 light_bake_mode = 2
 
+[node name="LightDetectionArea2" type="Area3D" parent="CeilingLights/CeilingLightOn7/OmniLight3D" index="1"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingLights/CeilingLightOn7/OmniLight3D/LightDetectionArea2"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
+
 [node name="CeilingLightOn8" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -5.08925, 4.20832, -4.09988)
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn8" index="1" groups=["alwaysshadow"]]
 light_bake_mode = 2
+
+[node name="LightDetectionArea2" type="Area3D" parent="CeilingLights/CeilingLightOn8/OmniLight3D" index="1"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingLights/CeilingLightOn8/OmniLight3D/LightDetectionArea2"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
 
 [node name="FlickeringLight" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn8"]
 libraries = {
@@ -4370,8 +4487,16 @@ script = ExtResource("30_0tqww")
 light_bake_mode = 2
 shadow_bias = 0.015
 shadow_transmittance_bias = -4.945
-distance_fade_enabled = true
 omni_shadow_mode = 1
+
+[node name="LightDetectionArea2" type="Area3D" parent="CeilingLights/CeilingLightOn52/OmniLight3D" index="1"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CeilingLights/CeilingLightOn52/OmniLight3D/LightDetectionArea2"]
+transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+shape = SubResource("BoxShape3D_lmv14")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn52"]
 libraries = {
