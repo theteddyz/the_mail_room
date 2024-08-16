@@ -59,5 +59,3 @@ func grabbed(delta):
 func reset_highlight():
 	if shader_material:
 		key_material.material_overlay.set_shader_parameter("outline_width", 0)
-
-

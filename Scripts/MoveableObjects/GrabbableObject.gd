@@ -269,4 +269,3 @@ func remove_grab_point_indicator():
 	if grab_point_indicator:
 		grab_point_indicator.queue_free()
 		player_cross_hair.show()
-
