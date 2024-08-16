@@ -95,7 +95,7 @@ mesh = SubResource("ArrayMesh_y8lkm")
 skeleton = NodePath("")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.67959, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.17141, 0)
 light_color = Color(0.996078, 0.968627, 0.905882, 1)
 light_energy = 0.5
 light_indirect_energy = 0.263
