@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxkvfp8o4jisu"
+path="res://.godot/imported/Package Deliver.ogg-64af84165d741c93ea59b573a8475f4b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SoundFX/GamifiedSounds/Package Deliver.ogg"
+dest_files=["res://.godot/imported/Package Deliver.ogg-64af84165d741c93ea59b573a8475f4b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
