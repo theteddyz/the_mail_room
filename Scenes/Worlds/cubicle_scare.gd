@@ -11,6 +11,8 @@ var scare_finish_available: bool = false
 @onready var door_slam_area: Area3D = $door_slam_starter
 @onready var darkroom_scare = $"../DARKROOM SCARE"
 
+# todo : check if we spawn a collider on wall
+
 func _ready():
 	monster_body.visible = false
 	player = GameManager.player_reference
@@ -38,6 +40,8 @@ func _process(_delta):
 		print("DOOR SLAMMED!")
 		door_slam_anim.play("slam_door")
 		audio_player.play()
+		#var anim = monster_body.find_child("AnimationPlayer")
+		#anim.play("PeakingOverCubicleDisappear")
 		door_slam_available = false
 		scare_finish_available = true
 	
