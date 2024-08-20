@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://1j0o1il6ai5e"]
+
+[ext_resource type="Script" path="res://Scenes/directionless_audiostream.gd" id="1_o8ff8"]
+[ext_resource type="AudioStream" uid="uid://ccf6jeaykt15x" path="res://Assets/Audio/SoundFX/AmbientScares/ScareCubicleAnticipation.ogg" id="2_4qxjb"]
+
+[node name="AudioController" type="Node"]
+script = ExtResource("1_o8ff8")
+
+[node name="stream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4qxjb")
+
+[node name="stream2" type="AudioStreamPlayer" parent="."]
+
+[node name="stream3" type="AudioStreamPlayer" parent="."]
