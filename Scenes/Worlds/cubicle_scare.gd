@@ -10,21 +10,33 @@ var scare_finish_available: bool = false
 @onready var audio_player:AudioStreamPlayer3D = $DoorSlamSoundPlayer
 @onready var door_slam_area: Area3D = $door_slam_starter
 @onready var darkroom_scare = $"../DARKROOM SCARE"
+var anticipationSound
+var impactSound
+var packageholder
+var anticipation_flag = false
+var impact_flag = false
 
 # todo : check if we spawn a collider on wall
 
 func _ready():
 	monster_body.visible = false
 	player = GameManager.player_reference
+	packageholder = player.find_child("PackageHolder")
 	door_slam_area.monitoring = false
+	anticipationSound = preload("res://Assets/Audio/SoundFX/AmbientScares/ScareCubicleAnticipation.ogg")
+	impactSound = preload("res://Assets/Audio/SoundFX/AmbientScares/ScareCubicleImpact3.ogg")
 	ScareDirector.connect("package_delivered", activate_scare)
 	ScareDirector.connect("monster_seen", monster_seen_function)
 
 func monster_seen_function(boolean: bool):		
 	if(has_been_executed):
-		var anim = monster_body.find_child("AnimationPlayer")
-		anim.play("PeakingOverCubicle2")
 		monster_seen = boolean
+		if !impact_flag:
+			impact_flag = true
+			AudioController.play_resource(impactSound)
+			var anim = monster_body.find_child("AnimationPlayer")
+			anim.play("PeakingOverCubicle2")
+		
 	
 func activate_scare(package_num:int):
 	if package_num == 2 and darkroom_scare != null and !darkroom_scare.has_been_executed:
@@ -58,3 +70,10 @@ func _on_door_slam_starter_body_entered(_body):
 func _hide_monster():
 	monster_body.visible = false
 	queue_free()
+
+
+func _on_anticipation_starter_body_entered(body: Node3D) -> void:
+	var arr = packageholder.get_children()
+	if arr.size() > 0 and arr[0].package_num == 2 and !anticipation_flag:
+		anticipation_flag = true
+		AudioController.play_resource(anticipationSound)

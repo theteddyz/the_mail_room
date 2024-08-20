@@ -1799,6 +1799,15 @@ collision_mask = 16
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0393276, 0.828028, -2.85983)
 shape = SubResource("BoxShape3D_2nxw7")
 
+[node name="anticipation_starter" type="Area3D" parent="1ST FLOOR SCARES/CUBICLE SCARE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212686, 2.08813)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="1ST FLOOR SCARES/CUBICLE SCARE/anticipation_starter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0393276, 0.828028, -2.85983)
+shape = SubResource("BoxShape3D_2nxw7")
+
 [node name="DoorSlamSoundPlayer" type="AudioStreamPlayer3D" parent="1ST FLOOR SCARES/CUBICLE SCARE"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85227, 1.08678, -7.76348)
 stream = ExtResource("40_lmkw4")
@@ -5180,6 +5189,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.41
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.4166, 0.793541, -29.5095)
 
 [connection signal="body_entered" from="1ST FLOOR SCARES/CUBICLE SCARE/door_slam_starter" to="1ST FLOOR SCARES/CUBICLE SCARE" method="_on_door_slam_starter_body_entered"]
+[connection signal="body_entered" from="1ST FLOOR SCARES/CUBICLE SCARE/anticipation_starter" to="1ST FLOOR SCARES/CUBICLE SCARE" method="_on_anticipation_starter_body_entered"]
 [connection signal="animation_finished" from="1ST FLOOR SCARES/DARKROOM SCARE/AnimationPlayer" to="1ST FLOOR SCARES/DARKROOM SCARE" method="_on_animation_player_animation_finished"]
 
 [editable path="1ST FLOOR SCARES/CUBICLE SCARE/godot_rig"]
