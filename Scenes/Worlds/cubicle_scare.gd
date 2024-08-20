@@ -15,8 +15,7 @@ var impactSound
 var packageholder
 var anticipation_flag = false
 var impact_flag = false
-
-# todo : check if we spawn a collider on wall
+@onready var john_typing_sound = $JohnTypingSoundPlayer
 
 func _ready():
 	monster_body.visible = false
@@ -40,6 +39,7 @@ func monster_seen_function(boolean: bool):
 	
 func activate_scare(package_num:int):
 	if package_num == 2 and darkroom_scare != null and !darkroom_scare.has_been_executed:
+		john_typing_sound.playing = false
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		monster_body.visible = true
 		var anim = monster_body.find_child("AnimationPlayer")
