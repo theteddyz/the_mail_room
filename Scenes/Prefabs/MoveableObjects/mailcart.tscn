@@ -43,7 +43,7 @@ collision_mask = 23
 script = ExtResource("1_1hgo0")
 
 [node name="Cart" parent="." instance=ExtResource("2_jjppu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68221e-06, 0.724449, 6.61463e-05)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.237318, 0.632886, -0.125556)
