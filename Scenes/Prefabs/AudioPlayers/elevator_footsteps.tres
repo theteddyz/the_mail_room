@@ -1,0 +1,35 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=16 format=3 uid="uid://k6w5um1sg8ub"]
+
+[ext_resource type="AudioStream" uid="uid://bngcp52euqnjs" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator1.ogg" id="1_8a603"]
+[ext_resource type="AudioStream" uid="uid://cep56ne644vl" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator2.ogg" id="2_v8o5s"]
+[ext_resource type="AudioStream" uid="uid://cwgeuxutd8rsf" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator6.ogg" id="3_qk1n1"]
+[ext_resource type="AudioStream" uid="uid://bnbfnp4objv1g" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator12.ogg" id="4_jgxao"]
+[ext_resource type="AudioStream" uid="uid://bc4bftey2txxe" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator13.ogg" id="5_v1ejj"]
+[ext_resource type="AudioStream" uid="uid://cyabwlltexwfr" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator14.ogg" id="6_yidbr"]
+[ext_resource type="AudioStream" uid="uid://bucawx2tgde08" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator15.ogg" id="7_0ph2r"]
+[ext_resource type="AudioStream" uid="uid://b6k6ih7a7lip3" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator3.ogg" id="8_g226m"]
+[ext_resource type="AudioStream" uid="uid://cyisnhdmp5t50" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator4.ogg" id="9_8o4rg"]
+[ext_resource type="AudioStream" uid="uid://qgt14anricj2" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator5.ogg" id="10_scjsu"]
+[ext_resource type="AudioStream" uid="uid://cuiquuomsh5ig" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator7.ogg" id="11_anibd"]
+[ext_resource type="AudioStream" uid="uid://c4bqakumb2lng" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator8.ogg" id="12_0clps"]
+[ext_resource type="AudioStream" uid="uid://cyhudr0bo555u" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator9.ogg" id="13_fuovc"]
+[ext_resource type="AudioStream" uid="uid://qdsqp7umjlwy" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator10.ogg" id="14_qf42g"]
+[ext_resource type="AudioStream" uid="uid://d22buk25bcf21" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator11.ogg" id="15_t8sn2"]
+
+[resource]
+streams_count = 15
+stream_0/stream = ExtResource("1_8a603")
+stream_1/stream = ExtResource("2_v8o5s")
+stream_2/stream = ExtResource("8_g226m")
+stream_3/stream = ExtResource("9_8o4rg")
+stream_4/stream = ExtResource("10_scjsu")
+stream_5/stream = ExtResource("11_anibd")
+stream_6/stream = ExtResource("12_0clps")
+stream_7/stream = ExtResource("13_fuovc")
+stream_8/stream = ExtResource("14_qf42g")
+stream_9/stream = ExtResource("15_t8sn2")
+stream_10/stream = ExtResource("3_qk1n1")
+stream_11/stream = ExtResource("4_jgxao")
+stream_12/stream = ExtResource("5_v1ejj")
+stream_13/stream = ExtResource("6_yidbr")
+stream_14/stream = ExtResource("7_0ph2r")

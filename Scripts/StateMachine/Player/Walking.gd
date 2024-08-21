@@ -70,6 +70,9 @@ var original_neck_position:Vector3
 var stamina_bar
 signal object_hovered(node)
 signal object_unhovered()
+#walking Sounds
+var walking_audio_player:AudioStreamPlayer3D
+var audio_timer:Timer
 func _ready():
 	package_holder = persistent_state.find_child("PackageHolder")
 	mailcart = GameManager.get_mail_cart()
@@ -82,6 +85,9 @@ func _ready():
 	EventBus.connect("disable_player_movement",disable_movement_event)
 	gui_anim = Gui.get_control_displayer()
 	stamina_bar = Gui.get_stamina_bar()
+	walking_audio_player = persistent_state.find_child("AudioStreamPlayer3D")
+	audio_timer = walking_audio_player.find_child("sound_reset")
+	audio_timer.connect("timeout", sound_timeout)
 
 
 func _input(event):
@@ -297,18 +303,22 @@ func stand_or_walk(delta):
 	crouching_collision_shape.disabled = true
 	neck.position.y = lerp(neck.position.y, starting_height, crouching_lerp_speed)
 	if Input.is_action_pressed("sprint") and can_sprint:
+		
 		if current_stamina > 0:
+			audio_timer.wait_time = 0.3
 			current_speed = sprinting_speed
 			head_bopping_current = head_bopping_sprinting_intensity
 			head_bopping_index += head_bopping_sprinting_speed * delta
 			is_sprinting = true
 			current_stamina -= stamina_depletion_rate * delta
 		else:
+			audio_timer.wait_time = 0.6
 			current_speed = walking_speed
 			head_bopping_current = head_bopping_walking_intensity
 			head_bopping_index += head_bopping_walking_speed * delta
 			is_sprinting = false
 	else:
+		audio_timer.wait_time = 0.6
 		current_speed = walking_speed
 		head_bopping_current = head_bopping_walking_intensity
 		head_bopping_index += head_bopping_walking_speed * delta
@@ -319,11 +329,14 @@ func stand_or_walk(delta):
 func handle_head_bopping(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	if Vector3(input_dir.x, 0, input_dir.y) != Vector3.ZERO:
+		if audio_timer.is_stopped():
+			audio_timer.start()
 		head_bopping_vector.y = sin(head_bopping_index)
 		head_bopping_vector.x = sin(head_bopping_index / 2) + 0.5
 		headbop_root.position.y = lerp(headbop_root.position.y, head_bopping_vector.y * (head_bopping_current / 2.0), delta * movement_lerp_speed)
 		headbop_root.position.x = lerp(headbop_root.position.x, head_bopping_vector.x * (head_bopping_current), delta * movement_lerp_speed)
 	else:
+		audio_timer.stop()
 		headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
 
 func apply_leaning(delta):
@@ -356,3 +369,6 @@ func disable_movement_event(l:bool,w:bool):
 	persistent_state.velocity = Vector3.ZERO
 	disable_look_movement = l
 	disable_walk_movement = w
+
+func sound_timeout():
+	walking_audio_player.play()

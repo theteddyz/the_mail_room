@@ -1,12 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=29 format=3 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_5vkla"]
-[ext_resource type="LightmapGIData" uid="uid://w0xdwyhdxm7i" path="res://Scenes/Worlds/mail_room.lmbake" id="2_gp4ix"]
+[ext_resource type="LightmapGIData" uid="uid://dbto1ave1h2ee" path="res://Scenes/Worlds/mail_room.lmbake" id="2_gp4ix"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door.tscn" id="2_vsncc"]
 [ext_resource type="PackedScene" uid="uid://uuhrokgnd64l" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall.tscn" id="3_hxukh"]
-[ext_resource type="Environment" uid="uid://bhc42hyiv0lac" path="res://Scenes/Worlds/mail_room.tres" id="3_y028k"]
-[ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="5_3doag"]
+[ext_resource type="Environment" path="res://Scenes/Worlds/mail_room.tres" id="3_y028k"]
+[ext_resource type="Texture2D" uid="uid://n3a6s3w3vg03" path="res://Assets/Textures/Concrete042A_1K-JPG_Color.jpg" id="5_m6sf6"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="6_rd5j2"]
+[ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="6_xcm0f"]
 [ext_resource type="PackedScene" uid="uid://doveq38wiuloa" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_without_light.tscn" id="7_84et1"]
 [ext_resource type="PackedScene" uid="uid://bbp38gl3c7dir" path="res://Scenes/Prefabs/StaticObjects/mail_room_shelf.tscn" id="11_3qslt"]
 [ext_resource type="PackedScene" uid="uid://c88sba6h6nwvq" path="res://Scenes/Prefabs/StaticObjects/chute.tscn" id="11_duifo"]
@@ -15,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="14_thyyr"]
 [ext_resource type="PackedScene" uid="uid://ugwqaphpkcxp" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_long.tscn" id="15_ceayg"]
 [ext_resource type="PackedScene" uid="uid://c148bm0rukaqe" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_medium.tscn" id="16_ine76"]
-[ext_resource type="PackedScene" uid="uid://bhyepbfxwhdat" path="res://Scenes/light_with_optimizercollider.tscn" id="17_0ceh8"]
+[ext_resource type="PackedScene" path="res://Scenes/light_with_optimizercollider.tscn" id="17_0ceh8"]
 [ext_resource type="PackedScene" uid="uid://dfbuid76trvb0" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_mini.tscn" id="17_6rwos"]
 [ext_resource type="PackedScene" uid="uid://bwkdr1hhs71ee" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="18_uvktp"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="20_05muy"]
@@ -24,13 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="22_o4qlx"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="23_swn7f"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ux36e"]
-albedo_texture = ExtResource("5_3doag")
-metallic_specular = 0.0
-subsurf_scatter_enabled = true
-uv1_scale = Vector3(28.265, 16.5, 16.5)
-uv1_triplanar_sharpness = 0.510088
-uv1_world_triplanar = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ce6ua"]
+albedo_texture = ExtResource("5_m6sf6")
+uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ytt0c"]
 lightmap_size_hint = Vector2i(657, 419)
@@ -67,7 +64,7 @@ light_data = ExtResource("2_gp4ix")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stage/floor"]
 transform = Transform3D(0.785, 0, 0, 0, 0.91, 0, 0, 0, 0.445, -12.0128, -0.506603, -5.39636)
-material_override = SubResource("StandardMaterial3D_ux36e")
+material_override = SubResource("StandardMaterial3D_ce6ua")
 mesh = SubResource("BoxMesh_ytt0c")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stage/floor/MeshInstance3D"]
@@ -75,6 +72,15 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage/floor/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1dbhk")
+
+[node name="Area3D" type="Area3D" parent="stage/floor/MeshInstance3D"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("6_xcm0f")
+floor_type = "mail_room"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/floor/MeshInstance3D/Area3D"]
 shape = SubResource("ConcavePolygonShape3D_1dbhk")
 
 [node name="Objects" type="Node3D" parent="stage"]

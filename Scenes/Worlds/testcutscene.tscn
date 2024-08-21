@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=33 format=3 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_u173c"]
 [ext_resource type="LightmapGIData" uid="uid://csepdxhb2v4q8" path="res://Scenes/Worlds/testcutscene.lmbake" id="2_e3did"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cxx4tf5grxfu8" path="res://Assets/Models/radio_model_2.tscn" id="10_r6ec6"]
 [ext_resource type="Texture2D" uid="uid://dyq5dddljok30" path="res://grey-barcode-carpet-stack-1800-mm-architextures.jpg" id="11_bn35o"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="12_rgcp3"]
+[ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="13_2t4es"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="14_0rx2b"]
 [ext_resource type="AudioStream" uid="uid://p0ckrxqcbt02" path="res://Assets/Audio/SoundFX/IntroFloorAmbience1.mp3" id="17_p43sr"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="17_ucf0v"]
@@ -146,7 +147,7 @@ albedo_texture = ExtResource("11_bn35o")
 uv1_scale = Vector3(75, 75, 75)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l5j1c"]
-lightmap_size_hint = Vector2i(10, 13)
+lightmap_size_hint = Vector2i(300, 442)
 add_uv2 = true
 size = Vector2(59.745, 88.19)
 
@@ -1256,6 +1257,20 @@ mesh = SubResource("BoxMesh_04oj8")
 [node name="StaticBody3D" type="StaticBody3D" parent="stage/Floor/MeshInstance3D2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage/Floor/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_li20f")
+
+[node name="Area3D" type="Area3D" parent="stage/Floor"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("13_2t4es")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stage/Floor/Area3D"]
+shape = SubResource("ConcavePolygonShape3D_li20f")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="stage/Floor/Area3D"]
+shape = SubResource("ConcavePolygonShape3D_1otn3")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="stage/Floor/Area3D"]
 shape = SubResource("ConcavePolygonShape3D_li20f")
 
 [node name="CeilingBlockingLight" type="Node3D" parent="stage"]

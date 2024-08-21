@@ -26,7 +26,7 @@ func _process(_delta):
 
 
 func call_elevator():
-	var player_floor = get_tree().root.get_child(4).floor_num
+	var player_floor = get_tree().root.get_child(5).floor_num
 	if !is_called:
 		is_called = true
 		if current_floor != player_floor:

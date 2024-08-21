@@ -1,0 +1,35 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=16 format=3 uid="uid://c1xufppt4c72l"]
+
+[ext_resource type="AudioStream" uid="uid://bqcuy1wlbfxf" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom1.ogg" id="1_osbb8"]
+[ext_resource type="AudioStream" uid="uid://cff8t8esk5l6v" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom2.ogg" id="2_twro2"]
+[ext_resource type="AudioStream" uid="uid://rxn6j7musgkf" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom10.ogg" id="3_rxj2b"]
+[ext_resource type="AudioStream" uid="uid://cvaxmhf13lkbj" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom11.ogg" id="4_1ncfa"]
+[ext_resource type="AudioStream" uid="uid://cxcnjym1abopw" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom12.ogg" id="5_tke2h"]
+[ext_resource type="AudioStream" uid="uid://s3c5i5ewa0xa" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom13.ogg" id="6_gcq33"]
+[ext_resource type="AudioStream" uid="uid://bcqm5sshk7tq5" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom14.ogg" id="7_br2s6"]
+[ext_resource type="AudioStream" uid="uid://cullpvjcd18xe" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom15.ogg" id="8_w2qjr"]
+[ext_resource type="AudioStream" uid="uid://h1ljspfu7k1r" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom3.ogg" id="9_3a53w"]
+[ext_resource type="AudioStream" uid="uid://uek4ep576xjt" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom4.ogg" id="10_60mh5"]
+[ext_resource type="AudioStream" uid="uid://baxswgfmc0buw" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom5.ogg" id="11_2l7ea"]
+[ext_resource type="AudioStream" uid="uid://dgui3hk1nldjh" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom6.ogg" id="12_3ck4d"]
+[ext_resource type="AudioStream" uid="uid://c63ar03g6iq7n" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom7.ogg" id="13_7s7jq"]
+[ext_resource type="AudioStream" uid="uid://ntlveecn2gbp" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom8.ogg" id="14_ywjay"]
+[ext_resource type="AudioStream" uid="uid://cp3rf8hhou0x8" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom9.ogg" id="15_lw1ui"]
+
+[resource]
+streams_count = 16
+stream_0/stream = ExtResource("1_osbb8")
+stream_1/stream = ExtResource("2_twro2")
+stream_2/stream = ExtResource("9_3a53w")
+stream_3/stream = ExtResource("10_60mh5")
+stream_4/stream = ExtResource("11_2l7ea")
+stream_5/stream = ExtResource("12_3ck4d")
+stream_6/stream = ExtResource("13_7s7jq")
+stream_8/stream = ExtResource("14_ywjay")
+stream_9/stream = ExtResource("15_lw1ui")
+stream_10/stream = ExtResource("3_rxj2b")
+stream_11/stream = ExtResource("4_1ncfa")
+stream_12/stream = ExtResource("5_tke2h")
+stream_13/stream = ExtResource("6_gcq33")
+stream_14/stream = ExtResource("7_br2s6")
+stream_15/stream = ExtResource("8_w2qjr")
