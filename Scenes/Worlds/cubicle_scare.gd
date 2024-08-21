@@ -84,6 +84,12 @@ func _hide_monster():
 
 func _on_anticipation_starter_body_entered(body: Node3D) -> void:
 	var arr = packageholder.get_children()
-	if arr.size() > 0 and arr[0].package_num == 2 and !anticipation_flag:
+	var mail_cart = player.find_child("Mailcart")
+	if mail_cart!= null:
+		var package2_exits = mail_cart.find_child("Package2")
+		if package2_exits:
+			anticipation_flag = true
+			AudioController.play_resource(anticipationSound)
+	elif arr.size() > 0 and arr[0].package_num == 2 and !anticipation_flag:
 		anticipation_flag = true
 		AudioController.play_resource(anticipationSound)

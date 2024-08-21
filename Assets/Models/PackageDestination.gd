@@ -19,6 +19,6 @@ func deliver(package: Package):
 		delivered = true
 		EventBus.emitCustomSignal("dropped_object",[package.mass,package])
 		ScareDirector.emit_signal("package_delivered",package.package_num)
-		AudioController.play_resource(sound)
+		#AudioController.play_resource(sound)
 	else:
 		package.dropped()

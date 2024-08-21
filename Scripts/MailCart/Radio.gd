@@ -9,9 +9,12 @@ var radio_stations = []
 var current_index = 0
 var attached_to_cart = false
 var is_being_looked_at = false
+var delievery_sound
 func _ready():
+	delievery_sound = preload("res://Assets/Audio/SoundFX/GamifiedSounds/Package Deliver.ogg")
 	EventBus.connect("object_looked_at",on_seen)
 	EventBus.connect("no_object_found",on_unseen)
+	ScareDirector.connect("package_delivered", delivery_sound)
 
 
 func on_seen(node):
@@ -84,3 +87,8 @@ func toggle_power():
 		audio.play()
 	else:
 		audio.stop()
+
+func delivery_sound(i):
+	power = true
+	audio.stream = delievery_sound
+	audio.play()
