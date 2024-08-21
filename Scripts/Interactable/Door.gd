@@ -23,6 +23,11 @@ func _ready():
 	else:
 		has_played_sound = true
 
+func lock_door():
+	parent.should_freeze = true
+	parent.freeze = true
+	parent.lock_rotation = true
+
 func unlock():
 	parent.should_freeze = false
 	parent.freeze = false
@@ -34,7 +39,6 @@ func _input(event):
 		gui.hide_icon()
 		if !locked and !has_played_sound:
 			audio_player.stream = door_unlocked
-			has_played_sound = true
 			audio_player.play()
 		elif locked:
 			audio_player.play()
