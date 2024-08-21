@@ -4,7 +4,7 @@ extends Area3D
 
 func _on_area_entered(area):
 	var light = area.get_parent()
-	if((light is OmniLight3D or light is SpotLight3D) and !light.shadow_enabled):
+	if((light is OmniLight3D or light is SpotLight3D) and !light.shadow_enabled and !light.is_in_group("ignore_shadowculling")):
 		light.shadow_enabled = true
 		var l = light as Light3D
 		l.distance_fade_enabled = true
@@ -38,7 +38,7 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	var light = area.get_parent()
 	var lights: Array = []
-	if((light is OmniLight3D or light is SpotLight3D) and light.shadow_enabled):
+	if((light is OmniLight3D or light is SpotLight3D) and light.shadow_enabled and !light.is_in_group("ignore_shadowculling")):
 		if(!light.is_in_group("alwaysshadow")):
 			light.shadow_enabled = false
 			counter -= 1

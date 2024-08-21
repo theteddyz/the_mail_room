@@ -16,6 +16,9 @@ var packageholder
 var anticipation_flag = false
 var impact_flag = false
 @onready var john_typing_sound = $JohnTypingSoundPlayer
+@onready var john_light: OmniLight3D = $john_light
+@onready var john_ceiling_light: OmniLight3D = $"../../CeilingLights/CeilingLightOn27/OmniLight3D"
+@onready var light_flicker: AnimationPlayer = $"../../CeilingLights/CeilingLightOn27/light_flicker"
 
 func _ready():
 	monster_body.visible = false
@@ -32,15 +35,19 @@ func monster_seen_function(boolean: bool):
 		monster_seen = boolean
 		if !impact_flag:
 			impact_flag = true
+			light_flicker.play("flicker")
 			AudioController.play_resource(impactSound)
 			var anim = monster_body.find_child("AnimationPlayer")
 			anim.play("PeakingOverCubicle2")
 
 func activate_scare(package_num:int):
 	if package_num == 2 and darkroom_scare != null and !darkroom_scare.has_been_executed:
+		john_ceiling_light.add_to_group("john_ceiling_light")
 		john_typing_sound.playing = false
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		monster_body.visible = true
+		john_light.visible = true
+		john_ceiling_light.light_energy = 0.23
 		var anim = monster_body.find_child("AnimationPlayer")
 		anim.play("PeakingOverCubicle")
 		door_slam_area.monitoring = true
@@ -58,6 +65,10 @@ func _process(_delta):
 	
 	if(scare_finish_available and !monster_seen):
 		print("HIDING MONSTER!")
+		light_flicker.play("RESET")
+		john_ceiling_light.remove_from_group("john_ceiling_light")
+		john_light.visible = false
+		john_ceiling_light.light_energy = 0.425
 		scare_finish_available = false
 		_hide_monster()
 
