@@ -246,7 +246,7 @@ max_polyphony = 2
 [node name="sound_reset" type="Timer" parent="AudioStreamPlayer3D"]
 wait_time = 0.6
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="Floor_Raycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67228, 0)
 collision_mask = 32768
 collide_with_areas = true
