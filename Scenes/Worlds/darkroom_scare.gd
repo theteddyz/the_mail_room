@@ -10,6 +10,7 @@ var has_been_executed = false
 var scare_active: bool = false
 @onready var monster_body = $godot_rig
 @onready var wall_to_nuke = $"../../LowWalls/Cubicle_wall_monster"
+@onready var monsterCollisionShape:CollisionShape3D = $godot_rig/JohnCharacterBody/CollisionShape3D
 var monster_anim:AnimationPlayer
 var closed_ambiance
 @onready var door = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2"
@@ -18,11 +19,13 @@ var closed_ambiance
 func _ready():
 	closed_ambiance = preload("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience3.ogg")
 	monster_anim = monster_body.find_child("AnimationPlayer")
+	monsterCollisionShape.disabled = true
 	ScareDirector.connect("key_pickedup", activate_scare)
 	ScareDirector.connect("monster_seen", monster_seen_event)
 
 func activate_scare(key_num:int):
 	if key_num == 1:
+		monsterCollisionShape.disabled = false
 		monster_anim.play("DoorSlam")
 		monster_anim.speed_scale = 0
 		monster_body.visible = true
