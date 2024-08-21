@@ -27,8 +27,9 @@ func play_resource(sound):
 	
 func stop_resource(resource_name):
 	for object in players:
-		var parts = object.player.resource_path.split("/")
-		if parts[parts.size()-1] == resource_name:
-			object.player.playing = false
+		if object.player.get_stream() != null:
+			var parts = object.player.get_stream().get_path().split("/")
+			if parts[parts.size()-1] == resource_name:
+				object.player.playing = false
 	
 	

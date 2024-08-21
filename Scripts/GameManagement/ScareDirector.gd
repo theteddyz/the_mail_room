@@ -11,8 +11,11 @@ signal monster_seen(is_seen:bool)
 # Emitted on a keypickup
 signal key_pickedup(key_num:int)
 
+# Emitted on any interacted grabbable
+signal grabbable(name: String)
+
 func _ready():
-	connect("monster_seen", _signal_log)
+	connect("monster_seen", _monster_seen_log)
 	
-func _signal_log(str: bool):
+func _monster_seen_log(str: bool):
 	print("MONSTER SEEN: ", str)

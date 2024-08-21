@@ -19,10 +19,10 @@ func _ready():
 	player = GameManager.get_player()
 	aggro_timer.wait_time = aggro_timeout
 
-
 func _input(event):
 	if event.is_action_pressed("p"):
 		disabled = false
+		
 func _physics_process(_delta):
 	if target_position and !disabled:
 		move_to_target()
@@ -74,7 +74,6 @@ func on_player_in_vision():
 
 func on_player_out_of_vision():
 	aggro_timer.start()
-
 
 func _on_aggro_timer_timeout():
 	if chasing:

@@ -8,7 +8,6 @@ var sound
 func _ready():
 	sound = preload("res://Assets/Audio/SoundFX/GamifiedSounds/Package Deliver.ogg")
 
-
 func deliver(package: Package):
 	if(package.package_num == accepted_num):
 		package.reparent(self, false)

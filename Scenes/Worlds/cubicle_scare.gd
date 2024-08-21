@@ -35,8 +35,7 @@ func monster_seen_function(boolean: bool):
 			AudioController.play_resource(impactSound)
 			var anim = monster_body.find_child("AnimationPlayer")
 			anim.play("PeakingOverCubicle2")
-		
-	
+
 func activate_scare(package_num:int):
 	if package_num == 2 and darkroom_scare != null and !darkroom_scare.has_been_executed:
 		john_typing_sound.playing = false

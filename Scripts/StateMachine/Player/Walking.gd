@@ -134,6 +134,7 @@ func handle_radio_interaction():
 func handle_general_interaction():
 	var collider = interactable_finder.get_interactable()
 	if collider and !is_holding_object:
+		ScareDirector.grabbable.emit(collider.name)
 		match collider.name:
 			mailcart.name:
 				if is_holding_package:
