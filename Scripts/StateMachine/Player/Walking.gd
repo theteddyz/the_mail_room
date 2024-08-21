@@ -277,6 +277,7 @@ func regular_move(delta):
 
 func handle_movement_input(delta):
 	if Input.is_action_pressed("crouch"):
+		audio_timer.wait_time = 0.8
 		crouch(delta)
 	else:
 		if !standing_is_blocked:
