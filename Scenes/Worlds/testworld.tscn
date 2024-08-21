@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=32 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="15_hp4l1"]
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="15_tm150"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/wall_with_door.tscn" id="15_toag5"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/outline_test.gdshader" id="16_boyhi"]
 [ext_resource type="PackedScene" uid="uid://c7e4imgjbdx46" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_1.tscn" id="16_mi2oa"]
 [ext_resource type="PackedScene" uid="uid://bwnbou1pjcf8l" path="res://Scenes/Prefabs/MoveableObjects/plant.tscn" id="17_b78s4"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="17_ma4ii"]
@@ -22,14 +21,11 @@
 [ext_resource type="PackedScene" uid="uid://cpjr5i4iv2yaf" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_5.tscn" id="21_0vp5e"]
 [ext_resource type="PackedScene" uid="uid://biilk0erp2roe" path="res://Scenes/Prefabs/MoveableObjects/tape_template.tscn" id="22_p3lgw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
-albedo_texture = ExtResource("1_o8goe")
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bh3ib"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h2ln"]
-albedo_color = Color(0.333333, 0.333333, 0.333333, 1)
-albedo_texture = ExtResource("1_o8goe")
-metallic_specular = 0.25
-uv1_triplanar = true
+[sub_resource type="NavigationMesh" id="NavigationMesh_5ah0g"]
+vertices = PackedVector3Array(0, 1, -3.25, 0, 1, -5, -0.75, 1, -5.25, -1.5, 1, -2.5, -4.25, 1, -9.5, -4, 1, -10.75, -14.5, 1, -14.5, -0.75, 1, -6.25, 0, 1, -6.5, 0, 1, -9.25, -2.5, 1, -10.75, -2.75, 1, -14.5, -1.5, 1, -1.75, -14.5, 1, -1.75, 14, 1, -10.75, 14.25, 1, -10, 14.5, 1, -10, 14.5, 1, -14.5, 14, 1, -9.25, 11.25, 1, -5, 11.5, 1, -4, 14.5, 1, -4, 5.5, 1, -9.25, 5.75, 1, -4.5, 6, 1, -5, 2.75, 1, -2.25, 4.25, 1, -2.25, 4.25, 1, -3.25, 2.5, 1, -3.25, 0.75, 1, -6.25, 0.75, 1, -5.25, 5.75, 1, -3.5, 6.5, 1, -2, 5.75, 1, -1.25, 6, 1, -0.75, 7.5, 1, -0.5, 11.25, 1, -3.25, 7.25, 1, 1, 6, 1, 14.5, 14.5, 1, 14.5, 6.25, 1, -3.25, 6, 1, 1, 5.5, 1, -0.5, 4.5, 1, -1.25, 5.5, 1, 0.75, 1.5, 1, -0.25, 0, 1, -0.25, -0.5, 1, 14.5, 2.75, 1, -1, -0.5, 1, -0.75, -1.5, 1, -1.25, -14.5, 1, 14.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 6, 5), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 4), PackedInt32Array(2, 3, 7), PackedInt32Array(7, 3, 4), PackedInt32Array(10, 5, 11), PackedInt32Array(11, 5, 6), PackedInt32Array(3, 12, 4), PackedInt32Array(4, 12, 13), PackedInt32Array(4, 13, 6), PackedInt32Array(15, 14, 16), PackedInt32Array(16, 14, 17), PackedInt32Array(10, 11, 14), PackedInt32Array(14, 11, 17), PackedInt32Array(18, 15, 16), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 18), PackedInt32Array(21, 18, 16), PackedInt32Array(24, 23, 22), PackedInt32Array(24, 22, 19), PackedInt32Array(19, 22, 18), PackedInt32Array(26, 25, 27), PackedInt32Array(27, 25, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(23, 31, 27), PackedInt32Array(1, 30, 0), PackedInt32Array(0, 30, 28), PackedInt32Array(27, 28, 23), PackedInt32Array(23, 28, 29), PackedInt32Array(23, 29, 22), PackedInt32Array(22, 29, 9), PackedInt32Array(9, 29, 8), PackedInt32Array(33, 32, 34), PackedInt32Array(34, 32, 35), PackedInt32Array(35, 36, 37), PackedInt32Array(37, 36, 21), PackedInt32Array(37, 21, 39), PackedInt32Array(37, 39, 38), PackedInt32Array(32, 40, 35), PackedInt32Array(35, 40, 36), PackedInt32Array(21, 36, 20), PackedInt32Array(38, 41, 37), PackedInt32Array(34, 42, 33), PackedInt32Array(33, 42, 43), PackedInt32Array(44, 41, 45), PackedInt32Array(45, 41, 46), PackedInt32Array(46, 41, 38), PackedInt32Array(46, 38, 47), PackedInt32Array(26, 43, 25), PackedInt32Array(25, 43, 48), PackedInt32Array(47, 49, 46), PackedInt32Array(42, 44, 43), PackedInt32Array(43, 44, 48), PackedInt32Array(48, 44, 45), PackedInt32Array(13, 12, 50), PackedInt32Array(50, 49, 13), PackedInt32Array(13, 49, 47), PackedInt32Array(13, 47, 51)]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_28hyf"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -43,8 +39,6 @@ background_mode = 2
 sky = SubResource("Sky_11ekw")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bh3ib"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_roxmm"]
 
@@ -60,23 +54,6 @@ albedo_color = Color(0.301961, 1, 0.6, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dih61"]
 size = Vector3(30.0029, 0.504028, 30.0212)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpoe6"]
-render_priority = 0
-shader = ExtResource("16_boyhi")
-shader_parameter/edge_color = Color(0, 0, 0, 1)
-shader_parameter/threshold = 0.0
-shader_parameter/blend = 0.01
-shader_parameter/enable_depth_pass = true
-shader_parameter/threshold_depth = 0.0
-shader_parameter/blend_depth = 0.01
-shader_parameter/distance_fade_length = 50.0
-shader_parameter/distance_fade_blend = 20.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_guow0"]
-material = SubResource("ShaderMaterial_fpoe6")
-flip_faces = true
-size = Vector3(2, 2, 2)
-
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gqob6"]
 
 [node name="world" type="Node3D" groups=["Persist"]]
@@ -85,135 +62,123 @@ floor_num = -1
 
 [node name="ScareDirector" parent="." instance=ExtResource("1_faoyl")]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="stage" type="Node3D" parent="."]
-
-[node name="stage2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.53711, 14.7408)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="stage2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-material_override = SubResource("StandardMaterial3D_1330w")
-use_collision = true
-collision_layer = 5
-collision_mask = 5
-size = Vector3(20, 1, 20)
-material = SubResource("StandardMaterial3D_0h2ln")
-
-[node name="environment" type="Node3D" parent="."]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment"]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
-environment = SubResource("Environment_13vtk")
-
 [node name="Player" parent="." instance=ExtResource("2_n1cxu")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2092, 0, 3.54039)
-
-[node name="InteractableTest" parent="." instance=ExtResource("4_p0gx3")]
-transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 1.5, -5.82439)
 
 [node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.280565, -4)
 collision_layer = 18
 physics_material_override = SubResource("PhysicsMaterial_bh3ib")
 
-[node name="Desk" parent="." instance=ExtResource("15_hp4l1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+navigation_mesh = SubResource("NavigationMesh_5ah0g")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+[node name="stage" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="environment" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="NavigationRegion3D/environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="NavigationRegion3D/environment"]
+environment = SubResource("Environment_13vtk")
+
+[node name="InteractableTest" parent="NavigationRegion3D" instance=ExtResource("4_p0gx3")]
+transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 2, -5.82439)
+
+[node name="Desk" parent="NavigationRegion3D" instance=ExtResource("15_hp4l1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -2)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 7
 collision_mask = 7
 physics_material_override = SubResource("PhysicsMaterial_roxmm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 material_override = SubResource("StandardMaterial3D_0gthm")
 mesh = SubResource("BoxMesh_w5eik")
 surface_material_override/0 = SubResource("StandardMaterial3D_pbi1f")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00203133, -0.247986, 0.0198975)
 shape = SubResource("BoxShape3D_dih61")
 
-[node name="Cardboard_box_big" parent="." instance=ExtResource("12_ghnq1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -2.18631)
+[node name="Cardboard_box_big" parent="NavigationRegion3D" instance=ExtResource("12_ghnq1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51633, 1.5, 0.159588)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46989, 0)
-mesh = SubResource("BoxMesh_guow0")
+[node name="StaticBody3D3" parent="NavigationRegion3D" instance=ExtResource("15_2x2rp")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5, 0.5, -10)
 
-[node name="StaticBody3D3" parent="." instance=ExtResource("15_2x2rp")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5, 0, -10)
-
-[node name="RigidBody3D" parent="StaticBody3D3" index="0"]
+[node name="RigidBody3D" parent="NavigationRegion3D/StaticBody3D3" index="0"]
 physics_material_override = SubResource("PhysicsMaterial_gqob6")
 should_freeze = true
 
-[node name="Door_Lock" parent="StaticBody3D3/RigidBody3D" index="1"]
+[node name="Door_Lock" parent="NavigationRegion3D/StaticBody3D3/RigidBody3D" index="1"]
 locked = true
 unlock_number = 1
 
-[node name="door" parent="StaticBody3D3/RigidBody3D" index="2"]
+[node name="door" parent="NavigationRegion3D/StaticBody3D3/RigidBody3D" index="2"]
 visible = false
 collision_layer = 0
 collision_mask = 0
 
-[node name="Key" parent="." instance=ExtResource("17_ma4ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0553, 1.14425, -1.6986)
+[node name="Key" parent="NavigationRegion3D" instance=ExtResource("17_ma4ii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0553, 1.64425, -1.6986)
 disable_mode = 1
 unlock_num = 1
 
-[node name="meeting_room_wall_Door" parent="." instance=ExtResource("15_tm150")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.6894, 0.00402808, -9.97101)
+[node name="meeting_room_wall_Door" parent="NavigationRegion3D" instance=ExtResource("15_tm150")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.6894, 0.504028, -9.97101)
 
-[node name="CollisionShape3D" parent="meeting_room_wall_Door/RigidBody3D2" index="3"]
+[node name="CollisionShape3D" parent="NavigationRegion3D/meeting_room_wall_Door/RigidBody3D2" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849284, 2.0413, 0.0984774)
 
-[node name="CollisionShape3D2" parent="meeting_room_wall_Door/RigidBody3D2" index="4"]
+[node name="CollisionShape3D2" parent="NavigationRegion3D/meeting_room_wall_Door/RigidBody3D2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.849284, 2.0413, -0.239973)
 
-[node name="WallMeetingRoomWithDoorGlass" parent="meeting_room_wall_Door" index="4"]
+[node name="WallMeetingRoomWithDoorGlass" parent="NavigationRegion3D/meeting_room_wall_Door" index="4"]
 transform = Transform3D(0.999997, 0.00253072, 0, -0.00253072, 0.999997, 0, 0, 0, 1, 0, 0, 0)
 surface_material_override/0 = null
 
-[node name="OmniLight3D" type="OmniLight3D" parent="meeting_room_wall_Door"]
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/meeting_room_wall_Door"]
 transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 4.31258, 2.79558)
 
-[node name="StaticBody3D" parent="." instance=ExtResource("15_toag5")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.70716, 0.0040288, -10.007)
+[node name="StaticBody3D" parent="NavigationRegion3D" instance=ExtResource("15_toag5")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.70716, 0.504029, -10.007)
 
-[node name="Grabbable" parent="." instance=ExtResource("17_b78s4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2745, 0.173332, -2.422)
+[node name="Grabbable" parent="NavigationRegion3D" instance=ExtResource("17_b78s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2745, 0.673332, -2.422)
 
-[node name="File_Cabinet" parent="." instance=ExtResource("16_mi2oa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60168, 0.850205, -4.07855)
+[node name="File_Cabinet" parent="NavigationRegion3D" instance=ExtResource("16_mi2oa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60168, 1.3502, -4.07855)
 
-[node name="Node3D" parent="." instance=ExtResource("17_mcry2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8383, 0.061534, -4.88282)
+[node name="Node3D" parent="NavigationRegion3D" instance=ExtResource("17_mcry2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8383, 0.561534, -4.88282)
 collision_mask = 6
 
-[node name="RigidBody3D" parent="." instance=ExtResource("18_j273n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88983, 0.875768, -4)
+[node name="RigidBody3D" parent="NavigationRegion3D" instance=ExtResource("18_j273n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.88983, 1.37577, -4)
 
-[node name="File_cabinet" parent="." instance=ExtResource("19_dmey1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88121, 0.853168, -4.06447)
+[node name="File_cabinet" parent="NavigationRegion3D" instance=ExtResource("19_dmey1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88121, 1.35317, -4.06447)
 
-[node name="File_Cabinet2" parent="." instance=ExtResource("20_m3i6s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73767, 0.865987, -4.07479)
+[node name="File_Cabinet2" parent="NavigationRegion3D" instance=ExtResource("20_m3i6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73767, 1.36599, -4.07479)
 
-[node name="File_Cabinet3" parent="." instance=ExtResource("21_0vp5e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6006, 1.38917, -4.3951)
+[node name="File_Cabinet3" parent="NavigationRegion3D" instance=ExtResource("21_0vp5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6006, 1.88917, -4.3951)
 
-[node name="TAPE_NEW" parent="." instance=ExtResource("22_p3lgw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113563, 1.16132, -1.59701)
+[node name="TAPE_NEW" parent="NavigationRegion3D" instance=ExtResource("22_p3lgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113563, 1.66132, -1.59701)
 collision_layer = 2
 collision_mask = 2
 
-[editable path="StaticBody3D3"]
-[editable path="meeting_room_wall_Door"]
+[editable path="NavigationRegion3D/StaticBody3D3"]
+[editable path="NavigationRegion3D/meeting_room_wall_Door"]

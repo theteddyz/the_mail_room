@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://ceasmrd6qawc5"]
+[gd_scene load_steps=21 format=4 uid="uid://ceasmrd6qawc5"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_iji0o"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_0c8nb"]
@@ -13,6 +13,8 @@ size = Vector3(3.20605, 11.8827, 0.252686)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4h6yd"]
 size = Vector3(2.30151, 7.90474, 0.376526)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kf7ap"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f20wo"]
 size = Vector3(1.88333, 3.8623, 0.346191)
@@ -121,10 +123,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00866699, 8.00066, -0.0250
 shape = SubResource("BoxShape3D_4h6yd")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
-collision_layer = 6
-collision_mask = 6
+collision_layer = 7
+collision_mask = 7
 axis_lock_linear_y = true
 mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_kf7ap")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 script = ExtResource("2_0c8nb")
@@ -141,12 +144,7 @@ transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74
 [node name="Door_Lock" type="Node" parent="RigidBody3D2"]
 script = ExtResource("2_y36kb")
 
-[node name="door" type="StaticBody3D" parent="RigidBody3D2"]
-disable_mode = 1
-collision_layer = 17
-collision_mask = 17
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D2/door"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434737, 2.01416, -0.0397949)
 shape = SubResource("BoxShape3D_f20wo")
 
@@ -161,7 +159,6 @@ shape = SubResource("SphereShape3D_7ostt")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434737, 2.01416, -0.0397949)
 shape = SubResource("BoxShape3D_f20wo")
-disabled = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RigidBody3D2"]
 transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.50384, 0)
