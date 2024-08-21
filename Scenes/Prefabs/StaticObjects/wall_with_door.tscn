@@ -1,12 +1,15 @@
-[gd_scene load_steps=21 format=4 uid="uid://ceasmrd6qawc5"]
+[gd_scene load_steps=25 format=4 uid="uid://ceasmrd6qawc5"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_iji0o"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_0c8nb"]
 [ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="2_y36kb"]
-[ext_resource type="AudioStream" uid="uid://c6txdw12dxjcy" path="res://Assets/Audio/SoundFX/DoorOpened.mp3" id="3_ynfod"]
+[ext_resource type="AudioStream" uid="uid://dwhgdxuiprgyt" path="res://Assets/Audio/SoundFX/Door/DoorLocked2.ogg" id="3_ygvb6"]
 [ext_resource type="Texture2D" uid="uid://bgqnmx2g3lx72" path="res://Assets/Textures/BlenderTextures/Door.png" id="3_yvhl6"]
+[ext_resource type="AudioStream" uid="uid://dupxwf04cwpmy" path="res://Assets/Audio/SoundFX/Door/DoorLocked3.ogg" id="4_m3fec"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="4_ntfiu"]
+[ext_resource type="AudioStream" uid="uid://dcv3fcs5k3ykn" path="res://Assets/Audio/SoundFX/Door/DoorLocked4.ogg" id="5_ssd3t"]
 [ext_resource type="Script" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="6_12o50"]
+[ext_resource type="AudioStream" uid="uid://cr47bel457b3v" path="res://Assets/Audio/SoundFX/Door/DoorLocked.ogg" id="6_yph8u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_awmmr"]
 size = Vector3(3.20605, 11.8827, 0.252686)
@@ -21,6 +24,13 @@ size = Vector3(1.88333, 3.8623, 0.346191)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7ostt"]
 radius = 0.109715
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hs37b"]
+streams_count = 4
+stream_0/stream = ExtResource("3_ygvb6")
+stream_1/stream = ExtResource("4_m3fec")
+stream_2/stream = ExtResource("5_ssd3t")
+stream_3/stream = ExtResource("6_yph8u")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65pkn"]
 resource_name = "Door"
@@ -162,8 +172,7 @@ shape = SubResource("BoxShape3D_f20wo")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RigidBody3D2"]
 transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.50384, 0)
-stream = ExtResource("3_ynfod")
-volume_db = -9.0
+stream = SubResource("AudioStreamRandomizer_hs37b")
 max_distance = 25.0
 script = ExtResource("4_ntfiu")
 

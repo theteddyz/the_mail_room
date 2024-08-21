@@ -16,9 +16,7 @@ func _ready():
 			origin_scales[child] = child.scale
 	prevPosition = parent.global_transform
 	currentPositon = parent.global_transform
-
-
-
+"""
 func _update_transform():
 	prevPosition = currentPositon
 	currentPositon = parent.global_transform
@@ -38,3 +36,4 @@ func _process(_delta):
 	for mesh in mesh_instances:
 		mesh.global_transform = prevPosition.interpolate_with(currentPositon, f)
 		mesh.scale = origin_scales[mesh]
+"""

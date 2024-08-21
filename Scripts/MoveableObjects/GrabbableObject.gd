@@ -11,7 +11,7 @@ extends Grabbable
 @export var should_freeze:bool = false
 @export var can_rotate:bool = true
 @onready var grab_icon = preload("res://Scenes/Prefabs/MoveableObjects/grab_icon.tscn")
-var is_picked_up = false
+@export var is_picked_up = false
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
 var player: CharacterBody3D
@@ -78,8 +78,8 @@ func _process(_delta): #Tether the player to the object
 		else:
 			is_tether_max_range = false;
 func _physics_process(delta):
-	if object_Interpolator:
-		object_Interpolator.setUpdate(true)
+	#if object_Interpolator:
+	#	object_Interpolator.setUpdate(true)
 	if is_picked_up:
 		handle_pickup(delta)
 		update_rotation(delta)

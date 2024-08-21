@@ -38,7 +38,7 @@ func monster_seen_event(test):
 	if(scare_active):
 		scare_active = false
 		wall_to_nuke.queue_free()
-		doorlock.locked = true
+		doorlock.lock_door()
 		print("DOOR LOCKING!")
 		flickeranimationplayer.pause()
 		flickeranimationplayer.play("RESET")
@@ -60,4 +60,4 @@ func _door_opened(grabbable:String):
 
 func _end_scare():
 	ScareDirector.connect("grabbable", _door_opened)
-	doorlock.locked = false
+	doorlock.unlock()
