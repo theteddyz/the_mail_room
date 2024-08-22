@@ -11,7 +11,7 @@ var ready_to_start = false
 @onready var sighting_sound = $SightingSound
 @onready var sighting_ambience = $SightingAmbiance
 var monster_anim
-@onready var john_typing_sound_player: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
+@onready var john_typing_sound: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
