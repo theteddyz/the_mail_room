@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=4 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=145 format=4 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -1119,69 +1119,6 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_yqs5r"),
 "tone": SubResource("Animation_1qrpm")
-}
-
-[sub_resource type="Animation" id="Animation_nityj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OmniLight3D:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.425]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CeilingLightOnLight:transparency")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_p7vyi"]
-resource_name = "flicker"
-length = 7.5
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OmniLight3D:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.35, 0.4, 0.5, 0.75, 1.15, 1.2, 1.35, 1.4, 2.05, 2.6, 2.65, 4.05, 4.1, 4.25, 4.3, 4.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.23, 0.23, 0.0, 0.23, 0.0, 0.23, 0.23, 0.0, 0.23, 0.0, 0.23, 0.23, 0.0, 0.0, 0.23, 0.23, 0.0, 0.23]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CeilingLightOnLight:transparency")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.35, 0.4, 0.5, 0.75, 1.15, 1.2, 1.35, 1.4, 2.05, 2.6, 2.65, 4.05, 4.1, 4.25, 4.3, 4.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_044mh"]
-_data = {
-"RESET": SubResource("Animation_nityj"),
-"flicker": SubResource("Animation_p7vyi")
 }
 
 [sub_resource type="Animation" id="Animation_31p30"]
@@ -2910,19 +2847,19 @@ bones/388/position = Vector3(-0.23536, 0.66477, 1.02692)
 bones/388/rotation = Quaternion(-0.740982, -1.85228e-08, -2.3675e-08, 0.671525)
 
 [node name="TeethLowPoly_001" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="0"]
-transform = Transform3D(0.00396639, 1.8065e-10, -1.16157e-10, -8.74225e-11, 0.0081992, -0.000467747, 1.16806e-10, 0.000973117, 0.00393863, 0.0220963, 2.07107, 0.0597126)
+transform = Transform3D(0.00396639, 1.80695e-10, -1.16229e-10, -8.74509e-11, 0.0081992, -0.000467747, 1.16849e-10, 0.000973116, 0.00393863, 0.0220963, 2.07107, 0.0597125)
 
 [node name="Eyes" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="1"]
-transform = Transform3D(4.68912e-10, -3.58429e-09, -0.0189615, -0.0188292, -0.00223538, -4.28473e-11, -0.00223541, 0.0188292, -3.61192e-09, 0.0175861, 2.19081, 0.0484759)
+transform = Transform3D(4.68921e-10, -3.58436e-09, -0.0189615, -0.0188292, -0.00223538, -4.28821e-11, -0.00223541, 0.0188292, -3.61199e-09, 0.0175861, 2.19081, 0.0484759)
 
 [node name="Eyes_001" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="2"]
-transform = Transform3D(4.68912e-10, -3.58429e-09, -0.0189615, -0.0188292, -0.00223538, -4.28473e-11, -0.00223541, 0.0188292, -3.61192e-09, 0.0175861, 2.19041, 0.0517997)
+transform = Transform3D(4.68921e-10, -3.58436e-09, -0.0189615, -0.0188292, -0.00223538, -4.28821e-11, -0.00223541, 0.0188292, -3.61199e-09, 0.0175861, 2.19041, 0.0517997)
 
 [node name="Hair" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="3"]
-transform = Transform3D(0.0124203, -3.94892e-10, -1.94016e-11, 3.89691e-10, 0.0123338, -0.00146425, 6.40594e-11, 0.00146427, 0.0123338, 0.0220963, 2.29791, 0.0607608)
+transform = Transform3D(0.0124203, -3.94898e-10, -1.94467e-11, 3.89714e-10, 0.0123338, -0.00146426, 6.41052e-11, 0.00146427, 0.0123338, 0.0220963, 2.29791, 0.0607608)
 
 [node name="TeethLowPoly" parent="1ST FLOOR SCARES/WINDOW SCARE/godot_rig/godot_rig/Skeleton3D" index="4"]
-transform = Transform3D(0.00396638, -3.60219e-10, 2.9801e-10, 1.35312e-10, 0.0140569, -0.000467601, -2.84595e-10, 0.00166884, 0.00393873, 0.0220962, 2.10231, 0.0630023)
+transform = Transform3D(0.00396638, -3.60226e-10, 2.97995e-10, 1.35319e-10, 0.0140569, -0.000467602, -2.84581e-10, 0.00166884, 0.00393873, 0.0220962, 2.10231, 0.0630022)
 
 [node name="jumpscare" type="AnimationPlayer" parent="1ST FLOOR SCARES/WINDOW SCARE"]
 libraries = {
@@ -5267,11 +5204,6 @@ transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0,
 
 [node name="OmniLight3D" parent="CeilingLights/CeilingLightOn27" index="1"]
 light_bake_mode = 2
-
-[node name="light_flicker" type="AnimationPlayer" parent="CeilingLights/CeilingLightOn27"]
-libraries = {
-"": SubResource("AnimationLibrary_044mh")
-}
 
 [node name="CeilingLightOn35" parent="CeilingLights" instance=ExtResource("13_srb8m")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -14.542, 4.216, -6.32791)
