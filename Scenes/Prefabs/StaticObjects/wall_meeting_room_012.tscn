@@ -134,5 +134,6 @@ skeleton = NodePath("")
 
 [node name="WallMeetingRoomGlass_002" type="MeshInstance3D" parent="WallWindow/WallMeetingRoom_004"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.85783, -2.50832, 0.220486)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_jgneq")
 skeleton = NodePath("")

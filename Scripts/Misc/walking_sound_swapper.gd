@@ -23,10 +23,15 @@ func get_floor_type():
 func change_sound(s:String):
 	match s:
 		"carpet":
+			AudioServer.set_bus_effect_enabled(1, 0,true)
+			
 			audio_player.stream = carpet_sound_stream
 		"bathroom":
+			AudioServer.set_bus_effect_enabled(1, 0,false)
 			audio_player.stream = bathroom_sound_stream
 		"mail_room":
+			AudioServer.set_bus_effect_enabled(1, 0,false)
 			audio_player.stream = mail_room_sound_stream
 		"elevator":
+			AudioServer.set_bus_effect_enabled(1, 0,false)
 			audio_player.stream = elevator_sound_stream
