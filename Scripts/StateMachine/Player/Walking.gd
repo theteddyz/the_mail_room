@@ -73,6 +73,7 @@ signal object_unhovered()
 #walking Sounds
 var walking_audio_player:AudioStreamPlayer3D
 var audio_timer:Timer
+var push_force = 2
 func _ready():
 	package_holder = persistent_state.find_child("PackageHolder")
 	mailcart = GameManager.get_mail_cart()
@@ -254,6 +255,9 @@ func stop_leaning():
 	lean_angle = 0.0
 	is_leaning = false
 
+func _physics_process(delta):
+	apply_pushes()
+
 func _process(delta):
 	apply_movement(delta)
 	apply_leaning(delta)
@@ -263,6 +267,7 @@ func _process(delta):
 func apply_movement(delta):
 	persistent_state.velocity.y = 0
 	persistent_state.move_and_slide()
+
 	check_obstruction_raycasts()
 	regular_move(delta)
 
@@ -373,3 +378,11 @@ func disable_movement_event(l:bool,w:bool):
 
 func sound_timeout():
 	walking_audio_player.play()
+
+func apply_pushes():
+	for i in persistent_state.get_slide_collision_count():
+		var c = persistent_state.get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			if c.get_collider().freeze:
+				c.get_collider().freeze = false
+			c.get_collider().apply_central_impulse(-c.get_normal() * current_speed)
