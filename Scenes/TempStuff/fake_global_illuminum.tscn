@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dusn5d1v5f8w4"]
+
+[node name="FakeGlobalIlluminum" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6558, 0.823119, 7.18405)
+light_color = Color(0.968627, 0.764706, 0.509804, 1)
+light_energy = 0.25
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 7.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6862, 0.823119, 7.18405)
+light_color = Color(0.968627, 0.764706, 0.509804, 1)
+light_energy = 0.25
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 7.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4289, 0.823119, 7.18405)
+light_color = Color(0.968627, 0.764706, 0.509804, 1)
+light_energy = 0.25
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+light_bake_mode = 1
+omni_range = 7.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0359, 0.921218, -20.044)
+light_color = Color(0.968627, 0.764706, 0.509804, 1)
+light_energy = 0.15
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+light_bake_mode = 1
