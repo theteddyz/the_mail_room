@@ -14,6 +14,7 @@ var scare_active: bool = false
 var monster_anim:AnimationPlayer
 var closed_ambiance
 @onready var door = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2"
+@onready var john_typing_sound_player: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +26,7 @@ func _ready():
 
 func activate_scare(key_num:int):
 	if key_num == 1:
+		john_typing_sound.playing = false
 		monsterCollisionShape.disabled = false
 		monster_anim.play("DoorSlam")
 		monster_anim.speed_scale = 0
