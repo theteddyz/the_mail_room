@@ -385,4 +385,4 @@ func apply_pushes():
 		if c.get_collider() is RigidBody3D:
 			if c.get_collider().freeze:
 				c.get_collider().freeze = false
-			c.get_collider().apply_central_impulse(-c.get_normal() * current_speed)
+			c.get_collider().apply_central_force(-c.get_normal() * current_speed*2)
