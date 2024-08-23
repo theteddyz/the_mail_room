@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://d22buk25bcf21" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepElevator11.ogg" id="15_t8sn2"]
 
 [resource]
+playback_mode = 2
 streams_count = 15
 stream_0/stream = ExtResource("1_8a603")
 stream_1/stream = ExtResource("2_v8o5s")

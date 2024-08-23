@@ -129,7 +129,6 @@ size = Vector3(2.45142, 0.537109, 1.15601)
 collision_layer = 7
 collision_mask = 5
 mass = 50.0
-angular_damp = 10.0
 script = ExtResource("1_jg2d3")
 should_freeze = true
 
@@ -165,12 +164,8 @@ skeleton = NodePath("")
 [node name="DrawerTop" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.813896, 0.775369, 0.566391)
 collision_layer = 3
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
-gravity_scale = 0.0
 linear_damp = 6.0
 script = ExtResource("1_jg2d3")
 
@@ -211,12 +206,8 @@ skeleton = NodePath("")
 [node name="DrawerBottom" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817725, 0.316904, 0.568443)
 collision_layer = 3
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
-gravity_scale = 0.0
 linear_damp = 6.0
 script = ExtResource("1_jg2d3")
 

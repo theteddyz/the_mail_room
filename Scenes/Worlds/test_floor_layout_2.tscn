@@ -1353,6 +1353,7 @@ environment = SubResource("Environment_1vnpb")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 quality = 0
+bounce_indirect_energy = 2.0
 generate_probes_subdiv = 3
 light_data = ExtResource("40_ifclc")
 
@@ -5913,6 +5914,15 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.41
 
 [node name="FakeGlobalIlluminum" parent="." instance=ExtResource("84_g07dp")]
 
+[node name="OmniLight3D" parent="FakeGlobalIlluminum" index="0"]
+visible = false
+
+[node name="OmniLight3D2" parent="FakeGlobalIlluminum" index="1"]
+visible = false
+
+[node name="OmniLight3D4" parent="FakeGlobalIlluminum" index="2"]
+visible = false
+
 [node name="OmniLight3D5" type="OmniLight3D" parent="FakeGlobalIlluminum"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.33242, 1.91873, 26.0383)
 light_energy = 0.15
@@ -5939,6 +5949,24 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 light_bake_mode = 1
 omni_range = 5.4799
+
+[node name="SpotLight3D" type="SpotLight3D" parent="FakeGlobalIlluminum"]
+transform = Transform3D(-2.95011e-08, 0.737902, -0.674908, 3.22547e-08, 0.674908, 0.737902, 1, -5.32907e-15, -4.37114e-08, -33.5865, 6.0648, 6.9407)
+light_color = Color(0.968627, 0.764706, 0.509804, 1)
+light_energy = 8.0
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 377.566
+spot_angle = 49.6129
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="FakeGlobalIlluminum"]
+transform = Transform3D(-2.95011e-08, 0.737902, -0.674908, 3.22547e-08, 0.674908, 0.737902, 1, -5.32907e-15, -4.37114e-08, -45.191, 8.38474, -24.5217)
+light_color = Color(0.968627, 0.764706, 0.509804, 1)
+light_energy = 16.0
+light_bake_mode = 1
+shadow_enabled = true
+spot_range = 377.566
+spot_angle = 49.6129
 
 [connection signal="body_entered" from="1ST FLOOR SCARES/CUBICLE SCARE/door_slam_starter" to="1ST FLOOR SCARES/CUBICLE SCARE" method="_on_door_slam_starter_body_entered"]
 [connection signal="body_entered" from="1ST FLOOR SCARES/CUBICLE SCARE/anticipation_starter" to="1ST FLOOR SCARES/CUBICLE SCARE" method="_on_anticipation_starter_body_entered"]

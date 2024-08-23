@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://cp3rf8hhou0x8" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepMailroom9.ogg" id="15_lw1ui"]
 
 [resource]
+playback_mode = 2
 streams_count = 16
 stream_0/stream = ExtResource("1_osbb8")
 stream_1/stream = ExtResource("2_twro2")
