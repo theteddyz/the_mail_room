@@ -49,11 +49,18 @@ func monster_seen_event(test):
 		door_slam_anim.play("door_lock")
 		hallwayflickeranimationplayer.play("flicker")
 		monster_run_soundplayer.playing = true
+		
+		var kill_monster_timer = get_tree().create_timer(1)
+		kill_monster_timer.timeout.connect(_hide_monster)
+		
 		var timer = get_tree().create_timer(10.0)
 		timer.timeout.connect(_end_scare)
 
 func _on_slam():
 	AudioController.play_resource(closed_ambiance)
+
+func _hide_monster():
+	monster_body.queue_free()
 	
 func _door_opened(grabbable:String):
 	if grabbable == door.name:
