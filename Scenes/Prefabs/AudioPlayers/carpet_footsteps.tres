@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bnb0exykyfn51" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepCarpet10.ogg" id="19_cqhey"]
 
 [resource]
+playback_mode = 2
 streams_count = 19
 stream_0/stream = ExtResource("1_q4iu1")
 stream_1/stream = ExtResource("2_770pj")

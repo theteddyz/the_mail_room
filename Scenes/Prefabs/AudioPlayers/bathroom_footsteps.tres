@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://rfwmhrypqmq5" path="res://Assets/Audio/SoundFX/PlayerFootsteps/FootstepBathroom10.ogg" id="14_5m3m0"]
 
 [resource]
+playback_mode = 2
 streams_count = 15
 stream_0/stream = ExtResource("1_0bmrh")
 stream_1/stream = ExtResource("2_18nfd")

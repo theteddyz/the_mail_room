@@ -383,6 +383,6 @@ func apply_pushes():
 	for i in persistent_state.get_slide_collision_count():
 		var c = persistent_state.get_slide_collision(i)
 		if c.get_collider() is RigidBody3D:
-			if c.get_collider().freeze:
+			if c.get_collider().freeze and !c.get_collider().should_freeze:
 				c.get_collider().freeze = false
-			c.get_collider().apply_central_force(-c.get_normal() * current_speed*2)
+			c.get_collider().apply_central_force(-c.get_normal() * current_speed*10)
