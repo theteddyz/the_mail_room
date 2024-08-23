@@ -13,6 +13,8 @@ func _ready():
 	material.albedo_color = color
 	mesh.surface_set_material(0, material)
 
-#func _process(delta):
+func _process(delta):
+	if Engine.is_editor_hint():
+		print("I'M IN EDITOR")
 	#material.albedo_color = color
 	#material.surface_set_material(0, material)

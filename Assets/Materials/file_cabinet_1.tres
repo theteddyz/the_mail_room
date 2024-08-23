@@ -5,5 +5,6 @@
 [resource]
 resource_name = "FileCabinet"
 cull_mode = 2
+albedo_color = Color(0.822589, 1.92523e-05, 0.572568, 1)
 albedo_texture = ExtResource("1_aj0te")
 texture_filter = 2

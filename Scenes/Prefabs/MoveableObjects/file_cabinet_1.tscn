@@ -176,7 +176,7 @@ script = ExtResource("3_7digd")
 mesh = SubResource("ArrayMesh_fnn35")
 skeleton = NodePath("")
 script = ExtResource("4_rx22h")
-color = Color(0.822589, 1.92523e-05, 0.572568, 1)
+color = Color(0.680856, 0.000896772, 0.772778, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.246117, -0.0160522, -0.0383301)
