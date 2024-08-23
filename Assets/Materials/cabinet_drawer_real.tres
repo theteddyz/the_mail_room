@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cls2uilche1tk"]
+
+[ext_resource type="Texture2D" uid="uid://f21t4ualvxjr" path="res://Assets/Textures/BlenderTextures/FileCabinetDrawer.png" id="1_ucele"]
+
+[resource]
+resource_name = "FileCabinetDrawer.001"
+cull_mode = 2
+albedo_color = Color(0.144814, 0.323323, 0.313971, 1)
+albedo_texture = ExtResource("1_ucele")
+texture_filter = 2
