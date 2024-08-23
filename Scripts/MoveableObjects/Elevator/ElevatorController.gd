@@ -82,14 +82,12 @@ func move_floors():
 		player.reparent(Elevator,true)
 		if Elevator_Wall.visible:
 			await wall_anim.animation_finished
-		else:
-			await anim.animation_finished
+		await elevator_anim.animation_finished
 		anim.play("elaevator_move_up")
 		await anim.animation_finished
 		if current_floor < 0:
 			wall_anim.active = true
 			Elevator_Wall.visible = true
-			
 		else:
 			wall_anim.active = true
 			Elevator_Wall.visible = true
