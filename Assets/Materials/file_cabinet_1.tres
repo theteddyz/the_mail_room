@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://caxp83ldkrv50"]
+
+[ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="1_aj0te"]
+
+[resource]
+resource_name = "FileCabinet"
+cull_mode = 2
+albedo_texture = ExtResource("1_aj0te")
+texture_filter = 2

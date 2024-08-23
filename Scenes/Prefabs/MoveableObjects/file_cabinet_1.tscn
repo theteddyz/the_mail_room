@@ -1,17 +1,12 @@
 [gd_scene load_steps=24 format=4 uid="uid://c7e4imgjbdx46"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_kseb0"]
-[ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="1_y542s"]
 [ext_resource type="Texture2D" uid="uid://f21t4ualvxjr" path="res://Assets/Textures/BlenderTextures/FileCabinetDrawer.png" id="2_cyvo1"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="3_7digd"]
+[ext_resource type="Material" uid="uid://caxp83ldkrv50" path="res://Assets/Materials/file_cabinet_1.tres" id="3_qrg2g"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet.gd" id="4_rx22h"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpogo"]
-resource_name = "FileCabinet"
-cull_mode = 2
-albedo_texture = ExtResource("1_y542s")
-texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_630at"]
 _surfaces = [{
@@ -36,7 +31,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_lpogo"),
+"material": ExtResource("3_qrg2g"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -172,7 +167,7 @@ mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_i0t41")
 freeze = true
 script = ExtResource("1_kseb0")
-should_freeze = true
+can_rotate = false
 
 [node name="Interpolator" type="Node3D" parent="."]
 script = ExtResource("3_7digd")
@@ -180,6 +175,8 @@ script = ExtResource("3_7digd")
 [node name="FileCabinet" type="MeshInstance3D" parent="Interpolator"]
 mesh = SubResource("ArrayMesh_fnn35")
 skeleton = NodePath("")
+script = ExtResource("4_rx22h")
+color = Color(0.822589, 1.92523e-05, 0.572568, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.246117, -0.0160522, -0.0383301)
@@ -208,7 +205,6 @@ collision_mask = 7
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
-angular_damp = 2.0
 script = ExtResource("1_kseb0")
 
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer"]
@@ -254,7 +250,6 @@ collision_mask = 7
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
-angular_damp = 2.0
 script = ExtResource("1_kseb0")
 
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer2"]
@@ -300,7 +295,6 @@ collision_mask = 7
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
-angular_damp = 2.0
 script = ExtResource("1_kseb0")
 
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer3"]
@@ -346,7 +340,6 @@ collision_mask = 7
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
-angular_damp = 2.0
 script = ExtResource("1_kseb0")
 
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer4"]
