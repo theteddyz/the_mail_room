@@ -1,13 +1,21 @@
-[gd_scene load_steps=19 format=4 uid="uid://c7e4imgjbdx46"]
+[gd_scene load_steps=20 format=4 uid="uid://c7e4imgjbdx46"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_kseb0"]
+[ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="3_5nqi4"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="3_7digd"]
-[ext_resource type="Material" uid="uid://bx8h56m3yjfh6" path="res://Assets/Materials/file_cabinet_1.tres" id="3_qrg2g"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet.gd" id="4_rx22h"]
 [ext_resource type="Material" uid="uid://cls2uilche1tk" path="res://Assets/Materials/cabinet_drawer_real.tres" id="5_c0deq"]
 [ext_resource type="ArrayMesh" uid="uid://cfgt0u4t6je4c" path="res://Assets/Materials/cabinet_drawer.tres" id="6_0wjlh"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qw231"]
+resource_local_to_scene = true
+resource_name = "FileCabinet"
+cull_mode = 2
+albedo_color = Color(0.321972, 0.358679, 0.166032, 1)
+albedo_texture = ExtResource("3_5nqi4")
+texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_630at"]
 _surfaces = [{
@@ -32,7 +40,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": ExtResource("3_qrg2g"),
+"material": SubResource("StandardMaterial3D_qw231"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -84,7 +92,9 @@ script = ExtResource("3_7digd")
 mesh = SubResource("ArrayMesh_fnn35")
 skeleton = NodePath("")
 script = ExtResource("4_rx22h")
-color = Color(0.144814, 0.323323, 0.313971, 1)
+color = Color(0.321972, 0.358679, 0.166032, 1)
+cabinet_colour = "Light Green"
+cabinet_color = Color(0.412891, 0.514523, 0.700867, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.246117, -0.0160522, -0.0383301)
