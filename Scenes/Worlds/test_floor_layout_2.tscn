@@ -4314,6 +4314,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.73
 [node name="Lamp" parent="Objects/OfficeCubicle11" index="8"]
 transform = Transform3D(0.709041, 0, 0.705166, 0, 1, 0, -0.705166, 0, 0.709041, 1.58416, 1.40059, -0.853801)
 
+[node name="LampCollisionDetector" parent="Objects/OfficeCubicle11/Lamp" index="5"]
+impact_threshold = 3
+
 [node name="LampArm" parent="Objects/OfficeCubicle11/Lamp" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0.168053, 0.228107)
 
@@ -5766,6 +5769,10 @@ script = ExtResource("79_ej02e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor_Meshes/FLoor1/Area3D"]
 shape = SubResource("ConcavePolygonShape3D_edpiq")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Floor_Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8851, -0.985187, 1.00272)
+size = Vector3(92.6323, 2, 85.514)
 
 [node name="Blackout_Meshes" type="Node3D" parent="."]
 

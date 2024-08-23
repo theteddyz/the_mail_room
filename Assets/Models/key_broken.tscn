@@ -1,21 +1,59 @@
-[gd_scene load_steps=4 format=3 uid="uid://cci3yluv13ukm"]
+[gd_scene load_steps=7 format=4 uid="uid://cci3yluv13ukm"]
 
-[ext_resource type="Material" uid="uid://dux2bi8ysymko" path="res://Assets/Models/key_broken_mat.tres" id="1_4jygm"]
-[ext_resource type="ArrayMesh" uid="uid://8rupd1qug4wy" path="res://Assets/Models/key_broken.tres" id="2_aipsd"]
+[ext_resource type="Texture2D" uid="uid://c58cqwvyvj6du" path="res://Assets/Models/BlenderModels/textures/KeyboardBrokenBake.png" id="1_7mles"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7ckls"]
 points = PackedVector3Array(-1, -0.640199, -1, -1, -0.640199, 1, -0.800117, 0.640191, -0.800117, 1, -0.640199, -1, 1, -0.640199, 1, -0.800117, 0.640191, 0.799922, 0.799922, 0.640191, -0.800117, 0.799922, 0.640191, 0.799922)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgsq2"]
+albedo_texture = ExtResource("1_7mles")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7k4b"]
+resource_name = "KeyboardBrokenLowPoly"
+cull_mode = 2
+metallic = 1.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_floxm"]
+_surfaces = [{
+"aabb": AABB(-1, -0.640199, -1, 2, 1.2804, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("BQABAAAABQAEAAEABAADAAEABAAGAAMABgACAAMABgAHAAIABwAAAAIABwAFAAAAAwAAAAEAAwACAAAABwAEAAUABwAGAAQA"),
+"name": "KeyboardBrokenLowPoly",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("mRn//2XmAACZGf//mRkAAGXm//9l5gAAZeb//5kZAAAAAAAAAAAAAAAAAAD//wAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x2it0"]
+resource_name = "desk_Cube_070"
+_surfaces = [{
+"aabb": AABB(-1, -0.640199, -1, 2, 1.2804, 2),
+"attribute_data": PackedByteArray("N98+Cq3XuwY33z4KA+AcB63XwAwD4BwHZeLKCqfRuwZl4soKMuOoB6fRwAwy46gHwNqjAsDaowLA2qMCwNqtD8DarQ/A2q0Pqec5AqnnOQKp5zkCqedED6nnRA+p50QP"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("EQAFAAIAEQAOAAUADAAJAAMADAASAAkAFAAIAAsAFAAXAAgAFQAAAAYAFQAPAAAACgABAAQACgAHAAEAFgANABAAFgATAA0A"),
+"material": SubResource("StandardMaterial3D_l7k4b"),
+"name": "KeyboardBrokenLowPoly",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("mRn//2XmGYeZGf//Zeb//5kZ//9l5pbSmRn//5kZr/mZGf//mRn//5kZ//+ZGb3rZeb//2XmUYZl5v//Zeb//2Xm//9l5pzBZeb//5kZsPll5v//mRn//2Xm//+ZGf7QAAAAAAAAr/kAAAAAAAD9PwAAAAAAAAHbAAAAAP//W4YAAAAA///9PwAAAAD//8bI//8AAAAAr/n//wAAAAD9P///AAAAALHc//8AAP//wIb//wAA///9P///AAD///HJtvxFUv9//7+p2FfQa/+IgP9//7/087vEuPiBgP9//7//nSkvGPu4ev9//7+8roRWDfyog/UB64Ov4hTM7v40cfUB64OkyCjXzv63fvUB64OxtIRkx9qtgvUB64PbqQpL")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_floxm")
+
 [node name="RigidBody3D2" type="RigidBody3D"]
 collision_layer = 0
-
-[node name="KeyBroken" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.011999, 9.01444e-11, 1.8073e-09, -9.01444e-11, 0.0119394, -0.001194, -1.8073e-09, -0.001194, -0.0119394, 0, 0, 0)
-material_override = ExtResource("1_4jygm")
-cast_shadow = 0
-mesh = ExtResource("2_aipsd")
-skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-0.011999, 9.01444e-11, 1.8073e-09, -9.01444e-11, 0.0119394, -0.001194, -1.8073e-09, -0.001194, -0.0119394, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_7ckls")
+
+[node name="KeyBroken2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.011999, 0, 0, 0, 0.011999, 0, 0, 0, 0.011999, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_tgsq2")
+mesh = SubResource("ArrayMesh_x2it0")
+skeleton = NodePath("")

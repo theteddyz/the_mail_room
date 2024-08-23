@@ -8,9 +8,9 @@ extends Node3D
 #Basic model, the default state, not required if broken_models is empty
 @export var normal_model: Node
 #Threshold before the impact causes a breakage
-@export var destruction_threshold = 5.0
+@export var destruction_threshold = 15.0
 #Threshold before the impact causes some sort of sound 
-@export var impact_threshold = 0.5
+@export var impact_threshold = 3
 
 #Any impact audio-player on the node
 @export var impact_audios: AudioStreamPlayer3D
@@ -37,6 +37,7 @@ func _ready():
 	#if(destruction_audios != null):
 		#destruction_audios.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
 		#destruction_audios.unit_size = 10
+	impact_audios.max_polyphony = 50
 	broken = false
 	rigidbody = get_parent()
 
@@ -48,10 +49,14 @@ func _physics_process(_delta: float):
 	var currentAcceleration = ((previousVelocity - currentVelocity)/_delta)*0.01;
 	var currentRotAccel = ((previousRotation - currentRotation)/_delta)*0.01;
 	
-	if((currentAcceleration.length() + currentRotAccel.length()) > 3 and !previousIsPickedUp2):
-		impact_audios.volume_db = min(-30 + (pow(currentAcceleration.length(),1.5) +  pow(currentRotAccel.length(),1.5)),0)
-		impact_audios.max_polyphony = 50
-		impact_audios.play()
+	var impact = currentAcceleration.length() + currentRotAccel.length()*2;
+	if(impact > impact_threshold and !previousIsPickedUp2):
+		impact_audios.volume_db = min(-40 + pow(impact,1.5),0)
+		if(destruction_audios != null and impact > destruction_threshold and !broken):
+			destruction_audios.play()
+			break_object()
+		else:
+			impact_audios.play()
 		
 		
 	previousVelocity = rigidbody.linear_velocity
@@ -69,13 +74,39 @@ func _on_body_entered(body):
 	
 	var currentAcceleration = (previousVelocity - rigidbody.linear_velocity);
 	var currentRotAccel = (previousRotation - rigidbody.angular_velocity);
+	var impact = currentAcceleration.length() + currentRotAccel.length()*2;
+	if(impact > impact_threshold and rigidbody.is_picked_up):
+		impact_audios.volume_db = min(-40 + pow(impact,1.5),0)
+		if(destruction_audios != null and impact > destruction_threshold and !broken):
+			destruction_audios.play()
+			break_object()
+		else:
+			impact_audios.play()
+		
+		
+func break_object():
+	broken = true
+	#spawn_sound_event()
+	#if(impact_audios != null):
+	#	impact_audios.play()
+	#if(destruction_audios != null):
+	#	destruction_audios.play()
+		
+	for item in broken_models:
+		item.visible = true
 	
-	if((currentAcceleration.length() + currentRotAccel.length()*2) > 2 and rigidbody.is_picked_up):
-		print("currentAcceleration: ",currentAcceleration.length())
-		print("currentRotAccel: ",currentRotAccel.length()*2)
-		impact_audios.volume_db = min(-40 + (pow(currentAcceleration.length(),1.5) +  pow(currentRotAccel.length()*2,1.5)),0)
-		impact_audios.max_polyphony = 50
-		impact_audios.play()
+	if(normal_model != null):
+		normal_model.visible = false
+	
+	for particle in breakage_particles:
+		particle.emitting = true
+		
+	for model in seperation_breakage_models:
+		model.reparent(get_tree().root.get_child(3))
+		model.gravity_scale = 1
+		model.set_collision_layer_value(2,true)
+		model.set_script(grabbable_script)
+		model.call("_ready")
 """
 # On the rigid body:
 func _integrate_forces(state : PhysicsDirectBodyState3D):
@@ -112,29 +143,7 @@ func calculate_collision_force(body):
 	impulse = get_parent().mass * relative_velocity.length()
 	return impulse
 	
-func break_object():
-	broken = true
-	spawn_sound_event()
-	if(impact_audios != null):
-		impact_audios.play()
-	if(destruction_audios != null):
-		destruction_audios.play()
-		
-	for item in broken_models:
-		item.visible = true
-	
-	if(normal_model != null):
-		normal_model.visible = false
-	
-	for particle in breakage_particles:
-		particle.emitting = true
-		
-	for model in seperation_breakage_models:
-		model.reparent(get_tree().root.get_child(3))
-		model.gravity_scale = 1
-		model.set_collision_layer_value(2,true)
-		model.set_script(grabbable_script)
-		model.call("_ready")
+
 
 func spawn_sound_event():
 	var sound_event_area = Area3D.new()
