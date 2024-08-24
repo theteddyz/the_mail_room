@@ -4,7 +4,7 @@ var carpet_sound_stream = preload("res://Scenes/Prefabs/AudioPlayers/carpet_foot
 var bathroom_sound_stream = preload("res://Scenes/Prefabs/AudioPlayers/bathroom_footsteps.tres")
 var mail_room_sound_stream = preload("res://Scenes/Prefabs/AudioPlayers/mail_room_footsteps.tres")
 var elevator_sound_stream = preload("res://Scenes/Prefabs/AudioPlayers/elevator_footsteps.tres")
-@onready var audio_player:AudioStreamPlayer3D = $"../SpatialAudioPlayer3d"
+@onready var audio_player:AudioStreamPlayer3D = $"../AudioStreamPlayer3D"
 func _process(delta):
 	get_floor_type()
 func get_floor_type():
