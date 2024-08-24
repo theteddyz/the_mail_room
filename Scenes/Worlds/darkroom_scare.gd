@@ -15,6 +15,9 @@ var monster_anim:AnimationPlayer
 var closed_ambiance
 @onready var door = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2"
 @onready var john_typing_sound: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
+@onready var ambience_starter: Area3D = $"../../ambience_starter"
+@onready var ambience_starter_2: Area3D = $"../../ambience_starter2"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,6 +53,9 @@ func monster_seen_event(test):
 		hallwayflickeranimationplayer.play("flicker")
 		monster_run_soundplayer.playing = true
 		
+		ambience_starter.monitoring = true
+		ambience_starter_2.monitoring = true
+
 		var kill_monster_timer = get_tree().create_timer(1)
 		kill_monster_timer.timeout.connect(_hide_monster)
 		

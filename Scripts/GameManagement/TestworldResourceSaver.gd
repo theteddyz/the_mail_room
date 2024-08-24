@@ -10,3 +10,9 @@ func save():
 		"pos_z" : position.z,
 	}
 	return save_dict
+	
+func _ready():
+	const FIRST_FLOOR_AMBIENCE_4 = preload("res://Assets/Audio/SoundFX/FirstFloorAmbience4.mp3")
+	const FIRST_FLOOR_AMBIENCE_3 = preload("res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3")
+	const FIRST_FLOOR_AMBIENCE_2 = preload("res://Assets/Audio/SoundFX/FirstFloorAmbience2.mp3")
+	AudioController.ambiences = [FIRST_FLOOR_AMBIENCE_4, FIRST_FLOOR_AMBIENCE_3, FIRST_FLOOR_AMBIENCE_2]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjke26hhaur3q"]
+
+[ext_resource type="Script" path="res://Scenes/Worlds/ambience_starter.gd" id="1_qji65"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2nxw7"]
+size = Vector3(4.19922, 2.69008, 1)
+
+[node name="ambience_starter" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23217, -0.470015, 24.7789)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_qji65")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.40771, 1.89139, -0.037571)
+shape = SubResource("BoxShape3D_2nxw7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=167 format=4 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=168 format=4 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Worlds/cubicle_scare.gd" id="4_2dy4y"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="4_6vebi"]
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="4_gk0n2"]
+[ext_resource type="PackedScene" uid="uid://cjke26hhaur3q" path="res://Scenes/Prefabs/AudioPlayers/ambience_starter.tscn" id="4_jycao"]
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="5_6umw1"]
 [ext_resource type="PackedScene" uid="uid://caiwom5hlt84f" path="res://Scenes/Prefabs/StaticObjects/floor.tscn" id="5_vxcvf"]
 [ext_resource type="Script" path="res://Scenes/Worlds/darkroom_scare.gd" id="6_2ofty"]
@@ -50,7 +51,7 @@
 [ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="34_88ps1"]
 [ext_resource type="PackedScene" uid="uid://bcx1ebdy42sj5" path="res://Scenes/Prefabs/StaticObjects/postit_cluster2.tscn" id="35_3rjtu"]
 [ext_resource type="PackedScene" uid="uid://cy7nhs4woxad2" path="res://Scenes/Prefabs/StaticObjects/postit_cluster9.tscn" id="35_ualbe"]
-[ext_resource type="PackedScene" uid="uid://bbrt2vrul43u7" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/Phone.tscn" id="38_ikwgb"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="39_spw8m"]
 [ext_resource type="LightmapGIData" uid="uid://coop0ql4uttgo" path="res://Scenes/Worlds/test_floor_layout_2.lmbake" id="40_ifclc"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="40_jab1w"]
@@ -68,7 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://c148bm0rukaqe" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_medium.tscn" id="51_206vc"]
 [ext_resource type="PackedScene" uid="uid://bwkdr1hhs71ee" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="52_33kxm"]
 [ext_resource type="PackedScene" uid="uid://dsab3o11kgmmd" path="res://Scenes/Prefabs/StaticObjects/postit_cluster4.tscn" id="55_8ggvc"]
-[ext_resource type="PackedScene" uid="uid://t1wa5n6nculj" path="res://meeting_room_table.tscn" id="55_5510o"]
+[ext_resource type="PackedScene" path="res://meeting_room_table.tscn" id="55_5510o"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="56_vyteq"]
 [ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="57_hxdn6"]
 [ext_resource type="PackedScene" uid="uid://bn0klf1dot74d" path="res://Assets/Models/john_model.tscn" id="58_id03k"]
@@ -83,8 +84,8 @@
 [ext_resource type="PackedScene" uid="uid://cto2cdonqkjc6" path="res://Scenes/Prefabs/StaticObjects/postit_cluster1.tscn" id="61_1swul"]
 [ext_resource type="Texture2D" uid="uid://byp086pac7m6k" path="res://Scenes/Prefabs/StaticObjects/floor_tiles_06_diff_1k.jpg" id="62_nca5g"]
 [ext_resource type="PackedScene" uid="uid://b2i8h2u0shlc2" path="res://Scenes/Prefabs/StaticObjects/postit_cluster3.tscn" id="62_ok1j0"]
-[ext_resource type="PackedScene" uid="uid://drg2uvvenxq80" path="res://Scenes/Prefabs/StaticObjects/toilet.tscn" id="63_j7avt"]
-[ext_resource type="PackedScene" uid="uid://b6si5578kuvne" path="res://Scenes/Prefabs/StaticObjects/bathroom_sink.tscn" id="64_hij51"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/toilet.tscn" id="63_j7avt"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/bathroom_sink.tscn" id="64_hij51"]
 [ext_resource type="PackedScene" uid="uid://csml3h8jd6hni" path="res://Scenes/Prefabs/StaticObjects/ceiling_broken_3.tscn" id="65_l2u3i"]
 [ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="79_ej02e"]
 [ext_resource type="PackedScene" uid="uid://brfqkckspyesq" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_4.tscn" id="81_fqbb5"]
@@ -125,7 +126,7 @@ adjustment_brightness = 0.86
 adjustment_saturation = 1.13
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2nxw7"]
-size = Vector3(6.93679, 2.69008, 1)
+size = Vector3(4.19922, 2.69008, 1)
 
 [sub_resource type="Animation" id="Animation_p6bim"]
 length = 0.001
@@ -1520,6 +1521,15 @@ light_volumetric_fog_energy = 12.255
 shadow_enabled = true
 shadow_bias = 0.19
 
+[node name="ambience_starter" parent="." node_paths=PackedStringArray("cluster") instance=ExtResource("4_jycao")]
+monitoring = false
+cluster = [NodePath("../ambience_starter2")]
+
+[node name="ambience_starter2" parent="." node_paths=PackedStringArray("cluster") instance=ExtResource("4_jycao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23217, -0.470015, 9.10169)
+monitoring = false
+cluster = [NodePath("../ambience_starter")]
+
 [node name="1ST FLOOR SCARES" type="Node" parent="."]
 
 [node name="CUBICLE SCARE" type="Node3D" parent="1ST FLOOR SCARES"]
@@ -2545,15 +2555,6 @@ transform = Transform3D(0.00413339, 0.00512137, 0.0105334, -0.000245333, 0.01120
 
 [node name="TeethLowPoly" parent="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig/godot_rig/Skeleton3D" index="4"]
 transform = Transform3D(0.00131998, 0.00583687, 0.00336378, -7.83461e-05, 0.012771, -0.00170909, -0.00373947, 0.00179277, 0.00122317, 0.586352, 2.01189, -0.516668)
-
-[node name="door_slam_starter" type="Area3D" parent="1ST FLOOR SCARES/DARKROOM SCARE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.212686, 2.20424)
-collision_layer = 16
-collision_mask = 16
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="1ST FLOOR SCARES/DARKROOM SCARE/door_slam_starter"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0389299, 1.89139, 0)
-shape = SubResource("BoxShape3D_2nxw7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="1ST FLOOR SCARES/DARKROOM SCARE"]
 libraries = {
