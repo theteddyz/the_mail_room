@@ -13,7 +13,7 @@ var monster_anim:AnimationPlayer
 var target_position
 var chasing:bool
 var player
-
+@onready var col = $CollisionShape3D
 func _ready():
 	monster_anim = monster_body.find_child("AnimationPlayer")
 	player = GameManager.get_player()
@@ -23,7 +23,7 @@ func _input(event):
 	if event.is_action_pressed("p"):
 		visible = true
 		disabled = false
-		
+		col.disabled = false
 func _physics_process(_delta):
 	if target_position and !disabled:
 		move_to_target()
@@ -45,9 +45,9 @@ func apply_pushes():
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody3D:
-			if c.get_collider().freeze and !c.get_collider().should_freeze:
+			if c.get_collider().freeze == true:
 				c.get_collider().freeze = false
-			c.get_collider().apply_central_force(-c.get_normal() * speed*10)
+			c.get_collider().apply_central_force(-c.get_normal() * speed*5)
 
 func _on_timer_timeout():
 	if !disabled:
