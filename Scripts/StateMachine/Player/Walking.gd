@@ -86,7 +86,7 @@ func _ready():
 	EventBus.connect("disable_player_movement",disable_movement_event)
 	gui_anim = Gui.get_control_displayer()
 	stamina_bar = Gui.get_stamina_bar()
-	walking_audio_player = persistent_state.find_child("AudioStreamPlayer3D")
+	walking_audio_player = persistent_state.find_child("SpatialAudioPlayer3d")
 	audio_timer = walking_audio_player.find_child("sound_reset")
 	audio_timer.connect("timeout", sound_timeout)
 

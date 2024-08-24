@@ -130,8 +130,8 @@ size = Vector3(2.42728, 6.45963, 0.345215)
 
 [node name="meeting_room_wall_Door" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
-collision_layer = 5
-collision_mask = 5
+collision_layer = 133
+collision_mask = 133
 script = SubResource("GDScript_k1vab")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]

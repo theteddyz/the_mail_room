@@ -76,8 +76,8 @@ shadow_mesh = SubResource("ArrayMesh_yb6jr")
 size = Vector3(5.58533, 7.65046, 0.252686)
 
 [node name="StaticBody3D" type="StaticBody3D"]
-collision_layer = 5
-collision_mask = 5
+collision_layer = 133
+collision_mask = 133
 
 [node name="WallMeetingRoom_007" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)

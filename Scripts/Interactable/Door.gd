@@ -27,11 +27,13 @@ func lock_door():
 	parent.should_freeze = true
 	parent.freeze = true
 	parent.lock_rotation = true
+	locked = true
 
 func unlock():
 	parent.should_freeze = false
 	parent.freeze = false
 	parent.lock_rotation = false
+	locked = false
 
 func _input(event):
 	if event.is_action_pressed("interact") and parent_is_looked_at:

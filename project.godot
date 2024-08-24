@@ -113,6 +113,10 @@ p={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_8="SpatialAudio"
+
 [physics]
 
 3d/run_on_separate_thread=true
