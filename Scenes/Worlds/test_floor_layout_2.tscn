@@ -5459,7 +5459,6 @@ max_reverb_wetness = 0.01
 transform = Transform3D(0.216, 0, 0, 0, 0.202289, 0.0757295, 0, -0.0757295, 0.202289, 38.7702, 3.99183, 27.3469)
 mesh = SubResource("ArrayMesh_oqr3e")
 skeleton = NodePath("")
-script = ExtResource("30_0tqww")
 
 [node name="CeilingLightOnLight" type="MeshInstance3D" parent="Roof/CeilingLightOn4"]
 mesh = SubResource("ArrayMesh_i4kb5")
@@ -5481,11 +5480,6 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Roof/CeilingLightOn4/OmniLight3D/LightDetectionArea"]
 transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
 shape = SubResource("BoxShape3D_lmv14")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Roof/CeilingLightOn4"]
-libraries = {
-"": SubResource("AnimationLibrary_c7cjv")
-}
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Roof"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.4692, 6.21193, 29.9152)

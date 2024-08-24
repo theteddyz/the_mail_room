@@ -21,6 +21,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("p"):
+		visible = true
 		disabled = false
 		
 func _physics_process(_delta):
@@ -37,15 +38,16 @@ func move_to_target():
 		monster_anim.stop()
 		return
 	velocity = direction * speed
-	apply_push_force(direction)
+	apply_pushes()
 	move_and_slide()
 
-func apply_push_force(direction):
-	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(global_position, global_position + direction * 2)
-	var result = space_state.intersect_ray(query)
-	if result and result.collider and result.collider.has_method("apply_central_impulse"):
-		result.collider.apply_central_impulse(direction * push_force)
+func apply_pushes():
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody3D:
+			if c.get_collider().freeze and !c.get_collider().should_freeze:
+				c.get_collider().freeze = false
+			c.get_collider().apply_central_force(-c.get_normal() * speed*10)
 
 func _on_timer_timeout():
 	if !disabled:
