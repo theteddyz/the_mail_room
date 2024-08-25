@@ -45,7 +45,8 @@ func activate_scare(key_num:int):
 func monster_seen_event(test):
 	if(scare_active):
 		scare_active = false
-		wall_to_nuke.queue_free()
+		if wall_to_nuke != null:
+			wall_to_nuke.queue_free()
 		doorlock.lock_door()
 		print("DOOR LOCKING!")
 		flickeranimationplayer.pause()
