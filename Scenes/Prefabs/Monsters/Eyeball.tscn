@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://nsoaig623kvw"]
+
+[ext_resource type="Script" path="res://Scripts/Misc/Eyeball.gd" id="1_0krtp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_knedr"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_bnv01"]
+radial_segments = 16
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfvqu"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bqy8b"]
+radial_segments = 16
+rings = 8
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_0krtp")
+
+[node name="Eyeball" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_knedr")
+mesh = SubResource("SphereMesh_bnv01")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Eyeball"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.0119824, -0.417303)
+material_override = SubResource("StandardMaterial3D_wfvqu")
+mesh = SubResource("SphereMesh_bqy8b")
