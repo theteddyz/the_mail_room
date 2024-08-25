@@ -7,18 +7,8 @@ enum SoundModifiers {
 	fade_out = 2,
 }
 
-# "1A2" = First Floor (1) Ambience (A) Index (2, 3, 4 etc.)
-var sounds_dictionary = {
-	"1A2": "res://Assets/Audio/SoundFX/FirstFloorAmbience2.mp3",
-	"1A3": "res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3",
-	"1A4": "res://Assets/Audio/SoundFX/FirstFloorAmbience4.mp3",
-}
-
-var sounds: Array[Resource] = []
 func _ready():
 	players = [$stream, $stream2, $stream3]
-	for path in sounds_dictionary:
-		sounds.append(load(path))
 
 func _get_free_player() -> AudioStreamPlayer:
 	for p in players:
@@ -40,8 +30,8 @@ func play_resource(sound, modifiers = 0):
 func stop_resource(resource_name, modifiers = 0):
 	for p in players:
 		if p.get_stream() != null:
-			var parts = p.get_stream().get_path().split("/")
-			if parts[parts.size()-1] == resource_name:
+			var path = p.get_stream().get_path()
+			if path == resource_name:
 				if modifiers == SoundModifiers.fade_out:
 					apply_effector(modifiers, p)
 				else:

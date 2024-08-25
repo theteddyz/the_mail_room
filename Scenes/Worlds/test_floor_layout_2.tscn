@@ -131,7 +131,7 @@ size = Vector3(4.18039, 2.69008, 3.69281)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mrj4v"]
 resource_local_to_scene = true
-size = Vector3(4.19086, 2.69008, 2.953)
+size = Vector3(4.19086, 2.69008, 4.48224)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2nxw7"]
 size = Vector3(4.19922, 2.69008, 1)
@@ -1555,13 +1555,40 @@ modifiers = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4208, 1.89139, -0.037571)
 shape = SubResource("BoxShape3D_mrj4v")
 
-[node name="ambience_ender_notusedyetlol" parent="AmbienceTriggers/darkroom_ambiences_triggers" instance=ExtResource("4_jycao")]
+[node name="ambience_ender" parent="AmbienceTriggers/darkroom_ambiences_triggers" node_paths=PackedStringArray("cluster") instance=ExtResource("4_jycao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3369, 0.029985, -9.56984)
 monitoring = false
+starter = false
+sound_resource_path = "res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3"
+cluster = [NodePath("../ambience_ender2"), NodePath("../ambience_ender3")]
 modifiers = 2
 
-[node name="CollisionShape3D" parent="AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender_notusedyetlol" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4208, 1.89139, -0.037571)
+[node name="CollisionShape3D" parent="AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4208, 1.89139, 0.727047)
+shape = SubResource("BoxShape3D_mrj4v")
+
+[node name="ambience_ender2" parent="AmbienceTriggers/darkroom_ambiences_triggers" node_paths=PackedStringArray("cluster") instance=ExtResource("4_jycao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9224, 0.029985, -7.14954)
+monitoring = false
+starter = false
+sound_resource_path = "res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3"
+cluster = [NodePath("../ambience_ender"), NodePath("../ambience_ender3")]
+modifiers = 2
+
+[node name="CollisionShape3D" parent="AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4208, 1.89139, 0.727047)
+shape = SubResource("BoxShape3D_mrj4v")
+
+[node name="ambience_ender3" parent="AmbienceTriggers/darkroom_ambiences_triggers" node_paths=PackedStringArray("cluster") instance=ExtResource("4_jycao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.131, 0.029985, 24.1757)
+monitoring = false
+starter = false
+sound_resource_path = "res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3"
+cluster = [NodePath("../ambience_ender"), NodePath("../ambience_ender2")]
+modifiers = 2
+
+[node name="CollisionShape3D" parent="AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4208, 1.89139, 0.727047)
 shape = SubResource("BoxShape3D_mrj4v")
 
 [node name="1ST FLOOR SCARES" type="Node" parent="."]
@@ -6234,7 +6261,9 @@ spot_angle = 49.6129
 
 [editable path="AmbienceTriggers/darkroom_ambiences_triggers/ambience_starter"]
 [editable path="AmbienceTriggers/darkroom_ambiences_triggers/ambience_starter2"]
-[editable path="AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender_notusedyetlol"]
+[editable path="AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender"]
+[editable path="AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender2"]
+[editable path="AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender3"]
 [editable path="1ST FLOOR SCARES/CUBICLE SCARE/godot_rig"]
 [editable path="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig"]
 [editable path="1ST FLOOR SCARES/WINDOW SCARE/godot_rig"]

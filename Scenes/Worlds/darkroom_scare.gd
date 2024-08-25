@@ -1,7 +1,6 @@
 extends Node3D
 
 var has_been_executed = false
-@onready var lock_door_area: Area3D = $door_slam_starter
 @onready var door_slam_anim: AnimationPlayer = $AnimationPlayer
 @onready var doorlock = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2/Door_Lock"
 @onready var flickeranimationplayer:AnimationPlayer = $"../../CeilingLights/CeilingLightOn52/AnimationPlayer"
@@ -17,6 +16,10 @@ var closed_ambiance
 @onready var john_typing_sound: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
 @onready var ambience_starter: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_starter"
 @onready var ambience_starter_2: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_starter2"
+@onready var ambience_ender: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender"
+@onready var ambience_ender_2: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender2"
+@onready var ambience_ender_3: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender3"
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,6 +58,9 @@ func monster_seen_event(test):
 		
 		ambience_starter.monitoring = true
 		ambience_starter_2.monitoring = true
+		ambience_ender.monitoring = true
+		ambience_ender_2.monitoring = true
+		ambience_ender_3.monitoring = true
 
 		var kill_monster_timer = get_tree().create_timer(1)
 		kill_monster_timer.timeout.connect(_hide_monster)
@@ -70,7 +76,7 @@ func _hide_monster():
 	
 func _door_opened(grabbable:String):
 	if grabbable == door.name:
-		AudioController.stop_resource("DoorSlamAmbience3.ogg", 2)
+		AudioController.stop_resource("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience3.ogg", 2)
 		queue_free()
 
 func _end_scare():
