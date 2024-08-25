@@ -15,8 +15,8 @@ var monster_anim:AnimationPlayer
 var closed_ambiance
 @onready var door = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2"
 @onready var john_typing_sound: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
-@onready var ambience_starter: Area3D = $"../../ambience_starter"
-@onready var ambience_starter_2: Area3D = $"../../ambience_starter2"
+@onready var ambience_starter: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_starter"
+@onready var ambience_starter_2: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_starter2"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -70,7 +70,7 @@ func _hide_monster():
 	
 func _door_opened(grabbable:String):
 	if grabbable == door.name:
-		AudioController.stop_resource("DoorSlamAmbience3.ogg")
+		AudioController.stop_resource("DoorSlamAmbience3.ogg", 2)
 		queue_free()
 
 func _end_scare():

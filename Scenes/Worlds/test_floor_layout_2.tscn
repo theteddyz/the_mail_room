@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=4 uid="uid://c8cepgeiphg46"]
+[gd_scene load_steps=170 format=4 uid="uid://c8cepgeiphg46"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_f8c1l"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="2_hir56"]
@@ -124,6 +124,14 @@ volumetric_fog_sky_affect = 0.0
 adjustment_enabled = true
 adjustment_brightness = 0.86
 adjustment_saturation = 1.13
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6yto3"]
+resource_local_to_scene = true
+size = Vector3(4.18039, 2.69008, 3.69281)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mrj4v"]
+resource_local_to_scene = true
+size = Vector3(4.19086, 2.69008, 2.953)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2nxw7"]
 size = Vector3(4.19922, 2.69008, 1)
@@ -1521,14 +1529,40 @@ light_volumetric_fog_energy = 12.255
 shadow_enabled = true
 shadow_bias = 0.19
 
-[node name="ambience_starter" parent="." node_paths=PackedStringArray("cluster") instance=ExtResource("4_jycao")]
-monitoring = false
-cluster = [NodePath("../ambience_starter2")]
+[node name="AmbienceTriggers" type="Node" parent="."]
 
-[node name="ambience_starter2" parent="." node_paths=PackedStringArray("cluster") instance=ExtResource("4_jycao")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23217, -0.470015, 9.10169)
+[node name="darkroom_ambiences_triggers" type="Node" parent="AmbienceTriggers"]
+
+[node name="ambience_starter" parent="AmbienceTriggers/darkroom_ambiences_triggers" node_paths=PackedStringArray("cluster") instance=ExtResource("4_jycao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23217, 0.029985, 24.7789)
 monitoring = false
+sound_resource_path = "res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3"
+cluster = [NodePath("../ambience_starter2")]
+modifiers = 1
+
+[node name="CollisionShape3D" parent="AmbienceTriggers/darkroom_ambiences_triggers/ambience_starter" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21275, 1.89139, 0.332333)
+shape = SubResource("BoxShape3D_6yto3")
+
+[node name="ambience_starter2" parent="AmbienceTriggers/darkroom_ambiences_triggers" node_paths=PackedStringArray("cluster") instance=ExtResource("4_jycao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23217, 0.029985, 9.10169)
+monitoring = false
+sound_resource_path = "res://Assets/Audio/SoundFX/FirstFloorAmbience3.mp3"
 cluster = [NodePath("../ambience_starter")]
+modifiers = 1
+
+[node name="CollisionShape3D" parent="AmbienceTriggers/darkroom_ambiences_triggers/ambience_starter2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4208, 1.89139, -0.037571)
+shape = SubResource("BoxShape3D_mrj4v")
+
+[node name="ambience_ender_notusedyetlol" parent="AmbienceTriggers/darkroom_ambiences_triggers" instance=ExtResource("4_jycao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3369, 0.029985, -9.56984)
+monitoring = false
+modifiers = 2
+
+[node name="CollisionShape3D" parent="AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender_notusedyetlol" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4208, 1.89139, -0.037571)
+shape = SubResource("BoxShape3D_mrj4v")
 
 [node name="1ST FLOOR SCARES" type="Node" parent="."]
 
@@ -6198,6 +6232,9 @@ spot_angle = 49.6129
 [connection signal="body_entered" from="1ST FLOOR SCARES/CUBICLE SCARE/anticipation_starter" to="1ST FLOOR SCARES/CUBICLE SCARE" method="_on_anticipation_starter_body_entered"]
 [connection signal="animation_finished" from="1ST FLOOR SCARES/DARKROOM SCARE/AnimationPlayer" to="1ST FLOOR SCARES/DARKROOM SCARE" method="_on_animation_player_animation_finished"]
 
+[editable path="AmbienceTriggers/darkroom_ambiences_triggers/ambience_starter"]
+[editable path="AmbienceTriggers/darkroom_ambiences_triggers/ambience_starter2"]
+[editable path="AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender_notusedyetlol"]
 [editable path="1ST FLOOR SCARES/CUBICLE SCARE/godot_rig"]
 [editable path="1ST FLOOR SCARES/DARKROOM SCARE/godot_rig"]
 [editable path="1ST FLOOR SCARES/WINDOW SCARE/godot_rig"]

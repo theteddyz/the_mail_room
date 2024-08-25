@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Worlds/ambience_starter.gd" id="1_qji65"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2nxw7"]
-size = Vector3(4.19922, 2.69008, 1)
+resource_local_to_scene = true
+size = Vector3(2.21765, 2.69008, 2.953)
 
 [node name="ambience_starter" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23217, -0.470015, 24.7789)
