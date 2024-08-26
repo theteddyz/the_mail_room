@@ -74,6 +74,7 @@ signal object_unhovered()
 var walking_audio_player:AudioStreamPlayer3D
 var audio_timer:Timer
 var push_force = 2
+var vertical_velocity_last_frame = 0
 func _ready():
 	package_holder = persistent_state.find_child("PackageHolder")
 	mailcart = GameManager.get_mail_cart()
@@ -139,6 +140,8 @@ func handle_radio_interaction():
 
 
 func handle_general_interaction():
+	if mailcart == null:
+		mailcart = GameManager.get_mail_cart()
 	var collider = interactable_finder.get_interactable()
 	if collider and !is_holding_object:
 		ScareDirector.grabbable.emit(collider.name)
@@ -265,7 +268,7 @@ func _process(delta):
 	stamina_bar.update_stamina_bar(current_stamina)
 
 func apply_movement(delta):
-	persistent_state.velocity.y = 0
+	#persistent_state.velocity.y = 0
 	persistent_state.move_and_slide()
 
 	check_obstruction_raycasts()
@@ -289,7 +292,15 @@ func handle_movement_input(delta):
 			stand_or_walk(delta)
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	direction = lerp(direction, (persistent_state.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * movement_lerp_speed)
+	if !persistent_state.is_on_floor():
+		if vertical_velocity_last_frame == 0:
+			persistent_state.velocity.y = -2
+		else: 
+			persistent_state.velocity.y += -6.35 * delta
+	else:
+		persistent_state.velocity.y = 0
 	if direction:
+		
 		persistent_state.velocity.x = direction.x * current_speed
 		persistent_state.velocity.z = direction.z * current_speed
 	else:

@@ -32,7 +32,8 @@ func _ready():
 
 func activate_scare(key_num:int):
 	if key_num == 1:
-		john_typing_sound.playing = false
+		if john_typing_sound != null:
+			john_typing_sound.playing = false
 		monsterCollisionShape.disabled = false
 		monster_anim.play("DoorSlam")
 		monster_anim.speed_scale = 0
