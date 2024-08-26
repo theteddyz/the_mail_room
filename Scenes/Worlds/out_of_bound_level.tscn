@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://cad0q6gbw5xww"]
+
+[ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="1_ejjhc"]
+[ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/wall.tscn" id="2_djiff"]
+[ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="3_2a8kk"]
+[ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="4_gase0"]
+[ext_resource type="PackedScene" uid="uid://doveq38wiuloa" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_without_light.tscn" id="5_os3xx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wvmf"]
+albedo_texture = ExtResource("3_2a8kk")
+uv1_scale = Vector3(12.565, 12.565, 12.565)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_od5qy"]
+size = Vector2(16.725, 17.37)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_aoj5a"]
+data = PackedVector3Array(8.3625, 0, 8.685, -8.3625, 0, 8.685, 8.3625, 0, -8.685, -8.3625, 0, 8.685, -8.3625, 0, -8.685, 8.3625, 0, -8.685)
+
+[node name="world" type="Node3D"]
+
+[node name="Elevator" parent="." instance=ExtResource("1_ejjhc")]
+
+[node name="StaticBody3D" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.71453, -0.0856215, 4.00761)
+
+[node name="StaticBody3D5" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.64406, -0.0856215, 4.00761)
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.55342, -0.0856215, 6.93894)
+
+[node name="StaticBody3D3" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.55342, -0.0856215, 12.5753)
+
+[node name="StaticBody3D4" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.55342, -0.0856215, 18.0897)
+
+[node name="StaticBody3D6" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.977, -0.0856215, 6.93894)
+
+[node name="StaticBody3D7" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.977, -0.0856215, 12.5753)
+
+[node name="StaticBody3D8" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.977, -0.0856215, 18.0897)
+
+[node name="StaticBody3D9" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53498, -0.0856215, 19.7355)
+
+[node name="StaticBody3D10" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88656, -0.0856215, 19.7355)
+
+[node name="StaticBody3D11" parent="." instance=ExtResource("2_djiff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.79457, -0.0856215, 19.7355)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93277, -0.0660926, 12.7661)
+material_override = SubResource("StandardMaterial3D_5wvmf")
+mesh = SubResource("PlaneMesh_od5qy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_aoj5a")
+
+[node name="Ceiling" parent="MeshInstance3D" instance=ExtResource("4_gase0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -5.91164, 3.97799, -6.0402)
+
+[node name="Ceiling2" parent="MeshInstance3D" instance=ExtResource("4_gase0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -5.91164, 3.97799, -0.893048)
+
+[node name="Ceiling3" parent="MeshInstance3D" instance=ExtResource("4_gase0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -5.89854, 3.97242, 4.30325)
+
+[node name="Ceiling4" parent="MeshInstance3D" instance=ExtResource("4_gase0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -0.745587, 3.97799, -6.0402)
+
+[node name="Ceiling5" parent="MeshInstance3D" instance=ExtResource("4_gase0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -0.745587, 3.97799, -0.893048)
+
+[node name="Ceiling6" parent="MeshInstance3D" instance=ExtResource("4_gase0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -0.732481, 3.97242, 4.30325)
+
+[node name="Ceiling7" parent="MeshInstance3D" instance=ExtResource("4_gase0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.39598, 3.97799, -6.0402)
+
+[node name="Ceiling8" parent="MeshInstance3D" instance=ExtResource("4_gase0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.39598, 3.97799, -0.893048)
+
+[node name="Ceiling9" parent="MeshInstance3D" instance=ExtResource("4_gase0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.40908, 3.97242, 4.30325)
+
+[node name="CeilingLightOn" parent="." instance=ExtResource("5_os3xx")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -1.35618, 1.97682, 10.9643)
+
+[editable path="CeilingLightOn"]
