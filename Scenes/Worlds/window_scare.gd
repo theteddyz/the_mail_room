@@ -28,7 +28,8 @@ func monster_seen_function(boolean: bool):
 
 func activate_scare(package_num):
 	if package_num == 4:
-		john_typing_sound.playing = false
+		if john_typing_sound != null:
+			john_typing_sound.playing = false
 		ready_to_start = true
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		monster_body.visible = true
