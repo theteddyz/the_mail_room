@@ -19,6 +19,7 @@ func activate_scare(package_num:int):
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		monster_body.visible = true
 		monster_collider.disabled = false
+		monster_body.disabled = false
 		animator.play("Idle")
 		print("SCARE ACTIVATED!")
 	
