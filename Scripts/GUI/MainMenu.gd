@@ -1,5 +1,5 @@
 extends Control
-@onready var first_cut_scene = preload("res://Scenes/Worlds/CutSceneLevel.tscn")
+@onready var first_cut_scene = preload("res://Scenes/Worlds/opening_floor.tscn")
 
 func _ready():
 	var player = get_parent().find_child("Player")
