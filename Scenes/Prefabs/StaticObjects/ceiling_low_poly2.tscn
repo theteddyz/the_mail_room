@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cr3to5hrt4eds"]
 
 [ext_resource type="Texture2D" uid="uid://mksnaoep5fci" path="res://Assets/Models/BlenderModels/textures/LowPolyCeiling.png" id="1_y3rqv"]
-[ext_resource type="PackedScene" uid="uid://g3iqvb0k1cr6" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on.tscn" id="2_gvmc6"]
+[ext_resource type="PackedScene" uid="uid://g3iqvb0k1cr6" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_introlevel.tscn" id="2_gvmc6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wo3i"]
 resource_name = "LowPolyCeiling"

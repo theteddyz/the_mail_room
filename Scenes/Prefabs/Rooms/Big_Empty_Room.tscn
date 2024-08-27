@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_with_door.tscn" id="4_iaxtu"]
 [ext_resource type="PackedScene" uid="uid://cajnk2cjds60w" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room.tscn" id="5_gfr2c"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="6_wm0sv"]
-[ext_resource type="PackedScene" uid="uid://g3iqvb0k1cr6" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on.tscn" id="7_yw44y"]
+[ext_resource type="PackedScene" uid="uid://g3iqvb0k1cr6" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_introlevel.tscn" id="7_yw44y"]
 
 [node name="Empty_Room" type="Node3D"]
 

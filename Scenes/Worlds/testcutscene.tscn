@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_u173c"]
 [ext_resource type="LightmapGIData" uid="uid://csepdxhb2v4q8" path="res://Scenes/Worlds/testcutscene.lmbake" id="2_e3did"]
-[ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_q6sdx"]
+[ext_resource type="Environment" uid="uid://b6cvpqqdwan5k" path="res://Scenes/Worlds/introlevel.tres" id="3_4yypy"]
 [ext_resource type="Script" path="res://Scripts/Misc/CutsceneCamera.gd" id="3_juhrl"]
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/wall_tall.tscn" id="4_msfst"]
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_003.tscn" id="5_ntyld"]
-[ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly.tscn" id="6_qvt04"]
+[ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly_introlevel.tscn" id="6_qvt04"]
 [ext_resource type="PackedScene" uid="uid://dh384hg87l3em" path="res://Scenes/Prefabs/StaticObjects/cubicle_empty.tscn" id="7_cavj3"]
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="7_gmjtd"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly_no_light.tscn" id="7_uqp7y"]
@@ -19,32 +19,12 @@
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="17_ucf0v"]
 [ext_resource type="AudioStream" uid="uid://ce5jiafwp834b" path="res://Assets/Audio/SoundFX/IntroFloorAmbience2.mp3" id="18_7frdt"]
 
-[sub_resource type="Environment" id="Environment_mq4r4"]
-background_mode = 2
-sky = ExtResource("2_q6sdx")
-tonemap_exposure = 0.55
-ssao_radius = 0.91
-glow_enabled = true
-glow_levels/6 = 0.98
-glow_levels/7 = 0.2
-glow_normalized = true
-glow_intensity = 1.09
-glow_strength = 0.93
-glow_bloom = 0.19
-glow_blend_mode = 0
-fog_light_energy = 0.4
-fog_density = 0.0115
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0618
-volumetric_fog_emission_energy = 0.0
-volumetric_fog_anisotropy = 0.9
-
 [sub_resource type="Animation" id="Animation_8k0a1"]
 length = 30.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
+tracks/0/path = NodePath("cutscene_camera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -84,7 +64,7 @@ length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
+tracks/0/path = NodePath("cutscene_camera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -120,7 +100,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D")
+tracks/3/path = NodePath("cutscene_camera")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -146,12 +126,15 @@ albedo_texture = ExtResource("11_bn35o")
 uv1_scale = Vector3(75, 75, 75)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_l5j1c"]
-lightmap_size_hint = Vector2i(300, 442)
+lightmap_size_hint = Vector2i(2048, 2048)
 add_uv2 = true
 size = Vector2(59.745, 88.19)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jy1gb"]
-size = Vector3(60.449, 1.22095, 110.269)
+size = Vector3(60.449, 1.22095, 88.2366)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0oam"]
+albedo_color = Color(0.366595, 0.366595, 0.366595, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ths37"]
 size = Vector3(60.525, 1, 32.03)
@@ -168,17 +151,21 @@ size = Vector3(22.165, 1, 15.905)
 script = ExtResource("1_u173c")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.0324375, -0.0583124, 0.997771, -0.000168012, 0.998297, 0.0583377, -0.999474, 0.00172469, -0.032392, 196.62, 40.3983, 0)
-light_color = Color(0.968627, 0.764706, 0.509804, 1)
-light_energy = 4.879
+transform = Transform3D(-0.0967853, -0.0109907, 0.995245, 0.952912, 0.287701, 0.0958458, -0.287386, 0.957657, -0.017372, 196.62, 38.853, 37.669)
+light_color = Color(0.958262, 0.732789, 0.444964, 1)
+light_energy = 2.647
+light_volumetric_fog_energy = 0.201
 shadow_enabled = true
+shadow_blur = 1.871
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
-bounces = 8
+bounces = 4
+bounce_indirect_energy = 2.0
+generate_probes_subdiv = 3
 light_data = ExtResource("2_e3did")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_mq4r4")
+environment = ExtResource("3_4yypy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -223,7 +210,7 @@ text = "The Mail Room"
 [node name="Player" parent="." instance=ExtResource("12_rgcp3")]
 transform = Transform3D(-0.669131, 0, -0.743145, 0, 1, 0, 0.743145, 0, -0.669131, 0.139197, 0.5, -6.00579)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="cutscene_camera" type="Camera3D" parent="."]
 transform = Transform3D(-0.669001, 0, -0.743262, 0, 1, 0, 0.743262, 0, -0.669001, 5.03, 2.3, 10.738)
 current = true
 script = ExtResource("3_juhrl")
@@ -543,6 +530,9 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 12.8315,
 [node name="CeilingLowPoly32" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131, 6.068, -11.4592)
 
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly32/CeilingLightOn" index="1"]
+light_bake_mode = 2
+
 [node name="CeilingLowPoly34" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131, 6.068, -0.0821322)
 
@@ -561,17 +551,33 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131,
 [node name="CeilingLowPoly46" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485, 6.068, -17.1482)
 
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly46/CeilingLightOn" index="1"]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.0918, 0)
+light_bake_mode = 2
+
 [node name="CeilingLowPoly48" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485, 6.068, -5.76743)
+
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly48/CeilingLightOn" index="1"]
+light_bake_mode = 2
 
 [node name="CeilingLowPoly50" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485, 6.068, 5.58872)
 
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly50/CeilingLightOn" index="1"]
+light_bake_mode = 2
+
 [node name="CeilingLowPoly52" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485, 6.068, 16.9715)
 
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly52/CeilingLightOn" index="1"]
+light_bake_mode = 2
+
 [node name="CeilingLowPoly54" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485, 6.068, 28.3486)
+
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn" index="1"]
+light_bake_mode = 2
 
 [node name="CeilingLowPoly56" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485, 6.068, 39.2825)
@@ -585,8 +591,14 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485,
 [node name="CeilingLowPoly62" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -4.29944, 6.068, -11.4592)
 
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly62/CeilingLightOn" index="1"]
+light_bake_mode = 2
+
 [node name="CeilingLowPoly64" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -4.29944, 6.068, -0.0821322)
+
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly64/CeilingLightOn" index="1"]
+light_bake_mode = 2
 
 [node name="CeilingLowPoly66" parent="stage/CeilingTiles" instance=ExtResource("6_qvt04")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -4.29944, 6.068, 11.2825)
@@ -1240,28 +1252,34 @@ mesh = SubResource("PlaneMesh_l5j1c")
 
 [node name="FloorCollider" type="StaticBody3D" parent="stage/Floor/FloorMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.710204, 0)
+collision_layer = 21
+collision_mask = 21
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage/Floor/FloorMesh/FloorCollider"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00037, 0.110474, 1.09058)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00037, 0.110474, -0.838505)
 shape = SubResource("BoxShape3D_jy1gb")
 
 [node name="CeilingBlockingLight" type="Node3D" parent="stage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.26044, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99971, 0, 5.20817)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99971, -0.599113, 5.20817)
+material_override = SubResource("StandardMaterial3D_o0oam")
 mesh = SubResource("BoxMesh_ths37")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99971, 0, 52.3296)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99971, -0.599113, 52.3296)
+material_override = SubResource("StandardMaterial3D_o0oam")
 mesh = SubResource("BoxMesh_ths37")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8691, 0, 28.8241)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8691, -0.599113, 28.8241)
+material_override = SubResource("StandardMaterial3D_o0oam")
 mesh = SubResource("BoxMesh_rkfob")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="stage/CeilingBlockingLight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0498, 0, 28.8241)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0498, -0.599113, 28.8241)
+material_override = SubResource("StandardMaterial3D_o0oam")
 mesh = SubResource("BoxMesh_svwsv")
 
 [node name="Mailcart" parent="." instance=ExtResource("9_lovsk")]
@@ -1307,3 +1325,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8305, 0, 0)
 stream = ExtResource("18_7frdt")
 autoplay = true
 max_distance = 100.0
+
+[editable path="stage/CeilingTiles/CeilingLowPoly32"]
+[editable path="stage/CeilingTiles/CeilingLowPoly32/CeilingLightOn"]
+[editable path="stage/CeilingTiles/CeilingLowPoly46"]
+[editable path="stage/CeilingTiles/CeilingLowPoly46/CeilingLightOn"]
+[editable path="stage/CeilingTiles/CeilingLowPoly48"]
+[editable path="stage/CeilingTiles/CeilingLowPoly48/CeilingLightOn"]
+[editable path="stage/CeilingTiles/CeilingLowPoly50"]
+[editable path="stage/CeilingTiles/CeilingLowPoly50/CeilingLightOn"]
+[editable path="stage/CeilingTiles/CeilingLowPoly52"]
+[editable path="stage/CeilingTiles/CeilingLowPoly52/CeilingLightOn"]
+[editable path="stage/CeilingTiles/CeilingLowPoly54"]
+[editable path="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn"]
+[editable path="stage/CeilingTiles/CeilingLowPoly62"]
+[editable path="stage/CeilingTiles/CeilingLowPoly62/CeilingLightOn"]
+[editable path="stage/CeilingTiles/CeilingLowPoly64"]
+[editable path="stage/CeilingTiles/CeilingLowPoly64/CeilingLightOn"]
