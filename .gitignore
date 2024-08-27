@@ -23,3 +23,4 @@ data_*/
 mono_crash.*.json
 *.tmp
 addons/godot-jolt/windows/~godot-jolt_windows-x64_editor.dll
+Assets/Materials/cabinet_drawer.tres
