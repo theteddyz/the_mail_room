@@ -8,6 +8,7 @@ var player_reference: Node
 var elevator_reference: Node
 var mail_cart_reference: Node
 var scare_director_reference: Node
+var current_scene_root:Node
 #Quite a few script rely on these setter getter, proceed with caution if deleted
 func register_player(new_player):
 	player_reference = new_player
@@ -91,6 +92,9 @@ func save():
 		save_game.store_line(json_string)
 
 func goto_scene(path, _floor):
+	if current_scene == null:
+		var root = get_tree().root
+		current_scene = root.get_child(root.get_child_count() - 1)
 	if current_scene.get_scene_file_path() != path:
 		if(_floor != null):
 			call_deferred("_deferred_goto_scene", path, true)

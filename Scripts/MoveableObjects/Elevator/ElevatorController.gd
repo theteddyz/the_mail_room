@@ -12,6 +12,7 @@ var elevator_anim:AnimationPlayer
 var wall_anim:AnimationPlayer
 var cart:bool = false
 var floor_mesh
+var current_scene
 #@onready var floor_indicator: MeshInstance3D = $WallWithElevatorEntrance/ElevatorEntrance/ElevatorEntranceIndicator
 # Called when the node enters the scene tree for the first time.
 
@@ -90,8 +91,9 @@ func move_floors():
 		player.reparent(Elevator,true)
 		if Elevator_Wall.visible:
 			await wall_anim.animation_finished
-		await elevator_anim.animation_finished
-		anim.play("elaevator_move_up")
+		else:
+			await elevator_anim.animation_finished
+		anim.play("elevator_move_up")
 		await anim.animation_finished
 		if current_floor < 0:
 			wall_anim.active = true
@@ -122,13 +124,29 @@ func load_floor():
 	if previous_floor > current_floor:
 		anim.play("elevator_call_down")
 		await anim.animation_finished
-		player.reparent(get_tree().root.get_child(4),true)
+		var root = get_tree().root
+		current_scene = root.get_child(root.get_child_count() - 1)
+		player.reparent(current_scene)
+		for floor in get_tree().get_nodes_in_group("Real_Floor"):
+			if floor is CollisionShape3D:
+				floor.disabled = false
+			floor.visible = true
+		for floors in get_tree().get_nodes_in_group("Fake_Floor"):
+			floors.visible = false
 		elevator_anim.play("door_open")
 		wall_anim.play("wall_door_open")
 	else:
 		anim.play("elevator_call_up")
 		await anim.animation_finished
-		player.reparent(get_tree().root.get_child(4),true)
+		var root = get_tree().root
+		current_scene = root.get_child(root.get_child_count() - 1)
+		player.reparent(current_scene)
+		for floor in get_tree().get_nodes_in_group("Real_Floor"):
+			if floor is CollisionShape3D:
+				floor.disabled = false
+			floor.visible = true
+		for floors in get_tree().get_nodes_in_group("Fake_Floor"):
+			floors.visible = false
 		elevator_anim.play("door_open")
 		wall_anim.play("wall_door_open")
 #func move_indicator(floor:int):
