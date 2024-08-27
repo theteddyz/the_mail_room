@@ -10,3 +10,5 @@ func _on_area_3d_body_entered(body):
 		await laugh.finished
 		get_tree().change_scene_to_packed(mail_room_level)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		body.queue_free()
+		get_parent().queue_free()

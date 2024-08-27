@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cad0q6gbw5xww"]
+[gd_scene load_steps=17 format=3 uid="uid://cad0q6gbw5xww"]
 
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="1_ejjhc"]
 [ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/wall.tscn" id="2_djiff"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="4_gase0"]
 [ext_resource type="PackedScene" uid="uid://doveq38wiuloa" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_without_light.tscn" id="5_os3xx"]
 [ext_resource type="PackedScene" uid="uid://dh384hg87l3em" path="res://Scenes/Prefabs/StaticObjects/cubicle_empty.tscn" id="6_873ff"]
-[ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="7_cnfmk"]
 [ext_resource type="Script" path="res://Scripts/Misc/out_of_bounds.gd" id="8_qeprb"]
 [ext_resource type="AudioStream" uid="uid://65k7s8lvvcd3" path="res://Assets/Audio/SoundFX/AmbientScares/JohnLaugh3.ogg" id="8_t4ncj"]
 
@@ -271,9 +270,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.1599
 
 [node name="Cubicle_empty6" parent="." instance=ExtResource("6_873ff")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.15996, -0.0660925, 7.25294)
-
-[node name="Player" parent="." instance=ExtResource("7_cnfmk")]
-transform = Transform3D(-0.999179, 0, -0.0405154, 0, 1, 0, 0.0405154, 0, -0.999179, 2.77936, -0.0107527, 5.69374)
 
 [node name="Kill_Player" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3942)

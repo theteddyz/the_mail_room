@@ -30,6 +30,11 @@ window/energy_saving/keep_screen_on=false
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
+[global_group]
+
+Real_Floor="Disable floor when moving in elevator"
+Fake_Floor="Floor to be enabled when moving floors"
+
 [input]
 
 forward={
