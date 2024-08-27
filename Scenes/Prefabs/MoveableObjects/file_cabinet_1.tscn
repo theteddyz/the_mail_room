@@ -1,19 +1,22 @@
-[gd_scene load_steps=20 format=4 uid="uid://c7e4imgjbdx46"]
+[gd_scene load_steps=24 format=4 uid="uid://c7e4imgjbdx46"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_kseb0"]
 [ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="3_5nqi4"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="3_7digd"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet.gd" id="4_rx22h"]
-[ext_resource type="Material" uid="uid://cls2uilche1tk" path="res://Assets/Materials/cabinet_drawer_real.tres" id="5_c0deq"]
 [ext_resource type="ArrayMesh" uid="uid://cfgt0u4t6je4c" path="res://Assets/Materials/cabinet_drawer.tres" id="6_0wjlh"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="6_pe8d1"]
+[ext_resource type="AudioStream" uid="uid://g7hkootm5ggm" path="res://Assets/Audio/SoundFX/Impacts/FileCabinetImpact1.ogg" id="7_hp6gr"]
+[ext_resource type="AudioStream" uid="uid://xqyri14vxeqp" path="res://Assets/Audio/SoundFX/Impacts/FileCabinetImpact2.ogg" id="8_tnfiw"]
+[ext_resource type="AudioStream" uid="uid://dgu51wco4dqdj" path="res://Assets/Audio/SoundFX/Impacts/FileCabinetImpact3.ogg" id="9_hrl5c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qw231"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_od4r5"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
-albedo_color = Color(0.321972, 0.358679, 0.166032, 1)
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
 albedo_texture = ExtResource("3_5nqi4")
 texture_filter = 2
 
@@ -32,6 +35,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fnn35"]
+resource_local_to_scene = true
 resource_name = "desk_Cube_124"
 lightmap_size_hint = Vector2i(70, 78)
 _surfaces = [{
@@ -40,7 +44,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_qw231"),
+"material": SubResource("StandardMaterial3D_od4r5"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -75,14 +79,23 @@ size = Vector3(0.418316, 0.319839, 0.0119629)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2c4wt"]
 size = Vector3(0.0128282, 0.294437, 0.572388)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_77cjm"]
+playback_mode = 2
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("7_hp6gr")
+stream_1/stream = ExtResource("8_tnfiw")
+stream_2/stream = ExtResource("9_hrl5c")
+
 [node name="File_Cabinet" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.824006, 0)
 collision_layer = 7
 collision_mask = 7
-mass = 10.0
+mass = 60.0
 physics_material_override = SubResource("PhysicsMaterial_i0t41")
 freeze = true
 script = ExtResource("1_kseb0")
+should_freeze = true
 can_rotate = false
 
 [node name="Interpolator" type="Node3D" parent="."]
@@ -92,9 +105,6 @@ script = ExtResource("3_7digd")
 mesh = SubResource("ArrayMesh_fnn35")
 skeleton = NodePath("")
 script = ExtResource("4_rx22h")
-color = Color(0.321972, 0.358679, 0.166032, 1)
-cabinet_colour = "Light Green"
-cabinet_color = Color(0.412891, 0.514523, 0.700867, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.246117, -0.0160522, -0.0383301)
@@ -124,12 +134,15 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
 script = ExtResource("1_kseb0")
+can_rotate = false
 
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer"]
 limit_enabled = true
 limit_upper = 0.5
 limit_spring_enabled = true
 limit_spring_damping = 2.0
+motor_enabled = true
+motor_max_force = 10.0
 node_a = NodePath("../..")
 node_b = NodePath("..")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -155,7 +168,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.30168
 shape = SubResource("BoxShape3D_2c4wt")
 
 [node name="FileCabinetDrawer_001" type="MeshInstance3D" parent="Drawer"]
-material_override = ExtResource("5_c0deq")
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
 
@@ -167,12 +179,15 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
 script = ExtResource("1_kseb0")
+can_rotate = false
 
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer2"]
 limit_enabled = true
 limit_upper = 0.5
 limit_spring_enabled = true
 limit_spring_damping = 2.0
+motor_enabled = true
+motor_max_force = 10.0
 node_a = NodePath("../..")
 node_b = NodePath("..")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -198,7 +213,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.30168
 shape = SubResource("BoxShape3D_2c4wt")
 
 [node name="FileCabinetDrawer_001" type="MeshInstance3D" parent="Drawer2"]
-material_override = ExtResource("5_c0deq")
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
 
@@ -210,12 +224,15 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
 script = ExtResource("1_kseb0")
+can_rotate = false
 
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer3"]
 limit_enabled = true
 limit_upper = 0.5
 limit_spring_enabled = true
 limit_spring_damping = 2.0
+motor_enabled = true
+motor_max_force = 10.0
 node_a = NodePath("../..")
 node_b = NodePath("..")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -241,7 +258,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.30168
 shape = SubResource("BoxShape3D_2c4wt")
 
 [node name="FileCabinetDrawer_001" type="MeshInstance3D" parent="Drawer3"]
-material_override = ExtResource("5_c0deq")
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
 
@@ -253,12 +269,15 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
 script = ExtResource("1_kseb0")
+can_rotate = false
 
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer4"]
 limit_enabled = true
 limit_upper = 0.5
 limit_spring_enabled = true
 limit_spring_damping = 2.0
+motor_enabled = true
+motor_max_force = 10.0
 node_a = NodePath("../..")
 node_b = NodePath("..")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -284,6 +303,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.30168
 shape = SubResource("BoxShape3D_2c4wt")
 
 [node name="FileCabinetDrawer_001" type="MeshInstance3D" parent="Drawer4"]
-material_override = ExtResource("5_c0deq")
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
+
+[node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
+script = ExtResource("6_pe8d1")
+impact_audios = NodePath("../ImpactAudioPlayer")
+
+[node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_77cjm")

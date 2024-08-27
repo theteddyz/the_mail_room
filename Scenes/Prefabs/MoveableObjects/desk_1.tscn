@@ -12,16 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/StaticObjects/keyboard_low_poly_2.tscn" id="10_wk3io"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
-size = Vector3(2.69171, 0.0732727, 1.33755)
+size = Vector3(2.69171, 0.0540848, 1.33634)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ixxc"]
-size = Vector3(0.0406456, 1.07336, 1.12402)
+size = Vector3(0.0406456, 1.0762, 1.10547)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_40acm"]
-size = Vector3(2.40982, 1.07257, 0.0447998)
+size = Vector3(2.41611, 1.0732, 0.0537634)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xtl34"]
-size = Vector3(0.679825, 0.9846, 1.08078)
+size = Vector3(0.679825, 0.98907, 1.09197)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1ft7"]
 resource_name = "Desk2"
@@ -116,28 +116,27 @@ collision_layer = 7
 collision_mask = 5
 mass = 50.0
 freeze = true
-angular_damp = 10.0
 script = ExtResource("1_hork0")
 should_freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.11808, -0.0246124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.13829, 0.000576701)
 shape = SubResource("BoxShape3D_c71w3")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1865, 0.537765, 0.000289917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1865, 0.57074, 0.0251927)
 shape = SubResource("BoxShape3D_1ixxc")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18609, 0.537765, 0.000289917)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18609, 0.57079, 0.0120089)
 shape = SubResource("BoxShape3D_1ixxc")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00120294, 0.54573, -0.53981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00372458, 0.570121, -0.515287)
 shape = SubResource("BoxShape3D_40acm")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829035, 0.597112, -0.0114136)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829035, 0.622409, 0.0158424)
 shape = SubResource("BoxShape3D_xtl34")
 
 [node name="Desk2" type="MeshInstance3D" parent="."]
@@ -156,9 +155,6 @@ sleeping = true
 [node name="DrawerTop" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.824136, 0.535279)
 collision_layer = 3
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 gravity_scale = 0.0
@@ -188,9 +184,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246
 [node name="DrawerBottom" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.354336, 0.535279)
 collision_layer = 3
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 gravity_scale = 0.0
@@ -236,3 +229,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78488, 0.334743, 0.0209348
 [node name="Keyboard" parent="." instance=ExtResource("10_wk3io")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15408, 1.16596, 0.442178)
 physics_material_override = SubResource("PhysicsMaterial_0jhtq")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1401, -0.00088501)
+size = Vector3(2, 0.0565338, 1.33014)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18616, 0.568491, 0.0245132)
+size = Vector3(0.0446777, 1.08237, 1.11525)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.849979, 0.568491, 0.0245132)
+size = Vector3(0.720642, 1.08237, 1.11525)
+
+[node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000239968, 0.568491, -0.518002)
+size = Vector3(2.41283, 1.08237, 0.0366831)

@@ -249,7 +249,7 @@ skeleton = NodePath("")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0862904, 1.54579, -0.245461)
 
 [node name="Lamp" parent="." instance=ExtResource("5_o7hfs")]
-transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448, 1.05325, 1.3523, -0.335846)
+transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448, 1.05325, 1.36533, -0.335846)
 
 [node name="Chair" parent="." instance=ExtResource("6_vcavl")]
 transform = Transform3D(-0.999968, 0, -0.00808077, 0, 1, 0, 0.00808077, 0, -0.999968, -0.283069, 0.814608, 0.634164)
@@ -283,3 +283,19 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00720215, 0.231445, 0.0113525)
 shape = SubResource("BoxShape3D_a835v")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000686646, 1.07565, 0.000205994)
+size = Vector3(2.48099, 0.109436, 1.16286)
+
+[node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000686646, 0.549789, -0.526014)
+size = Vector3(2.48099, 1.16116, 0.110416)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.861446, 0.497324, 0.000205994)
+size = Vector3(0.756721, 1.05678, 1.16286)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18044, 0.497324, 0.000205994)
+size = Vector3(0.0978718, 1.05678, 1.16286)
