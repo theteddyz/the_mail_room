@@ -40,7 +40,8 @@ var player_cross_hair
 signal collided(other_body)
 
 func _ready():
-	player = GameManager.get_player()
+	if GameManager.get_player() != null:
+		player = GameManager.get_player()
 	object_Interpolator = find_child("Interpolator")
 	starting_angular_damp = angular_damp
 	player_cross_hair = Gui.get_crosshair()

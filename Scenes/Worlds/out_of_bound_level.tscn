@@ -1,10 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cad0q6gbw5xww"]
+[gd_scene load_steps=18 format=3 uid="uid://cad0q6gbw5xww"]
 
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="1_ejjhc"]
 [ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/wall.tscn" id="2_djiff"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="3_2a8kk"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="4_gase0"]
 [ext_resource type="PackedScene" uid="uid://doveq38wiuloa" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_without_light.tscn" id="5_os3xx"]
+[ext_resource type="PackedScene" uid="uid://dh384hg87l3em" path="res://Scenes/Prefabs/StaticObjects/cubicle_empty.tscn" id="6_873ff"]
+[ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="7_cnfmk"]
+[ext_resource type="Script" path="res://Scripts/Misc/out_of_bounds.gd" id="8_qeprb"]
+[ext_resource type="AudioStream" uid="uid://65k7s8lvvcd3" path="res://Assets/Audio/SoundFX/AmbientScares/JohnLaugh3.ogg" id="8_t4ncj"]
+
+[sub_resource type="Environment" id="Environment_kh0vc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wvmf"]
 albedo_texture = ExtResource("3_2a8kk")
@@ -16,7 +22,145 @@ size = Vector2(16.725, 17.37)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_aoj5a"]
 data = PackedVector3Array(8.3625, 0, 8.685, -8.3625, 0, 8.685, 8.3625, 0, -8.685, -8.3625, 0, 8.685, -8.3625, 0, -8.685, 8.3625, 0, -8.685)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_op4bj"]
+size = Vector3(4.78333, 3.1366, 3.67902)
+
+[sub_resource type="Animation" id="Animation_5ypyq"]
+resource_name = "kill_player"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CeilingLightOn/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CeilingLightOn2/OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CeilingLightOn/CeilingLightOnLight:transparency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CeilingLightOn2/CeilingLightOnLight:transparency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.433333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6lgcc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CeilingLightOn/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CeilingLightOn2/OmniLight3D:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CeilingLightOn/CeilingLightOnLight:transparency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CeilingLightOn2/CeilingLightOnLight:transparency")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e7uaq"]
+_data = {
+"RESET": SubResource("Animation_6lgcc"),
+"kill_player": SubResource("Animation_5ypyq")
+}
+
 [node name="world" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kh0vc")
 
 [node name="Elevator" parent="." instance=ExtResource("1_ejjhc")]
 
@@ -93,6 +237,65 @@ transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.39598, 3.97799,
 transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.40908, 3.97242, 4.30325)
 
 [node name="CeilingLightOn" parent="." instance=ExtResource("5_os3xx")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -1.35618, 1.97682, 10.9643)
+transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, 1.98514, 4.02294, 7.47387)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CeilingLightOn"]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -3.12564, 0)
+shadow_enabled = true
+omni_range = 10.651
+omni_attenuation = 0.798
+
+[node name="CeilingLightOn2" parent="." instance=ExtResource("5_os3xx")]
+transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, 1.98514, 4.02294, 15.4286)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CeilingLightOn2"]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -3.12564, 0)
+shadow_enabled = true
+omni_range = 10.651
+omni_attenuation = 0.798
+
+[node name="Cubicle_empty" parent="." instance=ExtResource("6_873ff")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.01945, -0.0660925, 7.16243)
+
+[node name="Cubicle_empty2" parent="." instance=ExtResource("6_873ff")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.01945, -0.0660925, 11.5447)
+
+[node name="Cubicle_empty3" parent="." instance=ExtResource("6_873ff")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.01945, -0.0660925, 16.0693)
+
+[node name="Cubicle_empty4" parent="." instance=ExtResource("6_873ff")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.15996, -0.0660925, 16.3107)
+
+[node name="Cubicle_empty5" parent="." instance=ExtResource("6_873ff")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.15996, -0.0660925, 11.4211)
+
+[node name="Cubicle_empty6" parent="." instance=ExtResource("6_873ff")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.15996, -0.0660925, 7.25294)
+
+[node name="Player" parent="." instance=ExtResource("7_cnfmk")]
+transform = Transform3D(-0.999179, 0, -0.0405154, 0, 1, 0, 0.0405154, 0, -0.999179, 2.77936, -0.0107527, 5.69374)
+
+[node name="Kill_Player" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3942)
+script = ExtResource("8_qeprb")
+
+[node name="Area3D" type="Area3D" parent="Kill_Player"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Kill_Player/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89166, 1.0683, 0.438751)
+shape = SubResource("BoxShape3D_op4bj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Kill_Player"]
+libraries = {
+"": SubResource("AnimationLibrary_e7uaq")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Kill_Player"]
+stream = ExtResource("8_t4ncj")
+
+[connection signal="body_entered" from="Kill_Player/Area3D" to="Kill_Player" method="_on_area_3d_body_entered"]
 
 [editable path="CeilingLightOn"]
+[editable path="CeilingLightOn2"]

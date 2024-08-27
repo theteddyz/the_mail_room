@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://y63088eb8yc0"]
+[gd_scene load_steps=59 format=4 uid="uid://y63088eb8yc0"]
 
 [ext_resource type="PackedScene" uid="uid://mr4e6e8n5u4" path="res://Scenes/Prefabs/gui/MainMenu.tscn" id="1_pf1j0"]
 [ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_qm23p"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="45_61hw8"]
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_007.tscn" id="46_jsb32"]
 [ext_resource type="PackedScene" uid="uid://dfunafpk8efeo" path="res://Scenes/Prefabs/StaticObjects/wall_meeting_room_012.tscn" id="47_8wvck"]
-[ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="56_j84i6"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/ceiling_low_poly_no_light.tscn" id="72_j5r6j"]
 [ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2_LEVEL1.tscn" id="73_1pk3j"]
 [ext_resource type="Texture2D" uid="uid://b4lvvd23ey3q4" path="res://Assets/Textures/BlenderTextures/CeilingLight.png" id="74_p8jws"]
@@ -28,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="95_w5mu2"]
 [ext_resource type="PlaneMesh" uid="uid://bsjvgx14rrdbw" path="res://floor_mesh_1stfloor.tres" id="96_bhfn4"]
 [ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="97_bgeto"]
-[ext_resource type="PackedScene" uid="uid://brfqkckspyesq" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_4.tscn" id="105_a6n5q"]
 
 [sub_resource type="Environment" id="Environment_1vnpb"]
 background_mode = 2
@@ -637,9 +635,6 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 7.16003, 0, -9.49
 locked = true
 unlock_number = 1
 
-[node name="StaticBody3D45" parent="Walls" instance=ExtResource("39_uti0h")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 22.7167, 0, -2.88465)
-
 [node name="StaticBody3D91" parent="Walls" instance=ExtResource("39_uti0h")]
 transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -12.7878, 0, -20.0171)
 
@@ -810,6 +805,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.502
 
 [node name="StaticBody3D42" parent="Walls" instance=ExtResource("39_uti0h")]
 transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, 32.7956, 1.90735e-06, 25.6455)
+
+[node name="RigidBody3D2" parent="Walls/StaticBody3D42" index="3"]
+script = null
+
+[node name="AudioStreamPlayer3D" parent="Walls/StaticBody3D42/RigidBody3D2" index="6"]
+script = null
+
+[node name="Monster_Detector" parent="Walls/StaticBody3D42/RigidBody3D2" index="8"]
+script = null
 
 [node name="StaticBody3D10" parent="Walls" instance=ExtResource("40_im554")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.66489, -4.76837e-07, 6.95955)
@@ -1661,15 +1665,6 @@ libraries = {
 transform = Transform3D(4.62963, 0, 0, 0, 4.62963, 0, 0, 0, 4.62963, 0, -2.45468, 0)
 stream = ExtResource("77_dyx43")
 
-[node name="Desk" parent="Roof/Keep_this" instance=ExtResource("56_j84i6")]
-transform = Transform3D(-4.62963, 0, -4.04735e-07, 0, 4.62963, 0, 4.04735e-07, 0, -4.62963, 3.68864, -20.9457, -15.2325)
-
-[node name="Desk2" parent="Roof/Keep_this" instance=ExtResource("56_j84i6")]
-transform = Transform3D(-2.02368e-07, 0, -4.62963, 0, 4.62963, 0, 4.62963, 0, -2.02368e-07, 13.9327, -20.9457, -28.3746)
-
-[node name="Desk3" parent="Roof/Keep_this" instance=ExtResource("56_j84i6")]
-transform = Transform3D(4.62963, 0, 0, 0, 4.62963, 0, 0, 0, 4.62963, 5.26953, -20.9457, -41.4618)
-
 [node name="CeilingLightOn4" type="MeshInstance3D" parent="Roof"]
 transform = Transform3D(0.216, 0, 0, 0, 0.202289, 0.0757295, 0, -0.0757295, 0.202289, 38.7702, 3.99183, 27.3469)
 mesh = SubResource("ArrayMesh_oqr3e")
@@ -1799,70 +1794,27 @@ script = null
 [node name="Package2" parent="Cart" groups=["Persist"] instance=ExtResource("92_3yxme")]
 transform = Transform3D(0.00309006, -0.0499922, -0.998745, -0.998095, -0.0616931, 0, -0.0616157, 0.996842, -0.0500875, -0.0086937, 0.140551, 0.210003)
 freeze = true
-package_full_address = "Package 2
-Lori Hughes
-Finance Department
-Office 3"
-package_partial_address = "Package 2
-Lori Hughes"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 2
+script = null
 
 [node name="Package3" parent="Cart" groups=["Persist"] instance=ExtResource("92_3yxme")]
 transform = Transform3D(0.00309006, -0.0499921, -0.998745, -0.998095, -0.0616931, -2.04985e-11, -0.0616157, 0.996842, -0.0500875, -0.0139923, 0.140551, 0.0277233)
 freeze = true
-package_full_address = "Package 3
-Bill Ding
-Finance Department
-Room 2"
-package_partial_address = "Package 3
-Bill Ding"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 3
+script = null
 
 [node name="Package4" parent="Cart" groups=["Persist"] instance=ExtResource("92_3yxme")]
 transform = Transform3D(0.00309006, -0.0499922, -0.998745, -0.998095, -0.0616931, -3.75919e-09, -0.0616157, 0.996842, -0.0500875, -0.0330276, 0.140551, -0.171616)
 freeze = true
-package_full_address = "Package 4
-Seth Bradley
-Accounting Department
-[b]Special Instuctions[/b]
-Deliver to Confrence room 3"
-package_partial_address = "Package 4
-Seth Bradley"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 4
+script = null
 
 [node name="Package5" parent="Cart" groups=["Persist"] instance=ExtResource("92_3yxme")]
 transform = Transform3D(0.00309006, -0.0499922, -0.998745, -0.998095, -0.0616931, -5.63879e-09, -0.0616157, 0.996842, -0.0500875, -0.0302658, 0.140551, -0.393652)
 freeze = true
-package_full_address = "Package 5
-Mack Hampton
-Marketing Department
-Desk Row 2
-Desk Number 4"
-package_partial_address = "Package 5
-Mack Hampton"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 5
+script = null
 
 [node name="Package6" parent="Cart" groups=["Persist"] instance=ExtResource("92_3yxme")]
 transform = Transform3D(0.00309006, -0.0499922, -0.998745, -0.998095, -0.0616931, -5.65929e-09, -0.0616157, 0.996842, -0.0500875, -0.0274277, 0.140551, -0.619799)
 freeze = true
-package_full_address = "Package 6
-John Bogart
-Finance Department
-Cubicle Row 2
-Cubicle Number 5"
-package_partial_address = "Package 6
-John Bogart"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 6
+script = null
 
 [node name="Floor_Meshes" type="Node3D" parent="."]
 
@@ -1884,9 +1836,6 @@ shape = SubResource("ConcavePolygonShape3D_edpiq")
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Floor_Meshes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8851, -0.985187, 1.00272)
 size = Vector3(92.6323, 2, 85.514)
-
-[node name="File_Cabinet2" parent="." instance=ExtResource("105_a6n5q")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.4166, 0.793541, -34.2112)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30_yjppp")
