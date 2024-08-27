@@ -402,6 +402,8 @@ skeleton = NodePath("")
 
 [node name="Left_Door" type="StaticBody3D" parent="Elevator_Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.867, 0, 0)
+collision_layer = 17
+collision_mask = 17
 
 [node name="ElevatorEntranceDoor_001" type="MeshInstance3D" parent="Elevator_Wall/Left_Door"]
 mesh = SubResource("ArrayMesh_cnbxk")
@@ -412,6 +414,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.425659, 1.40764, 0.035553)
 shape = SubResource("BoxShape3D_h2nw5")
 
 [node name="Right_Door" type="StaticBody3D" parent="Elevator_Wall"]
+collision_layer = 17
+collision_mask = 17
 
 [node name="ElevatorEntranceDoor_001" type="MeshInstance3D" parent="Elevator_Wall/Right_Door"]
 mesh = SubResource("ArrayMesh_cnbxk")

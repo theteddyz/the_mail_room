@@ -5,6 +5,8 @@ extends Node3D
 @export var broken_models: Array[MeshInstance3D] = []
 #Any objects which will break apart from this origin object
 @export var seperation_breakage_models: Array[RigidBody3D] = []
+
+@export var breakable_hinges: Array[JoltHingeJoint3D] = []
 #Basic model, the default state, not required if broken_models is empty
 @export var normal_model: Node
 #Threshold before the impact causes a breakage
@@ -14,6 +16,9 @@ extends Node3D
 
 #Any impact audio-player on the node
 @export var impact_audios: AudioStreamPlayer3D
+var impact_audios2: AudioStreamPlayer3D
+var impact_audios3: AudioStreamPlayer3D
+var index: int
 #Any destruction audio-player on the node
 @export var destruction_audios: AudioStreamPlayer3D
 #Particles which to play during a breakage
@@ -29,6 +34,9 @@ var previousIsPickedUp:bool = false
 var previousIsPickedUp2:bool = false
 var previousIsPickedUp3:bool = false
 var rigidbody:RigidBody3D
+@export var initVolume:float = 0
+
+@export var onlyPlayOnCollision:bool = false
 
 func _ready():
 	#if(impact_audios != null):
@@ -37,7 +45,13 @@ func _ready():
 	#if(destruction_audios != null):
 		#destruction_audios.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
 		#destruction_audios.unit_size = 10
+	impact_audios2 = impact_audios.duplicate(true)
+	impact_audios3 = impact_audios.duplicate(true)
+	add_child(impact_audios2)
+	add_child(impact_audios3)
 	impact_audios.max_polyphony = 50
+	impact_audios2.max_polyphony = 50
+	impact_audios3.max_polyphony = 50
 	broken = false
 	rigidbody = get_parent()
 
@@ -49,14 +63,14 @@ func _physics_process(_delta: float):
 	var currentAcceleration = ((previousVelocity - currentVelocity)/_delta)*0.01;
 	var currentRotAccel = ((previousRotation - currentRotation)/_delta)*0.01;
 	
-	var impact = currentAcceleration.length() + currentRotAccel.length()*2;
-	if(impact > impact_threshold and !previousIsPickedUp2):
-		impact_audios.volume_db = min(-40 + pow(impact,1.5),0)
+	var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
+	if(impact > impact_threshold and !previousIsPickedUp2 and !onlyPlayOnCollision):
+		var volume = min(-40 + pow(impact,1.5),0) + initVolume
 		if(destruction_audios != null and impact > destruction_threshold and !broken):
 			destruction_audios.play()
 			break_object()
 		else:
-			impact_audios.play()
+			playImpactSound(volume)
 		
 		
 	previousVelocity = rigidbody.linear_velocity
@@ -74,14 +88,17 @@ func _on_body_entered(body):
 	
 	var currentAcceleration = (previousVelocity - rigidbody.linear_velocity);
 	var currentRotAccel = (previousRotation - rigidbody.angular_velocity);
-	var impact = currentAcceleration.length() + currentRotAccel.length()*2;
-	if(impact > impact_threshold and rigidbody.is_picked_up):
-		impact_audios.volume_db = min(-40 + pow(impact,1.5),0)
+	var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
+	print("onlyPlayOnCollision: ",  onlyPlayOnCollision)
+	print("(rigidbody.is_picked_up or onlyPlayOnCollision) and impact > impact_threshold: ",  (rigidbody.is_picked_up or onlyPlayOnCollision) and impact > impact_threshold)
+	if((rigidbody.is_picked_up or onlyPlayOnCollision) and impact > impact_threshold):
+		print("this shit",  min(-40 + pow(impact,1.5),0) + initVolume)
+		var volume = min(-40 + pow(impact,1.5),0) + initVolume
 		if(destruction_audios != null and impact > destruction_threshold and !broken):
 			destruction_audios.play()
 			break_object()
 		else:
-			impact_audios.play()
+			playImpactSound(volume)
 		
 		
 func break_object():
@@ -101,12 +118,29 @@ func break_object():
 	for particle in breakage_particles:
 		particle.emitting = true
 		
-	for model in seperation_breakage_models:
-		model.reparent(get_tree().root.get_child(3))
-		model.gravity_scale = 1
-		model.set_collision_layer_value(2,true)
-		model.set_script(grabbable_script)
-		model.call("_ready")
+	for hinge in breakable_hinges:
+		hinge.motor_enabled = false
+	#for model in seperation_breakage_models:
+	#	model.reparent(get_tree().root.get_child(3))
+	#	model.gravity_scale = 1
+	#	model.set_collision_layer_value(2,true)
+	#	model.set_script(grabbable_script)
+	#	model.call("_ready")
+		
+func playImpactSound(volume: int):
+	match index:
+		0:
+			impact_audios.volume_db = volume
+			impact_audios.play()
+		1:
+			impact_audios2.volume_db = volume
+			impact_audios2.play()
+		2:
+			impact_audios3.volume_db = volume
+			impact_audios3.play()
+	index += 1
+	if index > 2:
+		index = 0
 """
 # On the rigid body:
 func _integrate_forces(state : PhysicsDirectBodyState3D):
