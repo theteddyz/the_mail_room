@@ -11,6 +11,7 @@ var is_called:bool = false
 var elevator_anim:AnimationPlayer
 var wall_anim:AnimationPlayer
 var cart:bool = false
+var floor_mesh
 #@onready var floor_indicator: MeshInstance3D = $WallWithElevatorEntrance/ElevatorEntrance/ElevatorEntranceIndicator
 # Called when the node enters the scene tree for the first time.
 
@@ -49,6 +50,13 @@ func call_elevator():
 			wall_anim.play("wall_door_open")
 
 func move_floors():
+	
+	for floor in get_tree().get_nodes_in_group("Real_Floor"):
+		if floor is CollisionShape3D:
+			floor.disabled = true
+		floor.visible = false
+	for floors in get_tree().get_nodes_in_group("Fake_Floor"):
+		floors.visible = true
 	if previous_floor > current_floor:
 		elevator_anim.play("door_close")
 		wall_anim.play("wall_door_close")
@@ -99,6 +107,12 @@ func set_floor(path,new_floor:int):
 	GameManager.goto_scene(path,new_floor)
 
 func load_floor():
+	for floor in get_tree().get_nodes_in_group("Real_Floor"):
+		if floor is CollisionShape3D:
+			floor.disabled = true
+		floor.visible = false
+	for floors in get_tree().get_nodes_in_group("Fake_Floor"):
+		floors.visible = true
 	var player = GameManager.get_player()
 	player.reparent(Elevator,true)
 	print(detector.mailcart_exists_in_elevator)
