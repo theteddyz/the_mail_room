@@ -13,6 +13,7 @@ var wall_anim:AnimationPlayer
 var cart:bool = false
 var floor_mesh
 var current_scene
+@export var locked = false
 #@onready var floor_indicator: MeshInstance3D = $WallWithElevatorEntrance/ElevatorEntrance/ElevatorEntranceIndicator
 # Called when the node enters the scene tree for the first time.
 
@@ -149,6 +150,13 @@ func load_floor():
 			floors.visible = false
 		elevator_anim.play("door_open")
 		wall_anim.play("wall_door_open")
+		
+		
+
+
+func close_doors():
+	elevator_anim.play("door_close")
+	wall_anim.play("wall_door_close")
 #func move_indicator(floor:int):
 	#if floor in floors:
 		#var target_rotation = floors[floor]
