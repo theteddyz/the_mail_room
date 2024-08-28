@@ -4,7 +4,7 @@ extends Area3D
 var game_objects = []
 var blacklist = ["Mailcart", "Radio", "Player"]
 var mailcart_exists_in_elevator = false
-
+@onready var root = $"../.."
 func _on_body_entered(body):
 	print("ENTERED: " + body.name)
 	if(!blacklist.has(body.name)):
@@ -21,5 +21,3 @@ func _on_body_exited(body):
 		game_objects = game_objects.filter(func(item): return item.name != body.name)
 	elif(body.name == "Player" and body.state is CartingState):
 		mailcart_exists_in_elevator = false
-		 
-

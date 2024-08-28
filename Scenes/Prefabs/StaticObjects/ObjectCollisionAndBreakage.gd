@@ -35,6 +35,7 @@ var previousIsPickedUp2:bool = false
 var previousIsPickedUp3:bool = false
 var rigidbody:RigidBody3D
 @export var initVolume:float = 0
+@export var instabreak: bool = false
 
 @export var onlyPlayOnCollision:bool = false
 
@@ -54,6 +55,8 @@ func _ready():
 	impact_audios3.max_polyphony = 50
 	broken = false
 	rigidbody = get_parent()
+	if instabreak:
+		break_object()
 
 func _physics_process(_delta: float):
 	var currentVelocity = rigidbody.linear_velocity
