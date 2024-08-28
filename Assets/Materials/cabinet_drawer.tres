@@ -6,7 +6,7 @@
 resource_local_to_scene = true
 resource_name = "FileCabinetDrawer.001"
 cull_mode = 2
-albedo_color = Color(0.412891, 0.514523, 0.700867, 1)
+albedo_color = Color(0.501961, 0.501961, 0.501961, 1)
 albedo_texture = ExtResource("1_leyvu")
 texture_filter = 2
 
@@ -26,6 +26,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [resource]
+resource_local_to_scene = true
 resource_name = "desk_Cube_129"
 _surfaces = [{
 "aabb": AABB(-0.233372, -0.184688, -0.0514388, 0.466743, 0.369386, 0.652136),

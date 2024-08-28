@@ -89,10 +89,7 @@ func _on_body_entered(body):
 	var currentAcceleration = (previousVelocity - rigidbody.linear_velocity);
 	var currentRotAccel = (previousRotation - rigidbody.angular_velocity);
 	var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
-	print("onlyPlayOnCollision: ",  onlyPlayOnCollision)
-	print("(rigidbody.is_picked_up or onlyPlayOnCollision) and impact > impact_threshold: ",  (rigidbody.is_picked_up or onlyPlayOnCollision) and impact > impact_threshold)
 	if((rigidbody.is_picked_up or onlyPlayOnCollision) and impact > impact_threshold):
-		print("this shit",  min(-40 + pow(impact,1.5),0) + initVolume)
 		var volume = min(-40 + pow(impact,1.5),0) + initVolume
 		if(destruction_audios != null and impact > destruction_threshold and !broken):
 			destruction_audios.play()
