@@ -33,7 +33,7 @@ func _ready():
 	mailcart.reparent(persistent_state, true)
 	set_colliders_enabled("Carting_Collider",true)
 	
-	cart_audio = mailcart.find_child("AudioStreamPlayer3D")
+	cart_audio = mailcart.find_child("AudioStreamPlayer3D2")
 	cart_audio.stream = preload("res://Assets/Audio/SoundFX/Cart.mp3")
 	cart_audio.volume_db = target_volume
 	

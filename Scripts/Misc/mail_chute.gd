@@ -15,6 +15,12 @@ func _ready():
 		chute_light.material_override = green_material
 		chute_light_green.visible = true
 
+func activate_chute():
+	chute_light.material_override = green_material
+	chute_light_red.visible = false
+	chute_light_green.visible = true
+	active = true
+
 func drop_packages():
 	if active:
 		for game_object in game_objects:
@@ -22,3 +28,7 @@ func drop_packages():
 			await !audio_player.playing
 			game_object.visible = true
 			game_object.freeze = false
+	chute_light_green.visible = false
+	chute_light_red.visible = true
+	chute_light.material_override = red_material
+	active = false
