@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://ce71rwirfiafw"]
+[gd_scene load_steps=36 format=4 uid="uid://ce71rwirfiafw"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_hork0"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_2qwev"]
@@ -7,8 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="4_6fufh"]
 [ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="4_nflhx"]
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="5_t6sno"]
+[ext_resource type="AudioStream" uid="uid://dpjw33ok63rwv" path="res://Assets/Audio/SoundFX/CabinetMovingFast.mp3" id="6_grpsm"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="6_huuqb"]
+[ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="7_7yygg"]
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="7_nth33"]
+[ext_resource type="AudioStream" uid="uid://bh7pseacjj5se" path="res://Assets/Audio/SoundFX/CabinetClosed.mp3" id="8_kp863"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="9_dga2v"]
 [ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/StaticObjects/keyboard_low_poly_2.tscn" id="10_wk3io"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
@@ -107,6 +111,36 @@ shadow_mesh = SubResource("ArrayMesh_3s30w")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cvogw"]
 points = PackedVector3Array(0.520555, 0.387969, -8.73804e-05, -1.96695e-06, 0.234543, 0.117251, 0.0232335, 0.224973, 0.117251, -1.96695e-06, 0.201656, 0.12622, 0.520555, -0.387969, -8.73804e-05, 0.520555, 0.387969, -0.0508162, -0.520559, 0.387969, -8.73804e-05, -0.0233394, 0.224973, 0.117251, -0.520559, -0.387969, -8.73804e-05, 0.520555, -0.387969, -0.0508162, 0.500581, 0.224821, -1.37594, -0.520559, 0.387969, -0.0508162, -0.520559, -0.387969, -0.0508162, 0.500581, -0.363816, -1.37594, -0.500687, 0.224821, -1.37594, -0.500687, -0.363816, -1.37594)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mjf3r"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("6_grpsm")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uflfa"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("7_7yygg")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_32lyv"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("8_kp863")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qtvk3"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("6_grpsm")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o45tc"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("7_7yygg")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1dong"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("8_kp863")
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8prsp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0jhtq"]
@@ -133,6 +167,7 @@ shape = SubResource("BoxShape3D_1ixxc")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00372458, 0.570121, -0.515287)
+visible = false
 shape = SubResource("BoxShape3D_40acm")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
@@ -181,6 +216,23 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246593, -0.000298202, -0.529209)
 
+[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="DrawerTop"]
+stream = SubResource("AudioStreamRandomizer_mjf3r")
+
+[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="DrawerTop"]
+stream = SubResource("AudioStreamRandomizer_uflfa")
+
+[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="DrawerTop"]
+stream = SubResource("AudioStreamRandomizer_32lyv")
+
+[node name="DrawerScript" type="Node3D" parent="DrawerTop" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+script = ExtResource("9_dga2v")
+drawerOpenedSound = NodePath("../DrawerAudioOpen")
+drawerClosedSound = NodePath("../DrawerAudioClose")
+drawerLoopSound = NodePath("../DrawerAudioLoop")
+drawerSliderJoint = NodePath("../SliderJoint3D2")
+volume = -20.0
+
 [node name="DrawerBottom" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.354336, 0.535279)
 collision_layer = 3
@@ -212,6 +264,23 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.574206)
 
+[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="DrawerBottom"]
+stream = SubResource("AudioStreamRandomizer_qtvk3")
+
+[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="DrawerBottom"]
+stream = SubResource("AudioStreamRandomizer_o45tc")
+
+[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="DrawerBottom"]
+stream = SubResource("AudioStreamRandomizer_1dong")
+
+[node name="DrawerScript" type="Node3D" parent="DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+script = ExtResource("9_dga2v")
+drawerOpenedSound = NodePath("../DrawerAudioOpen")
+drawerClosedSound = NodePath("../DrawerAudioClose")
+drawerLoopSound = NodePath("../DrawerAudioLoop")
+drawerSliderJoint = NodePath("../SliderJoint3D2")
+volume = -20.0
+
 [node name="GrabableObjectTemplate" parent="." instance=ExtResource("4_6fufh")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0862904, 1.54579, -0.245461)
 physics_material_override = SubResource("PhysicsMaterial_8prsp")
@@ -231,8 +300,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15408, 1.16596, 0.442178)
 physics_material_override = SubResource("PhysicsMaterial_0jhtq")
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1401, -0.00088501)
-size = Vector3(2, 0.0565338, 1.33014)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015564, 1.1401, -0.00088501)
+size = Vector3(2.68463, 0.0565338, 1.33014)
 
 [node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18616, 0.568491, 0.0245132)

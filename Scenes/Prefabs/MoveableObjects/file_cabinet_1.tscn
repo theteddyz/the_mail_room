@@ -1,18 +1,22 @@
-[gd_scene load_steps=24 format=4 uid="uid://c7e4imgjbdx46"]
+[gd_scene load_steps=40 format=4 uid="uid://c7e4imgjbdx46"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_kseb0"]
 [ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="3_5nqi4"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="3_7digd"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet.gd" id="4_rx22h"]
 [ext_resource type="ArrayMesh" uid="uid://cfgt0u4t6je4c" path="res://Assets/Materials/cabinet_drawer.tres" id="6_0wjlh"]
+[ext_resource type="AudioStream" uid="uid://dj4twnqnl5bav" path="res://Assets/Audio/SoundFX/Drawers/FileCabinetMovingFast.ogg" id="6_d2jk7"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="6_pe8d1"]
+[ext_resource type="AudioStream" uid="uid://cnvpf86l8qluv" path="res://Assets/Audio/SoundFX/Drawers/FileCabinetOpened.ogg" id="7_dnh37"]
 [ext_resource type="AudioStream" uid="uid://g7hkootm5ggm" path="res://Assets/Audio/SoundFX/Impacts/FileCabinetImpact1.ogg" id="7_hp6gr"]
+[ext_resource type="AudioStream" uid="uid://cbb0gh31cp0w5" path="res://Assets/Audio/SoundFX/Drawers/FileCabinetClosed.ogg" id="8_ls6f4"]
 [ext_resource type="AudioStream" uid="uid://xqyri14vxeqp" path="res://Assets/Audio/SoundFX/Impacts/FileCabinetImpact2.ogg" id="8_tnfiw"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="9_cofie"]
 [ext_resource type="AudioStream" uid="uid://dgu51wco4dqdj" path="res://Assets/Audio/SoundFX/Impacts/FileCabinetImpact3.ogg" id="9_hrl5c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5tvc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe0k1"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -44,7 +48,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_m5tvc"),
+"material": SubResource("StandardMaterial3D_xe0k1"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -78,6 +82,66 @@ size = Vector3(0.418316, 0.319839, 0.0119629)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2c4wt"]
 size = Vector3(0.0128282, 0.294437, 0.572388)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5bjvo"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("6_d2jk7")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q3b3w"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("7_dnh37")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qsn4c"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("8_ls6f4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sjfbg"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("6_d2jk7")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nkvpf"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("7_dnh37")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v7rky"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("8_ls6f4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xkmle"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("6_d2jk7")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0qv6t"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("7_dnh37")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5m073"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("8_ls6f4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jseit"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("6_d2jk7")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mn6nx"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("7_dnh37")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a62y1"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("8_ls6f4")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_77cjm"]
 playback_mode = 2
@@ -139,7 +203,6 @@ can_rotate = false
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer"]
 limit_enabled = true
 limit_upper = 0.5
-limit_spring_enabled = true
 limit_spring_damping = 2.0
 motor_enabled = true
 motor_max_force = 10.0
@@ -171,6 +234,24 @@ shape = SubResource("BoxShape3D_2c4wt")
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
 
+[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Drawer"]
+stream = SubResource("AudioStreamRandomizer_5bjvo")
+
+[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="Drawer"]
+stream = SubResource("AudioStreamRandomizer_q3b3w")
+
+[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Drawer"]
+stream = SubResource("AudioStreamRandomizer_qsn4c")
+
+[node name="DrawerScript" type="Node3D" parent="Drawer" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+script = ExtResource("9_cofie")
+drawerOpenedSound = NodePath("../DrawerAudioOpen")
+drawerClosedSound = NodePath("../DrawerAudioClose")
+drawerLoopSound = NodePath("../DrawerAudioLoop")
+drawerSliderJoint = NodePath("../JoltSliderJoint3D")
+volume = -20.0
+joint_axis_local = Vector3(0, 0, -1)
+
 [node name="Drawer2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181111, -0.345)
 collision_layer = 7
@@ -184,7 +265,6 @@ can_rotate = false
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer2"]
 limit_enabled = true
 limit_upper = 0.5
-limit_spring_enabled = true
 limit_spring_damping = 2.0
 motor_enabled = true
 motor_max_force = 10.0
@@ -216,6 +296,24 @@ shape = SubResource("BoxShape3D_2c4wt")
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
 
+[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Drawer2"]
+stream = SubResource("AudioStreamRandomizer_sjfbg")
+
+[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="Drawer2"]
+stream = SubResource("AudioStreamRandomizer_nkvpf")
+
+[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Drawer2"]
+stream = SubResource("AudioStreamRandomizer_v7rky")
+
+[node name="DrawerScript" type="Node3D" parent="Drawer2" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+script = ExtResource("9_cofie")
+drawerOpenedSound = NodePath("../DrawerAudioOpen")
+drawerClosedSound = NodePath("../DrawerAudioClose")
+drawerLoopSound = NodePath("../DrawerAudioLoop")
+drawerSliderJoint = NodePath("../JoltSliderJoint3D")
+volume = -20.0
+joint_axis_local = Vector3(0, 0, -1)
+
 [node name="Drawer3" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.186194, -0.345)
 collision_layer = 7
@@ -229,7 +327,6 @@ can_rotate = false
 [node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="Drawer3"]
 limit_enabled = true
 limit_upper = 0.5
-limit_spring_enabled = true
 limit_spring_damping = 2.0
 motor_enabled = true
 motor_max_force = 10.0
@@ -260,6 +357,24 @@ shape = SubResource("BoxShape3D_2c4wt")
 [node name="FileCabinetDrawer_001" type="MeshInstance3D" parent="Drawer3"]
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
+
+[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Drawer3"]
+stream = SubResource("AudioStreamRandomizer_xkmle")
+
+[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="Drawer3"]
+stream = SubResource("AudioStreamRandomizer_0qv6t")
+
+[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Drawer3"]
+stream = SubResource("AudioStreamRandomizer_5m073")
+
+[node name="DrawerScript" type="Node3D" parent="Drawer3" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+script = ExtResource("9_cofie")
+drawerOpenedSound = NodePath("../DrawerAudioOpen")
+drawerClosedSound = NodePath("../DrawerAudioClose")
+drawerLoopSound = NodePath("../DrawerAudioLoop")
+drawerSliderJoint = NodePath("../JoltSliderJoint3D")
+volume = -20.0
+joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Drawer4" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.552292, -0.345)
@@ -305,6 +420,24 @@ shape = SubResource("BoxShape3D_2c4wt")
 [node name="FileCabinetDrawer_001" type="MeshInstance3D" parent="Drawer4"]
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
+
+[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Drawer4"]
+stream = SubResource("AudioStreamRandomizer_jseit")
+
+[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="Drawer4"]
+stream = SubResource("AudioStreamRandomizer_mn6nx")
+
+[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Drawer4"]
+stream = SubResource("AudioStreamRandomizer_a62y1")
+
+[node name="DrawerScript" type="Node3D" parent="Drawer4" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+script = ExtResource("9_cofie")
+drawerOpenedSound = NodePath("../DrawerAudioOpen")
+drawerClosedSound = NodePath("../DrawerAudioClose")
+drawerLoopSound = NodePath("../DrawerAudioLoop")
+drawerSliderJoint = NodePath("../JoltSliderJoint3D")
+volume = -20.0
+joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
 script = ExtResource("6_pe8d1")
