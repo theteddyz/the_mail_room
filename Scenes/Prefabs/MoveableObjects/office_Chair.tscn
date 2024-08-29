@@ -1,7 +1,6 @@
 [gd_scene load_steps=29 format=4 uid="uid://vuyggo5xvbr3"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_x4tsj"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_oevh8"]
 [ext_resource type="Texture2D" uid="uid://dkm7r1g2w10pc" path="res://Assets/Textures/BlenderTextures/ChairWheel.png" id="2_t5u3t"]
 [ext_resource type="Texture2D" uid="uid://gr821vyans0e" path="res://Assets/Textures/BlenderTextures/Chair.png" id="3_wjdcr"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="5_rl2gy"]
@@ -48,6 +47,35 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_385aa")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vx7xd"]
+height = 0.446116
+radius = 0.0463298
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j2a2e"]
+height = 0.422716
+radius = 0.0802147
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ldf5r"]
+size = Vector3(0.638842, 0.139343, 0.639542)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_217yb"]
+height = 0.236645
+radius = 0.0651566
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5gbm1"]
+playback_mode = 2
+random_pitch = 1.3
+streams_count = 3
+stream_0/stream = ExtResource("6_kvsjt")
+stream_1/stream = ExtResource("7_g7qww")
+stream_2/stream = ExtResource("8_rikp2")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2rnrn"]
+friction = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rvayg"]
+radius = 0.0722747
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfa5u"]
 resource_name = "ChairWheel"
@@ -226,89 +254,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_f77ah")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_rvayg"]
-radius = 0.0722747
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_vx7xd"]
-height = 0.446116
-radius = 0.0463298
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_j2a2e"]
-height = 0.422716
-radius = 0.0802147
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ldf5r"]
-size = Vector3(0.638842, 0.139343, 0.639542)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_217yb"]
-height = 0.236645
-radius = 0.0651566
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5gbm1"]
-playback_mode = 2
-random_pitch = 1.3
-streams_count = 3
-stream_0/stream = ExtResource("6_kvsjt")
-stream_1/stream = ExtResource("7_g7qww")
-stream_2/stream = ExtResource("8_rikp2")
-
 [node name="Chair" type="RigidBody3D"]
 collision_layer = 7
 collision_mask = 7
+mass = 5.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.3, 0)
 script = ExtResource("1_x4tsj")
 
-[node name="Interpolator" type="Node3D" parent="."]
-script = ExtResource("2_oevh8")
-
-[node name="Chair" type="MeshInstance3D" parent="Interpolator"]
+[node name="Chair" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.279, 0, 0, 0, 0.279, 0, 0, 0, 0.279, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yo818")
 skeleton = NodePath("")
-
-[node name="ChairWheel" type="MeshInstance3D" parent="Interpolator/Chair"]
-transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, 1.56576, -2.62481, 0.0110283)
-mesh = SubResource("ArrayMesh_ryxau")
-skeleton = NodePath("")
-
-[node name="ChairWheel_001" type="MeshInstance3D" parent="Interpolator/Chair"]
-transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, 0.389302, -2.62551, -1.61452)
-mesh = SubResource("ArrayMesh_jov1v")
-skeleton = NodePath("")
-
-[node name="ChairWheel_002" type="MeshInstance3D" parent="Interpolator/Chair"]
-transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, -1.52179, -2.62548, -0.993525)
-mesh = SubResource("ArrayMesh_0tfwd")
-skeleton = NodePath("")
-
-[node name="ChairWheel_003" type="MeshInstance3D" parent="Interpolator/Chair"]
-transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, -1.52229, -2.62563, 1.01614)
-mesh = SubResource("ArrayMesh_702no")
-skeleton = NodePath("")
-
-[node name="ChairWheel_004" type="MeshInstance3D" parent="Interpolator/Chair"]
-transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, 0.388974, -2.62534, 1.63556)
-mesh = SubResource("ArrayMesh_a2vmn")
-skeleton = NodePath("")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.434717, -0.779752, -0.0166033)
-shape = SubResource("SphereShape3D_rvayg")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.106772, -0.779752, 0.432852)
-shape = SubResource("SphereShape3D_rvayg")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419287, -0.779752, 0.281178)
-shape = SubResource("SphereShape3D_rvayg")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419287, -0.785798, -0.295671)
-shape = SubResource("SphereShape3D_rvayg")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0971334, -0.785798, -0.47129)
-shape = SubResource("SphereShape3D_rvayg")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.960959, -0.27642, -0.0121928, 0.0804624, 0.321342, -0.943538, 0.264731, 0.905721, 0.331039, 0.0291452, -0.676713, -0.258971)
@@ -352,5 +309,110 @@ impact_audios = NodePath("../AudioStreamPlayer3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_5gbm1")
+
+[node name="RigidBody3D5" type="RigidBody3D" parent="."]
+transform = Transform3D(0.279, 0, 0, 0, 0.279, 0, 0, 0, 0.279, 0, -0.00999266, 0)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_2rnrn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D5"]
+transform = Transform3D(3.58423, 0, 0, 0, 3.58423, 0, 0, 0, 3.58423, 1.55812, -2.79481, -0.05951)
+shape = SubResource("SphereShape3D_rvayg")
+
+[node name="ChairWheel" type="MeshInstance3D" parent="RigidBody3D5"]
+transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, 1.56576, -2.62481, 0.0110283)
+mesh = SubResource("ArrayMesh_ryxau")
+skeleton = NodePath("")
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="."]
+transform = Transform3D(0.279, 0, 0, 0, 0.279, 0, 0, 0, 0.279, 0, -0.00999266, 0)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_2rnrn")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="RigidBody3D4"]
+transform = Transform3D(3.58423, 0, 0, 0, 3.58423, 0, 0, 0, 3.58423, 0.348148, -2.81648, -1.68921)
+shape = SubResource("SphereShape3D_rvayg")
+
+[node name="ChairWheel_001" type="MeshInstance3D" parent="RigidBody3D4"]
+transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, 0.389302, -2.62551, -1.61452)
+mesh = SubResource("ArrayMesh_jov1v")
+skeleton = NodePath("")
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+transform = Transform3D(0.279, 0, 0, 0, 0.279, 0, 0, 0, 0.279, 0, -0.00999266, 0)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_2rnrn")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D3"]
+transform = Transform3D(3.58423, 0, 0, 0, 3.58423, 0, 0, 0, 3.58423, -1.50282, -2.81648, -1.05975)
+shape = SubResource("SphereShape3D_rvayg")
+
+[node name="ChairWheel_002" type="MeshInstance3D" parent="RigidBody3D3"]
+transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, -1.52179, -2.62548, -0.993525)
+mesh = SubResource("ArrayMesh_0tfwd")
+skeleton = NodePath("")
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+transform = Transform3D(0.279, 0, 0, 0, 0.279, 0, 0, 0, 0.279, 0, -0.00999266, 0)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_2rnrn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RigidBody3D2"]
+transform = Transform3D(3.58423, 0, 0, 0, 3.58423, 0, 0, 0, 3.58423, -1.50282, -2.79481, 1.00781)
+shape = SubResource("SphereShape3D_rvayg")
+
+[node name="ChairWheel_003" type="MeshInstance3D" parent="RigidBody3D2"]
+transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, -1.52229, -2.62563, 1.01614)
+mesh = SubResource("ArrayMesh_702no")
+skeleton = NodePath("")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(0.279, 0, 0, 0, 0.279, 0, 0, 0, 0.279, 0, -0.00999266, 0)
+mass = 0.5
+physics_material_override = SubResource("PhysicsMaterial_2rnrn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(3.58423, 0, 0, 0, 3.58423, 0, 0, 0, 3.58423, 0.382695, -2.79481, 1.55144)
+shape = SubResource("SphereShape3D_rvayg")
+
+[node name="ChairWheel_004" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(0.0412471, 0, 0, 0, 0.0412471, 0, 0, 0, 0.0412471, 0.388974, -2.62534, 1.63556)
+mesh = SubResource("ArrayMesh_a2vmn")
+skeleton = NodePath("")
+
+[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="."]
+motor_enabled = true
+motor_max_torque = 0.004
+node_a = NodePath("..")
+node_b = NodePath("../RigidBody3D")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.109935, -0.720126, 0.455696)
+
+[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="."]
+motor_enabled = true
+motor_max_torque = 0.004
+node_a = NodePath("..")
+node_b = NodePath("../RigidBody3D2")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.424943, -0.723163, 0.284407)
+
+[node name="JoltHingeJoint3D3" type="JoltHingeJoint3D" parent="."]
+motor_enabled = true
+motor_max_torque = 0.004
+node_a = NodePath("..")
+node_b = NodePath("../RigidBody3D3")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.424321, -0.723114, -0.27801)
+
+[node name="JoltHingeJoint3D4" type="JoltHingeJoint3D" parent="."]
+motor_enabled = true
+motor_max_torque = 0.004
+node_a = NodePath("..")
+node_b = NodePath("../RigidBody3D4")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.108598, -0.726941, -0.450668)
+
+[node name="JoltHingeJoint3D5" type="JoltHingeJoint3D" parent="."]
+motor_enabled = true
+motor_max_torque = 0.004
+node_a = NodePath("..")
+node_b = NodePath("../RigidBody3D5")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.437987, -0.711981, 0.00193682)
 
 [connection signal="body_entered" from="." to="Node3D" method="_on_body_entered"]
