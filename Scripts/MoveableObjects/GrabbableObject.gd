@@ -172,8 +172,8 @@ func dropMe(throw:bool):
 		angular_damp = starting_angular_damp
 		set_collision_mask_value(3, true)
 		set_collision_layer_value(3,true)
-		if should_freeze:
-			sleeping = true
+		#if should_freeze:
+			#sleeping = true
 	else:
 		throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
 		EventBus.emitCustomSignal("dropped_object",[mass,self])
