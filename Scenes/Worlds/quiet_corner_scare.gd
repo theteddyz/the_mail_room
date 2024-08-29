@@ -16,7 +16,8 @@ func activate_scare(package_num:int):
 	if package_num == 5:
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		scare_5_vent_sound.playing = false
-		john_typing_sound_player.playing = false
+		if john_typing_sound_player != null:
+			john_typing_sound_player.playing = false
 		if cubicle_wall_monster != null:
 			cubicle_wall_monster.queue_free()
 		print("SCARE ACTIVATED!")
