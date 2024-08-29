@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=4 uid="uid://cjn3lnnygqyua"]
+
+[ext_resource type="Texture2D" uid="uid://bj6bss8y6myf8" path="res://Assets/Textures/BlenderTextures/PostItNotes15.png" id="1_tvdp8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvkab"]
+resource_name = "PostItNotes.014"
+cull_mode = 2
+albedo_texture = ExtResource("1_tvdp8")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8pfpw"]
+_surfaces = [{
+"aabb": AABB(-0.69213, -5.53101, -3.02138, 0.692151, 5.99566, 6.04274),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("BAADAAEABAAFAAMAAAAFAAQAAAACAAUABAADAAUABAABAAMAAAAFAAIAAAAEAAUA"),
+"lods": [2.66339, PackedByteArray("BAAFAAMAAAAFAAQABAADAAUAAAAEAAUA")],
+"name": "PostItNotes.014",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("AAAAAP7/AAD+/////v8AAAAAAAAAAAAA/v///wAAAAD//1HY/v8AAP//UdgAAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5w3ed"]
+resource_name = "desk_Cube_119"
+_surfaces = [{
+"aabb": AABB(-0.69213, -5.53101, -3.02138, 0.692151, 5.99566, 6.04274),
+"attribute_data": PackedByteArray("QK0Sp0Ct31Zz/RKnc/3fVkCtNGNArTRjc/00Y3P9NGMpqIymKahZVvZXjKb2V1lWKaiuYimormL2V65i9leuYg=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("BQADAAEABQAHAAMAAAAGAAQAAAACAAYADQALAA8ADQAJAAsACAAOAAoACAAMAA4A"),
+"lods": [2.66339, PackedByteArray("BAAGAAMAAAAGAAQADAALAA4ACAAMAA4A")],
+"material": SubResource("StandardMaterial3D_mvkab"),
+"name": "PostItNotes.014",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAP7/Ffz+/////v///wAAAAAAABX8/v///wAA/////1HY/v8V/P//Udj+//////9R2AAAFfz//1HYAAD//wAAAAD+/xX8/v////7///8AAAAAAAAV/P7///8AAP////9R2P7/Ffz//1HY/v//////UdgAABX8//9R2AAA///J++Q9/z//f8n75D3/P/9/yfvkPf8//3/J++Q9/z//fzUEGsL/v/9/NQQawv+//381BBrC/7//fzUEGsL/v/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8pfpw")
+
+[node name="PostItNotes_016" type="MeshInstance3D"]
+transform = Transform3D(0.0212138, 0, 0, 0, 0.0212138, 0, 0, 0, 0.0212138, 0, 0, 0)
+mesh = SubResource("ArrayMesh_5w3ed")
+skeleton = NodePath("")

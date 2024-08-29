@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c7e4imgjbdx46" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_1.tscn" id="2_kwvr4"]
 [ext_resource type="Texture2D" uid="uid://f21t4ualvxjr" path="res://Assets/Textures/BlenderTextures/FileCabinetDrawer.png" id="2_mo63m"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c43m3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wong"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -36,7 +36,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_c43m3"),
+"material": SubResource("StandardMaterial3D_6wong"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -98,11 +98,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_d7cgi")
 colorPreset = "Beige"
 
+[node name="JoltSliderJoint3D" parent="File_Cabinet/Drawer" index="0"]
+limit_spring_enabled = true
+
 [node name="FileCabinetDrawer_001" parent="File_Cabinet/Drawer" index="6"]
 mesh = SubResource("ArrayMesh_of6yr")
 
+[node name="JoltSliderJoint3D" parent="File_Cabinet/Drawer2" index="0"]
+limit_spring_enabled = true
+
 [node name="FileCabinetDrawer_001" parent="File_Cabinet/Drawer2" index="6"]
 mesh = SubResource("ArrayMesh_of6yr")
+
+[node name="JoltSliderJoint3D" parent="File_Cabinet/Drawer3" index="0"]
+limit_spring_enabled = true
 
 [node name="FileCabinetDrawer_001" parent="File_Cabinet/Drawer3" index="6"]
 mesh = SubResource("ArrayMesh_of6yr")
