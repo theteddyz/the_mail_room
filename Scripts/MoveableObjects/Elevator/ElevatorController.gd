@@ -72,10 +72,11 @@ func move_floors():
 			#var elevator_wall_anim = Elevator_Wall.find_child("wall_anim")
 			wall_anim.active = false
 			Elevator_Wall.visible = false
-			
+			Elevator_Wall.disable_wall_collision()
 		else:
 			elevator_anim.active = true
 			Elevator_Wall.visible = true
+			Elevator_Wall.enable_wall_collision()
 	else:
 		await close_doors()
 		

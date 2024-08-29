@@ -20,9 +20,7 @@ func _ready():
 func show_icon(object):
 	hide_all_icons(self)
 	var object_name
-	print("OBJECT: ", object)
-	print("OBJECT HELD: ", object_held)
-	if object_held is RigidBody3D:
+	if object_held is RigidBody3D and object_held is not Package:
 		object_name = "grabClosed"
 	else:
 		if !object_held:
