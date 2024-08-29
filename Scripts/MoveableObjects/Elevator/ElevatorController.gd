@@ -55,8 +55,7 @@ func call_elevator():
 func move_floors():
 	swap_floor_collider(false)
 	if previous_floor > current_floor:
-		elevator_anim.play("door_close")
-		wall_anim.play("wall_door_close")
+		await close_doors()
 		var player = GameManager.get_player()
 		#var elevatorbody = Elevator.find_child("Elevator_body")
 		player.reparent(Elevator,true)
@@ -78,8 +77,7 @@ func move_floors():
 			elevator_anim.active = true
 			Elevator_Wall.visible = true
 	else:
-		elevator_anim.play("door_close")
-		wall_anim.play("wall_door_close")
+		await close_doors()
 		
 		if detector.mailcart_exists_in_elevator == true:
 			var mail_cart = GameManager.get_mail_cart()
