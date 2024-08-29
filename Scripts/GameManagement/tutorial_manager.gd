@@ -3,6 +3,7 @@ extends Node3D
 var tutorial_started = false
 var step_1_played = false
 var step_2_played = false
+var step_3_played = false
 var player_radio 
 var mail_cart
 var package_in_mailcart
@@ -19,7 +20,7 @@ func _ready():
 	mail_cart = GameManager.get_mail_cart()
 	player = GameManager.get_player()
 	ScareDirector.connect("package_delivered", start_tutorial_end)
-	
+	EventBus.connect("object_held",start_tutorial_part_3)
 func _on_area_3d_body_entered(body):
 	if body.name == "Player" and !tutorial_started:
 		tutorial_started = true
@@ -35,12 +36,18 @@ func start_tutorial_end(num):
 	var player_audio_player = player_radio.get_stream_player()
 	await player_audio_player.finished
 	player_radio.play_narrator_sound(that_just_happened)
+	await get_tree().create_timer(3.0).timeout
 	player_radio.play_narrator_sound(tutorial_end)
+	await get_tree().create_timer(2.0).timeout
 	finance_floor_chute.activate_chute()
 	
-func start_tutorial_part_3():
-	player_radio.play_narrator_sound(tutorial_step_3)
+func start_tutorial_part_3(var1,var2):
+	if var2 is Package and step_2_played == true and !step_3_played:
+		await get_tree().create_timer(3.0).timeout
+		player_radio.play_narrator_sound(tutorial_step_3)
+		step_3_played = true
 func start_tutorial_part_2():
+	await get_tree().create_timer(2.0).timeout
 	player_radio.play_narrator_sound(tutorial_step_2)
 	step_2_played = true
 
