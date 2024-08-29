@@ -68,7 +68,7 @@
 [ext_resource type="AudioStream" uid="uid://te2s31axt3sw" path="res://Assets/Audio/SoundFX/DestructionKeyboard.mp3" id="64_f1iwi"]
 [ext_resource type="AudioStream" uid="uid://cm6glsbm01rrv" path="res://Assets/Audio/SoundFX/DestructionKeyboard2.mp3" id="65_i0wva"]
 [ext_resource type="AudioStream" uid="uid://cpm0jf72njux3" path="res://Assets/Audio/SoundFX/DestructionKeyboard3.mp3" id="66_xfilb"]
-[ext_resource type="Material" path="res://Assets/Models/key_broken_mat.tres" id="67_hxfsb"]
+[ext_resource type="Material" uid="uid://dux2bi8ysymko" path="res://Assets/Models/key_broken_mat.tres" id="67_hxfsb"]
 [ext_resource type="ArrayMesh" uid="uid://bhutryyktfuw5" path="res://Assets/Models/key_broken.tres" id="68_u1y6c"]
 [ext_resource type="PackedScene" uid="uid://cdj2vclj1i0vn" path="res://Scenes/Prefabs/StaticObjects/papers_low.tscn" id="71_0gc6t"]
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="72_8ewcv"]
@@ -688,7 +688,7 @@ size = Vector3(60.525, 1, 32.03)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_60xfd"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6llb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vtrr"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -720,7 +720,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_g6llb"),
+"material": SubResource("StandardMaterial3D_6vtrr"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -1335,7 +1335,7 @@ stream_0/stream = ExtResource("75_0e0pg")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c28bu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itvvu"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -1367,7 +1367,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_c28bu"),
+"material": SubResource("StandardMaterial3D_itvvu"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -1515,7 +1515,7 @@ stream_2/stream = ExtResource("87_k03jj")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rgjq0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o6ip"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ldsk"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -1547,7 +1547,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_7o6ip"),
+"material": SubResource("StandardMaterial3D_7ldsk"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -2621,10 +2621,10 @@ collision_mask = 19
 physics_material_override = SubResource("PhysicsMaterial_60xfd")
 
 [node name="Radio" parent="." instance=ExtResource("14_3vnu1")]
-transform = Transform3D(0.213418, -0.0010626, 0.105765, 0.000887375, 0.238188, 0.000602448, -0.105767, -0.000145766, 0.21342, -3.55959, 1.73602, -11.3585)
+transform = Transform3D(0.895997, -0.00446116, 0.444037, 0.00372548, 0.99999, 0.00252927, -0.444044, -0.000611962, 0.896005, -3.55959, 1.73602, -11.3585)
 
 [node name="PostItNotes_016" parent="Radio" instance=ExtResource("33_p462o")]
-transform = Transform3D(0.00034821, -0.00506471, -0.0758303, -0.0110798, 0.0750174, -0.0050613, 0.0751871, 0.0110783, -0.000394683, 0.666035, 0.784429, -0.31918)
+transform = Transform3D(9.71938e-05, -0.00141371, -0.0211664, -0.00309269, 0.0209395, -0.00141276, 0.0209869, 0.00309226, -0.000110164, 0.0617616, 0.215037, -0.0798807)
 
 [node name="Desks" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.172632, -5)
