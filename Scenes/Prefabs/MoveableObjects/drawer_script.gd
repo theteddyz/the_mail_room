@@ -18,6 +18,7 @@ var initial_offset: float
 @export var volume: float
 @export var joint_axis_local: Vector3 = Vector3(0, 0, 1)
 # Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	
 	body_a = get_node(body_a_path) as RigidBody3D
@@ -30,7 +31,9 @@ func _ready() -> void:
 	initial_offset = get_relative_position_along_joint_axis()
 
 func _physics_process(delta: float) -> void:
-	var velocityMagnitude = body_b.linear_velocity.length()
+	if body_b.sleeping:
+		return
+	var velocityMagnitude = abs((body_b.linear_velocity - body_a.linear_velocity).length())#abs(get_velocity_along_axis())
 	var relative_position = get_relative_position_along_joint_axis() - initial_offset
 
 	# Normalize the relative position based on the min and max distances
@@ -74,3 +77,17 @@ func get_relative_position_along_joint_axis() -> float:
 	var relative_position = relative_position_vector.dot(joint_axis_global.normalized())
 
 	return relative_position
+
+# Function to get the linear velocity along a specific axis
+func get_velocity_along_axis():
+	# Normalize the axis to ensure it's a unit vector
+	var joint_axis_global_a = body_a.global_transform.basis * joint_axis_local
+	var normalized_axis_a = joint_axis_global_a
+	var velocity_along_axis_a = body_a.linear_velocity.dot(normalized_axis_a)
+	
+	var joint_axis_global_b = body_b.global_transform.basis * joint_axis_local
+	var normalized_axis_b = joint_axis_global_b
+	var velocity_along_axis_b = body_b.linear_velocity.dot(normalized_axis_b)
+	
+	# Project the linear velocity onto the axis
+	return velocity_along_axis_a - velocity_along_axis_b

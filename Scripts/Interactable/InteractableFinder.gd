@@ -1,11 +1,14 @@
 extends RayCast3D
 var object_being_looked_at
 func _ready():
+	EventBus.connect("dropped_object", _dropped_object)
 	pass
 
 func _process(_delta):
 	_check_for_interactables()
 
+func _dropped_object(object,object2):
+	object_being_looked_at = null
 
 func _check_for_interactables():
 	var current_interactable = get_interactable()

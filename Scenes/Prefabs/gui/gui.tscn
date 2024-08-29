@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=31 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://betep1m6vblv0" path="res://Assets/TemporaryAssets/L_MOUSE.png" id="6_rp1kh"]
 [ext_resource type="Texture2D" uid="uid://dmaieugbx5o5v" path="res://Assets/TemporaryAssets/transparent-back-to-school-icon-idea-icon-light-bulb-icon-606d59b7138822.65835703161777912708-removebg-preview.png" id="6_vkuja"]
 [ext_resource type="Texture2D" uid="uid://clelsume2xjky" path="res://Assets/TemporaryAssets/transparnetmailicon.png" id="7_0rb4o"]
+[ext_resource type="Texture2D" uid="uid://bl6t2sn7pe3ga" path="res://Assets/TemporaryAssets/grabbed-hand-icon.png" id="7_3lnh2"]
 [ext_resource type="Texture2D" uid="uid://noleeqf87dxj" path="res://Assets/TemporaryAssets/Key_20220327175502.png" id="8_tht5l"]
 [ext_resource type="Script" path="res://Scripts/GUI/AdressDisplayer.gd" id="9_2tsae"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_control_icons.gd" id="10_s8154"]
@@ -222,6 +223,22 @@ offset_right = 106.557
 offset_bottom = 218.033
 texture = ExtResource("6_rp1kh")
 expand_mode = 1
+
+[node name="grabClosed" type="TextureRect" parent="IconManager"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -22.0
+offset_right = 88.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("7_3lnh2")
 
 [node name="light" type="TextureRect" parent="IconManager"]
 layout_mode = 1

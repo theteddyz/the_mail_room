@@ -39,6 +39,10 @@ var grab_point_indicator
 var player_cross_hair
 signal collided(other_body)
 
+var mouse_line: MeshInstance3D
+var is_grabbing_bool: bool = false
+var mouse_line_material: ORMMaterial3D
+
 func _ready():
 	if GameManager.get_player() != null:
 		player = GameManager.get_player()
@@ -55,6 +59,13 @@ func _ready():
 	pickup_timer = Timer.new()
 	pickup_timer.connect("timeout", Callable(self, "_on_pickup_timer_timeout"))
 	connect("body_entered",Callable(self,"_on_body_entered"))
+	mouse_line_material = ORMMaterial3D.new()
+	mouse_line_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mouse_line_material.albedo_color = Color(0.5,0.5,0.5)
+	#mouse_line_material.emission = Color(255,255,255)
+	#mouse_line_material.emission_intensity = 1
+	#mouse_line_material.emission_energy_multiplier = 1
+	#mouse_line_material.emission_enabled = true
 
 #Used by Both
 func _input(event):
@@ -78,9 +89,27 @@ func _process(_delta): #Tether the player to the object
 			is_tether_max_range = true;
 		else:
 			is_tether_max_range = false;
-func _physics_process(delta):
-	#if object_Interpolator:
-	#	object_Interpolator.setUpdate(true)
+		if is_picked_up and !is_grabbing_bool:
+			is_grabbing_bool = true
+			call_deferred("_init_mouse_line")
+	else:
+		if !is_picked_up and is_grabbing_bool:
+			is_grabbing_bool = false
+			mouse_line.queue_free()
+func _physics_process(delta):	
+	#if camera.global_transform.origin.distance_to(global_transform.origin) > 15:
+	#	sleeping = true
+		#visible = false
+	#else:
+		#visible = true
+#	var distance_squared = camera_position.distance_to(object_position)
+		
+	# Quick check: is the object too far away?
+	#if camera.global_transform.origin.distance_to(global_transform.origin) > 45:	
+		#visible = false
+#		return
+	#else:
+		#visible = true
 	if is_picked_up:
 		handle_pickup(delta)
 		update_rotation(delta)
@@ -165,7 +194,7 @@ func pickmeUp():
 	angular_damp = 10
 	set_collision_mask_value(3, false)
 	set_collision_layer_value(3,false)
-	EventBus.emitCustomSignal("object_held", [mass, get_parent()])
+	EventBus.emitCustomSignal("object_held", [mass, self])
 	is_picked_up = true
 
 func rotate_vector_global(offset: Vector3) -> Vector3:
@@ -179,10 +208,12 @@ func rotate_vector_global(offset: Vector3) -> Vector3:
 	return (relative_basis * offset)
 	
 func update_position(delta):
+	
 	var rotation_offset = rotate_vector_global(grab_offset)
 	var forward = -camera.global_transform.basis.z
 	var targetPosition: Vector3 = (camera.global_transform.origin + forward.normalized()*grab_distance) + -rotation_offset
 	var currentPosition:Vector3 = global_transform.origin
+	_update_mouse_line((camera.global_transform.origin + forward.normalized()*grab_distance),currentPosition + rotation_offset)
 	var directionTo:Vector3 = targetPosition - currentPosition
 	var distance:float = currentPosition.distance_to(targetPosition)
 	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
@@ -258,15 +289,83 @@ func _on_body_entered(body):
 		apply_impulse(transform.basis.z * (100 + mass),direction)
 
 func add_grab_point_indicator():
-	if player_raycast.is_colliding():
-		var collision_point = player_raycast.get_collision_point()
-		var local_collision_point = to_local(collision_point)
-		grab_point_indicator = grab_icon.instantiate()
-		grab_point_indicator.transform.origin = local_collision_point
-		player_cross_hair.hide()
-		add_child(grab_point_indicator)
+	EventBus.emitCustomSignal("show_icon",["grabClosed"])
+	pass
+	#if player_raycast.is_colliding():
+		#var collision_point = player_raycast.get_collision_point()
+		#var local_collision_point = to_local(collision_point)
+		#grab_point_indicator = grab_icon.instantiate()
+		#grab_point_indicator.transform.origin = local_collision_point
+		#player_cross_hair.hide()
+		#add_child(grab_point_indicator)
 
 func remove_grab_point_indicator():
-	if grab_point_indicator:
-		grab_point_indicator.queue_free()
-		player_cross_hair.show()
+	EventBus.emitCustomSignal("hide_icon",["grabClosed"])
+	pass
+	#if grab_point_indicator:
+	#	grab_point_indicator.queue_free()
+	#	player_cross_hair.show()
+
+func _init_mouse_line():
+
+	var result = await line(Vector3.ZERO, Vector3.ZERO, Color.WHITE)
+	mouse_line = result
+
+func _update_mouse_line(position1:Vector3, position2:Vector3):
+	if mouse_line != null:
+		var mouse_pos = position1
+		var mouse_line_immediate_mesh = mouse_line.mesh as ImmediateMesh
+		if mouse_pos != null:
+			var mouse_pos_V3:Vector3 = mouse_pos
+			mouse_line_immediate_mesh.clear_surfaces()
+			mouse_line_immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES,mouse_line_material)
+			mouse_line_immediate_mesh.surface_add_vertex(position2)
+			mouse_line_immediate_mesh.surface_add_vertex(position1)
+			mouse_line_immediate_mesh.surface_end()	
+
+func line(pos1: Vector3, pos2: Vector3, color = Color.WHITE, persist_ms = 0):
+	var mesh_instance := MeshInstance3D.new()
+	var immediate_mesh := ImmediateMesh.new()	
+
+	mesh_instance.mesh = immediate_mesh
+	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, mouse_line_material)
+	immediate_mesh.surface_add_vertex(pos1)
+	immediate_mesh.surface_add_vertex(pos2)
+	immediate_mesh.surface_end()
+
+	
+
+	return await final_cleanup(mesh_instance, persist_ms)
+	
+func final_cleanup(mesh_instance: MeshInstance3D, persist_ms: float):
+	get_tree().get_root().add_child(mesh_instance)
+	if persist_ms == 1:
+		await get_tree().physics_frame
+		mesh_instance.queue_free()
+	elif persist_ms > 0:
+		await get_tree().create_timer(persist_ms).timeout
+		mesh_instance.queue_free()
+	else:
+		return mesh_instance
+
+#func optimizations():
+#	var camera_transform = camera.global_transform
+#	var camera_position = camera_transform.origin
+#	var object_position = global_transform.origin
+	#if camera_position.distance_to(object_position) > 15:
+	#	sleeping = true
+		#visible = false
+	#else:
+		#visible = true
+
+
+
+#	var distance_squared = camera_position.distance_to(object_position)
+		
+	# Quick check: is the object too far away?
+#	if distance_squared > 45:
+#		visible = false
+#		return
+#	else:
+#		visible = true

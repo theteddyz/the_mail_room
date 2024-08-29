@@ -59,6 +59,8 @@ func _ready():
 		break_object()
 
 func _physics_process(_delta: float):
+	if rigidbody.sleeping:
+		return
 	var currentVelocity = rigidbody.linear_velocity
 	
 	var currentRotation = rigidbody.angular_velocity
@@ -67,7 +69,7 @@ func _physics_process(_delta: float):
 	var currentRotAccel = ((previousRotation - currentRotation)/_delta)*0.01;
 	
 	var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
-	if(impact > impact_threshold and !previousIsPickedUp2 and !onlyPlayOnCollision):
+	if(!previousIsPickedUp2 and !onlyPlayOnCollision and impact > impact_threshold):
 		var volume = min(-40 + pow(impact,1.5),0) + initVolume
 		if(destruction_audios != null and impact > destruction_threshold and !broken):
 			destruction_audios.play()

@@ -20,35 +20,37 @@ func _ready():
 func show_icon(object):
 	hide_all_icons(self)
 	var object_name
-	
-	if !object_held:
-		if "icon_type" in object:
-			object_name = object.icon_type
-			if object is Package:
-				object.show_label(object.package_partial_address)
-		elif object.name == "Handlebar":
-			object_name = "Drive"
-		else:
-			pass
-	elif object == object_held:
-		pass
-	elif object_held is Package:
-		match object.name:
-			"Mailcart":
-				object_name = "deliverable"
-			"MailboxStand":
-				object_name = "deliverable"
-			_:
-				if "icon_type" in object:
-					object_name = object.icon_type
-				else:
-					pass
+	print("OBJECT: ", object)
+	print("OBJECT HELD: ", object_held)
+	if object_held is RigidBody3D:
+		object_name = "grabClosed"
+	else:
+		if !object_held:
+			if "icon_type" in object:
+				object_name = object.icon_type
+				if object is Package:
+					object.show_label(object.package_partial_address)
+			elif object.name == "Handlebar":
+				object_name = "Drive"
+			else:
+				pass
+		elif object_held is Package:
+			match object.name:
+				"Mailcart":
+					object_name = "deliverable"
+				"MailboxStand":
+					object_name = "deliverable"
+				_:
+					if "icon_type" in object:
+						object_name = object.icon_type
+					else:
+						pass
 	if object_name != null:
-		if object_name in icons:
-			icons[object_name].show()
-		else:
-			pass
-			#icons["grab"].show
+			if object_name in icons:
+				icons[object_name].show()
+			else:
+				pass
+				#icons["grab"].show
 
 
 func hide_icon(object):
@@ -63,8 +65,13 @@ func hide_icon(object):
 
 
 func hide_all_icons(_object):
-	for icon in icons.values():
-		icon.hide()
+	if !object_held:
+		for icon in icons.values():
+			icon.hide()
+	else:
+		for icon in icons.values():
+			if icon.name != "grabClosed":
+				icon.hide()
 
 
 func held_object(_var1,var2):
