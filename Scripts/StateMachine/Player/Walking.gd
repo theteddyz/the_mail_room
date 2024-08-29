@@ -159,6 +159,8 @@ func handle_general_interaction():
 					collider.find_child("PackageDestination").deliver(package_last_held)
 					package_last_held = null
 					is_holding_package = false
+				else:
+					collider.grab()
 			"ButtonRB2":
 				collider.interact()
 			_:

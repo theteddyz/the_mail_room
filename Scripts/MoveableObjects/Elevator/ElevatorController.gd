@@ -55,8 +55,7 @@ func call_elevator():
 func move_floors():
 	swap_floor_collider(false)
 	if previous_floor > current_floor:
-		elevator_anim.play("door_close")
-		wall_anim.play("wall_door_close")
+		await close_doors()
 		var player = GameManager.get_player()
 		#var elevatorbody = Elevator.find_child("Elevator_body")
 		player.reparent(Elevator,true)
@@ -78,8 +77,7 @@ func move_floors():
 			elevator_anim.active = true
 			Elevator_Wall.visible = true
 	else:
-		elevator_anim.play("door_close")
-		wall_anim.play("wall_door_close")
+		await close_doors()
 		
 		if detector.mailcart_exists_in_elevator == true:
 			var mail_cart = GameManager.get_mail_cart()
@@ -115,6 +113,8 @@ func load_floor():
 		var mail_cart = GameManager.get_mail_cart()
 		mail_cart.reparent(Elevator,true)
 	if previous_floor > current_floor:
+		wall_anim.play("RESET")
+		elevator_anim.play("RESET")
 		anim.play("elevator_call_down")
 		await anim.animation_finished
 		var root = get_tree().root
@@ -124,6 +124,8 @@ func load_floor():
 		elevator_anim.play("door_open")
 		wall_anim.play("wall_door_open")
 	else:
+		elevator_anim.play("RESET")
+		wall_anim.play("RESET")
 		anim.play("elevator_call_up")
 		await anim.animation_finished
 		var root = get_tree().root
@@ -157,7 +159,10 @@ func swap_floor_collider(on:bool):
 
 func close_doors():
 	elevator_anim.play("door_close")
+	wall_anim.play("RESET")
+	await wall_anim.animation_finished
 	wall_anim.play("wall_door_close")
+	
 #func move_indicator(floor:int):
 	#if floor in floors:
 		#var target_rotation = floors[floor]
