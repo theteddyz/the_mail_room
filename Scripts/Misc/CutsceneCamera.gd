@@ -2,7 +2,7 @@ extends Camera3D
 
 @onready var world = $".."
 @onready var player = $"../Player"
-@onready var radio = $"../Radio"
+#@onready var radio = $"../Radio"
 @export var disable_cutScene:bool
 func _ready():
 	if !disable_cutScene:
@@ -14,7 +14,7 @@ func _ready():
 
 func playerMovementEnable():
 	#EventBus.emitCustomSignal("disable_player_movement",[false,true])
-	radio.stop_blinking()
+	#radio.stop_blinking()
 	queue_free()
 
 
