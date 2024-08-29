@@ -4,8 +4,9 @@ extends Node3D
 @export var camera: Camera3D
 @export var timer: Timer
 @export var closelight: SpotLight3D
+@onready var root = get_tree().root
 # TODO: CHANGE THIS NAME WHEN YOU'VE FIXED IT TO WORK WITH DIFFERENT SCENES
-@onready var we : WorldEnvironment = get_tree().root.get_node("world").find_child("WorldEnvironment")
+@onready var we : WorldEnvironment = root.get_child(root.get_child_count() - 1).find_child("WorldEnvironment")
 @onready var we_saturation_bright = 1.34
 @onready var we_contrast_bright = 1.16
 #@onready var we_brightness_bright = 0.95
