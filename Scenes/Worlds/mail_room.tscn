@@ -1197,7 +1197,6 @@ package_num = 6
 [node name="Package7" parent="." instance=ExtResource("22_o4qlx")]
 transform = Transform3D(1, 0, 0, 0, 0.819693, -0.572804, 0, 0.572804, 0.819693, -19.4692, 2.23437, -11.8425)
 visible = false
-collision_mask = 3
 freeze = true
 package_full_address = "Package 1
 Justin Davis

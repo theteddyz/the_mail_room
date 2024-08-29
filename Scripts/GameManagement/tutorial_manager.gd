@@ -2,9 +2,11 @@ extends Node3D
 
 var tutorial_started = false
 var step_1_played = false
+var step_2_played = false
 var player_radio 
 var mail_cart
 var package_in_mailcart
+var player
 var start_sound = preload("res://Assets/Audio/SoundFX/VoiceLines/IntroMailRoom2.ogg")
 var tutorial_step_1 = preload("res://Assets/Audio/SoundFX/VoiceLines/TutorialStep1.ogg")
 var tutorial_step_2 = preload("res://Assets/Audio/SoundFX/VoiceLines/TutorialStep2.ogg")
@@ -15,7 +17,9 @@ var that_just_happened = preload("res://Assets/Audio/SoundFX/VoiceLines/ThatJust
 func _ready():
 	player_radio = GameManager.get_player_radio()
 	mail_cart = GameManager.get_mail_cart()
+	player = GameManager.get_player()
 	ScareDirector.connect("package_delivered", start_tutorial_end)
+	
 func _on_area_3d_body_entered(body):
 	if body.name == "Player" and !tutorial_started:
 		tutorial_started = true
@@ -34,10 +38,11 @@ func start_tutorial_end(num):
 	player_radio.play_narrator_sound(tutorial_end)
 	finance_floor_chute.activate_chute()
 	
-
+func start_tutorial_part_3():
+	player_radio.play_narrator_sound(tutorial_step_3)
 func start_tutorial_part_2():
 	player_radio.play_narrator_sound(tutorial_step_2)
-	player_radio.play_narrator_sound(tutorial_step_3)
+	step_2_played = true
 
 func _process(delta):
 	if step_1_played and !package_in_mailcart:

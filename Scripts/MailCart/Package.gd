@@ -18,7 +18,6 @@ var package_material:MeshInstance3D
 var shader_material
 var text_displayer
 var is_picked_up = false
-var playerHead
 var player: CharacterBody3D
 var is_inspecting = false
 var is_returning = false
@@ -26,6 +25,7 @@ var lerp_speed = 5.0
 var inside_mail_cart:bool
 var starting_path
 var is_being_looked_at:bool
+var can_be_dropped_into_cart:bool = true
 func _ready():
 	package_material = get_child(0)
 	starting_path =  get_parent().name + "/" + name
@@ -88,7 +88,8 @@ func reset_highlight():
 		package_material.material_overlay.set_shader_parameter("outline_width", 0)
 func grabbed():
 	if player:
-		reparent(player.find_child("PackageHolder"), false)
+		var package_holder = player.find_child("PackageHolder")
+		reparent(player.find_child("PackageHolder"))
 	else :
 		player = GameManager.get_player()
 		var package_holder = player.find_child("PackageHolder")
@@ -97,6 +98,8 @@ func grabbed():
 	position = hand_position
 	rotation = hand_rotation
 	self.freeze = true
+	await get_tree().create_timer(2.0).timeout
+	can_be_dropped_into_cart = true
 
 func dropped():
 	if is_inspecting or is_returning:

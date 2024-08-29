@@ -148,7 +148,7 @@ func handle_general_interaction():
 		match collider.name:
 			mailcart.name:
 				if is_holding_package:
-					collider.add_package(package_last_held)
+					collider.add_package(package_last_held,true)
 					package_last_held = null
 					is_holding_package = false
 				else:

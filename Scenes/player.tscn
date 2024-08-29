@@ -197,6 +197,7 @@ autostart = true
 [node name="VisionRayCast" type="RayCast3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 target_position = Vector3(0, 7.08, -100)
 collision_mask = 4097
+debug_shape_thickness = 1
 
 [node name="LightLevelDetection" parent="Neck/Head/HeadbopRoot" node_paths=PackedStringArray("player", "camera", "timer", "closelight") instance=ExtResource("8_6f6ef")]
 player = NodePath("../../../..")
@@ -211,6 +212,7 @@ wait_time = 0.75
 target_position = Vector3(0, 0, -2)
 collision_mask = 8323
 collide_with_areas = true
+debug_shape_thickness = 1
 script = ExtResource("5_fh3d4")
 
 [node name="StandingObstructionRaycasts" type="Node3D" parent="Neck/Head"]

@@ -93,14 +93,15 @@ func grab_current_package():
 		print("No packages to grab")
 
 # Function to add a package to the game_objects array
-func add_package(package: Package):
+func add_package(package: Package,dropped:bool):
 		if !game_objects.has(package):
 			package.global_position = Vector3.ZERO
 			package.global_rotation = Vector3.ZERO
 			package.set_collision_layer_value(2,false)
 			package.inside_mail_cart = true
 			game_objects.append(package)
-			EventBus.emitCustomSignal("dropped_object", [0,package])
+			if dropped:
+				EventBus.emitCustomSignal("dropped_object", [0,package])
 			sort_packages_by_order()
 			calculate_spacing()
 
@@ -119,7 +120,8 @@ func calculate_spacing():
 # Placeholder function to move package to cart
 func move_package_to_cart(package: Package, _position: float):
 	package_picked_up = false
-	package.reparent(self, false)
+	if package.get_parent() != self:
+		package.reparent(self)
 	package.rotation_degrees = package.cart_rotation
 	package.position = Vector3(0, package.cart_position.y, _position)
 	pass
@@ -149,5 +151,6 @@ func save():
 
 func _on_area_3d_body_entered(body):
 	print(body)
-	if body is Package:
-		add_package(body)
+	if body is Package and body.can_be_dropped_into_cart:
+		body.can_be_dropped_into_cart = false
+		add_package(body,false)

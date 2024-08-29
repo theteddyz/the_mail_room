@@ -39,26 +39,21 @@ func call_elevator():
 				await anim.animation_finished
 				elevator_anim.play("door_open")
 				wall_anim.play("wall_door_open")
-				await wall_anim.animation_finished
+				await elevator_anim.animation_finished
 			else:
 				anim.play("elevator_call_up")
 				current_floor = player_floor
 				await anim.animation_finished
 				elevator_anim.play("door_open")
 				wall_anim.play("wall_door_open")
-				await wall_anim.animation_finished
+				await elevator_anim.animation_finished
 		else:
 			elevator_anim.play("door_open")
 			wall_anim.play("wall_door_open")
+			await elevator_anim
 
 func move_floors():
-	
-	for floor in get_tree().get_nodes_in_group("Real_Floor"):
-		if floor is CollisionShape3D:
-			floor.disabled = true
-		floor.visible = false
-	for floors in get_tree().get_nodes_in_group("Fake_Floor"):
-		floors.visible = true
+	swap_floor_collider(false)
 	if previous_floor > current_floor:
 		elevator_anim.play("door_close")
 		wall_anim.play("wall_door_close")
@@ -85,6 +80,7 @@ func move_floors():
 	else:
 		elevator_anim.play("door_close")
 		wall_anim.play("wall_door_close")
+		
 		if detector.mailcart_exists_in_elevator == true:
 			var mail_cart = GameManager.get_mail_cart()
 			mail_cart.reparent(Elevator,true)
@@ -94,6 +90,7 @@ func move_floors():
 			await wall_anim.animation_finished
 		else:
 			await elevator_anim.animation_finished
+			
 		anim.play("elevator_move_up")
 		await anim.animation_finished
 		if current_floor < 0:
@@ -110,12 +107,7 @@ func set_floor(path,new_floor:int):
 	GameManager.goto_scene(path,new_floor)
 
 func load_floor():
-	for floor in get_tree().get_nodes_in_group("Real_Floor"):
-		if floor is CollisionShape3D:
-			floor.disabled = true
-		floor.visible = false
-	for floors in get_tree().get_nodes_in_group("Fake_Floor"):
-		floors.visible = true
+	swap_floor_collider(false)
 	var player = GameManager.get_player()
 	player.reparent(Elevator,true)
 	print(detector.mailcart_exists_in_elevator)
@@ -128,12 +120,7 @@ func load_floor():
 		var root = get_tree().root
 		current_scene = root.get_child(root.get_child_count() - 1)
 		player.reparent(current_scene)
-		for floor in get_tree().get_nodes_in_group("Real_Floor"):
-			if floor is CollisionShape3D:
-				floor.disabled = false
-			floor.visible = true
-		for floors in get_tree().get_nodes_in_group("Fake_Floor"):
-			floors.visible = false
+		swap_floor_collider(true)
 		elevator_anim.play("door_open")
 		wall_anim.play("wall_door_open")
 	else:
@@ -142,17 +129,31 @@ func load_floor():
 		var root = get_tree().root
 		current_scene = root.get_child(root.get_child_count() - 1)
 		player.reparent(current_scene)
-		for floor in get_tree().get_nodes_in_group("Real_Floor"):
-			if floor is CollisionShape3D:
-				floor.disabled = false
-			floor.visible = true
-		for floors in get_tree().get_nodes_in_group("Fake_Floor"):
-			floors.visible = false
+		swap_floor_collider(true)
 		elevator_anim.play("door_open")
 		wall_anim.play("wall_door_open")
 		
 		
 
+func swap_floor_collider(on:bool):
+	if on:
+		for floor in get_tree().get_nodes_in_group("Real_Floor"):
+			if floor is CollisionShape3D:
+				var collider:StaticBody3D = floor.get_parent()
+				collider.set_collision_layer_value(3,true)
+				collider.set_collision_layer_value(5,true)
+			floor.visible = true
+		for floors in get_tree().get_nodes_in_group("Fake_Floor"):
+			floors.visible = false
+	else:
+		for floor in get_tree().get_nodes_in_group("Real_Floor"):
+			if floor is CollisionShape3D:
+				var collider:StaticBody3D = floor.get_parent()
+				collider.set_collision_layer_value(5,false)
+				collider.set_collision_layer_value(3,false)
+			floor.visible = false
+	for floors in get_tree().get_nodes_in_group("Fake_Floor"):
+		floors.visible = true
 
 func close_doors():
 	elevator_anim.play("door_close")
