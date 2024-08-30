@@ -26,15 +26,15 @@ func timerdown():
 func _process(delta):
 	if we != null:
 		if(darken):			
-			we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we.properties["adjustment_saturation"] * we.saturation_darken_factor, delta * 1.25)
+			we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we.properties["adjustment_saturation"] * we.saturation_darken_factor, delta * 0.85)
 			we.environment.adjustment_contrast = lerp(we.environment.adjustment_contrast, we.properties["adjustment_contrast"] * we.contrast_darken_factor, delta * 1.25)
-			closelight.light_energy = lerp(closelight.light_energy, 0.82, delta * 1.25)
+			closelight.light_energy = lerp(closelight.light_energy, 0.82, delta * 0.85)
 			if(lightvalue >= we.light_value):
 				darken = false
 		else:
 			we.environment.adjustment_contrast = lerp(we.environment.adjustment_contrast, we.properties["adjustment_contrast"], delta * 1.25)
-			we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we.properties["adjustment_saturation"], delta * 1.25)
-			closelight.light_energy = lerp(closelight.light_energy, 0.0, delta * 1.25)
+			we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we.properties["adjustment_saturation"], delta * 0.85)
+			closelight.light_energy = lerp(closelight.light_energy, 0.0, delta * 0.85)
 			if(lightvalue <= we.dark_value):
 				darken = true
 

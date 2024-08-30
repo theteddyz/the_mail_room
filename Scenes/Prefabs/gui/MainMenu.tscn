@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://mr4e6e8n5u4"]
+[gd_scene load_steps=3 format=3 uid="uid://baptcuq8kyfxi"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/MainMenu.gd" id="1_i6cvx"]
 [ext_resource type="FontFile" uid="uid://dbs2h2vl8oxig" path="res://Assets/Fonts/LEMONMILK-Medium.otf" id="2_3fwka"]

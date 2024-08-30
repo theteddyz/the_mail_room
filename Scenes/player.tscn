@@ -206,7 +206,7 @@ timer = NodePath("Refresh Timer")
 closelight = NodePath("SpotLight3D")
 
 [node name="Refresh Timer" parent="Neck/Head/HeadbopRoot/LightLevelDetection" index="0"]
-wait_time = 0.75
+wait_time = 0.22
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -2)

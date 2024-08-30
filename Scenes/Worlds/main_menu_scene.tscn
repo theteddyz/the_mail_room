@@ -1,6 +1,6 @@
 [gd_scene load_steps=59 format=4 uid="uid://y63088eb8yc0"]
 
-[ext_resource type="PackedScene" uid="uid://mr4e6e8n5u4" path="res://Scenes/Prefabs/gui/MainMenu.tscn" id="1_pf1j0"]
+[ext_resource type="PackedScene" uid="uid://baptcuq8kyfxi" path="res://Scenes/Prefabs/gui/MainMenu.tscn" id="1_pf1j0"]
 [ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="2_qm23p"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="23_t6qun"]
 [ext_resource type="AudioStream" uid="uid://yj78mbdoc44c" path="res://Assets/Audio/Music/Mail Room Soundtrack 3.1.ogg" id="30_yjppp"]
