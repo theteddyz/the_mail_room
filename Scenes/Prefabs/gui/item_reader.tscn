@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2x4onytkpeym"]
+[gd_scene load_steps=4 format=3 uid="uid://d2x4onytkpeym"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/ItemReader.gd" id="1_psbv5"]
 [ext_resource type="FontFile" uid="uid://s8snq2lwjjdn" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="2_r6c4b"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i78bo"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 0.615686)
+border_color = Color(0.288518, 0.288518, 0.288518, 1)
+border_blend = true
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+shadow_size = 12
+
 [node name="ItemReader" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +34,7 @@ offset_right = -374.0
 offset_bottom = -137.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i78bo")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
