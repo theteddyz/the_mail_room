@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://4fxwnbd4a3u5"]
+[gd_scene load_steps=7 format=4 uid="uid://4fxwnbd4a3u5"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_38wlv"]
 
@@ -43,6 +43,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e1xag")
 
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_qpip4"]
+size = Vector2(8.80645, 10.8486)
+
 [node name="StaticBody3D" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
 collision_layer = 133
@@ -59,3 +62,7 @@ size = Vector3(8.75331, 10.4639, 0.317383)
 [node name="WallTall" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_sykkp")
 skeleton = NodePath("")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.05461, 0)
+occluder = SubResource("QuadOccluder3D_qpip4")

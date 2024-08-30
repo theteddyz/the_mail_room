@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://ceasmrd6qawc5"]
+[gd_scene load_steps=29 format=4 uid="uid://ceasmrd6qawc5"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_iji0o"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_0c8nb"]
@@ -74,6 +74,9 @@ shadow_mesh = SubResource("ArrayMesh_hsori")
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gtk4"]
 size = Vector3(1.88855, 3.82867, 1)
 
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ng8e4"]
+size = Vector3(1.89377, 3.93951, 0.221408)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykqxa"]
 size = Vector3(3.16969, 11.8827, 0.252686)
 
@@ -114,6 +117,15 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tf0tk")
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_h44wc"]
+size = Vector3(3.44832, 12.1035, 0.366039)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ds2dm"]
+size = Vector3(3.44832, 12.1035, 0.366039)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_xjnij"]
+size = Vector3(2.11129, 7.96306, 0.366039)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
@@ -190,6 +202,10 @@ script = ExtResource("6_12o50")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0072632, 2.0184, 0)
 shape = SubResource("BoxShape3D_2gtk4")
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0292662, 1.97721, 0)
+occluder = SubResource("BoxOccluder3D_ng8e4")
+
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79594, 6.02398, 0.00671387)
 shape = SubResource("BoxShape3D_ykqxa")
@@ -201,5 +217,17 @@ shape = SubResource("BoxShape3D_ykqxa")
 [node name="WallWithDoor2" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_yr636")
 skeleton = NodePath("")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66559, 6.05213, 0)
+occluder = SubResource("BoxOccluder3D_h44wc")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6986, 6.05213, 0)
+occluder = SubResource("BoxOccluder3D_ds2dm")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0415757, 7.95717, 0)
+occluder = SubResource("BoxOccluder3D_xjnij")
 
 [connection signal="body_entered" from="RigidBody3D2/Monster_Detector" to="RigidBody3D2/Monster_Detector" method="_on_body_entered"]

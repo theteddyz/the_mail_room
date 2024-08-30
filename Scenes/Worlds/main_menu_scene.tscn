@@ -586,25 +586,25 @@ transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.6
 [node name="meeting_room_wall_Door8" parent="Walls" instance=ExtResource("38_5ivdx")]
 transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, 0.945694, 0, 27.0653)
 
-[node name="Door_Lock" parent="Walls/meeting_room_wall_Door8/RigidBody3D2" index="1"]
+[node name="Door_Lock" parent="Walls/meeting_room_wall_Door8/RigidBody3D2" index="2"]
 locked = true
 
 [node name="meeting_room_wall_Door14" parent="Walls" instance=ExtResource("38_5ivdx")]
 transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, 6.572, 0, 27.064)
 
-[node name="Door_Lock" parent="Walls/meeting_room_wall_Door14/RigidBody3D2" index="1"]
+[node name="Door_Lock" parent="Walls/meeting_room_wall_Door14/RigidBody3D2" index="2"]
 locked = true
 
 [node name="meeting_room_wall_Door9" parent="Walls" instance=ExtResource("38_5ivdx")]
 transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, 17.9265, 0, 27.064)
 
-[node name="Door_Lock" parent="Walls/meeting_room_wall_Door9/RigidBody3D2" index="1"]
+[node name="Door_Lock" parent="Walls/meeting_room_wall_Door9/RigidBody3D2" index="2"]
 locked = true
 
 [node name="meeting_room_wall_Door10" parent="Walls" instance=ExtResource("38_5ivdx")]
 transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, 23.556, 0, 27.062)
 
-[node name="Door_Lock" parent="Walls/meeting_room_wall_Door10/RigidBody3D2" index="1"]
+[node name="Door_Lock" parent="Walls/meeting_room_wall_Door10/RigidBody3D2" index="2"]
 locked = true
 
 [node name="meeting_room_wall_Door5" parent="Walls" instance=ExtResource("38_5ivdx")]
@@ -1641,8 +1641,7 @@ light_color = Color(0.74902, 0.929412, 1, 1)
 light_specular = 1.45
 shadow_enabled = true
 shadow_blur = 0.0
-distance_fade_enabled = true
-distance_fade_begin = 35.0
+distance_fade_begin = 87.28
 distance_fade_shadow = 16.0
 distance_fade_length = 8.0
 omni_range = 5.835
@@ -1762,8 +1761,8 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 66.691
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 75.1856, -2.02795, -35.6038)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1.19249e-08, -0.121869, -0.992546, 0, 0.992546, -0.121869, 1, 1.45328e-09, 1.1836e-08, 15.289, 0.686, 25.591)
-fov = 20.1
+transform = Transform3D(-4.37114e-08, 0.0436194, -0.999048, 0, 0.999048, 0.0436194, 1, 1.90666e-09, -4.36698e-08, -2.216, 2.501, 24.446)
+fov = 15.0
 
 [node name="Cart" parent="." instance=ExtResource("23_t6qun")]
 transform = Transform3D(-0.829672, 0, 0.558252, 0, 1, 0, -0.558252, 0, -0.829672, 29.025, 0.991449, 24.9219)
@@ -1839,7 +1838,21 @@ size = Vector3(92.6323, 2, 85.514)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30_yjppp")
+volume_db = -4.0
 autoplay = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999963, 0.00858692, 0, -0.00858692, 0.999963, 10.3088, 4.38666, 21.344)
+light_energy = 0.425
+light_indirect_energy = 0.218
+light_volumetric_fog_energy = 0.77
+light_bake_mode = 0
+shadow_enabled = true
+distance_fade_begin = 35.8
+distance_fade_shadow = 16.0
+distance_fade_length = 8.0
+omni_range = 10.334
+omni_attenuation = 0.659754
 
 [editable path="Walls/meeting_room_wall_Door8"]
 [editable path="Walls/meeting_room_wall_Door14"]

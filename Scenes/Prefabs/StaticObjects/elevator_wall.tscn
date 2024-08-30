@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=4 uid="uid://dvcnb71rjht57"]
+[gd_scene load_steps=31 format=4 uid="uid://dvcnb71rjht57"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_dvx8u"]
+[ext_resource type="Script" path="res://Scripts/Misc/elevator_wall.gd" id="1_sm2po"]
 [ext_resource type="Texture2D" uid="uid://cflcp7dk343qt" path="res://Assets/Textures/BlenderTextures/ElevatorEntrance.png" id="2_khfgd"]
 [ext_resource type="Texture2D" uid="uid://cjvcemufdcvx8" path="res://Assets/Textures/BlenderTextures/ElevatorEntranceDoor.png" id="3_eja8a"]
 [ext_resource type="Texture2D" uid="uid://b7ccf5fmuf5wj" path="res://Assets/Textures/BlenderTextures/ElevatorIndicator.png" id="4_h75oa"]
@@ -217,7 +218,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mwng1")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0bqg2"]
-size = Vector3(2.01697, 7.73528, 0.225098)
+size = Vector3(1.96356, 7.73528, 0.225098)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_weoej"]
 size = Vector3(1.66351, 4.89081, 0.24353)
@@ -456,9 +457,19 @@ _data = {
 "wall_door_open": SubResource("Animation_kocns")
 }
 
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_obo21"]
+size = Vector3(2.03412, 7.78201, 1)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_iiw7v"]
+size = Vector3(2.03412, 7.78201, 1)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_pehdm"]
+size = Vector3(1.81622, 5.05227, 1)
+
 [node name="Elevator_Wall" type="StaticBody3D"]
-collision_layer = 129
-collision_mask = 129
+collision_layer = 133
+collision_mask = 133
+script = ExtResource("1_sm2po")
 
 [node name="Elevator_Wall" type="Node3D" parent="."]
 
@@ -507,7 +518,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84245, 3.87707, -0.0031738
 shape = SubResource("BoxShape3D_0bqg2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8429, 3.87707, -0.00317383)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8696, 3.87707, -0.00317383)
 shape = SubResource("BoxShape3D_0bqg2")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
@@ -521,3 +532,15 @@ libraries = {
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60718, 0)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8477, 3.9139, 0)
+occluder = SubResource("BoxOccluder3D_obo21")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8591, 3.9139, 0)
+occluder = SubResource("BoxOccluder3D_iiw7v")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00570261, 5.28189, 0)
+occluder = SubResource("BoxOccluder3D_pehdm")
