@@ -146,10 +146,10 @@ func save():
 	else:
 		var save_dict = {
 		"nodepath" : starting_path,
-		"pos_x" : cart_position.x, # Vector2 is not supported by JSON
-		"pos_y" : cart_position.y,
-		"pos_z" : cart_position.z,
-		"rotation.y" : rotation.y,
+		"pos_x" : 0, # Vector2 is not supported by JSON
+		"pos_y" : 0,
+		"pos_z" : 0,
+		"rotation.y" : 0,
 		"inside_mail_cart":inside_mail_cart,
 		}
 		return save_dict

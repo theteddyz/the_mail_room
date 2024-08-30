@@ -109,10 +109,10 @@ func load_floor():
 	swap_floor_collider(false)
 	var player = GameManager.get_player()
 	player.reparent(Elevator,true)
-	print(detector.mailcart_exists_in_elevator)
 	if detector.mailcart_exists_in_elevator == true:
 		var mail_cart = GameManager.get_mail_cart()
 		mail_cart.reparent(Elevator,true)
+		mail_cart.hard_reset_package_positions()
 	if previous_floor > current_floor:
 		wall_anim.play("RESET")
 		elevator_anim.play("RESET")

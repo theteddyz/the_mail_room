@@ -141,7 +141,7 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 	if(mailcart_in_elevator):
 		#mail_cart_reference.reparent(current_scene, false)
 		#mail_cart_reference.owner = current_scene
-		#mail_cart_reference._ready()
+		mail_cart_reference._ready()
 		pass
 	
 	
