@@ -2,7 +2,8 @@ extends Control
 @onready var display_text:RichTextLabel = $Panel/RichTextLabel
 @onready var panel:Panel = $Panel
 
-
+func _ready():
+	visible = false
 func display_item(text):
 	if visible == false:
 		display_text.text = "[center]" + text + "[/center]"
