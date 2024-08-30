@@ -25,6 +25,8 @@ func get_interactable():
 		var collider = get_collider()
 		if collider and (collider.collision_layer & 2) != 0:
 			return collider
+		elif collider and collider.has_method("display_text"):
+			return collider
 	return null
 
 

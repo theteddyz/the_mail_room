@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://8qbaxg8k1nrt"]
+[gd_scene load_steps=9 format=4 uid="uid://8qbaxg8k1nrt"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/readable_objectg.gd" id="1_k3dof"]
 [ext_resource type="Texture2D" uid="uid://dt3wgaigqqoj7" path="res://Assets/Textures/BlenderTextures/Papers.png" id="2_f1jkx"]
@@ -13,13 +13,13 @@ _surfaces = [{
 "aabb": AABB(-1.30652, 0, -1.14132, 2.61304, 1e-05, 2.28264),
 "format": 34896613377,
 "index_count": 192,
-"index_data": PackedByteArray(10, 0, 13, 0, 14, 0, 10, 0, 12, 0, 13, 0, 6, 0, 18, 0, 19, 0, 6, 0, 1, 0, 18, 0, 19, 0, 7, 0, 21, 0, 19, 0, 18, 0, 7, 0, 21, 0, 12, 0, 10, 0, 21, 0, 7, 0, 12, 0, 2, 0, 8, 0, 4, 0, 2, 0, 17, 0, 8, 0, 17, 0, 20, 0, 8, 0, 17, 0, 5, 0, 20, 0, 5, 0, 19, 0, 20, 0, 5, 0, 6, 0, 19, 0, 4, 0, 9, 0, 3, 0, 4, 0, 8, 0, 9, 0, 8, 0, 22, 0, 9, 0, 8, 0, 20, 0, 22, 0, 3, 0, 23, 0, 16, 0, 3, 0, 9, 0, 23, 0, 9, 0, 24, 0, 23, 0, 9, 0, 22, 0, 24, 0, 22, 0, 10, 0, 24, 0, 22, 0, 21, 0, 10, 0, 16, 0, 11, 0, 0, 0, 16, 0, 23, 0, 11, 0, 24, 0, 14, 0, 15, 0, 24, 0, 10, 0, 14, 0, 20, 0, 21, 0, 22, 0, 20, 0, 19, 0, 21, 0, 23, 0, 15, 0, 11, 0, 23, 0, 24, 0, 15, 0, 10, 0, 13, 0, 12, 0, 10, 0, 14, 0, 13, 0, 6, 0, 18, 0, 1, 0, 6, 0, 19, 0, 18, 0, 19, 0, 7, 0, 18, 0, 19, 0, 21, 0, 7, 0, 21, 0, 12, 0, 7, 0, 21, 0, 10, 0, 12, 0, 2, 0, 8, 0, 17, 0, 2, 0, 4, 0, 8, 0, 17, 0, 20, 0, 5, 0, 17, 0, 8, 0, 20, 0, 5, 0, 19, 0, 6, 0, 5, 0, 20, 0, 19, 0, 4, 0, 9, 0, 8, 0, 4, 0, 3, 0, 9, 0, 8, 0, 22, 0, 20, 0, 8, 0, 9, 0, 22, 0, 3, 0, 23, 0, 9, 0, 3, 0, 16, 0, 23, 0, 9, 0, 24, 0, 22, 0, 9, 0, 23, 0, 24, 0, 22, 0, 10, 0, 21, 0, 22, 0, 24, 0, 10, 0, 16, 0, 11, 0, 23, 0, 16, 0, 0, 0, 11, 0, 24, 0, 14, 0, 10, 0, 24, 0, 15, 0, 14, 0, 20, 0, 21, 0, 19, 0, 20, 0, 22, 0, 21, 0, 23, 0, 15, 0, 24, 0, 23, 0, 11, 0, 15, 0),
-"lods": [0.434885, PackedByteArray(10, 0, 18, 0, 14, 0, 21, 0, 18, 0, 10, 0, 19, 0, 18, 0, 21, 0, 17, 0, 18, 0, 19, 0, 20, 0, 19, 0, 21, 0, 17, 0, 19, 0, 20, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 10, 0, 17, 0, 20, 0, 8, 0, 8, 0, 20, 0, 22, 0, 3, 0, 17, 0, 8, 0, 24, 0, 10, 0, 14, 0, 22, 0, 10, 0, 24, 0, 8, 0, 22, 0, 9, 0, 9, 0, 22, 0, 24, 0, 3, 0, 8, 0, 9, 0, 23, 0, 24, 0, 14, 0, 9, 0, 24, 0, 23, 0, 3, 0, 9, 0, 23, 0, 23, 0, 14, 0, 11, 0, 3, 0, 23, 0, 11, 0, 10, 0, 14, 0, 18, 0, 24, 0, 14, 0, 10, 0, 23, 0, 14, 0, 24, 0, 23, 0, 11, 0, 14, 0, 3, 0, 11, 0, 23, 0, 9, 0, 23, 0, 24, 0, 3, 0, 23, 0, 9, 0, 22, 0, 24, 0, 10, 0, 9, 0, 24, 0, 22, 0, 3, 0, 9, 0, 8, 0, 8, 0, 9, 0, 22, 0, 3, 0, 8, 0, 17, 0, 22, 0, 10, 0, 21, 0, 21, 0, 10, 0, 18, 0, 8, 0, 22, 0, 20, 0, 20, 0, 22, 0, 21, 0, 17, 0, 8, 0, 20, 0, 19, 0, 21, 0, 18, 0, 17, 0, 19, 0, 18, 0, 20, 0, 21, 0, 19, 0, 17, 0, 20, 0, 19, 0)],
+"index_data": PackedByteArray("CgANAA4ACgAMAA0ABgASABMABgABABIAEwAHABUAEwASAAcAFQAMAAoAFQAHAAwAAgAIAAQAAgARAAgAEQAUAAgAEQAFABQABQATABQABQAGABMABAAJAAMABAAIAAkACAAWAAkACAAUABYAAwAXABAAAwAJABcACQAYABcACQAWABgAFgAKABgAFgAVAAoAEAALAAAAEAAXAAsAGAAOAA8AGAAKAA4AFAAVABYAFAATABUAFwAPAAsAFwAYAA8ACgANAAwACgAOAA0ABgASAAEABgATABIAEwAHABIAEwAVAAcAFQAMAAcAFQAKAAwAAgAIABEAAgAEAAgAEQAUAAUAEQAIABQABQATAAYABQAUABMABAAJAAgABAADAAkACAAWABQACAAJABYAAwAXAAkAAwAQABcACQAYABYACQAXABgAFgAKABUAFgAYAAoAEAALABcAEAAAAAsAGAAOAAoAGAAPAA4AFAAVABMAFAAWABUAFwAPABgAFwALAA8A"),
+"lods": [0.434885, PackedByteArray("CgASAA4AFQASAAoAEwASABUAEQASABMAFAATABUAEQATABQAFAAVABYAFgAVAAoAEQAUAAgACAAUABYAAwARAAgAGAAKAA4AFgAKABgACAAWAAkACQAWABgAAwAIAAkAFwAYAA4ACQAYABcAAwAJABcAFwAOAAsAAwAXAAsACgAOABIAGAAOAAoAFwAOABgAFwALAA4AAwALABcACQAXABgAAwAXAAkAFgAYAAoACQAYABYAAwAJAAgACAAJABYAAwAIABEAFgAKABUAFQAKABIACAAWABQAFAAWABUAEQAIABQAEwAVABIAEQATABIAFAAVABMAEQAUABMA")],
 "name": "Papers",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 25,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 51, 38, 0, 0, 255, 255, 0, 0, 203, 217, 0, 0, 65, 190, 0, 0, 0, 0, 0, 0, 32, 95, 0, 0, 25, 19, 0, 0, 177, 142, 0, 0, 140, 9, 0, 0, 32, 223, 0, 0, 229, 108, 0, 0, 143, 239, 0, 0, 88, 163, 0, 0, 222, 160, 0, 0, 229, 236, 0, 0, 32, 159, 0, 0, 255, 63, 0, 0, 144, 111, 0, 0, 140, 73, 0, 0, 222, 96, 0, 0, 255, 191, 0, 0, 111, 16, 0, 0, 166, 92, 0, 0, 77, 113, 0, 0, 114, 246, 0, 0, 189, 65, 0, 0, 255, 255, 0, 0, 77, 49, 0, 0, 140, 201, 0, 0, 222, 32, 0, 0, 25, 147, 0, 0, 144, 47, 0, 0, 166, 28, 0, 0, 177, 206, 0, 0, 114, 54, 0, 0, 110, 208, 0, 0, 88, 227, 0, 0, 255, 191, 0, 0, 229, 172, 0, 0, 143, 175, 0, 0, 114, 118, 0, 0, 110, 144, 0, 0, 114, 182, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 63, 0, 0, 25, 83, 0, 0, 111, 80, 0, 0, 140, 137, 0, 0)
+"vertex_data": PackedByteArray("AAAAADMmAAD//wAAy9kAAEG+AAAAAAAAIF8AABkTAACxjgAAjAkAACDfAADlbAAAj+8AAFijAADeoAAA5ewAACCfAAD/PwAAkG8AAIxJAADeYAAA/78AAG8QAACmXAAATXEAAHL2AAC9QQAA//8AAE0xAACMyQAA3iAAABmTAACQLwAAphwAALHOAAByNgAAbtAAAFjjAAD/vwAA5awAAI+vAABydgAAbpAAAHK2AAD/fwAA/38AAP8/AAAZUwAAb1AAAIyJAAA=")
 }]
 blend_shape_mode = 0
 
@@ -27,17 +27,17 @@ blend_shape_mode = 0
 resource_name = "desk_Cube_008"
 _surfaces = [{
 "aabb": AABB(-1.30652, 0, -1.14132, 2.61304, 1e-05, 2.28264),
-"attribute_data": PackedByteArray(33, 249, 73, 244, 77, 96, 172, 4, 195, 99, 16, 249, 112, 174, 65, 246, 25, 137, 67, 246, 109, 99, 53, 131, 1, 99, 218, 70, 89, 174, 218, 9, 255, 136, 72, 187, 97, 174, 69, 187, 189, 211, 239, 67, 24, 249, 81, 185, 209, 211, 247, 8, 33, 249, 117, 8, 20, 249, 101, 67, 19, 249, 89, 126, 200, 211, 236, 244, 163, 99, 34, 190, 249, 135, 24, 8, 141, 136, 73, 68, 223, 136, 45, 128, 87, 174, 26, 69, 84, 174, 56, 128, 191, 211, 242, 185, 185, 211, 242, 126, 33, 249, 73, 244, 77, 96, 172, 4, 195, 99, 16, 249, 112, 174, 65, 246, 25, 137, 67, 246, 109, 99, 53, 131, 1, 99, 218, 70, 89, 174, 218, 9, 255, 136, 72, 187, 97, 174, 69, 187, 189, 211, 239, 67, 24, 249, 81, 185, 209, 211, 247, 8, 33, 249, 117, 8, 20, 249, 101, 67, 19, 249, 89, 126, 200, 211, 236, 244, 163, 99, 34, 190, 249, 135, 24, 8, 141, 136, 73, 68, 223, 136, 45, 128, 87, 174, 26, 69, 84, 174, 56, 128, 191, 211, 242, 185, 185, 211, 242, 126),
+"attribute_data": PackedByteArray("IflJ9E1grATDYxD5cK5B9hmJQ/ZtYzWDAWPaRlmu2gn/iEi7Ya5Fu73T70MY+VG50dP3CCH5dQgU+WVDE/lZfsjT7PSjYyK++YcYCI2ISUTfiC2AV64aRVSuOIC/0/K5udPyfiH5SfRNYKwEw2MQ+XCuQfYZiUP2bWM1gwFj2kZZrtoJ/4hIu2GuRbu90+9DGPlRudHT9wgh+XUIFPllQxP5WX7I0+z0o2MivvmHGAiNiElE34gtgFeuGkVUrjiAv9PyubnT8n4="),
 "format": 34896613399,
 "index_count": 192,
-"index_data": PackedByteArray(10, 0, 13, 0, 14, 0, 10, 0, 12, 0, 13, 0, 6, 0, 18, 0, 19, 0, 6, 0, 1, 0, 18, 0, 19, 0, 7, 0, 21, 0, 19, 0, 18, 0, 7, 0, 21, 0, 12, 0, 10, 0, 21, 0, 7, 0, 12, 0, 2, 0, 8, 0, 4, 0, 2, 0, 17, 0, 8, 0, 17, 0, 20, 0, 8, 0, 17, 0, 5, 0, 20, 0, 5, 0, 19, 0, 20, 0, 5, 0, 6, 0, 19, 0, 4, 0, 9, 0, 3, 0, 4, 0, 8, 0, 9, 0, 8, 0, 22, 0, 9, 0, 8, 0, 20, 0, 22, 0, 3, 0, 23, 0, 16, 0, 3, 0, 9, 0, 23, 0, 9, 0, 24, 0, 23, 0, 9, 0, 22, 0, 24, 0, 22, 0, 10, 0, 24, 0, 22, 0, 21, 0, 10, 0, 16, 0, 11, 0, 0, 0, 16, 0, 23, 0, 11, 0, 24, 0, 14, 0, 15, 0, 24, 0, 10, 0, 14, 0, 20, 0, 21, 0, 22, 0, 20, 0, 19, 0, 21, 0, 23, 0, 15, 0, 11, 0, 23, 0, 24, 0, 15, 0, 35, 0, 38, 0, 37, 0, 35, 0, 39, 0, 38, 0, 31, 0, 43, 0, 26, 0, 31, 0, 44, 0, 43, 0, 44, 0, 32, 0, 43, 0, 44, 0, 46, 0, 32, 0, 46, 0, 37, 0, 32, 0, 46, 0, 35, 0, 37, 0, 27, 0, 33, 0, 42, 0, 27, 0, 29, 0, 33, 0, 42, 0, 45, 0, 30, 0, 42, 0, 33, 0, 45, 0, 30, 0, 44, 0, 31, 0, 30, 0, 45, 0, 44, 0, 29, 0, 34, 0, 33, 0, 29, 0, 28, 0, 34, 0, 33, 0, 47, 0, 45, 0, 33, 0, 34, 0, 47, 0, 28, 0, 48, 0, 34, 0, 28, 0, 41, 0, 48, 0, 34, 0, 49, 0, 47, 0, 34, 0, 48, 0, 49, 0, 47, 0, 35, 0, 46, 0, 47, 0, 49, 0, 35, 0, 41, 0, 36, 0, 48, 0, 41, 0, 25, 0, 36, 0, 49, 0, 39, 0, 35, 0, 49, 0, 40, 0, 39, 0, 45, 0, 46, 0, 44, 0, 45, 0, 47, 0, 46, 0, 48, 0, 40, 0, 49, 0, 48, 0, 36, 0, 40, 0),
-"lods": [0.434885, PackedByteArray(10, 0, 18, 0, 14, 0, 21, 0, 18, 0, 10, 0, 19, 0, 18, 0, 21, 0, 17, 0, 18, 0, 19, 0, 20, 0, 19, 0, 21, 0, 17, 0, 19, 0, 20, 0, 20, 0, 21, 0, 22, 0, 22, 0, 21, 0, 10, 0, 17, 0, 20, 0, 8, 0, 8, 0, 20, 0, 22, 0, 3, 0, 17, 0, 8, 0, 24, 0, 10, 0, 14, 0, 22, 0, 10, 0, 24, 0, 8, 0, 22, 0, 9, 0, 9, 0, 22, 0, 24, 0, 3, 0, 8, 0, 9, 0, 23, 0, 24, 0, 14, 0, 9, 0, 24, 0, 23, 0, 3, 0, 9, 0, 23, 0, 23, 0, 14, 0, 11, 0, 3, 0, 23, 0, 11, 0, 35, 0, 39, 0, 43, 0, 49, 0, 39, 0, 35, 0, 48, 0, 39, 0, 49, 0, 48, 0, 36, 0, 39, 0, 28, 0, 36, 0, 48, 0, 34, 0, 48, 0, 49, 0, 28, 0, 48, 0, 34, 0, 47, 0, 49, 0, 35, 0, 34, 0, 49, 0, 47, 0, 28, 0, 34, 0, 33, 0, 33, 0, 34, 0, 47, 0, 28, 0, 33, 0, 42, 0, 47, 0, 35, 0, 46, 0, 46, 0, 35, 0, 43, 0, 33, 0, 47, 0, 45, 0, 45, 0, 47, 0, 46, 0, 42, 0, 33, 0, 45, 0, 44, 0, 46, 0, 43, 0, 42, 0, 44, 0, 43, 0, 45, 0, 46, 0, 44, 0, 42, 0, 45, 0, 44, 0)],
+"index_data": PackedByteArray("CgANAA4ACgAMAA0ABgASABMABgABABIAEwAHABUAEwASAAcAFQAMAAoAFQAHAAwAAgAIAAQAAgARAAgAEQAUAAgAEQAFABQABQATABQABQAGABMABAAJAAMABAAIAAkACAAWAAkACAAUABYAAwAXABAAAwAJABcACQAYABcACQAWABgAFgAKABgAFgAVAAoAEAALAAAAEAAXAAsAGAAOAA8AGAAKAA4AFAAVABYAFAATABUAFwAPAAsAFwAYAA8AIwAmACUAIwAnACYAHwArABoAHwAsACsALAAgACsALAAuACAALgAlACAALgAjACUAGwAhACoAGwAdACEAKgAtAB4AKgAhAC0AHgAsAB8AHgAtACwAHQAiACEAHQAcACIAIQAvAC0AIQAiAC8AHAAwACIAHAApADAAIgAxAC8AIgAwADEALwAjAC4ALwAxACMAKQAkADAAKQAZACQAMQAnACMAMQAoACcALQAuACwALQAvAC4AMAAoADEAMAAkACgA"),
+"lods": [0.434885, PackedByteArray("CgASAA4AFQASAAoAEwASABUAEQASABMAFAATABUAEQATABQAFAAVABYAFgAVAAoAEQAUAAgACAAUABYAAwARAAgAGAAKAA4AFgAKABgACAAWAAkACQAWABgAAwAIAAkAFwAYAA4ACQAYABcAAwAJABcAFwAOAAsAAwAXAAsAIwAnACsAMQAnACMAMAAnADEAMAAkACcAHAAkADAAIgAwADEAHAAwACIALwAxACMAIgAxAC8AHAAiACEAIQAiAC8AHAAhACoALwAjAC4ALgAjACsAIQAvAC0ALQAvAC4AKgAhAC0ALAAuACsAKgAsACsALQAuACwAKgAtACwA")],
 "material": SubResource("StandardMaterial3D_ju2nc"),
 "name": "Papers",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 50,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 51, 38, 80, 251, 255, 255, 0, 0, 203, 217, 116, 249, 65, 190, 0, 0, 0, 0, 100, 252, 32, 95, 0, 0, 25, 19, 93, 251, 177, 142, 0, 0, 140, 9, 161, 251, 32, 223, 0, 0, 229, 108, 119, 252, 143, 239, 0, 0, 88, 163, 140, 251, 222, 160, 0, 0, 229, 236, 223, 250, 32, 159, 0, 0, 255, 63, 183, 251, 144, 111, 0, 0, 140, 73, 84, 251, 222, 96, 0, 0, 255, 191, 105, 251, 111, 16, 0, 0, 166, 92, 78, 251, 77, 113, 0, 0, 114, 246, 92, 251, 189, 65, 0, 0, 255, 255, 64, 251, 77, 49, 0, 0, 140, 201, 67, 251, 222, 32, 0, 0, 25, 147, 73, 251, 144, 47, 0, 0, 166, 28, 120, 251, 177, 206, 0, 0, 114, 54, 104, 252, 110, 208, 0, 0, 88, 227, 129, 250, 255, 191, 0, 0, 229, 172, 92, 251, 143, 175, 0, 0, 114, 118, 168, 251, 110, 144, 0, 0, 114, 182, 36, 251, 255, 127, 0, 0, 255, 127, 79, 251, 255, 63, 0, 0, 25, 83, 123, 251, 111, 80, 0, 0, 140, 137, 117, 251, 0, 0, 0, 0, 51, 38, 80, 251, 255, 255, 0, 0, 203, 217, 116, 249, 65, 190, 0, 0, 0, 0, 100, 252, 32, 95, 0, 0, 25, 19, 93, 251, 177, 142, 0, 0, 140, 9, 161, 251, 32, 223, 0, 0, 229, 108, 119, 252, 143, 239, 0, 0, 88, 163, 140, 251, 222, 160, 0, 0, 229, 236, 223, 250, 32, 159, 0, 0, 255, 63, 183, 251, 144, 111, 0, 0, 140, 73, 84, 251, 222, 96, 0, 0, 255, 191, 105, 251, 111, 16, 0, 0, 166, 92, 78, 251, 77, 113, 0, 0, 114, 246, 92, 251, 189, 65, 0, 0, 255, 255, 64, 251, 77, 49, 0, 0, 140, 201, 67, 251, 222, 32, 0, 0, 25, 147, 73, 251, 144, 47, 0, 0, 166, 28, 120, 251, 177, 206, 0, 0, 114, 54, 104, 252, 110, 208, 0, 0, 88, 227, 129, 250, 255, 191, 0, 0, 229, 172, 92, 251, 143, 175, 0, 0, 114, 118, 168, 251, 110, 144, 0, 0, 114, 182, 36, 251, 255, 127, 0, 0, 255, 127, 79, 251, 255, 63, 0, 0, 25, 83, 123, 251, 111, 80, 0, 0, 140, 137, 117, 251, 2, 133, 125, 189, 232, 134, 138, 188, 226, 131, 13, 190, 244, 132, 132, 189, 174, 132, 167, 189, 207, 131, 23, 190, 195, 132, 157, 189, 118, 133, 67, 189, 151, 132, 179, 189, 253, 132, 128, 189, 232, 132, 138, 189, 3, 133, 125, 189, 245, 132, 132, 189, 18, 133, 117, 189, 15, 133, 119, 189, 9, 133, 122, 189, 216, 132, 146, 189, 221, 131, 16, 190, 215, 133, 19, 189, 245, 132, 132, 189, 167, 132, 171, 189, 47, 133, 103, 189, 3, 133, 125, 189, 213, 132, 148, 189, 219, 132, 145, 189, 126, 61, 252, 250, 139, 60, 22, 249, 14, 62, 27, 252, 133, 61, 10, 251, 168, 61, 80, 251, 23, 62, 47, 252, 157, 61, 58, 251, 68, 61, 135, 250, 179, 61, 102, 251, 128, 61, 0, 251, 139, 61, 22, 251, 125, 61, 250, 250, 132, 61, 8, 251, 118, 61, 236, 250, 119, 61, 239, 250, 122, 61, 245, 250, 147, 61, 37, 251, 16, 62, 32, 252, 19, 61, 39, 250, 132, 61, 8, 251, 171, 61, 87, 251, 103, 61, 206, 250, 125, 61, 251, 250, 148, 61, 40, 251, 145, 61, 34, 251)
+"vertex_data": PackedByteArray("AAAAADMmUPv//wAAy9l0+UG+AAAAAGT8IF8AABkTXfuxjgAAjAmh+yDfAADlbHf8j+8AAFijjPveoAAA5ezf+iCfAAD/P7f7kG8AAIxJVPveYAAA/79p+28QAACmXE77TXEAAHL2XPu9QQAA//9A+00xAACMyUP73iAAABmTSfuQLwAAphx4+7HOAAByNmj8btAAAFjjgfr/vwAA5axc+4+vAABydqj7bpAAAHK2JPv/fwAA/39P+/8/AAAZU3v7b1AAAIyJdfsAAAAAMyZQ+///AADL2XT5Qb4AAAAAZPwgXwAAGRNd+7GOAACMCaH7IN8AAOVsd/yP7wAAWKOM+96gAADl7N/6IJ8AAP8/t/uQbwAAjElU+95gAAD/v2n7bxAAAKZcTvtNcQAAcvZc+71BAAD//0D7TTEAAIzJQ/veIAAAGZNJ+5AvAACmHHj7sc4AAHI2aPxu0AAAWOOB+v+/AADlrFz7j68AAHJ2qPtukAAAcrYk+/9/AAD/f0/7/z8AABlTe/tvUAAAjIl1+wKFfb3ohoq84oMNvvSEhL2uhKe9z4MXvsOEnb12hUO9l4Szvf2EgL3ohIq9A4V9vfWEhL0ShXW9D4V3vQmFer3YhJK93YMQvteFE731hIS9p4SrvS+FZ70DhX291YSUvduEkb1+Pfz6izwW+Q4+G/yFPQr7qD1Q+xc+L/ydPTr7RD2H+rM9ZvuAPQD7iz0W+309+vqEPQj7dj3s+nc97/p6PfX6kz0l+xA+IPwTPSf6hD0I+6s9V/tnPc76fT37+pQ9KPuRPSL7")
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xsfpa")
@@ -45,11 +45,16 @@ shadow_mesh = SubResource("ArrayMesh_xsfpa")
 [sub_resource type="BoxShape3D" id="BoxShape3D_xtd5x"]
 size = Vector3(0.266724, 0.00567627, 0.392334)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_m5jol"]
+size = Vector2(0.295, 0.395)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o746a"]
+albedo_color = Color(0, 0, 1, 1)
+
 [node name="Area3D" type="Area3D"]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 32768
+collision_mask = 32768
 script = ExtResource("1_k3dof")
-image_path = ExtResource("2_f1jkx")
 object_text = "testtesttest"
 
 [node name="Paper" type="MeshInstance3D" parent="."]
@@ -60,3 +65,9 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.967731, 0, 0.251985, 0, 1, 0, -0.251985, 0, 0.967731, 0.00450733, -0.000762939, 0.00910568)
 shape = SubResource("BoxShape3D_xtd5x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.971151, 0, 0.238466, 0, 1, 0, -0.238466, 0, 0.971151, 0, -0.00132245, -0.00208344)
+visible = false
+mesh = SubResource("PlaneMesh_m5jol")
+surface_material_override/0 = SubResource("StandardMaterial3D_o746a")

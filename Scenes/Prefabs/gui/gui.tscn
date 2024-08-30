@@ -155,7 +155,6 @@ visible = false
 layout_mode = 1
 
 [node name="ItemReader" parent="." instance=ExtResource("1_4tqc1")]
-visible = false
 layout_mode = 1
 
 [node name="look_icon" type="Control" parent="."]

@@ -4,6 +4,7 @@ var is_paused = false
 var is_reading = false
 var world
 var Icon_Manager 
+@onready var item_reader = $"../ItemReader"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var parent = get_parent()
@@ -49,6 +50,7 @@ func game_paused():
 	var controls = get_parent().find_child("Controls")
 	
 	Icon_Manager.hide()
+	item_reader.hide()
 	if controls.visible == true:
 		controls.hide()
 	
