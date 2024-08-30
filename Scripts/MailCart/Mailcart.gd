@@ -23,6 +23,8 @@ func _ready():
 	gui_anim = Gui.get_control_displayer()
 	EventBus.connect("object_looked_at",on_being_looked_at)
 	EventBus.connect("no_object_found",not_being_looked_at)
+	if game_objects.size() > 0:
+		hard_reset_package_positions()
 func _process(delta):
 	if !is_being_looked_at:
 		lowerAllPackages(delta)
@@ -104,7 +106,6 @@ func add_package(package: Package,dropped:bool):
 				EventBus.emitCustomSignal("dropped_object", [0,package])
 			sort_packages_by_order()
 			calculate_spacing()
-
 func calculate_spacing():
 	# Calculate the spacing
 	var total_packages = game_objects.size()
@@ -126,7 +127,15 @@ func move_package_to_cart(package: Package, _position: float):
 	package.position = Vector3(0, package.cart_position.y, _position)
 	pass
 
-
+func hard_reset_package_positions():
+	if game_objects.size() > 0:
+		for index in game_objects.size():
+			var package = game_objects[index]
+			package.global_position = Vector3.ZERO
+			package.global_rotation =Vector3.ZERO
+			package.rotation =Vector3.ZERO
+			package.position =Vector3.ZERO
+		calculate_spacing()
 
 func on_being_looked_at(node):
 	if node == self:
