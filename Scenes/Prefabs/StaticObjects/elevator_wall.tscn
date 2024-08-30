@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://dvcnb71rjht57"]
+[gd_scene load_steps=31 format=4 uid="uid://dvcnb71rjht57"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_dvx8u"]
 [ext_resource type="Script" path="res://Scripts/Misc/elevator_wall.gd" id="1_sm2po"]
@@ -457,6 +457,15 @@ _data = {
 "wall_door_open": SubResource("Animation_kocns")
 }
 
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_obo21"]
+size = Vector3(2.03412, 7.78201, 1)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_iiw7v"]
+size = Vector3(2.03412, 7.78201, 1)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_pehdm"]
+size = Vector3(1.81622, 5.05227, 1)
+
 [node name="Elevator_Wall" type="StaticBody3D"]
 collision_layer = 129
 collision_mask = 129
@@ -523,3 +532,15 @@ libraries = {
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60718, 0)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8477, 3.9139, 0)
+occluder = SubResource("BoxOccluder3D_obo21")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8591, 3.9139, 0)
+occluder = SubResource("BoxOccluder3D_iiw7v")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00570261, 5.28189, 0)
+occluder = SubResource("BoxOccluder3D_pehdm")

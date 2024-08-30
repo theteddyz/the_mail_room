@@ -42,6 +42,9 @@ signal collided(other_body)
 var mouse_line: MeshInstance3D
 var is_grabbing_bool: bool = false
 var mouse_line_material: ORMMaterial3D
+var currentPosition: Vector3
+var targetPosition: Vector3
+var rotationOffset: Vector3
 
 func _ready():
 	if GameManager.get_player() != null:
@@ -74,6 +77,8 @@ func _input(event):
 		
 func _process(_delta): #Tether the player to the object
 	if is_picked_up:
+		var forward = -camera.global_transform.basis.z
+		_update_mouse_line((camera.global_transform.origin + forward.normalized()*grab_distance),currentPosition + rotationOffset)
 		var playerPosition:Vector3 = player.transform.origin;
 		playerPosition.y = 0;
 		#var targetPosition: Vector3 = itemPos.global_transform.origin + -grab_offset
@@ -209,25 +214,25 @@ func rotate_vector_global(offset: Vector3) -> Vector3:
 	
 func update_position(delta):
 	
-	var rotation_offset = rotate_vector_global(grab_offset)
+	rotationOffset = rotate_vector_global(grab_offset)
 	var forward = -camera.global_transform.basis.z
-	var targetPosition: Vector3 = (camera.global_transform.origin + forward.normalized()*grab_distance) + -rotation_offset
-	var currentPosition:Vector3 = global_transform.origin
-	_update_mouse_line((camera.global_transform.origin + forward.normalized()*grab_distance),currentPosition + rotation_offset)
+	targetPosition = (camera.global_transform.origin + forward.normalized()*grab_distance) + -rotationOffset
+	currentPosition = global_transform.origin
+	
 	var directionTo:Vector3 = targetPosition - currentPosition
 	var distance:float = currentPosition.distance_to(targetPosition)
 	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
 	
 	force = force.limit_length(max_force + (mass * 15) + player.velocity.length())
 	
-	apply_force(force, rotation_offset)
+	apply_force(force, rotationOffset)
 	
 	if is_tether_max_range:
 		force = (camera.global_transform.origin - currentPosition).normalized() * mass * 15
 		apply_central_force(force)
 	#var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
 	
-	apply_force(-linear_velocity * 20, rotation_offset) #* angleBetweenForceAndVelocity)		
+	apply_force(-linear_velocity * 20, rotationOffset) #* angleBetweenForceAndVelocity)		
 	if distance > distance_threshold:
 		force_above_threshold_time += delta
 		if force_above_threshold_time >= drop_time_threshold:
@@ -349,15 +354,15 @@ func final_cleanup(mesh_instance: MeshInstance3D, persist_ms: float):
 	else:
 		return mesh_instance
 
-#func optimizations():
+#	func optimizations():
 #	var camera_transform = camera.global_transform
 #	var camera_position = camera_transform.origin
 #	var object_position = global_transform.origin
-	#if camera_position.distance_to(object_position) > 15:
-	#	sleeping = true
+#	if !freeze and camera.global_transform.origin.distance_to(global_transform.origin) > 15:
+	#	freeze = true
+	#	set_collision_layer(0)
+	#	set_collision_mask_value(0,false)
 		#visible = false
-	#else:
-		#visible = true
 
 
 

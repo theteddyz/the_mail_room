@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d1pv5poqi0p1s"]
+[gd_scene load_steps=22 format=4 uid="uid://d1pv5poqi0p1s"]
 
 [ext_resource type="PackedScene" uid="uid://dhy137f2q5r8l" path="res://Scenes/Prefabs/StaticObjects/cubicle.tscn" id="1_g8gtr"]
 [ext_resource type="Texture2D" uid="uid://btce4rkx2uanj" path="res://Assets/Textures/BlenderTextures/Cubicle.png" id="2_4d2k1"]
@@ -54,6 +54,18 @@ shadow_mesh = SubResource("ArrayMesh_4bgyg")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gg5xj"]
 
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_fpx86"]
+size = Vector2(1.68854, 2.79889)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_3xc2r"]
+size = Vector2(0.715242, 2.79889)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_8xu6j"]
+size = Vector2(3.96883, 2.79889)
+
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_0l6p1"]
+size = Vector2(3.96883, 2.79889)
+
 [node name="OfficeCubicle" type="Node3D"]
 
 [node name="Cubicle" parent="." instance=ExtResource("1_g8gtr")]
@@ -92,3 +104,23 @@ transform = Transform3D(0.109635, 0, 0.11037, 0, 0.146489, 0, -0.0786357, 0, 0.1
 
 [node name="MailboxStand" parent="." instance=ExtResource("12_4dkud")]
 transform = Transform3D(-0.1157, 0, 0.993284, 0, 1, 0, -0.993284, 0, -0.1157, 1.2728, 1.20068, -0.271863)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11661, 1.40433, -1.99869)
+occluder = SubResource("QuadOccluder3D_fpx86")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63643, 1.40433, -1.99869)
+occluder = SubResource("QuadOccluder3D_3xc2r")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0235367, 1.40433, 1.95011)
+occluder = SubResource("QuadOccluder3D_8xu6j")
+
+[node name="OccluderInstance3D4" type="OccluderInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.96477, 1.40433, -0.0107715)
+occluder = SubResource("QuadOccluder3D_0l6p1")
+
+[node name="OccluderInstance3D5" type="OccluderInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.97578, 1.40433, -0.0107715)
+occluder = SubResource("QuadOccluder3D_0l6p1")

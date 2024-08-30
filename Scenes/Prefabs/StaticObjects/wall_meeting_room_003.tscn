@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://crqdsibspsy67"]
+[gd_scene load_steps=15 format=4 uid="uid://crqdsibspsy67"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_4r62d"]
 
@@ -124,6 +124,12 @@ albedo_color = Color(1, 1, 1, 0.117647)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gb2xf"]
 size = Vector3(5.58075, 7.65668, 0.252686)
 
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_hvsur"]
+size = Vector3(5.76627, 4.54722, 0.221408)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_hdkqb"]
+size = Vector3(5.76627, 1.68847, 0.221408)
+
 [node name="WallMeetingRoom_006" type="StaticBody3D"]
 collision_layer = 133
 collision_mask = 133
@@ -147,3 +153,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_1n3yb")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0177665, 3.91097, 0.00671387)
 shape = SubResource("BoxShape3D_gb2xf")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0292662, 5.57636, 0)
+occluder = SubResource("BoxOccluder3D_hvsur")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0292662, 0.65655, 0)
+occluder = SubResource("BoxOccluder3D_hdkqb")

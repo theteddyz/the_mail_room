@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://cauvpuh74hlme"]
+[gd_scene load_steps=7 format=4 uid="uid://cauvpuh74hlme"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_yojct"]
 
@@ -43,6 +43,9 @@ shadow_mesh = SubResource("ArrayMesh_0i45b")
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7ywv"]
 size = Vector3(5.73676, 7.74063, 0.318298)
 
+[sub_resource type="QuadOccluder3D" id="QuadOccluder3D_s0wy8"]
+size = Vector2(5.67885, 7.80752)
+
 [node name="wall_room_001" type="StaticBody3D"]
 collision_layer = 133
 collision_mask = 133
@@ -55,3 +58,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0311722, 3.87229, 0.0188904)
 shape = SubResource("BoxShape3D_d7ywv")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75228, 0)
+occluder = SubResource("QuadOccluder3D_s0wy8")
