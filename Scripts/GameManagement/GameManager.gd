@@ -123,7 +123,6 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 	# Change to the new scene
 	var old_scene = current_scene
 	current_scene = s.instantiate()
-	
 	# Find and replace any potential player node in new scene
 	var new_player = current_scene.find_child("Player")
 	if(new_player != null):
@@ -163,6 +162,14 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 	# Add it to the active scene, as child of root.
 	get_tree().root.add_child(current_scene)
 	
+	# FIX FOR VOLUMETRIC BLEEDING THROUGH WALLS WHEN SCENESWITCHING
+	if current_scene.get_node("WorldEnvironment") != null:
+		var we = current_scene.get_node("WorldEnvironment")
+		var timer = get_tree().create_timer(0.2)
+		timer.timeout.connect(setWorldEnvironmentFog.bind(false, we))
+		var timer2 = get_tree().create_timer(0.4)
+		timer2.timeout.connect(setWorldEnvironmentFog.bind(true, we))
+	
 	# Reparent player and cart to elevator if necessary
 	if(is_not_scene_load):
 		pass
@@ -177,6 +184,10 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 	
 	if(is_not_scene_load):
 		elevator_reference.load_floor()
+
+# FIX FOR VOLUMETRIC BLEEDING THROUGH WALLS WHEN SCENESWITCHING
+func setWorldEnvironmentFog(flag, we):
+	we.environment.volumetric_fog_enabled = flag
 
 func load_node_variables():
 	if not FileAccess.file_exists(FILE_NAME):
