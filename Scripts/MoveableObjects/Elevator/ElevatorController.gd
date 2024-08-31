@@ -102,9 +102,17 @@ func set_floor(path,new_floor:int):
 	previous_floor = current_floor
 	current_floor = new_floor
 	await move_floors()
+	var loading_screen = Gui.get_loading_screen()
+	if loading_screen:
+		loading_screen.visible = true
+		loading_screen.show()
+		loading_screen.load_screen(path)
+	await get_tree().create_timer(5.0).timeout
 	GameManager.goto_scene(path,new_floor)
+	
 
 func load_floor():
+	
 	swap_floor_collider(false)
 	var player = GameManager.get_player()
 	player.reparent(Elevator,true)
