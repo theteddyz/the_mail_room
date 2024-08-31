@@ -22,5 +22,3 @@ func update_text():
 			var unique_text_mesh = text_mesh.mesh.duplicate()
 			unique_text_mesh.text = name_text
 			text_mesh.mesh = unique_text_mesh
-		else:
-			print("The MeshInstance3D does not have a set_text method or is invalid.")
