@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dunfx1l5jl7qd"]
+
+[ext_resource type="Texture2D" uid="uid://cq2pqurdul6yu" path="res://Assets/Models/test_models/NamePlates/namePlate_Metal049B_1K-JPG_Color.jpg" id="1_85mun"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trppj"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_85mun")
+roughness = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p6h8e"]
+_surfaces = [{
+"aabb": AABB(-0.255256, -0.045222, -0.0537675, 0.510512, 0.0904439, 0.00168204),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hc4xc"]
+resource_name = "namePlate_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.255256, -0.045222, -0.0537675, 0.510512, 0.0904439, 0.00168204),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_trppj"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 127, 209, 126, 255, 127, 209, 126, 255, 127, 209, 126, 255, 127, 209, 126)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_p6h8e")
+
+[node name="Tag" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0251597, 0.0450148, 0.00495923)
+mesh = SubResource("ArrayMesh_hc4xc")
+skeleton = NodePath("")

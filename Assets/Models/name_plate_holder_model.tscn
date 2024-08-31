@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=4 uid="uid://df1kxo5t8mthw"]
+
+[ext_resource type="Texture2D" uid="uid://cq2pqurdul6yu" path="res://Assets/Models/test_models/NamePlates/namePlate_Metal049B_1K-JPG_Color.jpg" id="1_q5bm8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trppj"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_q5bm8")
+roughness = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hygb5"]
+_surfaces = [{
+"aabb": AABB(-0.267238, -0.0521648, -0.00962555, 0.534476, 0.10433, 0.0281885),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAAGAAQAAAACAAYAAwAGAAIAAwAHAAYABwAEAAYABwAFAAQABQADAAEABQAHAAMAAQACAAAAAQADAAIABQAAAAQABQABAAAAAAAKAAQAAAAIAAoABQAJAAEABQALAAkACwAMAAkACwANAAwACAAPAAoACAAOAA8A"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/////6pdAAD//wAAql0AAP///////wAA//8AAP//AAAAAP//ql0AAAAAAACqXQAAAAD/////AAAAAAAA//8AAP////8AAAAA//8AAAAAAAAAAP//AAAAAAAAAAAAAAAA//+JGAAAAAAAAIkYAAAAAP//decAAAAAAAB15wAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ym3ha"]
+resource_name = "namePlate_Cube"
+_surfaces = [{
+"aabb": AABB(-0.267238, -0.0521648, -0.00962555, 0.534476, 0.10433, 0.0281885),
+"attribute_data": PackedByteArray("Faz//7jf//9G5/9/cfgC5yvY//+i6///Ruf/f3H4Bs7/f/9/K9j///7/AucVrP9/uN//f/7/Bs4VrP9/uN//f0bn////////K9j/f6Lr/39G5/////8C5/9///8r2P9/cfj//xWs//+43///cfgC5zf0/3+i6/9/N/T/f/3v//839P//ouv//zf0///97/9//e//f/3v//9x+P9/cfj//w=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AQAXAA8AAQAJABcACwAWAAgACwAZABYAGwARABgAGwAVABEAFAAMAAYAFAAaAAwABwAKAAMABwANAAoAEgAAAA4AEgAEAAAAAgAhABAAAgAdACEAEwAfAAUAEwAjAB8AIgAkAB4AIgAlACQAHAAnACAAHAAmACcA"),
+"material": SubResource("StandardMaterial3D_trppj"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(1.13349, 2, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("/////6pd////////ql1U1f////+qXVTV/////6pd/////wAAql3/////AACqXVTV//8AAKpdVNX//wAAql3///////////+/////////VNX/////////////AAD///+///8AAP//VNX//wAA/////wAA//+qXf//AAD//6pdVNUAAP//ql1U1QAA//+qXf//AAAAAKpd//8AAAAAql1U1QAAAACqXVTVAAAAAKpd//8AAP//////vwAA/////1TVAAD///////8AAAAA////vwAAAAD//1TVAAAAAP//////////AAD/v/////8AAFTV//8AAAAA/7///wAAAABU1QAA//8AAP+/AAD//wAAVNUAAAAAAAD/vwAAAAAAAFTV//+JGAAA/78AAIkYAAD/v///decAAP+/AAB15wAA/7//P/+/VNWqKlRVVFX/v/9//z//v1TVqipUVVRV/7//f/9//39U1aoq/7//f/9//39UVVRV/7//f/8//79U1aoqVFVUVf8//3//P/+/VNWqKlRVVFX/P/9//3//f1TVqir/P/9//3//f1RVVFX/P/9//3//f1RVVFX/f/9/VNWqKv9//39UVVRV/3//f1TVqir/f/9//3//f/9//3//f/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_hygb5")
+
+[node name="Holder" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0254427, 0.0446355, 0.0110136)
+mesh = SubResource("ArrayMesh_ym3ha")
+skeleton = NodePath("")

@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://cun8jxk2tnn8j"]
+
+[ext_resource type="Script" path="res://Scripts/Misc/name_tag.gd" id="1_qtril"]
+[ext_resource type="PackedScene" uid="uid://df1kxo5t8mthw" path="res://Assets/Models/name_plate_holder_model.tscn" id="1_rchq5"]
+[ext_resource type="Texture2D" uid="uid://cq2pqurdul6yu" path="res://Assets/Models/test_models/NamePlates/namePlate_Metal049B_1K-JPG_Color.jpg" id="2_wje8t"]
+[ext_resource type="PackedScene" uid="uid://dunfx1l5jl7qd" path="res://Assets/Models/name_tag.tscn" id="3_tfkoi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lm23"]
+albedo_color = Color(0.140447, 0.140447, 0.140447, 1)
+albedo_texture = ExtResource("2_wje8t")
+metallic = 0.57
+rim_enabled = true
+rim_tint = 0.66
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlbvd"]
+albedo_color = Color(0.419813, 0.419813, 0.419813, 1)
+metallic = 0.78
+roughness = 0.5
+rim = 0.8
+rim_tint = 1.0
+clearcoat = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3gqws"]
+
+[sub_resource type="TextMesh" id="TextMesh_hgosm"]
+material = SubResource("StandardMaterial3D_3gqws")
+font_size = 3
+depth = 0.01
+
+[node name="Name_Plate" type="Node3D"]
+script = ExtResource("1_qtril")
+
+[node name="Holder" parent="." instance=ExtResource("1_rchq5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0059649, 0.0446355, -0.0448763)
+material_override = SubResource("StandardMaterial3D_4lm23")
+
+[node name="Tag" parent="Holder" instance=ExtResource("3_tfkoi")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00180545, 0.000379298, -0.0530979)
+surface_material_override/0 = SubResource("StandardMaterial3D_wlbvd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Holder/Tag"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.65661e-09, 0.00770605, -0.0544628)
+mesh = SubResource("TextMesh_hgosm")
+skeleton = NodePath("../../..")
