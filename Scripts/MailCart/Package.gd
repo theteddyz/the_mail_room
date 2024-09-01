@@ -127,9 +127,9 @@ func inspect():
 	is_inspecting = true
 	is_returning = false
 	inspect_tween = create_tween()
-	inspect_tween.tween_property(self, "position",inspect_position, 0.5)
+	inspect_tween.tween_property(self, "position",inspect_position, 0.25).set_ease(Tween.EASE_IN_OUT)
 	inspect_tween.set_parallel(true)
-	inspect_tween.tween_property(self, "rotation",inspect_rotation, 0.5)
+	inspect_tween.tween_property(self, "rotation",inspect_rotation, 0.25).set_ease(Tween.EASE_IN_OUT)
 	await inspect_tween.finished
 	show_label(package_full_address)
 
@@ -138,9 +138,9 @@ func stop_inspect():
 	is_inspecting = false
 	hide_label()
 	stop_inspect_tween = create_tween()
-	stop_inspect_tween.tween_property(self, "position",hand_position, 0.5)
+	stop_inspect_tween.tween_property(self, "position",hand_position, 0.25).set_ease(Tween.EASE_IN_OUT)
 	stop_inspect_tween.set_parallel(true)
-	stop_inspect_tween.tween_property(self, "rotation",hand_rotation, 0.5)
+	stop_inspect_tween.tween_property(self, "rotation",hand_rotation, 0.25).set_ease(Tween.EASE_IN_OUT)
 	await stop_inspect_tween.finished
 	
 
