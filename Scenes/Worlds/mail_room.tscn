@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=33 format=3 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_5vkla"]
 [ext_resource type="LightmapGIData" uid="uid://dbto1ave1h2ee" path="res://Scenes/Worlds/mail_room.lmbake" id="2_gp4ix"]
@@ -34,6 +34,9 @@ uv1_scale = Vector3(5, 5, 5)
 lightmap_size_hint = Vector2i(657, 419)
 add_uv2 = true
 size = Vector3(80.645, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6t87i"]
+size = Vector3(80.5703, 0.931641, 50.0348)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1dbhk"]
 data = PackedVector3Array(-40.3225, 0.5, 25, 40.3225, 0.5, 25, -40.3225, -0.5, 25, 40.3225, 0.5, 25, 40.3225, -0.5, 25, -40.3225, -0.5, 25, 40.3225, 0.5, -25, -40.3225, 0.5, -25, 40.3225, -0.5, -25, -40.3225, 0.5, -25, -40.3225, -0.5, -25, 40.3225, -0.5, -25, 40.3225, 0.5, 25, 40.3225, 0.5, -25, 40.3225, -0.5, 25, 40.3225, 0.5, -25, 40.3225, -0.5, -25, 40.3225, -0.5, 25, -40.3225, 0.5, -25, -40.3225, 0.5, 25, -40.3225, -0.5, -25, -40.3225, 0.5, 25, -40.3225, -0.5, 25, -40.3225, -0.5, -25, 40.3225, 0.5, 25, -40.3225, 0.5, 25, 40.3225, 0.5, -25, -40.3225, 0.5, 25, -40.3225, 0.5, -25, 40.3225, 0.5, -25, -40.3225, -0.5, 25, 40.3225, -0.5, 25, -40.3225, -0.5, -25, 40.3225, -0.5, 25, 40.3225, -0.5, -25, -40.3225, -0.5, -25)
@@ -75,11 +78,12 @@ material_override = SubResource("StandardMaterial3D_ce6ua")
 mesh = SubResource("BoxMesh_ytt0c")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stage/floor/MeshInstance3D"]
-collision_layer = 7
-collision_mask = 7
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0781877, 0)
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stage/floor/MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_1dbhk")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.492188, -0.0341797, 0.0389547)
+shape = SubResource("BoxShape3D_6t87i")
 
 [node name="Area3D" type="Area3D" parent="stage/floor/MeshInstance3D"]
 collision_layer = 32768

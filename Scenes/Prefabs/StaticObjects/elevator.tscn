@@ -846,8 +846,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7.91082, 0.825366)
 
 [node name="Elevator" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 9.30392, 0.75)
-collision_layer = 21
-collision_mask = 21
+collision_layer = 29
+collision_mask = 29
 
 [node name="Elevator" type="Node3D" parent="Elevator"]
 
@@ -1064,7 +1064,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.903498, 0)
 [node name="ObjectDetectionShape" type="Area3D" parent="Elevator"]
 transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 0.999997, 0, 0, 0)
 collision_layer = 5
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("5_be72g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ObjectDetectionShape"]
@@ -1074,7 +1074,7 @@ shape = SubResource("BoxShape3D_ks2cq")
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Elevator"]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Elevator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72555, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02068, 0)
 light_energy = 0.543
 shadow_enabled = true
 

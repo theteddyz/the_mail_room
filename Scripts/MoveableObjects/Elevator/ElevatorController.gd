@@ -56,19 +56,19 @@ func move_floors()->void:
 	if previous_floor > current_floor:
 		await close_doors()
 		var player = GameManager.get_player()
-		player.reparent(Elevator,true)
+		#player.reparent(Elevator,true)
 		if detector.mailcart_exists_in_elevator == true:
 			var mail_cart = GameManager.get_mail_cart()
-			mail_cart.reparent(Elevator,true)
+			#mail_cart.reparent(Elevator,true)
 		await move_elevator_down()
 		return
 	else:
 		await close_doors()
 		if detector.mailcart_exists_in_elevator == true:
 			var mail_cart = GameManager.get_mail_cart()
-			mail_cart.reparent(Elevator,true)
+			#mail_cart.reparent(Elevator,true)
 		var player = GameManager.get_player()
-		player.reparent(Elevator,true)
+		#player.reparent(Elevator,true)
 		await move_elevator_up()
 		return
 
@@ -88,34 +88,35 @@ func set_floor(path,new_floor:int):
 func load_floor():
 	swap_floor_collider(false)
 	var player = GameManager.get_player()
-	player.reparent(Elevator,true)
+	var mail_cart = GameManager.get_mail_cart()
+	#player.reparent(Elevator,true)
 	if detector.mailcart_exists_in_elevator == true:
-		var mail_cart = GameManager.get_mail_cart()
-		mail_cart.reparent(Elevator,true)
+		pass
+		#mail_cart.reparent(Elevator,true)
 	if previous_floor > current_floor:
-		await call_elevator_down()
+		await call_elevator_up()
 		var root = get_tree().root
 		current_scene = root.get_child(root.get_child_count() - 1)
-		player.reparent(current_scene)
+		#player.reparent(current_scene)
+		#mail_cart.reparent(current_scene)
 		swap_floor_collider(true)
 		await open_doors()
 	else:
 		await call_elevator_up()
 		var root = get_tree().root
 		current_scene = root.get_child(root.get_child_count() - 1)
-		player.reparent(current_scene)
+		#player.reparent(current_scene)
+		#mail_cart.reparent(current_scene)
 		swap_floor_collider(true)
 		open_doors()
-		
-		
 
 func swap_floor_collider(on:bool):
 	if on:
 		for floor in get_tree().get_nodes_in_group("Real_Floor"):
 			if floor is CollisionShape3D:
 				var collider:StaticBody3D = floor.get_parent()
+				collider.set_collision_layer_value(4,true)
 				collider.set_collision_layer_value(3,true)
-				collider.set_collision_layer_value(5,true)
 			floor.visible = true
 		for floors in get_tree().get_nodes_in_group("Fake_Floor"):
 			floors.visible = false
@@ -123,13 +124,19 @@ func swap_floor_collider(on:bool):
 		for floor in get_tree().get_nodes_in_group("Real_Floor"):
 			if floor is CollisionShape3D:
 				var collider:StaticBody3D = floor.get_parent()
-				collider.set_collision_layer_value(5,false)
+				collider.set_collision_layer_value(4,false)
 				collider.set_collision_layer_value(3,false)
 			floor.visible = false
 	for floors in get_tree().get_nodes_in_group("Fake_Floor"):
 		floors.visible = true
 
 func close_doors()-> void:
+	var player = GameManager.get_player()
+	player.reparent(Elevator,true)
+	player.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
+	var mailcart = GameManager.get_mail_cart()
+	mailcart.reparent(Elevator,true)
+	mailcart.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
 	var close_door_tween = create_tween()
 	close_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-0.867,0,0), 3).set_ease(Tween.EASE_IN_OUT)
 	close_door_tween.set_parallel(true)
@@ -141,6 +148,17 @@ func close_doors()-> void:
 	return
 
 func open_doors()->void:
+	var player = GameManager.get_player()
+	if Elevator.is_ancestor_of(player):
+		player.reparent(GameManager.current_scene,true)
+		player.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, false)
+
+	var mailcart = GameManager.get_mail_cart()
+	if Elevator.is_ancestor_of(mailcart):
+		mailcart.reparent(GameManager.current_scene,true)
+		mailcart.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, false)
+		mailcart.calculate_spacing()
+
 	var open_door_tween = create_tween()
 	open_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-1.705,0,0), 3).set_ease(Tween.EASE_IN_OUT)
 	open_door_tween.set_parallel(true)
@@ -154,9 +172,8 @@ func open_doors()->void:
 	await open_door_tween.finished
 	Elevator_Collider.get_child(0).disabled = true
 	return 
-
+	
 func call_elevator_down()->void:
-	Elevator.position = Vector3(2,9.304,0.75)
 	var elevator_called_down_tween = create_tween()
 	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(2,1,0.75), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
@@ -167,7 +184,6 @@ func call_elevator_down()->void:
 	await elevator_audio.finished
 	return 
 func call_elevator_up()->void:
-	Elevator.position = Vector3(2,-6.944,0.75)
 	var elevator_called_up_tween = create_tween()
 	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(2,1,0.75), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
@@ -179,6 +195,8 @@ func call_elevator_up()->void:
 	await open_doors()
 	return 
 func move_elevator_down()-> void:
+	var mailcart = GameManager.get_mail_cart()
+	mailcart.calculate_spacing()
 	var move_elevator_down_tween = create_tween()
 	move_elevator_down_tween.tween_property(Elevator, "position", Vector3(2,-6.944,0.75), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
@@ -186,6 +204,8 @@ func move_elevator_down()-> void:
 	await move_elevator_down_tween.finished
 	return 
 func move_elevator_up()-> void:
+	var mailcart = GameManager.get_mail_cart()
+	mailcart.calculate_spacing()
 	var move_elevator_up_tween = create_tween()
 	move_elevator_up_tween.tween_property(Elevator, "position", Vector3(2,9.304,0.75), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
