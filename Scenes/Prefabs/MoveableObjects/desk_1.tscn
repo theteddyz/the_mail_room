@@ -146,8 +146,8 @@ stream_0/stream = ExtResource("8_kp863")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0jhtq"]
 
 [node name="Desk" type="RigidBody3D"]
-collision_layer = 7
-collision_mask = 5
+collision_layer = 2
+collision_mask = 15
 mass = 50.0
 freeze = true
 script = ExtResource("1_hork0")

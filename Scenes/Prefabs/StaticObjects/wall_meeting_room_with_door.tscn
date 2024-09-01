@@ -150,8 +150,8 @@ collision_mask = 133
 script = SubResource("GDScript_k1vab")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
-collision_layer = 6
-collision_mask = 6
+collision_layer = 2
+collision_mask = 14
 axis_lock_linear_y = true
 script = ExtResource("2_si1lf")
 can_rotate = false

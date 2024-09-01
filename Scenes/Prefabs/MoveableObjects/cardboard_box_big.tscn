@@ -59,8 +59,8 @@ stream_2/stream = ExtResource("7_hty0j")
 
 [node name="Cardboard_box_big" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305338, 0)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 2
+collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_a3mem")
 sleeping = true
 angular_damp = 1.0

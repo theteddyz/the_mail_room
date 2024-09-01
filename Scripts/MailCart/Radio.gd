@@ -36,11 +36,6 @@ func interact():
 		power = false
 		print("power off")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
-
 func _input(event):
 	if event.is_action("scroll package up"):
 		change_station_up()

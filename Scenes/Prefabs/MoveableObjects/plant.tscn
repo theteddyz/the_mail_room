@@ -358,8 +358,8 @@ height = 0.231489
 radius = 0.128214
 
 [node name="Plant" type="RigidBody3D"]
-collision_layer = 6
-collision_mask = 6
+collision_layer = 2
+collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_6wq47")
 script = ExtResource("1_6o0jj")

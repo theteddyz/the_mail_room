@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c148bm0rukaqe"]
+[gd_scene load_steps=13 format=4 uid="uid://c148bm0rukaqe"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_sdwat"]
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_ucm3o"]
@@ -19,12 +19,12 @@ _surfaces = [{
 "aabb": AABB(-0.751491, -0.751491, -0.751491, 1.50298, 1.50298, 1.50299),
 "format": 34896613377,
 "index_count": 36,
-"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 2, 0, 7, 0, 3, 0, 2, 0, 6, 0, 7, 0, 6, 0, 5, 0, 7, 0, 6, 0, 4, 0, 5, 0, 4, 0, 1, 0, 5, 0, 4, 0, 0, 0, 1, 0, 2, 0, 4, 0, 6, 0, 2, 0, 0, 0, 4, 0, 7, 0, 1, 0, 3, 0, 7, 0, 5, 0, 1, 0),
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABAABAAUABAAAAAEAAgAEAAYAAgAAAAQABwABAAMABwAFAAEA"),
 "name": "CardboardBox",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 255, 255, 254, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0)
+"vertex_data": PackedByteArray("AAAAAP7/AAAAAP///v8AAAAAAAAAAAAAAAD//wAAAAD//wAA/v8AAP/////+/wAA//8AAAAAAAD/////AAAAAA==")
 }]
 blend_shape_mode = 0
 
@@ -32,16 +32,16 @@ blend_shape_mode = 0
 resource_name = "desk_Cube_099"
 _surfaces = [{
 "aabb": AABB(-0.751491, -0.751491, -0.751491, 1.50298, 1.50298, 1.50299),
-"attribute_data": PackedByteArray(175, 164, 39, 75, 175, 164, 80, 77, 186, 171, 0, 212, 175, 164, 61, 32, 134, 162, 80, 77, 186, 171, 234, 254, 202, 221, 126, 179, 175, 164, 58, 120, 164, 214, 0, 212, 202, 221, 148, 136, 134, 162, 58, 120, 164, 214, 234, 254, 153, 207, 39, 75, 153, 207, 80, 77, 156, 119, 39, 75, 153, 207, 61, 32, 156, 119, 80, 77, 156, 119, 61, 32, 224, 178, 126, 179, 153, 207, 58, 120, 134, 162, 39, 75, 224, 178, 148, 136, 156, 119, 58, 120, 134, 162, 61, 32),
+"attribute_data": PackedByteArray("r6QnS6+kUE26qwDUr6Q9IIaiUE26q+r+yt1+s6+kOnik1gDUyt2UiIaiOnik1ur+mc8nS5nPUE2cdydLmc89IJx3UE2cdz0g4LJ+s5nPOniGoidL4LKUiJx3OniGoj0g"),
 "format": 34896613399,
 "index_count": 36,
-"index_data": PackedByteArray(2, 0, 11, 0, 5, 0, 2, 0, 8, 0, 11, 0, 6, 0, 21, 0, 9, 0, 6, 0, 18, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 12, 0, 3, 0, 15, 0, 12, 0, 0, 0, 3, 0, 7, 0, 13, 0, 19, 0, 7, 0, 1, 0, 13, 0, 22, 0, 4, 0, 10, 0, 22, 0, 16, 0, 4, 0),
+"index_data": PackedByteArray("AgALAAUAAgAIAAsABgAVAAkABgASABUAFAARABcAFAAOABEADAADAA8ADAAAAAMABwANABMABwABAA0AFgAEAAoAFgAQAAQA"),
 "material": SubResource("StandardMaterial3D_0jg0x"),
 "name": "CardboardBox",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 127, 0, 0, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 255, 255, 254, 255, 255, 127, 0, 0, 255, 255, 254, 255, 255, 255, 0, 0, 255, 255, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 254, 255, 255, 127, 255, 255, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 255, 255, 255, 255, 254, 255, 255, 127, 255, 255, 255, 255, 254, 255, 255, 255, 255, 255, 255, 255, 254, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 255, 191, 255, 127, 255, 255, 0, 0, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 127, 255, 191, 255, 63, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 63, 255, 127, 255, 127, 255, 255, 255, 127, 255, 191, 255, 63, 255, 127, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 0, 0, 255, 127, 255, 255, 0, 0, 255, 127, 255, 127, 0, 0, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 0, 0)
+"vertex_data": PackedByteArray("AAAAAP7//38AAAAA/v//vwAAAAD+////AAD///7//38AAP///v///wAA///+////AAAAAAAA//8AAAAAAAD/vwAAAAAAAP//AAD//wAA//8AAP//AAD//wAA//8AAP////8AAP7//3///wAA/v//v///AAD+//+///////7//3///////v/////////+//+///8AAAAA/////wAAAAD/v///AAAAAP+//////wAA////////AAD///////8AAP+//3///wAA/3//P/9//3////9//7//P/9//3///wAA/3//P/9//3////9//7//P/9//3///wAA/3//fwAA/3////9//7//fwAA/3///wAA/3//fwAA/3////9//7//fwAA")
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_akjp6")
@@ -52,16 +52,13 @@ size = Vector3(0.470276, 0.459717, 0.47699)
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c4l58"]
 streams_count = 3
 stream_0/stream = ExtResource("5_260e6")
-stream_0/weight = 1.0
 stream_1/stream = ExtResource("6_lhgpa")
-stream_1/weight = 1.0
 stream_2/stream = ExtResource("7_pybtk")
-stream_2/weight = 1.0
 
 [node name="Cardboard_box_medium" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.241312, 0)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 2
+collision_mask = 15
 angular_damp = 1.0
 script = ExtResource("1_sdwat")
 

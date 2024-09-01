@@ -100,8 +100,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ie26e")
 
 [node name="GarbageCan" type="RigidBody3D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 15
 script = ExtResource("1_fgjb5")
 
 [node name="TrashCan" type="MeshInstance3D" parent="."]
@@ -111,11 +111,11 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_xr58b")
-disabled = true
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="ConcaveCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.487262, 0, 0, 0, 0.487262, 0, 0, 0, 0.487262, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_mm73l")
+disabled = true
 
 [node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
 script = ExtResource("4_1bdfq")

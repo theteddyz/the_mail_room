@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://tw0mk31qdtge"]
+[gd_scene load_steps=20 format=4 uid="uid://tw0mk31qdtge"]
 
 [ext_resource type="Script" path="res://Scripts/MailCart/Mailcart.gd" id="1_1hgo0"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="2_jjppu"]
@@ -27,13 +27,7 @@ size = Vector3(0.285416, 0.920715, 0.854126)
 size = Vector3(0.211182, 0.452087, 0.0598679)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_stabw"]
-size = Vector3(0.703003, 0.0565796, 0.690308)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_3a7e4"]
-radius = 0.0937542
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_uf7kr"]
-radius = 0.122298
+size = Vector3(1.67256, 0.0565796, 0.831879)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8jcur"]
 
@@ -84,8 +78,8 @@ size = Vector3(0.510742, 0.275742, 0.0707397)
 size = Vector3(1, 0.900818, 1.60547)
 
 [node name="Mailcart" type="RigidBody3D" groups=["Persist"]]
-collision_layer = 19
-collision_mask = 23
+collision_layer = 8
+collision_mask = 7
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -147,24 +141,12 @@ transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.0041
 shape = SubResource("BoxShape3D_utsnq")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, -0.0235458, 0.065231, -0.597386)
+transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, -0.0235458, 0.065231, -0.0144277)
 shape = SubResource("BoxShape3D_stabw")
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, 0.402671, -0.195556, 0.794818)
-shape = SubResource("SphereShape3D_3a7e4")
-
-[node name="CollisionShape3D12" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, -0.419937, -0.195556, 0.798235)
-shape = SubResource("SphereShape3D_3a7e4")
-
-[node name="CollisionShape3D13" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, 0.338644, -0.198721, -0.658228)
-shape = SubResource("SphereShape3D_uf7kr")
-
-[node name="CollisionShape3D14" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, -0.400232, -0.198721, -0.655159)
-shape = SubResource("SphereShape3D_uf7kr")
+transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, -0.0252724, -0.27076, 0.0632482)
+shape = SubResource("BoxShape3D_stabw")
 
 [node name="RadioPosition" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.64666, 0.625213, 0.0192857)

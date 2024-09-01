@@ -16,7 +16,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g60w8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wc7v"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -48,7 +48,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_g60w8"),
+"material": SubResource("StandardMaterial3D_4wc7v"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -153,8 +153,8 @@ stream_2/stream = ExtResource("9_hrl5c")
 
 [node name="File_Cabinet" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.824006, 0)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 2
+collision_mask = 15
 mass = 60.0
 physics_material_override = SubResource("PhysicsMaterial_i0t41")
 freeze = true
@@ -192,8 +192,8 @@ shape = SubResource("BoxShape3D_nykrr")
 
 [node name="Drawer" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.554, -0.345)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 2
+collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
@@ -254,8 +254,8 @@ joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Drawer2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181111, -0.345)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 2
+collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
@@ -316,8 +316,8 @@ joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Drawer3" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.186194, -0.345)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 2
+collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
@@ -378,8 +378,8 @@ joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Drawer4" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.552292, -0.345)
-collision_layer = 7
-collision_mask = 7
+collision_layer = 2
+collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0

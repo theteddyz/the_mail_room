@@ -58,8 +58,8 @@ points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.9808
 radius = 22.6731
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
-collision_layer = 20
-collision_mask = 20
+collision_layer = 4
+collision_mask = 4107
 script = ExtResource("1_lsi20")
 
 [node name="standing_collision_shape" type="CollisionShape3D" parent="." groups=["Walking_Colliders"]]

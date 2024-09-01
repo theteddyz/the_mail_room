@@ -49,7 +49,8 @@ shadow_mesh = SubResource("ArrayMesh_mr36k")
 size = Vector3(0.656799, 0.0468867, 0.213135)
 
 [node name="Keyboard_broken" type="RigidBody3D"]
-collision_layer = 3
+collision_layer = 2
+collision_mask = 15
 angular_damp = 3.0
 script = ExtResource("1_7cm3v")
 

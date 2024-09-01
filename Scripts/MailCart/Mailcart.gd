@@ -126,8 +126,6 @@ func move_package_to_cart(package: Package, _position: float):
 	package.position = Vector3(0, package.cart_position.y, _position)
 	pass
 
-
-
 func on_being_looked_at(node):
 	if node == self:
 		is_being_looked_at = true
