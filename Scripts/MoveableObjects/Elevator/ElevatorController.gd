@@ -130,13 +130,14 @@ func swap_floor_collider(on:bool):
 	for floors in get_tree().get_nodes_in_group("Fake_Floor"):
 		floors.visible = true
 
-func close_doors()-> void:
+func close_doors(reparent = true)-> void:
 	var player = GameManager.get_player()
-	player.reparent(Elevator,true)
-	player.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
 	var mailcart = GameManager.get_mail_cart()
-	mailcart.reparent(Elevator,true)
-	mailcart.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
+	if reparent:
+		player.reparent(Elevator,true)
+		player.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)	
+		mailcart.reparent(Elevator,true)
+		mailcart.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
 	var close_door_tween = create_tween()
 	close_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-0.867,0,0), 3).set_ease(Tween.EASE_IN_OUT)
 	close_door_tween.set_parallel(true)
