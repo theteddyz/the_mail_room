@@ -8,7 +8,6 @@ func _ready():
 func set_text(text:String):
 	text_object.text = ("[center]" + text)
 	show_text()
-	start_fade_timer()
 
 
 func show_text():
@@ -19,8 +18,7 @@ func show_text():
 func hide_text():
 	hide()
 
-func start_fade_timer():
-	timer.start(2.0)
+
 
 func _on_timer_timeout():
 	animation_player.play("fade_out")
