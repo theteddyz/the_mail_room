@@ -34,6 +34,7 @@ func _ready():
 	persistent_state.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_X, true)
 	persistent_state.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Z, true)
 	persistent_state.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
+	mailcart.get_node("PlayerCollider").set_disabled(false)
 
 	#set_colliders_enabed("Carting_Collider",true)
 	cart_audio = mailcart.find_child("AudioStreamPlayer3D2")
@@ -64,7 +65,7 @@ func _process(delta):
 	handle_gui_animation()
 	update_movement_direction(delta)
 	handle_cart_audio(delta)
-	persistent_state.move_and_slide()
+	#mailcart.move_and_slide()
 	update_audio_volume(delta)
 
 func _physics_process(delta):
@@ -114,7 +115,7 @@ func stop_movement(delta):
 	mailcart.linear_velocity.x = move_toward(mailcart.linear_velocity.x, 0, delta * 2)
 
 func handle_cart_audio(_delta):
-	var is_moving = persistent_state.velocity.length() > 0.1
+	var is_moving = mailcart.linear_velocity.length() > 0.1
 	if is_moving and is_carting:
 		target_volume = -10.0
 		start_cart_audio()
@@ -127,6 +128,8 @@ func update_audio_volume(delta):
 		cart_audio.volume_db = lerp(cart_audio.volume_db, target_volume, delta * volume_fade_speed)
 
 func releaseCart():
+	mailcart.get_node("PlayerCollider").set_disabled(true)
+
 	is_carting = false
 	stop_cart_audio()
 	mailcart.get_node("Node3D").get_node("Handlebar").set_collision_layer_value(2, true)

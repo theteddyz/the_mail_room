@@ -142,8 +142,6 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 		#mail_cart_reference.owner = current_scene
 		#mail_cart_reference._ready()
 		pass
-	
-	
 	# Find and replace the elevator node
 	var new_elevator = current_scene.find_child("Elevator")
 	#var new_elevator_rotation = new_elevator.rotation

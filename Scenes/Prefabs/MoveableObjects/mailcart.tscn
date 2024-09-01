@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://tw0mk31qdtge"]
+[gd_scene load_steps=22 format=4 uid="uid://tw0mk31qdtge"]
 
 [ext_resource type="Script" path="res://Scripts/MailCart/Mailcart.gd" id="1_1hgo0"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="2_jjppu"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bpmaq4gl82cgl" path="res://Assets/Textures/BlenderTextures/Radio2.png" id="4_mlnkp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ws4oq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bv606"]
+radius = 0.605407
+height = 2.38553
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dt7j7"]
 size = Vector3(1.23438, 0.0488434, 0.947998)
@@ -28,6 +32,9 @@ size = Vector3(0.211182, 0.452087, 0.0598679)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_stabw"]
 size = Vector3(1.67256, 0.0565796, 0.831879)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ac6n8"]
+size = Vector3(1.67256, 0.403793, 0.831879)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8jcur"]
 
@@ -87,6 +94,11 @@ mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_ws4oq")
 script = ExtResource("1_1hgo0")
 
+[node name="PlayerCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.00415401, 0, 1, 0, 1, 0, -1, 0, -0.00415401, 0.0125539, 0.977953, 1.87619)
+shape = SubResource("CapsuleShape3D_bv606")
+disabled = true
+
 [node name="Cart" parent="." instance=ExtResource("2_jjppu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68221e-06, 0.724449, 6.61463e-05)
 
@@ -145,8 +157,8 @@ transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.0041
 shape = SubResource("BoxShape3D_stabw")
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, -0.0252724, -0.27076, 0.0632482)
-shape = SubResource("BoxShape3D_stabw")
+transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, -0.0252724, -0.0971531, 0.0632482)
+shape = SubResource("BoxShape3D_ac6n8")
 
 [node name="RadioPosition" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.64666, 0.625213, 0.0192857)
@@ -174,7 +186,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17162, 0)
 stream = ExtResource("4_eev6i")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.586491, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600221, 0)
 collision_layer = 64
 collision_mask = 64
 

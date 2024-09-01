@@ -8,8 +8,8 @@ size = Vector3(2.21765, 2.69008, 2.953)
 
 [node name="ambience_starter" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23217, -0.470015, 24.7789)
-collision_layer = 16
-collision_mask = 16
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_qji65")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

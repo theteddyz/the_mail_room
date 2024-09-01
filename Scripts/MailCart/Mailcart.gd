@@ -82,6 +82,11 @@ func grab_current_package():
 		game_objects.remove_at(current_index)
 		current_index = 0
 		current_package.set_collision_layer_value(2,true)
+		current_package.set_collision_layer_value(7,true)
+		current_package.set_collision_mask_value(1,true)
+		current_package.set_collision_mask_value(2,true)
+		current_package.set_collision_mask_value(3,true)
+		current_package.set_collision_mask_value(4,true)
 		current_package.inside_mail_cart = false
 		current_package.grabbed()
 		package_picked_up = true
@@ -97,8 +102,10 @@ func add_package(package: Package,dropped:bool):
 		if !game_objects.has(package):
 			package.global_position = Vector3.ZERO
 			package.global_rotation = Vector3.ZERO
-			package.set_collision_layer_value(2,false)
 			package.inside_mail_cart = true
+			package.can_be_dropped_into_cart = false
+			package.set_collision_mask(0)
+			package.set_collision_layer(0)
 			game_objects.append(package)
 			if dropped:
 				EventBus.emitCustomSignal("dropped_object", [0,package])
@@ -124,7 +131,8 @@ func move_package_to_cart(package: Package, _position: float):
 		package.reparent(self)
 	package.rotation_degrees = package.cart_rotation
 	package.position = Vector3(0, package.cart_position.y, _position)
-	pass
+	package.set_freeze_enabled(true)
+	package.set_sleeping(true)
 
 func on_being_looked_at(node):
 	if node == self:

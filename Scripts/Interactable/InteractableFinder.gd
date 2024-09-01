@@ -29,6 +29,8 @@ func get_interactable():
 			return collider
 		elif collider and collider is Package:
 			return collider
+		elif collider and collider.name == "Mailcart":
+			return collider
 	return null
 
 
