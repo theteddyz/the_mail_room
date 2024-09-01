@@ -32,7 +32,7 @@ func show_icon(object):
 				object_name = "Drive"
 			else:
 				pass
-		elif object_held is Package:
+		elif object_held is Package and object is not Package:
 			match object.name:
 				"Mailcart":
 					object_name = "deliverable"
