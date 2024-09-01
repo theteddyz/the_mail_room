@@ -104,7 +104,7 @@ mesh = SubResource("ArrayMesh_43mgu")
 skeleton = NodePath("")
 
 [node name="nameCard" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(2, 0, 0, 0, 0.360969, 1.96716, 0, -1.96716, 0.360969, 0, 0.0348243, 0.005063)
+transform = Transform3D(2.00361, 0, 0, 0, 0.36162, 1.97071, 0, -1.97071, 0.36162, 0, 0.0348243, 0.005063)
 mesh = SubResource("ArrayMesh_wshpu")
 skeleton = NodePath("")
 
