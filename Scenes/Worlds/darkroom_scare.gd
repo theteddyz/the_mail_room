@@ -9,7 +9,7 @@ var has_been_executed = false
 @onready var monsterCollisionShape:CollisionShape3D = $godot_rig/JohnCharacterBody/CollisionShape3D
 var scare_active: bool = false
 @onready var monster_body = $godot_rig
-@onready var wall_to_nuke = $"../../LowWalls/Cubicle_wall_monster"
+@onready var wall_to_nuke = $"../../Objects/OfficeCubicle11/Cubicle_Door"
 var monster_anim:AnimationPlayer
 var closed_ambiance
 @onready var door = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2"
