@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=27 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 [ext_resource type="Script" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
 [ext_resource type="AudioStream" uid="uid://cin4ngwhr1g72" path="res://Scenes/Prefabs/AudioPlayers/carpet_footsteps.tres" id="9_pey34"]
+[ext_resource type="Script" path="res://Scenes/ObjectOptimizer.gd" id="11_3w4p3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 radius = 0.3
@@ -255,6 +256,9 @@ collision_mask = 32768
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource("9_mvg12")
+
+[node name="ObjectOptimizer" type="Node3D" parent="."]
+script = ExtResource("11_3w4p3")
 
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]

@@ -92,8 +92,8 @@ roughness = 0.0
 size = Vector3(5.55569, 7.74237, 0.256592)
 
 [node name="meeting_room_wall_window" type="StaticBody3D"]
-collision_layer = 133
-collision_mask = 133
+collision_layer = 32901
+collision_mask = 32901
 
 [node name="WallMeetingRoom2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)

@@ -24,7 +24,11 @@ var index: int
 #Particles which to play during a breakage
 @export var breakage_particles: Array[GPUParticles3D]
 
-var grabbable_script = preload("res://Scripts/MoveableObjects/GrabbableObject.gd")
+# Preload the GrabbableObject script to ensure we know the expected type
+var grabbable_script_path = "res://Scripts/MoveableObjects/GrabbableObject.gd"
+
+# Declare a class member variable to store the grabbable object, typing it as a Node to ensure compatibility
+var grabbable_object: Node = null
 
 var broken:bool
 
@@ -40,6 +44,7 @@ var rigidbody:RigidBody3D
 @export var onlyPlayOnCollision:bool = false
 
 func _ready():
+	
 	#if(impact_audios != null):
 		#impact_audios.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
 		#impact_audios.unit_size = 10
@@ -55,35 +60,42 @@ func _ready():
 	impact_audios3.max_polyphony = 50
 	broken = false
 	rigidbody = get_parent()
+	grabbable_object = get_parent()
+	var specific_script = load(grabbable_script_path)
+	
+	# Call a method from the loaded script if it's the correct type
 	if instabreak:
 		break_object()
 
 func _physics_process(_delta: float):
-	if rigidbody.sleeping:
-		return
-	var currentVelocity = rigidbody.linear_velocity
-	
-	var currentRotation = rigidbody.angular_velocity
-	
-	var currentAcceleration = ((previousVelocity - currentVelocity)/_delta)*0.01;
-	var currentRotAccel = ((previousRotation - currentRotation)/_delta)*0.01;
-	
-	var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
-	if(!previousIsPickedUp2 and !onlyPlayOnCollision and impact > impact_threshold):
-		var volume = min(-40 + pow(impact,1.5),0) + initVolume
-		if(destruction_audios != null and impact > destruction_threshold and !broken):
-			destruction_audios.play()
-			break_object()
-		else:
-			playImpactSound(volume)
+	if !grabbable_object.getShouldOptimize():
 		
+		if rigidbody.sleeping or rigidbody.freeze:
+			return
+		var currentVelocity = rigidbody.linear_velocity
 		
-	previousVelocity = rigidbody.linear_velocity
-	previousRotation = rigidbody.angular_velocity
-	
-	previousIsPickedUp3 = previousIsPickedUp2
-	previousIsPickedUp2 = previousIsPickedUp
-	previousIsPickedUp = rigidbody.is_picked_up
+		if currentVelocity.length() > 0.0001:	
+			var currentRotation = rigidbody.angular_velocity
+			
+			var currentAcceleration = ((previousVelocity - currentVelocity)/_delta)*0.01;
+			var currentRotAccel = ((previousRotation - currentRotation)/_delta)*0.01;
+			
+			var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
+			if(!previousIsPickedUp2 and !onlyPlayOnCollision and impact > impact_threshold):
+				var volume = min(-40 + pow(impact,1.5),0) + initVolume
+				if(destruction_audios != null and impact > destruction_threshold and !broken):
+					destruction_audios.play()
+					break_object()
+				else:
+					playImpactSound(volume)
+				
+				
+			previousVelocity = rigidbody.linear_velocity
+			previousRotation = rigidbody.angular_velocity
+			
+			previousIsPickedUp3 = previousIsPickedUp2
+			previousIsPickedUp2 = previousIsPickedUp
+			previousIsPickedUp = rigidbody.is_picked_up
 func _on_body_entered(body):
 	#var other_body_velocity = body.linear_velocity if body is RigidBody3D else Vector3.ZERO
 	#var relative_velocity = get_parent().linear_velocity - other_body_velocity
@@ -143,6 +155,8 @@ func playImpactSound(volume: int):
 	index += 1
 	if index > 2:
 		index = 0
+
+
 """
 # On the rigid body:
 func _integrate_forces(state : PhysicsDirectBodyState3D):

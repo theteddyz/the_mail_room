@@ -56,8 +56,8 @@ size = Vector3(1.56338, 7.75556, 0.296083)
 size = Vector3(2.6812, 5.21357, 0.296083)
 
 [node name="StaticBody3D" type="StaticBody3D"]
-collision_layer = 133
-collision_mask = 133
+collision_layer = 32901
+collision_mask = 32901
 
 [node name="WallWithArchway" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0, 0, 0)

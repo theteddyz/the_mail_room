@@ -19,7 +19,7 @@ var ROPE_BODIES : Array
 var last_rigidbody
  
  
- 
+"""
 func _ready()->void:
 	#Adding a RigidBody for every bone. 
 	for i in skeleton.get_bone_count(): 
@@ -104,3 +104,4 @@ func _add_pin_joint(node_A, node_B)->void:
 func _get_pos_between_vectors(A:Vector3,B:Vector3)->Vector3:
 	return (A+B)/2
 	
+"""

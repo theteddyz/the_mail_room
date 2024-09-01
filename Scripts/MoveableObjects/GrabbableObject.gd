@@ -46,7 +46,9 @@ var currentPosition: Vector3
 var targetPosition: Vector3
 var rotationOffset: Vector3
 
+@export var shouldOptimize: bool = false
 func _ready():
+	
 	if GameManager.get_player() != null:
 		player = GameManager.get_player()
 	object_Interpolator = find_child("Interpolator")
@@ -72,54 +74,57 @@ func _ready():
 
 #Used by Both
 func _input(event):
-	if is_rotating and event is InputEventMouseMotion:
-		handle_mouse_motion(event.relative)
+	if !shouldOptimize:
+		if is_rotating and event is InputEventMouseMotion:
+			handle_mouse_motion(event.relative)
 		
-func _process(_delta): #Tether the player to the object
-	if is_picked_up:
-		var forward = -camera.global_transform.basis.z
-		_update_mouse_line((camera.global_transform.origin + forward.normalized()*grab_distance),currentPosition + rotationOffset)
-		var playerPosition:Vector3 = player.transform.origin;
-		playerPosition.y = 0;
-		#var targetPosition: Vector3 = itemPos.global_transform.origin + -grab_offset
-		var objectPosition:Vector3 = global_transform.origin + grab_offset;
-		objectPosition.y = 0;
-		var directionTo:Vector3 = playerPosition - objectPosition;
-		directionTo = directionTo.normalized();
-		var distance:float = playerPosition.distance_to(objectPosition);
-		if distance > tether_distance:
-			var destination = objectPosition + directionTo*tether_distance;
-			player.transform.origin.x = destination.x;
-			player.transform.origin.z = destination.z;
-			is_tether_max_range = true;
+func _process(_delta): #Tether the player to the object'
+	if !shouldOptimize:
+		if is_picked_up:
+			var forward = -camera.global_transform.basis.z
+			_update_mouse_line((camera.global_transform.origin + forward.normalized()*grab_distance),currentPosition + rotationOffset)
+			var playerPosition:Vector3 = player.transform.origin;
+			playerPosition.y = 0;
+			#var targetPosition: Vector3 = itemPos.global_transform.origin + -grab_offset
+			var objectPosition:Vector3 = global_transform.origin + grab_offset;
+			objectPosition.y = 0;
+			var directionTo:Vector3 = playerPosition - objectPosition;
+			directionTo = directionTo.normalized();
+			var distance:float = playerPosition.distance_to(objectPosition);
+			if distance > tether_distance:
+				var destination = objectPosition + directionTo*tether_distance;
+				player.transform.origin.x = destination.x;
+				player.transform.origin.z = destination.z;
+				is_tether_max_range = true;
+			else:
+				is_tether_max_range = false;
+			if is_picked_up and !is_grabbing_bool:
+				is_grabbing_bool = true
+				call_deferred("_init_mouse_line")
 		else:
-			is_tether_max_range = false;
-		if is_picked_up and !is_grabbing_bool:
-			is_grabbing_bool = true
-			call_deferred("_init_mouse_line")
-	else:
-		if !is_picked_up and is_grabbing_bool:
-			is_grabbing_bool = false
-			mouse_line.queue_free()
+			if !is_picked_up and is_grabbing_bool:
+				is_grabbing_bool = false
+				mouse_line.queue_free()
 func _physics_process(delta):	
-	#if camera.global_transform.origin.distance_to(global_transform.origin) > 15:
-	#	sleeping = true
-		#visible = false
-	#else:
-		#visible = true
-#	var distance_squared = camera_position.distance_to(object_position)
-		
-	# Quick check: is the object too far away?
-	#if camera.global_transform.origin.distance_to(global_transform.origin) > 45:	
-		#visible = false
-#		return
-	#else:
-		#visible = true
-	if is_picked_up:
-		handle_pickup(delta)
-		update_rotation(delta)
-	elif should_freeze and is_at_rest():
-		freeze = true
+	if !shouldOptimize:
+		#if camera.global_transform.origin.distance_to(global_transform.origin) > 15:
+		#	sleeping = true
+			#visible = false
+		#else:
+			#visible = true
+	#	var distance_squared = camera_position.distance_to(object_position)
+			
+		# Quick check: is the object too far away?
+		#if camera.global_transform.origin.distance_to(global_transform.origin) > 45:	
+			#visible = false
+	#		return
+		#else:
+			#visible = true
+		if is_picked_up:
+			handle_pickup(delta)
+			update_rotation(delta)
+		elif should_freeze and is_at_rest():
+			freeze = true
 func handle_pickup(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
@@ -268,8 +273,10 @@ func lock_axes(lock: bool):
 	axis_lock_linear_z = lock
 	axis_lock_linear_y = lock
 func is_at_rest() -> bool:
-	return linear_velocity.length_squared() <= 0.0001 and angular_velocity.length_squared() <= 0.0001
-
+	if !shouldOptimize:
+		return linear_velocity.length_squared() <= 0.0001 and angular_velocity.length_squared() <= 0.0001
+	else:
+		return false
 func calculate_torque_impulse() -> Vector3:
 	var player_velocity = player.velocity
 	var torque_impulse = Vector3(
@@ -354,16 +361,11 @@ func final_cleanup(mesh_instance: MeshInstance3D, persist_ms: float):
 	else:
 		return mesh_instance
 
-#	func optimizations():
-#	var camera_transform = camera.global_transform
-#	var camera_position = camera_transform.origin
-#	var object_position = global_transform.origin
-#	if !freeze and camera.global_transform.origin.distance_to(global_transform.origin) > 15:
-	#	freeze = true
-	#	set_collision_layer(0)
-	#	set_collision_mask_value(0,false)
-		#visible = false
+func setShouldOptimize(should:bool):
+	shouldOptimize = should
 
+func getShouldOptimize():
+	return shouldOptimize
 
 
 #	var distance_squared = camera_position.distance_to(object_position)

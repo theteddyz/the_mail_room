@@ -47,8 +47,8 @@ size = Vector3(5.73676, 7.74063, 0.318298)
 size = Vector2(5.67885, 7.80752)
 
 [node name="wall_room_001" type="StaticBody3D"]
-collision_layer = 133
-collision_mask = 133
+collision_layer = 32901
+collision_mask = 32901
 
 [node name="WallMeetingRoom_003" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
