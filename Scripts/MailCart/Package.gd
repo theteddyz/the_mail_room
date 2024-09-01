@@ -49,19 +49,6 @@ func _process(delta):
 		highlight(delta)
 	else:
 		reset_highlight()
-	if is_inspecting:
-		position = position.lerp(inspect_position, lerp_speed * delta)
-		rotation = rotation.lerp(inspect_rotation, lerp_speed * delta)
-		if position.distance_to(inspect_position) < 0.1 and rotation.distance_to(inspect_rotation) < 0.1:
-			is_inspecting = false
-			show_label(package_full_address)
-	elif is_returning:
-		hide_label()
-		position = position.lerp(hand_position, lerp_speed * delta)
-		rotation = rotation.lerp(hand_rotation, lerp_speed * delta)
-		if position.distance_to(hand_position) < 0.01 and rotation.distance_to(hand_rotation) < 0.01:
-			is_returning = false
-	
 
 
 func _on_object_hovered(node):
@@ -124,6 +111,7 @@ func dropped():
 		EventBus.emitCustomSignal("dropped_object",[self.mass,self])
 
 func inspect():
+	var _s
 	is_inspecting = true
 	is_returning = false
 	inspect_tween = create_tween()
@@ -131,6 +119,7 @@ func inspect():
 	inspect_tween.set_parallel(true)
 	inspect_tween.tween_property(self, "rotation",inspect_rotation, 0.25).set_ease(Tween.EASE_IN_OUT)
 	await inspect_tween.finished
+	highlight(_s)
 	show_label(package_full_address)
 
 func stop_inspect():
@@ -142,6 +131,7 @@ func stop_inspect():
 	stop_inspect_tween.set_parallel(true)
 	stop_inspect_tween.tween_property(self, "rotation",hand_rotation, 0.25).set_ease(Tween.EASE_IN_OUT)
 	await stop_inspect_tween.finished
+	reset_highlight()
 	
 
 func hide_label():
