@@ -3,7 +3,7 @@ extends Node3D
 var has_been_executed = false
 @onready var scare_5_vent_sound: AudioStreamPlayer3D = $"../../Scare5VentSound"
 @onready var john_typing_sound_player: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
-@onready var cubicle_wall_monster: StaticBody3D = $"../../LowWalls/Cubicle_wall_monster"
+@onready var cubicle_wall_monster: StaticBody3D = $"../../Objects/OfficeCubicle11/Cubicle_Door"
 @onready var monitor_flicker: AnimationPlayer = $"../../Objects/Desk37/monitor_flicker"
 @onready var monitor: RigidBody3D = $"../../Objects/Desk37/GrabableObjectTemplate"
 @onready var screen_light_2: SpotLight3D = $"../../Objects/Desk37/GrabableObjectTemplate/Interpolator/ScreenLight2"

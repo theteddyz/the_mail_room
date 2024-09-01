@@ -27,6 +27,8 @@ func get_interactable():
 			return collider
 		elif collider and collider.has_method("display_text"):
 			return collider
+		elif collider and collider is Package:
+			return collider
 	return null
 
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=32 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/Prefabs/gui/pauseMenu.tscn" id="2_j1350"]
+[ext_resource type="PackedScene" uid="uid://dlxusgmvl8f47" path="res://Scenes/Prefabs/gui/load_screen.tscn" id="2_wjt07"]
 [ext_resource type="Script" path="res://Scripts/GUI/FPSMeter.gd" id="3_bccgp"]
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="4_bqt88"]
 [ext_resource type="Script" path="res://Scripts/GUI/IconManager.gd" id="4_w25uf"]
@@ -149,6 +150,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_de5p4")
+
+[node name="loading_screen" parent="." instance=ExtResource("2_wjt07")]
+layout_mode = 1
+offset_left = -3.0
+offset_right = -3.0
 
 [node name="pauseMenu" parent="." instance=ExtResource("2_j1350")]
 visible = false

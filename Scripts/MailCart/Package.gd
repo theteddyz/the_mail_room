@@ -26,6 +26,8 @@ var inside_mail_cart:bool
 var starting_path
 var is_being_looked_at:bool
 var can_be_dropped_into_cart:bool = true
+var inspect_tween:Tween
+var stop_inspect_tween:Tween
 func _ready():
 	package_material = get_child(0)
 	starting_path =  get_parent().name + "/" + name
@@ -47,19 +49,6 @@ func _process(delta):
 		highlight(delta)
 	else:
 		reset_highlight()
-	if is_inspecting:
-		position = position.lerp(inspect_position, lerp_speed * delta)
-		rotation = rotation.lerp(inspect_rotation, lerp_speed * delta)
-		if position.distance_to(inspect_position) < 0.1 and rotation.distance_to(inspect_rotation) < 0.1:
-			is_inspecting = false
-			show_label(package_full_address)
-	elif is_returning:
-		hide_label()
-		position = position.lerp(hand_position, lerp_speed * delta)
-		rotation = rotation.lerp(hand_rotation, lerp_speed * delta)
-		if position.distance_to(hand_position) < 0.01 and rotation.distance_to(hand_rotation) < 0.01:
-			is_returning = false
-	
 
 
 func _on_object_hovered(node):
@@ -103,6 +92,10 @@ func grabbed():
 
 func dropped():
 	if is_inspecting or is_returning:
+		if inspect_tween != null:
+			inspect_tween.kill()
+		if stop_inspect_tween != null:
+			stop_inspect_tween.kill()
 		is_inspecting = false
 		is_returning = false
 		self.linear_velocity = Vector3.ZERO 
@@ -118,12 +111,28 @@ func dropped():
 		EventBus.emitCustomSignal("dropped_object",[self.mass,self])
 
 func inspect():
+	var _s
 	is_inspecting = true
 	is_returning = false
+	inspect_tween = create_tween()
+	inspect_tween.tween_property(self, "position",inspect_position, 0.25).set_ease(Tween.EASE_IN_OUT)
+	inspect_tween.set_parallel(true)
+	inspect_tween.tween_property(self, "rotation",inspect_rotation, 0.25).set_ease(Tween.EASE_IN_OUT)
+	await inspect_tween.finished
+	highlight(_s)
+	show_label(package_full_address)
 
 func stop_inspect():
 	is_returning = true
 	is_inspecting = false
+	hide_label()
+	stop_inspect_tween = create_tween()
+	stop_inspect_tween.tween_property(self, "position",hand_position, 0.25).set_ease(Tween.EASE_IN_OUT)
+	stop_inspect_tween.set_parallel(true)
+	stop_inspect_tween.tween_property(self, "rotation",hand_rotation, 0.25).set_ease(Tween.EASE_IN_OUT)
+	await stop_inspect_tween.finished
+	reset_highlight()
+	
 
 func hide_label():
 	text_displayer.hide_text()

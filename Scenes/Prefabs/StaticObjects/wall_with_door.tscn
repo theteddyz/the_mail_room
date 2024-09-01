@@ -129,8 +129,8 @@ size = Vector3(2.11129, 7.96306, 0.366039)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
-collision_layer = 133
-collision_mask = 133
+collision_layer = 149
+collision_mask = 149
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.78159, 6.02398, 0.00671387)

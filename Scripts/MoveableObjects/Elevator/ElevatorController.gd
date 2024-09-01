@@ -1,26 +1,32 @@
 extends Node3D
-
+#Objects need for tweens
+@onready var Left_Wall_Door:StaticBody3D = $Elevator_Wall/Elevator_Wall/Left_Door
+@onready var Right_Wall_Door:StaticBody3D = $Elevator_Wall/Elevator_Wall/Right_Door
+@onready var Elevator_Wall:StaticBody3D = $Elevator_Wall
+@onready var Elevator:Node3D = $Elevator
+@onready var Elevator_Collider:StaticBody3D = $Elevator/Elevator/Elevator_body/StaticBody3D
+@onready var Elevator_Door:MeshInstance3D = $Elevator/Elevator/Elevator_body/ElevatorDoor_001
+@onready var detector = $Elevator/ObjectDetectionShape
+@onready var elevator_audio:AudioStreamPlayer3D = $Elevator/AudioStreamPlayer3D
+@onready var wall_door_audio:AudioStreamPlayer3D = $Elevator_Wall/AudioStreamPlayer3D
+var wall_door_close = preload("res://Assets/Audio/SoundFX/ElevatorDoorClose.mp3")
+var wall_door_open = preload("res://Assets/Audio/SoundFX/ElevatorDoorOpen.mp3")
+var elevator_entrance_open = preload("res://Assets/Audio/SoundFX/ElevatorEntranceDoorOpen.mp3")
+var elevator_entrance_close = preload("res://Assets/Audio/SoundFX/ElevatorEntranceDoorClose.mp3")
+var elevator_moving = preload("res://Assets/Audio/SoundFX/ElevatorSound.mp3")
+var elevator_ding = preload("res://Assets/Audio/SoundFX/ElevatorDing.mp3")
 var current_floor:int = 4
 var previous_floor:int
 var floors:Dictionary = {-2: 81.5, -1: 64, 0: 49, 1: 30.5, 2: 10.5, 3: -7, 4: -27, 5: -46, 6: -64, 7: -84}
 var is_called:bool = false
-@onready var anim:AnimationPlayer = $AnimationPlayer
-@onready var Elevator_Wall = $Elevator_Wall
-@onready var Elevator = $Elevator
-@onready var detector = $Elevator/ObjectDetectionShape
-var elevator_anim:AnimationPlayer
-var wall_anim:AnimationPlayer
 var cart:bool = false
 var floor_mesh
 var current_scene
 @export var locked = false
-#@onready var floor_indicator: MeshInstance3D = $WallWithElevatorEntrance/ElevatorEntrance/ElevatorEntranceIndicator
 # Called when the node enters the scene tree for the first time.
 
 
 func _ready():
-	elevator_anim = Elevator.find_child("Elevator_Anim")
-	wall_anim = Elevator_Wall.find_child("wall_anim")
 	GameManager.register_elevator(self)
 	EventBus.connect("moved_to_floor",set_floor)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,111 +35,77 @@ func _process(_delta):
 
 
 func call_elevator():
-	var player_floor = get_tree().root.get_child(5).floor_num
+	var root = get_tree().root
+	var world = root.get_child(root.get_child_count() - 1)
+	var player_floor = world.floor_num
 	if !is_called:
 		is_called = true
 		if current_floor != player_floor:
 			if current_floor > player_floor:
-				anim.play("elevator_call_down")
+				await call_elevator_down()
+				await open_doors()
 				current_floor = player_floor
-				await anim.animation_finished
-				elevator_anim.play("door_open")
-				wall_anim.play("wall_door_open")
-				await elevator_anim.animation_finished
 			else:
-				anim.play("elevator_call_up")
+				await call_elevator_up()
 				current_floor = player_floor
-				await anim.animation_finished
-				elevator_anim.play("door_open")
-				wall_anim.play("wall_door_open")
-				await elevator_anim.animation_finished
 		else:
-			elevator_anim.play("door_open")
-			wall_anim.play("wall_door_open")
-			await elevator_anim
+			open_doors()
 
-func move_floors():
+func move_floors()->void:
 	swap_floor_collider(false)
 	if previous_floor > current_floor:
 		await close_doors()
 		var player = GameManager.get_player()
-		#var elevatorbody = Elevator.find_child("Elevator_body")
 		player.reparent(Elevator,true)
 		if detector.mailcart_exists_in_elevator == true:
 			var mail_cart = GameManager.get_mail_cart()
 			mail_cart.reparent(Elevator,true)
-		if Elevator_Wall.visible:
-			await wall_anim.animation_finished
-		else:
-			await elevator_anim.animation_finished
-		anim.play("elevator_move_down")
-		await anim.animation_finished
-		if current_floor < 0:
-			#var elevator_wall_anim = Elevator_Wall.find_child("wall_anim")
-			wall_anim.active = false
-			Elevator_Wall.visible = false
-			
-		else:
-			elevator_anim.active = true
-			Elevator_Wall.visible = true
+		await move_elevator_down()
+		return
 	else:
 		await close_doors()
-		
 		if detector.mailcart_exists_in_elevator == true:
 			var mail_cart = GameManager.get_mail_cart()
 			mail_cart.reparent(Elevator,true)
 		var player = GameManager.get_player()
 		player.reparent(Elevator,true)
-		if Elevator_Wall.visible:
-			await wall_anim.animation_finished
-		else:
-			await elevator_anim.animation_finished
-			
-		anim.play("elevator_move_up")
-		await anim.animation_finished
-		if current_floor < 0:
-			wall_anim.active = true
-			Elevator_Wall.visible = true
-		else:
-			wall_anim.active = true
-			Elevator_Wall.visible = true
+		await move_elevator_up()
+		return
 
 func set_floor(path,new_floor:int):
 	previous_floor = current_floor
 	current_floor = new_floor
 	await move_floors()
+	#var loading_screen = Gui.get_loading_screen()
+	#if loading_screen:
+		#loading_screen.visible = true
+		#loading_screen.show()
+		#loading_screen.load_screen(path)
+	#await get_tree().create_timer(5.0).timeout
 	GameManager.goto_scene(path,new_floor)
+	
 
 func load_floor():
 	swap_floor_collider(false)
 	var player = GameManager.get_player()
 	player.reparent(Elevator,true)
-	print(detector.mailcart_exists_in_elevator)
 	if detector.mailcart_exists_in_elevator == true:
 		var mail_cart = GameManager.get_mail_cart()
 		mail_cart.reparent(Elevator,true)
 	if previous_floor > current_floor:
-		wall_anim.play("RESET")
-		elevator_anim.play("RESET")
-		anim.play("elevator_call_down")
-		await anim.animation_finished
+		await call_elevator_down()
 		var root = get_tree().root
 		current_scene = root.get_child(root.get_child_count() - 1)
 		player.reparent(current_scene)
 		swap_floor_collider(true)
-		elevator_anim.play("door_open")
-		wall_anim.play("wall_door_open")
+		await open_doors()
 	else:
-		elevator_anim.play("RESET")
-		wall_anim.play("RESET")
-		anim.play("elevator_call_up")
-		await anim.animation_finished
+		await call_elevator_up()
 		var root = get_tree().root
 		current_scene = root.get_child(root.get_child_count() - 1)
 		player.reparent(current_scene)
 		swap_floor_collider(true)
-		elevator_anim.play("door_open")
-		wall_anim.play("wall_door_open")
+		open_doors()
 		
 		
 
@@ -157,12 +129,69 @@ func swap_floor_collider(on:bool):
 	for floors in get_tree().get_nodes_in_group("Fake_Floor"):
 		floors.visible = true
 
-func close_doors():
-	elevator_anim.play("door_close")
-	wall_anim.play("RESET")
-	await wall_anim.animation_finished
-	wall_anim.play("wall_door_close")
-	
+func close_doors()-> void:
+	var close_door_tween = create_tween()
+	close_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-0.867,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+	close_door_tween.set_parallel(true)
+	close_door_tween.tween_property(Right_Wall_Door, "position", Vector3(0,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+	close_door_tween.set_parallel(true)
+	close_door_tween.tween_property(Elevator_Door,"blend_shapes/ElevatorDoor",1,3)
+	wall_door_audio.play()
+	await close_door_tween.finished
+	return
+
+func open_doors()->void:
+	var open_door_tween = create_tween()
+	open_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-1.705,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+	open_door_tween.set_parallel(true)
+	open_door_tween.tween_property(Right_Wall_Door, "position", Vector3(0.832,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+	open_door_tween.set_parallel(true)
+	open_door_tween.tween_property(Elevator_Door,"blend_shapes/ElevatorDoor",0,3)
+	elevator_audio.stream = elevator_entrance_open
+	elevator_audio.play()
+	wall_door_audio.stream = wall_door_open
+	wall_door_audio.play()
+	await open_door_tween.finished
+	Elevator_Collider.get_child(0).disabled = true
+	return 
+
+func call_elevator_down()->void:
+	Elevator.position = Vector3(2,9.304,0.75)
+	var elevator_called_down_tween = create_tween()
+	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(2,1,0.75), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_audio.stream = elevator_moving
+	elevator_audio.play()
+	await elevator_called_down_tween.finished
+	elevator_audio.stream = elevator_ding
+	elevator_audio.play()
+	await elevator_audio.finished
+	return 
+func call_elevator_up()->void:
+	Elevator.position = Vector3(2,-6.944,0.75)
+	var elevator_called_up_tween = create_tween()
+	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(2,1,0.75), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_audio.stream = elevator_moving
+	elevator_audio.play()
+	await elevator_called_up_tween.finished
+	elevator_audio.stream = elevator_ding
+	elevator_audio.play()
+	await elevator_audio.finished
+	await open_doors()
+	return 
+func move_elevator_down()-> void:
+	var move_elevator_down_tween = create_tween()
+	move_elevator_down_tween.tween_property(Elevator, "position", Vector3(2,-6.944,0.75), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_audio.stream = elevator_moving
+	elevator_audio.play()
+	await move_elevator_down_tween.finished
+	return 
+func move_elevator_up()-> void:
+	var move_elevator_up_tween = create_tween()
+	move_elevator_up_tween.tween_property(Elevator, "position", Vector3(2,9.304,0.75), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_audio.stream = elevator_moving
+	elevator_audio.play()
+	await move_elevator_up_tween.finished
+	return 
 #func move_indicator(floor:int):
 	#if floor in floors:
 		#var target_rotation = floors[floor]

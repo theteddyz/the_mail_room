@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlxusgmvl8f47"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/gui/load_screen.gd" id="1_83xph"]
+[ext_resource type="Texture2D" uid="uid://blpa4uujtufot" path="res://Assets/TemporaryAssets/ezgif-1-7859eea80d.png" id="1_105ig"]
+
+[node name="loading_screen" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_83xph")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.0
+offset_top = -328.0
+offset_right = 578.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_105ig")
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.5
+offset_top = -13.5
+offset_right = 576.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
