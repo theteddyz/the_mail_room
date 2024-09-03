@@ -836,16 +836,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00570261, 5.28189, 0)
 occluder = SubResource("BoxOccluder3D_pehdm")
 
 [node name="ElevatorShaft" parent="." instance=ExtResource("3_nwkyn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.0856521, 0.825366)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.154511, 0.789673)
 
 [node name="ElevatorShaft3" parent="." instance=ExtResource("3_nwkyn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7.65439, 0.825366)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7.58553, 0.789673)
 
 [node name="ElevatorShaft4" parent="." instance=ExtResource("3_nwkyn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7.91082, 0.825366)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7.97969, 0.789673)
 
 [node name="Elevator" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 9.30392, 0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8.8212, 0.946)
 collision_layer = 29
 collision_mask = 29
 
@@ -1025,6 +1025,7 @@ transform = Transform3D(0.0317268, 0, 0, 0, 0.0317268, 0, 0, 0, 0.0317268, 0, 0.
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/Elevator/Elevator_body/StaticBody3D"]
 shape = SubResource("BoxShape3D_utnqr")
+disabled = true
 
 [node name="ElevatorDoor_001" type="MeshInstance3D" parent="Elevator/Elevator/Elevator_body"]
 transform = Transform3D(0.0317268, 0, 0, 0, 0.0317268, 0, 0, 0, 0.0317268, -0.754521, 0.355969, 2.4855)
@@ -1052,7 +1053,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000732422, 0.68578, -2.465
 shape = SubResource("BoxShape3D_fggfg")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Elevator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000579834, -1.03536, 0.184204)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.105769, -1.06132, 0.184204)
 shape = SubResource("BoxShape3D_u3qxv")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Elevator"]

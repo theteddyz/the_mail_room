@@ -122,7 +122,8 @@ func calculate_spacing():
 			move_package_to_cart(game_objects[i], _position)
 			
 	else:
-		move_package_to_cart(game_objects[0], 0)
+		if total_packages > 0:
+			move_package_to_cart(game_objects[0], 0)
 
 # Placeholder function to move package to cart
 func move_package_to_cart(package: Package, _position: float):

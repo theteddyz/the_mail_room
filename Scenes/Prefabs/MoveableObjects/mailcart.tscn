@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://tw0mk31qdtge"]
+[gd_scene load_steps=23 format=4 uid="uid://tw0mk31qdtge"]
 
 [ext_resource type="Script" path="res://Scripts/MailCart/Mailcart.gd" id="1_1hgo0"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="2_jjppu"]
@@ -34,7 +34,7 @@ size = Vector3(0.211182, 0.452087, 0.0598679)
 size = Vector3(1.67256, 0.0565796, 0.831879)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ac6n8"]
-size = Vector3(1.67256, 0.403793, 0.831879)
+size = Vector3(1.67256, 0.300529, 0.831879)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8jcur"]
 
@@ -83,6 +83,9 @@ size = Vector3(0.510742, 0.275742, 0.0707397)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pbic7"]
 size = Vector3(1, 0.900818, 1.60547)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2d7qu"]
+radius = 0.129751
 
 [node name="Mailcart" type="RigidBody3D" groups=["Persist"]]
 collision_layer = 8
@@ -157,7 +160,7 @@ transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.0041
 shape = SubResource("BoxShape3D_stabw")
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, -0.0252724, -0.0971531, 0.0632482)
+transform = Transform3D(-0.00415388, 0, 0.999991, 0, 1, 0, -0.999991, 0, -0.00415388, -0.0252724, -0.0455212, 0.0632482)
 shape = SubResource("BoxShape3D_ac6n8")
 
 [node name="RadioPosition" type="Node3D" parent="."]
@@ -200,5 +203,21 @@ limit_lower = -3.14159
 node_a = NodePath("..")
 node_b = NodePath("../RadioPosition/Radio")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.55011, 0.832769, 0)
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.377808, -0.197912, 0.775848)
+shape = SubResource("SphereShape3D_2d7qu")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36569, -0.197912, 0.775848)
+shape = SubResource("SphereShape3D_2d7qu")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.377808, -0.188626, -0.688045)
+shape = SubResource("SphereShape3D_2d7qu")
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36569, -0.188626, -0.688045)
+shape = SubResource("SphereShape3D_2d7qu")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
