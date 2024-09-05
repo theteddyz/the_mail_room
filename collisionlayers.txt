@@ -12,8 +12,8 @@ cl = 1
 cm = 0
 
 Grabbable Objects:				Interactable Finder:
-cl = 2						cl = 0
-cm = 1, 2, 3, 4					cm = 1, 2, 4
+cl = 2, 5							cl = 0
+cm = 1, 2, 3, 4, 5					cm = 1, 2, 4
 
 Player:
 cl = 3
