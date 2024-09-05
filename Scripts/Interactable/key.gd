@@ -28,7 +28,7 @@ func on_unseen(_node):
 	if is_being_looked_at:
 		is_being_looked_at = false
 
-
+#TODO: KEY COLLIDER
 func interact():
 	being_grabbed = true
 	EventBus.emitCustomSignal("picked_up_key",[self])
@@ -52,10 +52,12 @@ func _process(delta):
 		reset_highlight()
 func grabbed(delta):
 	position = position.lerp(lerp_pos.global_position, lerp_speed * delta)
-	if position.distance_to(lerp_pos.global_position) < 0.1:
-		item_icon_manager.show_icon()
-		queue_free()
 
 func reset_highlight():
 	if shader_material:
 		key_material.material_overlay.set_shader_parameter("outline_width", 0)
+
+func _on_body_entered(body: Node) -> void:
+	if being_grabbed and body.name == "Player":
+		item_icon_manager.show_icon()
+		queue_free()

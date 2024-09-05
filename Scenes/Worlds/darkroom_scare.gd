@@ -31,7 +31,7 @@ func _ready():
 	ScareDirector.connect("monster_seen", monster_seen_event)
 
 func activate_scare(key_num:int):
-	if key_num == 1:
+	if key_num == 1 and has_been_executed == false:
 		if john_typing_sound != null:
 			john_typing_sound.playing = false
 		monsterCollisionShape.disabled = false
