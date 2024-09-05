@@ -24,7 +24,7 @@ var closed_ambiance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	closed_ambiance = preload("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience3.ogg")
+	closed_ambiance = preload("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience2Normalized.ogg")
 	monster_anim = monster_body.find_child("AnimationPlayer")
 	monsterCollisionShape.disabled = true
 	ScareDirector.connect("key_pickedup", activate_scare)
@@ -78,7 +78,7 @@ func _hide_monster():
 	
 func _door_opened(grabbable:String):
 	if grabbable == door.name:
-		AudioController.stop_resource("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience3.ogg", 2)
+		AudioController.stop_resource("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience2Normalized.ogg", 2)
 		queue_free()
 
 func _end_scare():
