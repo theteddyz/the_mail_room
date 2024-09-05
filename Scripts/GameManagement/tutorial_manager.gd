@@ -22,7 +22,7 @@ func _ready():
 	ScareDirector.connect("package_delivered", start_tutorial_end)
 	EventBus.connect("object_held",start_tutorial_part_3)
 func _on_area_3d_body_entered(body):
-	if body.name == "Player" and !tutorial_started:
+	if (body.name == "Player" or body.name == "Mailcart") and !tutorial_started:
 		tutorial_started = true
 		player_radio.play_narrator_sound(start_sound)
 

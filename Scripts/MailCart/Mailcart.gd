@@ -144,7 +144,16 @@ func not_being_looked_at(_node):
 		gui_anim.show_icon(false)
 		is_being_looked_at = false
 
-
+func perform_package_replacement(new_scene):
+	var obj : Array[Package]
+	for i in game_objects:
+		var test_package = new_scene.find_child(i.name)
+		if test_package != null:
+			obj.append(test_package)
+	
+	for i in obj:
+		i.queue_free()
+		
 func save():
 	var save_dict = {
 		"nodepath" : get_parent().name + "/" + name,

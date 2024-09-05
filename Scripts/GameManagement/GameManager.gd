@@ -127,6 +127,8 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 	var new_player = current_scene.find_child("Player")
 	if(new_player != null):
 		new_player.free()
+		
+	# If this is not a save-load
 	if(!is_not_scene_load):
 		player_reference.reparent(current_scene, false)
 		player_reference.owner = current_scene
@@ -138,10 +140,9 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 		new_mailcart.free()
 	# We do not want to add the mailcart to the new scene in some cases
 	if(mailcart_in_elevator):
-		#mail_cart_reference.reparent(current_scene, false)
-		#mail_cart_reference.owner = current_scene
-		#mail_cart_reference._ready()
-		pass
+		var mailcart = elevator_reference.get_node("Elevator").get_node("Mailcart")
+		mailcart.perform_package_replacement(current_scene)
+		
 	# Find and replace the elevator node
 	var new_elevator = current_scene.find_child("Elevator")
 	#var new_elevator_rotation = new_elevator.rotation
