@@ -294,6 +294,7 @@ collision_mask = 15
 mass = 50.0
 script = ExtResource("1_jg2d3")
 should_freeze = true
+disable_collider_on_grab = false
 can_rotate = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk"]
@@ -343,7 +344,8 @@ skeleton = NodePath("")
 
 [node name="DrawerTop" type="RigidBody3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.813896, 0.775369, 0.566391)
-collision_layer = 3
+collision_layer = 2
+collision_mask = 3
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 linear_damp = 6.0
@@ -402,7 +404,8 @@ volume = -20.0
 
 [node name="DrawerBottom" type="RigidBody3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817725, 0.316904, 0.568443)
-collision_layer = 3
+collision_layer = 2
+collision_mask = 3
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 linear_damp = 6.0

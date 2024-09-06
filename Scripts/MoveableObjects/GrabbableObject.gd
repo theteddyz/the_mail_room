@@ -9,6 +9,7 @@ extends Grabbable
 @export var tether_distance: float = 2.5
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
+@export var disable_collider_on_grab:bool = true
 @export var can_rotate:bool = true
 @onready var grab_icon = preload("res://Scenes/Prefabs/MoveableObjects/grab_icon.tscn")
 @export var is_picked_up = false
@@ -44,6 +45,8 @@ var is_grabbing_bool: bool = false
 var mouse_line_material: ORMMaterial3D
 
 func _ready():
+	set_collision_layer_value(5,true)
+	set_collision_mask_value(5,true)
 	if GameManager.get_player() != null:
 		player = GameManager.get_player()
 	object_Interpolator = find_child("Interpolator")
@@ -143,10 +146,11 @@ func grab():
 		#itemPos = player.find_child("ItemHolder")
 		camera = player.find_child("Camera")
 		playerHead = player.find_child("Head")
-		set_collision_mask_value(3, false)
-		set_collision_layer_value(3,false)
+		
 		if should_freeze:
 			freeze = false
+		if disable_collider_on_grab:
+			set_collision_layer_value(2,false)
 		if player_raycast.is_colliding():
 			grab_offset = player_raycast.get_collision_point() - global_transform.origin
 			
@@ -170,8 +174,8 @@ func dropMe(throw:bool):
 		#linear_damp = 0.1
 		force_above_threshold_time = 0.0
 		angular_damp = starting_angular_damp
-		set_collision_mask_value(3, true)
-		set_collision_layer_value(3,true)
+		if disable_collider_on_grab:
+			set_collision_layer_value(2,true)
 		#if should_freeze:
 			#sleeping = true
 	else:
@@ -181,10 +185,11 @@ func dropMe(throw:bool):
 		force_above_threshold_time = 0.0
 		angular_damp = starting_angular_damp
 		apply_torque_impulse(calculate_torque_impulse())
-		set_collision_mask_value(3, true)
-		set_collision_layer_value(3,true)
+		
 		if should_freeze:
 			sleeping = true
+		if disable_collider_on_grab:
+			set_collision_layer_value(2,true)
 	remove_grab_point_indicator()
 func pickmeUp():
 	if is_picked_up:
@@ -192,8 +197,8 @@ func pickmeUp():
 	#if parent.mass <= weightLimit:
 	#TODO: Switch "null" to something "more" correct
 	angular_damp = 10
-	set_collision_mask_value(3, false)
-	set_collision_layer_value(3,false)
+	if disable_collider_on_grab:
+		set_collision_layer_value(2,false)
 	EventBus.emitCustomSignal("object_held", [mass, self])
 	is_picked_up = true
 

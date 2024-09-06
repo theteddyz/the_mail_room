@@ -152,6 +152,8 @@ mass = 50.0
 freeze = true
 script = ExtResource("1_hork0")
 should_freeze = true
+disable_collider_on_grab = false
+can_rotate = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.13829, 0.000576701)
