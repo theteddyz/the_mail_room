@@ -24,6 +24,7 @@ func _input(event):
 		visible = true
 		disabled = false
 		col.disabled = false
+		
 func _physics_process(_delta):
 	if target_position and !disabled:
 		move_to_target()
@@ -39,6 +40,13 @@ func move_to_target():
 		return
 	velocity = direction * speed
 	apply_pushes()
+	
+	# TODO: The following wont detect the player, why? Who knows
+	print(get_slide_collision_count())
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider().name == "Player" or c.get_collider().name == "Mailcart":
+			c.get_collider().hit_by_entity()
 	move_and_slide()
 
 func apply_pushes():
@@ -66,8 +74,10 @@ func chase_player():
 func stop_chasing_player():
 	if chasing:
 		chasing = false
+		disabled = true
+		visible = false
+		col.disabled = true
 		nav_timer.stop()
-
 
 func on_player_in_vision():
 	if !chasing:

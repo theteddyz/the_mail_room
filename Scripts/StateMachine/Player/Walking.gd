@@ -383,7 +383,6 @@ func recover_stamina(delta):
 		if current_stamina > max_stamina:
 			current_stamina = max_stamina
 
-
 func disable_movement_event(l:bool,w:bool):
 	persistent_state.velocity = Vector3.ZERO
 	disable_look_movement = l
