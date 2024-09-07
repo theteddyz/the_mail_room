@@ -10,6 +10,7 @@ extends Grabbable
 @export var regrab_cooldown: float = 0.5
 @export var should_freeze:bool = false
 @export var disable_collider_on_grab:bool = true
+@export var is_door:bool = false
 @export var can_rotate:bool = true
 @onready var grab_icon = preload("res://Scenes/Prefabs/MoveableObjects/grab_icon.tscn")
 @export var is_picked_up = false
@@ -216,9 +217,16 @@ func update_position(delta):
 	
 	var rotation_offset = rotate_vector_global(grab_offset)
 	var forward = -camera.global_transform.basis.z
-	var targetPosition: Vector3 = (camera.global_transform.origin + forward.normalized()*grab_distance) + -rotation_offset
+	var targetPosition: Vector3 = Vector3.ZERO
+	var grab_range = 0
+	if is_door:
+		grab_range = 2
+		targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
+	else:
+		grab_range = grab_distance
+		targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
 	var currentPosition:Vector3 = global_transform.origin
-	_update_mouse_line((camera.global_transform.origin + forward.normalized()*grab_distance),currentPosition + rotation_offset)
+	_update_mouse_line((targetPosition + rotation_offset),currentPosition + rotation_offset)
 	var directionTo:Vector3 = targetPosition - currentPosition
 	var distance:float = currentPosition.distance_to(targetPosition)
 	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))

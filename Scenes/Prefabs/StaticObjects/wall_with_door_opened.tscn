@@ -115,6 +115,7 @@ collision_mask = 14
 axis_lock_linear_y = true
 script = ExtResource("1_13aws")
 disable_collider_on_grab = false
+is_door = true
 can_rotate = false
 
 [node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="RigidBody3D"]
