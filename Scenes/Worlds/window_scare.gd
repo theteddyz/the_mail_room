@@ -3,7 +3,7 @@ extends Node3D
 var has_been_executed = false
 var ready_to_start = false
 @onready var monster_body = $godot_rig
-@onready var door_lock = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/RigidBody3D2/Door_Lock"
+@onready var door_lock = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/RigidBody3D3/Door_Lock"
 @onready var light_flicker_firstroom = $"../../CeilingLights/CeilingLightOn23/LightFlickering"
 @onready var door_close = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/DoorClose"
 @onready var window_scare_toner: AnimationPlayer = $"../../CeilingLights/CeilingLightOn32/WINDOW_SCARE_TONER"
@@ -47,4 +47,5 @@ func start_scare():
 
 func _jumpscare():
 	light_flicker_firstroom.stop()
+	sighting_ambience.stop()
 	scare_anim.play("scare")
