@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://ci06t62wr0l2o"]
+
+[ext_resource type="Texture2D" uid="uid://dllsrbme5liyw" path="res://Assets/Textures/FinanceFloorLayout2.png" id="1_lcrrq"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_mshcd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fac3c"]
+albedo_texture = ExtResource("1_lcrrq")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_dm0eh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74asa"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="FinanceFloorLayout" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_mshcd")
+surface_material_override/0 = SubResource("StandardMaterial3D_fac3c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, 1.04, 0, 0, 0, 0.03, -0.506804, 0, 0)
+mesh = SubResource("BoxMesh_dm0eh")
+surface_material_override/0 = SubResource("StandardMaterial3D_74asa")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, 1.04, 0, 0, 0, 0.03, 0.507, 0, 0)
+mesh = SubResource("BoxMesh_dm0eh")
+surface_material_override/0 = SubResource("StandardMaterial3D_74asa")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-09, 1.04, 0, -0.03, -4.54598e-08, 0, 0, 0, 0.03, 0, 0.507, 0)
+mesh = SubResource("BoxMesh_dm0eh")
+surface_material_override/0 = SubResource("StandardMaterial3D_74asa")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-09, 1.04, 0, -0.03, -4.54598e-08, 0, 0, 0, 0.03, 0, -0.507, 0)
+mesh = SubResource("BoxMesh_dm0eh")
+surface_material_override/0 = SubResource("StandardMaterial3D_74asa")
