@@ -110,6 +110,8 @@ collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_ie20y")
 gravity_scale = 0.0
 script = ExtResource("2_3s2js")
+disable_collider_on_grab = false
+is_door = true
 can_rotate = false
 
 [node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="RigidBody3D"]

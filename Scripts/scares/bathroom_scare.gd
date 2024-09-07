@@ -47,6 +47,7 @@ func monster_seen_function(b:bool):
 
 func _second_trigger(body):
 	if !triggered and body.name == "Player" and !scare_finished:
+		
 		triggered = true
 		$BloodScares.visible = true
 		second_bathroom_light.visible = true
@@ -55,7 +56,8 @@ func _second_trigger(body):
 
 
 func _third_trigger(body):
-	if body == trigger_bathroom_door and triggered and !scare_finished:
+	if body.name == "Player" and triggered and !scare_finished:
+		
 		await get_tree().create_timer(1.0).timeout
 		second_bathroom_light.visible = false
 		second_bathroom_light_mesh.transparency = 1
@@ -63,7 +65,8 @@ func _third_trigger(body):
 		second_bathroom_light_mesh.transparency = 0
 		second_bathroom_light.visible = true
 		second_bathroom_light.light_color = Color.FIREBRICK
-		eyes.visible = true
+		if eyes != null:
+			eyes.visible = true
 		spawn_monster_behind_player()
 
 func spawn_monster_behind_player():
