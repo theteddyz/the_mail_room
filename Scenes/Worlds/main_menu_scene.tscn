@@ -586,26 +586,26 @@ transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.6
 [node name="meeting_room_wall_Door8" parent="Walls" instance=ExtResource("38_5ivdx")]
 transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, 0.945694, 0, 27.0653)
 
-[node name="Door_Lock" parent="Walls/meeting_room_wall_Door8/RigidBody3D2" index="2"]
-locked = true
+[node name="WallMeetingRoomWithDoorGlass" parent="Walls/meeting_room_wall_Door8" index="4"]
+surface_material_override/0 = null
 
 [node name="meeting_room_wall_Door14" parent="Walls" instance=ExtResource("38_5ivdx")]
 transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, 6.572, 0, 27.064)
 
-[node name="Door_Lock" parent="Walls/meeting_room_wall_Door14/RigidBody3D2" index="2"]
-locked = true
+[node name="WallMeetingRoomWithDoorGlass" parent="Walls/meeting_room_wall_Door14" index="4"]
+surface_material_override/0 = null
 
 [node name="meeting_room_wall_Door9" parent="Walls" instance=ExtResource("38_5ivdx")]
 transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, 17.9265, 0, 27.064)
 
-[node name="Door_Lock" parent="Walls/meeting_room_wall_Door9/RigidBody3D2" index="2"]
-locked = true
+[node name="WallMeetingRoomWithDoorGlass" parent="Walls/meeting_room_wall_Door9" index="4"]
+surface_material_override/0 = null
 
 [node name="meeting_room_wall_Door10" parent="Walls" instance=ExtResource("38_5ivdx")]
 transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, 23.556, 0, 27.062)
 
-[node name="Door_Lock" parent="Walls/meeting_room_wall_Door10/RigidBody3D2" index="2"]
-locked = true
+[node name="WallMeetingRoomWithDoorGlass" parent="Walls/meeting_room_wall_Door10" index="4"]
+surface_material_override/0 = null
 
 [node name="meeting_room_wall_Door5" parent="Walls" instance=ExtResource("38_5ivdx")]
 transform = Transform3D(0.647, 0, 6.89579e-15, 0, 0.647, 0, -6.89579e-15, 0, 0.647, 10.6291, 0, 24.1634)

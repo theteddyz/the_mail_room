@@ -37,9 +37,11 @@ func activate_scare(key_num:int):
 		monsterCollisionShape.disabled = false
 		monster_anim.play("DoorSlam")
 		monster_anim.speed_scale = 0
+		monster_anim.seek(0.3)
 		monster_body.visible = true
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		door_slam_anim.play("door_open")
+		door_slam_anim.seek(0.3)
 		scare_active = true
 		print("SCARE ACTIVATED!")
 		
@@ -52,9 +54,13 @@ func monster_seen_event(test):
 		print("DOOR LOCKING!")
 		flickeranimationplayer.pause()
 		flickeranimationplayer.play("RESET")
+		flickeranimationplayer.speed_scale = 100
 		monster_anim.current_animation = ""
-		monster_anim.speed_scale = 1
+		monster_anim.speed_scale = 1.25
+		monster_anim.seek(0.3)
 		door_slam_anim.play("door_lock")
+		door_slam_anim.speed_scale = 1.125
+		door_slam_anim.seek(0.3)
 		hallwayflickeranimationplayer.play("flicker")
 		monster_run_soundplayer.playing = true
 		

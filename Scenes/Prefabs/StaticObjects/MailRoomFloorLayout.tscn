@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5gsbgt4sbxui"]
+
+[ext_resource type="Texture2D" uid="uid://uqhh07aun3bu" path="res://Assets/Textures/MailRoomFloorLayout.png" id="1_7le4r"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_nk56w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pna5n"]
+albedo_texture = ExtResource("1_7le4r")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_dm0eh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_74asa"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="MailRoomFloorLayout" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.601072, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_nk56w")
+surface_material_override/0 = SubResource("StandardMaterial3D_pna5n")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, 0.600518, 0, 0, 0, 0.03, -0.506804, 0, 0)
+mesh = SubResource("BoxMesh_dm0eh")
+surface_material_override/0 = SubResource("StandardMaterial3D_74asa")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, 0.600518, 0, 0, 0, 0.03, 0.507, 0, 0)
+mesh = SubResource("BoxMesh_dm0eh")
+surface_material_override/0 = SubResource("StandardMaterial3D_74asa")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-09, 1.04, 0, -0.03, -4.54598e-08, 0, 0, 0, 0.03, 0, 0.305081, 0)
+mesh = SubResource("BoxMesh_dm0eh")
+surface_material_override/0 = SubResource("StandardMaterial3D_74asa")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-09, 1.04, 0, -0.03, -4.54598e-08, 0, 0, 0, 0.03, 0, -0.309718, 0)
+mesh = SubResource("BoxMesh_dm0eh")
+surface_material_override/0 = SubResource("StandardMaterial3D_74asa")

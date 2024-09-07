@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=4 uid="uid://c06x6sqmgfqve"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bhuc"]
+resource_name = "Material"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ymxqu"]
+_surfaces = [{
+"aabb": AABB(-0.0798363, 0, -0.0450873, 0.159673, 0.13647, 0.0901745),
+"format": 34359742465,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwABAAAAAAAEAAMAAgADAAQAAgAEAAAAAgABAAMA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("NIGjvdG+Cz5prTi9NIGjvdG+Cz5prTg9AAAAAAAAAAAAAAAANIGjPdG+Cz5prTg9NIGjPdG+Cz5prTi9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4sge8"]
+resource_name = "Cube"
+_surfaces = [{
+"aabb": AABB(-0.0798363, 0, -0.0450873, 0.159673, 0.13647, 0.0901745),
+"attribute_data": PackedByteArray("AADAPgAAQD8AACA/AABAPwAAID8AAGA/AAAgPwAAAD8AACA/AABAPwAAwD4AAEA/AADAPgAAAD8AAMA+AADAPgAAID8AAAA/AADAPgAAAD8AAAA+AADAPgAAwD4AAAA/AAAAPgAAAD8AACA/AADAPgAAYD8AAAA/AAAgPwAAAD8="),
+"format": 34359742487,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABQAGAAMABwAIAAkACgALAAwADQAOAA8A"),
+"material": SubResource("StandardMaterial3D_3bhuc"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("NIGjvdG+Cz5prTi9NIGjvdG+Cz5prTg9AAAAAAAAAAAAAAAANIGjPdG+Cz5prTg9NIGjvdG+Cz5prTg9NIGjvdG+Cz5prTi9NIGjPdG+Cz5prTi9AAAAAAAAAAAAAAAANIGjPdG+Cz5prTg9NIGjPdG+Cz5prTi9AAAAAAAAAAAAAAAANIGjPdG+Cz5prTi9NIGjvdG+Cz5prTi9AAAAAAAAAAAAAAAANIGjvdG+Cz5prTg9NIGjPdG+Cz5prTg9Pi/BUP9//78+L8FQ/3//vz4vwVD/f/+//3////9//7//f////3//v/9/////f/+//3////9//7/A0MFQ/3//v8DQwVD/f/+/wNDBUP9//7814AAA////vzXgAAD///+/NeAAAP///7//fzZgAAD/v/9/NmAAAP+//382YAAA/78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ymxqu")
+
+[node name="ViewFrustum" type="MeshInstance3D"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+mesh = SubResource("ArrayMesh_4sge8")
+skeleton = NodePath("")

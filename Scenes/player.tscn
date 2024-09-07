@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=18 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
+[ext_resource type="PackedScene" uid="uid://c06x6sqmgfqve" path="res://Assets/TemporaryAssets/ViewFrustum.tscn" id="7_1o2es"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 [ext_resource type="Script" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
 [ext_resource type="AudioStream" uid="uid://cin4ngwhr1g72" path="res://Scenes/Prefabs/AudioPlayers/carpet_footsteps.tres" id="9_pey34"]
@@ -24,8 +25,8 @@ radius = 8.51913
 [sub_resource type="BoxShape3D" id="BoxShape3D_06j8k"]
 size = Vector3(16.6539, 12.44, 40.1273)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ol6wy"]
-points = PackedVector3Array(-0.000195742, 1, -0.000195742, 0.194988, -1, -0.980814, -0.000195742, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qjp7u"]
+points = PackedVector3Array(0.0798363, 0.13647, 0.0450873, 0.0798363, 0.13647, -0.0450873, -0.0798363, 0.13647, 0.0450873, 0, 0, 0, -0.0798363, 0.13647, -0.0450873)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_75rh5"]
 radius = 22.6731
@@ -89,9 +90,9 @@ collision_layer = 4096
 collision_mask = 4096
 script = ExtResource("6_f3pv2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
-transform = Transform3D(12.5, 0, 0, 0, -5.46392e-07, -12.5, 0, 12.5, -5.46392e-07, 0, 0, -12.5007)
-shape = SubResource("ConvexPolygonShape3D_ol6wy")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
+transform = Transform3D(600.839, 0, 0, 0, -1.3899e-05, 600.839, 0, -317.973, -2.62635e-05, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_qjp7u")
 
 [node name="Vision_Timer" type="Timer" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 wait_time = 0.25
@@ -101,6 +102,9 @@ autostart = true
 target_position = Vector3(0, 7.08, -100)
 collision_mask = 4097
 debug_shape_thickness = 1
+
+[node name="ViewFrustum" parent="Neck/Head/HeadbopRoot/MonsterDetector" instance=ExtResource("7_1o2es")]
+visible = false
 
 [node name="LightLevelDetection" parent="Neck/Head/HeadbopRoot" node_paths=PackedStringArray("player", "camera", "timer", "closelight") instance=ExtResource("8_6f6ef")]
 player = NodePath("../../../..")
