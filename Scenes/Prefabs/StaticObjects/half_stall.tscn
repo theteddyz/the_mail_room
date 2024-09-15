@@ -103,7 +103,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("ArrayMesh_6l3ag")
 skeleton = NodePath("")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="bathroom_door" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103421, 1.16256, 0.656637)
 collision_layer = 2
 collision_mask = 15
@@ -114,7 +114,7 @@ disable_collider_on_grab = false
 is_door = true
 can_rotate = false
 
-[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="RigidBody3D"]
+[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="bathroom_door"]
 limit_enabled = true
 limit_lower = -1.5708
 limit_spring_enabled = true
@@ -123,12 +123,12 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0.0100327, 0.0109953, -0.599975)
 
-[node name="Bathroom_door" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="Bathroom_door" type="MeshInstance3D" parent="bathroom_door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0405864, 0)
 mesh = SubResource("ArrayMesh_xnxvt")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bathroom_door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00985718, 0.072839, -0.101196)
 shape = SubResource("BoxShape3D_ojk3t")
 
