@@ -845,7 +845,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7.58553, 0.789673)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7.97969, 0.789673)
 
 [node name="Elevator" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8.8212, 0.946)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -6.9023, 0.946)
 collision_layer = 29
 collision_mask = 29
 

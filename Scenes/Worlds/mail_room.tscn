@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=42 format=4 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_5vkla"]
 [ext_resource type="LightmapGIData" uid="uid://dbto1ave1h2ee" path="res://Scenes/Worlds/mail_room.lmbake" id="2_gp4ix"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bhyepbfxwhdat" path="res://Scenes/light_with_optimizercollider.tscn" id="17_0ceh8"]
 [ext_resource type="PackedScene" uid="uid://dfbuid76trvb0" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_mini.tscn" id="17_6rwos"]
 [ext_resource type="PackedScene" uid="uid://bwkdr1hhs71ee" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="18_uvktp"]
+[ext_resource type="PackedScene" uid="uid://dw7ahxmjrcoci" path="res://Scenes/Prefabs/StaticObjects/mail_room_wall_door_window.tscn" id="18_viqc1"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="20_05muy"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="20_lrs3i"]
 [ext_resource type="AudioStream" uid="uid://dephvjlxfo3d1" path="res://Assets/Audio/SoundFX/MailRoomAmbience.mp3" id="21_i8rlw"]
@@ -781,9 +782,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0771315, 0)
 [node name="StaticBody3D14" parent="stage/Walls" instance=ExtResource("2_vsncc")]
 transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, 0.79569, 0, -6.931)
 
-[node name="StaticBody3D15" parent="stage/Walls" instance=ExtResource("2_vsncc")]
-transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -13.1654, -0.00728297, -0.313556)
-
 [node name="StaticBody3D16" parent="stage/Walls" instance=ExtResource("3_hxukh")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 12.3077, 0, -3.25367)
 
@@ -903,6 +901,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.93
 
 [node name="StaticBody3D6" parent="stage/Walls" instance=ExtResource("11_3qslt")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.9389, 0, 0.327649)
+
+[node name="Door" parent="stage/Walls" instance=ExtResource("18_viqc1")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -13.1637, -0.00211859, -0.367179)
 
 [node name="Rooms" type="Node3D" parent="stage"]
 

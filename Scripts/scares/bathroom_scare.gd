@@ -56,7 +56,7 @@ func _second_trigger(body):
 
 
 func _third_trigger(body):
-	if body.name == "Player" and triggered and !scare_finished:
+	if body.name == "bathroom_door" and triggered and !scare_finished:
 		
 		await get_tree().create_timer(1.0).timeout
 		second_bathroom_light.visible = false
