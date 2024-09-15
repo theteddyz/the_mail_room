@@ -57,7 +57,7 @@ points = PackedVector3Array(0.183616, 0.0182666, 0.129157, -0.148109, -0.0186114
 
 [node name="Package" type="RigidBody3D"]
 collision_layer = 66
-collision_mask = 15
+collision_mask = 4111
 mass = 1.2
 physics_material_override = SubResource("PhysicsMaterial_ohyoc")
 script = ExtResource("1_q28do")

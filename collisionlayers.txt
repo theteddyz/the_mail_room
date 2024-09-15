@@ -13,7 +13,7 @@ cm = 0
 
 Grabbable Objects:				Interactable Finder:
 cl = 2, 5							cl = 0
-cm = 1, 2, 3, 4, 5					cm = 1, 2, 4
+cm = 1, 2, 3, 4, 5, 13				cm = 1, 2, 4
 
 Player:
 cl = 3
@@ -21,11 +21,11 @@ cm = 1, 2, 4, 13
 
 Mailcart:
 cl = 4
-cm = 1, 2, 3
+cm = 1, 2, 3, 13
 
 Packages:
 cl = 2, 7 (maybe fix)
-cm = 1, 2, 3, 4
+cm = 1, 2, 3, 4, 13
 
 
 

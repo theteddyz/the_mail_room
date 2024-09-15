@@ -48,6 +48,8 @@ var mouse_line_material: ORMMaterial3D
 func _ready():
 	set_collision_layer_value(5,true)
 	set_collision_mask_value(5,true)
+	set_collision_mask_value(13,true)
+
 	if GameManager.get_player() != null:
 		player = GameManager.get_player()
 	object_Interpolator = find_child("Interpolator")

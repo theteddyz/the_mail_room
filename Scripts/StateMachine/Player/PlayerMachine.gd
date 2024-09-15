@@ -7,12 +7,12 @@ var pause_menu
 var state: State
 var state_factory: StateFactory
 var extra_life = 1
-var hit_timer: SceneTreeTimer
-const DAMAGE_GRADIENT_TEXTURE = preload("res://damage_gradient_texture.tres")
+@onready var hit_timer: Timer = $hit_timer
+const DAMAGE_GRADIENT_TEXTURE = preload("res://Scenes/Worlds/FinanceDamaged.tres")
+const REGULAR_WE = preload("res://Scenes/Worlds/Finance.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hit_timer = get_tree().create_timer(0)
 	state_factory = StateFactory.new()
 	GameManager.register_player(self)
 	change_state("walking")
@@ -38,18 +38,24 @@ func hit_by_entity():
 		var par = get_parent()
 		if par.name == "Mailcart":
 			par = par.get_parent()
-		par.get_node("WorldEnvironment").set_adjustment_color_correction(DAMAGE_GRADIENT_TEXTURE)
+		par.get_node("WorldEnvironment").set_environment(DAMAGE_GRADIENT_TEXTURE)
 		var timer = get_tree().create_timer(0.35)
-		timer.timeout.connect(func(): par.get_node("WorldEnvironment").set_adjustment_color_correction(null))
+		timer.timeout.connect(func(): par.get_node("WorldEnvironment").set_environment(REGULAR_WE))
 		hit_timer.start(1.25)
-	else:
+		extra_life = 0
+	elif hit_timer.time_left <= 0:
 		var par = get_parent()
 		if par.name == "Mailcart":
 			par = par.get_parent()
-		par.get_node("WorldEnvironment").set_adjustment_color_correction(DAMAGE_GRADIENT_TEXTURE)
+		par.get_node("WorldEnvironment").set_environment(DAMAGE_GRADIENT_TEXTURE)
 		var timer = get_tree().create_timer(0.08)
-		timer.timeout.connect(func(): par.get_node("WorldEnvironment").set_adjustment_color_correction(null))
+		timer.timeout.connect(game_over)
 		
+func game_over():
+	var par = get_parent()
+	par.get_node("WorldEnvironment").set_environment(REGULAR_WE)
+	get_tree().change_scene_to_file("res://Scenes/Prefabs/gui/MainMenu.tscn")
+	
 func save():
 	var save_dict = {
 		"nodepath" : get_parent().name + "/" + name,
