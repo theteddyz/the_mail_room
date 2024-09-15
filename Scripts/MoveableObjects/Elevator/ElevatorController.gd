@@ -94,7 +94,8 @@ func load_floor():
 		pass
 		#mail_cart.reparent(Elevator,true)
 	if previous_floor > current_floor:
-		await call_elevator_up()
+		
+		await call_elevator_down()
 		var root = get_tree().root
 		current_scene = root.get_child(root.get_child_count() - 1)
 		#player.reparent(current_scene)
@@ -175,6 +176,7 @@ func open_doors()->void:
 	return 
 	
 func call_elevator_down()->void:
+	Elevator.position = Vector3(2,8.82,0.946)
 	var elevator_called_down_tween = create_tween()
 	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(2,1,0.946), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
@@ -185,6 +187,7 @@ func call_elevator_down()->void:
 	await elevator_audio.finished
 	return 
 func call_elevator_up()->void:
+	Elevator.position = Vector3(2,-6.90,0.946)
 	var elevator_called_up_tween = create_tween()
 	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(2,1,0.946), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
