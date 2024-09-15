@@ -4,7 +4,7 @@ extends Control
 @onready var timer:Timer = $Timer
 
 func _ready():
-	hide_text()
+	hide()
 func set_text(text:String):
 	text_object.text = ("[center]" + text)
 	show_text()
