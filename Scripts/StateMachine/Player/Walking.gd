@@ -169,7 +169,11 @@ func handle_general_interaction():
 				elif collider.has_method("check_key"):
 					collider.get_parent().grab()
 				elif collider.has_method("interact"):
-					collider.interact()
+					if collider is Package:
+						if !is_holding_package:
+							collider.interact()
+					else:
+						collider.interact()
 	elif !collider and is_holding_package:
 		package_last_held.dropped()
 
