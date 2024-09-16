@@ -27,7 +27,6 @@ AudioController="*res://Scenes/Managers/audio_controller.tscn"
 [display]
 
 window/energy_saving/keep_screen_on=false
-window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
 [global_group]
