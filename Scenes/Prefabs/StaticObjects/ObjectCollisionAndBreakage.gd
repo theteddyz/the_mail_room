@@ -36,7 +36,8 @@ var previousIsPickedUp3:bool = false
 var rigidbody:RigidBody3D
 @export var initVolume:float = 0
 @export var instabreak: bool = false
-
+@export var general_sound_sphere_radius: float = 18
+@export var breakage_sound_radius_multiplier: float = 1.5
 @export var onlyPlayOnCollision:bool = false
 
 func _ready():
@@ -104,6 +105,8 @@ func _on_body_entered(body):
 		
 		
 func break_object():
+	spawn_sound_event(true)
+
 	broken = true
 	#spawn_sound_event()
 	#if(impact_audios != null):
@@ -128,8 +131,31 @@ func break_object():
 	#	model.set_collision_layer_value(2,true)
 	#	model.set_script(grabbable_script)
 	#	model.call("_ready")
+	
+func spawn_sound_event(breakage: bool):
+	var mult = 1
+	if breakage:
+		mult = breakage_sound_radius_multiplier
+	var sound_event_area = Area3D.new()
+	var shape = SphereShape3D.new()
+	var collision_shape:CollisionShape3D = CollisionShape3D.new()
+	sound_event_area.set_collision_mask_value(13, true)
+	shape.radius = general_sound_sphere_radius * mult
+	collision_shape.shape = shape
+	sound_event_area.add_child(collision_shape)
+	sound_event_area.connect("body_entered", Callable(self, "_on_sound_event_area_body_entered"))
+	get_tree().root.add_child(sound_event_area)
+	sound_event_area.global_position = global_position
+	await get_tree().create_timer(0.25).timeout
+	sound_event_area.queue_free()
+
+func _on_sound_event_area_body_entered(body):
+	if body.has_method("on_hearing_sound"):
+		body.on_hearing_sound(global_position)
 		
+
 func playImpactSound(volume: int):
+	spawn_sound_event(false)
 	match index:
 		0:
 			impact_audios.volume_db = volume
@@ -178,23 +204,6 @@ func calculate_collision_force(body):
 	var relative_velocity = get_parent().linear_velocity - other_body_velocity
 	impulse = get_parent().mass * relative_velocity.length()
 	return impulse
-	
 
 
-func spawn_sound_event():
-	var sound_event_area = Area3D.new()
-	var shape = SphereShape3D.new()
-	var collision_shape:CollisionShape3D = CollisionShape3D.new()
-	shape.radius = 23
-	collision_shape.shape = shape
-	sound_event_area.add_child(collision_shape)
-	sound_event_area.connect("body_entered", Callable(self, "_on_sound_event_area_body_entered"))
-	get_tree().root.add_child(sound_event_area)
-	sound_event_area.global_position = global_position
-	await get_tree().create_timer(1).timeout
-	sound_event_area.queue_free()
-
-func _on_sound_event_area_body_entered(body):
-	if body.has_method("on_hearing_sound"):
-		body.on_hearing_sound(global_position)
 """

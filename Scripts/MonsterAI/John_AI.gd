@@ -22,7 +22,12 @@ extends CharacterBody3D
 @onready var hit_sound: AudioStreamPlayer3D = $Hit_Sound
 @onready var hit_laugh: AudioStreamPlayer3D = $Hit_Laugh
 var hit_death
+var is_visible = false
+@onready var heard_sound: AudioStreamPlayer3D = $Heard_Sound
+@onready var sound_heard_timer: Timer = $Sound_Heard_Timer
+@onready var sound_heard_chase_timer: Timer = $Sound_Heard_Chase_Timer
 
+var roaming_to_sound = false
 var monster_anim:AnimationPlayer
 var chasing:bool
 var player
@@ -61,16 +66,23 @@ func move_to_target():
 	if velocity.abs() > Vector3.ZERO:
 		look_at(global_position + velocity, Vector3.UP)
 	if local_destination.length() < stop_threshold:
-		monster_anim.stop()
+		if roaming_to_sound:
+			roaming_to_sound = false
+			turn_timer.start(randi_range(1, 5))
+			roaming_timer.start(randi_range(10, 35))
+		monster_anim.play("Idle")
 		return
+		
 	if roaming:
 		speed = 1.5
+	elif roaming_to_sound:
+		speed = 2
 	else:
-		speed = 5
+		speed = 5.5
+
 	velocity = direction * speed
 	apply_pushes()
 	
-	# TODO: The following wont detect the player, why? Who knows
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider().name == "Player" or c.get_collider().name == "Mailcart":
@@ -86,16 +98,20 @@ func move_to_target():
 	move_and_slide()
 
 func apply_pushes():
+	get_collision_exceptions()
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
 		if c.get_collider() is RigidBody3D:
 			if c.get_collider().freeze == true:
 				c.get_collider().freeze = false
-			c.get_collider().apply_central_force(-c.get_normal() * speed*5)
+			c.get_collider().set_linear_velocity(Vector3.ZERO)
+			print(c.get_normal())
+			c.get_collider().apply_central_force(-c.get_normal() * 1)
 
 func chase_player():
 	if !chasing:
 		turn_timer.stop()
+		roaming_timer.stop()
 		roaming_soundloop.playing = false
 		chase_sound_initial.playing = true
 		AudioController.play_resource(chase_sound, 0)
@@ -115,12 +131,13 @@ func stop_chasing_player():
 		col.disabled = true
 		roaming = true
 		roaming_soundloop.playing = false
-		cooldown_timer.start(randi_range(15, 45))
+		cooldown_timer.start(randi_range(1, 2))
 		nav_timer.stop()
 
 func on_player_in_vision():
 	if !disabled and player_in_vision_flag == false:
 		print("STOP AGGRO TIMER")
+		roaming_to_sound = false
 		player_in_vision_flag = true
 		chase_player()
 		aggro_timer.stop()
@@ -130,6 +147,18 @@ func on_player_out_of_vision():
 		print("START AGGRO TIMER")
 		player_in_vision_flag = false
 		aggro_timer.start()
+		
+func on_hearing_sound(pos):
+	if !chasing and sound_heard_timer.time_left <= 0:
+		sound_heard_chase_timer.start(9)
+		sound_heard_timer.start(5)
+		heard_sound.playing = true
+		monster_anim.play("Walk_001")
+		nav_timer.stop()
+		turn_timer.stop()
+		roaming_timer.stop()
+		roaming_to_sound = true
+		nav.set_target_position(Vector3(pos.x + randf_range(-2.5, 2.5), 0, pos.z + randf_range(-2.5, 2.5)))
 
 func _on_nav_timer_timeout():
 	if !disabled:
@@ -140,6 +169,7 @@ func _on_aggro_timer_timeout():
 	if chasing and player_in_vision_flag == false:
 		stop_chasing_player()
 		
+# Spawn a roaming John
 func _on_cooldown_timer_timeout():
 	if roaming and !chasing:
 		#Spawn John on a random position not in the players view
@@ -163,17 +193,37 @@ func _on_cooldown_timer_timeout():
 				AudioController.stop_resource(sound_resource_path, 2)
 				return
 
+# Check if we should despawn John
 func _on_roaming_timer_timeout() -> void:
-	print("STOP CHASING PLAYER")
-	chasing = false
-	disabled = true
-	visible = false
-	col.disabled = true
-	roaming = true
-	roaming_soundloop.playing = false
-	cooldown_timer.start(randi_range(15, 45))
-	nav_timer.stop()
+	if !is_visible:
+		print("STOP CHASING PLAYER")
+		chasing = false
+		disabled = true
+		visible = false
+		col.disabled = true
+		roaming = true
+		roaming_soundloop.playing = false
+		cooldown_timer.start(randi_range(1, 2))
+		nav_timer.stop()
+	else:
+		roaming_timer.start(randi_range(7, 20))
+		turn_timer.start(randi_range(2, 5))
 
+# Set a new direction for roaming John
 func _on_turn_timer_timeout() -> void:
 	var point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
 	nav.set_target_position(point)
+	monster_anim.play("WalkScary")
+
+func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
+	is_visible = true
+
+func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
+	is_visible = false
+
+func _on_sound_heard_chase_timer_timeout() -> void:
+	if roaming_to_sound:
+		roaming_to_sound = false
+		turn_timer.start(0.5)
+		roaming_timer.start(randi_range(10, 35))
+	monster_anim.play("Idle")
