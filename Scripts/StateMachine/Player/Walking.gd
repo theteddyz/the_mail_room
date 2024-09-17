@@ -402,4 +402,4 @@ func apply_pushes():
 			print(c.get_collider().name)
 			if c.get_collider().freeze and !c.get_collider().should_freeze:
 				c.get_collider().freeze = false
-			c.get_collider().apply_central_force(-c.get_normal() * current_speed*10)
+			c.get_collider().apply_central_force(-c.get_normal() * current_speed*5)

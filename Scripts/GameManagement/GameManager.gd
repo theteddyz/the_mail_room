@@ -1,7 +1,9 @@
 extends Node
 
-const FILE_NAME = "user://game-data.json"
+# DEVMODE, CHANGE THIS WHEN WE BUILD
+var devmode = true
 
+const FILE_NAME = "user://game-data.json"
 @export var blacklist = ["pos_x", "pos_y", "pos_z", "nodepath"]
 var current_scene : Node
 var player_reference: Node
