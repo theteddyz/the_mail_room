@@ -64,5 +64,4 @@ func get_average_color(texture: ViewportTexture, samples: int) -> Color:
 	
 	# Calculate the average color by dividing by the total number of samples
 	var average_color = total_color / float(samples * samples)
-	print("AVERAGE COLOR:", average_color)
 	return average_color
