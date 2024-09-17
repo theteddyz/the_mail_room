@@ -34,7 +34,24 @@ var player
 var player_in_vision_flag
 @onready var col = $CollisionShape3D
 
+#TODO:
+# JOHN NEEDS TO BE SCARIER, 
+#	MORE INTENSE LUNGE AT INITIAL AGGRO
+#	MORE INTENSE CHASE SOUNDS 
+#	MORE DYNAMIC AUDIOS AND STATES (ANIMS AND AUDIO)
+#	LESS REPEATING ROAMING SOUNDS, MORE ETHEREAL?? TALK TO THE TEAM
+#	BETTER PATHFINDING BEHAVIOUR, CHECK WHY HE GETS STUCK SOMETIMES AND REMOVE EXCESS NAVMESH
+#	OBSTRUCTION REMOVAL ANIMATION (OBSTRUCTION_THROW ANIMATION KIND OF)
+
 func _ready():
+	var meshInstance = MeshInstance3D.new()
+	meshInstance.transform.origin = global_position
+	
+	var mesh = SphereMesh.new()
+	mesh.radius = 1
+	mesh.height = 1
+	meshInstance.mesh = mesh
+	
 	hit_death = load("res://Assets/Audio/SoundFX/AmbientScares/JohnScream1.ogg")
 	chase_sound = load(sound_resource_path)
 	player_in_vision_flag = false
@@ -44,16 +61,18 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("p"):
-		var point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
-		nav.set_target_position(point)
-		roaming_soundloop.playing = true
-		roaming_timer.start(25)
-		turn_timer.start(12)
-		monster_anim.play("WalkScary")
-		roaming = true
-		visible = true
-		disabled = false
-		col.disabled = false
+		if !visible:
+			set_new_nav_position()
+			roaming_soundloop.playing = true
+			roaming_timer.start(25)
+			turn_timer.start(12)
+			monster_anim.play("WalkScary")
+			roaming = true
+			visible = true
+			disabled = false
+			col.disabled = false
+		else:
+			set_new_nav_position()
 
 func _physics_process(_delta):
 	if !disabled:
@@ -66,20 +85,21 @@ func move_to_target():
 	if velocity.abs() > Vector3.ZERO:
 		look_at(global_position + velocity, Vector3.UP)
 	if local_destination.length() < stop_threshold:
+		print("I HAVE ARRIVED!!!!")
 		if roaming_to_sound:
 			roaming_to_sound = false
+			sound_heard_chase_timer.stop()
 			turn_timer.start(randi_range(1, 5))
 			roaming_timer.start(randi_range(10, 35))
 		monster_anim.play("Idle")
 		return
 		
-	if roaming:
+	if roaming and !roaming_to_sound:
 		speed = 1.5
 	elif roaming_to_sound:
-		speed = 2
+		speed = 2.85
 	else:
 		speed = 5.5
-
 	velocity = direction * speed
 	apply_pushes()
 	
@@ -135,7 +155,7 @@ func stop_chasing_player():
 		nav_timer.stop()
 
 func on_player_in_vision():
-	if !disabled and player_in_vision_flag == false:
+	if !disabled and player_in_vision_flag == false and false:
 		print("STOP AGGRO TIMER")
 		roaming_to_sound = false
 		player_in_vision_flag = true
@@ -158,20 +178,26 @@ func on_hearing_sound(pos):
 		turn_timer.stop()
 		roaming_timer.stop()
 		roaming_to_sound = true
-		nav.set_target_position(Vector3(pos.x + randf_range(-2.5, 2.5), 0, pos.z + randf_range(-2.5, 2.5)))
+		set_new_nav_position(Vector3(pos.x + randf_range(-2.5, 2.5), 0, pos.z + randf_range(-2.5, 2.5)))
 
 func _on_nav_timer_timeout():
+	print("TRYING TO SET NEW NAV POS...")
 	if !disabled:
-		nav.set_target_position(player.global_position)
+		print("SUCCESS!!")
+		set_new_nav_position(player.global_position)
 
 func _on_aggro_timer_timeout():
 	print("AGGRO TIMER TIMEOUT...")
 	if chasing and player_in_vision_flag == false:
+		print("SUCCESS!")
 		stop_chasing_player()
 		
 # Spawn a roaming John
 func _on_cooldown_timer_timeout():
+	print("TRYING TO SPAWN JOHN...")
+
 	if roaming and !chasing:
+		print("SUCCESS!")
 		#Spawn John on a random position not in the players view
 		var arr = spawnpoints.get_children()
 		arr.shuffle()
@@ -184,8 +210,7 @@ func _on_cooldown_timer_timeout():
 				set_position(i.global_position)
 				set_rotation(i.rotation)
 				position.y = 0
-				var point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
-				nav.set_target_position(point)
+				set_new_nav_position()
 				monster_anim.play("WalkScary")
 				roaming_soundloop.playing = true
 				roaming_timer.start(25)
@@ -195,8 +220,9 @@ func _on_cooldown_timer_timeout():
 
 # Check if we should despawn John
 func _on_roaming_timer_timeout() -> void:
+	print("TRYING TO DESPAWN JOHN...")
 	if !is_visible:
-		print("STOP CHASING PLAYER")
+		print("SUCCESS!")
 		chasing = false
 		disabled = true
 		visible = false
@@ -211,8 +237,9 @@ func _on_roaming_timer_timeout() -> void:
 
 # Set a new direction for roaming John
 func _on_turn_timer_timeout() -> void:
-	var point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
-	nav.set_target_position(point)
+	print("SETTING A NEW RANDOM POSITION; TURN TIMER")
+	roaming = true
+	set_new_nav_position()
 	monster_anim.play("WalkScary")
 
 func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
@@ -222,8 +249,27 @@ func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 	is_visible = false
 
 func _on_sound_heard_chase_timer_timeout() -> void:
+	print("TRYING TO STOP CHASING A SOUND!")
 	if roaming_to_sound:
+		print("SUCCESS!")
 		roaming_to_sound = false
 		turn_timer.start(0.5)
 		roaming_timer.start(randi_range(10, 35))
-	monster_anim.play("Idle")
+		monster_anim.play("Idle")
+
+func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
+	if pos == Vector3.ZERO:
+		var point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
+		nav.set_target_position(point)
+		var count = 0
+		while !nav.is_target_reachable() and count < 15:
+			point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
+			nav.set_target_position(point)
+			count += 1
+	else:
+		nav.set_target_position(pos)
+		var count = 0
+		while !nav.is_target_reachable() and count < 15:
+			var point = pos + Vector3(randf_range(-3.5, 3.5), 0, randf_range(-3.5, 3.5))
+			nav.set_target_position(point)
+			count += 1
