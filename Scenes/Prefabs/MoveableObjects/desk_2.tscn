@@ -263,8 +263,6 @@ transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448
 
 [node name="Chair" parent="." instance=ExtResource("6_vcavl")]
 transform = Transform3D(-0.999968, 0, -0.00808077, 0, 1, 0, 0.00808077, 0, -0.999968, -0.283069, 0.814608, 0.634164)
-collision_layer = 3
-collision_mask = 3
 
 [node name="GarbageCan" parent="." instance=ExtResource("7_ls0s4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6194, 0.297667, 0.0209348)

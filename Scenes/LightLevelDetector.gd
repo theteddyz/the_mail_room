@@ -20,7 +20,7 @@ func _ready():
 func timerdown():
 	global_position = player.global_position + Vector3(0, 1.2, 0)
 	var texture = camera.get_viewport().get_texture()
-	var color = get_average_color(texture)
+	var color = get_average_color(texture,15)
 	lightvalue = color.get_luminance()
 
 func _process(delta):
@@ -38,7 +38,31 @@ func _process(delta):
 			if(lightvalue <= we.dark_value):
 				darken = true
 
-func get_average_color(texture: ViewportTexture):
+func get_average_color(texture: ViewportTexture, samples: int) -> Color:
 	var image = texture.get_image()
-	image.resize(1, 1, Image.INTERPOLATE_LANCZOS)
-	return image.get_pixel(0, 0)
+	
+	var total_color = Color(0, 0, 0, 0)  # Store the sum of all sampled colors
+	var width = image.get_width()
+	var height = image.get_height()
+	
+	# Determine the spacing between samples based on the number of samples
+	var x_spacing = width / float(samples)
+	var y_spacing = height / float(samples)
+	
+	# Loop over the image using evenly spaced points
+	for i in range(samples):
+		for j in range(samples):
+			# Calculate the pixel coordinates for sampling
+			var x = int(i * x_spacing)
+			var y = int(j * y_spacing)
+			
+			# Get the color of the pixel at (x, y)
+			var pixel_color = image.get_pixel(x, y)
+			
+			# Accumulate the total color
+			total_color += pixel_color
+	
+	# Calculate the average color by dividing by the total number of samples
+	var average_color = total_color / float(samples * samples)
+	print("AVERAGE COLOR:", average_color)
+	return average_color
