@@ -25,6 +25,8 @@ var grabbable_script
 
 var isEnabled = false
 
+var coyoteTime = 0
+
 func _ready() -> void:
 	grabbable_script = get_parent()
 	
@@ -50,6 +52,10 @@ func dropped_object(t, j):
 
 func _physics_process(delta: float) -> void:
 	if isEnabled:
+		coyoteTime = 2
+	else:
+		coyoteTime -= delta
+	if coyoteTime > 0:
 		if body_b.sleeping:
 			return
 		var velocityMagnitude = abs((body_b.linear_velocity - body_a.linear_velocity).length())#abs(get_velocity_along_axis())
