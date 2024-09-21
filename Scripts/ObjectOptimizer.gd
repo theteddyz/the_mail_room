@@ -5,6 +5,8 @@ var objects = []
 
 # Path to the script you're looking for
 var script_path = "res://Scripts/MoveableObjects/GrabbableObject.gd"
+var package_script_path = "res://Scripts/MailCart/Package.gd"
+var package_script
 var player: Camera3D
 @onready var floor = $"../NavigationRegion3D/FLOOR/floor_colliders/floor_staticbody"
 
@@ -14,7 +16,7 @@ func _ready() -> void:
 	player = GameManager.get_player().find_child("Neck").find_child("Head").find_child("HeadbopRoot").find_child("Camera")
 	# Load the script you are looking for
 	var specific_script = load(script_path)
-
+	package_script = load(package_script_path)
 	# Start traversing the scene tree from the root
 	var root = get_tree().root
 
@@ -33,7 +35,7 @@ func _process(delta: float) -> void:
 # Function to recursively find nodes with a specific script
 func find_nodes_with_script(node, script):
 	# Check if the current node has the specific script
-	if node is RigidBody3D:#node.get_script() == script:
+	if node is RigidBody3D and node.get_script() != package_script:#node.get_script() == script:
 		node.freeze = true
 		disable_shadows(node)
 		objects.append(node)
