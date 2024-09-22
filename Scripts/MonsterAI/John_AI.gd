@@ -26,12 +26,16 @@ var is_visible = false
 @onready var heard_sound: AudioStreamPlayer3D = $Heard_Sound
 @onready var sound_heard_timer: Timer = $Sound_Heard_Timer
 @onready var sound_heard_chase_timer: Timer = $Sound_Heard_Chase_Timer
+@onready var draw_timer: Timer = $DrawTimer
 
 var roaming_to_sound = false
+var locations: Array[Vector3] = []
 var monster_anim:AnimationPlayer
 var chasing:bool
 var player
 var player_in_vision_flag
+var curPath
+var drawnObjects: Array[Node] = []
 @onready var col = $CollisionShape3D
 
 #TODO:
@@ -40,7 +44,7 @@ var player_in_vision_flag
 #	MORE INTENSE CHASE SOUNDS 
 #	MORE DYNAMIC AUDIOS AND STATES (ANIMS AND AUDIO)
 #	LESS REPEATING ROAMING SOUNDS, MORE ETHEREAL?? TALK TO THE TEAM
-#	BETTER PATHFINDING BEHAVIOUR, CHECK WHY HE GETS STUCK SOMETIMES AND REMOVE EXCESS NAVMESH
+#	BETTER PATHFINDING BEHAVIOUR, CHECK WHY HE GETS STUCK SOMETIMES
 #	OBSTRUCTION REMOVAL ANIMATION (OBSTRUCTION_THROW ANIMATION KIND OF)
 
 func _ready():
@@ -79,12 +83,23 @@ func _physics_process(_delta):
 		move_to_target()
 
 func move_to_target():
-	var destination = nav.get_next_path_position()
-	var local_destination = destination - global_position
-	var direction = local_destination.normalized()
+	if roaming and !roaming_to_sound:
+		speed = 1.5
+	elif roaming_to_sound:
+		speed = 2.85
+	else:
+		speed = 5.5
+	var current_location = global_transform.origin
+	var next_location = nav.get_next_path_position()
+	var new_velocity = (next_location - current_location).normalized() * speed
+	var distance_to_goal = abs(nav.get_final_position().distance_to(current_location))
+	new_velocity = Vector3(new_velocity.x, 0, new_velocity.z)
+	velocity = new_velocity
+	move_and_slide()
+
 	if velocity.abs() > Vector3.ZERO:
 		look_at(global_position + velocity, Vector3.UP)
-	if local_destination.length() < stop_threshold:
+	if distance_to_goal < stop_threshold:
 		print("I HAVE ARRIVED!!!!")
 		if roaming_to_sound:
 			roaming_to_sound = false
@@ -93,14 +108,6 @@ func move_to_target():
 			roaming_timer.start(randi_range(10, 35))
 		monster_anim.play("Idle")
 		return
-		
-	if roaming and !roaming_to_sound:
-		speed = 1.5
-	elif roaming_to_sound:
-		speed = 2.85
-	else:
-		speed = 5.5
-	velocity = direction * speed
 	apply_pushes()
 	
 	for i in get_slide_collision_count():
@@ -115,7 +122,6 @@ func move_to_target():
 				hit_sound.playing = true
 				AudioController.play_resource(hit_death)
 			stop_chasing_player()
-	move_and_slide()
 
 func apply_pushes():
 	get_collision_exceptions()
@@ -151,11 +157,11 @@ func stop_chasing_player():
 		col.disabled = true
 		roaming = true
 		roaming_soundloop.playing = false
-		cooldown_timer.start(randi_range(1, 2))
+		cooldown_timer.start(randi_range(15, 35))
 		nav_timer.stop()
 
 func on_player_in_vision():
-	if !disabled and player_in_vision_flag == false and false:
+	if !disabled and player_in_vision_flag == false:
 		print("STOP AGGRO TIMER")
 		roaming_to_sound = false
 		player_in_vision_flag = true
@@ -229,7 +235,7 @@ func _on_roaming_timer_timeout() -> void:
 		col.disabled = true
 		roaming = true
 		roaming_soundloop.playing = false
-		cooldown_timer.start(randi_range(1, 2))
+		cooldown_timer.start(randi_range(15, 35))
 		nav_timer.stop()
 	else:
 		roaming_timer.start(randi_range(7, 20))
