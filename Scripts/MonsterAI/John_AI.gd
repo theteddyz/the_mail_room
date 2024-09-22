@@ -27,6 +27,7 @@ var is_visible = false
 @onready var sound_heard_timer: Timer = $Sound_Heard_Timer
 @onready var sound_heard_chase_timer: Timer = $Sound_Heard_Chase_Timer
 @onready var draw_timer: Timer = $DrawTimer
+@onready var navlink_cooldown_timer: Timer = $NavlinkCooldownTimer
 
 var roaming_to_sound = false
 var locations: Array[Vector3] = []
@@ -188,7 +189,7 @@ func on_hearing_sound(pos):
 
 func _on_nav_timer_timeout():
 	print("TRYING TO SET NEW NAV POS...")
-	if !disabled:
+	if !disabled and navlink_cooldown_timer.time_left <= 0:
 		print("SUCCESS!!")
 		set_new_nav_position(player.global_position)
 
@@ -279,3 +280,7 @@ func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
 			var point = pos + Vector3(randf_range(-3.5, 3.5), 0, randf_range(-3.5, 3.5))
 			nav.set_target_position(point)
 			count += 1
+
+
+func _on_navigation_agent_3d_link_reached(details: Dictionary) -> void:
+	navlink_cooldown_timer.start()
