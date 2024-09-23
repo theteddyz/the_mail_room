@@ -156,10 +156,20 @@ func grab():
 			set_collision_layer_value(2,false)
 		if player_raycast.is_colliding():
 			grab_offset = player_raycast.get_collision_point() - global_transform.origin
-			
-			var playerPosition:Vector3 = camera.global_transform.origin;
-			var objectPosition:Vector3 = player_raycast.get_collision_point();
-			grab_distance = playerPosition.distance_to(objectPosition);
+			### For some reason you need this when reparenting the camera from/to player. player.find_child(camera) does not work.
+			if camera == null:
+				var headbop = playerHead.get_child(0)
+				camera = headbop.get_child(3)
+				if camera == null:
+					print("Camera not found!")
+					return
+				var playerPosition:Vector3 = camera.global_transform.origin
+				var objectPosition:Vector3 = player_raycast.get_collision_point()
+				grab_distance = playerPosition.distance_to(objectPosition)
+			else:
+				var playerPosition:Vector3 = camera.global_transform.origin
+				var objectPosition:Vector3 = player_raycast.get_collision_point()
+				grab_distance = playerPosition.distance_to(objectPosition)
 			
 			initial_basis = global_transform.basis
 			

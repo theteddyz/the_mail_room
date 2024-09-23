@@ -7,6 +7,7 @@ extends Control
 @onready var item_icon:Node = $ItemIcon
 @onready var cross_hair:Node = $look_icon 
 @onready var loading_screen:Node = $loading_screen
+@onready var look_icon:Node = $look_icon
 func get_item_reader()->Node:
 	return item_reader
 func get_icon_manager() ->Node:
@@ -23,3 +24,5 @@ func get_loading_screen()->Node:
 	return loading_screen
 func get_crosshair() -> Node:
 	return cross_hair
+func get_look_icon() -> Node:
+	return look_icon
