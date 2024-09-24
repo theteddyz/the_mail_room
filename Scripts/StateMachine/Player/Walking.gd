@@ -52,11 +52,11 @@ var disable_walk_movement:bool = false
 var package_holder
 # Headbopping
 const head_bopping_walking_speed:float = 12
-const head_bopping_walking_intensity:float = 0.1
+@export var head_bopping_walking_intensity:float = 0.1
 const head_bopping_sprinting_speed:float = 20
-const head_bopping_sprinting_intensity:float = 0.2
+@export var head_bopping_sprinting_intensity:float = 0.2
 const head_bopping_crouching_speed:float = 9
-const head_bopping_crouching_intensity:float = 0.05
+@export var head_bopping_crouching_intensity:float = 0.05
 var head_bopping_vector:Vector2 = Vector2.ZERO
 var head_bopping_index:float = 0.0
 var head_bopping_current:float = 0.0
@@ -104,7 +104,7 @@ func handle_mouse_motion(event):
 	if !is_reading and !disable_look_movement:
 		persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
-		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 func handle_mouse_button(event):
 	if event.is_action_released("interact"):

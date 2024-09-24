@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=19 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
 [ext_resource type="PackedScene" uid="uid://07r80s3tkw3" path="res://Assets/Shaders/dither_shader2.tscn" id="3_6orpg"]
+[ext_resource type="Script" path="res://Scenes/CameraMovement.gd" id="3_ap0n2"]
 [ext_resource type="PackedScene" uid="uid://8uuomvgrmu1b" path="res://Assets/Shaders/outline_shader.tscn" id="4_ao0s0"]
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
@@ -54,9 +55,12 @@ script = ExtResource("2_eyvdn")
 [node name="HeadbopRoot" type="Node3D" parent="Neck/Head"]
 
 [node name="Camera" type="Camera3D" parent="Neck/Head/HeadbopRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+top_level = true
 cull_mask = 524287
 doppler_tracking = 2
 fov = 60.0
+script = ExtResource("3_ap0n2")
 
 [node name="ItemHolder" type="Marker3D" parent="Neck/Head/HeadbopRoot/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011888, -0.530672, -0.344784)

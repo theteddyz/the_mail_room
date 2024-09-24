@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/Prefabs/gui/pauseMenu.tscn" id="2_j1350"]
-[ext_resource type="PackedScene" uid="uid://dlxusgmvl8f47" path="res://Scenes/Prefabs/gui/load_screen.tscn" id="2_wjt07"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/gui/load_screen.tscn" id="2_wjt07"]
 [ext_resource type="Script" path="res://Scripts/GUI/FPSMeter.gd" id="3_bccgp"]
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="4_bqt88"]
 [ext_resource type="Script" path="res://Scripts/GUI/IconManager.gd" id="4_w25uf"]
@@ -133,6 +133,7 @@ _data = {
 }
 
 [node name="GUI" type="Control"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -187,7 +188,7 @@ offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.1, 0.1)
-color = Color(1, 1, 1, 0.490196)
+color = Color(1, 1, 1, 0.231373)
 
 [node name="IconManager" type="Control" parent="."]
 layout_mode = 1
