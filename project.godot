@@ -27,6 +27,8 @@ AudioController="*res://Scenes/Managers/audio_controller.tscn"
 [display]
 
 window/energy_saving/keep_screen_on=false
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
 [global_group]
@@ -116,6 +118,11 @@ p={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"location":0,"echo":false,"script":null)
 ]
 }
+O={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":79,"key_label":0,"unicode":111,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -131,8 +138,8 @@ p={
 textures/canvas_textures/default_texture_filter=0
 textures/lossless_compression/force_png=true
 lights_and_shadows/directional_shadow/size=8192
+scaling_3d/scale=0.5
 textures/decals/filter=0
 textures/light_projectors/filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/msaa_3d=2
-lights_and_shadows/positional_shadow/atlas_size=8192
