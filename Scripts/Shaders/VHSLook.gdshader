@@ -7,6 +7,7 @@ uniform lowp sampler2D Screen_Sample : hint_screen_texture, filter_linear_mipmap
 //SHARPENING
 group_uniforms sharpening;
 uniform float SHARPENING : hint_range(0., 32.) = 1.5;
+uniform float SHARPEN_DISTANCE : hint_range(0., 0.01) = 0.0025;
 
 //CHROMATIC ABERRATION
 group_uniforms chromatic_aberration;
@@ -27,6 +28,7 @@ uniform int Flares;
 uniform float FlareSpacing;
 
 uniform float Intensity;
+uniform float FALLOFF_STARTING_POINT : hint_range(0, 0.1) = 0.05;
 uniform float Saturation_;
 
 //VHS SHADER
@@ -64,11 +66,11 @@ vec4 sharpenMask(vec2 frag_coord, vec2 screen_pixel_size)
     //vec2 texel_size = 1.0 / screen_pixel_size;
 	
     // Colors
-    vec4 up = texture(SCREEN_TEXTURE, (frag_coord + vec2(0.0, 1.0)*0.0025));///texel_size);
-    vec4 left = texture(SCREEN_TEXTURE, (frag_coord + vec2(-1.0, 0.0)*0.0025));///texel_size);
+    vec4 up = texture(SCREEN_TEXTURE, (frag_coord + vec2(0.0, 1.0)*SHARPEN_DISTANCE));///texel_size);
+    vec4 left = texture(SCREEN_TEXTURE, (frag_coord + vec2(-1.0, 0.0)*SHARPEN_DISTANCE));///texel_size);
     vec4 center = texture(SCREEN_TEXTURE, frag_coord);///texel_size);
-    vec4 right = texture(SCREEN_TEXTURE, (frag_coord + vec2(1.0, 0.0)*0.0025));///texel_size);
-    vec4 down = texture(SCREEN_TEXTURE, (frag_coord + vec2(0.0, -1.0)*0.0025));///texel_size);
+    vec4 right = texture(SCREEN_TEXTURE, (frag_coord + vec2(1.0, 0.0)*SHARPEN_DISTANCE));///texel_size);
+    vec4 down = texture(SCREEN_TEXTURE, (frag_coord + vec2(0.0, -1.0)*SHARPEN_DISTANCE));///texel_size);
     
     // Return sharpened mask
     return (1.0 + 4.0 * SHARPENING) * center - SHARPENING * (up + left + right + down);
@@ -146,7 +148,7 @@ vec4 lensflare(vec2 screen_uv){
 	
 	for (int i = 0; i < Flares; ++i){
 		vec2 SUV = fract(screen_uv + FlareVector * vec2(float(i)));
-		float Dist = distance(SUV, vec2(0.05));
+		float Dist = distance(SUV, vec2(FALLOFF_STARTING_POINT));
 		float Weight = 1.0 - smoothstep(0.0, 0.75, Dist);
 		vec3 BlurredScreen = texture(SCREEN_TEXTURE, SUV, Blur).rgb;
 		BlurredScreen = ApplyThreshold(BlurredScreen, FlareThreshold);
@@ -262,7 +264,7 @@ void fragment()
 	
 	vec4 mixColor = lensflare(uvs);
 	
-	mixColor += mix(chromaticColor, sharpenColor,0.5);
+	mixColor += overlay(chromaticColor, sharpenColor);
 	
 	vec4 vhsColor = vhsShader(uvs);
 	

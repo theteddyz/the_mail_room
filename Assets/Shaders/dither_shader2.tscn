@@ -8,6 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxhbw"]
 shader = ExtResource("1_0mrfu")
 shader_parameter/SHARPENING = 1.5
+shader_parameter/SHARPEN_DISTANCE = 0.0025
 shader_parameter/CHROMATIC_DISTANCE = 3.0
 shader_parameter/FISHEYE_AMOUNT = 1.0
 shader_parameter/Blur = 5.0
@@ -15,6 +16,7 @@ shader_parameter/FlareThreshold = 0.6
 shader_parameter/Flares = 4
 shader_parameter/FlareSpacing = 0.5
 shader_parameter/Intensity = 8.0
+shader_parameter/FALLOFF_STARTING_POINT = 0.05
 shader_parameter/Saturation_ = 0.48
 shader_parameter/FlareMult = ExtResource("2_vwafg")
 shader_parameter/FlareMult2 = ExtResource("3_ldyos")

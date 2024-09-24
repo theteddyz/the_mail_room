@@ -6,13 +6,13 @@ var chasingRot: Quaternion
 
 # Variables for angular velocity and acceleration
 var angular_velocity: Vector3 = Vector3.ZERO  # Track the angular velocity
-var spring_strength: float = 60.0  # Controls how fast it accelerates towards target
-var damping: float = 10.0  # Controls how fast it slows down after overshooting
+var spring_strength: float = 100.0#60.0  # Controls how fast it accelerates towards target
+var damping: float = 15.0  # Controls how fast it slows down after overshooting
 
 # Variables for velocity and acceleration for position
 var position_velocity: Vector3 = Vector3.ZERO
-var position_spring_strength: float = 50.0  # Controls how fast it accelerates towards target
-var position_damping: float = 10.0  # Controls how fast it slows down after overshooting
+var position_spring_strength: float = 80.0#50.0  # Controls how fast it accelerates towards target
+var position_damping: float = 15.0  # Controls how fast it slows down after overshooting
 
 var cameraRotation: Quaternion
 
@@ -54,14 +54,14 @@ func _process(delta: float) -> void:
 		
 		
 		var target_position = head.global_position
-		target_position.y += 0.3
+		#target_position.y += 0.3
 
 		# Compute the positional difference between the current and target positions
 		var position_difference = target_position - global_position
 
 		# Calculate a "spring" force towards the target position
 		var position_acceleration = position_difference * position_spring_strength
-		position_acceleration.y += -982*delta
+		#position_acceleration.y += -982*delta
 
 		# Update the velocity with acceleration and apply damping
 		position_velocity += position_acceleration * delta
