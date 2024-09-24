@@ -1,13 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://07r80s3tkw3"]
+[gd_scene load_steps=6 format=3 uid="uid://07r80s3tkw3"]
 
 [ext_resource type="Shader" path="res://Scripts/Shaders/VHSLook.gdshader" id="1_0mrfu"]
+[ext_resource type="Texture2D" uid="uid://d2gyjb88idvmu" path="res://Assets/Textures/LensFlare2.png" id="2_vwafg"]
+[ext_resource type="Texture2D" uid="uid://vu3vj42pk3ry" path="res://Assets/Textures/LensDirt.png" id="3_ldyos"]
+[ext_resource type="Texture2D" uid="uid://b15bwfsdmmpi3" path="res://Assets/Textures/rgba-noise-medium.png" id="4_g2rhh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxhbw"]
 shader = ExtResource("1_0mrfu")
-shader_parameter/wiggle = 0.03
-shader_parameter/wiggle_speed = 25.0
-shader_parameter/smear = 0.7
-shader_parameter/blur_samples = 15
+shader_parameter/SHARPENING = 1.5
+shader_parameter/SHARPEN_DISTANCE = 0.0025
+shader_parameter/CHROMATIC_DISTANCE = 3.0
+shader_parameter/FISHEYE_AMOUNT = 1.0
+shader_parameter/Blur = 5.0
+shader_parameter/FlareThreshold = 0.6
+shader_parameter/Flares = 4
+shader_parameter/FlareSpacing = 0.5
+shader_parameter/Intensity = 8.0
+shader_parameter/FALLOFF_STARTING_POINT = 0.05
+shader_parameter/Saturation_ = 0.48
+shader_parameter/FlareMult = ExtResource("2_vwafg")
+shader_parameter/FlareMult2 = ExtResource("3_ldyos")
+shader_parameter/vhs_resolution = Vector2(256, 256)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 1.0
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.0
+shader_parameter/tape_crease_smear = 0.2
+shader_parameter/tape_crease_intensity = 0.2
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 1.0
+shader_parameter/bottom_border_thickness = 32.0
+shader_parameter/bottom_border_jitter = 6.0
+shader_parameter/noise_intensity = 1.0
+shader_parameter/noise_texture = ExtResource("4_g2rhh")
+shader_parameter/inner_radius = 0.1
+shader_parameter/outer_radius = 1.0
+shader_parameter/vignette_strength = 1.0
+shader_parameter/dither_strength = 0.03
+shader_parameter/vignette_color = null
 
 [node name="ColorRect" type="ColorRect"]
 material = SubResource("ShaderMaterial_rxhbw")
