@@ -12,5 +12,16 @@ extends OmniLight3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = false
 	if !self.is_in_group("alwaysshadow"):
 		shadow_enabled = false
+
+
+func _on_visible_on_screen_enabler_3d_screen_exited() -> void:
+	print("OFF")
+	visible = false
+
+
+func _on_visible_on_screen_enabler_3d_screen_entered() -> void:
+	print("ON")
+	visible = true

@@ -81,7 +81,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_yo1yu")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g3xmj"]
-size = Vector3(2.07477, 1, 7.01355)
+size = Vector3(2.9906, 3.97803, 6.38917)
 
 [node name="CeilingLightOn" type="MeshInstance3D"]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 2.23969, 0)
@@ -94,26 +94,33 @@ layers = 131072
 mesh = SubResource("ArrayMesh_y8lkm")
 skeleton = NodePath("")
 
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -23.0924, 0)
+aabb = AABB(-10.0748, -5.94489, -9.70125, 20.1497, 11.8898, 19.4025)
+enable_node_path = NodePath("../OmniLight3D")
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.17141, 0)
 light_energy = 0.425
 light_indirect_energy = 0.218
 light_volumetric_fog_energy = 0.77
-light_bake_mode = 1
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 35.8
-distance_fade_shadow = 16.0
-distance_fade_length = 8.0
+distance_fade_shadow = 20.0
+distance_fade_length = 9.0
 omni_range = 10.334
 omni_attenuation = 0.659754
 script = ExtResource("2_xivj2")
 
 [node name="LightDetectionArea" type="Area3D" parent="OmniLight3D"]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.580029, 0)
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.686699, 0)
 collision_layer = 524288
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OmniLight3D/LightDetectionArea"]
-transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -1.65639, -0.0225391)
+transform = Transform3D(0.9999, 0, 0, 0, 0.9999, 0, 0, 0, 0.9999, -0.0663048, -3.14535, -0.110502)
 shape = SubResource("BoxShape3D_g3xmj")
+
+[connection signal="screen_entered" from="VisibleOnScreenEnabler3D" to="OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler3D" to="OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_exited"]

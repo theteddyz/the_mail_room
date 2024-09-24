@@ -47,13 +47,13 @@ size = Vector3(1.51492, 7.68627, 0.349243)
 size = Vector3(3.59473, 5.22723, 0.276184)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_mss4h"]
-size = Vector3(1.56338, 7.75556, 0.296083)
+size = Vector3(1.75576, 7.75556, 0.296083)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_fumts"]
-size = Vector3(1.56338, 7.75556, 0.296083)
+size = Vector3(1.66252, 7.75556, 0.296083)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_qfb3a"]
-size = Vector3(2.6812, 5.21357, 0.296083)
+size = Vector3(2.7188, 5.21357, 0.296083)
 
 [node name="StaticBody3D" type="StaticBody3D"]
 collision_layer = 133
@@ -65,7 +65,7 @@ mesh = SubResource("ArrayMesh_6mpiq")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02299, 3.89726, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01439, 3.89726, -0.00457764)
 shape = SubResource("BoxShape3D_y4g4g")
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CollisionShape3D2"]

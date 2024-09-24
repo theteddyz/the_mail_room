@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 # Function to recursively find nodes with a specific script
 func find_nodes_with_script(node, script):
 	# Check if the current node has the specific script
-	if node is RigidBody3D and node.get_script() != package_script:#node.get_script() == script:
+	if node is RigidBody3D and node != Package and (node.get_script() == script and !node.is_door):#!= package_script:#node.get_script() == script:
 		node.freeze = true
 		disable_shadows(node)
 		objects.append(node)

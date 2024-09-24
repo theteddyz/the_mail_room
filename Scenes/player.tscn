@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
+[ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
 [ext_resource type="PackedScene" uid="uid://c06x6sqmgfqve" path="res://Assets/TemporaryAssets/ViewFrustum.tscn" id="7_1o2es"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 [ext_resource type="Script" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
@@ -20,13 +21,10 @@ radius = 0.3
 height = 1.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0heh4"]
-radius = 8.51913
+radius = 50.9001
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_06j8k"]
-size = Vector3(16.6539, 12.44, 40.1273)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qjp7u"]
-points = PackedVector3Array(0.0798363, 0.13647, 0.0450873, 0.0798363, 0.13647, -0.0450873, -0.0798363, 0.13647, 0.0450873, 0, 0, 0, -0.0798363, 0.13647, -0.0450873)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fmr2d"]
+points = PackedVector3Array(0.235, 0.136, 0.15, 0.235, 0.136, -0.09, -0.235, 0.136, 0.15, 0, 0, 0, -0.235, 0.136, -0.095)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_75rh5"]
 radius = 22.6731
@@ -73,7 +71,7 @@ transparency = 1.0
 cast_shadow = 0
 
 [node name="LightOptimizerDetector" type="Area3D" parent="Neck/Head/HeadbopRoot"]
-transform = Transform3D(1.11, 0, 0, 0, 1.11, 0, 0, 0, 1.11, 0, 0.185625, -0.877543)
+transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0.0297186, -0.312485)
 collision_layer = 0
 collision_mask = 524288
 script = ExtResource("5_ic8gt")
@@ -82,8 +80,8 @@ script = ExtResource("5_ic8gt")
 shape = SubResource("SphereShape3D_0heh4")
 
 [node name="Cone" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/LightOptimizerDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0129657, 0, -19.5101)
-shape = SubResource("BoxShape3D_06j8k")
+transform = Transform3D(1454.04, 0, 0, 0, -6.35579e-05, 1454.04, 0, -1454.04, -6.35579e-05, 0, 0, 0.795996)
+shape = SubResource("ConvexPolygonShape3D_fmr2d")
 
 [node name="MonsterDetector" type="Area3D" parent="Neck/Head/HeadbopRoot"]
 collision_layer = 4096
@@ -92,7 +90,7 @@ script = ExtResource("6_f3pv2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 transform = Transform3D(600.839, 0, 0, 0, -1.3899e-05, 600.839, 0, -317.973, -2.62635e-05, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_qjp7u")
+shape = ExtResource("6_u1lyf")
 
 [node name="Vision_Timer" type="Timer" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 wait_time = 0.25

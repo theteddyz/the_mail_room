@@ -185,7 +185,7 @@ skeleton = NodePath("")
 script = ExtResource("2_2qwev")
 
 [node name="MailboxStand" parent="." instance=ExtResource("4_nflhx")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.90258, 1.41466, -0.248536)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.90258, 1.16724, -0.248536)
 physics_material_override = SubResource("PhysicsMaterial_78s4l")
 sleeping = true
 
