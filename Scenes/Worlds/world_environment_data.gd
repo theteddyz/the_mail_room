@@ -1,8 +1,10 @@
 extends WorldEnvironment
 
 # Filled with the starting properties for this World_Environment node
-var properties
+var properties: Dictionary
 
+# The properties to and values to use when the player entes darkness
+@export var dark_properties: Dictionary = {}
 @export var light_value = 0.069
 @export var dark_value = 0.035
 @export var contrast_darken_factor = 1.2

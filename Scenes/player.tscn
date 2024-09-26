@@ -108,14 +108,18 @@ debug_shape_thickness = 1
 [node name="ViewFrustum" parent="Neck/Head/HeadbopRoot/MonsterDetector" instance=ExtResource("7_1o2es")]
 visible = false
 
-[node name="LightLevelDetection" parent="Neck/Head/HeadbopRoot" node_paths=PackedStringArray("player", "camera", "timer", "closelight") instance=ExtResource("8_6f6ef")]
+[node name="LightLevelDetection" parent="Neck/Head/HeadbopRoot" node_paths=PackedStringArray("player", "camera", "timer") instance=ExtResource("8_6f6ef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247054, -0.292751)
 player = NodePath("../../../..")
 camera = NodePath("../Camera")
 timer = NodePath("Refresh Timer")
-closelight = NodePath("SpotLight3D")
 
 [node name="Refresh Timer" parent="Neck/Head/HeadbopRoot/LightLevelDetection" index="0"]
 wait_time = 0.22
+
+[node name="SpotLight3D" parent="Neck/Head/HeadbopRoot/LightLevelDetection" index="1"]
+light_color = Color(0.0510997, 0.196141, 0.829799, 1)
+spot_angle_attenuation = 1.86607
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -2)
@@ -166,6 +170,19 @@ script = ExtResource("9_mvg12")
 
 [node name="hit_timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Groundlight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.408113, -1.3265)
+light_color = Color(0.0510997, 0.196141, 0.829799, 1)
+light_energy = 0.401
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+light_cull_mask = 4294967294
+spot_range = 3.97
+spot_attenuation = -0.36
+spot_angle = 89.0
+spot_angle_attenuation = 0.341513
 
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]

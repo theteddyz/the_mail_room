@@ -3,12 +3,13 @@ extends Node3D
 @export var player: PlayerMachine
 @export var camera: Camera3D
 @export var timer: Timer
-@export var closelight: SpotLight3D
+@onready var closelight: SpotLight3D = $SpotLight3D
 @onready var we : WorldEnvironment = get_tree().root.get_node("world").find_child("WorldEnvironment")
+@onready var groundlight: SpotLight3D = $"../../../../Groundlight"
 
 #Debugging
 var lightvalue: float = 0
-var darken: bool = false
+var in_darkness: bool = false
 var starttimer: Timer
 
 # THIS SCRIPT IS KIND OF HEAVY, PROBABLY RELATED TO LUMINANCE CALCULATION, CURRENT REMEDY; ONLY RUNS ONCE EVER 0.75 (or whatver refresh-timer is set to)
@@ -22,21 +23,32 @@ func timerdown():
 	var texture = camera.get_viewport().get_texture()
 	var color = get_average_color(texture,15)
 	lightvalue = color.get_luminance()
-
+	
 func _process(delta):
-	if we != null and we.properties != null:
-		if(darken):			
-			we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we.properties["adjustment_saturation"] * we.saturation_darken_factor, delta * 0.85)
-			we.environment.adjustment_contrast = lerp(we.environment.adjustment_contrast, we.properties["adjustment_contrast"] * we.contrast_darken_factor, delta * 1.25)
-			closelight.light_energy = lerp(closelight.light_energy, 0.82, delta * 0.85)
-			if(lightvalue >= we.light_value):
-				darken = false
-		else:
-			we.environment.adjustment_contrast = lerp(we.environment.adjustment_contrast, we.properties["adjustment_contrast"], delta * 1.25)
-			we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we.properties["adjustment_saturation"], delta * 0.85)
-			closelight.light_energy = lerp(closelight.light_energy, 0.0, delta * 0.85)
-			if(lightvalue <= we.dark_value):
-				darken = true
+	if(in_darkness):
+		# Set the WE to brightened settings (higher contrast, dark is still dark, but a light increase in visibility)
+		for key in we.dark_properties:
+			we.environment[key] = lerp(we.environment[key], we.dark_properties[key], delta * 1)
+
+		#if(lightvalue >= we.light_value):
+			#in_darkness = false
+		#we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we.properties["adjustment_saturation"] * we.saturation_darken_factor, delta * 0.85)
+		#we.environment.adjustment_contrast = lerp(we.environment.adjustment_contrast, we.properties["adjustment_contrast"] * we.contrast_darken_factor, delta * 1.25)
+		closelight.light_energy = lerp(closelight.light_energy, 0.08, delta * 1)
+		groundlight.light_energy = lerp(groundlight.light_energy, 0.401, delta * 1)
+		if(lightvalue >= we.light_value):
+			in_darkness = false
+	else:
+		for key in we.dark_properties:
+			we.environment[key] = lerp(we.environment[key], we.properties[key], delta * 1.65)
+		# Set the WE to default settings (regular contrast, dark is supposed to be dark here)
+		#we.environment.adjustment_contrast = lerp(we.environment.adjustment_contrast, we.properties["adjustment_contrast"], delta * 1.25)
+		#we.environment.adjustment_saturation = lerp(we.environment.adjustment_saturation, we.properties["adjustment_saturation"], delta * 0.85)
+		closelight.light_energy = lerp(closelight.light_energy, 0.0, delta * 1.65)
+		groundlight.light_energy = lerp(groundlight.light_energy, 0.0, delta * 1.65)
+
+		if(lightvalue <= we.dark_value):
+			in_darkness = true
 
 func get_average_color(texture: ViewportTexture, samples: int) -> Color:
 	var image = texture.get_image()
