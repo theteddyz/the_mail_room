@@ -7,14 +7,29 @@ extends Panel
 @onready var homeScreen:Panel = $"../Home_Screen"
 @onready var bottomBar:Panel = $"../../BottomBar"
 @onready var topBar:Panel = $"../../TopBar"
+@onready var main_parent = $"../../../../../../.."
+@onready var login_list:ItemList = $ItemList
+
+func _ready():
+	populate_user_list()
 
 
+func populate_user_list():
+	name_list.clear() 
+	for username in main_parent.usernames:
+		name_list.add_item(username)
 
 func check_login():
-	if password_field.text == password_1 and name_list.is_selected(0):
-		Show_Welcome_screen(name_list.get_item_text(0))
-	elif password_field.text == password_2 and name_list.is_selected(1):
-		Show_Welcome_screen(name_list.get_item_text(1))
+	var selected_index = name_list.get_selected_items()[0] if name_list.get_selected_items().size() > 0 else -1
+	if selected_index != -1:  # Make sure a username is selected
+		var entered_password = password_field.text
+		var correct_password = main_parent.passwords[selected_index]
+		if entered_password == correct_password:
+			Show_Welcome_screen(name_list.get_item_text(selected_index))
+		else:
+			print("Incorrect password for " + name_list.get_item_text(selected_index))
+	else:
+		print("No username selected.")
 
 
 func Show_Welcome_screen(n:String):

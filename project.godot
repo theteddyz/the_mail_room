@@ -35,6 +35,7 @@ window/vsync/vsync_mode=0
 
 Real_Floor="Disable floor when moving in elevator"
 Fake_Floor="Floor to be enabled when moving floors"
+Ceiling=""
 
 [input]
 

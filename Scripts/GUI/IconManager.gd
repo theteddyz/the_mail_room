@@ -63,15 +63,16 @@ func hide_icon(object):
 
 
 func hide_all_icons(_object):
-	if _object is RigidBody3D and _object.has_method("hide_label"):
-		_object.hide_label()
-	if !object_held:
-		for icon in icons.values():
-			icon.hide()
-	else:
-		for icon in icons.values():
-			if icon.name != "grabClosed":
+	if is_instance_valid(_object):
+		if _object is RigidBody3D and _object.has_method("hide_label"):
+			_object.hide_label()
+		if !object_held:
+			for icon in icons.values():
 				icon.hide()
+		else:
+			for icon in icons.values():
+				if icon.name != "grabClosed":
+					icon.hide()
 
 
 func held_object(_var1,var2):

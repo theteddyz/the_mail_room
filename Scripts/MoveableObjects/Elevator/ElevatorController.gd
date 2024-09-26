@@ -69,6 +69,8 @@ func move_floors()->void:
 			#mail_cart.reparent(Elevator,true)
 		var player = GameManager.get_player()
 		#player.reparent(Elevator,true)
+		for ceiling in get_tree().get_nodes_in_group("Ceiling"):
+			ceiling.hide()
 		await move_elevator_up()
 		return
 
