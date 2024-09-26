@@ -9,6 +9,7 @@ var lerp_speed = 10
 var being_grabbed
 var lerp_pos 
 var item_icon_manager
+@onready var col = $CollisionShape3D
 func _ready():
 	key_material = get_child(0)
 	item_icon_manager = Gui.get_item_icon_displayer()
@@ -31,6 +32,8 @@ func on_unseen(_node):
 #TODO: KEY COLLIDER
 func interact():
 	being_grabbed = true
+	col.disabled = true
+	grabbed()
 	EventBus.emitCustomSignal("picked_up_key",[self])
 	ScareDirector.emit_signal("key_pickedup", unlock_num)
 
@@ -44,20 +47,18 @@ func highlight(_delta):
 		key_material.material_overlay.set_shader_parameter("outline_width",5)
 
 func _process(delta):
-	if being_grabbed:
-		grabbed(delta)
 	if is_being_looked_at:
 		highlight(delta)
 	else:
 		reset_highlight()
-func grabbed(delta):
-	position = position.lerp(lerp_pos.global_position, lerp_speed * delta)
+func grabbed():
+	var player = GameManager.get_player()
+	var key_tween = create_tween()
+	key_tween.tween_property(self,"global_position",Vector3(player.global_position.x,(player.global_position.y+ 1.6),player.global_position.z),0.2)
+	await key_tween.finished
+	item_icon_manager.show_icon()
+	queue_free()
 
 func reset_highlight():
 	if shader_material:
 		key_material.material_overlay.set_shader_parameter("outline_width", 0)
-
-func _on_body_entered(body: Node) -> void:
-	if being_grabbed and body.name == "Player":
-		item_icon_manager.show_icon()
-		queue_free()

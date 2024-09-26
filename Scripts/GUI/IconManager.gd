@@ -63,7 +63,6 @@ func hide_icon(object):
 
 
 func hide_all_icons(_object):
-	if is_instance_valid(_object):
 		if _object is RigidBody3D and _object.has_method("hide_label"):
 			_object.hide_label()
 		if !object_held:
