@@ -12,8 +12,14 @@ autostart = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.279136)
-light_color = Color(0.192157, 0, 0.894118, 1)
+light_color = Color(0.254614, 0.266952, 1, 1)
 light_energy = 0.0
 light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 3.0
+spot_attenuation = -1.67
+spot_angle = 65.0
+spot_angle_attenuation = 1.27456
 
 [connection signal="timeout" from="Refresh Timer" to="." method="timerdown"]
