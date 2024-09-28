@@ -6,14 +6,14 @@ var chasingRot: Quaternion
 
 # Variables for velocity and acceleration for position
 var position_velocity: Vector3 = Vector3.ZERO
-var position_spring_strength: float = 80.0#50.0  # Controls how fast it accelerates towards target
-var position_damping: float = 0.01   # Controls how fast it slows down after overshooting
+var position_spring_strength: float = 100.0#50.0  # Controls how fast it accelerates towards target
+var position_damping: float = 20.0   # Controls how fast it slows down after overshooting
 
 
 # Variables for angular velocity and acceleration
 var angular_velocity: Vector3 = Vector3.ZERO  # Track the angular velocity
-var spring_strength: float = 140.0  # Controls how fast it accelerates towards target
-var damping: float = 0.1 # Controls how fast it slows down after overshooting
+var spring_strength: float = 150.0  # Controls how fast it accelerates towards target
+var damping: float = 20.0 # Controls how fast it slows down after overshooting
 
 # Cumulative rotations for the camera
 var current_cumulative_rotation: Vector3 = Vector3.ZERO  # Track cumulative rotations for the camera
@@ -63,24 +63,32 @@ func _process(delta: float) -> void:
 		var rotational_difference = target_cumulative_rotation - current_cumulative_rotation 
 
 		# Apply the spring force and damping
-		var angular_acceleration = rotational_difference * spring_strength 
-		angular_velocity += angular_acceleration * delta
-		angular_velocity *= pow(damping, delta)
-		print(pow(damping, delta))
-
+		#var angular_acceleration = rotational_difference * spring_strength 
+		#angular_velocity += angular_acceleration * (pow(damping, delta) - 1.0)/log(damping);
+		#angular_velocity *= pow(damping, delta)
+		#print(pow(damping, delta))
+		
+		var resultX : Dictionary = spring_damper_exact(current_cumulative_rotation.x,angular_velocity.x,target_cumulative_rotation.x,0,spring_strength,damping,delta)
+		var resultY : Dictionary = spring_damper_exact(current_cumulative_rotation.y,angular_velocity.y,target_cumulative_rotation.y,0,spring_strength,damping,delta)
+		var resultZ : Dictionary = spring_damper_exact(current_cumulative_rotation.z,angular_velocity.z,target_cumulative_rotation.z,0,spring_strength,damping,delta)
 		#chasingVelArray[symbolIndexInTotal] *= Math.pow(0.3, updateLogicDeltaTime*50);
 		#chasingVelArray[symbolIndexInTotal] -= (chasingPosArray[symbolIndexInTotal]-componentDependencies.symbolDependency.getSymbol().getPositionY()) * 0.1 *updateLogicDeltaTime*200  // The force to pull it back to the resting point
 											
+		angular_velocity.x = resultX.v
+		angular_velocity.y = resultY.v
+		angular_velocity.z = resultZ.v
 
 		# Update the current rotation with the angular velocity
-		current_cumulative_rotation += angular_velocity * delta
+		current_cumulative_rotation.x = resultX.x
+		current_cumulative_rotation.y = resultY.x
+		current_cumulative_rotation.z = resultZ.x
 
 		# Convert the cumulative rotation (Euler angles) to a quaternion
 		cameraRotation = Quaternion.from_euler(current_cumulative_rotation)
 
 		# Apply the new rotation to the camera
 		global_transform.basis = Basis(cameraRotation)
-		#global_rotation.z = lerpf(global_rotation.z, angular_velocity.y*0.012, delta*50)
+		global_rotation.z = lerpf(global_rotation.z, angular_velocity.y*0.006, delta*50)
 		
 		
 		calculatePosition(delta)
@@ -99,12 +107,25 @@ func calculatePosition(delta: float):
 	#position_acceleration.y += -982*delta
 
 	# Update the velocity with acceleration and apply damping
-	position_velocity *= pow(position_damping, delta)
-	position_velocity += position_acceleration * delta
+	#position_velocity *= pow(position_damping, delta)
+	#position_velocity += position_acceleration * delta
+	
+	var resultX : Dictionary = spring_damper_exact(global_position.x,position_velocity.x,target_position.x,0,position_spring_strength,position_damping,delta)
+	var resultY : Dictionary = spring_damper_exact(global_position.y,position_velocity.y,target_position.y,0,position_spring_strength,position_damping,delta)
+	var resultZ : Dictionary = spring_damper_exact(global_position.z,position_velocity.z,target_position.z,0,position_spring_strength,position_damping,delta)
+		
+	position_velocity.x = resultX.v
+	position_velocity.y = resultY.v
+	position_velocity.z = resultZ.v
+
+	# Update the current rotation with the angular velocity
+	global_position.x = resultX.x
+	global_position.y = resultY.x
+	global_position.z = resultZ.x
 	#position_velocity -= position_velocity * position_damping * delta  # Apply damping to slow down overshooting
 
 	# Update the position using the velocity
-	global_position += position_velocity * delta
+	#global_position += position_velocity * delta
 	
 
 
@@ -146,3 +167,71 @@ func accumulate_continuous_rotation(cumulative_rotation: float, current_euler: f
 
 	# Add the delta angle to the cumulative rotation
 	return cumulative_rotation + delta_angle
+
+func spring_damper_exact(
+	x: float, 
+	v: float, 
+	x_goal: float, 
+	v_goal: float, 
+	stiffness: float, 
+	damping: float, 
+	dt: float, 
+	eps: float = 1e-5
+) -> Dictionary:
+	var g = x_goal
+	var q = v_goal
+	var s = stiffness
+	var d = damping
+	var c = g + (d * q) / (s + eps)
+	var y = d / 2.0
+
+	if abs(s - (d * d) / 4.0) < eps:  # Critically Damped
+		var j0 = x - c
+		var j1 = v + j0 * y
+		
+		var eydt = fast_negexp(y * dt)
+		
+		x = j0 * eydt + dt * j1 * eydt + c
+		v = -y * j0 * eydt - y * dt * j1 * eydt + j1 * eydt
+
+	elif s - (d * d) / 4.0 > 0.0:  # Under Damped
+		var w = sqrt(s - (d * d) / 4.0)
+		var j = sqrt(squaref(v + y * (x - c)) / (w * w + eps) + squaref(x - c))
+		var p = fast_atan((v + (x - c) * y) / (-(x - c) * w + eps))
+		
+		j = j if (x - c) > 0.0 else -j
+		
+		var eydt = fast_negexp(y * dt)
+		
+		x = j * eydt * cos(w * dt + p) + c
+		v = -y * j * eydt * cos(w * dt + p) - w * j * eydt * sin(w * dt + p)
+
+	elif s - (d * d) / 4.0 < 0.0:  # Over Damped
+		var y0 = (d + sqrt(d * d - 4 * s)) / 2.0
+		var y1 = (d - sqrt(d * d - 4 * s)) / 2.0
+		var j1 = (c * y0 - x * y0 - v) / (y1 - y0)
+		var j0 = x - j1 - c
+		
+		var ey0dt = fast_negexp(y0 * dt)
+		var ey1dt = fast_negexp(y1 * dt)
+
+		x = j0 * ey0dt + j1 * ey1dt + c
+		v = -y0 * j0 * ey0dt - y1 * j1 * ey1dt
+	
+	return {"x": x, "v": v}
+
+func squaref(x: float) -> float:
+	return x * x
+
+func fast_atan(x: float) -> float:
+	var z = abs(x)
+	var w: float
+	if z > 1.0:
+		w = 1.0 / z
+	else:
+		w = z
+	var y = (PI / 4.0) * w - w * (w - 1.0) * (0.2447 + 0.0663 * w)
+	return sign(x) * (PI / 2.0 - y if z > 1.0 else y)
+
+func fast_negexp(value: float) -> float:
+	return exp(-value)
