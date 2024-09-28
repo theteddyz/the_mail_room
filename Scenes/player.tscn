@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=20 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 [ext_resource type="Script" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
 [ext_resource type="AudioStream" uid="uid://cin4ngwhr1g72" path="res://Scenes/Prefabs/AudioPlayers/carpet_footsteps.tres" id="9_pey34"]
+[ext_resource type="Script" path="res://Scenes/scare_vision_controller.gd" id="14_jppxj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 radius = 0.3
@@ -103,6 +104,7 @@ autostart = true
 [node name="VisionRayCast" type="RayCast3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 target_position = Vector3(0, 7.08, -100)
 collision_mask = 4097
+collide_with_areas = true
 debug_shape_thickness = 1
 
 [node name="ViewFrustum" parent="Neck/Head/HeadbopRoot/MonsterDetector" instance=ExtResource("7_1o2es")]
@@ -183,6 +185,9 @@ spot_range = 3.97
 spot_attenuation = -0.36
 spot_angle = 89.0
 spot_angle_attenuation = 0.341513
+
+[node name="ScareVisionController" type="Node" parent="."]
+script = ExtResource("14_jppxj")
 
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]
