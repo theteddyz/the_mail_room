@@ -245,7 +245,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36569, -0.188626, -0.68804
 shape = SubResource("SphereShape3D_2d7qu")
 
 [node name="Map_Position" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.582027, 0.556353, -0.147082)
+transform = Transform3D(-4.37114e-08, 0, 1, -0.123203, 0.992381, -5.38538e-09, -0.992381, -0.123203, -4.33784e-08, -0.0240802, 0.338129, 0.951509)
 
 [node name="Area3D" type="Area3D" parent="Map_Position"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 3.55271e-15, 4.44089e-16, 1, 0, 0, 0)

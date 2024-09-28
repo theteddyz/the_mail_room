@@ -6,16 +6,16 @@ var cart_rotation
 var cart
 var player_camera:Camera3D
 var player_camera_parent
-var parent
+var parent:Node3D
 var player
 @onready var map_display:MeshInstance3D = $"../MeshInstance3D/MeshInstance3D2"
 var mail_room_map = preload("res://Assets/Textures/MailRoomFloorLayout.png")
 var finance_map = preload("res://Assets/Textures/FinanceFloorLayout2.png")
 func _ready():
-	cart_position = get_parent().position
-	cart_rotation = get_parent().rotation
-	cart = GameManager.get_mail_cart()
 	parent = get_parent()
+	cart_position = parent.position
+	cart_rotation = parent.rotation_degrees
+	cart = GameManager.get_mail_cart()
 	player = GameManager.get_player()
 	player_camera_parent = player.find_child("Neck").find_child("Head").find_child("HeadbopRoot")
 	player_camera = player_camera_parent.find_child("Camera")
