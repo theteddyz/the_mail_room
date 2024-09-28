@@ -14,6 +14,8 @@ class_name Package
 @export var inspect_position = Vector3.ZERO
 @export var inspect_rotation = Vector3.ZERO
 @export var package_num:int = 0
+@export var min_distance_to_player: float = 10.0
+var is_being_tracked
 var package_material:MeshInstance3D
 var shader_material
 var text_displayer
@@ -38,6 +40,7 @@ func _ready():
 	text_displayer = Gui.get_address_displayer()
 	EventBus.connect("object_looked_at",on_seen)
 	EventBus.connect("no_object_found",on_unseen)
+	check_distance_to_player()
 
 func on_seen(node):
 	if node == self:
@@ -79,6 +82,10 @@ func reset_highlight():
 	if shader_material:
 		package_material.material_overlay.set_shader_parameter("outline_width", 0)
 func grabbed():
+	if is_being_tracked:
+		var pager = Gui.get_pager()
+		pager.remove_package(self)
+		is_being_tracked = false
 	if player:
 		var package_holder = player.find_child("PackageHolder")
 		reparent(player.find_child("PackageHolder"))
@@ -108,12 +115,14 @@ func dropped():
 		self.freeze = false
 		reparent(player.get_parent(), true)
 		EventBus.emitCustomSignal("dropped_object",[self.mass,self])
+		check_distance_to_player()
 	else:
 		is_inspecting = false
 		is_returning = false
 		self.freeze = false
 		reparent(player.get_parent(), true)
 		EventBus.emitCustomSignal("dropped_object",[self.mass,self])
+		check_distance_to_player()
 
 func inspect():
 	var _s
@@ -138,6 +147,17 @@ func stop_inspect():
 	await stop_inspect_tween.finished
 	reset_highlight()
 	
+
+func check_distance_to_player():
+	if !is_being_tracked and !inside_mail_cart:
+		var distance = global_transform.origin.distance_to(player.global_transform.origin)
+		if distance > min_distance_to_player:
+			var pager = Gui.get_pager()
+			pager.add_package_to_queue(self)
+			is_being_tracked = true
+		else:
+			await get_tree().create_timer(1.0).timeout
+			check_distance_to_player()
 
 func hide_label():
 	text_displayer.hide_text()
