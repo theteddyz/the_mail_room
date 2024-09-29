@@ -26,6 +26,7 @@ var cameraRotation: Quaternion
 var shouldEnable: bool = false
 
 func _ready() -> void:
+	top_level = false
 	head = get_parent()
 	previous_head_quat = head.global_transform.basis.get_rotation_quaternion()
 
@@ -93,7 +94,9 @@ func _process(delta: float) -> void:
 		
 		calculatePosition(delta)
 	else:
-		global_transform = head.global_transform
+		pass
+		#This was causing me some problems dont know if its needed seems to work fine?
+		#global_transform = head.global_transform
 
 func calculatePosition(delta: float):
 	var target_position = head.global_position
@@ -132,6 +135,7 @@ func calculatePosition(delta: float):
 
 func _input(event):
 	if event.is_action_pressed("O"):
+		top_level = true
 		shouldEnable = true
 		var player = GameManager.get_player()
 		var walkingScript = player.state

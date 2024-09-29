@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
-[ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
+[ext_resource type="Shape3D" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
 [ext_resource type="PackedScene" uid="uid://c06x6sqmgfqve" path="res://Assets/TemporaryAssets/ViewFrustum.tscn" id="7_1o2es"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 [ext_resource type="Script" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
@@ -54,8 +54,6 @@ script = ExtResource("2_eyvdn")
 [node name="HeadbopRoot" type="Node3D" parent="Neck/Head"]
 
 [node name="Camera" type="Camera3D" parent="Neck/Head/HeadbopRoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
-top_level = true
 cull_mask = 524287
 doppler_tracking = 2
 fov = 60.0
