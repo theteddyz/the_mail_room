@@ -1,6 +1,6 @@
 [gd_resource type="PlaneMesh" format=3 uid="uid://bsjvgx14rrdbw"]
 
 [resource]
-lightmap_size_hint = Vector2i(2048, 2048)
+lightmap_size_hint = Vector2i(377, 377)
 add_uv2 = true
 size = Vector2(75, 75)
