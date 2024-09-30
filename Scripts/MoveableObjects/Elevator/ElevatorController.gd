@@ -5,7 +5,7 @@ extends Node3D
 @onready var Elevator_Wall:StaticBody3D = $Elevator_Wall
 @onready var Elevator:Node3D = $Elevator
 @onready var Elevator_Collider:StaticBody3D = $Elevator/Elevator/Elevator_body/StaticBody3D
-@onready var Elevator_Door:MeshInstance3D = $Elevator/Elevator/Elevator_body/ElevatorDoor_001
+@onready var Elevator_Door:MeshInstance3D = $Elevator/Elevator/Elevator_body/ElevatorDoor_002
 @onready var detector = $Elevator/ObjectDetectionShape
 @onready var elevator_audio:AudioStreamPlayer3D = $Elevator/AudioStreamPlayer3D
 @onready var wall_door_audio:AudioStreamPlayer3D = $Elevator_Wall/AudioStreamPlayer3D
@@ -182,7 +182,7 @@ func open_doors()->void:
 func call_elevator_down()->void:
 	Elevator.position = Vector3(2,8.82,0.946)
 	var elevator_called_down_tween = create_tween()
-	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(2,1,0.946), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(2,1.425,0.846), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await elevator_called_down_tween.finished
@@ -193,7 +193,7 @@ func call_elevator_down()->void:
 func call_elevator_up()->void:
 	Elevator.position = Vector3(2,-6.90,0.946)
 	var elevator_called_up_tween = create_tween()
-	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(2,1,0.946), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(2,1.425,0.846), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await elevator_called_up_tween.finished
@@ -206,7 +206,7 @@ func move_elevator_down()-> void:
 	var mailcart = GameManager.get_mail_cart()
 	mailcart.calculate_spacing()
 	var move_elevator_down_tween = create_tween()
-	move_elevator_down_tween.tween_property(Elevator, "position", Vector3(2,-6.944,0.946), 5).set_ease(Tween.EASE_IN_OUT)
+	move_elevator_down_tween.tween_property(Elevator, "position", Vector3(2,-6.944,0.846), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await move_elevator_down_tween.finished
@@ -215,7 +215,7 @@ func move_elevator_up()-> void:
 	var mailcart = GameManager.get_mail_cart()
 	mailcart.calculate_spacing()
 	var move_elevator_up_tween = create_tween()
-	move_elevator_up_tween.tween_property(Elevator, "position", Vector3(2,9.304,0.946), 5).set_ease(Tween.EASE_IN_OUT)
+	move_elevator_up_tween.tween_property(Elevator, "position", Vector3(2,9.304,0.846), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await move_elevator_up_tween.finished
