@@ -60,6 +60,8 @@ func _ready():
 		break_object()
 
 func _physics_process(_delta: float):
+	if rigidbody.freeze:
+		return
 	if rigidbody.sleeping:
 		return
 	var currentVelocity = rigidbody.linear_velocity
