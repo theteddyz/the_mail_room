@@ -91,6 +91,8 @@ func load_floor():
 	swap_floor_collider(false)
 	var player = GameManager.get_player()
 	var mail_cart = GameManager.get_mail_cart()
+	var map_instance = mail_cart.get_node("Map_Position").get_child(0)
+	map_instance.set_map()
 	#player.reparent(Elevator,true)
 	if detector.mailcart_exists_in_elevator == true:
 		pass

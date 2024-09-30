@@ -33,7 +33,7 @@ Readable:
 cl = 11
 cm = 0
 
-JohnCharacterBody (any monster):
+JohnCharacterBody (any monster or scarevision event):
 cl = 13
 cm = 3, 
 

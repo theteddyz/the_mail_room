@@ -1,9 +1,9 @@
-[gd_scene load_steps=32 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=36 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/Prefabs/gui/pauseMenu.tscn" id="2_j1350"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/gui/load_screen.tscn" id="2_wjt07"]
+[ext_resource type="PackedScene" uid="uid://dlxusgmvl8f47" path="res://Scenes/Prefabs/gui/load_screen.tscn" id="2_wjt07"]
 [ext_resource type="Script" path="res://Scripts/GUI/FPSMeter.gd" id="3_bccgp"]
 [ext_resource type="Texture2D" uid="uid://bpm2ba8b2evxt" path="res://Assets/TemporaryAssets/amnesiagrabhand.png" id="4_bqt88"]
 [ext_resource type="Script" path="res://Scripts/GUI/IconManager.gd" id="4_w25uf"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://bsw0k3ptpy4jk" path="res://Assets/TemporaryAssets/Up Arrow.png" id="12_cgfu7"]
 [ext_resource type="Texture2D" uid="uid://j86xbk4osway" path="res://Assets/TemporaryAssets/Down Arrow.png" id="13_h5gkl"]
 [ext_resource type="Script" path="res://Scripts/GUI/Stamina.gd" id="18_rhd6x"]
+[ext_resource type="Texture2D" uid="uid://ctd3t06rqjwy8" path="res://Assets/TemporaryAssets/30996.png" id="22_0xxbf"]
+[ext_resource type="Script" path="res://Scripts/GUI/pager.gd" id="22_pbhup"]
 
 [sub_resource type="Gradient" id="Gradient_10so2"]
 
@@ -131,6 +133,16 @@ _data = {
 "scroll_down": SubResource("Animation_lfrrs"),
 "scroll_up": SubResource("Animation_32o43")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttqb2"]
+bg_color = Color(0.244776, 0.244776, 0.244776, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx1aa"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="GUI" type="Control"]
 z_index = 1
@@ -543,5 +555,85 @@ layout_mode = 0
 offset_top = -608.0
 offset_right = 40.0
 offset_bottom = -568.0
+
+[node name="Pager" type="Control" parent="."]
+z_index = -1
+anchors_preset = 0
+offset_left = 241.0
+offset_top = 722.0
+offset_right = 405.625
+offset_bottom = 836.75
+script = ExtResource("22_pbhup")
+
+[node name="Panel" type="Panel" parent="Pager"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 25.0
+offset_bottom = -15.085
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ttqb2")
+
+[node name="Text1" type="RichTextLabel" parent="Pager/Panel"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 6.0
+offset_right = 288.0
+offset_bottom = 26.0
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Tracking: Package 1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Text2" type="RichTextLabel" parent="Pager/Panel"]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 6.0
+offset_right = 288.0
+offset_bottom = 26.0
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]Tracking: Package 1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="Pager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 3.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_0xxbf")
+expand_mode = 1
+
+[node name="Panel2" type="Panel" parent="Pager"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 86.0
+offset_top = 18.0
+offset_right = 94.0
+offset_bottom = 26.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qx1aa")
+
+[node name="ColorRect" type="ColorRect" parent="Pager/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="timeout" from="Adress_Displayer/Timer" to="Adress_Displayer" method="_on_timer_timeout"]

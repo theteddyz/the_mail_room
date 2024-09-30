@@ -20,8 +20,6 @@ var closed_ambiance
 @onready var ambience_ender_2: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender2"
 @onready var ambience_ender_3: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender3"
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	closed_ambiance = preload("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience2Normalized.ogg")

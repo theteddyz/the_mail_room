@@ -3,11 +3,19 @@ extends Area3D
 var called = false
 var bit = 0
 @onready var raycaster = $VisionRayCast
+signal visiontimer_signal(nodes)
 
-func _on_vision_timer_timeout():
-	var overlaps = get_overlapping_bodies()
-	if overlaps.size() > 0:
-		for overlap in overlaps:
+func _on_vision_timer_timeout():	
+	var monster_overlaps = get_overlapping_bodies()
+	
+	#if monster_overlaps.size() != 0:
+		#monster_overlaps[0].is_in_group("meme")
+	var allbodies = monster_overlaps.filter(func(body): return body.is_in_group("scarevision"))
+	allbodies.append_array(get_overlapping_areas().filter(func(body): return body.is_in_group("scarevision")))
+	visiontimer_signal.emit(allbodies)
+	
+	if monster_overlaps.size() > 0:
+		for overlap in monster_overlaps:
 			if overlap.is_in_group("monster"):
 				var monsterPosition = overlap.global_transform.origin
 				if overlap.find_child("raycast_look_position") != null:

@@ -11,26 +11,39 @@ var elevator_reference: Node
 var mail_cart_reference: Node
 var scare_director_reference: Node
 var current_scene_root:Node
+var we_reference: WorldEnvironment
 var player_radio:Node
 #Quite a few script rely on these setter getter, proceed with caution if deleted
 func register_player(new_player):
 	player_reference = new_player
+	
 func register_mail_cart(cart):
 	mail_cart_reference = cart
+	
 func register_elevator(elevator):
 	elevator_reference = elevator
+	
 func register_scaredirector(director):
 	scare_director_reference = director
+	
 func register_player_radio(radio):
 	player_radio = radio
+	
+func register_world_environment(we):
+	we_reference = we
+	
 func get_mail_cart()->Node:
 	return mail_cart_reference
+	
 func get_player()->Node:
 	return player_reference
+	
 func get_elevator()->Node:
 	return elevator_reference
+	
 func get_player_radio() ->Node:
 	return player_radio
+	
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)

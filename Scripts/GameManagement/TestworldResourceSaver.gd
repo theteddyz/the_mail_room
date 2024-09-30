@@ -2,7 +2,7 @@ extends Node3D
 @export var floor_num:int
 func save():
 	var save_dict = {
-		#"filename" : get_scene_file_path(),
+		#"filename" : get_scene_file_path(),ww
 		"nodepath" : self.name,
 		"levelpath" : get_scene_file_path(),
 		"pos_x" : position.x, # Vector2 is not supported by JSON
