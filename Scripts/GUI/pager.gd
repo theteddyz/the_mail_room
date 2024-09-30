@@ -27,14 +27,14 @@ var target_objects = []
 var tween1_running
 var tween2_running
 var message_playing:bool
+var player
 func _ready():
-	var player = GameManager.get_player()
+	player = GameManager.get_player()
 	var world = get_tree().root.get_node("world")
 	pager_hide_position = position
 	inital_text_position = text1.position
 	target_object = world.find_child("Package")
 	player_camera = player.find_child("Neck").find_child("Head").find_child("HeadbopRoot").find_child("Camera")
-	#set_pager_text("On the first day of Rizzmas, Kai Cenat gave to me, An Ohio in a lean tree. On the second day of Rizzmas, Kai Cenat gave to me, 2 large gyatts, and an Ohio in a lean tree. On the third day of Rizzmas, Kai Cenat gave to me, 3 Ocky Meals, 2 large gyatts, and an Ohio in a lean tree. On the fourth day of Rizzmas, Kai Cenat gave to me, 4 Skibidis, 3 Ocky Meals, 2 large gyatts, and an Ohio in a lean tree. On the fifth day of Rizzmas, Kai Cenat gave to me, 5 Grimace Shakes, 4 Skibidis, 3 Ocky Meals, 2 large gyatts, And an Ohio in a lean tree. On the sixth day of Rizzmas, Kai Cenat gave to me, 6 Grubhub Perk Deals, 5 Grimace Shakes, 4 Skibidis, 3 Ocky Meals, 2 large gyatts, and an Ohio in a lean tree. On the seventh day of Rizzmas, Kai Cenat gave to me, 7 Ligma symptoms, 6 Grubhub Perk Deals, 5 Grimace Shakes, 4 Skibidis, 3 Ocky Meals, 2 large gyatts, and an Ohio in a lean tree.On the eighth day of Rizzmas, Kai Cenat gave to me, 8 John Porks calling, 7 Ligma symptoms, 6 Grubhub Perk Deals, 5 Grimace Shakes, 4 Skibidis, 3 OckyMeals, 2 large gyatts, And an Ohio in a lean tree. On the ninth day of Rizzmas, Kai Cenat gave to me,9 sigmas grinding, 8 John Porks calling, 7 Ligma symptoms, 6 Grubhub Perk Deals, 5 Grimace Shakes, 4 Skibidis,3 Ocky Meals, 2 large gyatts, and an Ohio in a lean tree.On the tenth day of Rizzmas, Kai Cenat gave to me, 10 Fanums taxing, 9 sigmas grinding, 8 John Porks calling, 7 Ligma symptoms, 6 Grubhub Perk Deals, 5 Grimace Shakes, 4 Skibidis, 3 Ocky Meals, 2 large gyatts, and an Ohi On the eleventh day of Rizzmas, Kai Cenat gave to me, 11 looksmaxxing, 10 Fanums taxing, 9 sigmas grinding, 8 John Porks calling, 7 Ligma symptoms, 6 Grubhub Perk Deals,5 Grimace Shakes, 4 Skibidis, 3 Ocky Meals, 2 large gyatts, And an Ohio in a lean tree On the twelfth day of Rizzmas, Kai Cenat gave to me, 12 Pizza Towers, 11 looksmaxxing, 10 Fanums taxing,9 sigmas grinding, 8 John Porks calling, 7 Ligma symptoms, 6 Grubhub Perk Deals, 5 Grimace Shakes, 4 Skibidis, 3 Ocky Meals,2 large gyatts,and an ohio in a lean tree. And an Ohio in a lean tree.",true)
 
 func add_package_to_queue(object: Node3D):
 	target_objects.append(object)
@@ -122,7 +122,7 @@ func scroll_text2(message:bool)->void:
 
 func update_gui_panel_color(delta) -> void:
 	if pager_active and target_object:
-		var player_forward: Vector3 = -player_camera.transform.basis.z.normalized()
+		var player_forward: Vector3 = -player.transform.basis.z.normalized()
 		var dir_to_object: Vector3 = (target_object.global_transform.origin - player_camera.global_transform.origin).normalized()
 		var dot_product: float = player_forward.dot(dir_to_object)
 		if dot_product > dot_threshold:
