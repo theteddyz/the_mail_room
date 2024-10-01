@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2x4onytkpeym"]
+[gd_scene load_steps=3 format=3 uid="uid://d2x4onytkpeym"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/ItemReader.gd" id="1_psbv5"]
 [ext_resource type="StyleBox" uid="uid://c4h4u5oao04qq" path="res://Assets/label_theme_box.tres" id="2_lc21k"]
-[ext_resource type="FontFile" uid="uid://s8snq2lwjjdn" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="2_r6c4b"]
 
 [node name="ItemReader" type="Control"]
 layout_mode = 3
@@ -37,7 +36,6 @@ layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_r6c4b")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 fit_content = true

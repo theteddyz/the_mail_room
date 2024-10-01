@@ -376,6 +376,7 @@ texture = ExtResource("14_6uwhy")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="IconManager/tape"]
+layout_mode = 0
 offset_left = 0.999977
 offset_top = 31.0
 offset_right = 41.0
