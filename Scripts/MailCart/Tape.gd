@@ -9,8 +9,10 @@ var camera_position_on_insert:Vector3 = Vector3(0.46,0,0.13)
 var box_position:Vector3
 var box_rotation:Vector3
 var inside_radio:bool = false
+var item_reader
 @export var sound:AudioStreamMP3
 func _ready():
+	item_reader = Gui.get_item_reader()
 	var player = GameManager.get_player()
 	var mail_cart = GameManager.mail_cart_reference
 	tape_manager = mail_cart.find_child("TapeManager")
@@ -30,7 +32,9 @@ func grabbed():
 		tape_manager.add_tape(self)
 		var col:CollisionShape3D = get_child(0)
 		col.disabled = true
-		print("Tape added to the collection")
+		item_reader.display_item("Tape Added To Collection")
+		await get_tree().create_timer(3.0).timeout
+		item_reader.hide_item()
 func eject():
 	reparent(tape_manager)
 	var tween:Tween = create_tween()
