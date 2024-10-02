@@ -18,10 +18,10 @@ func _ready():
 
 
 func _on_visible_on_screen_enabler_3d_screen_exited() -> void:
-	print("OFF")
+	#print("OFF")
 	visible = false
 
 
 func _on_visible_on_screen_enabler_3d_screen_entered() -> void:
-	print("ON")
+	#print("ON")
 	visible = true

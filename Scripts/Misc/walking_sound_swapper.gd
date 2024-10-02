@@ -24,7 +24,6 @@ func change_sound(s:String):
 	match s:
 		"carpet":
 			AudioServer.set_bus_effect_enabled(1, 0,true)
-			
 			audio_player.stream = carpet_sound_stream
 		"bathroom":
 			AudioServer.set_bus_effect_enabled(1, 0,false)
