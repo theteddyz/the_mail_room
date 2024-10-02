@@ -1,21 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://biilk0erp2roe"]
+[gd_scene load_steps=7 format=3 uid="uid://biilk0erp2roe"]
 
 [ext_resource type="Script" path="res://Scripts/MailCart/Tape.gd" id="1_gugkb"]
 [ext_resource type="Material" uid="uid://l75of2qmrq1n" path="res://Assets/Materials/item_hover.tres" id="2_4v4nq"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_7qowq"]
-size = Vector3(0.145, 0.015, 0.19)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hte31"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hjfl0"]
-size = Vector3(0.583498, 0.0641174, 0.757271)
+size = Vector3(0.38855, 0.0641174, 0.47131)
 
-[node name="TAPE_NEW" type="RigidBody3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3aq7l"]
+albedo_color = Color(0.0156863, 0.462745, 0.0156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7qowq"]
+size = Vector3(0.1, 0.015, 0.12)
+
+[node name="TAPE" type="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 2
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_hte31")
 script = ExtResource("1_gugkb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_overlay = ExtResource("2_4v4nq")
-mesh = SubResource("BoxMesh_7qowq")
+icon_type = "tape"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.00033816, 0.000919354, 0.00104043)
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.000109219, 0.000919354, -0.000533304)
 shape = SubResource("BoxShape3D_hjfl0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_3aq7l")
+material_overlay = ExtResource("2_4v4nq")
+mesh = SubResource("BoxMesh_7qowq")
+skeleton = NodePath("../..")

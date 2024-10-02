@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=37 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scenes/Prefabs/gui/ItemIcons.gd" id="12_2i7yx"]
 [ext_resource type="Texture2D" uid="uid://bsw0k3ptpy4jk" path="res://Assets/TemporaryAssets/Up Arrow.png" id="12_cgfu7"]
 [ext_resource type="Texture2D" uid="uid://j86xbk4osway" path="res://Assets/TemporaryAssets/Down Arrow.png" id="13_h5gkl"]
+[ext_resource type="Texture2D" uid="uid://brxkp2olxc3ie" path="res://Assets/TemporaryAssets/png-clipart-compact-cassette-computer-icons-magnetic-tape-cassette-miscellaneous-music-download-removebg-preview.png" id="14_6uwhy"]
 [ext_resource type="Script" path="res://Scripts/GUI/Stamina.gd" id="18_rhd6x"]
 [ext_resource type="Texture2D" uid="uid://ctd3t06rqjwy8" path="res://Assets/TemporaryAssets/30996.png" id="22_0xxbf"]
 [ext_resource type="Script" path="res://Scripts/GUI/pager.gd" id="22_pbhup"]
@@ -356,6 +357,31 @@ offset_top = 31.0
 offset_right = 41.0
 offset_bottom = 71.0
 texture = ExtResource("10_x2084")
+expand_mode = 1
+
+[node name="tape" type="TextureRect" parent="IconManager"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -21.0
+offset_right = 23.155
+offset_bottom = 22.175
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_6uwhy")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="IconManager/tape"]
+layout_mode = 0
+offset_left = 0.999977
+offset_top = 31.0
+offset_right = 41.0
+offset_bottom = 71.0
+texture = ExtResource("6_rp1kh")
 expand_mode = 1
 
 [node name="ItemIcon" type="Control" parent="."]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2x4onytkpeym"]
+[gd_scene load_steps=3 format=3 uid="uid://d2x4onytkpeym"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/ItemReader.gd" id="1_psbv5"]
 [ext_resource type="StyleBox" uid="uid://c4h4u5oao04qq" path="res://Assets/label_theme_box.tres" id="2_lc21k"]
-[ext_resource type="FontFile" uid="uid://s8snq2lwjjdn" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="2_r6c4b"]
 
 [node name="ItemReader" type="Control"]
 layout_mode = 3
@@ -19,13 +18,13 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.879
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.879
+anchor_bottom = 1.0
 offset_left = -266.0
 offset_top = -73.592
 offset_right = 265.0
-offset_bottom = 73.408
+offset_bottom = 1.0
 grow_vertical = 0
 theme_override_styles/panel = ExtResource("2_lc21k")
 
@@ -37,7 +36,6 @@ layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_r6c4b")
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 fit_content = true

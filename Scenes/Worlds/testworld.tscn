@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=103 format=4 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="24_s1v3d"]
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="40_hrj5v"]
 [ext_resource type="PackedScene" uid="uid://b85fvq8nn7wpm" path="res://Scenes/Prefabs/MoveableObjects/Monitor_interactable.tscn" id="40_kcapa"]
+[ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="41_n2l23"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bh3ib"]
 
@@ -342,6 +343,16 @@ albedo_color = Color(0.301961, 1, 0.6, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dih61"]
 size = Vector3(30.0029, 0.504028, 30.0212)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w6v7k"]
+viewport_path = NodePath("Monitor/ComputerOn/MonitorHandler/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cnw4"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_w6v7k")
+emission_enabled = true
+emission = Color(0.0509804, 0.0509804, 0.784314, 1)
+emission_energy_multiplier = 4.6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inu7q"]
 resource_name = "Material.001"
@@ -890,17 +901,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6006, 1.88917, -4.3951)
 
 [node name="TAPE_NEW" parent="NavigationRegion3D" instance=ExtResource("22_p3lgw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113563, 1.66132, -1.59701)
-collision_layer = 2
 collision_mask = 2
 
 [node name="Monitor" parent="." instance=ExtResource("40_kcapa")]
 transform = Transform3D(-0.997213, 0, 0.0746133, 0, 1, 0, -0.0746133, 0, -0.997213, 0.0866303, 1.61968, 4.5114)
+
+[node name="Screen" parent="Monitor/Monitor/ComputerOn" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1cnw4")
 
 [node name="ComputerOff" parent="Monitor/Monitor" index="1"]
 mesh = SubResource("ArrayMesh_h3j3v")
 
 [node name="Screen2" parent="Monitor/Monitor/ComputerOff" index="0"]
 mesh = SubResource("ArrayMesh_qrqc6")
+
+[node name="Elevator" parent="." instance=ExtResource("41_n2l23")]
+transform = Transform3D(0.0293697, 0, 0.999569, 0, 1, 0, -0.999569, 0, 0.0293697, -18.7858, -0.245457, 3.82707)
 
 [editable path="NavigationRegion3D/StaticBody3D3"]
 [editable path="NavigationRegion3D/meeting_room_wall_Door"]

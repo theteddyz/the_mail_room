@@ -1,61 +1,63 @@
 extends Interactable
 class_name Tape
-@export var unlock_num:int
-var player: CharacterBody3D
-var is_being_looked_at:bool
-var shader_material
-var key_material:MeshInstance3D
-var lerp_speed = 10
-var being_grabbed
-var lerp_pos 
-var item_icon_manager
+var tape_manager
+@export var tape_name:String
+var radio
+var player_camera_parent
+var player_camera:Camera3D
+var camera_position_on_insert:Vector3 = Vector3(0.46,0,0.13)
+var box_position:Vector3
+var box_rotation:Vector3
+var inside_radio:bool = false
+var item_reader
+@export var sound:AudioStreamMP3
 func _ready():
-	key_material = get_child(0)
-	item_icon_manager = Gui.get_item_icon_displayer()
-	player = GameManager.player_reference
-	lerp_pos = player.find_child("ItemHolder")
-	EventBus.connect("object_looked_at",on_seen)
-	EventBus.connect("no_object_found",on_unseen)
+	item_reader = Gui.get_item_reader()
+	var player = GameManager.get_player()
+	var mail_cart = GameManager.mail_cart_reference
+	tape_manager = mail_cart.find_child("TapeManager")
+	radio = GameManager.get_player_radio()
+	player_camera_parent = player.find_child("Neck").find_child("Head").find_child("HeadbopRoot")
 
 
-func on_seen(node):
-	if node == self:
-		is_being_looked_at = true
-	else:
-		is_being_looked_at = false
 
-func on_unseen(_node):
-	if is_being_looked_at:
-		is_being_looked_at = false
 
 
 func interact():
-	being_grabbed = true
-	#EventBus.emitCustomSignal("picked_up_key",[self])
-	#ScareDirector.emit_signal("key_pickedup", unlock_num)
+	grabbed()
 
-func highlight(_delta):
-	is_being_looked_at = true
-	if shader_material == null:
-		shader_material = key_material.material_overlay.duplicate()
-		key_material.material_overlay = shader_material
-		key_material.material_overlay.set_shader_parameter("outline_width",5)
-	else:
-		key_material.material_overlay.set_shader_parameter("outline_width",5)
 
-func _process(delta):
-	if being_grabbed:
-		grabbed(delta)
-	if is_being_looked_at:
-		highlight(delta)
-	else:
-		reset_highlight()
-func grabbed(delta):
-	position = position.lerp(lerp_pos.global_position, lerp_speed * delta)
-	if position.distance_to(lerp_pos.global_position) < 0.1:
-		item_icon_manager.show_icon()
-		queue_free()
-
-func reset_highlight():
-	if shader_material:
-		key_material.material_overlay.set_shader_parameter("outline_width", 0)
+func grabbed():
+	if tape_manager != null:
+		tape_manager.add_tape(self)
+		var col:CollisionShape3D = get_child(0)
+		col.disabled = true
+		item_reader.display_item("Tape Added To Collection")
+		await get_tree().create_timer(3.0).timeout
+		item_reader.hide_item()
+func eject():
+	reparent(tape_manager)
+	var tween:Tween = create_tween()
+	tween.parallel().tween_property(self,"position",box_position,1)
+	tween.parallel().tween_property(self,"rotation_degrees",Vector3(0,0,90),1)
+	await tween.finished
+	inside_radio = false
+func insert_tape(camera:Camera3D):
+	reparent(radio)
+	inside_radio = true
+	player_camera = camera
+	self.freeze = true
+	var camera_tween:Tween = create_tween()
+	var rotate_tween:Tween = create_tween()
+	var tween:Tween = create_tween()
+	tween.parallel().tween_property(self,"position",Vector3(0.11,0.11,-0.07),1)
+	tween.parallel().tween_property(self,"rotation_degrees",Vector3(0,90,75),1)
+	camera_tween.tween_property(player_camera,"position",camera_position_on_insert,1)
+	await camera_tween.finished
+	var tween2 = create_tween()
+	tween2.parallel().tween_property(self,"position",Vector3(0.12,-0.02,-0.025),1)
+	tween2.parallel().tween_property(self,"rotation_degrees",Vector3(0,90,90),1)
+	await tween2.finished
+	radio.power = true
+	radio.play_tape(self)
+	

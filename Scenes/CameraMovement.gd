@@ -22,8 +22,13 @@ var previous_head_quat: Quaternion  # Store the previous frame's head rotation i
 var target_cumulative_rotation: Vector3 = Vector3.ZERO  # Track cumulative rotations for the target
 
 var cameraRotation: Quaternion
+var currentZRotation: float
 
 var shouldEnable: bool = false
+
+var followingVelocity: Vector3 = Vector3.ZERO
+var previousFollowingVelocity: Vector3 = Vector3.ZERO
+var velocityLerpTowards: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	top_level = false
@@ -33,6 +38,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if shouldEnable:
+		
 		# Get the current and previous rotation of the head in quaternions
 		var current_head_quat = head.global_transform.basis.get_rotation_quaternion()
 
@@ -89,7 +95,25 @@ func _process(delta: float) -> void:
 
 		# Apply the new rotation to the camera
 		global_transform.basis = Basis(cameraRotation)
-		global_rotation.z = lerpf(global_rotation.z, angular_velocity.y*0.006, delta*50)
+		currentZRotation = lerpf(currentZRotation, angular_velocity.y*0.008, delta*50)
+		global_rotation.z += currentZRotation
+		
+		
+		var rotation_quaternion = Quaternion.from_euler(global_rotation)
+		followingVelocity = global_position - head.global_position
+		velocityLerpTowards = velocityLerpTowards.lerp(((followingVelocity - previousFollowingVelocity)/delta)*0.1, delta*2)
+		
+		var axis: Vector3 = Vector3(0, 1, 0)  # Example axis: x-axis (change this for y or z)
+		var angle: float = deg_to_rad(90)     # 90 degrees in radians
+
+		# Create a quaternion representing a 90-degree rotation around the chosen axis
+		var rotation_quat_90 = Quaternion(axis, angle)
+		
+		#global_rotation += rotation_quat_90 * (rotation_quaternion * velocityLerpTowards);
+		previousFollowingVelocity = followingVelocity
+		
+		
+		
 		
 		
 		calculatePosition(delta)
@@ -99,6 +123,7 @@ func _process(delta: float) -> void:
 		#global_transform = head.global_transform
 
 func calculatePosition(delta: float):
+	
 	var target_position = head.global_position
 	#target_position.y += 0.3
 
