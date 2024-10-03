@@ -14,10 +14,6 @@ func _search(overlaps: Array):
 	if overlaps.size() > 0:
 		for overlap in overlaps:
 			# If the body is an active source...
-			if current_sources.has(overlap) and !is_running_effect:
-				tween.kill()
-				overlap.remove_from_group("observed")
-				current_sources.remove_at(current_sources.find(overlap))
 			if overlap.is_in_group("scarevision") and !overlap.is_in_group("observed") and overlap.is_visible_in_tree():
 				var pos = overlap.global_transform.origin
 				if overlap.find_child("raycast_look_position") != null:
@@ -25,6 +21,8 @@ func _search(overlaps: Array):
 				raycaster.look_at(pos)
 				raycaster.force_raycast_update()
 				if raycaster.is_colliding() and raycaster.get_collider().name == overlap.name:
+					if current_sources.has(overlap) and !is_running_effect:
+						tween.kill()
 					overlap.add_to_group("observed")
 					current_sources.append(overlap)
 					await _effect(overlap)
@@ -46,11 +44,19 @@ func _effect(overlap):
 	# CAN TECHNICALLY CATCH TWEEN HERE, DONT DO THAT
 	await _call_external_function(overlap)
 	is_running_effect = false
-	current_sources.remove_at(current_sources.find(overlap))
+	if overlap.keep_scare_vision != null and overlap.keep_scare_vision:
+		overlap.remove_from_group("observed")
+	
 	tween = create_tween()
 	tween.tween_property(we, "adjustment_saturation", w.properties["adjustment_saturation"], 3.25);
 	tween.parallel().tween_property(we, "adjustment_brightness", w.properties["adjustment_brightness"], 1.13);
 	tween.parallel().tween_property(camera, "fov", 60, 0.87)
+	await tween.finished
+	if overlap != null:
+		current_sources.remove_at(current_sources.find(overlap))
+	else:
+		current_sources.remove_at(current_sources.size()-1)
+	#await tween.finished
 	
 func _call_external_function(overlap):
 	if overlap and overlap.has_method("scare_vision_external_callback"):

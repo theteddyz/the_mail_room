@@ -101,7 +101,6 @@ func move_to_target():
 	if velocity.abs() > Vector3.ZERO:
 		look_at(global_position + velocity, Vector3.UP)
 	if distance_to_goal < stop_threshold:
-		print("I HAVE ARRIVED!!!!")
 		if roaming_to_sound:
 			roaming_to_sound = false
 			sound_heard_chase_timer.stop()
@@ -132,7 +131,6 @@ func apply_pushes():
 			if c.get_collider().freeze == true:
 				c.get_collider().freeze = false
 			c.get_collider().set_linear_velocity(Vector3.ZERO)
-			print(c.get_normal())
 			c.get_collider().apply_central_force(-c.get_normal() * 1)
 
 func chase_player():
@@ -142,7 +140,6 @@ func chase_player():
 		roaming_soundloop.playing = false
 		chase_sound_initial.playing = true
 		AudioController.play_resource(chase_sound, 0)
-		print("START CHASING PLAYER")
 		monster_anim.play("Run")
 		chasing = true
 		roaming = false
@@ -151,7 +148,6 @@ func chase_player():
 func stop_chasing_player():
 	if chasing:
 		AudioController.stop_resource(sound_resource_path, 2)
-		print("STOP CHASING PLAYER")
 		chasing = false
 		disabled = true
 		visible = false
@@ -163,7 +159,6 @@ func stop_chasing_player():
 
 func on_player_in_vision():
 	if !disabled and player_in_vision_flag == false:
-		print("STOP AGGRO TIMER")
 		roaming_to_sound = false
 		player_in_vision_flag = true
 		chase_player()
@@ -171,7 +166,6 @@ func on_player_in_vision():
 
 func on_player_out_of_vision():
 	if !disabled and player_in_vision_flag == true:
-		print("START AGGRO TIMER")
 		player_in_vision_flag = false
 		aggro_timer.start()
 		
@@ -188,29 +182,21 @@ func on_hearing_sound(pos):
 		set_new_nav_position(Vector3(pos.x + randf_range(-2.5, 2.5), 0, pos.z + randf_range(-2.5, 2.5)))
 
 func _on_nav_timer_timeout():
-	print("TRYING TO SET NEW NAV POS...")
 	if !disabled and navlink_cooldown_timer.time_left <= 0:
-		print("SUCCESS!!")
 		set_new_nav_position(player.global_position)
 
 func _on_aggro_timer_timeout():
-	print("AGGRO TIMER TIMEOUT...")
 	if chasing and player_in_vision_flag == false:
-		print("SUCCESS!")
 		stop_chasing_player()
 		
 # Spawn a roaming John
 func _on_cooldown_timer_timeout():
-	print("TRYING TO SPAWN JOHN...")
-
 	if roaming and !chasing:
-		print("SUCCESS!")
 		#Spawn John on a random position not in the players view
 		var arr = spawnpoints.get_children()
 		arr.shuffle()
 		for i in arr:
 			if !i.observed:
-				print(i.name)
 				visible = true
 				col.disabled = false
 				disabled = false
@@ -227,9 +213,7 @@ func _on_cooldown_timer_timeout():
 
 # Check if we should despawn John
 func _on_roaming_timer_timeout() -> void:
-	print("TRYING TO DESPAWN JOHN...")
 	if !is_visible:
-		print("SUCCESS!")
 		chasing = false
 		disabled = true
 		visible = false
@@ -244,7 +228,6 @@ func _on_roaming_timer_timeout() -> void:
 
 # Set a new direction for roaming John
 func _on_turn_timer_timeout() -> void:
-	print("SETTING A NEW RANDOM POSITION; TURN TIMER")
 	roaming = true
 	set_new_nav_position()
 	monster_anim.play("WalkScary")
@@ -256,9 +239,7 @@ func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 	is_visible = false
 
 func _on_sound_heard_chase_timer_timeout() -> void:
-	print("TRYING TO STOP CHASING A SOUND!")
 	if roaming_to_sound:
-		print("SUCCESS!")
 		roaming_to_sound = false
 		turn_timer.start(0.5)
 		roaming_timer.start(randi_range(10, 35))
@@ -284,3 +265,28 @@ func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
 
 func _on_navigation_agent_3d_link_reached(details: Dictionary) -> void:
 	navlink_cooldown_timer.start()
+	
+	
+# Enum-like dictionary to map effect names to numbers
+enum Effect { NONE, MONSTER_SEEN, DELAY }
+
+# Export this variable so you can select from the editor
+@export var effect_type: Effect = Effect.NONE
+@export var delay_length: float = 0
+var keep_scare_vision: bool = true
+signal callback_done
+
+# External callback function that could have some delay or complex operations
+func scare_vision_external_callback() -> void:
+	match effect_type:
+		Effect.MONSTER_SEEN:
+			await _seen_check_for(false)
+		Effect.DELAY:
+			await delay_length
+	emit_signal("callback_done")
+	
+func _seen_check_for(seen: bool):
+	var flag = !seen 
+	while flag != seen:
+		print(flag)
+		flag = await ScareDirector.monster_seen

@@ -6,12 +6,9 @@ enum Effect { NONE, MONSTER_SEEN, DELAY }
 # Export this variable so you can select from the editor
 @export var effect_type: Effect = Effect.NONE
 @export var delay_length: float = 0
+var keep_scare_vision: bool = false
 signal callback_done
 
-func _ready():
-	pass
-	#ScareDirector.connect("monster_seen", _seen_check_for)
-	
 # External callback function that could have some delay or complex operations
 func scare_vision_external_callback() -> void:
 	match effect_type:
