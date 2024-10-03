@@ -348,6 +348,7 @@ mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 linear_damp = 6.0
 script = ExtResource("1_jg2d3")
+is_drawer = true
 
 [node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="Desk/DrawerTop"]
 limit_enabled = true
@@ -408,6 +409,7 @@ mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 linear_damp = 6.0
 script = ExtResource("1_jg2d3")
+is_drawer = true
 
 [node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="Desk/DrawerBottom"]
 limit_enabled = true

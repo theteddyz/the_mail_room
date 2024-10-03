@@ -552,6 +552,7 @@ mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 linear_damp = 6.0
 script = ExtResource("13_n5hk3")
+is_drawer = true
 
 [node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="NavigationRegion3D/Desk/Desk/DrawerTop"]
 limit_enabled = true
@@ -611,6 +612,7 @@ mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 linear_damp = 6.0
 script = ExtResource("13_n5hk3")
+is_drawer = true
 
 [node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="NavigationRegion3D/Desk/Desk/DrawerBottom"]
 limit_enabled = true
@@ -726,6 +728,7 @@ gravity_scale = 0.0
 sleeping = true
 linear_damp = 6.0
 script = ExtResource("13_n5hk3")
+is_drawer = true
 
 [node name="Interpolator" type="Node3D" parent="NavigationRegion3D/Desk2/DrawerTop"]
 script = ExtResource("23_woh21")
@@ -772,6 +775,7 @@ gravity_scale = 0.0
 sleeping = true
 linear_damp = 6.0
 script = ExtResource("13_n5hk3")
+is_drawer = true
 
 [node name="Interpolator" type="Node3D" parent="NavigationRegion3D/Desk2/DrawerBottom"]
 script = ExtResource("23_woh21")
