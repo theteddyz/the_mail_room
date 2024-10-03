@@ -77,6 +77,8 @@ func monster_seen_event(test):
 
 func _on_slam():
 	AudioController.play_resource(closed_ambiance)
+	ScareDirector.emit_signal("monster_seen", false)
+
 
 func _hide_monster():
 	monster_body.queue_free()
@@ -84,7 +86,6 @@ func _hide_monster():
 func _door_opened(grabbable:String):
 	if grabbable == door.name:
 		AudioController.stop_resource("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience4.ogg", 2)
-		ScareDirector.emit_signal("monster_seen", false)
 		queue_free()
 
 func _end_scare():

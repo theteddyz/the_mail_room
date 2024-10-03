@@ -9,7 +9,8 @@ enum Effect { NONE, MONSTER_SEEN, DELAY }
 signal callback_done
 
 func _ready():
-	ScareDirector.connect("monster_seen", _seen_check_for)
+	pass
+	#ScareDirector.connect("monster_seen", _seen_check_for)
 	
 # External callback function that could have some delay or complex operations
 func scare_vision_external_callback() -> void:
@@ -24,6 +25,4 @@ func scare_vision_external_callback() -> void:
 func _seen_check_for(seen: bool):
 	var flag = !seen 
 	while flag != seen:
-		print("seen check is.. ", flag)
-		await 0.05
 		flag = await ScareDirector.monster_seen
