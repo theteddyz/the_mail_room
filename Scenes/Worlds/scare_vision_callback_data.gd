@@ -18,10 +18,12 @@ func scare_vision_external_callback() -> void:
 			await _seen_check_for(false)
 		Effect.DELAY:
 			await delay_length
+	print("Scarevision effect: DONE!")
 	emit_signal("callback_done")
 	
 func _seen_check_for(seen: bool):
-	var flag = !seen
+	var flag = !seen 
 	while flag != seen:
+		print("seen check is.. ", flag)
 		await 0.05
 		flag = await ScareDirector.monster_seen
