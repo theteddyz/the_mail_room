@@ -49,6 +49,7 @@ func _ready():
 	set_collision_layer_value(5,true)
 	set_collision_mask_value(5,true)
 	set_collision_mask_value(13,true)
+	set_collision_mask_value(6,true)
 
 	if GameManager.get_player() != null:
 		player = GameManager.get_player()

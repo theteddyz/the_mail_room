@@ -109,6 +109,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0235261, 5.49543, 0.006427
 shape = SubResource("BoxShape3D_iv423")
 
 [node name="Windows" type="StaticBody3D" parent="."]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0133362, 2.37408, -0.00390625)

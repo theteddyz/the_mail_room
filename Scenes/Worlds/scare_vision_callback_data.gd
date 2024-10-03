@@ -6,7 +6,7 @@ enum Effect { NONE, MONSTER_SEEN, DELAY }
 # Export this variable so you can select from the editor
 @export var effect_type: Effect = Effect.NONE
 @export var delay_length: float = 0
-var keep_scare_vision: bool = false
+@export var keep_scare_vision: bool = false
 signal callback_done
 
 # External callback function that could have some delay or complex operations
