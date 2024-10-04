@@ -51,6 +51,8 @@ var previous_mouse_position = Vector2.ZERO
 var previous_time = 0.0
 var open:bool
 var close:bool
+var door_forward_position
+var door_global_position
 func _ready():
 	set_collision_layer_value(5,true)
 	set_collision_mask_value(5,true)
@@ -79,18 +81,29 @@ func _ready():
 	#mouse_line_material.emission_energy_multiplier = 1
 	#mouse_line_material.emission_enabled = true
 	previous_time = Time.get_ticks_msec()
+	if is_door:
+		door_forward_position = global_transform.basis.z.normalized()
+		door_global_position = global_transform.origin
+
 
 #Used by Both
 func _input(event):
 	if is_rotating and event is InputEventMouseMotion:
 		handle_mouse_motion(event.relative)
 	elif is_door and is_picked_up and event is InputEventMouseMotion:
-		previous_mouse_position = event.relative
+		var player_inside = is_player_inside_room()
+		var adjusted_relative = event.relative
+		if player_inside:
+			adjusted_relative.y = -event.relative.y
+		previous_mouse_position = adjusted_relative
 	elif is_drawer and is_picked_up and event is InputEventMouseMotion:
 		previous_mouse_position = event.relative
 
 
-
+func is_player_inside_room()-> bool:
+	var door_forward: Vector3 = door_forward_position
+	var door_to_player: Vector3 = (player.global_transform.origin - door_global_position).normalized()
+	return door_forward.dot(door_to_player) < 0
 
 
 func _process(_delta): #Tether the player to the object
@@ -284,7 +297,7 @@ func update_position(delta):
 		var mouse_velocity = previous_mouse_position / delta
 		if !mouse_velocity.is_finite():
 			print("Invalid mouse velocity:", mouse_velocity)
-		apply_door_torque(mouse_velocity)
+		apply_door_torque(mouse_velocity * 0.5)
 	elif !is_door and is_drawer:
 		var mouse_velocity = previous_mouse_position / delta
 		if !mouse_velocity.is_finite():
@@ -295,10 +308,17 @@ func apply_drawer_impluse(mouse_velocity:Vector2):
 	var local_motion_axis = Vector3(0, 0, 1)
 	var global_motion_axis = (global_transform.basis * local_motion_axis).normalized()
 	var linear_impulse = global_motion_axis * impulse_amount * mass
-	apply_central_impulse(linear_impulse)
+	apply_central_impulse(linear_impulse * 0.1)
 	apply_central_impulse(-linear_velocity * 0.1)
 func apply_door_torque(mouse_velocity: Vector2):
-	var torque = mouse_velocity.y * DRAWER_TORQUE_MULTIPLIER
+	var player_inside = is_player_inside_room()
+	var torque_direction = -1
+	var torque
+	if player_inside:
+		torque_direction = 1 
+	if player_inside:
+		torque = mouse_velocity.y * DOOR_TORQUE_MULTIPLIER * torque_direction
+	else: torque =  mouse_velocity.y * DOOR_TORQUE_MULTIPLIER
 	var torque_force = Vector3(0, torque * mass, 0) 
 	apply_torque_impulse(torque_force)
 	apply_torque_impulse(-angular_velocity * 0.05) 
