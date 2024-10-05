@@ -21,7 +21,7 @@ func _input(event):
 		stop_using_pc()
 
 func stop_using_pc():
-	#player_camera.reparent(player_camera_parent)
+	player_camera.reparent(player_camera_parent)
 	var camera_tween_position:Tween = create_tween()
 	var camera_tween_rotation:Tween = create_tween()
 	camera_tween_position.tween_property(player_camera,"position",Vector3.ZERO,1.5).set_ease(Tween.EASE_IN)
@@ -37,8 +37,7 @@ func stop_using_pc():
 
 func interact():
 	if !being_used:
-		var global_transform_before_reparent = player_camera.global_transform
-		#player_camera.global_transform = global_transform_before_reparent
+		player_camera.reparent(self)
 		interactableFinder.enabled = false
 		EventBus.emitCustomSignal("disable_player_movement",[true,true])
 		look_icon.hide()
@@ -47,13 +46,12 @@ func interact():
 		icon.hide_all_icons(d)
 		var camera_tween_position:Tween = create_tween()
 		var camera_tween_rotation:Tween = create_tween()
-		camera_tween_position.tween_property(player_camera, "global_position", Vector3(global_position.x,global_position.y,(global_position.z+0.5)), 1.5).set_ease(Tween.EASE_IN_OUT)
+		camera_tween_position.tween_property(player_camera, "position", camera_position, 1.5).set_ease(Tween.EASE_IN_OUT)
 		camera_tween_position.set_parallel(true)
 		camera_tween_rotation.tween_property(player_camera,"rotation_degrees",camera_rotation,1.5).set_ease(Tween.EASE_IN_OUT)
 		camera_tween_rotation.set_parallel(true)
 		await camera_tween_position.finished
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 		being_used = true
-		player_camera.reparent(get_parent(),true)
 		var col:CollisionShape3D = get_child(0)
 		col.disabled = true

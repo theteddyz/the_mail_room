@@ -198,6 +198,7 @@ gravity_scale = 0.0
 sleeping = true
 linear_damp = 6.0
 script = ExtResource("1_hork0")
+is_drawer = true
 
 [node name="Interpolator" type="Node3D" parent="DrawerTop"]
 script = ExtResource("2_2qwev")
@@ -244,6 +245,7 @@ gravity_scale = 0.0
 sleeping = true
 linear_damp = 6.0
 script = ExtResource("1_hork0")
+is_drawer = true
 
 [node name="Interpolator" type="Node3D" parent="DrawerBottom"]
 script = ExtResource("2_2qwev")

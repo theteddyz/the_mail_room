@@ -13,7 +13,7 @@ cm = 0
 
 Grabbable Objects:				Interactable Finder:
 cl = 2, 5							cl = 0
-cm = 1, 2, 3, 4, 5, 13				cm = 1, 2, 4
+cm = 1, 2, 3, 4, 5, 6, 13			cm = 1, 2, 4
 
 Player:
 cl = 3
@@ -28,6 +28,9 @@ cl = 2, 7 (maybe fix)
 cm = 1, 2, 3, 4, 13
 
 
+Windows:
+cl = 6
+cm = n/a
 
 Readable:
 cl = 11

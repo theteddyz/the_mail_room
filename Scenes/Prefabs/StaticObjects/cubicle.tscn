@@ -264,6 +264,7 @@ axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_q3bsi")
+is_drawer = true
 
 [node name="CabinetCubicle_001" type="MeshInstance3D" parent="Drawer1"]
 mesh = SubResource("ArrayMesh_au78a")
@@ -299,6 +300,7 @@ axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_q3bsi")
+is_drawer = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
@@ -334,6 +336,7 @@ axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_q3bsi")
+is_drawer = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
@@ -369,6 +372,7 @@ axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
 script = ExtResource("3_q3bsi")
+is_drawer = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)

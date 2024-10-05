@@ -14,17 +14,13 @@ func _on_vision_timer_timeout():
 					if $VisionRayCast.is_colliding():
 						var col = $VisionRayCast.get_collider()
 						if col.name == "Player" or col.name == "Mailcart":
-							print("PLAYER IN AND SEEABLE!")
 							parent.on_player_in_vision()
 							return
 						else:
-							print("PLAYER IN!")
 							parent.on_player_out_of_vision()
 							return
 				else:
 					#if overlaps.find(overlap) == overlaps.size() - 1:
-					print("PLAYER NOT EVEN IN!")
 					parent.on_player_out_of_vision()
 		else:
-			print("PLAYER NOT EVEN IN!")
 			parent.on_player_out_of_vision()

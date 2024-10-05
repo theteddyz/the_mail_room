@@ -11,6 +11,7 @@ extends Grabbable
 @export var should_freeze:bool = false
 @export var disable_collider_on_grab:bool = true
 @export var is_door:bool = false
+@export var is_drawer:bool = false
 @export var can_rotate:bool = true
 @onready var grab_icon = preload("res://Scenes/Prefabs/MoveableObjects/grab_icon.tscn")
 @export var is_picked_up = false
@@ -40,16 +41,23 @@ var is_being_looked_at
 var grab_point_indicator
 var player_cross_hair
 signal collided(other_body)
-
+const DOOR_TORQUE_MULTIPLIER: float = 0.02
+const DRAWER_TORQUE_MULTIPLIER: float = 0.01
 var mouse_line: MeshInstance3D
 var is_grabbing_bool: bool = false
 var mouse_line_material: ORMMaterial3D
-
+var mouse_velocity:Vector2 = Vector2.ZERO
+var previous_mouse_position = Vector2.ZERO
+var previous_time = 0.0
+var open:bool
+var close:bool
+var door_forward_position
+var door_global_position
 func _ready():
 	set_collision_layer_value(5,true)
 	set_collision_mask_value(5,true)
 	set_collision_mask_value(13,true)
-
+	set_collision_mask_value(6,true)
 	if GameManager.get_player() != null:
 		player = GameManager.get_player()
 	object_Interpolator = find_child("Interpolator")
@@ -72,14 +80,35 @@ func _ready():
 	#mouse_line_material.emission_intensity = 1
 	#mouse_line_material.emission_energy_multiplier = 1
 	#mouse_line_material.emission_enabled = true
+	previous_time = Time.get_ticks_msec()
+	if is_door:
+		door_forward_position = global_transform.basis.z.normalized()
+		door_global_position = global_transform.origin
+
 
 #Used by Both
 func _input(event):
 	if is_rotating and event is InputEventMouseMotion:
 		handle_mouse_motion(event.relative)
-		
+	elif is_door and is_picked_up and event is InputEventMouseMotion:
+		var player_inside = is_player_inside_room()
+		var adjusted_relative = event.relative
+		if player_inside:
+			adjusted_relative.y = -event.relative.y
+		previous_mouse_position = adjusted_relative
+	elif is_drawer and is_picked_up and event is InputEventMouseMotion:
+		previous_mouse_position = event.relative
+
+
+func is_player_inside_room()-> bool:
+	var door_forward: Vector3 = door_forward_position
+	var door_to_player: Vector3 = (player.global_transform.origin - door_global_position).normalized()
+	return door_forward.dot(door_to_player) < 0
+
+
 func _process(_delta): #Tether the player to the object
 	if is_picked_up:
+		mouse_velocity = Vector2.ZERO
 		var playerPosition:Vector3 = player.transform.origin;
 		playerPosition.y = 0;
 		#var targetPosition: Vector3 = itemPos.global_transform.origin + -grab_offset
@@ -102,7 +131,8 @@ func _process(_delta): #Tether the player to the object
 		if !is_picked_up and is_grabbing_bool:
 			is_grabbing_bool = false
 			mouse_line.queue_free()
-func _physics_process(delta):	
+
+func _physics_process(delta):
 	#if camera.global_transform.origin.distance_to(global_transform.origin) > 15:
 	#	sleeping = true
 		#visible = false
@@ -146,6 +176,8 @@ func grab():
 		if !timerAdded:
 			add_child(pickup_timer)
 			timerAdded=true
+		if is_door or is_drawer:
+			EventBus.emitCustomSignal("disable_player_movement",[true,false])
 		#itemPos = player.find_child("ItemHolder")
 		camera = player.find_child("Camera")
 		playerHead = player.find_child("Head")
@@ -179,6 +211,8 @@ func grab():
 			add_grab_point_indicator()
 func dropMe(throw:bool):
 	if is_picked_up and throw == false:
+		if is_door or is_drawer:
+			EventBus.emitCustomSignal("disable_player_movement",[false,false])
 		EventBus.emitCustomSignal("dropped_object", [mass,self])
 		#linear_damp = 10
 		var currentPos = global_position
@@ -226,39 +260,69 @@ func rotate_vector_global(offset: Vector3) -> Vector3:
 	return (relative_basis * offset)
 	
 func update_position(delta):
-	
-	var rotation_offset = rotate_vector_global(grab_offset)
-	var forward = -camera.global_transform.basis.z
-	var targetPosition: Vector3 = Vector3.ZERO
-	var grab_range = 0
-	if is_door:
-		grab_range = 2
-		targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
-	else:
-		grab_range = grab_distance
-		targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
-	var currentPosition:Vector3 = global_transform.origin
-	_update_mouse_line((targetPosition + rotation_offset),currentPosition + rotation_offset)
-	var directionTo:Vector3 = targetPosition - currentPosition
-	var distance:float = currentPosition.distance_to(targetPosition)
-	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
-	
-	force = force.limit_length(max_force + (mass * 15) + player.velocity.length())
-	
-	apply_force(force, rotation_offset)
-	
-	if is_tether_max_range:
-		force = (camera.global_transform.origin - currentPosition).normalized() * mass * 15
-		apply_central_force(force)
-	#var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
-	
-	apply_force(-linear_velocity * 20, rotation_offset) #* angleBetweenForceAndVelocity)		
-	if distance > distance_threshold:
-		force_above_threshold_time += delta
-		if force_above_threshold_time >= drop_time_threshold:
-			dropMe(false)
-	else:
-		force_above_threshold_time = 0.0
+	if !is_door and !is_drawer:
+		var rotation_offset = rotate_vector_global(grab_offset)
+		var forward = -camera.global_transform.basis.z
+		var targetPosition: Vector3 = Vector3.ZERO
+		var grab_range = 0
+		if is_door:
+			grab_range = 2
+			targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
+		else:
+			grab_range = grab_distance
+			targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
+		var currentPosition:Vector3 = global_transform.origin
+		_update_mouse_line((targetPosition + rotation_offset),currentPosition + rotation_offset)
+		var directionTo:Vector3 = targetPosition - currentPosition
+		var distance:float = currentPosition.distance_to(targetPosition)
+		force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
+		
+		force = force.limit_length(max_force + (mass * 15) + player.velocity.length())
+		
+		apply_force(force, rotation_offset)
+		
+		if is_tether_max_range:
+			force = (camera.global_transform.origin - currentPosition).normalized() * mass * 15
+			apply_central_force(force)
+		#var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
+		
+		apply_force(-linear_velocity * 20, rotation_offset) #* angleBetweenForceAndVelocity)		
+		if distance > distance_threshold:
+			force_above_threshold_time += delta
+			if force_above_threshold_time >= drop_time_threshold:
+				dropMe(false)
+		else:
+			force_above_threshold_time = 0.0
+	elif is_door and !is_drawer:
+		var mouse_velocity = previous_mouse_position / delta
+		if !mouse_velocity.is_finite():
+			print("Invalid mouse velocity:", mouse_velocity)
+		apply_door_torque(mouse_velocity * 0.5)
+	elif !is_door and is_drawer:
+		var mouse_velocity = previous_mouse_position / delta
+		if !mouse_velocity.is_finite():
+			print("Invalid mouse velocity:", mouse_velocity)
+		apply_drawer_impluse(mouse_velocity)
+func apply_drawer_impluse(mouse_velocity:Vector2):
+	var impulse_amount = mouse_velocity.y * DOOR_TORQUE_MULTIPLIER
+	var local_motion_axis = Vector3(0, 0, 1)
+	var global_motion_axis = (global_transform.basis * local_motion_axis).normalized()
+	var linear_impulse = global_motion_axis * impulse_amount * mass
+	apply_central_impulse(linear_impulse * 0.1)
+	apply_central_impulse(-linear_velocity * 0.1)
+func apply_door_torque(mouse_velocity: Vector2):
+	var player_inside = is_player_inside_room()
+	var torque_direction = -1
+	var torque
+	if player_inside:
+		torque_direction = 1 
+	if player_inside:
+		torque = mouse_velocity.y * DOOR_TORQUE_MULTIPLIER * torque_direction
+	else: torque =  mouse_velocity.y * DOOR_TORQUE_MULTIPLIER
+	var torque_force = Vector3(0, torque * mass, 0) 
+	apply_torque_impulse(torque_force)
+	apply_torque_impulse(-angular_velocity * 0.05) 
+
 func start_pickup_timer():
 	pickup_timer.start(regrab_cooldown)
 func _on_pickup_timer_timeout():

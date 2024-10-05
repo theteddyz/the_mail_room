@@ -2,7 +2,7 @@ extends Node3D
 
 var has_been_executed = false
 @onready var monster_body: CharacterBody3D = $"../../monster"
-@onready var animator = $"../../NavigationRegion3D/monster/godot_rig/AnimationPlayer"
+@onready var animator: AnimationPlayer = $"../../monster/godot_rig/AnimationPlayer"
 var player
 @onready var monster_position: Node3D = $MonsterPosition
 @onready var monster_collider: CollisionShape3D = $"../../monster/CollisionShape3D"

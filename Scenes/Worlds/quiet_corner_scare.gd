@@ -3,9 +3,10 @@ extends Node3D
 var has_been_executed = false
 @onready var scare_5_vent_sound: AudioStreamPlayer3D = $"../../Scare5VentSound"
 @onready var john_typing_sound_player: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
-@onready var cubicle_wall_monster: StaticBody3D = $"../../Objects/OfficeCubicle11/Cubicle_Door"
-@onready var monitor: RigidBody3D = $"../../Objects/Desk37/GrabableObjectTemplate"
-@onready var screen_light_2: SpotLight3D = $"../../Objects/Desk37/GrabableObjectTemplate/Interpolator/ScreenLight2"
+@onready var cubicle_wall_monster: StaticBody3D = $"../../Cubicle_Door"
+@onready var monitor: RigidBody3D = $"../../NavigationRegion3D/Objects/Desk37/GrabableObjectTemplate"
+@onready var screen_light_2: SpotLight3D = $"../../NavigationRegion3D/Objects/Desk37/GrabableObjectTemplate/Interpolator/ScreenLight2"
+
 @onready var monitor_flicker: AnimationPlayer = $"../../NavigationRegion3D/Objects/Desk37/monitor_flicker"
 
 func _ready():

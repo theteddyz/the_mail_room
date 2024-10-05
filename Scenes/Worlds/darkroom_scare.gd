@@ -9,7 +9,7 @@ var has_been_executed = false
 @onready var monsterCollisionShape:CollisionShape3D = $godot_rig/JohnCharacterBody/CollisionShape3D
 var scare_active: bool = false
 @onready var monster_body = $godot_rig
-@onready var wall_to_nuke = $"../../Objects/OfficeCubicle11/Cubicle_Door"
+@onready var wall_to_nuke: StaticBody3D = $"../../Cubicle_Door"
 var monster_anim:AnimationPlayer
 var closed_ambiance
 @onready var door = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2"
@@ -22,7 +22,7 @@ var closed_ambiance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	closed_ambiance = preload("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience2Normalized.ogg")
+	closed_ambiance = preload("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience4.ogg")
 	monster_anim = monster_body.find_child("AnimationPlayer")
 	monsterCollisionShape.disabled = true
 	ScareDirector.connect("key_pickedup", activate_scare)
@@ -49,6 +49,7 @@ func monster_seen_event(test):
 		if wall_to_nuke != null:
 			wall_to_nuke.queue_free()
 		doorlock.lock_door()
+		await get_tree().create_timer(0.68).timeout
 		print("DOOR LOCKING!")
 		flickeranimationplayer.pause()
 		flickeranimationplayer.play("RESET")
@@ -76,13 +77,15 @@ func monster_seen_event(test):
 
 func _on_slam():
 	AudioController.play_resource(closed_ambiance)
+	ScareDirector.emit_signal("monster_seen", false)
+
 
 func _hide_monster():
 	monster_body.queue_free()
 	
 func _door_opened(grabbable:String):
 	if grabbable == door.name:
-		AudioController.stop_resource("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience2Normalized.ogg", 2)
+		AudioController.stop_resource("res://Assets/Audio/SoundFX/AmbientScares/DoorSlamAmbience4.ogg", 2)
 		queue_free()
 
 func _end_scare():

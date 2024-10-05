@@ -1,8 +1,12 @@
-[gd_scene load_steps=14 format=4 uid="uid://bkcgk7uuk22yf"]
+[gd_scene load_steps=16 format=4 uid="uid://bkcgk7uuk22yf"]
 
 [ext_resource type="Script" path="res://Scripts/Misc/desk_name_plate.gd" id="1_m6n5u"]
 [ext_resource type="Texture2D" uid="uid://785uc626og8a" path="res://Assets/Models/test_models/Desk_name_plate/desk_name_plate_Metal049B_1K-JPG_Roughness.jpg" id="1_r31sn"]
+[ext_resource type="Script" path="res://Scripts/GUI/name_tag_reader.gd" id="2_f08jb"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_ivan2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_18x4g"]
+size = Vector3(0.195878, 0.0987648, 0.00530624)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_500it"]
 resource_name = "Material"
@@ -92,6 +96,15 @@ size = Vector3(0.261036, 0.0147095, 0.0903988)
 [node name="Desk_Name_Plate" type="Node3D"]
 script = ExtResource("1_m6n5u")
 name_text = "John Bogart"
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+script = ExtResource("2_f08jb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 0.984625, -0.174679, 0, 0.174679, 0.984625, -0.0118461, 0.0351159, 0.00493093)
+shape = SubResource("BoxShape3D_18x4g")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 7

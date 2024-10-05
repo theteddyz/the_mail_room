@@ -15,12 +15,12 @@ void vertex() {
 
 void fragment() {
 	ALBEDO = outline_color.rgb;
-	
+
 	vec2 screen_size = vec2(textureSize(SCREEN_TEXTURE, 1));
-	
+
 	float px = 0.5/screen_size.x;
 	float py = 0.5/screen_size.y;
-	
+
 	float d = texture(DEPTH_TEXTURE, SCREEN_UV).x;
 	float du = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(0.0, py)).x;
 	float dd = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(0.0, -py)).x;
@@ -32,25 +32,25 @@ void fragment() {
 
 	if (outline_mode == 1){
 		ALPHA = 0.0 + abs(abs(d)-abs(du)) + abs(abs(d)-abs(dd)) + abs(abs(d)-abs(dl)) + abs(abs(d)-abs(dr));
-			
+
 		ALPHA *= 1000.0*outline_intensity;
 	} else if (outline_mode == 2) {
 		ALPHA = 0.0 + abs(abs(abs(d)-abs(du)) - abs(abs(d)-abs(dd))) + abs(abs(abs(d)-abs(dl)) - abs(abs(d)-abs(dr)));
-		
+
 		ALPHA *= 3.0*50000.0*outline_intensity;
 	} else if (outline_mode == 3) {
 		float dq = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(-px, py)).x;
 		float de = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(px, py)).x;
 		float dz = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(-px, -py)).x;
 		float dc = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(px, -py)).x;
-		
+
 		ALPHA = 0.0 + abs(abs(abs(d)-abs(du)) - abs(abs(d)-abs(dd))) + abs(abs(abs(d)-abs(dl)) - abs(abs(d)-abs(dr))) + abs(abs(abs(d)-abs(dq)) - abs(abs(d)-abs(dc))) + abs(abs(abs(d)-abs(dz)) - abs(abs(d)-abs(de)));
 
 		ALPHA *= 50000.0*outline_intensity;
 	}
-	
+
 	ALPHA += outline_bias;
-	
+
 	if (_round) {
 		ALPHA = round(ALPHA);
 	}

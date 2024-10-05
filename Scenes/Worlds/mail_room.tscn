@@ -918,9 +918,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 1.645
 light_indirect_energy = 0.84
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn19" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -38.8443, 4.60039, -10.685)
@@ -931,9 +932,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.395
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn20" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -38.7774, 4.58633, 0.705129)
@@ -944,9 +946,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.395
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn21" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -39.31, 4.58633, -5.00331)
@@ -957,9 +960,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.395
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn5" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -32.1351, 4.60704, -4.98716)
@@ -970,9 +974,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.4
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn25" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -17.8642, 4.63467, -4.98716)
@@ -983,9 +988,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.86
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn14" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.7236, 4.62041, -0.452828)
@@ -996,9 +1002,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.395
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn8" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -9.33502, 4.6609, -5.04403)
@@ -1010,9 +1017,10 @@ light_energy = 0.705
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.83
 light_specular = 1.625
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn15" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -4.92868, 4.58572, -9.90721)
@@ -1023,9 +1031,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.395
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn17" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.7841, 4.541, -9.907)
@@ -1036,9 +1045,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.395
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn18" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 6.4731, 4.59547, -9.907)
@@ -1049,9 +1059,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.395
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn16" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.6269, 4.58639, -9.907)
@@ -1062,9 +1073,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.395
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn10" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -0.776337, 4.59801, -5.04403)
@@ -1075,9 +1087,10 @@ light_color = Color(0.682353, 0.866667, 0.94902, 1)
 light_energy = 0.395
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="CeilingLightOn24" parent="stage/Lights" instance=ExtResource("7_84et1")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 7.76402, 4.65248, -5.04403)
@@ -1089,9 +1102,10 @@ light_energy = 1.37
 light_indirect_energy = 1.0
 light_volumetric_fog_energy = 0.285
 light_specular = 0.655
+light_bake_mode = 2
 shadow_enabled = true
-omni_range = 10.456
-omni_attenuation = 0.5
+omni_range = 4.374
+omni_attenuation = 0.429
 
 [node name="Roof" type="Node3D" parent="stage"]
 
@@ -1177,7 +1191,7 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 3.63174, 4.541, -
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 9.3371, 4.541, -10.6646)
 
 [node name="Elevator" parent="." instance=ExtResource("20_lrs3i")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.4639, -0.0131274, -7.179)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.4639, -0.28006, -7.179)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -9)
