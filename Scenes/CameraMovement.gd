@@ -166,7 +166,8 @@ func _input(event):
 		var walkingScript = player.state
 		walkingScript.head_bopping_walking_intensity = 0.2 #0.1
 		walkingScript.head_bopping_sprinting_intensity = 0.4 #0.2
-		walkingScript.head_bopping_crouching_intensity = 0.1 # 0.05
+		if walkingScript.has_meta("head_bopping_crouching_intensity"):
+			walkingScript.head_bopping_crouching_intensity = 0.1 # 0.05
 		global_transform = head.global_transform
 		cameraRotation = Quaternion(head.global_transform.basis.get_rotation_quaternion())
 		

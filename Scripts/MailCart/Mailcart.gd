@@ -23,6 +23,8 @@ func _ready():
 	gui_anim = Gui.get_control_displayer()
 	EventBus.connect("object_looked_at",on_being_looked_at)
 	EventBus.connect("no_object_found",not_being_looked_at)
+	# Single handedly the most retarded line of code, who the fuck wrote this
+	#self.angular_velocity.y = 1.5
 func _process(delta):
 	if !is_being_looked_at:
 		lowerAllPackages(delta)

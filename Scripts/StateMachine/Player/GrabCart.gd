@@ -15,8 +15,8 @@ var playerpos = Vector3.ZERO
 func _ready():
 	mailcart = GameManager.get_mail_cart()
 	print("Grab Cart State Ready")
-	playerpos = mailcart.get_node("Node3D").get_node("Handlebar").get_node("PlayerPosition")
-	mailcart.get_node("Node3D").get_node("Handlebar").set_collision_layer_value(2, false)
+	playerpos = mailcart.get_node("Handlebar").get_node("PlayerPosition")
+	mailcart.get_node("Handlebar").set_collision_layer_value(2, false)
 	#mailcart.set_collision_mask_value(3, false)
 	persistent_state.set_collision_layer_value(3, false)
 	initial_cart_rotation = mailcart.rotation

@@ -27,7 +27,6 @@ signal picked_up_key(node)
 signal dropped_key()
 signal object_looked_at(node)
 signal no_object_found(node)
-###############################################################################
 
 #Connecting Functions
 func emitCustomSignal(signal_name: String, args = []):

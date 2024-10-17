@@ -1,10 +1,10 @@
 [gd_scene load_steps=103 format=4 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
-[ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="1_o8goe"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/Prefabs/gui/interactable_test.tscn" id="4_p0gx3"]
+[ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="5_6517x"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="5_tbsk3"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="6_2o7dd"]
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="7_qrcgv"]
@@ -25,7 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="17_7yhgj"]
 [ext_resource type="PackedScene" uid="uid://bwnbou1pjcf8l" path="res://Scenes/Prefabs/MoveableObjects/plant.tscn" id="17_b78s4"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="17_ma4ii"]
-[ext_resource type="PackedScene" uid="uid://dq1i3ji76iunj" path="res://Scenes/Prefabs/AssetTools/scary.tscn" id="17_mcry2"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/AssetTools/scary.tscn" id="17_mcry2"]
 [ext_resource type="PackedScene" uid="uid://dg80c1mna2ycx" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_2.tscn" id="18_j273n"]
 [ext_resource type="AudioStream" uid="uid://bh7pseacjj5se" path="res://Assets/Audio/SoundFX/CabinetClosed.mp3" id="18_ug4sl"]
 [ext_resource type="PackedScene" uid="uid://belfg414pqah4" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_3.tscn" id="19_dmey1"]
@@ -41,8 +41,8 @@
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="40_hrj5v"]
 [ext_resource type="PackedScene" uid="uid://b85fvq8nn7wpm" path="res://Scenes/Prefabs/MoveableObjects/Monitor_interactable.tscn" id="40_kcapa"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="41_n2l23"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bh3ib"]
+[ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
+[ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="44_epuy0"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_5ah0g"]
 vertices = PackedVector3Array(0, 1, -3.25, 0, 1, -5, -0.75, 1, -5.25, -1.5, 1, -2.5, -4.25, 1, -9.5, -4, 1, -10.75, -14.5, 1, -14.5, -0.75, 1, -6.25, 0, 1, -6.5, 0, 1, -9.25, -2.5, 1, -10.75, -2.75, 1, -14.5, -1.5, 1, -1.75, -14.5, 1, -1.75, 14, 1, -10.75, 14.25, 1, -10, 14.5, 1, -10, 14.5, 1, -14.5, 14, 1, -9.25, 11.25, 1, -5, 11.5, 1, -4, 14.5, 1, -4, 5.5, 1, -9.25, 5.75, 1, -4.5, 6, 1, -5, 2.75, 1, -2.25, 4.25, 1, -2.25, 4.25, 1, -3.25, 2.5, 1, -3.25, 0.75, 1, -6.25, 0.75, 1, -5.25, 5.75, 1, -3.5, 6.5, 1, -2, 5.75, 1, -1.25, 6, 1, -0.75, 7.5, 1, -0.5, 11.25, 1, -3.25, 7.25, 1, 1, 6, 1, 14.5, 14.5, 1, 14.5, 6.25, 1, -3.25, 6, 1, 1, 5.5, 1, -0.5, 4.5, 1, -1.25, 5.5, 1, 0.75, 1.5, 1, -0.25, 0, 1, -0.25, -0.5, 1, 14.5, 2.75, 1, -1, -0.5, 1, -0.75, -1.5, 1, -1.25, -14.5, 1, 14.5)
@@ -330,20 +330,6 @@ stream_0/stream = ExtResource("18_ug4sl")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0jhtq"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_roxmm"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gthm"]
-albedo_texture = ExtResource("1_o8goe")
-
-[sub_resource type="BoxMesh" id="BoxMesh_w5eik"]
-size = Vector3(30, 1, 30)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbi1f"]
-albedo_color = Color(0.301961, 1, 0.6, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dih61"]
-size = Vector3(30.0029, 0.504028, 30.0212)
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_w6v7k"]
 viewport_path = NodePath("Monitor/ComputerOn/MonitorHandler/SubViewport")
 
@@ -420,6 +406,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_amp1h")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cx8qq"]
+albedo_texture = ExtResource("42_w5g3l")
+emission_energy_multiplier = 13.22
+uv1_scale = Vector3(25, 25, 25)
+texture_filter = 2
+point_size = 128.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4wwe0"]
+lightmap_size_hint = Vector2i(377, 377)
+add_uv2 = true
+size = Vector2(75, 75)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_o7c60"]
+data = PackedVector3Array(37.5, 0, 39, -37.5, 0, 39, 37.5, 0, -39, -37.5, 0, 39, -37.5, 0, -39, 37.5, 0, -39)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xc3id"]
+size = Vector3(76.3111, 0.319824, 76.66)
+
 [node name="world" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_y5q3h")
 floor_num = -1
@@ -433,8 +437,6 @@ collision_mask = 4111
 
 [node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.280565, -4)
-mass = 55.0
-physics_material_override = SubResource("PhysicsMaterial_bh3ib")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -452,6 +454,11 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="NavigationRegion3D/environment"]
 environment = SubResource("Environment_13vtk")
+script = ExtResource("5_6517x")
+dark_properties = {
+"adjustment_contrast": 1.25,
+"tonemap_exposure": 5.0
+}
 
 [node name="InteractableTest" parent="NavigationRegion3D" instance=ExtResource("4_p0gx3")]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 2, -5.82439)
@@ -841,22 +848,6 @@ size = Vector3(0.720642, 1.08237, 1.11525)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000239968, 0.568491, -0.518002)
 size = Vector3(2.41283, 1.08237, 0.0366831)
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-collision_layer = 7
-collision_mask = 7
-physics_material_override = SubResource("PhysicsMaterial_roxmm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-material_override = SubResource("StandardMaterial3D_0gthm")
-mesh = SubResource("BoxMesh_w5eik")
-surface_material_override/0 = SubResource("StandardMaterial3D_pbi1f")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00203133, -0.247986, 0.0198975)
-shape = SubResource("BoxShape3D_dih61")
-
 [node name="Cardboard_box_big" parent="NavigationRegion3D" instance=ExtResource("12_ghnq1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51633, 1.5, 0.159588)
 
@@ -921,6 +912,37 @@ mesh = SubResource("ArrayMesh_qrqc6")
 
 [node name="Elevator" parent="." instance=ExtResource("41_n2l23")]
 transform = Transform3D(0.0293697, 0, 0.999569, 0, 1, 0, -0.999569, 0, 0.0293697, -18.7858, -0.245457, 3.82707)
+
+[node name="floor_meshes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="carpet_mesh_1" type="MeshInstance3D" parent="floor_meshes" groups=["Real_Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61279, -0.494312, -1.01652)
+layers = 1023
+material_override = SubResource("StandardMaterial3D_cx8qq")
+mesh = SubResource("PlaneMesh_4wwe0")
+
+[node name="footstep_collider_carpet" type="Area3D" parent="floor_meshes/carpet_mesh_1"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("44_epuy0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_meshes/carpet_mesh_1/footstep_collider_carpet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29548, 0)
+shape = SubResource("ConcavePolygonShape3D_o7c60")
+
+[node name="floor_gpu_particle_collision" type="GPUParticlesCollisionBox3D" parent="floor_meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8851, -0.985187, 1.00272)
+size = Vector3(92.6323, 2, 85.514)
+
+[node name="floor_colliders" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0477006, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor_colliders"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor_colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64869, -0.198545, -1.01932)
+shape = SubResource("BoxShape3D_xc3id")
 
 [editable path="NavigationRegion3D/StaticBody3D3"]
 [editable path="NavigationRegion3D/meeting_room_wall_Door"]
