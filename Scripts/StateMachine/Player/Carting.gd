@@ -16,7 +16,7 @@ var cart_audio: AudioStreamPlayer3D
 
 @export var cart_sprinting_speed: float = 6.65
 @export var cart_walking_speed: float = 3.65
-@export var cart_turning_speed_modifier: float = 1.4
+@export var cart_turning_speed_modifier: float = 2.4
 @export var volume_fade_speed: float = 3.0  # Speed at which the volume fades
 
 # Headbopping
@@ -99,8 +99,22 @@ func update_cart_speed(delta):
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	
+	calculate_sideways_counter_force(delta)
 	calculate_rotation_velocity(input_dir, delta)
 	calculate_linear_velocity(delta)
+
+func calculate_sideways_counter_force(delta):
+	#var local_right = Vector3(1, 0, 0)
+	#var global_right = mailcart.transform.basis * local_right
+	#var velocity_difference = mailcart.linear_velocity * global_right
+	
+	var local_right = Vector3(1, 0, 0)
+	var global_right = mailcart.transform.basis * local_right  # Transform local right to global right
+	var velocity_in_right = mailcart.linear_velocity.dot(global_right)  # Project linear velocity onto global right
+	
+	mailcart.linear_velocity -= global_right * velocity_in_right *0.05
+	
 
 func calculate_linear_velocity(delta):
 	if abs(direction.y) > 0:
@@ -110,7 +124,7 @@ func calculate_linear_velocity(delta):
 		var global_forward = mailcart.transform.basis * local_forward
 		#if abs(mailcart.linear_velocity)  
 		
-		mailcart.linear_velocity = global_forward * direction.y * current_speed
+		mailcart.linear_velocity += global_forward * direction.y * current_speed *0.09
 
 func calculate_rotation_velocity(input_dir: Vector2, delta):
 	if abs(direction.x) > 0:
