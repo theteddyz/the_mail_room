@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="3_fgxh5"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/Prefabs/gui/pauseMenu.tscn" id="4_p3ndg"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="5_i1ke2"]
-[ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator.tscn" id="6_py84d"]
+[ext_resource type="PackedScene" uid="uid://wt6476m6k8tc" path="res://Assets/Models/elevator_deprecated.tscn" id="6_py84d"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="7_30r2w"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="8_y3h17"]
 [ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Prefabs/MoveableObjects/package_template.tscn" id="9_5jjdc"]

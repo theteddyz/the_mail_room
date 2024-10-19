@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://cad0q6gbw5xww"]
 
-[ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="1_ejjhc"]
+[ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator_prefab.tscn" id="1_ejjhc"]
 [ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/wall.tscn" id="2_djiff"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="3_2a8kk"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/ceiling.tscn" id="4_gase0"]

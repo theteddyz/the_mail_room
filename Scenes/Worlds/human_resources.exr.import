@@ -1,0 +1,26 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://csj2oeha1rwdv"
+path="res://.godot/imported/human_resources.exr-af546fb701adfea46a3fa2b32737ccf7.ctexarray"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Scenes/Worlds/human_resources.exr"
+dest_files=["res://.godot/imported/human_resources.exr-af546fb701adfea46a3fa2b32737ccf7.ctexarray"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=1

@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsbem806big2h"]
+
+[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
+[ext_resource type="Environment" uid="uid://52by3g1q6hkh" path="res://human_resources_worldenvironment.tres" id="2_3sk0h"]
+[ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="3_jahih"]
+[ext_resource type="LightmapGIData" uid="uid://bbkeubndw8sfl" path="res://Scenes/Worlds/human_resources.lmbake" id="4_5pumb"]
+[ext_resource type="PackedScene" uid="uid://c6e8r8hgcxdyp" path="res://Scenes/Prefabs/Rooms/human_resources_lobby_room.tscn" id="4_71dsc"]
+[ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator_prefab.tscn" id="4_83x7j"]
+[ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="7_o0ubx"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_85eyn"]
+
+[node name="world" type="Node3D" groups=["Persist"]]
+script = ExtResource("1_oyi4d")
+floor_num = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_3sk0h")
+script = ExtResource("3_jahih")
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+light_data = ExtResource("4_5pumb")
+
+[node name="SCARES" type="Node" parent="."]
+
+[node name="AMBIANCE_TRIGGERS" type="Node" parent="."]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_85eyn")
+
+[node name="FLOOR" type="Node" parent="NavigationRegion3D"]
+
+[node name="HumanResourcesLobbyRoom" parent="NavigationRegion3D" instance=ExtResource("4_71dsc")]
+
+[node name="Elevator" parent="." instance=ExtResource("4_83x7j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.002, -0.227, -4.179)
+
+[node name="Player" parent="." instance=ExtResource("7_o0ubx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.30562, 0.479327, 2.35719)

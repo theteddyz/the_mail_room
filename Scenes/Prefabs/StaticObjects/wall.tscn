@@ -46,7 +46,7 @@ size = Vector3(5.53668, 7.68627, 0.349243)
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_gdi5c"]
 size = Vector3(5.68323, 7.88878, 0.262282)
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[node name="wall" type="StaticBody3D"]
 collision_layer = 133
 collision_mask = 133
 

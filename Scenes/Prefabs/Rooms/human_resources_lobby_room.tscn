@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://c6e8r8hgcxdyp"]
+
+[ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/wall.tscn" id="2_w5qor"]
+[ext_resource type="PackedScene" uid="uid://k8lfivepg4gx" path="res://Scenes/Prefabs/StaticObjects/wall_with_archway.tscn" id="3_8s0or"]
+[ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/ceiling_tile_nolight.tscn" id="4_o4axa"]
+[ext_resource type="PackedScene" uid="uid://by3rv8lwpxn0n" path="res://Scenes/Prefabs/StaticObjects/ceiling_tile_with_light.tscn" id="5_5jc58"]
+[ext_resource type="PackedScene" uid="uid://csml3h8jd6hni" path="res://Scenes/Prefabs/StaticObjects/ceiling_broken_3.tscn" id="5_o02fh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q26gv"]
+load_path = "res://.godot/imported/Carpet.png-c2ea077c2bad62480908f013c2e710bc.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j07gr"]
+albedo_texture = SubResource("CompressedTexture2D_q26gv")
+emission_energy_multiplier = 13.22
+uv1_scale = Vector3(5, 1.135, 3.5)
+texture_filter = 2
+point_size = 128.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0po6g"]
+lightmap_size_hint = Vector2i(1016, 1016)
+add_uv2 = true
+size = Vector2(22.855, 5.885)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nb07o"]
+size = Vector3(22.8176, 1, 5.75928)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ghw1"]
+size = Vector3(22.44, 1, 5.625)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n80ug"]
+albedo_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+
+[node name="HumanResourcesLobbyRoom" type="Node3D"]
+
+[node name="WALLS" type="Node" parent="."]
+
+[node name="StaticBody3D" parent="WALLS" instance=ExtResource("2_w5qor")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.64, 0, 0)
+
+[node name="StaticBody3D4" parent="WALLS" instance=ExtResource("2_w5qor")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.64, 0, 5.641)
+
+[node name="StaticBody3D5" parent="WALLS" instance=ExtResource("2_w5qor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.64)
+
+[node name="StaticBody3D6" parent="WALLS" instance=ExtResource("2_w5qor")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.64, 0, 5.64)
+
+[node name="StaticBody3D7" parent="WALLS" instance=ExtResource("2_w5qor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.28, 0, 5.641)
+
+[node name="StaticBody3D2" parent="WALLS" instance=ExtResource("2_w5qor")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.64, 0, 0)
+
+[node name="StaticBody3D3" parent="WALLS" instance=ExtResource("2_w5qor")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 11.28, 0, 0.001)
+
+[node name="wall_with_archway" parent="WALLS" instance=ExtResource("3_8s0or")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.46, 0, 2.82)
+
+[node name="wall_with_archway2" parent="WALLS" instance=ExtResource("3_8s0or")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.1, 0, 2.82)
+
+[node name="FLOOR" type="Node" parent="."]
+
+[node name="carpet_mesh" type="MeshInstance3D" parent="FLOOR" groups=["Real_Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82, 0, 2.82)
+layers = 1023
+material_override = SubResource("StandardMaterial3D_j07gr")
+mesh = SubResource("PlaneMesh_0po6g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FLOOR"]
+collision_layer = 133
+collision_mask = 149
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FLOOR/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79896, -0.475541, 2.73553)
+shape = SubResource("BoxShape3D_nb07o")
+
+[node name="CEILING" type="Node" parent="."]
+
+[node name="ceiling_tile_nolight2" parent="CEILING" instance=ExtResource("4_o4axa")]
+transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -4.76837e-07, 4.525, 2.80035)
+
+[node name="CeilingBroken3" parent="CEILING" instance=ExtResource("5_o02fh")]
+transform = Transform3D(8.48315e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, 8.48315e-08, 5.64, 4.53112, 2.82)
+
+[node name="ceiling_tile_withlight" parent="CEILING" instance=ExtResource("5_5jc58")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -5.64, 4.52538, 2.82)
+
+[node name="ceiling_tile_withlight2" parent="CEILING" instance=ExtResource("5_5jc58")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, 11.28, 4.52538, 2.82)
+
+[node name="ceiling_block_mesh" type="MeshInstance3D" parent="CEILING"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82, 6.11439, 2.82)
+mesh = SubResource("BoxMesh_7ghw1")
+surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
+
+[editable path="CEILING/ceiling_tile_withlight"]
+[editable path="CEILING/ceiling_tile_withlight/CeilingLightOn"]
+[editable path="CEILING/ceiling_tile_withlight2"]
+[editable path="CEILING/ceiling_tile_withlight2/CeilingLightOn"]

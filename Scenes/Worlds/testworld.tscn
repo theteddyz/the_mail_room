@@ -40,7 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="24_s1v3d"]
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="40_hrj5v"]
 [ext_resource type="PackedScene" uid="uid://b85fvq8nn7wpm" path="res://Scenes/Prefabs/MoveableObjects/Monitor_interactable.tscn" id="40_kcapa"]
-[ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator.tscn" id="41_n2l23"]
+[ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
 [ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="44_epuy0"]
 
