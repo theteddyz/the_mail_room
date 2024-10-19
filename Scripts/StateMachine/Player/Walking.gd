@@ -276,7 +276,6 @@ func _process(delta):
 func apply_movement(delta):
 	#persistent_state.velocity.y = 0
 	persistent_state.move_and_slide()
-
 	check_obstruction_raycasts()
 	regular_move(delta)
 
@@ -354,13 +353,17 @@ func handle_head_bopping(delta):
 	if Vector3(input_dir.x, 0, input_dir.y) != Vector3.ZERO:
 		if audio_timer.is_stopped():
 			audio_timer.start()
+		headbop_root.rotation.x = lerp(headbop_root.rotation.x, 0.0, delta * 5.0)
 		head_bopping_vector.y = sin(head_bopping_index)
 		head_bopping_vector.x = sin(head_bopping_index / 2) + 0.5
 		headbop_root.position.y = lerp(headbop_root.position.y, head_bopping_vector.y * (head_bopping_current / 2.0), delta * movement_lerp_speed)
 		headbop_root.position.x = lerp(headbop_root.position.x, head_bopping_vector.x * (head_bopping_current), delta * movement_lerp_speed)
 	else:
 		audio_timer.stop()
-		headbop_root.position = lerp(headbop_root.position, Vector3.ZERO, crouching_lerp_speed)
+		head_bopping_vector.y = sin(head_bopping_index / 12);
+		headbop_root.position.x = lerp(headbop_root.position.x, 0.0, delta * 3.95)
+		headbop_root.position.y = lerp(headbop_root.position.y, 0.0, delta * 3.95)
+		headbop_root.rotation.x = lerp(headbop_root.rotation.x, head_bopping_vector.y * 0.0075, delta * 3.95)
 
 func apply_leaning(delta):
 	if is_leaning:
