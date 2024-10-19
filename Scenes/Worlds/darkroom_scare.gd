@@ -6,9 +6,9 @@ var has_been_executed = false
 @onready var flickeranimationplayer:AnimationPlayer = $"../../CeilingLights/CeilingLightOn52/AnimationPlayer"
 @onready var hallwayflickeranimationplayer:AnimationPlayer = $"../../CeilingLights/CeilingLightOn8/FlickeringLight"
 @onready var monster_run_soundplayer:AudioStreamPlayer3D = $MonsterRunSoundPlayer
-@onready var monsterCollisionShape:CollisionShape3D = $godot_rig/JohnCharacterBody/CollisionShape3D
+@onready var monsterCollisionShape:CollisionShape3D = $john_model/JohnCharacterBody/CollisionShape3D
 var scare_active: bool = false
-@onready var monster_body = $godot_rig
+@onready var monster_body = $john_model
 @onready var wall_to_nuke: StaticBody3D = $"../../Cubicle_Door"
 var monster_anim:AnimationPlayer
 var closed_ambiance

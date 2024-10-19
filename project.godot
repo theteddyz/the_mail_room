@@ -38,6 +38,7 @@ Fake_Floor="Floor to be enabled when moving floors"
 Ceiling=""
 scarevision=""
 observed=""
+monster=""
 
 [input]
 

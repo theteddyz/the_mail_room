@@ -12,6 +12,7 @@ var ready_to_start = false
 @onready var sighting_sound = $SightingSound
 @onready var sighting_ambience = $SightingAmbiance
 var monster_anim
+var monster_seen = false
 @onready var john_typing_sound: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,7 @@ func _ready():
 	ScareDirector.connect("monster_seen", monster_seen_function)
 
 func monster_seen_function(boolean: bool):
+	monster_seen = true
 	if(ready_to_start):
 		ready_to_start = false
 		start_scare()
@@ -36,6 +38,9 @@ func activate_scare(package_num):
 		monster_anim.play("Idle")
 		door_lock.locked = true	
 		door_close.play("close")
+		if monster_seen == true:
+			ready_to_start = false
+			start_scare()
 
 func start_scare():
 	sighting_sound.play()
