@@ -60,7 +60,7 @@ func _ready():
 	hit_death = load("res://Assets/Audio/SoundFX/AmbientScares/JohnScream1.ogg")
 	chase_sound = load(sound_resource_path)
 	player_in_vision_flag = false
-	monster_anim = monster_body.find_child("AnimationPlayer")
+	monster_anim = find_child("AnimationPlayer")
 	player = GameManager.get_player()
 	aggro_timer.wait_time = aggro_timeout
 
