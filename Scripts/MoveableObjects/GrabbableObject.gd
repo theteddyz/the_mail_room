@@ -133,6 +133,8 @@ func _process(_delta): #Tether the player to the object
 			mouse_line.queue_free()
 
 func _physics_process(delta):
+	if freeze:
+		pass 
 	#if camera.global_transform.origin.distance_to(global_transform.origin) > 15:
 	#	sleeping = true
 		#visible = false
