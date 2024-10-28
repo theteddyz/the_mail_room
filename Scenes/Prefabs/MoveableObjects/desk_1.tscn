@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="7_nth33"]
 [ext_resource type="AudioStream" uid="uid://bh7pseacjj5se" path="res://Assets/Audio/SoundFX/CabinetClosed.mp3" id="8_kp863"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="9_dga2v"]
-[ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/StaticObjects/keyboard_low_poly_2.tscn" id="10_wk3io"]
+[ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="10_wk3io"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
 size = Vector3(2.69171, 0.0540848, 1.33634)

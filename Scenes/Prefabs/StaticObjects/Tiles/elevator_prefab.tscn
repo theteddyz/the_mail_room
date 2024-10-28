@@ -1,19 +1,19 @@
 [gd_scene load_steps=76 format=4 uid="uid://wd85mtseuke1"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/ElevatorController.gd" id="1_4nay1"]
-[ext_resource type="Script" path="res://Scripts/Misc/elevator_wall.gd" id="2_8k7na"]
-[ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="3_a3k50"]
-[ext_resource type="PackedScene" uid="uid://bmjy1n0uwnbhb" path="res://Scenes/Prefabs/StaticObjects/elevator_shaft.tscn" id="3_nwkyn"]
-[ext_resource type="Texture2D" uid="uid://cflcp7dk343qt" path="res://Assets/Textures/BlenderTextures/ElevatorEntrance.png" id="4_cthb4"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/Call_Elevator_Button.gd" id="5_2p1qo"]
-[ext_resource type="Texture2D" uid="uid://cjvcemufdcvx8" path="res://Assets/Textures/BlenderTextures/ElevatorEntranceDoor.png" id="5_77f4t"]
-[ext_resource type="Script" path="res://Assets/Models/ElevatorObjectDetector.gd" id="5_be72g"]
-[ext_resource type="Texture2D" uid="uid://b7ccf5fmuf5wj" path="res://Assets/Textures/BlenderTextures/ElevatorIndicator.png" id="6_oge03"]
-[ext_resource type="AudioStream" uid="uid://bfacn7yx3dikm" path="res://Assets/Audio/SoundFX/ElevatorCallButton.mp3" id="7_qkshq"]
-[ext_resource type="Texture2D" uid="uid://d24ont78p0umt" path="res://Assets/Textures/BlenderTextures/Elevator.png" id="8_ciysy"]
-[ext_resource type="Texture2D" uid="uid://6c28m22muuhm" path="res://Assets/Textures/BlenderTextures/ElevatorButtons.png" id="9_247mj"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/ElevatorButton.gd" id="10_fi7nq"]
-[ext_resource type="Texture2D" uid="uid://cwo0wqxreionr" path="res://Assets/Textures/BlenderTextures/ElevatorDoor.png" id="11_rgmhn"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/ElevatorController.gd" id="1_mn1y7"]
+[ext_resource type="Script" path="res://Scripts/Misc/elevator_wall.gd" id="2_qjipe"]
+[ext_resource type="Texture2D" uid="uid://cjvcemufdcvx8" path="res://Assets/Textures/BlenderTextures/ElevatorEntranceDoor.png" id="3_fwyx8"]
+[ext_resource type="Texture2D" uid="uid://b7ccf5fmuf5wj" path="res://Assets/Textures/BlenderTextures/ElevatorIndicator.png" id="4_tsuvn"]
+[ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="5_7hi44"]
+[ext_resource type="Texture2D" uid="uid://cflcp7dk343qt" path="res://Assets/Textures/BlenderTextures/ElevatorEntrance.png" id="6_1h5vi"]
+[ext_resource type="PackedScene" uid="uid://bmjy1n0uwnbhb" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_shaft.tscn" id="7_5pilt"]
+[ext_resource type="Texture2D" uid="uid://d24ont78p0umt" path="res://Assets/Textures/BlenderTextures/Elevator.png" id="8_0mkvx"]
+[ext_resource type="Texture2D" uid="uid://6c28m22muuhm" path="res://Assets/Textures/BlenderTextures/ElevatorButtons.png" id="9_6m6q4"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/ElevatorButton.gd" id="10_vk1p5"]
+[ext_resource type="Texture2D" uid="uid://cwo0wqxreionr" path="res://Assets/Textures/BlenderTextures/ElevatorDoor.png" id="11_ukciq"]
+[ext_resource type="Script" path="res://Assets/Models/ElevatorObjectDetector.gd" id="12_j5k40"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/Call_Elevator_Button.gd" id="13_gspt1"]
+[ext_resource type="AudioStream" uid="uid://bfacn7yx3dikm" path="res://Assets/Audio/SoundFX/ElevatorCallButton.mp3" id="14_rtdkd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2nw5"]
 size = Vector3(0.849854, 2.7659, 0.0459595)
@@ -21,7 +21,7 @@ size = Vector3(0.849854, 2.7659, 0.0459595)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n2mle"]
 resource_name = "ElevatorEntranceDoor"
 cull_mode = 2
-albedo_texture = ExtResource("5_77f4t")
+albedo_texture = ExtResource("3_fwyx8")
 roughness = 0.0
 texture_filter = 2
 
@@ -142,7 +142,7 @@ shadow_mesh = SubResource("ArrayMesh_jktde")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6k3bg"]
 resource_name = "ElevatorIndicator"
 cull_mode = 2
-albedo_texture = ExtResource("6_oge03")
+albedo_texture = ExtResource("4_tsuvn")
 roughness = 0.5
 texture_filter = 2
 
@@ -182,13 +182,13 @@ shadow_mesh = SubResource("ArrayMesh_mwng1")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_233gu"]
 resource_name = "Wall"
 cull_mode = 2
-albedo_texture = ExtResource("3_a3k50")
+albedo_texture = ExtResource("5_7hi44")
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3i3m5"]
 resource_name = "ElevatorEntrance"
 cull_mode = 2
-albedo_texture = ExtResource("4_cthb4")
+albedo_texture = ExtResource("6_1h5vi")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6uipg"]
@@ -299,14 +299,14 @@ size = Vector3(1.81622, 5.05227, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eaq7a"]
 resource_name = "Elevator"
 cull_mode = 2
-albedo_texture = ExtResource("8_ciysy")
+albedo_texture = ExtResource("8_0mkvx")
 roughness = 0.7
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q33in"]
 resource_name = "ElevatorShiny.001"
 cull_mode = 2
-albedo_texture = ExtResource("8_ciysy")
+albedo_texture = ExtResource("8_0mkvx")
 roughness = 0.186364
 texture_filter = 2
 
@@ -367,7 +367,7 @@ shadow_mesh = SubResource("ArrayMesh_4niru")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jphcn"]
 resource_name = "ElevatorButtons"
 cull_mode = 2
-albedo_texture = ExtResource("9_247mj")
+albedo_texture = ExtResource("9_6m6q4")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qewjx"]
@@ -405,7 +405,7 @@ shadow_mesh = SubResource("ArrayMesh_qewjx")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htvby"]
 resource_name = "ElevatorButtons"
 cull_mode = 2
-albedo_texture = ExtResource("9_247mj")
+albedo_texture = ExtResource("9_6m6q4")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mit1q"]
@@ -737,7 +737,7 @@ size = Vector3(51.1322, 90.4399, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wenth"]
 resource_name = "ElevatorDoor"
 cull_mode = 2
-albedo_texture = ExtResource("11_rgmhn")
+albedo_texture = ExtResource("11_ukciq")
 roughness = 0.1
 texture_filter = 2
 
@@ -816,13 +816,13 @@ size = Vector3(3.245, 3.715, 4.795)
 radius = 0.263849
 
 [node name="Elevator" type="Node3D"]
-script = ExtResource("1_4nay1")
+script = ExtResource("1_mn1y7")
 
 [node name="Elevator_Wall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.227591, 4.17715)
 collision_layer = 133
 collision_mask = 133
-script = ExtResource("2_8k7na")
+script = ExtResource("2_qjipe")
 
 [node name="Elevator_Wall" type="Node3D" parent="Elevator_Wall"]
 
@@ -895,13 +895,13 @@ occluder = SubResource("BoxOccluder3D_iiw7v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00570261, 5.28189, 0)
 occluder = SubResource("BoxOccluder3D_pehdm")
 
-[node name="ElevatorShaft" parent="." instance=ExtResource("3_nwkyn")]
+[node name="ElevatorShaft" parent="." instance=ExtResource("7_5pilt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.154511, 0.789673)
 
-[node name="ElevatorShaft3" parent="." instance=ExtResource("3_nwkyn")]
+[node name="ElevatorShaft3" parent="." instance=ExtResource("7_5pilt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7.58553, 0.789673)
 
-[node name="ElevatorShaft4" parent="." instance=ExtResource("3_nwkyn")]
+[node name="ElevatorShaft4" parent="." instance=ExtResource("7_5pilt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7.97969, 0.789673)
 
 [node name="Elevator" type="StaticBody3D" parent="."]
@@ -929,7 +929,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/CallCenter"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.470198, 0)
 collision_layer = 3
-script = ExtResource("10_fi7nq")
+script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 7
 
@@ -945,7 +945,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/Finance"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.373051, 0)
 collision_layer = 3
-script = ExtResource("10_fi7nq")
+script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/Finance.tscn"
 floor_num = 6
 
@@ -961,7 +961,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/Marketing"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.268753, 0)
 collision_layer = 3
-script = ExtResource("10_fi7nq")
+script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 5
 
@@ -977,7 +977,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/R&D"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.164444, 0)
 collision_layer = 3
-script = ExtResource("10_fi7nq")
+script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 4
 
@@ -993,7 +993,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/HumanResources"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.0542774, 0)
 collision_layer = 3
-script = ExtResource("10_fi7nq")
+script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 3
 
@@ -1009,7 +1009,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/InternalOperations"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, -0.0467892, 0)
 collision_layer = 3
-script = ExtResource("10_fi7nq")
+script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 2
 
@@ -1025,7 +1025,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/ServerRoom"]
 transform = Transform3D(1, 0, -4.83169e-13, 0, 1, 0, 4.83169e-13, 0, 1, 0.107107, -0.150919, 0)
 collision_layer = 3
-script = ExtResource("10_fi7nq")
+script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 1
 
@@ -1041,7 +1041,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/Entrance"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, -0.252405, 0)
 collision_layer = 3
-script = ExtResource("10_fi7nq")
+script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/Entrance/Area3D"]
@@ -1056,7 +1056,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/MailRoom"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, -0.368675, 0)
 collision_layer = 3
-script = ExtResource("10_fi7nq")
+script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/mail_room.tscn"
 floor_num = -1
 
@@ -1072,7 +1072,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/Storage"]
 transform = Transform3D(1, 0, -4.83169e-13, 0, 1, 0, 4.83169e-13, 0, 1, 0.106377, -0.471357, 0)
 collision_layer = 3
-script = ExtResource("10_fi7nq")
+script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = -2
 
@@ -1128,7 +1128,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.903498, 0)
 transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 0.999997, 0, 0, 0)
 collision_layer = 5
 collision_mask = 15
-script = ExtResource("5_be72g")
+script = ExtResource("12_j5k40")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ObjectDetectionShape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300293, -0.169383, -0.60775)
@@ -1145,14 +1145,14 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99677, 1.35007, 3.94624)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("5_2p1qo")
+script = ExtResource("13_gspt1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0389934, 0.333342, 0.111794)
 shape = SubResource("SphereShape3D_yfroe")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Area3D"]
-stream = ExtResource("7_qkshq")
+stream = ExtResource("14_rtdkd")
 
 [connection signal="body_entered" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_entered"]
 [connection signal="body_exited" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_exited"]
