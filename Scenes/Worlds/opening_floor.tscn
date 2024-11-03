@@ -1,4 +1,4 @@
-[gd_scene load_steps=292 format=4 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=295 format=4 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_gv15l"]
 [ext_resource type="LightmapGIData" uid="uid://csepdxhb2v4q8" path="res://Scenes/Worlds/testcutscene.lmbake" id="2_m5k7h"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_003.tscn" id="7_w4ny4"]
 [ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall.tscn" id="8_0pesw"]
 [ext_resource type="PackedScene" uid="uid://cp3vbfvy03meb" path="res://Scenes/Prefabs/MoveableObjects/crumpled_paper.tscn" id="8_5dm4r"]
-[ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_low_poly_introlevel.tscn" id="8_ul3bg"]
+[ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_with_light_openingfloor.tscn" id="8_ul3bg"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_nolight.tscn" id="9_jtqkc"]
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_007.tscn" id="9_x0jns"]
 [ext_resource type="PackedScene" uid="uid://g3iqvb0k1cr6" path="res://Scenes/Prefabs/StaticObjects/ceilinglight_on.tscn" id="10_avfab"]
@@ -69,7 +69,7 @@
 [ext_resource type="AudioStream" uid="uid://te2s31axt3sw" path="res://Assets/Audio/SoundFX/DestructionKeyboard.mp3" id="64_f1iwi"]
 [ext_resource type="AudioStream" uid="uid://cm6glsbm01rrv" path="res://Assets/Audio/SoundFX/DestructionKeyboard2.mp3" id="65_i0wva"]
 [ext_resource type="AudioStream" uid="uid://cpm0jf72njux3" path="res://Assets/Audio/SoundFX/DestructionKeyboard3.mp3" id="66_xfilb"]
-[ext_resource type="Material" path="res://Assets/Models/key_broken_mat.tres" id="67_hxfsb"]
+[ext_resource type="Material" uid="uid://dux2bi8ysymko" path="res://Assets/Models/key_broken_mat.tres" id="67_hxfsb"]
 [ext_resource type="ArrayMesh" uid="uid://bhutryyktfuw5" path="res://Assets/Models/key_broken.tres" id="68_u1y6c"]
 [ext_resource type="PackedScene" uid="uid://cdj2vclj1i0vn" path="res://Scenes/Prefabs/StaticObjects/papers_low.tscn" id="71_0gc6t"]
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="72_8ewcv"]
@@ -190,6 +190,43 @@ _data = {
 "Scene": SubResource("Animation_03a06")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wo3i"]
+resource_name = "LowPolyCeiling"
+cull_mode = 2
+albedo_texture = ExtResource("11_w287j")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_q57j1"]
+_surfaces = [{
+"aabb": AABB(-4.33737, 0.0314051, -4.33825, 8.79513, 2.99645, 8.7965),
+"format": 34896613377,
+"index_count": 312,
+"index_data": PackedByteArray("AAAbAAMAAAAZABsABwAwACgABwADADAAAwAzADAAAwACADMALAA8AB0ALAAcADwAHgADAAcAHgAtAAMAJQACAAQAJQAzAAIAIQABAAUAIQApAAEAIwAAAAYAIwAvAAAABgAEAAUABgAHAAQADAAOAA8ADAANAA4AFgALAAoAFgAUAAsACAAUABcACAALABQAEQATABIAEQAQABMAFwAJAAgAFwAVAAkACgALAAgAFgAVABcAFgAXABQACgAIAAkACgAVABYACgAJABUAGgAZABgAGgAbABkAAgAYAAEAAgAaABgAAQAZAAAAAQAYABkAAwAaAAIAAwAbABoALwABAAAALwAuAAEAJAAGAAUAJAAjAAYABQAuACQABQABAC4ABgAqAB8ABgAAACoAHwAHAAYAHwAeAAcABAAoACUABAAHACgALQAAAAMALQAqAAAABQAiACEABQAEACIAKwAtACwAKwAqAC0AIAA0ACsAIAA1ADQAJgA2ACUAJgA3ADYAHwAdAB4AHwAgAB0AKAAmACUAKAAnACYAMQAzADIAMQAwADMAMwA4ADIAMwA5ADgAMQA+ADAAMQAcAD4AHQA9AB4AHQA8AD0AKgA7AB8AKgA6ADsAKwA6ACoAKwA0ADoAHwA1ACAAHwA7ADUAMgA3ACYAMgA4ADcAJQA5ADMAJQA2ADkAMQAmACcAMQAyACYAHQArACwAHQAgACsAJwAcADEAJwA8ABwAKAA8ACcAKAA9ADwAMAA9ACgAMAA+AD0AAQA/AAIAAQApAD8AAgAiAAQAAgA/ACIALQAcACwALQA+ABwALQA9AD4ALQAeAD0A"),
+"name": "LowPolyCeiling",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 64,
+"vertex_data": PackedByteArray("ZXwCDRqAAABlfAINZnwAABiAAg1mfAAAGIACDRqAAABSgGsALXwAACt8awAtfAAAK3xrAFOAAABSgGsAU4AAADIAGVE1AAAAAAAZUf7/AAD//xlR/v8AAP//GVEkAAAAFoAZUReAAAAWgBlRaXwAAGd8GVFpfAAAZ3wZUReAAABnfNJcF4AAABaA0lwXgAAAFoDSXGl8AABnfNJcaXwAAP//0lwkAAAAAADSXP7/AAD//9Jc/v8AADIA0lw1AAAAj3z//5F8AACPfP//738AAO5///+RfAAA7n///+9/AADL/w4N2P8AAO5/AADX/wAA8H8BAHf8AACNfAEAd/wAAI98AADX/wAAjXwBAAkAAADwfwEACQAAAAYAAQDxfwAABgABAI98AAB3/AEAj3wAANf/AACQfAAA1/8AAPB/AAB3/AEA8X8AAI98hAwJAAAAj3yEDHf8AACQfIIM2P8AAO1/ggzY/wAA7n+EDHf8AAAGAIQMkXwAAAYAhAzvfwAAd/yEDO9/AADY/4IM738AANj/ggyRfAAAd/yEDJF8AAAyAAAN2P8AADEAfQDX/wAAd/yBABcAAADX/38AJAAAANj/Ag0kAAAAd/wEDRgAAAAGAAENefwAAAYAfQB7/AAA1/98ANr/AAB3/H0Ae/wAAHf8AQ15/AAAGIACDQAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ffamh"]
+resource_name = "desk_Cube_047"
+lightmap_size_hint = Vector2i(242, 242)
+_surfaces = [{
+"aabb": AABB(-4.33737, 0.0314051, -4.33825, 8.79513, 2.99645, 8.79637),
+"attribute_data": PackedByteArray("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"),
+"format": 34359742519,
+"index_count": 312,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOwA8AD0AOwA9AD4AOAA6AD8AQABBAEIAQABDAEEARABFAEYARABHAEUASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZABlAGYAZABnAGUAaABpAGoAaABrAGkAbABtAG4AbABvAG0AcABxAHIAcABzAHEAdAB1AHYAdAB3AHUAeAB5AHoAeAB7AHkAfAB9AH4AfAB/AH0AgACBAIIAgACDAIEAhACFAIYAhACHAIUAiACJAIoAiACLAIkAjACNAI4AjACPAI0AkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkArACtAK4ArACvAK0AsACxALIAsACzALEAtAC1ALYAtAC3ALUAuAC5ALoAuAC7ALkAvAC9AL4AvAC/AL0AwADBAMIAwADDAMEAxADFAMYAxADHAMUAyADJAMoAyADLAMkAzADNAM4AzADPAM0A"),
+"material": SubResource("StandardMaterial3D_5wo3i"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 208,
+"vertex_data": PackedByteArray("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")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_q57j1")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nd43"]
 resource_name = "CeilingLight.001"
 cull_mode = 2
@@ -271,12 +308,12 @@ shadow_mesh = SubResource("ArrayMesh_yo1yu")
 [sub_resource type="BoxShape3D" id="BoxShape3D_i0ya6"]
 size = Vector3(2.07477, 1, 7.01355)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wo3i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oww4e"]
 resource_name = "LowPolyCeiling"
 cull_mode = 2
 albedo_texture = ExtResource("11_w287j")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_q57j1"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_rosu2"]
 _surfaces = [{
 "aabb": AABB(-4.33737, 0.0314051, -4.33825, 8.79513, 2.99645, 8.7965),
 "format": 34896613377,
@@ -290,7 +327,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ffamh"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_vyd75"]
 resource_name = "desk_Cube_047"
 lightmap_size_hint = Vector2i(242, 242)
 _surfaces = [{
@@ -299,14 +336,14 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 312,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOwA8AD0AOwA9AD4AOAA6AD8AQABBAEIAQABDAEEARABFAEYARABHAEUASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZABlAGYAZABnAGUAaABpAGoAaABrAGkAbABtAG4AbABvAG0AcABxAHIAcABzAHEAdAB1AHYAdAB3AHUAeAB5AHoAeAB7AHkAfAB9AH4AfAB/AH0AgACBAIIAgACDAIEAhACFAIYAhACHAIUAiACJAIoAiACLAIkAjACNAI4AjACPAI0AkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkArACtAK4ArACvAK0AsACxALIAsACzALEAtAC1ALYAtAC3ALUAuAC5ALoAuAC7ALkAvAC9AL4AvAC/AL0AwADBAMIAwADDAMEAxADFAMYAxADHAMUAyADJAMoAyADLAMkAzADNAM4AzADPAM0A"),
-"material": SubResource("StandardMaterial3D_5wo3i"),
+"material": SubResource("StandardMaterial3D_oww4e"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 208,
 "vertex_data": PackedByteArray("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")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_q57j1")
+shadow_mesh = SubResource("ArrayMesh_rosu2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inu7q"]
 resource_name = "Material.001"
@@ -828,7 +865,7 @@ size = Vector3(60.525, 1, 32.03)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_60xfd"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvutm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jaqdf"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -860,7 +897,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_bvutm"),
+"material": SubResource("StandardMaterial3D_jaqdf"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -1614,7 +1651,7 @@ stream_0/stream = ExtResource("75_0e0pg")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3gub"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xoph5"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -1646,7 +1683,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_x3gub"),
+"material": SubResource("StandardMaterial3D_xoph5"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -1794,7 +1831,7 @@ stream_2/stream = ExtResource("87_k03jj")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rgjq0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qt4xy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vljg5"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -1826,7 +1863,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_qt4xy"),
+"material": SubResource("StandardMaterial3D_vljg5"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -2065,7 +2102,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.882
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.8828, 0, -15.3678)
 
 [node name="WallMeetingRoom_038" parent="stage/Walls" instance=ExtResource("7_w4ny4")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.8828, 0, -17.2378)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.9005, 0, -17.2255)
 
 [node name="WallMeetingRoom_011" parent="stage/Walls" instance=ExtResource("7_w4ny4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.868, -0.00132599, -3.99267)
@@ -2173,7 +2210,7 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -1.256, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.20711, 0, 40.2852)
 
 [node name="CeilingTiles" type="Node3D" parent="stage"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0331, -1.576, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.855878, -1.576, 0)
 
 [node name="CeilingLowPoly16" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 12.8315, 6.068, -17.1482)
@@ -2187,17 +2224,19 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 12.8315,
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly20" index="0"]
 transform = Transform3D(0.5, 0, 5.49185e-15, 0, 0.5, 0, -5.49185e-15, 0, 0.5, -0.0491905, 0.0660996, 4.52339)
 
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly20/CeilingLightOn" index="2"]
+light_bake_mode = 2
+
 [node name="CeilingLowPoly22" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 12.8315, 6.068, 16.9715)
 
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly22" index="0"]
 transform = Transform3D(0.5, 0, 5.49185e-15, 0, 0.5, 0, -5.49185e-15, 0, 0.5, 0.00536728, 0.0738678, 3.57062)
 
-[node name="CeilingLowPoly24" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
+[node name="CeilingLowPoly24" type="MeshInstance3D" parent="stage/CeilingTiles"]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 12.8315, 6.068, 28.3486)
-
-[node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly24" index="0"]
-transform = Transform3D(0.5, 0, 5.49185e-15, 0, 0.5, 0, -5.49185e-15, 0, 0.5, -0.0194836, 0.0660996, -31.1467)
+mesh = SubResource("ArrayMesh_ffamh")
+skeleton = NodePath("")
 
 [node name="CeilingLowPoly32" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131, 6.068, -11.4592)
@@ -2205,7 +2244,7 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131,
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly32" index="0"]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -0.27812, 0.180021, -0.00609589)
 
-[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly32/CeilingLightOn" index="1"]
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly32/CeilingLightOn" index="2"]
 light_bake_mode = 2
 
 [node name="CeilingLowPoly34" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
@@ -2214,7 +2253,7 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131,
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly34" index="0"]
 transform = Transform3D(0.5, 0, 5.49185e-15, 0, 0.5, 0, -5.49185e-15, 0, 0.5, 0.0036006, 0.0660996, -1.17163)
 
-[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly34/CeilingLightOn" index="1"]
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly34/CeilingLightOn" index="2"]
 light_bake_mode = 2
 
 [node name="CeilingLowPoly36" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
@@ -2223,16 +2262,22 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131,
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly36" index="0"]
 transform = Transform3D(0.5, 0, 5.49185e-15, 0, 0.5, 0, -5.49185e-15, 0, 0.5, -0.0491924, 0.0660996, -4.29316)
 
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly36/CeilingLightOn" index="2"]
+light_bake_mode = 2
+
 [node name="CeilingLowPoly38" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 7.13131, 6.068, 22.6633)
 
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly38" index="0"]
 transform = Transform3D(0.5, 0, 5.49185e-15, 0, 0.5, 0, -5.49185e-15, 0, 0.5, -0.00138521, 0.0841641, -5.2828)
 
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly38/CeilingLightOn" index="2"]
+light_bake_mode = 2
+
 [node name="CeilingLowPoly46" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485, 6.068, -17.1482)
 
-[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly46/CeilingLightOn" index="1"]
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly46/CeilingLightOn" index="2"]
 transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.0918, 0)
 light_bake_mode = 2
 
@@ -2242,7 +2287,7 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485,
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly48" index="0"]
 transform = Transform3D(0.5, 0, 8.23778e-15, 0, 0.5, 0, -8.23778e-15, 0, 0.5, -0.0365115, 0.146132, -1.26659)
 
-[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly48/CeilingLightOn" index="1"]
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly48/CeilingLightOn" index="2"]
 light_bake_mode = 2
 
 [node name="CeilingLowPoly50" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
@@ -2251,7 +2296,7 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485,
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly50" index="0"]
 transform = Transform3D(0.5, 0, 5.49185e-15, 0, 0.5, 0, -5.49185e-15, 0, 0.5, -0.0491918, 0.0660996, -6.61616)
 
-[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly50/CeilingLightOn" index="1"]
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly50/CeilingLightOn" index="2"]
 light_bake_mode = 2
 
 [node name="CeilingLowPoly52" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
@@ -2260,7 +2305,7 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485,
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly52" index="0"]
 transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, -0.0491918, 0.0660996, -10.6433)
 
-[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly52/CeilingLightOn" index="1"]
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly52/CeilingLightOn" index="2"]
 light_bake_mode = 2
 
 [node name="CeilingLightOn2" parent="stage/CeilingTiles/CeilingLowPoly52" instance=ExtResource("10_avfab")]
@@ -2272,7 +2317,7 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 1.42485,
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly54" index="0"]
 transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0.00995165, 0.0660996, -1.22743)
 
-[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn" index="1"]
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn" index="2"]
 light_bake_mode = 2
 
 [node name="CeilingLightOn2" type="MeshInstance3D" parent="stage/CeilingTiles/CeilingLowPoly54"]
@@ -2283,6 +2328,11 @@ skeleton = NodePath("")
 [node name="CeilingLightOnLight" type="MeshInstance3D" parent="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn2"]
 mesh = SubResource("ArrayMesh_rksdk")
 skeleton = NodePath("")
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn2"]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -23.0924, 0)
+aabb = AABB(-10.0748, -5.94489, -9.70125, 20.1497, 11.8898, 19.4025)
+enable_node_path = NodePath("../OmniLight3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.41483, 0)
@@ -2316,7 +2366,7 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -4.29944
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly62" index="0"]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 1.12983, 0.0661006, 0.00577736)
 
-[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly62/CeilingLightOn" index="1"]
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly62/CeilingLightOn" index="2"]
 light_bake_mode = 2
 
 [node name="CeilingLowPoly64" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
@@ -2325,7 +2375,7 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -4.29944
 [node name="CeilingLightOn" parent="stage/CeilingTiles/CeilingLowPoly64" index="0"]
 transform = Transform3D(0.5, 0, 8.23778e-15, 0, 0.5, 0, -8.23778e-15, 0, 0.5, -0.0491924, 0.0660996, -1.37531)
 
-[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly64/CeilingLightOn" index="1"]
+[node name="OmniLight3D" parent="stage/CeilingTiles/CeilingLowPoly64/CeilingLightOn" index="2"]
 light_bake_mode = 2
 
 [node name="CeilingLowPoly66" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
@@ -2342,7 +2392,7 @@ transform = Transform3D(0.5, 0, 5.49185e-15, 0, 0.5, 0, -5.49185e-15, 0, 0.5, 0.
 
 [node name="CeilingLowPoly70" type="MeshInstance3D" parent="stage/CeilingTiles"]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -4.29944, 6.068, 34.0194)
-mesh = SubResource("ArrayMesh_ffamh")
+mesh = SubResource("ArrayMesh_vyd75")
 skeleton = NodePath("")
 
 [node name="CeilingLowPoly76" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
@@ -2371,7 +2421,7 @@ transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, 
 
 [node name="CeilingLowPoly92" type="MeshInstance3D" parent="stage/CeilingTiles"]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -15.6721, 6.068, -11.4592)
-mesh = SubResource("ArrayMesh_ffamh")
+mesh = SubResource("ArrayMesh_vyd75")
 skeleton = NodePath("")
 
 [node name="CeilingLowPoly94" parent="stage/CeilingTiles" instance=ExtResource("8_ul3bg")]
@@ -2379,17 +2429,17 @@ transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -15.6721
 
 [node name="CeilingLowPoly96" type="MeshInstance3D" parent="stage/CeilingTiles"]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -15.6721, 6.068, 11.2825)
-mesh = SubResource("ArrayMesh_ffamh")
+mesh = SubResource("ArrayMesh_vyd75")
 skeleton = NodePath("")
 
 [node name="CeilingLowPoly98" type="MeshInstance3D" parent="stage/CeilingTiles"]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -15.6721, 6.068, 22.6633)
-mesh = SubResource("ArrayMesh_ffamh")
+mesh = SubResource("ArrayMesh_vyd75")
 skeleton = NodePath("")
 
 [node name="CeilingLowPoly100" type="MeshInstance3D" parent="stage/CeilingTiles"]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -15.6721, 6.068, 34.0194)
-mesh = SubResource("ArrayMesh_ffamh")
+mesh = SubResource("ArrayMesh_vyd75")
 skeleton = NodePath("")
 
 [node name="CeilingLowPoly47" parent="stage/CeilingTiles" instance=ExtResource("9_jtqkc")]
@@ -2582,12 +2632,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1531, -0.0473666, -12.387
 
 [node name="Cubicle_empty16" parent="stage/Cubicles2" instance=ExtResource("11_fxjel")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1531, -0.0473666, -17.2458)
-
-[node name="Cubicle_empty7" parent="stage/Cubicles2" instance=ExtResource("11_fxjel")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.12232, -0.0473666, -17.086)
-
-[node name="Cubicle_empty10" parent="stage/Cubicles2" instance=ExtResource("11_fxjel")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.12232, -0.0473666, -7.59279)
 
 [node name="Cubicle_empty14" parent="stage/Cubicles2" instance=ExtResource("11_fxjel")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1673, -0.0473666, -12.5239)
@@ -4672,17 +4716,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.27307, 2.18135, 30.9859)
 transform = Transform3D(0.970351, 1.82819e-07, -0.241702, 0.241702, -2.12851e-08, 0.970351, 1.72254e-07, -1, -6.48416e-08, -16.0129, 2.45089, 28.7739)
 object_text = "Who is the idiot that threw their desk outside my cubicle? CLEAN IT UP!"
 
+[connection signal="screen_entered" from="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn2/VisibleOnScreenEnabler3D" to="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn2/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_entered"]
+[connection signal="screen_exited" from="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn2/VisibleOnScreenEnabler3D" to="stage/CeilingTiles/CeilingLowPoly54/CeilingLightOn2/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_exited"]
 [connection signal="body_entered" from="Keyboard2" to="Keyboard2/Key_Board_Collision_Handler" method="_on_body_entered"]
 
 [editable path="stage/CeilingTiles/CeilingLowPoly20"]
+[editable path="stage/CeilingTiles/CeilingLowPoly20/CeilingLightOn"]
 [editable path="stage/CeilingTiles/CeilingLowPoly22"]
-[editable path="stage/CeilingTiles/CeilingLowPoly24"]
 [editable path="stage/CeilingTiles/CeilingLowPoly32"]
 [editable path="stage/CeilingTiles/CeilingLowPoly32/CeilingLightOn"]
 [editable path="stage/CeilingTiles/CeilingLowPoly34"]
 [editable path="stage/CeilingTiles/CeilingLowPoly34/CeilingLightOn"]
 [editable path="stage/CeilingTiles/CeilingLowPoly36"]
+[editable path="stage/CeilingTiles/CeilingLowPoly36/CeilingLightOn"]
 [editable path="stage/CeilingTiles/CeilingLowPoly38"]
+[editable path="stage/CeilingTiles/CeilingLowPoly38/CeilingLightOn"]
 [editable path="stage/CeilingTiles/CeilingLowPoly46"]
 [editable path="stage/CeilingTiles/CeilingLowPoly46/CeilingLightOn"]
 [editable path="stage/CeilingTiles/CeilingLowPoly48"]

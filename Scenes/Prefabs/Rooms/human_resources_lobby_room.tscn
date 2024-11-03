@@ -37,7 +37,7 @@ texture_filter = 2
 point_size = 128.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0po6g"]
-lightmap_size_hint = Vector2i(116, 31)
+lightmap_size_hint = Vector2i(1016, 1016)
 add_uv2 = true
 size = Vector2(22.855, 5.885)
 
@@ -247,14 +247,14 @@ transform = Transform3D(8.48315e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, 
 [node name="ceiling_tile_withlight" parent="CEILING" instance=ExtResource("5_5jc58")]
 transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -5.64, 4.52538, 2.82)
 
-[node name="OmniLight3D" parent="CEILING/ceiling_tile_withlight/CeilingLightOn" index="1"]
-light_bake_mode = 0
+[node name="OmniLight3D" parent="CEILING/ceiling_tile_withlight/CeilingLightOn" index="2"]
+light_bake_mode = 2
 
 [node name="ceiling_tile_withlight2" parent="CEILING" instance=ExtResource("5_5jc58")]
 transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, 11.28, 4.52538, 2.82)
 
-[node name="OmniLight3D" parent="CEILING/ceiling_tile_withlight2/CeilingLightOn" index="1"]
-light_bake_mode = 0
+[node name="OmniLight3D" parent="CEILING/ceiling_tile_withlight2/CeilingLightOn" index="2"]
+light_bake_mode = 2
 
 [node name="ceiling_block_mesh" type="MeshInstance3D" parent="CEILING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82, 6.11439, 2.82)

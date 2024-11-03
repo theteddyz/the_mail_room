@@ -93,6 +93,11 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_rksdk")
 skeleton = NodePath("")
 
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -23.0924, 0)
+aabb = AABB(-10.0748, -5.94489, -9.70125, 20.1497, 11.8898, 19.4025)
+enable_node_path = NodePath("../OmniLight3D")
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.41483, 0)
 light_color = Color(1, 0.946788, 0.840335, 1)
@@ -113,3 +118,6 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OmniLight3D/LightDetectionArea"]
 transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -2.4813, -0.0225391)
 shape = SubResource("BoxShape3D_i0ya6")
+
+[connection signal="screen_entered" from="VisibleOnScreenEnabler3D" to="OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler3D" to="OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_exited"]
