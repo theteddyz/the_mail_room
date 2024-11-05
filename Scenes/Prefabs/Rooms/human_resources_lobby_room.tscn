@@ -37,7 +37,7 @@ texture_filter = 2
 point_size = 128.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0po6g"]
-lightmap_size_hint = Vector2i(1016, 1016)
+lightmap_size_hint = Vector2i(116, 31)
 add_uv2 = true
 size = Vector2(22.855, 5.885)
 
