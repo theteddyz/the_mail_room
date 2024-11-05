@@ -13,7 +13,9 @@ extends CharacterBody3D
 @onready var monster_body = $godot_rig
 @onready var cooldown_timer: Timer = $Cooldown_Timer
 @export var chase_sound: Resource
+@export var aggro_sound: Resource
 @export var sound_resource_path = ""
+@export var aggro_sound_resource_path = ""
 @onready var chase_sound_initial: AudioStreamPlayer3D = $Chase_Sound_Initial
 @onready var navigation_region_3d: NavigationRegion3D = $"../NavigationRegion3D"
 @onready var roaming_soundloop: AudioStreamPlayer3D = $Roaming_Soundloop
@@ -59,6 +61,8 @@ func _ready():
 	
 	hit_death = load("res://Assets/Audio/SoundFX/AmbientScares/JohnScream1.ogg")
 	chase_sound = load(sound_resource_path)
+	aggro_sound = load(aggro_sound_resource_path)
+
 	player_in_vision_flag = false
 	monster_anim = find_child("AnimationPlayer")
 	player = GameManager.get_player()
@@ -140,6 +144,7 @@ func chase_player():
 		roaming_soundloop.playing = false
 		chase_sound_initial.playing = true
 		AudioController.play_resource(chase_sound, 0)
+		AudioController.play_resource(aggro_sound, 0)
 		monster_anim.play("Run")
 		chasing = true
 		roaming = false
