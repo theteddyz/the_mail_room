@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://1j0o1il6ai5e"]
+[gd_scene load_steps=4 format=3 uid="uid://1j0o1il6ai5e"]
 
 [ext_resource type="Script" path="res://Scenes/AudioController_directionless.gd" id="1_o8ff8"]
 [ext_resource type="AudioStream" uid="uid://ccf6jeaykt15x" path="res://Assets/Audio/SoundFX/AmbientScares/ScareCubicleAnticipation.ogg" id="2_4qxjb"]
+[ext_resource type="Script" path="res://Scenes/Managers/audio_controller_spatial.gd" id="3_ju4i3"]
 
 [node name="AudioController" type="Node"]
 script = ExtResource("1_o8ff8")
@@ -12,3 +13,6 @@ stream = ExtResource("2_4qxjb")
 [node name="stream2" type="AudioStreamPlayer" parent="."]
 
 [node name="stream3" type="AudioStreamPlayer" parent="."]
+
+[node name="SpatialAudioController" type="Node" parent="."]
+script = ExtResource("3_ju4i3")

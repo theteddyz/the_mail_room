@@ -1,5 +1,6 @@
 extends Node
-var players
+
+# ALERT:THIS SCRIPT SHOULD NOT BE USED ON ITS OWN, STRICTLY CALL ITS FUNCTIONS THROUGH THE AUDIOCONTROLLER NODE
 
 enum SoundModifiers {
 	none = 0,
@@ -8,42 +9,34 @@ enum SoundModifiers {
 	set_db = 3
 }
 
-@onready var spatial_audio_controller = $SpatialAudioController
-
-func _ready():
-	players = [$stream, $stream2, $stream3]
-
-func _get_free_player() -> AudioStreamPlayer:
-	for p in players:
-		if !p.playing:
-			return p
-	print("NO FREE AUDIO PLAYERS; DEFAULTING TO FIRST ONE")
-	return players[0]
-	
-func play_resource(sound, modifiers = 0):
-	var p = _get_free_player()
+func play_spatial_resource(sound, pos, modifiers = 0):
+	var p = AudioStreamPlayer3D.new()
+	# Set Sound Position
+	if pos == Vector3.ZERO:
+		# Random Position
+		
+		p.global_position = Vector3.ZERO
+		if GameManager.world_reference != null:
+			var navmesh = GameManager.world_reference.find_child("NavigationRegion3D")
+			if navmesh != null:
+				var point = NavigationServer3D.map_get_random_point(navmesh.get_navigation_map(), navmesh.get_navigation_layers(), false)
+				point += Vector3(0, 2, 0)
+				p.global_position = point
+	else:
+		# Pre-determined position
+		p.global_position = pos
+		
 	if sound is Resource:
 		p.stream = sound
 	else:
-		print("play_resource expects a resource... sound not fired!")
+		print("play_spatial_resource expects a resource... sound not fired!")
 		return
 	apply_effector(modifiers, p)
+	add_child(p)
+	p.finished.connect(func(): p.queue_free())
 	p.playing = true
-	
-func play_spatial_resource(sound, pos: Vector3 = Vector3.ZERO, modifiers = 0):
-	spatial_audio_controller.play_spatial_resource(sound, pos, modifiers)
 
-func stop_resource(resource_name, modifiers = 0):
-	for p in players:
-		if p.get_stream() != null:
-			var path = p.get_stream().get_path()
-			if path == resource_name:
-				if modifiers == SoundModifiers.fade_out:
-					apply_effector(modifiers, p)
-				else:
-					p.playing = false
-
-func apply_effector(modifier, player: AudioStreamPlayer):
+func apply_effector(modifier, player: AudioStreamPlayer3D):
 	var set_db = 0
 	if modifier is Array:
 		for m in modifier:
@@ -76,4 +69,3 @@ func apply_effector(modifier, player: AudioStreamPlayer):
 				## Currently just sets the DB to a "loud"-ish value
 				#player.volume_db = 13
 				#set_db = 13
-		

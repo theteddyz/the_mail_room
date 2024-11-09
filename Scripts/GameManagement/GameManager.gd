@@ -10,6 +10,7 @@ var player_reference: Node
 var elevator_reference: Node
 var mail_cart_reference: Node
 var scare_director_reference: Node
+var world_reference: Node
 var current_scene_root:Node
 var we_reference: WorldEnvironment
 var player_radio:Node
@@ -32,6 +33,9 @@ func register_player_radio(radio):
 func register_world_environment(we):
 	we_reference = we
 	
+func register_world(world):
+	world_reference = world
+	
 func get_mail_cart()->Node:
 	return mail_cart_reference
 	
@@ -43,6 +47,9 @@ func get_elevator()->Node:
 	
 func get_player_radio() ->Node:
 	return player_radio
+	
+func get_world() ->Node:
+	return world_reference
 	
 func _ready():
 	var root = get_tree().root
