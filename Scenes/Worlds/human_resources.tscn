@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsbem806big2h"]
+[gd_scene load_steps=10 format=3 uid="uid://dsbem806big2h"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
 [ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="3_jahih"]
 [ext_resource type="LightmapGIData" uid="uid://bbkeubndw8sfl" path="res://Scenes/Worlds/human_resources.lmbake" id="4_5pumb"]
 [ext_resource type="PackedScene" uid="uid://c6e8r8hgcxdyp" path="res://Scenes/Prefabs/Rooms/human_resources_lobby_room.tscn" id="4_71dsc"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="4_83x7j"]
+[ext_resource type="PackedScene" uid="uid://crepsdd3t3j4a" path="res://Scenes/Prefabs/Rooms/human_resources_opening_room.tscn" id="7_kvilq"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="7_o0ubx"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="8_rl6tn"]
 
@@ -39,6 +40,9 @@ navigation_mesh = SubResource("NavigationMesh_85eyn")
 [node name="FLOOR" type="Node" parent="NavigationRegion3D"]
 
 [node name="HumanResourcesLobbyRoom" parent="NavigationRegion3D" instance=ExtResource("4_71dsc")]
+
+[node name="HumanResourcesOpeningRoom" parent="NavigationRegion3D" instance=ExtResource("7_kvilq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.45208, 0, 2.73919)
 
 [node name="Mailcart" parent="." instance=ExtResource("8_rl6tn")]
 transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979, 3.55372, 0.316447, 1.73329)

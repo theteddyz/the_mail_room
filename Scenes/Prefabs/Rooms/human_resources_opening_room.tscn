@@ -1,0 +1,169 @@
+[gd_scene load_steps=14 format=4 uid="uid://crepsdd3t3j4a"]
+
+[ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="1_g2xuk"]
+[ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="2_6ywnp"]
+[ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_nolight.tscn" id="3_sq00j"]
+[ext_resource type="PackedScene" uid="uid://by3rv8lwpxn0n" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_with_light.tscn" id="4_i4hx7"]
+[ext_resource type="Texture2D" uid="uid://lg7ewd1w7jf7" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Color.jpg" id="4_mivy0"]
+[ext_resource type="Texture2D" uid="uid://bdqjdhf72u4sj" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png" id="5_g7d1p"]
+[ext_resource type="Texture2D" uid="uid://cfpfwkaakamns" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg" id="6_se81x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pej8r"]
+size = Vector3(23.855, 1, 28.72)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cc7qq"]
+albedo_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkr0k"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("4_mivy0")
+metallic_texture = ExtResource("5_g7d1p")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("5_g7d1p")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("6_se81x")
+uv1_scale = Vector3(10, 10, 10)
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ama3x"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP//AAD//wAA//8AAAAAAAAAAAAA//8AAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nkmc8"]
+resource_name = "floor_2_flooring_Plane"
+lightmap_size_hint = Vector2i(42, 42)
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray("AAAAAAAAgD/P83w/z/N8PwD/fz8AAAAAMQxDPDEMQzwAAIA/AP9/P8/zfD8xDEM8AAAAAAAAAAAxDEM8z/N8Pw=="),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_mkr0k"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAIA/AACAPwAAAAAAAIC/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC//3/9//7//7//f/3//v//v/9//f/+//+//3/9//7//78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ama3x")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x2w43"]
+size = Vector3(17.0636, 1, 28.4223)
+
+[node name="HumanResourcesOpeningRoom" type="Node3D"]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="HR_ArchwayWall" parent="Walls" instance=ExtResource("1_g2xuk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.067)
+
+[node name="HR_baseWall" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.944, 0, -2.93921)
+
+[node name="HR_baseWall2" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.97659, 0, -2.95843)
+
+[node name="HR_baseWall3" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.944, 0, -8.62821)
+
+[node name="HR_baseWall4" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.97659, 0, -8.64743)
+
+[node name="HR_baseWall5" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.944, 0, -14.3172)
+
+[node name="HR_baseWall6" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.97659, 0, -14.3364)
+
+[node name="HR_baseWall7" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.689, 0, -17.067)
+
+[node name="HR_baseWall8" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.689, 0, -17.067)
+
+[node name="HR_baseWall9" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.689, 0, -28.445)
+
+[node name="HR_baseWall14" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28.445)
+
+[node name="HR_baseWall10" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.689, 0, -28.445)
+
+[node name="HR_baseWall11" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.60738, 0, -19.9902)
+
+[node name="HR_baseWall12" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.429, 0, -19.99)
+
+[node name="HR_baseWall13" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.60738, 0, -25.6792)
+
+[node name="HR_baseWall16" parent="Walls" instance=ExtResource("2_6ywnp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.429, 0, -25.679)
+
+[node name="CeilingLight" type="Node3D" parent="."]
+
+[node name="ceiling_tile_nolight2" parent="CeilingLight" instance=ExtResource("3_sq00j")]
+transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -4.76837e-07, 4.525, -2.88865)
+
+[node name="ceiling_tile_nolight4" parent="CeilingLight" instance=ExtResource("3_sq00j")]
+transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -4.76837e-07, 4.525, -14.2667)
+
+[node name="ceiling_tile_nolight5" parent="CeilingLight" instance=ExtResource("3_sq00j")]
+transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -4.76837e-07, 4.525, -19.9557)
+
+[node name="ceiling_tile_nolight6" parent="CeilingLight" instance=ExtResource("3_sq00j")]
+transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, 5.689, 4.525, -19.9557)
+
+[node name="ceiling_tile_nolight8" parent="CeilingLight" instance=ExtResource("3_sq00j")]
+transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -5.689, 4.525, -25.6446)
+
+[node name="ceiling_tile_nolight9" parent="CeilingLight" instance=ExtResource("3_sq00j")]
+transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -4.76837e-07, 4.525, -25.6446)
+
+[node name="ceiling_block_mesh" type="MeshInstance3D" parent="CeilingLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82, 6.11439, -14.474)
+mesh = SubResource("BoxMesh_pej8r")
+surface_material_override/0 = SubResource("StandardMaterial3D_cc7qq")
+
+[node name="ceiling_tile_withlight" parent="CeilingLight" instance=ExtResource("4_i4hx7")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -4.76837e-07, 4.525, -8.57765)
+
+[node name="ceiling_tile_withlight2" parent="CeilingLight" instance=ExtResource("4_i4hx7")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -5.689, 4.525, -19.9557)
+
+[node name="ceiling_tile_withlight3" parent="CeilingLight" instance=ExtResource("4_i4hx7")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, 5.689, 4.525, -25.6446)
+
+[node name="FLOOR" type="Node3D" parent="."]
+
+[node name="Plane" type="MeshInstance3D" parent="FLOOR"]
+transform = Transform3D(9, 0, 0, 0, 1, 0, 0, 0, 14.715, 0, 0, -14.8507)
+mesh = SubResource("ArrayMesh_nkmc8")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FLOOR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.2652)
+collision_layer = 133
+collision_mask = 149
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FLOOR/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780475, -0.475541, 1.8563)
+shape = SubResource("BoxShape3D_x2w43")
+
+[editable path="CeilingLight/ceiling_tile_withlight"]
+[editable path="CeilingLight/ceiling_tile_withlight2"]
+[editable path="CeilingLight/ceiling_tile_withlight3"]
