@@ -120,7 +120,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.429
 transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -4.76837e-07, 4.525, -2.88865)
 
 [node name="ceiling_tile_nolight4" parent="CeilingLight" instance=ExtResource("3_sq00j")]
-transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -4.76837e-07, 4.525, -14.2667)
+transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -4.76837e-07, 4.525, -8.5777)
 
 [node name="ceiling_tile_nolight5" parent="CeilingLight" instance=ExtResource("3_sq00j")]
 transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -4.76837e-07, 4.525, -19.9557)
@@ -140,7 +140,7 @@ mesh = SubResource("BoxMesh_pej8r")
 surface_material_override/0 = SubResource("StandardMaterial3D_cc7qq")
 
 [node name="ceiling_tile_withlight" parent="CeilingLight" instance=ExtResource("4_i4hx7")]
-transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -4.76837e-07, 4.525, -8.57765)
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -4.76837e-07, 4.525, -14.2667)
 
 [node name="ceiling_tile_withlight2" parent="CeilingLight" instance=ExtResource("4_i4hx7")]
 transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -5.689, 4.525, -19.9557)
