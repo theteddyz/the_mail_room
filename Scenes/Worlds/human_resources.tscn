@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsbem806big2h"]
+[gd_scene load_steps=11 format=3 uid="uid://dsbem806big2h"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
+[ext_resource type="Environment" uid="uid://52by3g1q6hkh" path="res://human_resources_worldenvironment.tres" id="2_6iufn"]
 [ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="3_jahih"]
 [ext_resource type="LightmapGIData" uid="uid://bbkeubndw8sfl" path="res://Scenes/Worlds/human_resources.lmbake" id="4_5pumb"]
 [ext_resource type="PackedScene" uid="uid://c6e8r8hgcxdyp" path="res://Scenes/Prefabs/Rooms/human_resources_lobby_room.tscn" id="4_71dsc"]
@@ -18,6 +19,7 @@ script = ExtResource("1_oyi4d")
 floor_num = 3
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_6iufn")
 script = ExtResource("3_jahih")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
