@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="2_6ywnp"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_nolight.tscn" id="3_sq00j"]
 [ext_resource type="PackedScene" uid="uid://by3rv8lwpxn0n" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_with_light.tscn" id="4_i4hx7"]
-[ext_resource type="Texture2D" uid="uid://lg7ewd1w7jf7" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Color.jpg" id="4_mivy0"]
 [ext_resource type="Texture2D" uid="uid://bdqjdhf72u4sj" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png" id="5_g7d1p"]
+[ext_resource type="Texture2D" uid="uid://c3qyu5oicypra" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_tezco256r.png" id="5_ta8j1"]
 [ext_resource type="Texture2D" uid="uid://cfpfwkaakamns" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg" id="6_se81x"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pej8r"]
@@ -14,10 +14,10 @@ size = Vector3(23.855, 1, 28.72)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cc7qq"]
 albedo_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkr0k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j07io"]
 resource_name = "Material.001"
 cull_mode = 2
-albedo_texture = ExtResource("4_mivy0")
+albedo_texture = ExtResource("5_ta8j1")
 metallic_texture = ExtResource("5_g7d1p")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("5_g7d1p")
@@ -27,7 +27,7 @@ normal_texture = ExtResource("6_se81x")
 uv1_scale = Vector3(10, 10, 10)
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ama3x"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_37b6v"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
 "format": 34896613377,
@@ -41,23 +41,23 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_nkmc8"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_xad4t"]
 resource_name = "floor_2_flooring_Plane"
-lightmap_size_hint = Vector2i(42, 42)
+lightmap_size_hint = Vector2i(590, 362)
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
-"attribute_data": PackedByteArray("AAAAAAAAgD/P83w/z/N8PwD/fz8AAAAAMQxDPDEMQzwAAIA/AP9/P8/zfD8xDEM8AAAAAAAAAAAxDEM8z/N8Pw=="),
+"attribute_data": PackedByteArray("AAAAAAAAgD92yH8/e6V/PwD/fz8AAAAA6ydeOucJtToAAIA/AP9/P3bIfz/nCbU6AAAAAAAAAADrJ146e6V/Pw=="),
 "format": 34359742519,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"material": SubResource("StandardMaterial3D_mkr0k"),
+"material": SubResource("StandardMaterial3D_j07io"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 4,
 "vertex_data": PackedByteArray("AACAvwAAAAAAAIA/AACAPwAAAAAAAIC/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC//3/9//7//7//f/3//v//v/9//f/+//+//3/9//7//78=")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ama3x")
+shadow_mesh = SubResource("ArrayMesh_37b6v")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x2w43"]
 size = Vector3(17.0636, 1, 28.4223)
@@ -150,9 +150,9 @@ transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813
 
 [node name="FLOOR" type="Node3D" parent="."]
 
-[node name="Plane" type="MeshInstance3D" parent="FLOOR"]
+[node name="Plane2" type="MeshInstance3D" parent="FLOOR"]
 transform = Transform3D(9, 0, 0, 0, 1, 0, 0, 0, 14.715, 0, 0, -14.8507)
-mesh = SubResource("ArrayMesh_nkmc8")
+mesh = SubResource("ArrayMesh_xad4t")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="FLOOR"]
