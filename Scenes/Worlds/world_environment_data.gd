@@ -9,12 +9,14 @@ var properties: Dictionary
 @export var dark_value = 0.035
 
 func _ready():
-	#properties = resource_to_dict(get_environment())
+	properties = resource_to_dict(get_environment())
 	GameManager.player_reference.get_node("Neck").get_node("Head").get_node("HeadbopRoot").get_node("LightLevelDetection").we = self
 	GameManager.register_world_environment(self)
 
-#func resource_to_dict(resource: Resource) -> Dictionary:
-	#var dict = {}
-	#for property_name in resource.get_property_list():
-		#dict[property_name.name] = resource.get(property_name.name)
-	#return dict
+func resource_to_dict(resource: Resource) -> Dictionary:
+	if resource == null:
+		assert(false, "This should never be false. The WE-node REQUIRES a world-environment resource. If one does not already exist please make one. (NO DUPLICATES PLZ)")
+	var dict = {}
+	for property_name in resource.get_property_list():
+		dict[property_name.name] = resource.get(property_name.name)
+	return dict
