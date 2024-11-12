@@ -42,7 +42,7 @@ navigation_mesh = SubResource("NavigationMesh_85eyn")
 [node name="HumanResourcesLobbyRoom" parent="NavigationRegion3D" instance=ExtResource("4_71dsc")]
 
 [node name="HumanResourcesOpeningRoom" parent="NavigationRegion3D" instance=ExtResource("7_kvilq")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.45208, 0, 2.73919)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.1247, 0, 2.73919)
 
 [node name="Mailcart" parent="." instance=ExtResource("8_rl6tn")]
 transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979, 3.55372, 0.316447, 1.73329)
