@@ -9,7 +9,7 @@ enum SoundModifiers {
 	set_db = 3
 }
 
-func play_spatial_resource(sound, pos, modifiers = 0):
+func play_spatial_resource(sound, pos, modifiers = 0, callback = (func(): {})):
 	var p = AudioStreamPlayer3D.new()
 	# Set Sound Position
 	if pos == Vector3.ZERO:
@@ -33,6 +33,7 @@ func play_spatial_resource(sound, pos, modifiers = 0):
 		return
 	apply_effector(modifiers, p)
 	add_child(p)
+	p.finished.connect(callback)
 	p.finished.connect(func(): p.queue_free())
 	p.playing = true
 

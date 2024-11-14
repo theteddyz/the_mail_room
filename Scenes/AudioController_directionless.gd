@@ -30,8 +30,8 @@ func play_resource(sound, modifiers = 0):
 	apply_effector(modifiers, p)
 	p.playing = true
 	
-func play_spatial_resource(sound, pos: Vector3 = Vector3.ZERO, modifiers = 0):
-	spatial_audio_controller.play_spatial_resource(sound, pos, modifiers)
+func play_spatial_resource(sound, pos: Vector3 = Vector3.ZERO, modifiers = 0, callback: Callable = (func(): {})):
+	spatial_audio_controller.play_spatial_resource(sound, pos, modifiers, callback)
 
 func stop_resource(resource_name, modifiers = 0):
 	for p in players:

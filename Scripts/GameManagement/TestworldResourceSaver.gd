@@ -11,7 +11,6 @@ func save():
 	}
 	return save_dict
 	
-	
 func _ready():
 	GameManager.register_world(self)
 	#var timer = Timer.new()
