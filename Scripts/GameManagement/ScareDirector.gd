@@ -8,6 +8,9 @@ signal package_delivered(package_num:int)
 # Emitted when any "monster"-grouped node is in players' viewcone
 signal monster_seen(is_seen:bool)
 
+#  Emitted when a scare is activated
+signal scare_activated(scare_index: int)
+
 # Emitted on a keypickup
 signal key_pickedup(key_num:int)
 

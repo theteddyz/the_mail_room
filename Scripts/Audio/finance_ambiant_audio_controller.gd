@@ -7,6 +7,8 @@ var sound_dict = {
 	"vent1" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble4.ogg", "category" : 0, "allow_stacking" : false},
 	"vent2" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble5.ogg", "category" : 0, "allow_stacking" : false},
 	"vent3" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble6.ogg", "category" : 1, "allow_stacking" : false},
+	"financeHorrorTension1" : {"path" : "res://Assets/Audio/SoundFX/AmbientScares/FinanceHighTensionAmbiance1.ogg", "category" : 2, "allow_stacking" : true},
+
 }
 
 @onready var timer: Timer = $Timer
@@ -23,6 +25,7 @@ func _ready() -> void:
 	timer.start(2)
 	awaited_sound_key = "vent1"
 	timer.timeout.connect(_timerdown_play_awaited_sound)
+	ScareDirector.connect("scare_activated", john_is_out_change)
 	#var timer = Timer.new()
 	#add_child(timer)
 	#timer.one_shot = false
@@ -46,7 +49,7 @@ func _timerdown_play_awaited_sound():
 			if sound_dict.has(previously_awaited_sound_key):
 				var sounds_share_category = sound_dict[picked_key]["category"] == sound_dict[previously_awaited_sound_key]["category"] 
 				var previous_sound_no_stacking = sound_dict[previously_awaited_sound_key]["allow_stacking"] == false
-				if !sounds_share_category or !previous_sound_no_stacking:
+				if (!sounds_share_category or !previous_sound_no_stacking) and picked_key != previously_awaited_sound_key:
 					new_sound_key = picked_key
 			else:
 				new_sound_key = picked_key
@@ -59,16 +62,15 @@ func play_specific_sound(sound_dict_key: String):
 func restart_ambiance_timer():
 	timer.start(randi_range(minimum_ambiance_restart_time, maximum_ambiance_restart_time))
 
-# TODO CHECK IF THIS WORKS PROPERLY ALONG WITH THE BELOW
+func john_is_out_change(scare_index: int):
+	if scare_index == 1 or scare_index == 2:
+		_adjust_active_categories({
+			2 : true
+		})
+
 func _adjust_active_categories(arr: Dictionary):
 	for key in arr:
-		if active_categories.has(key) != null and arr[key] == false:
+		if active_categories.has(key) and arr[key] == false:
 			active_categories.erase(key)
-		elif active_categories.has(key) == null and arr[key] == true:
+		elif !active_categories.has(key) and arr[key] == true:
 			active_categories.append(key)
-
-# TODO CALL THIS WHEN JOHN 
-func john_is_out_change():
-	_adjust_active_categories({
-		1 : true
-	})

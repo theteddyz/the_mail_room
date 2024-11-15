@@ -1,5 +1,5 @@
 extends Node3D
-
+var scare_index = 1
 var has_been_executed = false
 @onready var door_slam_anim: AnimationPlayer = $AnimationPlayer
 @onready var doorlock = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2/Door_Lock"
@@ -49,6 +49,7 @@ func monster_seen_event(test):
 		if wall_to_nuke != null:
 			wall_to_nuke.queue_free()
 		doorlock.lock_door()
+		ScareDirector.emit_signal("scare_activated", scare_index)
 		await get_tree().create_timer(0.68).timeout
 		print("DOOR LOCKING!")
 		flickeranimationplayer.pause()

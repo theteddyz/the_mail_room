@@ -1,5 +1,6 @@
 extends Node3D
 
+var scare_index = 5
 var has_been_executed = false
 @onready var scare_5_vent_sound: AudioStreamPlayer3D = $"../../Scare5VentSound"
 @onready var john_typing_sound_player: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
@@ -13,6 +14,7 @@ func _ready():
 	monitor_flicker.play("flicker")
 
 func activate_scare():
+	ScareDirector.emit_signal("scare_activated", scare_index)
 	has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 	scare_5_vent_sound.playing = false
 	if john_typing_sound_player != null:

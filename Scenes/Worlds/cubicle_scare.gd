@@ -1,5 +1,6 @@
 extends Node3D
 
+var scare_index = 0
 var has_been_executed = false
 var player: Node = null
 var door_slam_available: bool = false
@@ -34,6 +35,7 @@ func monster_seen_function(boolean: bool):
 		monster_seen = boolean
 		if !impact_flag:
 			impact_flag = true
+			ScareDirector.emit_signal("scare_activated", scare_index)
 			AudioController.play_resource(impactSound)
 			var anim = monster_body.find_child("AnimationPlayer")
 			anim.play("PeakingOverCubicle2")

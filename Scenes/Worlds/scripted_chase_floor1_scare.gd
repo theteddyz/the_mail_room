@@ -1,5 +1,6 @@
 extends Node3D
 
+var scare_index = 3
 var has_been_executed = false
 @onready var monster_body: CharacterBody3D = $"../../monster"
 @onready var animator: AnimationPlayer = $"../../monster/AnimationPlayer"
@@ -25,4 +26,5 @@ func activate_scare(package_num:int):
 		monster_body.set_position(monster_position.position)
 		monster_body.set_rotation(monster_position.rotation)
 		animator.play("Idle")
+		ScareDirector.emit_signal("scare_activated", scare_index)
 		print("SCARE ACTIVATED!")

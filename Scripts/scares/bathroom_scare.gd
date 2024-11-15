@@ -1,4 +1,5 @@
 extends Node3D
+var scare_index = 4
 @onready var anim:AnimationPlayer = $AnimationPlayer
 @onready var john_laugh:AudioStreamPlayer3D = $AudioStreamPlayer3D2
 @onready var door_slam_audio:AudioStreamPlayer3D = $DoorSlamming
@@ -28,6 +29,8 @@ func _on_area_3d_body_entered(body):
 	if !closed and !scare_finished:
 		flicker_light_sound.stop()
 		anim.play("first_trigger")
+		ScareDirector.emit_signal("scare_activated", scare_index)
+
 		door_slam_audio.play()
 		await anim.animation_finished
 		closed = true

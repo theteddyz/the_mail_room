@@ -1,5 +1,6 @@
 extends Node3D
 
+var scare_index = 2
 var has_been_executed = false
 var ready_to_start = false
 @onready var monster_body = $godot_rig
@@ -43,6 +44,7 @@ func activate_scare(package_num):
 			start_scare()
 
 func start_scare():
+	ScareDirector.emit_signal("scare_activated", scare_index)
 	sighting_sound.play()
 	sighting_ambience.play()
 	window_scare_toner.play("tone")
