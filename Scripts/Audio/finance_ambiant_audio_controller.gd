@@ -5,13 +5,13 @@ extends Node
 
 var sound_dict = {
 	"vent1" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble4.ogg", "category" : 0, "allow_stacking" : false},
-	"vent2" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble5.ogg", "category" : 1, "allow_stacking" : false},
-	"vent3" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble6.ogg", "category" : 2, "allow_stacking" : false},
+	"vent2" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble5.ogg", "category" : 0, "allow_stacking" : false},
+	"vent3" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble6.ogg", "category" : 1, "allow_stacking" : false},
 }
 
 @onready var timer: Timer = $Timer
 @onready var active_categories: Array[int] = [
-	0, 1, 2
+	0, 1
 ]
 @onready var awaited_sound_key: String = ""
 @onready var previously_awaited_sound_key: String = ""
@@ -31,7 +31,7 @@ func _ready() -> void:
 	
 func _timerdown_play_awaited_sound():
 	play_specific_sound(awaited_sound_key)
-	awaited_sound_key = ""
+	previously_awaited_sound_key = String(awaited_sound_key)
 	var new_sound_key = ""
 	var count = 0
 	while(new_sound_key.is_empty()):
@@ -44,11 +44,12 @@ func _timerdown_play_awaited_sound():
 			#if sound_dict[previously_awaited_sound_key]["allow_stacking"] == true or (sound_dict[picked_key]["category"] != sound_dict[previously_awaited_sound_key]["category"]):
 				#new_sound_key = picked_key
 			if sound_dict.has(previously_awaited_sound_key):
-				if !(sound_dict[picked_key]["category"] == sound_dict[previously_awaited_sound_key]["category"] and sound_dict[previously_awaited_sound_key]["allow_stacking"] == false):
+				var sounds_share_category = sound_dict[picked_key]["category"] == sound_dict[previously_awaited_sound_key]["category"] 
+				var previous_sound_no_stacking = sound_dict[previously_awaited_sound_key]["allow_stacking"] == false
+				if !sounds_share_category or !previous_sound_no_stacking:
 					new_sound_key = picked_key
 			else:
 				new_sound_key = picked_key
-	previously_awaited_sound_key = awaited_sound_key
 	awaited_sound_key = new_sound_key
 
 func play_specific_sound(sound_dict_key: String):

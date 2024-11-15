@@ -11,6 +11,7 @@ enum SoundModifiers {
 
 func play_spatial_resource(sound, pos, modifiers = 0, callback = (func(): {})):
 	var p = AudioStreamPlayer3D.new()
+	add_child(p)
 	# Set Sound Position
 	if pos == Vector3.ZERO:
 		# Random Position
@@ -32,7 +33,6 @@ func play_spatial_resource(sound, pos, modifiers = 0, callback = (func(): {})):
 		print("play_spatial_resource expects a resource... sound not fired!")
 		return
 	apply_effector(modifiers, p)
-	add_child(p)
 	p.finished.connect(callback)
 	p.finished.connect(func(): p.queue_free())
 	p.playing = true
