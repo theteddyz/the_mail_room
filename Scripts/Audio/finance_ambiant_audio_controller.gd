@@ -9,6 +9,8 @@ var sound_dict = {
 	"vent3" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble6.ogg", "category" : 0, "allow_stacking" : false},
 	"financeHorrorTension1" : {"path" : "res://Assets/Audio/SoundFX/AmbientScares/FinanceHighTensionAmbiance1.ogg", "category" : 2, "allow_stacking" : true},
 	"deepNoise1" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/DeepNoise1.ogg", "category" : 1, "allow_stacking" : true},
+	"quakingHum1" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/QuakingHum1.ogg", "category" : 1, "allow_stacking" : true},
+	"ringing1" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/Ringing1.ogg", "category" : 1, "allow_stacking" : true},
 }
 
 @onready var timer: Timer = $Timer
@@ -33,6 +35,7 @@ func _ready() -> void:
 	#timer.timeout.connect(func(): AudioController.play_spatial_resource(load("res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble4.ogg")))
 	
 func _timerdown_play_awaited_sound():
+	print("now playing ambiance..." + awaited_sound_key)
 	play_specific_sound(awaited_sound_key)
 	previously_awaited_sound_key = String(awaited_sound_key)
 	var new_sound_key = ""
