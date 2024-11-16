@@ -301,5 +301,4 @@ func scare_vision_external_callback() -> void:
 func _seen_check_for(seen: bool):
 	var flag = !seen 
 	while flag != seen:
-		print(flag)
 		flag = await ScareDirector.monster_seen

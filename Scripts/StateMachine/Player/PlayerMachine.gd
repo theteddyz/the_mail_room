@@ -10,6 +10,7 @@ var extra_life = 1
 @onready var hit_timer: Timer = $hit_timer
 const DAMAGE_GRADIENT_TEXTURE = preload("res://Scenes/Worlds/FinanceDamaged.tres")
 const REGULAR_WE = preload("res://Scenes/Worlds/Finance.tres")
+@onready var scare_vision_controller = $ScareVisionController
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,20 +42,28 @@ func hit_by_entity():
 		par.get_node("WorldEnvironment").set_environment(DAMAGE_GRADIENT_TEXTURE)
 		var timer = get_tree().create_timer(0.35)
 		timer.timeout.connect(func(): par.get_node("WorldEnvironment").set_environment(REGULAR_WE))
+		timer.timeout.connect(_reset_we_visual)
 		hit_timer.start(1.25)
 		extra_life = 0
 	elif hit_timer.time_left <= 0:
 		var par = get_parent()
 		if par.name == "Mailcart":
 			par = par.get_parent()
+		scare_vision_controller.tween.kill()
+		scare_vision_controller.reset_world_environment_visual()
 		par.get_node("WorldEnvironment").set_environment(DAMAGE_GRADIENT_TEXTURE)
 		var timer = get_tree().create_timer(0.08)
 		timer.timeout.connect(game_over)
 		
 func game_over():
+	_reset_we_visual()
 	var par = get_parent()
 	par.get_node("WorldEnvironment").set_environment(REGULAR_WE)
 	get_tree().change_scene_to_file("res://Scenes/Prefabs/gui/MainMenu.tscn")
+	
+func _reset_we_visual():
+	scare_vision_controller.tween.kill()
+	scare_vision_controller.reset_world_environment_visual()
 	
 func save():
 	var save_dict = {
