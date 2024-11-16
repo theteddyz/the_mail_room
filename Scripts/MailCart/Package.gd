@@ -88,7 +88,8 @@ func grabbed():
 		is_being_tracked = false
 	if player:
 		var package_holder = player.find_child("PackageHolder")
-		reparent(player.find_child("PackageHolder"))
+		assert(package_holder != null, "THIS SHOULD NEVER OCCUR; PACKAGEHOLDER HAS DISSAPEARED? FIGURE OUT WHY ASAP")
+		reparent(package_holder)
 	else :
 		player = GameManager.get_player()
 		var package_holder = player.find_child("PackageHolder")
