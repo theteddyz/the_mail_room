@@ -7,10 +7,13 @@ var sound_dict = {
 	"vent1" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble4.ogg", "category" : 0, "allow_stacking" : false},
 	"vent2" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble5.ogg", "category" : 0, "allow_stacking" : false},
 	"vent3" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble6.ogg", "category" : 0, "allow_stacking" : false},
-	"financeHorrorTension1" : {"path" : "res://Assets/Audio/SoundFX/AmbientScares/FinanceHighTensionAmbiance1.ogg", "category" : 2, "allow_stacking" : true},
 	"deepNoise1" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/DeepNoise1.ogg", "category" : 1, "allow_stacking" : true},
 	"quakingHum1" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/QuakingHum1.ogg", "category" : 1, "allow_stacking" : true},
 	"ringing1" : {"path" : "res://Assets/Audio/SoundFX/AmbientNeutral/Ringing1.ogg", "category" : 1, "allow_stacking" : true},
+	"financeHorrorTension1" : {"path" : "res://Assets/Audio/SoundFX/AmbientScares/FinanceHighTensionAmbiance1.ogg", "category" : 2, "allow_stacking" : true},
+	"financeHorroBuild1" : {"path" : "res://Assets/Audio/SoundFX/AmbientScares/FinanceHighTensionBuild1.ogg", "category" : 2, "allow_stacking" : true},
+	"financeHorroBuild2" : {"path" : "res://Assets/Audio/SoundFX/AmbientScares/FinanceHighTensionBuild3.ogg", "category" : 2, "allow_stacking" : true},
+
 }
 
 @onready var timer: Timer = $Timer
@@ -68,7 +71,8 @@ func restart_ambiance_timer():
 func john_is_out_change(scare_index: int):
 	if scare_index == 1 or scare_index == 2:
 		_adjust_active_categories({
-			2 : true
+			2 : true,
+			0 : false
 		})
 
 func _adjust_active_categories(arr: Dictionary):
