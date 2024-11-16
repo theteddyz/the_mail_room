@@ -67,6 +67,14 @@ func _ready():
 	monster_anim = find_child("AnimationPlayer")
 	player = GameManager.get_player()
 	aggro_timer.wait_time = aggro_timeout
+	
+func enable_john():
+	monster_anim.play("Idle")
+	roaming_timer.start(25)
+	roaming = true
+	visible = true
+	disabled = false
+	col.disabled = false
 
 func _input(event):
 	if event.is_action_pressed("p"):

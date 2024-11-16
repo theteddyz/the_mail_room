@@ -20,10 +20,8 @@ func activate_scare(package_num:int):
 	if package_num == 6:
 		#Variable necessary for all scares, tells other scares which ones have been executed
 		has_been_executed = true
-		monster_body.visible = true
-		monster_collider.disabled = false
-		monster_body.disabled = false
-		monster_body.set_position(monster_position.position)
+		monster_body.enable_john()
+		monster_body.global_position = monster_position.global_position
 		monster_body.set_rotation(monster_position.rotation)
 		animator.play("Idle")
 		ScareDirector.emit_signal("scare_activated", scare_index)
