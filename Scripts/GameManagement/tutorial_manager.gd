@@ -14,6 +14,7 @@ var tutorial_step_2 = preload("res://Assets/Audio/SoundFX/VoiceLines/TutorialSte
 var tutorial_step_3 = preload("res://Assets/Audio/SoundFX/VoiceLines/TutorialStep3.ogg")
 var tutorial_end = preload("res://Assets/Audio/SoundFX/VoiceLines/TutorialEnd.ogg")
 var that_just_happened = preload("res://Assets/Audio/SoundFX/VoiceLines/ThatJustHappened.ogg")
+var mailroom_discovery_audio = preload("res://Assets/Audio/SoundFX/AmbientNeutral/MailRoomTransitionalAmbience1.ogg")
 @onready var finance_floor_chute = $"../stage/Objects/StaticBody3D6"
 func _ready():
 	player_radio = GameManager.get_player_radio()
@@ -24,8 +25,13 @@ func _ready():
 func _on_area_3d_body_entered(body):
 	if (body.name == "Player" or body.name == "Mailcart") and !tutorial_started:
 		tutorial_started = true
-		player_radio.play_narrator_sound(start_sound)
-
+		var timer = Timer.new()
+		add_child(timer)
+		timer.one_shot = false
+		timer.start(8.9)
+		AudioController.play_resource(mailroom_discovery_audio, 0, func():, 18)
+		timer.timeout.connect(func(): player_radio.play_narrator_sound(start_sound))
+		timer.timeout.connect(func(): timer.queue_free())
 
 func _on_tutorial_start_body_entered(body):
 	if tutorial_started and !step_1_played:

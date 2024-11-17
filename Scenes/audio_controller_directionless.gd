@@ -20,7 +20,7 @@ func _get_free_player() -> AudioStreamPlayer:
 	print("NO FREE AUDIO PLAYERS; DEFAULTING TO FIRST ONE")
 	return players[0]
 	
-func play_resource(sound, modifiers = 0):
+func play_resource(sound, modifiers = 0, callback = (func(): {}), db_offset = 0):
 	var p = _get_free_player()
 	if sound is Resource:
 		p.stream = sound
@@ -28,6 +28,11 @@ func play_resource(sound, modifiers = 0):
 		print("play_resource expects a resource... sound not fired!")
 		return
 	apply_effector(modifiers, p)
+	p.finished.connect(callback)
+	if db_offset != null:
+		p.volume_db = db_offset
+	else:
+		p.volume_db = 0
 	p.playing = true
 	
 func play_spatial_resource(sound, pos: Vector3 = Vector3.ZERO, modifiers = 0, callback: Callable = (func(): {})):

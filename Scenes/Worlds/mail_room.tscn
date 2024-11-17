@@ -1212,15 +1212,16 @@ collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/Start_Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9322, 1.0228, -4.86059)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1695, 1.0228, -4.86059)
 shape = SubResource("BoxShape3D_ru4ij")
 
 [node name="Tutorial_Start" type="Area3D" parent="TutorialManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.92318)
 collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/Tutorial_Start"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8631, 1.83688, -5.09112)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8631, 1.83688, -2.19447)
 shape = SubResource("BoxShape3D_j45ys")
 
 [node name="MailRoomFloorLayout" parent="." instance=ExtResource("26_7trmh")]

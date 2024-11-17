@@ -1113,7 +1113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000732422, 0.68578, -2.465
 shape = SubResource("BoxShape3D_fggfg")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Elevator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00764513, -1.19813, 0.0672301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00764513, -1.23325, 0.0672301)
 shape = SubResource("BoxShape3D_u3qxv")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Elevator"]
