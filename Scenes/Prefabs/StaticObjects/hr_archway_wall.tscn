@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://erkjuywjqecv"]
+[gd_scene load_steps=50 format=4 uid="uid://erkjuywjqecv"]
 
 [ext_resource type="Texture2D" uid="uid://t6r0hauythae" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Color.jpg" id="1_vj8na"]
 [ext_resource type="Texture2D" uid="uid://cto7grgckbt34" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Metalness-Concrete042A_1K-JPG_Roughness.png" id="2_bjolm"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dtprrraywwk3u" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Roughness.png" id="11_y2blj"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="15_qrbg8"]
 [ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="16_j4tbd"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/glass_shader.gdshader" id="16_r81nh"]
 [ext_resource type="AudioStream" uid="uid://dwhgdxuiprgyt" path="res://Assets/Audio/SoundFX/Door/DoorLocked2.ogg" id="17_uxr7i"]
 [ext_resource type="AudioStream" uid="uid://dupxwf04cwpmy" path="res://Assets/Audio/SoundFX/Door/DoorLocked3.ogg" id="18_os4sb"]
 [ext_resource type="AudioStream" uid="uid://dcv3fcs5k3ykn" path="res://Assets/Audio/SoundFX/Door/DoorLocked4.ogg" id="19_c257p"]
@@ -172,6 +173,18 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qwlur")
+
+[sub_resource type="BoxMesh" id="BoxMesh_dxs71"]
+size = Vector3(0.67, 0.635, 0.025)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hj2yo"]
+render_priority = 0
+shader = ExtResource("16_r81nh")
+shader_parameter/tint_color = Color(1, 1, 1, 0.611765)
+shader_parameter/backlight_color = Color(0.796243, 0.796243, 0.796243, 1)
+shader_parameter/noise_strenght = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/normal_strenght = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ar3q"]
 resource_name = "MainWallMaterial.001"
@@ -423,6 +436,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0174038, 0, -3.72529e-09)
 mesh = SubResource("ArrayMesh_vpr0s")
 skeleton = NodePath("")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2/HospitalDoor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634822, 1.72682, 0.0252205)
+mesh = SubResource("BoxMesh_dxs71")
+surface_material_override/0 = SubResource("ShaderMaterial_hj2yo")
+
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34258, 0, 0.0376517)
 collision_layer = 2
@@ -474,6 +492,11 @@ occluder = SubResource("BoxOccluder3D_nxw67")
 [node name="HospitalDoor2" type="MeshInstance3D" parent="RigidBody3D3"]
 mesh = SubResource("ArrayMesh_vpr0s")
 skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D3/HospitalDoor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634822, 1.72682, 0.0252205)
+mesh = SubResource("BoxMesh_dxs71")
+surface_material_override/0 = SubResource("ShaderMaterial_hj2yo")
 
 [node name="ArchwayWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
