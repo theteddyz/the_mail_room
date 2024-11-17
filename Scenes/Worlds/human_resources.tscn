@@ -21,6 +21,7 @@ floor_num = 3
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_6iufn")
 script = ExtResource("3_jahih")
+dark_value = 0.01
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 bounces = 4
