@@ -905,7 +905,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.93
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.9389, 0, 0.327649)
 
 [node name="Door" parent="stage/Walls" instance=ExtResource("18_viqc1")]
-transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -13.1637, -0.00211859, -0.367179)
+transform = Transform3D(8.48438e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, 8.48438e-08, -13.1637, -0.00211859, -0.367179)
 
 [node name="Rooms" type="Node3D" parent="stage"]
 
