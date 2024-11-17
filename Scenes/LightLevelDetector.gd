@@ -28,6 +28,7 @@ func timerdown():
 	
 func _process(delta):
 	if(active):
+		assert(we.dark_properties != null, "There exists a world-environment node with a missing world_environment_data script. Add one immediately.")
 		if(in_darkness):
 			# Set the WE to brightened settings (higher contrast, dark is still dark, but a light increase in visibility)
 			for key in we.dark_properties:
