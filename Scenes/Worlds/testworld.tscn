@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=107 format=4 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="7_qrcgv"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="8_f33rb"]
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="9_pjwvv"]
-[ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="10_60ndv"]
-[ext_resource type="PackedScene" uid="uid://c26hbiaufc6xb" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="11_x2h75"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="10_60ndv"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="11_x2h75"]
 [ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="12_8w3i4"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="12_ghnq1"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="13_n5hk3"]
@@ -25,7 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="17_7yhgj"]
 [ext_resource type="PackedScene" uid="uid://bwnbou1pjcf8l" path="res://Scenes/Prefabs/MoveableObjects/plant.tscn" id="17_b78s4"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="17_ma4ii"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/AssetTools/scary.tscn" id="17_mcry2"]
+[ext_resource type="PackedScene" uid="uid://dq1i3ji76iunj" path="res://Scenes/Prefabs/AssetTools/scary.tscn" id="17_mcry2"]
 [ext_resource type="PackedScene" uid="uid://dg80c1mna2ycx" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_2.tscn" id="18_j273n"]
 [ext_resource type="AudioStream" uid="uid://bh7pseacjj5se" path="res://Assets/Audio/SoundFX/CabinetClosed.mp3" id="18_ug4sl"]
 [ext_resource type="PackedScene" uid="uid://belfg414pqah4" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_3.tscn" id="19_dmey1"]
@@ -38,11 +38,14 @@
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="22_xftlv"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="23_woh21"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="24_s1v3d"]
+[ext_resource type="PackedScene" uid="uid://uuhrokgnd64l" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall.tscn" id="39_l18u8"]
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="40_hrj5v"]
 [ext_resource type="PackedScene" uid="uid://b85fvq8nn7wpm" path="res://Scenes/Prefabs/MoveableObjects/Monitor_interactable.tscn" id="40_kcapa"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
 [ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="44_epuy0"]
+[ext_resource type="ArrayMesh" uid="uid://cyb2yr075cgre" path="res://Assets/multimesh/multimeshtest.mesh" id="45_7d011"]
+[ext_resource type="Script" path="res://Scripts/Misc/static_mesh_spawner.gd" id="46_lotus"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_5ah0g"]
 vertices = PackedVector3Array(0, 1, -3.25, 0, 1, -5, -0.75, 1, -5.25, -1.5, 1, -2.5, -4.25, 1, -9.5, -4, 1, -10.75, -14.5, 1, -14.5, -0.75, 1, -6.25, 0, 1, -6.5, 0, 1, -9.25, -2.5, 1, -10.75, -2.75, 1, -14.5, -1.5, 1, -1.75, -14.5, 1, -1.75, 14, 1, -10.75, 14.25, 1, -10, 14.5, 1, -10, 14.5, 1, -14.5, 14, 1, -9.25, 11.25, 1, -5, 11.5, 1, -4, 14.5, 1, -4, 5.5, 1, -9.25, 5.75, 1, -4.5, 6, 1, -5, 2.75, 1, -2.25, 4.25, 1, -2.25, 4.25, 1, -3.25, 2.5, 1, -3.25, 0.75, 1, -6.25, 0.75, 1, -5.25, 5.75, 1, -3.5, 6.5, 1, -2, 5.75, 1, -1.25, 6, 1, -0.75, 7.5, 1, -0.5, 11.25, 1, -3.25, 7.25, 1, 1, 6, 1, 14.5, 14.5, 1, 14.5, 6.25, 1, -3.25, 6, 1, 1, 5.5, 1, -0.5, 4.5, 1, -1.25, 5.5, 1, 0.75, 1.5, 1, -0.25, 0, 1, -0.25, -0.5, 1, 14.5, 2.75, 1, -1, -0.5, 1, -0.75, -1.5, 1, -1.25, -14.5, 1, 14.5)
@@ -423,6 +426,13 @@ data = PackedVector3Array(37.5, 0, 39, -37.5, 0, 39, 37.5, 0, -39, -37.5, 0, 39,
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xc3id"]
 size = Vector3(76.3111, 0.319824, 76.66)
+
+[sub_resource type="MultiMesh" id="MultiMesh_8aoc7"]
+transform_format = 1
+instance_count = 1
+visible_instance_count = 1
+mesh = ExtResource("45_7d011")
+buffer = PackedFloat32Array(0.25, -0.25, 0.5, -0.25, 0.25, 0.5, -0.25, -0.25, 0.5, -0.25, -0.25, 0.5)
 
 [node name="world" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_y5q3h")
@@ -898,6 +908,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6006, 1.88917, -4.3951)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113563, 1.66132, -1.59701)
 collision_mask = 2
 
+[node name="StaticBody3D2" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 26.481, 0.509067, 0.89951)
+visible = false
+
+[node name="StaticBody3D4" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 26.481, 0.509067, 8.89951)
+visible = false
+
+[node name="StaticBody3D5" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 26.481, 0.509067, 17.8995)
+visible = false
+
+[node name="StaticBody3D6" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 26.481, 0.509067, -11.1005)
+visible = false
+
+[node name="StaticBody3D7" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 26.481, 0.509067, -24.1005)
+visible = false
+
+[node name="StaticBody3D8" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 35.481, 0.509067, -24.1005)
+visible = false
+
+[node name="StaticBody3D9" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 35.481, 0.509067, -10.1005)
+visible = false
+
+[node name="StaticBody3D10" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 35.481, 0.509067, 6.89951)
+visible = false
+
+[node name="StaticBody3D11" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 35.481, 0.509067, 20.8995)
+visible = false
+
 [node name="Monitor" parent="." instance=ExtResource("40_kcapa")]
 transform = Transform3D(-0.997213, 0, 0.0746133, 0, 1, 0, -0.0746133, 0, -0.997213, 0.0866303, 1.61968, 4.5114)
 
@@ -943,6 +989,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0477006, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor_colliders/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64869, -0.198545, -1.01932)
 shape = SubResource("BoxShape3D_xc3id")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." groups=["multimesh"]]
+multimesh = SubResource("MultiMesh_8aoc7")
+script = ExtResource("46_lotus")
 
 [editable path="NavigationRegion3D/StaticBody3D3"]
 [editable path="NavigationRegion3D/meeting_room_wall_Door"]

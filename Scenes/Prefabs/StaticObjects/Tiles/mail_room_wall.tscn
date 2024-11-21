@@ -11,7 +11,7 @@ cull_mode = 2
 albedo_texture = ExtResource("1_nw34a")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_e5yto"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_4cbku"]
 _surfaces = [{
 "aabb": AABB(-4.43963, 0.000488877, -0.199952, 8.86547, 11.9913, 0.40294),
 "format": 34896613377,
@@ -41,7 +41,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("vzyMQGw030BWxSs+vzyMQGw030BfTui9vzyMQGw030BOxyu+vzyMQGw030BwSug9DAONwGw030BOxyu+DAONwGw030BwSug9DAONwGw030BWxSs+DAONwGw030BfTui9DAONwGw030BWxSs+vzyMQGw030BwSug9vzyMQGw030BWxSs+DAONwGw030BwSug9vzyMQGw030BOxyu+DAONwGw030BfTui9DAONwGw030BOxyu+vzyMQGw030BfTui9cxGOwEQXE0A4wEy+cxGOwPsnADrc2E8+cxGOwPsnADo4wEy+cxGOwEQXE0Dc2E8+cxGOwPsnADo4wEy+e6CNQEQXE0A4wEy+cxGOwEQXE0A4wEy+e6CNQPsnADo4wEy+e6CNQPsnADo4wEy+e6CNQEQXE0Dc2E8+e6CNQEQXE0A4wEy+e6CNQPsnADrc2E8+e6CNQPsnADrc2E8+cxGOwEQXE0Dc2E8+e6CNQEQXE0Dc2E8+cxGOwPsnADrc2E8+e6CNQEQXE0A4wEy+cxGOwEQXE0Dc2E8+cxGOwEQXE0A4wEy+e6CNQEQXE0Dc2E8+vzyMQDH/DUBWxSs+DAONwGw030BWxSs+vzyMQGw030BWxSs+DAONwDH/DUBWxSs+vzyMQDH/DUBOxyu+vzyMQGw030BWxSs+vzyMQGw030BOxyu+vzyMQDH/DUBWxSs+DAONwDH/DUBOxyu+vzyMQGw030BOxyu+DAONwGw030BOxyu+vzyMQDH/DUBOxyu+DAONwDH/DUBWxSs+DAONwGw030BOxyu+DAONwGw030BWxSs+DAONwDH/DUBOxyu+DAONwGw030BwSug9DAONwF7eP0FfTui9DAONwF7eP0FwSug9DAONwGw030BfTui9DAONwGw030BfTui9vzyMQF7eP0FfTui9DAONwF7eP0FfTui9vzyMQGw030BfTui9vzyMQGw030BfTui9vzyMQF7eP0FwSug9vzyMQF7eP0FfTui9vzyMQGw030BwSug9vzyMQGw030BwSug9DAONwF7eP0FwSug9vzyMQF7eP0FwSug9DAONwGw030BwSug9vzyMQF7eP0FfTui9DAONwF7eP0FwSug9DAONwF7eP0FfTui9vzyMQF7eP0FwSug9/v/YrgAAkuj9/wCA/v/+//7/2K4AAJLo/f8AgP7//v8AANmuJlH/vwAABYD+//3/AADZriZR/78AAAWA/v/9/wGA+/8AAP7/AYD7/wAA/v8BgPv/AAD+/wGA+/8AAP7/AYD7/wAA/v8BgPv/AAD+/wGA+/8AAP7/AYD7/wAA/v8AAAWA/v/9/wAABYD+//3/AAAFgP7//f8AAAWA/v/9//7/AAABgAGA/v8AAAGAAYD+/wAAAYABgP7/AAABgAGA/f8AgP7//v/9/wCA/v/+//3/AID+//7//f8AgP7//v//f/9/AID+//9//38AgP7//3//fwCA/v//f/9/AID+/wGA+/8AAP7/AYD7/wAA/v8BgPv/AAD+/wGA+/8AAP7//3//fwCA/v//f/9/AID+//9//38AgP7//3//fwCA/v/6/wCA/n/+//r/AID+f/7/+v8AgP5//v/6/wCA/n/+//7//v//f/7//v/+//9//v/+//7//3/+//7//v//f/7/AQAEgAGA/P8BAASAAYD8/wEABIABgPz/AQAEgAGA/P8BAASAAYD8/wEABIABgPz/AQAEgAGA/P8BAASAAYD8//7//v//f/7//v/+//9//v/+//7//3/+//7//v//f/7/+v8AgP5//v/6/wCA/n/+//r/AID+f/7/+v8AgP5//v//f/9/AID+//9//38AgP7//3//fwCA/v//f/9/AID+//5//f8AgP6//n/9/wCA/r/+f/3/AID+v/5//f8AgP6/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_e5yto")
+shadow_mesh = SubResource("ArrayMesh_4cbku")
 
 [node name="StaticBody3D" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)

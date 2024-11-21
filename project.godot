@@ -31,6 +31,14 @@ window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
+[file_customization]
+
+folder_colors={
+"res://Assets/": "orange",
+"res://Scenes/": "red",
+"res://Scripts/": "blue"
+}
+
 [global_group]
 
 Real_Floor="Disable floor when moving in elevator"
@@ -39,6 +47,7 @@ Ceiling=""
 scarevision=""
 observed=""
 monster=""
+multimesh=""
 
 [input]
 
