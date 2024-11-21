@@ -1,22 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://bmjy1n0uwnbhb"]
+[gd_scene load_steps=9 format=4 uid="uid://bmjy1n0uwnbhb"]
 
 [ext_resource type="Texture2D" uid="uid://b01421mbq0uvp" path="res://Assets/Textures/BlenderTextures/ElevatorShaft.png" id="1_cadig"]
 [ext_resource type="Texture2D" uid="uid://bmasku12ki8ce" path="res://Assets/Textures/BlenderTextures/ElevatorShaftInside.png" id="2_yqns3"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gxfwk"]
-size = Vector3(0.237671, 8.40866, 6.3166)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_p2qio"]
-size = Vector3(4.19545, 7.86401, 0.235168)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8o5sk"]
-size = Vector3(1.09142, 8.20986, 0.409786)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8ge3k"]
-size = Vector3(1.11547, 8.24599, 0.161924)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7ubin"]
-size = Vector3(1.95755, 5.00797, 0.209595)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01aq2"]
 resource_name = "ElevatorShaft"
@@ -99,36 +84,12 @@ shadow_mesh = SubResource("ArrayMesh_xr1vi")
 collision_layer = 5
 collision_mask = 5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0409, 4.0968, 0.13908)
-shape = SubResource("BoxShape3D_gxfwk")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00733, 3.98858, 0.137104)
-shape = SubResource("BoxShape3D_gxfwk")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011497, 3.89343, -2.90881)
-shape = SubResource("BoxShape3D_p2qio")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53368, 4.09077, 3.13831)
-shape = SubResource("BoxShape3D_8o5sk")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53626, 4.10884, 3.22512)
-shape = SubResource("BoxShape3D_8ge3k")
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00480625, 5.7424, 3.19594)
-shape = SubResource("BoxShape3D_7ubin")
-
 [node name="ElevatorShaft2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.23898, 0, 0, 0, 1.23898, 0, 0, 0, 1.23898, 0, 1.2, 0)
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 1, 0)
 mesh = SubResource("ArrayMesh_eksns")
 skeleton = NodePath("")
 
 [node name="ElevatorShaftInside2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.06493, 0, 0, 0, 1.06493, 0, 0, 0, 1.06493, 0, 1.2, 0.113972)
+transform = Transform3D(1.125, 0, 0, 0, 1.125, 0, 0, 0, 1.125, 0, 1, 0.114)
 mesh = SubResource("ArrayMesh_xa45b")
 skeleton = NodePath("")

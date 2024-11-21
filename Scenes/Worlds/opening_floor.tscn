@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://crqdsibspsy67" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_003.tscn" id="7_w4ny4"]
 [ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall.tscn" id="8_0pesw"]
 [ext_resource type="PackedScene" uid="uid://cp3vbfvy03meb" path="res://Scenes/Prefabs/MoveableObjects/crumpled_paper.tscn" id="8_5dm4r"]
-[ext_resource type="PackedScene" uid="uid://ci51s3r8x83rr" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_with_light_openingfloor.tscn" id="8_ul3bg"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_with_light_openingfloor.tscn" id="8_ul3bg"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_nolight.tscn" id="9_jtqkc"]
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_007.tscn" id="9_x0jns"]
 [ext_resource type="PackedScene" uid="uid://g3iqvb0k1cr6" path="res://Scenes/Prefabs/StaticObjects/ceilinglight_on.tscn" id="10_avfab"]
@@ -43,9 +43,9 @@
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="25_jj16k"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="26_2vxtn"]
 [ext_resource type="PackedScene" uid="uid://dp4shv525pe8d" path="res://Scenes/Prefabs/StaticObjects/postit_cluster5.tscn" id="26_kr7jd"]
-[ext_resource type="PackedScene" uid="uid://cbytw1wtximmv" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="27_i8w5y"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="27_i8w5y"]
 [ext_resource type="PackedScene" uid="uid://ccaqjm1sg3mgx" path="res://Assets/Models/keyboard_broken_low_poly.tscn" id="28_eniny"]
-[ext_resource type="PackedScene" uid="uid://c26hbiaufc6xb" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="28_muw1u"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="28_muw1u"]
 [ext_resource type="PackedScene" uid="uid://cq3vkf11swts2" path="res://Scenes/Prefabs/StaticObjects/cables.tscn" id="29_texbw"]
 [ext_resource type="PackedScene" uid="uid://6o3m3txoa5np" path="res://Scenes/Prefabs/StaticObjects/postit_single1.tscn" id="30_10uy3"]
 [ext_resource type="PackedScene" uid="uid://bxl6cnj04eefh" path="res://Scenes/Prefabs/StaticObjects/cables_001.tscn" id="30_hahoe"]
@@ -58,7 +58,7 @@
 [ext_resource type="PackedScene" uid="uid://c28h3l68py4my" path="res://Scenes/Prefabs/StaticObjects/postit_cluster7.tscn" id="42_adxfk"]
 [ext_resource type="PackedScene" uid="uid://box8t8l24q1si" path="res://Assets/Models/desk.tscn" id="50_s0qts"]
 [ext_resource type="PackedScene" uid="uid://bwnbou1pjcf8l" path="res://Scenes/Prefabs/MoveableObjects/plant.tscn" id="51_oinx4"]
-[ext_resource type="PackedScene" uid="uid://wiqce4mvixol" path="res://Scenes/Prefabs/MoveableObjects/mouse_trackball.tscn" id="52_raxbm"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/mouse_trackball.tscn" id="52_raxbm"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="57_0i64e"]
 [ext_resource type="Texture2D" uid="uid://b57jpmwtrxcc3" path="res://Assets/Textures/BlenderTextures/KeyboardLowRez2.png" id="58_5j2j2"]
 [ext_resource type="Texture2D" uid="uid://igbeho62sgj2" path="res://Assets/Textures/BlenderTextures/KeyboardBrokenLowRez.png" id="59_38hlx"]
@@ -865,7 +865,7 @@ size = Vector3(60.525, 1, 32.03)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_60xfd"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05swp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rmxnw"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -897,7 +897,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_05swp"),
+"material": SubResource("StandardMaterial3D_rmxnw"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -1651,7 +1651,7 @@ stream_0/stream = ExtResource("75_0e0pg")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j1c1w"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8ek2"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -1683,7 +1683,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_j1c1w"),
+"material": SubResource("StandardMaterial3D_b8ek2"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -1831,7 +1831,7 @@ stream_2/stream = ExtResource("87_k03jj")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rgjq0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijjt0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ed1nv"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -1863,7 +1863,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_ijjt0"),
+"material": SubResource("StandardMaterial3D_ed1nv"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -2981,7 +2981,7 @@ transform = Transform3D(9.71938e-05, -0.00141371, -0.0211664, -0.00309269, 0.020
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.172632, -5)
 
 [node name="Elevator" parent="." instance=ExtResource("16_puylt")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.686, 0.256, 34.581)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.686, 0.958441, 34.8188)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.894, 0, 0)

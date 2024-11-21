@@ -32,7 +32,7 @@ light_data = ExtResource("4_5pumb")
 [node name="AMBIANCE_TRIGGERS" type="Node" parent="."]
 
 [node name="Elevator" parent="." instance=ExtResource("4_83x7j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.002, -0.227, -4.179)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.002, 0.418257, -4.41595)
 
 [node name="Player" parent="." instance=ExtResource("7_o0ubx")]
 transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.0832604, -6.09025, 0.479327, 1.71993)
