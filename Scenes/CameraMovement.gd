@@ -30,20 +30,29 @@ var followingVelocity: Vector3 = Vector3.ZERO
 var previousFollowingVelocity: Vector3 = Vector3.ZERO
 var velocityLerpTowards: Vector3 = Vector3.ZERO
 
+var initial_rotation_offset: Quaternion = Quaternion.IDENTITY  # To store the initial offset
+
 func _ready() -> void:
 	top_level = false
 	head = get_parent()
-	previous_head_quat = head.global_transform.basis.get_rotation_quaternion()
+	previous_head_quat = Quaternion.IDENTITY #head.global_transform.basis.get_rotation_quaternion()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(delta: float):
 	if shouldEnable:
-		
 		# Get the current and previous rotation of the head in quaternions
 		var current_head_quat = head.global_transform.basis.get_rotation_quaternion()
 
-		# Convert both quaternions to Euler angles (used to track cumulative rotation)
-		var current_head_euler = current_head_quat.get_euler()
+		# Apply the initial offset to the head's quaternion
+		# Extract only the Y-axis rotation from the initial offset
+		var y_only_offset = Quaternion(Vector3.UP, initial_rotation_offset.get_euler().y)
+		
+		# Apply only the Y-axis offset to the head's rotation
+		var adjusted_head_quat = current_head_quat
+
+		# Convert adjusted quaternion to Euler angles
+		var current_head_euler = adjusted_head_quat.get_euler()
 		var previous_head_euler = previous_head_quat.get_euler()
 
 		# Accumulate the target's rotation, allowing for multiple flips
@@ -64,7 +73,8 @@ func _process(delta: float) -> void:
 		)
 
 		# Store the current head rotation quaternion for the next frame comparison
-		previous_head_quat = current_head_quat
+		previous_head_quat = adjusted_head_quat
+
 
 		# Compute the rotational difference between current and target
 		var rotational_difference = target_cumulative_rotation - current_cumulative_rotation 
@@ -92,6 +102,8 @@ func _process(delta: float) -> void:
 
 		# Convert the cumulative rotation (Euler angles) to a quaternion
 		cameraRotation = Quaternion.from_euler(current_cumulative_rotation)
+		
+		#cameraRotation *= Quaternion.from_euler(Vector3(0,90,0))
 
 		# Apply the new rotation to the camera
 		global_transform.basis = Basis(cameraRotation)
@@ -168,9 +180,18 @@ func _input(event):
 		walkingScript.head_bopping_sprinting_intensity = 0.4 #0.2
 		if walkingScript.has_meta("head_bopping_crouching_intensity"):
 			walkingScript.head_bopping_crouching_intensity = 0.1 # 0.05
-		global_transform = head.global_transform
-		cameraRotation = Quaternion(head.global_transform.basis.get_rotation_quaternion())
 		
+		# Set the camera's transform to match the head initially
+		#global_transform = head.global_transform
+		global_transform.basis = head.global_transform.basis
+		
+		# Calculate the initial rotation offset between camera and head
+		initial_rotation_offset = head.global_transform.basis.get_rotation_quaternion()
+
+		# Initialize rotation state
+		current_cumulative_rotation = Vector3.ZERO
+		target_cumulative_rotation = Vector3.ZERO
+		#previous_head_quat = head.global_transform.basis.get_rotation_quaternion()
 	# A function to smoothly interpolate between two quaternions, similar to your slerp_generic
 func slerp_generic(q0: Quaternion, q1: Quaternion, t: float) -> Quaternion:
 	# If t is too large, divide it by two recursively
