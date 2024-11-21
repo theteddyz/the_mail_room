@@ -26,11 +26,11 @@
 [ext_resource type="PackedScene" uid="uid://bc4e2pkwjrbhi" path="res://Scenes/Prefabs/StaticObjects/papers_tall.tscn" id="24_u78h6"]
 [ext_resource type="PackedScene" uid="uid://cp3vbfvy03meb" path="res://Scenes/Prefabs/MoveableObjects/crumpled_paper.tscn" id="25_lpykk"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q26gv"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nu52y"]
 load_path = "res://.godot/imported/Carpet.png-c2ea077c2bad62480908f013c2e710bc.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j07gr"]
-albedo_texture = SubResource("CompressedTexture2D_q26gv")
+albedo_texture = SubResource("CompressedTexture2D_nu52y")
 emission_energy_multiplier = 13.22
 uv1_scale = Vector3(5, 1.135, 3.5)
 texture_filter = 2
