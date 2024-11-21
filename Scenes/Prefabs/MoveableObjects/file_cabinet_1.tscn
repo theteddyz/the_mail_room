@@ -16,7 +16,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3oyh2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udoiw"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -48,7 +48,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_3oyh2"),
+"material": SubResource("StandardMaterial3D_udoiw"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -152,7 +152,7 @@ stream_1/stream = ExtResource("8_tnfiw")
 stream_2/stream = ExtResource("9_hrl5c")
 
 [node name="File_Cabinet" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.824006, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.824006, 0)
 collision_layer = 2
 collision_mask = 15
 mass = 60.0
@@ -167,32 +167,33 @@ can_rotate = false
 script = ExtResource("3_7digd")
 
 [node name="FileCabinet" type="MeshInstance3D" parent="Interpolator"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_fnn35")
 skeleton = NodePath("")
 script = ExtResource("4_rx22h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.246117, -0.0160522, -0.0383301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.246117, -0.0160522, 0.0301058)
 shape = SubResource("BoxShape3D_lxrhf")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.244171, -0.0160522, -0.0169678)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.244171, -0.0160522, 0.0514681)
 shape = SubResource("BoxShape3D_lxrhf")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10352e-05, -0.783615, -0.0372925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10412e-05, -0.783615, 0.0311434)
 shape = SubResource("BoxShape3D_i4j71")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10352e-05, 0.771034, -0.0385742)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10412e-05, 0.771034, 0.0298617)
 shape = SubResource("BoxShape3D_n8wyb")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10352e-05, -0.0144433, 0.275207)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10412e-05, -0.0144433, 0.343643)
 shape = SubResource("BoxShape3D_nykrr")
 
 [node name="Drawer" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.554, -0.345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, 0.554, -0.241367)
 collision_layer = 2
 collision_mask = 15
 mass = 3.0
@@ -210,7 +211,7 @@ motor_enabled = true
 motor_max_force = 10.0
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -233,6 +234,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.30168
 shape = SubResource("BoxShape3D_2c4wt")
 
 [node name="FileCabinetDrawer_001" type="MeshInstance3D" parent="Drawer"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.21284e-08, 0, 0.59628)
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
 
@@ -255,7 +257,7 @@ volume = -20.0
 joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Drawer2" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181111, -0.345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, 0.181111, -0.241367)
 collision_layer = 2
 collision_mask = 15
 mass = 3.0
@@ -273,7 +275,7 @@ motor_enabled = true
 motor_max_force = 10.0
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -296,6 +298,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.30168
 shape = SubResource("BoxShape3D_2c4wt")
 
 [node name="FileCabinetDrawer_001" type="MeshInstance3D" parent="Drawer2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.21284e-08, 0, 0.59628)
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
 
@@ -318,7 +321,7 @@ volume = -20.0
 joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Drawer3" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.186194, -0.345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, -0.186194, -0.241367)
 collision_layer = 2
 collision_mask = 15
 mass = 3.0
@@ -336,7 +339,7 @@ motor_enabled = true
 motor_max_force = 10.0
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -359,6 +362,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.30168
 shape = SubResource("BoxShape3D_2c4wt")
 
 [node name="FileCabinetDrawer_001" type="MeshInstance3D" parent="Drawer3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.21284e-08, 0, 0.59628)
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
 
@@ -381,7 +385,7 @@ volume = -20.0
 joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Drawer4" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.552292, -0.345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, -0.552292, -0.241367)
 collision_layer = 2
 collision_mask = 15
 mass = 3.0
@@ -400,7 +404,7 @@ motor_enabled = true
 motor_max_force = 10.0
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.0943991)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -423,6 +427,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.207392, -0.0172398, 0.30168
 shape = SubResource("BoxShape3D_2c4wt")
 
 [node name="FileCabinetDrawer_001" type="MeshInstance3D" parent="Drawer4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.21284e-08, 0, 0.59628)
 mesh = ExtResource("6_0wjlh")
 skeleton = NodePath("")
 
