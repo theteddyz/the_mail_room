@@ -182,7 +182,7 @@ func open_doors()->void:
 func call_elevator_down()->void:
 	Elevator.position = Vector3(2,8.82,0.946)
 	var elevator_called_down_tween = create_tween()
-	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(2,1.425,0.846), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(2,0.8,0.846), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await elevator_called_down_tween.finished
@@ -193,7 +193,7 @@ func call_elevator_down()->void:
 func call_elevator_up()->void:
 	Elevator.position = Vector3(2,-6.90,0.946)
 	var elevator_called_up_tween = create_tween()
-	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(2,1.425,0.846), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(2,0.8,0.846), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await elevator_called_up_tween.finished

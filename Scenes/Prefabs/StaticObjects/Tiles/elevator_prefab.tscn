@@ -730,7 +730,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_okrwq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_utnqr"]
-size = Vector3(51.1322, 90.4399, 1)
+size = Vector3(57.1609, 95.3542, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wenth"]
 resource_name = "ElevatorDoor"
@@ -805,10 +805,10 @@ size = Vector3(0.143799, 3.364, 5.24927)
 size = Vector3(3.31787, 3.45953, 0.101471)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u3qxv"]
-size = Vector3(3.48175, 0.0305176, 5.74762)
+size = Vector3(3.48175, 0.0305176, 6.07838)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ks2cq"]
-size = Vector3(3.245, 3.715, 4.795)
+size = Vector3(3.245, 3.715, 4.33195)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yfroe"]
 radius = 0.263849
@@ -817,7 +817,7 @@ radius = 0.263849
 script = ExtResource("1_mn1y7")
 
 [node name="Elevator_Wall" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.227591, 4.17715)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00142, -0.424872, 4.41206)
 collision_layer = 133
 collision_mask = 133
 script = ExtResource("2_qjipe")
@@ -897,20 +897,20 @@ occluder = SubResource("BoxOccluder3D_pehdm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.154511, 0.789673)
 
 [node name="ElevatorShaft3" parent="." instance=ExtResource("7_5pilt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7.58553, 0.789673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8.61348, 0.789673)
 
 [node name="ElevatorShaft4" parent="." instance=ExtResource("7_5pilt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -7.97969, 0.789673)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -8.95996, 0.789673)
 
 [node name="Elevator" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9865, -6.75496, 0.845776)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9865, -6.75496, 0.695824)
 collision_layer = 29
 collision_mask = 29
 
 [node name="Elevator" type="Node3D" parent="Elevator"]
 
 [node name="Elevator_body" type="MeshInstance3D" parent="Elevator/Elevator"]
-transform = Transform3D(1.25607, 0, 0, 0, 1.25607, 0, 0, 0, 1.25607, 0, 0, 0)
+transform = Transform3D(1.25607, 0, 0, 0, 1.25607, 0, 0, 0, 1.25607, 0, 0, 0.159983)
 mesh = SubResource("ArrayMesh_5bhdx")
 skeleton = NodePath("")
 
@@ -926,7 +926,7 @@ skeleton = NodePath("")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/CallCenter"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.470198, 0)
-collision_layer = 3
+collision_layer = 18
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 7
@@ -942,7 +942,8 @@ skeleton = NodePath("")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/Finance"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.373051, 0)
-collision_layer = 3
+collision_layer = 2
+collision_mask = 16
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/Finance.tscn"
 floor_num = 6
@@ -1082,7 +1083,7 @@ shape = SubResource("SphereShape3D_jsaqy")
 transform = Transform3D(0.0274321, 0, 0, 0, 0.0274321, 0, 0, 0, 0.0274321, 0, 0.283487, 2.2116)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/Elevator/Elevator_body/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0883, 5.37917, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0829163, 2.922, 5.12898)
 shape = SubResource("BoxShape3D_utnqr")
 disabled = true
 
@@ -1113,7 +1114,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000732422, 0.68578, -2.465
 shape = SubResource("BoxShape3D_fggfg")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Elevator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00764513, -1.23325, 0.0672301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00764513, -1.26119, 0.232613)
 shape = SubResource("BoxShape3D_u3qxv")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Elevator"]
@@ -1129,7 +1130,7 @@ collision_mask = 15
 script = ExtResource("12_j5k40")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/ObjectDetectionShape"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300293, -0.169383, -0.60775)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300293, -0.169383, -0.839276)
 shape = SubResource("BoxShape3D_ks2cq")
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Elevator"]
@@ -1140,7 +1141,7 @@ light_energy = 0.543
 shadow_enabled = true
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99677, 1.35007, 3.94624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99677, 0.727529, 4.46189)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("13_gspt1")

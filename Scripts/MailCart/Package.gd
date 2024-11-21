@@ -40,7 +40,6 @@ func _ready():
 	text_displayer = Gui.get_address_displayer()
 	EventBus.connect("object_looked_at",on_seen)
 	EventBus.connect("no_object_found",on_unseen)
-	check_distance_to_player()
 
 func on_seen(node):
 	if node == self:
