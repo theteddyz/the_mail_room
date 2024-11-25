@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxd0eechinn1m"]
+[gd_scene load_steps=4 format=3 uid="uid://bxd0eechinn1m"]
+
+[ext_resource type="ArrayMesh" uid="uid://dgjb4fskn6x4k" path="res://Assets/multimesh/finance_wall.mesh" id="1_fc6i6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y4g4g"]
 size = Vector3(5.53668, 7.68627, 0.349243)
@@ -9,6 +11,10 @@ size = Vector3(5.68323, 7.88878, 0.262282)
 [node name="wall" type="StaticBody3D"]
 collision_layer = 133
 collision_mask = 133
+
+[node name="FinanceWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
+mesh = ExtResource("1_fc6i6")
 
 [node name="Node3D" type="Node3D" parent="." groups=["multimesh"]]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
