@@ -54,7 +54,7 @@ var close:bool
 var door_forward_position
 var door_global_position
 var mesh:MeshInstance3D
-var grabbable_thread:Thread = Thread.new() 
+var enabler:VisibleOnScreenEnabler3D
 func _ready():
 	for child in get_children():
 		if child is MeshInstance3D:
@@ -62,8 +62,11 @@ func _ready():
 	if mesh:
 		mesh.lod_bias = 0.1
 		mesh.visibility_range_end = 30
-	
-	
+	enabler = VisibleOnScreenEnabler3D.new()
+	add_child(enabler)
+	var path = get_path()
+	enabler.enable_node_path = path
+	enabler.process_mode = Node.PROCESS_MODE_ALWAYS
 	set_collision_layer_value(5,true)
 	set_collision_mask_value(5,true)
 	set_collision_mask_value(13,true)
@@ -438,7 +441,7 @@ func line(pos1: Vector3, pos2: Vector3, color = Color.WHITE, persist_ms = 0):
 	
 
 	return await final_cleanup(mesh_instance, persist_ms)
-	
+
 func final_cleanup(mesh_instance: MeshInstance3D, persist_ms: float):
 	get_tree().get_root().add_child(mesh_instance)
 	if persist_ms == 1:
@@ -449,6 +452,7 @@ func final_cleanup(mesh_instance: MeshInstance3D, persist_ms: float):
 		mesh_instance.queue_free()
 	else:
 		return mesh_instance
+
 
 #func optimizations():
 #	var camera_transform = camera.global_transform
