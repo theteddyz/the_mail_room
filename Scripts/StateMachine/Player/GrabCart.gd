@@ -19,6 +19,13 @@ func _ready():
 	mailcart.get_node("Handlebar").set_collision_layer_value(2, false)
 	#mailcart.set_collision_mask_value(3, false)
 	persistent_state.set_collision_layer_value(3, false)
+	persistent_state.set_collision_mask_value(1, false)
+	persistent_state.set_collision_mask_value(2, false)
+	persistent_state.set_collision_mask_value(4, false)
+	var collision_object: CollisionShape3D = persistent_state.find_child("standing_collision_shape")
+	var collision_object2: CollisionShape3D = persistent_state.find_child("crouching_collision_shape")
+	collision_object.disabled = true
+	collision_object2.disabled = true
 	initial_cart_rotation = mailcart.rotation
 	initial_head_position = neck.position
 

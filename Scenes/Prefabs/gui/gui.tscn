@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=38 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -32,6 +32,10 @@ gradient = SubResource("Gradient_10so2")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_de5p4"]
 texture = SubResource("GradientTexture2D_aqccv")
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqyhe"]
+line_spacing = -4.0
+font_size = 15
 
 [sub_resource type="Animation" id="Animation_v6jfl"]
 length = 0.001
@@ -410,6 +414,7 @@ expand_mode = 1
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_yqyhe")
 script = ExtResource("3_bccgp")
 
 [node name="Adress_Displayer" type="Control" parent="."]
