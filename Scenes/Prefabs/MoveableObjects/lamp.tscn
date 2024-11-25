@@ -343,4 +343,6 @@ stream = ExtResource("7_65t1v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165858, -0.240402)
 stream = SubResource("AudioStreamRandomizer_gctal")
 
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+
 [connection signal="body_entered" from="LampArm" to="LampArm/LampCollisionDetector" method="_on_body_entered"]
