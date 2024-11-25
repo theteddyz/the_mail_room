@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dmy0v04imvkbv"]
+[gd_scene load_steps=13 format=4 uid="uid://dmy0v04imvkbv"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_s1rcs"]
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_skhh8"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_sofgt"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_uq7kf"]
 [ext_resource type="AudioStream" uid="uid://cbd42qbrc0oo0" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxLarge2.mp3" id="5_xxvwm"]
 [ext_resource type="AudioStream" uid="uid://bvefoql60memf" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxLarge3.mp3" id="6_4qsq7"]
@@ -66,10 +65,7 @@ sleeping = true
 angular_damp = 1.0
 script = ExtResource("1_s1rcs")
 
-[node name="Interpolator" type="Node3D" parent="."]
-script = ExtResource("2_sofgt")
-
-[node name="CardboardBoxBig" type="MeshInstance3D" parent="Interpolator"]
+[node name="CardboardBoxBig" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.318303, 0, 0, 0, 0.318303, 0, 0, 0, 0.318303, 0, 0, 0)
 gi_mode = 2
 mesh = SubResource("ArrayMesh_glgg1")

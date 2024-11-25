@@ -53,7 +53,17 @@ var open:bool
 var close:bool
 var door_forward_position
 var door_global_position
+var mesh:MeshInstance3D
+var grabbable_thread:Thread = Thread.new() 
 func _ready():
+	for child in get_children():
+		if child is MeshInstance3D:
+			mesh = child
+	if mesh:
+		mesh.lod_bias = 0.1
+		mesh.visibility_range_end = 30
+	
+	
 	set_collision_layer_value(5,true)
 	set_collision_mask_value(5,true)
 	set_collision_mask_value(13,true)

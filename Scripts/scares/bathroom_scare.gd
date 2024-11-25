@@ -3,7 +3,6 @@ var scare_index = 4
 @onready var anim:AnimationPlayer = $AnimationPlayer
 @onready var john_laugh:AudioStreamPlayer3D = $AudioStreamPlayer3D2
 @onready var door_slam_audio:AudioStreamPlayer3D = $DoorSlamming
-@onready var eyes = $Eyes
 var closed:bool = false
 var trigger_3_Ambience
 var trigger_1_Ambience
@@ -40,7 +39,6 @@ func monster_seen_function(b:bool):
 		second_bathroom_light.visible = false
 		second_bathroom_light_mesh.transparency = 1
 		await get_tree().create_timer(0.1).timeout
-		eyes.queue_free()
 		john_body.queue_free()
 		$BloodScares.visible = false
 		await get_tree().create_timer(0.1).timeout
@@ -68,8 +66,6 @@ func _third_trigger(body):
 		second_bathroom_light_mesh.transparency = 0
 		second_bathroom_light.visible = true
 		second_bathroom_light.light_color = Color.FIREBRICK
-		if eyes != null:
-			eyes.visible = true
 		spawn_monster_behind_player()
 
 func spawn_monster_behind_player():
