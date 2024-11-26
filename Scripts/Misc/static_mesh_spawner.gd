@@ -11,6 +11,7 @@ func _ready():
 			var mesh_transform = wall.global_transform
 			multimesh.set_instance_transform(i, mesh_transform)
 			var old_wall:MeshInstance3D = wall.get_child(0)
-			old_wall.visible = false
-			old_wall.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			old_wall.queue_free()
+			#old_wall.visible = false
+			#old_wall.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		
