@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://k8lfivepg4gx"]
+[gd_scene load_steps=8 format=4 uid="uid://k8lfivepg4gx"]
 
+[ext_resource type="ArrayOccluder3D" uid="uid://b1vd1qjwn267a" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_archway.occ" id="1_6g2nb"]
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_76hbs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8niby"]
@@ -46,56 +47,41 @@ size = Vector3(1.51492, 7.68627, 0.349243)
 [sub_resource type="BoxShape3D" id="BoxShape3D_505d4"]
 size = Vector3(3.59473, 5.22723, 0.276184)
 
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_mss4h"]
-size = Vector3(1.75576, 7.75556, 0.296083)
+[node name="wall_With_archway" type="Node3D"]
 
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_fumts"]
-size = Vector3(1.66252, 7.75556, 0.296083)
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03362, 3.89069, 0)
+occluder = ExtResource("1_6g2nb")
 
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_qfb3a"]
-size = Vector3(2.7188, 5.21357, 0.296083)
-
-[node name="wall_with_archway" type="StaticBody3D"]
+[node name="wall_with_archway" type="StaticBody3D" parent="."]
 collision_layer = 133
 collision_mask = 133
 
-[node name="WallWithArchway" type="MeshInstance3D" parent="."]
+[node name="WallWithArchway" type="MeshInstance3D" parent="wall_with_archway"]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6mpiq")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="wall_with_archway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01439, 3.89726, -0.00457764)
 shape = SubResource("BoxShape3D_y4g4g")
 
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CollisionShape3D2"]
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="wall_with_archway/CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0225372, -0.00949121, -0.00159835)
 size = Vector3(1.57297, 7.75824, 0.217522)
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="wall_with_archway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04573, 3.89726, -0.00457764)
 shape = SubResource("BoxShape3D_y4g4g")
 
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CollisionShape3D3"]
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="wall_with_archway/CollisionShape3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0225372, -0.00949121, -0.00159835)
 size = Vector3(1.57297, 7.75824, 0.217522)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall_with_archway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0200195, 5.1553, 0.00344849)
 shape = SubResource("BoxShape3D_505d4")
 
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CollisionShape3D"]
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="wall_with_archway/CollisionShape3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.043438, 0.630997, -0.00159835)
 size = Vector3(2.67461, 6.47726, 0.217522)
-
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03362, 3.89069, 0)
-occluder = SubResource("BoxOccluder3D_mss4h")
-
-[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05235, 3.89069, 0)
-occluder = SubResource("BoxOccluder3D_fumts")
-
-[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0282823, 5.19248, 0)
-occluder = SubResource("BoxOccluder3D_qfb3a")

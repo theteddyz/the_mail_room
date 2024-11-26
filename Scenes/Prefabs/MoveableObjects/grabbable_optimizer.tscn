@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsplkc83eosbe"]
+
+[ext_resource type="Script" path="res://Scripts/Misc/object_disable_script.gd" id="1_4h51e"]
+
+[node name="grabbable_optimizer" type="VisibleOnScreenNotifier3D"]
+aabb = AABB(-0.801309, -0.827243, -0.518032, 1.60262, 1.65449, 1.03606)
+script = ExtResource("1_4h51e")
+
+[connection signal="screen_entered" from="." to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="." to="." method="_on_screen_exited"]

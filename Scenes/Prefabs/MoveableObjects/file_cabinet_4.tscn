@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://brfqkckspyesq"]
+[gd_scene load_steps=11 format=4 uid="uid://brfqkckspyesq"]
 
+[ext_resource type="Script" path="res://Scripts/Misc/object_disable_script.gd" id="1_i3oye"]
 [ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="1_ltigc"]
 [ext_resource type="PackedScene" uid="uid://c7e4imgjbdx46" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_1.tscn" id="2_kwvr4"]
 [ext_resource type="Texture2D" uid="uid://f21t4ualvxjr" path="res://Assets/Textures/BlenderTextures/FileCabinetDrawer.png" id="2_mo63m"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6wong"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fomow"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -36,7 +37,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_6wong"),
+"material": SubResource("StandardMaterial3D_fomow"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -90,6 +91,12 @@ shadow_mesh = SubResource("ArrayMesh_mcp7j")
 
 [node name="File_Cabinet" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.824, 0)
+
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="." node_paths=PackedStringArray("target")]
+enable_mode = 2
+enable_node_path = NodePath("../File_Cabinet")
+script = ExtResource("1_i3oye")
+target = NodePath("../File_Cabinet")
 
 [node name="File_Cabinet" parent="." instance=ExtResource("2_kwvr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

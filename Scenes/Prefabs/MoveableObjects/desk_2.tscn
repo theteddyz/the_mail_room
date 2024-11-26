@@ -1,7 +1,6 @@
-[gd_scene load_steps=42 format=4 uid="uid://b2c5c47wnbu3f"]
+[gd_scene load_steps=41 format=4 uid="uid://b2c5c47wnbu3f"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_jg2d3"]
-[ext_resource type="Script" path="res://Scripts/Misc/desk.gd" id="1_pviwk"]
 [ext_resource type="Texture2D" uid="uid://dgy6bdhr0juyx" path="res://Assets/Textures/BlenderTextures/Desk.png" id="2_et87b"]
 [ext_resource type="Texture2D" uid="uid://cehb1r025iuxj" path="res://Assets/Textures/BlenderTextures/Cabinet1.png" id="3_7pooc"]
 [ext_resource type="AudioStream" uid="uid://dpjw33ok63rwv" path="res://Assets/Audio/SoundFX/CabinetMovingFast.mp3" id="3_r8odw"]
@@ -12,13 +11,25 @@
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="6_vcavl"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="7_gtf3g"]
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="7_ls0s4"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="8_thyg7"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="9_1wexv"]
+[ext_resource type="PackedScene" uid="uid://bupcu04fap7xp" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="8_thyg7"]
+[ext_resource type="PackedScene" uid="uid://b837cq0s3mn0s" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="9_1wexv"]
 [ext_resource type="PackedScene" uid="uid://cq3vkf11swts2" path="res://Scenes/Prefabs/StaticObjects/cables.tscn" id="10_8x7js"]
 [ext_resource type="PackedScene" uid="uid://bxl6cnj04eefh" path="res://Scenes/Prefabs/StaticObjects/cables_001.tscn" id="11_k7g63"]
 [ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="12_x1ixq"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p2hdb"]
+[sub_resource type="GDScript" id="GDScript_x2ma6"]
+script/source = "extends Node3D
+@export var monitor_on:bool = true
+
+
+func _ready():
+	pass
+	#if monitor_on == false:
+		#var on = $GrabableObjectTemplate/ComputerOn
+		#on.visible = false
+		#var off = $GrabableObjectTemplate/ComputerOff
+		#off.visible = true
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a835v"]
 size = Vector3(2.45142, 0.537109, 1.15601)
@@ -160,7 +171,7 @@ streams_count = 1
 stream_0/stream = ExtResource("4_a3662")
 
 [node name="Desk" type="Node3D"]
-script = ExtResource("1_pviwk")
+script = SubResource("GDScript_x2ma6")
 
 [node name="GrabableObjectTemplate" parent="." instance=ExtResource("4_jqmxf")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0862904, 1.54579, -0.245461)
@@ -176,11 +187,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6194, 0.297667, 0.0209348)
 
 [node name="KeyboardLowPoly2" parent="." instance=ExtResource("8_thyg7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0638238, 1.1455, 0.399151)
-collision_mask = 3
 
 [node name="Mouse" parent="." instance=ExtResource("9_1wexv")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.416294, 1.14425, 0.3639)
-physics_material_override = SubResource("PhysicsMaterial_p2hdb")
 
 [node name="MailboxStand" parent="." instance=ExtResource("12_x1ixq")]
 transform = Transform3D(-0.999752, 0, -0.022286, 0, 1, 0, 0.022286, 0, -0.999752, -0.889354, 1.13881, -0.239794)

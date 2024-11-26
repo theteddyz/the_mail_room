@@ -15,7 +15,7 @@ const COLOR_MAPPING = {
 
 var colorPrefabs: String
 @export_color_no_alpha var color: Color
-@onready var cabinet_1:MeshInstance3D = $"../../Drawer/FileCabinetDrawer_001"
+@onready var cabinet_1:MeshInstance3D = $"../Drawer/FileCabinetDrawer_001"
 
 
 var main_material: Material

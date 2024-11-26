@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://dnp8b3bwn7ucm"]
+[gd_scene load_steps=7 format=4 uid="uid://dnp8b3bwn7ucm"]
 
 [ext_resource type="Texture2D" uid="uid://bxgmvbr1ykyx7" path="res://Scenes/Prefabs/bathroom_wallblend_bathroom_wall.png" id="1_xt3jk"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bvglutwp5veyr" path="res://Scenes/Prefabs/StaticObjects/Tiles/bathroom_wall.occ" id="2_fqt7x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrbwa"]
 resource_name = "WallMailRoom"
@@ -55,3 +56,6 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00329781, 3.88242, -0.0204468)
 shape = SubResource("BoxShape3D_36se8")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("2_fqt7x")

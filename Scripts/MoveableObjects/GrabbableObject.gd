@@ -15,6 +15,7 @@ extends Grabbable
 @export var can_rotate:bool = true
 @onready var grab_icon = preload("res://Scenes/Prefabs/MoveableObjects/grab_icon.tscn")
 @export var is_picked_up = false
+@onready var optimizer = preload("res://Scenes/Prefabs/MoveableObjects/grabbable_optimizer.tscn")
 var pickup_timer: Timer
 var force_above_threshold_time: float = 0.0 
 var player: CharacterBody3D
@@ -53,20 +54,13 @@ var open:bool
 var close:bool
 var door_forward_position
 var door_global_position
-var mesh:MeshInstance3D
-var enabler:VisibleOnScreenEnabler3D
+#This is just for the on screen visualizer very stupid fix should have one bool for this
+var grabbed:bool
 func _ready():
-	for child in get_children():
-		if child is MeshInstance3D:
-			mesh = child
-	if mesh:
-		mesh.lod_bias = 0.1
-		mesh.visibility_range_end = 30
-	enabler = VisibleOnScreenEnabler3D.new()
-	add_child(enabler)
-	var path = get_path()
-	enabler.enable_node_path = path
-	enabler.process_mode = Node.PROCESS_MODE_ALWAYS
+	#var new_optimizer = optimizer.instantiate()
+	#add_child(new_optimizer)
+	#new_optimizer._setup()
+	
 	set_collision_layer_value(5,true)
 	set_collision_mask_value(5,true)
 	set_collision_mask_value(13,true)
@@ -76,10 +70,8 @@ func _ready():
 	object_Interpolator = find_child("Interpolator")
 	starting_angular_damp = angular_damp
 	player_cross_hair = Gui.get_crosshair()
-	if !should_freeze:
-		freeze = false
-	else:
-		freeze = true
+	freeze = true
+	sleeping = true
 	if player:
 		camera = player.find_child("Camera")
 		player_raycast = player.find_child("InteractableFinder")
@@ -187,6 +179,10 @@ func handle_pickup(delta):
 		dropMe(false)
 #Grabbing Code
 func grab():
+	grabbed = true
+	freeze = false
+	sleeping = false
+	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	if pickup_timer.is_stopped():
 		if !timerAdded:
 			add_child(pickup_timer)
@@ -196,7 +192,6 @@ func grab():
 		#itemPos = player.find_child("ItemHolder")
 		camera = player.find_child("Camera")
 		playerHead = player.find_child("Head")
-		
 		if should_freeze:
 			freeze = false
 		if disable_collider_on_grab:
@@ -230,6 +225,7 @@ func dropMe(throw:bool):
 			EventBus.emitCustomSignal("disable_player_movement",[false,false])
 		EventBus.emitCustomSignal("dropped_object", [mass,self])
 		#linear_damp = 10
+		grabbed = false
 		var currentPos = global_position
 		is_picked_up = false
 		global_position = currentPos

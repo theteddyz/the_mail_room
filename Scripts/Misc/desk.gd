@@ -9,3 +9,13 @@ func _ready():
 		on.visible = false
 		var off = $GrabableObjectTemplate/ComputerOff
 		off.visible = true
+
+
+func _on_visible_on_screen_notifier_3d_screen_entered():
+	if visible:
+		visible = false
+
+
+func _on_visible_on_screen_notifier_3d_screen_exited():
+	if !visible:
+		visible = true

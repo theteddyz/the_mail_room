@@ -16,14 +16,14 @@ uniform float normal_strenght : hint_range(-1, 1) = 0;
 void fragment() {
 	vec4 noise = texture(noise_texture, UV);
 	vec3 noise_uv_effect = vec3(noise_strenght) / vec3(noise.rgb);
-	
+
 	vec4 _screen_texture = texture(screen_texture, vec2((vec3(SCREEN_UV, 0.0) + noise_uv_effect).rg)) * tint_color;
-	
+
 	vec2 specular = inversesqrt(vec2(tint_color.a)) * vec2(0.500000);
-	
+
 	vec4 normal = texture(Normal, UV);
 	vec3 normal_map = vec3(normal.rgb) * vec3(normal_strenght);
-	
+
 	ALBEDO = vec3(_screen_texture.rgb);
 	ROUGHNESS = roughness;
 	SPECULAR = specular.x;

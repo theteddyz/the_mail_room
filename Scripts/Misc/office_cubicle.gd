@@ -5,7 +5,8 @@ extends Node3D
 
 func _ready():
 	if monitor_on == false:
-		var on = $GrabableObjectTemplate/ComputerOn
-		on.visible = false
-		var off = $GrabableObjectTemplate/ComputerOff
-		off.visible = true
+		pass
+		#var on = $GrabableObjectTemplate/ComputerOn
+		#on.visible = false
+		#var off = $GrabableObjectTemplate/ComputerOff
+		#off.visible = true

@@ -28,7 +28,6 @@ AudioController="*res://Scenes/Managers/audio_controller.tscn"
 
 window/energy_saving/keep_screen_on=false
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
 [file_customization]
@@ -148,12 +147,14 @@ O={
 
 [rendering]
 
+occlusion_culling/jitter_projection=false
 textures/canvas_textures/default_texture_filter=0
 textures/lossless_compression/force_png=true
 lights_and_shadows/directional_shadow/size=8192
 scaling_3d/scale=0.5
 textures/decals/filter=0
 textures/light_projectors/filter=0
+occlusion_culling/occlusion_rays_per_thread=812
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/msaa_3d=2
 occlusion_culling/use_occlusion_culling=true

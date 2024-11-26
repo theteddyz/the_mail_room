@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://ugwqaphpkcxp"]
+[gd_scene load_steps=12 format=4 uid="uid://ugwqaphpkcxp"]
 
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_7df47"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_dpqm0"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="1_uumeq"]
 [ext_resource type="AudioStream" uid="uid://c0g6vygpih50f" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium.mp3" id="2_ahpa0"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_ga22e"]
 [ext_resource type="AudioStream" uid="uid://7dlyqcruvt7" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium2.mp3" id="4_vwi4c"]
@@ -55,30 +54,29 @@ stream_0/stream = ExtResource("4_vwi4c")
 stream_1/stream = ExtResource("5_n6spl")
 stream_2/stream = ExtResource("2_ahpa0")
 
-[node name="Cardboard_box_long" type="RigidBody3D"]
+[node name="Cardboard_box_long" type="Node3D"]
+
+[node name="Cardboard_box_long" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0547399, 0)
 collision_layer = 2
 collision_mask = 15
 angular_damp = 1.0
 script = ExtResource("1_dpqm0")
 
-[node name="Interpolator" type="Node3D" parent="."]
-script = ExtResource("1_uumeq")
-
-[node name="CardboardBoxLong" type="MeshInstance3D" parent="Interpolator"]
+[node name="CardboardBoxLong" type="MeshInstance3D" parent="Cardboard_box_long"]
 transform = Transform3D(0.318303, 0, 0, 0, 0.318303, 0, 0, 0, 0.318303, 0, 0, 0)
 gi_mode = 2
 mesh = SubResource("ArrayMesh_1t8qp")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cardboard_box_long"]
 shape = SubResource("BoxShape3D_ewwc8")
 
-[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
+[node name="Node3D" type="Node3D" parent="Cardboard_box_long" node_paths=PackedStringArray("impact_audios")]
 script = ExtResource("4_ga22e")
 impact_audios = NodePath("../AudioStreamPlayer3D")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Cardboard_box_long"]
 stream = SubResource("AudioStreamRandomizer_gf2eq")
 
-[connection signal="body_entered" from="." to="Node3D" method="_on_body_entered"]
+[connection signal="body_entered" from="Cardboard_box_long" to="Cardboard_box_long/Node3D" method="_on_body_entered"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://cnus2pwbp1koj"]
+[gd_scene load_steps=16 format=4 uid="uid://cnus2pwbp1koj"]
 
+[ext_resource type="ArrayOccluder3D" uid="uid://cs0bxqtfn7nx2" path="res://Scenes/Prefabs/StaticObjects/Tiles/half_stall.occ" id="1_cw1p3"]
 [ext_resource type="Texture2D" uid="uid://41emsnlmgt7f" path="res://Assets/Models/test_models/bathroom_stall_together_bathroom_stall_open1.png" id="1_fger0"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_3s2js"]
 [ext_resource type="Texture2D" uid="uid://c0t7ilu5qma60" path="res://Assets/Models/test_models/bathroom_stall_together_Bathroom_door.png" id="3_n78pb"]
@@ -97,6 +98,9 @@ size = Vector3(0.0543213, 0.111206, 1.39105)
 [node name="StaticBody3D" type="StaticBody3D"]
 collision_layer = 17
 collision_mask = 17
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("1_cw1p3")
 
 [node name="Cube_003" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
