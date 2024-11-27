@@ -15,6 +15,8 @@ func _on_screen_entered():
 	if mesh_target:
 		mesh_target.visible = true
 		if check_distance_to_player():
+			mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		else:
 			mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	if parent_body:
 		parent_body.freeze = false
