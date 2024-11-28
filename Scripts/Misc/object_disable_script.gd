@@ -2,7 +2,7 @@ extends VisibleOnScreenNotifier3D
 @export var mesh_target:MeshInstance3D
 var parent_body:RigidBody3D
 var player:CharacterBody3D
-var distance_threshold:float = 5.0
+var distance_threshold:float = 20.0
 
 
 func _setup():
@@ -15,9 +15,10 @@ func _on_screen_entered():
 	if mesh_target:
 		mesh_target.visible = true
 		if check_distance_to_player():
-			mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		else:
 			mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+		else:
+			mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			mesh_target.lod_bias = 0.5
 	#if parent_body:
 		#if check_distance_to_player():
 			#parent_body.freeze = false
