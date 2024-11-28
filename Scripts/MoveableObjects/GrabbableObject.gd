@@ -57,9 +57,9 @@ var door_global_position
 #This is just for the on screen visualizer very stupid fix should have one bool for this
 var grabbed:bool
 func _ready():
-	#var new_optimizer = optimizer.instantiate()
-	#add_child(new_optimizer)
-	#new_optimizer._setup()
+	var new_optimizer = optimizer.instantiate()
+	add_child(new_optimizer)
+	new_optimizer._setup()
 	
 	set_collision_layer_value(5,true)
 	set_collision_mask_value(5,true)

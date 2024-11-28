@@ -18,9 +18,10 @@ func _on_screen_entered():
 			mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		else:
 			mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-	if parent_body:
-		parent_body.freeze = false
-		parent_body.sleeping = false
+	#if parent_body:
+		#if check_distance_to_player():
+			#parent_body.freeze = false
+			#parent_body.sleeping = false
 	
 
 func find_first_mesh(node: Node):
@@ -35,8 +36,9 @@ func _on_screen_exited():
 		mesh_target.visible = false
 		mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	if parent_body:
-		parent_body.freeze = true
-		parent_body.sleeping = true
+		if parent_body.linear_velocity == Vector3.ZERO:
+			parent_body.freeze = true
+			parent_body.sleeping = true
 
 func check_distance_to_player()-> bool:
 	var distance = parent_body.global_transform.origin.distance_to(player.global_transform.origin)
@@ -44,11 +46,3 @@ func check_distance_to_player()-> bool:
 		return true
 	else:
 		return false
-
-
-func set_meshes_visibility(node: Node, visible: bool):
-	for child in node.get_children():
-		if child is MeshInstance3D:
-			child.visible = visible
-		elif child is Node:  # If it's a container or similar, recurse
-			set_meshes_visibility(child, visible)

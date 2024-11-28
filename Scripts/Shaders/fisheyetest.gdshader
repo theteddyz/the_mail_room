@@ -1,63 +1,30 @@
+/*
+Re-implementation by "QJPG"
+A SHADER IMPLEMENTATION for "celyk" Shader -> https://godotshaders.com/shader/notes-on-the-light-function/
+
+*/
+
 shader_type spatial;
-render_mode unshaded;
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
-uniform int outline_mode : hint_range(1, 3, 1) = 3;
-uniform float outline_intensity : hint_range(0, 5) = 1;
-uniform bool _round = false;
-uniform float outline_bias : hint_range(-10, 10) = 0;
 
-uniform vec4 outline_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
+render_mode ambient_light_disabled, specular_toon, cull_back;
 
-void vertex() {
-	POSITION = vec4(VERTEX, 1.0);
-}
+uniform sampler2D t;
+uniform vec3 color_albd = vec3(1, 1, 1);
 
 void fragment() {
-	ALBEDO = outline_color.rgb;
+	vec4 color = texture(t, UV);
+	
+	ALBEDO = color.rgb * color_albd;
+	//ALPHA = color.a;
+}
 
-	vec2 screen_size = vec2(textureSize(SCREEN_TEXTURE, 1));
+void light() {
+	// light we wish to accumulate
+	DIFFUSE_LIGHT += ALBEDO * ATTENUATION * LIGHT_COLOR * max(dot(LIGHT, NORMAL), 0.0);
 
-	float px = 0.5/screen_size.x;
-	float py = 0.5/screen_size.y;
+	// assign the result
+	SPECULAR_LIGHT = round(DIFFUSE_LIGHT * 3.0 - 0.5) / 8.0; // posterizes the final color
 
-	float d = texture(DEPTH_TEXTURE, SCREEN_UV).x;
-	float du = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(0.0, py)).x;
-	float dd = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(0.0, -py)).x;
-	float dr = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(px, 0.0)).x;
-	float dl = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(-px, 0.0)).x;
-
-	float luminance = dot(texture(SCREEN_TEXTURE, SCREEN_UV).rgb, vec3(0.299, 0.587, 0.114));
-	float luminance_factor = clamp(luminance, 0.0, 1.0);
-
-	if (outline_mode == 1){
-		ALPHA = 0.0 + abs(abs(d)-abs(du)) + abs(abs(d)-abs(dd)) + abs(abs(d)-abs(dl)) + abs(abs(d)-abs(dr));
-
-		ALPHA *= 1000.0*outline_intensity;
-	} else if (outline_mode == 2) {
-		ALPHA = 0.0 + abs(abs(abs(d)-abs(du)) - abs(abs(d)-abs(dd))) + abs(abs(abs(d)-abs(dl)) - abs(abs(d)-abs(dr)));
-
-		ALPHA *= 3.0*50000.0*outline_intensity;
-	} else if (outline_mode == 3) {
-		float dq = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(-px, py)).x;
-		float de = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(px, py)).x;
-		float dz = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(-px, -py)).x;
-		float dc = texture(DEPTH_TEXTURE, SCREEN_UV+vec2(px, -py)).x;
-
-		ALPHA = 0.0 + abs(abs(abs(d)-abs(du)) - abs(abs(d)-abs(dd))) + abs(abs(abs(d)-abs(dl)) - abs(abs(d)-abs(dr))) + abs(abs(abs(d)-abs(dq)) - abs(abs(d)-abs(dc))) + abs(abs(abs(d)-abs(dz)) - abs(abs(d)-abs(de)));
-
-		ALPHA *= 50000.0*outline_intensity;
-	}
-
-	ALPHA += outline_bias;
-
-	if (_round) {
-		ALPHA = round(ALPHA);
-	}
-
-	ALPHA *= outline_color.a;
-	ALPHA = clamp(ALPHA, 0.0, 1.0);
-
-	// Modulate the alpha by the inverse luminance factor
-	ALPHA *= 1.0 - luminance_factor;
+	// cancel all contribution of the diffuse_light variable
+	SPECULAR_LIGHT -= DIFFUSE_LIGHT;
 }
