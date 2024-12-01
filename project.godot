@@ -143,7 +143,10 @@ O={
 [physics]
 
 3d/run_on_separate_thread=true
+common/physics_ticks_per_second=45
+common/physics_jitter_fix=0.0
 3d/physics_engine="JoltPhysics3D"
+3d/solver/solver_iterations=8
 
 [rendering]
 
