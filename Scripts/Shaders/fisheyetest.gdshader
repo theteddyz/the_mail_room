@@ -13,7 +13,7 @@ uniform vec3 color_albd = vec3(1, 1, 1);
 
 void fragment() {
 	vec4 color = texture(t, UV);
-	
+
 	ALBEDO = color.rgb * color_albd;
 	//ALPHA = color.a;
 }

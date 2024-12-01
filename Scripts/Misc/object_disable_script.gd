@@ -33,7 +33,7 @@ func find_first_mesh(node: Node):
 
 
 func _on_screen_exited():
-	if mesh_target:
+	if mesh_target and !check_distance_to_player():
 		mesh_target.visible = false
 		mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	if parent_body:
