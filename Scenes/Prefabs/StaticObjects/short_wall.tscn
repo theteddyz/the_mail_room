@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_bb1hc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oa46b"]
-size = Vector3(5.64197, 3.11719, 0.223267)
+size = Vector3(8.78134, 4.88074, 0.223267)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkaun"]
 resource_name = "Wall"
@@ -48,7 +48,7 @@ shadow_mesh = SubResource("ArrayMesh_jm6br")
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0217896, 1.6377, -0.000793457)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0105132, 2.51947, -0.000793457)
 shape = SubResource("BoxShape3D_oa46b")
 
 [node name="MultimeshPointer" type="Node3D" parent="." groups=["multimesh"]]

@@ -50,8 +50,8 @@ var current_head_quat: Quaternion
 var previous_head_quat: Quaternion  # Store the previous frame's head rotation in quaternion
 var target_cumulative_rotation: Vector3 = Vector3.ZERO  # Track cumulative rotations for the target
 var angular_velocity: Vector3 = Vector3.ZERO  # Track the angular velocity
-var spring_strength: float = 70.0  # Controls how fast it accelerates towards target
-var damping: float = 10.0 # Controls how fast it slows down after overshooting
+var spring_strength: float = 210.0  # Controls how fast it accelerates towards target
+var damping: float = 15.0 # Controls how fast it slows down after overshooting
 var mailcartRotation: Quaternion
 
 func _ready():
@@ -212,7 +212,7 @@ func _physics_process(delta):
 	# Compute the rotational difference between current and target
 	var rotational_difference = target_cumulative_rotation - current_cumulative_rotation 
 	
-	var resultY : Dictionary = spring_damper_exact(current_cumulative_rotation.y,angular_velocity.y,target_cumulative_rotation.y,0,spring_strength,damping,delta)
+	var resultY : Dictionary = spring_damper_exact(current_cumulative_rotation.y,angular_velocity.y,target_cumulative_rotation.y,0,spring_strength / (1+calculate_difference(current_cumulative_rotation.y, target_cumulative_rotation.y)*2.25),damping,delta )
 								
 	angular_velocity.y = resultY.v
 
@@ -252,8 +252,12 @@ func calculate_linear_velocity(delta):
 		# Get the forward direction in the object's local space (usually -Z axis in 3D)
 		var local_forward = Vector3(0, 0, 1)  # Forward in local space is usually the negative Z-axis, but we are funky
 		# Convert the local forward direction to the global space using the object's current transform
-		var global_forward = mailcart.global_transform.basis * local_forward
-		#if abs(mailcart.linear_velocity)  
+		
+		var global_forward = head.global_transform.basis * local_forward
+		
+		if Input.is_action_pressed("inspect"):
+			global_forward = mailcart.global_transform.basis * local_forward
+
 		
 		mailcart.linear_velocity += global_forward * direction.y * current_speed *0.09
 
@@ -364,6 +368,12 @@ func accumulate_continuous_rotation(cumulative_rotation: float, current_euler: f
 
 	# Add the delta angle to the cumulative rotation
 	return cumulative_rotation + delta_angle
+
+func calculate_difference(no_1, no_2):
+	var angle = abs(no_1 - no_2)
+	#if angle > 90.0:
+		#return 180.0 - angle
+	return angle
 
 func spring_damper_exact(
 	x: float, 
