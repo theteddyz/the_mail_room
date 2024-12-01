@@ -52,7 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0217896, 1.6377, -0.000793
 shape = SubResource("BoxShape3D_oa46b")
 
 [node name="MultimeshPointer" type="Node3D" parent="." groups=["multimesh"]]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0, 0, 0)
 script = ExtResource("1_bb1hc")
 wall_typed = "small_wall"
 
