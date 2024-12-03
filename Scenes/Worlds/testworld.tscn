@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=35 format=4 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://bwnbou1pjcf8l" path="res://Scenes/Prefabs/MoveableObjects/plant.tscn" id="17_b78s4"]
 [ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="17_ma4ii"]
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="18_lmrge"]
+[ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="19_va06c"]
+[ext_resource type="PackedScene" uid="uid://b837cq0s3mn0s" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="20_5b6he"]
 [ext_resource type="PackedScene" uid="uid://biilk0erp2roe" path="res://Scenes/Prefabs/MoveableObjects/tape_template.tscn" id="22_p3lgw"]
 [ext_resource type="PackedScene" uid="uid://uuhrokgnd64l" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall.tscn" id="39_l18u8"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
@@ -285,6 +287,12 @@ mesh = SubResource("ArrayMesh_bl8fw")
 
 [node name="Screen2" parent="GrabableObjectTemplate/Monitor/ComputerOff" index="0"]
 mesh = SubResource("ArrayMesh_uya8s")
+
+[node name="base_airduct" parent="." instance=ExtResource("19_va06c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7115, 0.858505, -1.48411)
+
+[node name="Mouse" parent="." instance=ExtResource("20_5b6he")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17731, 0.388621, 0.665632)
 
 [editable path="NavigationRegion3D/StaticBody3D3"]
 [editable path="NavigationRegion3D/meeting_room_wall_Door"]

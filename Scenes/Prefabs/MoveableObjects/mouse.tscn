@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://b837cq0s3mn0s"]
+[gd_scene load_steps=9 format=4 uid="uid://b837cq0s3mn0s"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_0sutp"]
 [ext_resource type="Texture2D" uid="uid://bcwwtsc4ei0vy" path="res://Assets/Textures/BlenderTextures/Mouse.png" id="1_lpbor"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_ajn7e"]
 [ext_resource type="Script" path="res://Scripts/Misc/object_disable_script.gd" id="4_81322"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rctak"]
@@ -59,10 +58,7 @@ physics_material_override = SubResource("PhysicsMaterial_rctak")
 sleeping = true
 script = ExtResource("1_0sutp")
 
-[node name="Interpolator" type="Node3D" parent="Grabbable"]
-script = ExtResource("2_ajn7e")
-
-[node name="Mouse" type="MeshInstance3D" parent="Grabbable/Interpolator"]
+[node name="Mouse" type="MeshInstance3D" parent="Grabbable"]
 transform = Transform3D(0.428, 0, 0, 0, 0.428, 0, 0, 0, 0.428, 0, 0, 0)
 mesh = SubResource("ArrayMesh_78jyv")
 skeleton = NodePath("")
@@ -71,8 +67,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000292622, -0.00344761, -0.00128238)
 shape = SubResource("BoxShape3D_r7g7e")
 
-[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="." node_paths=PackedStringArray("target")]
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
 enable_mode = 2
 enable_node_path = NodePath("../Grabbable")
 script = ExtResource("4_81322")
-target = NodePath("../Grabbable")
