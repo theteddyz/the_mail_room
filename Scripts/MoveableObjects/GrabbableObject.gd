@@ -70,8 +70,6 @@ func _ready():
 	object_Interpolator = find_child("Interpolator")
 	starting_angular_damp = angular_damp
 	player_cross_hair = Gui.get_crosshair()
-	freeze = true
-	sleeping = true
 	if player:
 		camera = player.find_child("Camera")
 		player_raycast = player.find_child("InteractableFinder")
@@ -138,8 +136,6 @@ func _process(_delta): #Tether the player to the object
 			mouse_line.queue_free()
 
 func _physics_process(delta):
-	if freeze:
-		pass 
 	#if camera.global_transform.origin.distance_to(global_transform.origin) > 15:
 	#	sleeping = true
 		#visible = false
@@ -182,7 +178,7 @@ func grab():
 	grabbed = true
 	freeze = false
 	sleeping = false
-	process_mode = ProcessMode.PROCESS_MODE_ALWAYS
+	#process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	if pickup_timer.is_stopped():
 		if !timerAdded:
 			add_child(pickup_timer)
@@ -192,8 +188,6 @@ func grab():
 		#itemPos = player.find_child("ItemHolder")
 		camera = player.find_child("Camera")
 		playerHead = player.find_child("Head")
-		if should_freeze:
-			freeze = false
 		if disable_collider_on_grab:
 			set_collision_layer_value(2,false)
 		if player_raycast.is_colliding():

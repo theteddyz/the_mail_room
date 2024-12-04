@@ -14,6 +14,7 @@ func _setup():
 func _on_screen_entered():
 	if mesh_target:
 		mesh_target.visible = true
+		parent_body.freeze = false
 		if check_distance_to_player():
 			mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 		else:
@@ -37,9 +38,8 @@ func _on_screen_exited():
 		mesh_target.visible = false
 		mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	if parent_body:
-		if parent_body.linear_velocity == Vector3.ZERO:
+		if parent_body.linear_velocity == Vector3.ZERO :
 			parent_body.freeze = true
-			parent_body.sleeping = true
 
 func check_distance_to_player()-> bool:
 	var distance = parent_body.global_transform.origin.distance_to(player.global_transform.origin)
