@@ -329,20 +329,12 @@ func stand_or_walk(delta):
 		crouching_collision_shape.disabled = true
 		neck.position.y = lerp(neck.position.y, starting_height, crouching_lerp_speed * delta)
 		if Input.is_action_pressed("sprint") and can_sprint:
-			
-			if current_stamina > 0:
-				audio_timer.wait_time = 0.3
-				current_speed = sprinting_speed
-				head_bopping_current = head_bopping_sprinting_intensity
-				head_bopping_index += head_bopping_sprinting_speed * delta
-				is_sprinting = true
-				current_stamina -= stamina_depletion_rate * delta
-			else:
-				audio_timer.wait_time = 0.6
-				current_speed = walking_speed
-				head_bopping_current = head_bopping_walking_intensity
-				head_bopping_index += head_bopping_walking_speed * delta
-				is_sprinting = false
+			audio_timer.wait_time = 0.3
+			current_speed = sprinting_speed
+			head_bopping_current = head_bopping_sprinting_intensity
+			head_bopping_index += head_bopping_sprinting_speed * delta
+			is_sprinting = true
+			current_stamina -= stamina_depletion_rate * delta
 		else:
 			audio_timer.wait_time = 0.6
 			current_speed = walking_speed
