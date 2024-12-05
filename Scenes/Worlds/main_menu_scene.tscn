@@ -23,7 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://bq2unlvrj6ltu" path="res://Assets/Audio/SoundFX/CeilingLightFlicker.mp3" id="77_dyx43"]
 [ext_resource type="Texture2D" uid="uid://cabgoqnkirs6s" path="res://Scenes/Prefabs/StaticObjects/Metal011_1K-JPG_Color.jpg" id="78_cu64h"]
 [ext_resource type="PackedScene" uid="uid://4fxwnbd4a3u5" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_tall.tscn" id="80_1etot"]
-[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/package_1.tscn" id="92_3yxme"]
+[ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="92_3yxme"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="95_w5mu2"]
 [ext_resource type="PlaneMesh" uid="uid://bsjvgx14rrdbw" path="res://floor_mesh_1stfloor.tres" id="96_bhfn4"]
 [ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="97_bgeto"]

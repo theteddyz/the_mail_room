@@ -358,6 +358,8 @@ func handle_head_bopping(delta):
 		head_bopping_vector.x = sin(head_bopping_index / 2) + 0.5
 		headbop_root.position.y = lerp(headbop_root.position.y, head_bopping_vector.y * (head_bopping_current / 2.0), delta * movement_lerp_speed)
 		headbop_root.position.x = lerp(headbop_root.position.x, head_bopping_vector.x * (head_bopping_current), delta * movement_lerp_speed)
+		if is_holding_package and package_last_held is Package and !Input.is_action_pressed("inspect") and !package_last_held.is_returning:
+			package_last_held.position = package_last_held.hand_position - (headbop_root.position * 0.3)
 	else:
 		audio_timer.stop()
 		head_bopping_vector.y = sin(head_bopping_index / 12);

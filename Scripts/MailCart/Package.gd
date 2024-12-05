@@ -146,6 +146,7 @@ func stop_inspect():
 	stop_inspect_tween.tween_property(self, "rotation",hand_rotation, 0.25).set_ease(Tween.EASE_IN_OUT)
 	await stop_inspect_tween.finished
 	reset_highlight()
+	is_returning = false
 	
 
 func check_distance_to_player():
