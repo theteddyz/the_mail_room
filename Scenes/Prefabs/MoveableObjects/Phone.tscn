@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=4 uid="uid://bbrt2vrul43u7"]
+[gd_scene load_steps=17 format=4 uid="uid://bbrt2vrul43u7"]
 
 [ext_resource type="Script" path="res://Scripts/Misc/rope.gd" id="1_t8h8n"]
 [ext_resource type="PackedScene" uid="uid://cyubn1mlgncfh" path="res://Assets/Models/Rope/RopeBody.tscn" id="2_5n5pp"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="3_ruqdl"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="4_26bcd"]
 [ext_resource type="Texture2D" uid="uid://2f301eomwrmh" path="res://Assets/Textures/BlenderTextures/PhoneReciever.png" id="5_hxlhv"]
 [ext_resource type="Texture2D" uid="uid://dnxfsc1rrdlsq" path="res://Assets/Textures/BlenderTextures/Phone.png" id="6_sdxew"]
 
@@ -166,10 +165,7 @@ collision_layer = 2
 collision_mask = 15
 script = ExtResource("3_ruqdl")
 
-[node name="Interpolator" type="Node3D" parent="PhoneReciever"]
-script = ExtResource("4_26bcd")
-
-[node name="PhoneReciever2" type="MeshInstance3D" parent="PhoneReciever/Interpolator"]
+[node name="PhoneReciever2" type="MeshInstance3D" parent="PhoneReciever"]
 mesh = SubResource("ArrayMesh_5lkld")
 skeleton = NodePath("")
 
@@ -183,10 +179,7 @@ collision_layer = 2
 collision_mask = 15
 script = ExtResource("3_ruqdl")
 
-[node name="Interpolator" type="Node3D" parent="PhoneBody"]
-script = ExtResource("4_26bcd")
-
-[node name="PhoneBody" type="MeshInstance3D" parent="PhoneBody/Interpolator"]
+[node name="PhoneBody" type="MeshInstance3D" parent="PhoneBody"]
 mesh = SubResource("ArrayMesh_miiua")
 skeleton = NodePath("")
 

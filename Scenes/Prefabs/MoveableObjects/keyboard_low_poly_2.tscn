@@ -1,8 +1,7 @@
-[gd_scene load_steps=27 format=4 uid="uid://bupcu04fap7xp"]
+[gd_scene load_steps=26 format=4 uid="uid://bupcu04fap7xp"]
 
 [ext_resource type="Texture2D" uid="uid://b57jpmwtrxcc3" path="res://Assets/Textures/BlenderTextures/KeyboardLowRez2.png" id="1_cxfyc"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_e31fv"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_y4c32"]
 [ext_resource type="Texture2D" uid="uid://igbeho62sgj2" path="res://Assets/Textures/BlenderTextures/KeyboardBrokenLowRez.png" id="4_er51f"]
 [ext_resource type="AudioStream" uid="uid://v1sncpv8gy3j" path="res://Assets/Audio/SoundFX/ImpactKeyboard.mp3" id="6_58xfp"]
 [ext_resource type="AudioStream" uid="uid://bovrhou23w10e" path="res://Assets/Audio/SoundFX/ImpactKeyboard2.mp3" id="7_7dyeu"]
@@ -144,15 +143,12 @@ collision_mask = 15
 sleeping = true
 script = ExtResource("1_e31fv")
 
-[node name="Interpolator" type="Node3D" parent="Keyboard"]
-script = ExtResource("2_y4c32")
-
-[node name="KeyboardLowPoly2" type="MeshInstance3D" parent="Keyboard/Interpolator"]
+[node name="KeyboardLowPoly2" type="MeshInstance3D" parent="Keyboard"]
 transform = Transform3D(0.0119987, 0, 0, 0, 0.0119988, 0, 0, 0, 0.0119987, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7d406")
 skeleton = NodePath("")
 
-[node name="KeyboardBrokenLowPoly" type="MeshInstance3D" parent="Keyboard/Interpolator"]
+[node name="KeyboardBrokenLowPoly" type="MeshInstance3D" parent="Keyboard"]
 transform = Transform3D(0.011999, 0, 0, 0, 0.011999, 0, 0, 0, 0.011999, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_54ars")
@@ -162,8 +158,8 @@ skeleton = NodePath("")
 [node name="Key_Board_Collision_Handler" type="Node3D" parent="Keyboard" node_paths=PackedStringArray("broken_models", "normal_model", "impact_audios", "destruction_audios", "breakage_particles")]
 script = ExtResource("14_y1cj2")
 breakable = true
-broken_models = [NodePath("../Interpolator/KeyboardBrokenLowPoly")]
-normal_model = NodePath("../Interpolator/KeyboardLowPoly2")
+broken_models = [NodePath("../KeyboardBrokenLowPoly")]
+normal_model = NodePath("../KeyboardLowPoly2")
 impact_audios = NodePath("../Impact")
 destruction_audios = NodePath("../Destruction")
 breakage_particles = [NodePath("../GPUParticles3D")]

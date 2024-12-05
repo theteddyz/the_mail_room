@@ -64,14 +64,14 @@ vec4 sharpenMask(vec2 frag_coord, vec2 screen_pixel_size)
 {
 	// Calculate texel size using SCREEN_PIXEL_SIZE inside the fragment function
     //vec2 texel_size = 1.0 / screen_pixel_size;
-	
+
     // Colors
     vec4 up = texture(SCREEN_TEXTURE, (frag_coord + vec2(0.0, 1.0)*SHARPEN_DISTANCE));///texel_size);
     vec4 left = texture(SCREEN_TEXTURE, (frag_coord + vec2(-1.0, 0.0)*SHARPEN_DISTANCE));///texel_size);
     vec4 center = texture(SCREEN_TEXTURE, frag_coord);///texel_size);
     vec4 right = texture(SCREEN_TEXTURE, (frag_coord + vec2(1.0, 0.0)*SHARPEN_DISTANCE));///texel_size);
     vec4 down = texture(SCREEN_TEXTURE, (frag_coord + vec2(0.0, -1.0)*SHARPEN_DISTANCE));///texel_size);
-    
+
     // Return sharpened mask
     return (1.0 + 4.0 * SHARPENING) * center - SHARPENING * (up + left + right + down);
 }
@@ -81,11 +81,11 @@ vec4 cromaticColor(vec2 uv, vec2 screen_pixel_size)
 	vec2 r_displacement = vec2(CHROMATIC_DISTANCE, 0.0);
 	vec2 g_displacement = vec2(0.0, 0.0);
 	vec2 b_displacement = vec2(-CHROMATIC_DISTANCE, 0.0);
-	
+
 	float r = texture(SCREEN_TEXTURE, uv + vec2(screen_pixel_size*r_displacement), 0.0).r;
 	float g = texture(SCREEN_TEXTURE, uv + vec2(screen_pixel_size*g_displacement), 0.0).g;
 	float b = texture(SCREEN_TEXTURE, uv + vec2(screen_pixel_size*b_displacement), 0.0).b;
-	
+
 	return vec4(r, g, b, 1.0);
 }
 
@@ -94,7 +94,7 @@ vec2 fisheyeColor(vec4 fragcoord,vec2 screen_pixel_size)
 	vec2 iResolution = 1.0 / screen_pixel_size;
 	vec4 fragCoord = fragcoord;
 
-	//normalized coords 
+	//normalized coords
 	vec2 p = fragCoord.xy / iResolution.x;
 
 	//screen proroption
@@ -107,20 +107,20 @@ vec2 fisheyeColor(vec4 fragcoord,vec2 screen_pixel_size)
 	vec2 d = p - m;
 
 	// distance of pixel from center
-	float r = sqrt(dot(d, d)); 
+	float r = sqrt(dot(d, d));
 
 	float power = FISHEYE_AMOUNT;
 
 	//radius of 1:1 effect
 	float bind;
-	
+
 	//stick to borders
-	if (power > 0.0) 
+	if (power > 0.0)
 		bind = sqrt(dot(m, m));
 	else {
-		if (prop < 1.0) 
-    		bind = m.x; 
-    	else 
+		if (prop < 1.0)
+    		bind = m.x;
+    	else
         	bind = m.y;
 	}
 
@@ -137,7 +137,7 @@ vec2 fisheyeColor(vec4 fragcoord,vec2 screen_pixel_size)
     uv.y *= prop;
 
 	vec3 col = texture(SCREEN_TEXTURE, uv).rgb;
-    
+
 	return uv;
 }
 
@@ -145,7 +145,7 @@ vec4 lensflare(vec2 screen_uv){
 	vec2 FlippedUV = vec2(1.0) - screen_uv;
 	vec2 FlareVector = (vec2(0.5) - screen_uv) * FlareSpacing;
 	vec3 FinalFlare = vec3(0.0);
-	
+
 	for (int i = 0; i < Flares; ++i){
 		vec2 SUV = fract(screen_uv + FlareVector * vec2(float(i)));
 		float Dist = distance(SUV, vec2(FALLOFF_STARTING_POINT));
@@ -244,12 +244,12 @@ vec4 vhsShader(vec2 uv) {
 //VIGNETTE
 vec4 vignetteColor(vec2 uv) {
     float dist = distance(uv, vec2(0.5));
-	
+
 	float vignette = smoothstep(inner_radius, outer_radius, dist) * vignette_strength;
 	float dither = fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453123) * dither_strength;
-	
+
 	float finalColor = 1.0 - (vignette + dither);
-	
+
 	return vec4(finalColor,finalColor,finalColor, 1);
 }
 
@@ -257,21 +257,21 @@ void fragment()
 {
 
 	vec2 uvs = fisheyeColor(FRAGCOORD, SCREEN_PIXEL_SIZE);
-	
+
     vec4 sharpenColor = sharpenMask(uvs, SCREEN_PIXEL_SIZE);
-	
+
 	vec4 chromaticColor = cromaticColor(uvs, SCREEN_PIXEL_SIZE);
-	
+
 	vec4 mixColor = lensflare(uvs);
-	
+
 	mixColor += overlay(chromaticColor, sharpenColor);
-	
+
 	vec4 vhsColor = vhsShader(uvs);
-	
+
 	vec4 vhsMixColor = screen(mixColor,vhsColor);
 
 	vec4 vinetteColor = vignetteColor(uvs);
-	
+
 	vec4 finalColor = multiply(vhsMixColor,vinetteColor);
 
 	COLOR = finalColor;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=21 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -22,6 +22,10 @@ radius = 0.3
 radius = 0.3
 height = 1.2
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_157n3"]
+radius = 0.294545
+height = 0.589089
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_0heh4"]
 radius = 50.9001
 
@@ -32,7 +36,7 @@ points = PackedVector3Array(0.235, 0.136, 0.15, 0.235, 0.136, -0.09, -0.235, 0.1
 radius = 22.6731
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
-collision_layer = 4
+collision_layer = 65540
 collision_mask = 4107
 script = ExtResource("1_lsi20")
 
@@ -43,6 +47,11 @@ shape = SubResource("CapsuleShape3D_h18q0")
 [node name="crouching_collision_shape" type="CollisionShape3D" parent="." groups=["Walking_Colliders"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, 0.6, 0.011)
 shape = SubResource("CapsuleShape3D_ia68h")
+disabled = true
+
+[node name="crouching_collision_addition" type="CollisionShape3D" parent="." groups=["Walking_Colliders"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004, 0.294726, 0.011)
+shape = SubResource("CapsuleShape3D_157n3")
 disabled = true
 
 [node name="Neck" type="Node3D" parent="."]

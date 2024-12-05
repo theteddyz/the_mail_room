@@ -123,6 +123,7 @@ collision_layer = 2
 collision_mask = 15
 mass = 100.0
 script = ExtResource("2_hnkys")
+can_rotate = false
 
 [node name="Desk2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -182,6 +183,8 @@ axis_lock_linear_y = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 script = ExtResource("2_hnkys")
+is_drawer = true
+can_rotate = false
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D6"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -208,6 +211,8 @@ axis_lock_linear_y = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 script = ExtResource("2_hnkys")
+is_drawer = true
+can_rotate = false
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D5"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

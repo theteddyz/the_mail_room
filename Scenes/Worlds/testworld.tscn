@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=41 format=4 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
@@ -15,7 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="18_lmrge"]
 [ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="19_va06c"]
 [ext_resource type="PackedScene" uid="uid://b837cq0s3mn0s" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="20_5b6he"]
+[ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="21_fscik"]
+[ext_resource type="PackedScene" uid="uid://duh0mp4ga7irm" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover.tscn" id="22_cdvgx"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="22_n7wpk"]
 [ext_resource type="PackedScene" uid="uid://biilk0erp2roe" path="res://Scenes/Prefabs/MoveableObjects/tape_template.tscn" id="22_p3lgw"]
+[ext_resource type="PackedScene" uid="uid://box8t8l24q1si" path="res://Assets/Models/desk.tscn" id="23_3qde4"]
 [ext_resource type="PackedScene" uid="uid://uuhrokgnd64l" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall.tscn" id="39_l18u8"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
@@ -139,6 +143,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_amp1h")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_sc46n"]
+size = Vector3(0.644165, 0.463867, 2.39838)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_503w5"]
+size = Vector3(2.4791, 1.14551, 1.27423)
+
 [node name="world" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_y5q3h")
 floor_num = -1
@@ -148,7 +158,6 @@ floor_num = -1
 [node name="Player" parent="." instance=ExtResource("2_n1cxu")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2092, 0.0844421, 8.67806)
-collision_mask = 4111
 
 [node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.280565, -4)
@@ -293,6 +302,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7115, 0.858505, -1.48411)
 
 [node name="Mouse" parent="." instance=ExtResource("20_5b6he")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17731, 0.388621, 0.665632)
+
+[node name="airduct_longer" parent="." instance=ExtResource("21_fscik")]
+transform = Transform3D(1.47, 0, 0, 0, 2.49, 0, 0, 0, 1.47, 14.4115, 0.57453, 3.80822)
+
+[node name="Area3D" type="Area3D" parent="airduct_longer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.260137)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("22_n7wpk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="airduct_longer/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1.00008, 0, 0, 0, 1, 0.00421238, 0.00830393, 0.635229)
+shape = SubResource("BoxShape3D_sc46n")
+
+[node name="airduct_vent_cover" parent="." instance=ExtResource("22_cdvgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5565, 1.29504, 6.18498)
+
+[node name="Desk" parent="." instance=ExtResource("23_3qde4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.519, 0.00906754, 5.88061)
+
+[node name="Area3D" type="Area3D" parent="Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91483, 0.260137)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("22_n7wpk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1.00008, 0, 0, 0, 1, 0.034544, -0.332542, -0.123391)
+shape = SubResource("BoxShape3D_503w5")
+
+[connection signal="body_entered" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_exited"]
+[connection signal="body_entered" from="Desk/Area3D" to="Desk/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Desk/Area3D" to="Desk/Area3D" method="_on_body_exited"]
 
 [editable path="NavigationRegion3D/StaticBody3D3"]
 [editable path="NavigationRegion3D/meeting_room_wall_Door"]

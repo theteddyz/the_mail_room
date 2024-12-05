@@ -16,6 +16,7 @@ var mailcart
 @onready var standing_obstruction_raycast_2:RayCast3D  = head.get_node("StandingObstructionRaycasts").get_node("StandingObstructionRaycast2")
 @onready var standing_obstruction_raycast_3:RayCast3D = head.get_node("StandingObstructionRaycasts").get_node("StandingObstructionRaycast3")
 
+var crouch_assist:bool = false
 # Speeds
 var sprinting_speed:float = 10.0
 var previous_sprinting_speed:float
@@ -24,7 +25,7 @@ var previous_walk_speed:float
 var movement_lerp_speed:float = 8.2
 var crouching_speed:float = 3.1
 var previous_crouching_speed:float
-var crouching_lerp_speed:float = 0.18
+var crouching_lerp_speed:float = 35.0
 # var current_speed = 5, this variable is used by parent
 var direction:Vector3 = Vector3.ZERO
 var gui_anim:Control
@@ -269,9 +270,10 @@ func _physics_process(delta):
 
 func _process(delta):
 	apply_movement(delta)
-	apply_leaning(delta)
-	recover_stamina(delta)
-	stamina_bar.update_stamina_bar(current_stamina)
+	if !crouch_assist:
+		apply_leaning(delta)
+	#recover_stamina(delta)
+	#stamina_bar.update_stamina_bar(current_stamina)
 
 func apply_movement(delta):
 	#persistent_state.velocity.y = 0
@@ -293,7 +295,7 @@ func handle_movement_input(delta):
 		audio_timer.wait_time = 0.8
 		crouch(delta)
 	else:
-		if !standing_is_blocked:
+		if !standing_is_blocked && !crouch_assist:
 			stand_or_walk(delta)
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	direction = lerp(direction, (persistent_state.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta * movement_lerp_speed)
@@ -313,40 +315,42 @@ func handle_movement_input(delta):
 		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
 
 func crouch(delta):
-	standing_collision_shape.disabled = true
-	crouching_collision_shape.disabled = false
+	if !crouch_assist:
+		standing_collision_shape.disabled = true
+		crouching_collision_shape.disabled = false
+	neck.position.y = lerp(neck.position.y, crouching_depth, crouching_lerp_speed * delta)
 	current_speed = crouching_speed
-	neck.position.y = lerp(neck.position.y, crouching_depth, crouching_lerp_speed)
 	head_bopping_current = head_bopping_crouching_intensity
 	head_bopping_index += head_bopping_crouching_speed * delta
 
 func stand_or_walk(delta):
-	standing_collision_shape.disabled = false
-	crouching_collision_shape.disabled = true
-	neck.position.y = lerp(neck.position.y, starting_height, crouching_lerp_speed)
-	if Input.is_action_pressed("sprint") and can_sprint:
-		
-		if current_stamina > 0:
-			audio_timer.wait_time = 0.3
-			current_speed = sprinting_speed
-			head_bopping_current = head_bopping_sprinting_intensity
-			head_bopping_index += head_bopping_sprinting_speed * delta
-			is_sprinting = true
-			current_stamina -= stamina_depletion_rate * delta
+	if !crouch_assist:
+		standing_collision_shape.disabled = false
+		crouching_collision_shape.disabled = true
+		neck.position.y = lerp(neck.position.y, starting_height, crouching_lerp_speed * delta)
+		if Input.is_action_pressed("sprint") and can_sprint:
+			
+			if current_stamina > 0:
+				audio_timer.wait_time = 0.3
+				current_speed = sprinting_speed
+				head_bopping_current = head_bopping_sprinting_intensity
+				head_bopping_index += head_bopping_sprinting_speed * delta
+				is_sprinting = true
+				current_stamina -= stamina_depletion_rate * delta
+			else:
+				audio_timer.wait_time = 0.6
+				current_speed = walking_speed
+				head_bopping_current = head_bopping_walking_intensity
+				head_bopping_index += head_bopping_walking_speed * delta
+				is_sprinting = false
 		else:
 			audio_timer.wait_time = 0.6
 			current_speed = walking_speed
 			head_bopping_current = head_bopping_walking_intensity
 			head_bopping_index += head_bopping_walking_speed * delta
 			is_sprinting = false
-	else:
-		audio_timer.wait_time = 0.6
-		current_speed = walking_speed
-		head_bopping_current = head_bopping_walking_intensity
-		head_bopping_index += head_bopping_walking_speed * delta
-		is_sprinting = false
-	if not Input.is_action_pressed("sprint"):
-		can_sprint = true
+		if not Input.is_action_pressed("sprint"):
+			can_sprint = true
 
 func handle_head_bopping(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
