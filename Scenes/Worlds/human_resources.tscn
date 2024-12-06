@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsbem806big2h"]
+[gd_scene load_steps=17 format=3 uid="uid://dsbem806big2h"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
 [ext_resource type="Environment" uid="uid://52by3g1q6hkh" path="res://human_resources_worldenvironment.tres" id="2_6iufn"]
 [ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="3_jahih"]
+[ext_resource type="Shader" path="res://Scenes/Worlds/hr_freezer_fog_shader.gdshader" id="4_5j6qe"]
 [ext_resource type="LightmapGIData" uid="uid://bbkeubndw8sfl" path="res://Scenes/Worlds/human_resources.lmbake" id="4_5pumb"]
 [ext_resource type="PackedScene" uid="uid://c6e8r8hgcxdyp" path="res://Scenes/Prefabs/Rooms/human_resources_lobby_room.tscn" id="4_71dsc"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="4_83x7j"]
@@ -10,6 +11,27 @@
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="7_o0ubx"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="8_rl6tn"]
 [ext_resource type="PackedScene" uid="uid://dnr8pnsoevxl2" path="res://Scenes/Prefabs/Rooms/human_resources_main_wing.tscn" id="9_51j31"]
+[ext_resource type="PackedScene" uid="uid://cajo2f1jhe000" path="res://Scenes/Prefabs/Rooms/human_resources_blockout.tscn" id="10_ueaqy"]
+
+[sub_resource type="Gradient" id="Gradient_owl4l"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_22e4p"]
+gradient = SubResource("Gradient_owl4l")
+fill_from = Vector2(0.196581, 0.547009)
+fill_to = Vector2(0.538462, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0pit"]
+shader = ExtResource("4_5j6qe")
+shader_parameter/noise_scale = 1.0
+shader_parameter/movement_dir = Vector3(1.84, 0, 2.775)
+shader_parameter/density_mult = 0.035
+shader_parameter/albedoColor = Color(7.94157e-07, 0, 0.403408, 1)
+shader_parameter/emissionColor = Color(0, 0.00166111, 0.180892, 1)
+shader_parameter/fade_out_height = 2.0
+shader_parameter/fade_out_distance = 1.5
+shader_parameter/fade_out_horiz = 31.08
+shader_parameter/colorRand = 38.94
+shader_parameter/gradient = SubResource("GradientTexture2D_22e4p")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_85eyn"]
 vertices = PackedVector3Array(-7.86226, 7, 0.597722, -7.86226, 7, 4.84772, 13.3877, 7, 4.84772, 13.3877, 7, 0.597722, -7.61226, 0.5, 1.84772, -8.11226, 0.5, 2.09772, -7.61226, 0.5, 4.84772, 5.88774, 0.5, 1.34772, 5.38774, 0.5, 0.847722, 2.38774, 0.5, 0.847722, 2.13774, 0.5, 0.347722, -2.11226, 0.5, 0.347722, -2.36226, 0.5, 0.847722, -7.61226, 0.5, 0.847722, 5.88774, 0.5, 4.84772, 13.3877, 0.5, 0.847722, 10.3877, 0.5, 0.847722, 10.1377, 0.5, 1.59772, 13.6377, 0.5, 1.84772, 13.3877, 0.5, 4.84772)
@@ -24,7 +46,13 @@ environment = ExtResource("2_6iufn")
 script = ExtResource("3_jahih")
 dark_value = 0.01
 
+[node name="FreezerFogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.555, 1.125, 28.129)
+size = Vector3(16, 0.55, 21.6)
+material = SubResource("ShaderMaterial_p0pit")
+
 [node name="LightmapGI" type="LightmapGI" parent="."]
+visible = false
 bounces = 4
 light_data = ExtResource("4_5pumb")
 
@@ -49,7 +77,11 @@ navigation_mesh = SubResource("NavigationMesh_85eyn")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.1247, 0, 2.73919)
 
 [node name="HumanResourcesMainWing" parent="NavigationRegion3D" instance=ExtResource("9_51j31")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7981, 0, 2.78114)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7981, 34.9985, 2.78114)
+visible = false
+
+[node name="HumanResourcesBlockout" parent="NavigationRegion3D" instance=ExtResource("10_ueaqy")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 14.1542, 0, 2.81301)
 
 [node name="Mailcart" parent="." instance=ExtResource("8_rl6tn")]
 transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979, 3.55372, 0.316447, 1.73329)

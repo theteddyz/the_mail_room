@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b2rvvsrl03wcr" path="res://Scenes/Prefabs/StaticObjects/hr_wall_wtih_door.tscn" id="5_31gla"]
 [ext_resource type="Texture2D" uid="uid://cxh7m6pspxtno" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_NormalGL.jpg" id="5_wamfc"]
 [ext_resource type="Texture2D" uid="uid://h7hmrarl8wju" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_GlobalCorpIcon.png" id="6_e51ox"]
-[ext_resource type="PackedScene" uid="uid://bqlwocq20ovh3" path="res://Scenes/Prefabs/StaticObjects/ceiling_tile_hr.tscn" id="6_jb2j5"]
+[ext_resource type="PackedScene" uid="uid://bqlwocq20ovh3" path="res://Scenes/Prefabs/StaticObjects/ceiling_tile_hr_old_(DEPRECATED).tscn" id="6_jb2j5"]
 [ext_resource type="Texture2D" uid="uid://bi0sg43x5igji" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Paint002_1K-JPG_Roughness.png" id="7_8tr5f"]
 [ext_resource type="Texture2D" uid="uid://b4lvvd23ey3q4" path="res://Assets/Textures/BlenderTextures/CeilingLight.png" id="7_f3nai"]
 [ext_resource type="Script" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="8_cbsml"]

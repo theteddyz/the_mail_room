@@ -2,17 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="1_g2xuk"]
 [ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="2_6ywnp"]
-[ext_resource type="PackedScene" uid="uid://bqlwocq20ovh3" path="res://Scenes/Prefabs/StaticObjects/ceiling_tile_hr.tscn" id="4_62xu8"]
+[ext_resource type="PackedScene" uid="uid://bqlwocq20ovh3" path="res://Scenes/Prefabs/StaticObjects/ceiling_tile_hr_old_(DEPRECATED).tscn" id="4_62xu8"]
 [ext_resource type="Texture2D" uid="uid://b4lvvd23ey3q4" path="res://Assets/Textures/BlenderTextures/CeilingLight.png" id="4_a1r31"]
 [ext_resource type="Texture2D" uid="uid://bdqjdhf72u4sj" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png" id="5_g7d1p"]
 [ext_resource type="Texture2D" uid="uid://c3qyu5oicypra" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_tezco256r.png" id="5_ta8j1"]
 [ext_resource type="Script" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="5_tqfw8"]
 [ext_resource type="Texture2D" uid="uid://cfpfwkaakamns" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg" id="6_se81x"]
-[ext_resource type="PackedScene" uid="uid://dq58acybudo20" path="res://Scenes/Prefabs/StaticObjects/autopsy_sink.tscn" id="9_hu7iw"]
-[ext_resource type="PackedScene" uid="uid://d2byssce15uq2" path="res://Scenes/Prefabs/StaticObjects/scale.tscn" id="10_1u7gv"]
-[ext_resource type="PackedScene" uid="uid://27882ty3rph6" path="res://Scenes/Prefabs/StaticObjects/cadaver_cart.tscn" id="11_l0gwk"]
-[ext_resource type="PackedScene" uid="uid://d028oad24cf2a" path="res://Scenes/Prefabs/StaticObjects/wall_cabinet.tscn" id="12_lkinv"]
-[ext_resource type="PackedScene" uid="uid://iesbwlljm5ll" path="res://Scenes/Prefabs/StaticObjects/hr_wall_table.tscn" id="13_n3xi5"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/autopsy_sink.tscn" id="9_hu7iw"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/scale.tscn" id="10_1u7gv"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/cadaver_cart.tscn" id="11_l0gwk"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/wall_cabinet.tscn" id="12_lkinv"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/hr_wall_table.tscn" id="13_n3xi5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pej8r"]
 size = Vector3(23.855, 1, 14.06)

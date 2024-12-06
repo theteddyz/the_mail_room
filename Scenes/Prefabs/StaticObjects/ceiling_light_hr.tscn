@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://dk3vr7j150o2g"]
+[gd_scene load_steps=9 format=4 uid="uid://bkj6u72ci18q1"]
 
 [ext_resource type="Texture2D" uid="uid://bvvp4ly004ww1" path="res://Assets/Models/test_models/Floor2/Ceiling/ceilingHospital_Ceiling_light_BaseColor.png" id="1_1aw8o"]
 [ext_resource type="Texture2D" uid="uid://c2fs6mcayvju6" path="res://Assets/Models/test_models/Floor2/Ceiling/ceilingHospital_Ceiling_light_Metallic-Ceiling_light_Roughness.png" id="2_ynwa0"]
 [ext_resource type="Texture2D" uid="uid://djwggaqodycjb" path="res://Assets/Models/test_models/Floor2/Ceiling/ceilingHospital_Ceiling_light_Normal.png" id="3_xju7u"]
 [ext_resource type="Script" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="4_es45j"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lif73"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c107p"]
 resource_name = "Ceiling_light"
 cull_mode = 2
 albedo_texture = ExtResource("1_1aw8o")
@@ -14,6 +14,9 @@ metallic_texture = ExtResource("2_ynwa0")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("2_ynwa0")
 roughness_texture_channel = 1
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 1.35
 normal_enabled = true
 normal_texture = ExtResource("3_xju7u")
 texture_filter = 2
@@ -42,7 +45,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 864,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAbABgAHAAdABsAHgAdABwAHgAfAB0AGgAfAB4AGgAZAB8AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEAMwA0ADEAMwA1ADQANgA3ADgANgA5ADcAOQA6ADcAOQA7ADoAPAA9AD4APAA/AD0AQABBAEIAQABDAEEAQwBEAEEAQwBFAEQARgBHAEgARgBJAEcASQBKAEcASQBLAEoASwBMAEoASwBNAEwATgBPAFAATwBRAFIAUQBTAFQAUwBVAFYAVQBXAFgAVwBOAFkATgBRAE8AUQBVAFMAVQBOAFcAUQBOAFUAWgBbAFwAWgBdAFsAXgAyAF8AXgAwADIAYABhAGIAYQBjAGQAYwBlAGYAZQBnAGgAZwBpAGoAaQBgAGsAYABjAGEAYwBnAGUAZwBgAGkAYwBgAGcAbABtAG4AbABvAG0AcABxAHIAcABzAHEAdAB1AHYAdAB3AHUAdwB4AHUAdwB5AHgAeQB6AHgAeQB7AHoAfAB9AH4AfAB/AH0AfwCAAH0AfwCBAIAAggCDAIQAggCFAIMAhgCHAIgAhgCJAIcAiQCKAIcAiQCLAIoAjACNAI4AjQCPAJAAjwCRAJIAkQCTAJQAkwCVAJYAlQCMAJcAjACPAI0AjwCTAJEAkwCMAJUAjwCMAJMAmACZAJoAmACbAJkAmwBuAJkAmwBsAG4AnACdAJ4AnQCfAKAAnwChAKIAoQCjAKQAowClAKYApQCcAKcAnACfAJ0AnwCjAKEAowCcAKUAnwCcAKMAqACpAKoAqACrAKkArACtAK4ArACvAK0AsACxALIAsACzALEAswC0ALEAswC1ALQAtgC3ALgAtgC5ALcAugC7ALwAugC9ALsAvQC+ALsAvQC/AL4AwADBAMIAwADDAMEAwwDEAMEAwwDFAMQAxQDGAMQAxQDHAMYAyADJAMoAyQDLAMwAywDNAM4AzQDPANAAzwDRANIA0QDIANMAyADLAMkAywDPAM0AzwDIANEAywDIAM8A1ADVANYA1ADXANUA1wCqANUA1wCoAKoA2ADZANoA2QDbANwA2wDdAN4A3QDfAOAA3wDhAOIA4QDYAOMA2ADbANkA2wDfAN0A3wDYAOEA2wDYAN8A5ADlAOYA5ADnAOUA6ADpAOoA6ADrAOkA7ADtAO4A7ADvAO0A8ADxAPIA8ADzAPEA9AD1APYA9AD3APUA+AD5APoA+AD7APkA/AD9AP4A/AD/AP0AAAEBAQIBAAEDAQEBBAEFAQYBBAEHAQUBCAEJAQoBCAELAQkBDAENAQ4BDAEPAQ0BEAERARIBEAETAREBFAEVARYBFAEXARUBGAEZARoBGAEbARkBHAEdAR4BHAEfAR0BIAEhASIBIAEjASEBJAElASYBJAEnASUBKAEpASoBKAErASkBLAEtAS4BLAEvAS0BMAExATIBMAEzATEBNAE1ATYBNAE3ATUBNwE4ATUBNwE5ATgBOgE7ATwBOgE9ATsBPgE/AUABPgFBAT8BQQFCAT8BQQFDAUIBRAFFAUYBRAFHAUUBRwFIAUUBRwFJAUgBSQFKAUgBSQFLAUoBTAFNAU4BTQFPAVABTwFRAVIBUQFTAVQBUwFVAVYBVQFMAVcBTAFPAU0BTwFTAVEBUwFMAVUBTwFMAVMBWAFZAVoBWAFbAVkBWwEuAVkBWwEsAS4BXAFdAV4BXQFfAWABXwFhAWIBYQFjAWQBYwFlAWYBZQFcAWcBXAFfAV0BXwFjAWEBYwFcAWUBXwFcAWMBaAFpAWoBaAFrAWkBbAFtAW4BbAFvAW0BcAFxAXIBcAFzAXEBdAF1AXYBdAF3AXUBeAF5AXoBeAF7AXkBfAF9AX4BfAF/AX0BgAGBAYIBgAGDAYEBhAGFAYYBhAGHAYUBiAGJAYoBiAGLAYkBjAGNAY4BjAGPAY0BkAGRAZIBkAGTAZEBlAGVAZYBlAGXAZUBmAGZAZoBmAGbAZkBnAGdAZ4BnAGfAZ0BoAGhAaIBoAGjAaEBpAGlAaYBpAGnAaUBqAGpAaoBqAGrAakBrAGtAa4BrAGvAa0BsAGxAbIBsAGzAbEBtAG1AbYBtAG3AbUBuAG5AboBuAG7AbkBvAG9Ab4BvAG/Ab0BwAHBAcIBwAHDAcEBxAHFAcYBxAHHAcUB"),
-"material": SubResource("StandardMaterial3D_lif73"),
+"material": SubResource("StandardMaterial3D_c107p"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 456,
@@ -52,29 +55,41 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v1iwv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sfm2k"]
-size = Vector3(3.41737, 1.75867, 3.55977)
+size = Vector3(5.3757, 1.75867, 4.94854)
 
 [node name="Ceiling_Light_HR" type="Node3D"]
 
 [node name="Ceiling_Light2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.965, 0, 0, 0, 1.965, 0, 0, 0, 1.965, 0, 0, 0)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_d7etv")
 skeleton = NodePath("")
 
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="Ceiling_Light2"]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -23.0924, 0)
+aabb = AABB(-10.0748, -5.94489, -9.70125, 20.1497, 11.8898, 19.4025)
+enable_node_path = NodePath("../OmniLight3D")
+
 [node name="OmniLight3D" type="OmniLight3D" parent="Ceiling_Light2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45254, 0)
-light_energy = 1.11
-light_volumetric_fog_energy = 0.008
-light_specular = 0.87
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.144287, 0)
+light_color = Color(0.928271, 1, 0.9997, 1)
+light_energy = 0.833
+light_indirect_energy = 0.21
+light_volumetric_fog_energy = 1.302
+light_specular = 2.265
 shadow_enabled = true
-omni_range = 8.0
-omni_attenuation = 0.603
+omni_range = 11.804
+omni_attenuation = 1.507
 script = ExtResource("4_es45j")
 
 [node name="LightDetectionArea" type="Area3D" parent="Ceiling_Light2/OmniLight3D"]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 1.15317, 0)
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0, 0.168047, 0)
 collision_layer = 524288
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling_Light2/OmniLight3D/LightDetectionArea"]
-transform = Transform3D(0.999955, 0, 0, 0, 0.999955, 0, 0, 0, 0.999955, 0, 0, 0)
+transform = Transform3D(0.999935, 0, 0, 0, 0.999935, 0, 0, 0, 0.999935, -0.0128336, 0, 0.137344)
 shape = SubResource("BoxShape3D_sfm2k")
+
+[connection signal="screen_entered" from="Ceiling_Light2/VisibleOnScreenEnabler3D" to="Ceiling_Light2/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_entered"]
+[connection signal="screen_exited" from="Ceiling_Light2/VisibleOnScreenEnabler3D" to="Ceiling_Light2/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_exited"]
