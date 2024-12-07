@@ -212,6 +212,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168053, 0.228108)
 collision_layer = 2
 collision_mask = 15
+freeze = true
 script = ExtResource("1_6ip5t")
 
 [node name="Lamp" type="MeshInstance3D" parent="LampBase"]
@@ -254,6 +255,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.165858, 0.240402)
 collision_layer = 2
 collision_mask = 15
 sleeping = true
+freeze = true
 script = ExtResource("1_6ip5t")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="LampArm"]

@@ -109,6 +109,7 @@ wait_time = 0.25
 autostart = true
 
 [node name="VisionRayCast" type="RayCast3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
+enabled = false
 target_position = Vector3(0, 7.08, -100)
 collision_mask = 4097
 collide_with_areas = true

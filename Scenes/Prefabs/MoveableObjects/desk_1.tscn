@@ -183,6 +183,7 @@ skeleton = NodePath("")
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.90258, 1.16724, -0.248536)
 physics_material_override = SubResource("PhysicsMaterial_78s4l")
 sleeping = true
+freeze = true
 
 [node name="DrawerTop" type="RigidBody3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.824136, 0.535279)
@@ -191,6 +192,7 @@ mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 gravity_scale = 0.0
 sleeping = true
+freeze = true
 linear_damp = 6.0
 script = ExtResource("1_hork0")
 is_drawer = true
@@ -235,6 +237,7 @@ mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 gravity_scale = 0.0
 sleeping = true
+freeze = true
 linear_damp = 6.0
 script = ExtResource("1_hork0")
 is_drawer = true

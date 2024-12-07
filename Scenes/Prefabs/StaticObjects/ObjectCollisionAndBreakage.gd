@@ -60,33 +60,30 @@ func _ready():
 		break_object()
 
 func _physics_process(_delta: float):
-	if rigidbody.freeze:
-		return
-	if rigidbody.sleeping:
-		return
-	var currentVelocity = rigidbody.linear_velocity
-	
-	var currentRotation = rigidbody.angular_velocity
-	
-	var currentAcceleration = ((previousVelocity - currentVelocity)/_delta)*0.01;
-	var currentRotAccel = ((previousRotation - currentRotation)/_delta)*0.01;
-	
-	var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
-	if(!previousIsPickedUp2 and !onlyPlayOnCollision and impact > impact_threshold):
-		var volume = min(-40 + pow(impact,1.5),0) + initVolume
-		if(destruction_audios != null and impact > destruction_threshold and !broken):
-			destruction_audios.play()
-			break_object()
-		else:
-			playImpactSound(volume)
+	if rigidbody.freeze or rigidbody.sleeping:
+		var currentVelocity = rigidbody.linear_velocity
 		
+		var currentRotation = rigidbody.angular_velocity
 		
-	previousVelocity = rigidbody.linear_velocity
-	previousRotation = rigidbody.angular_velocity
-	
-	previousIsPickedUp3 = previousIsPickedUp2
-	previousIsPickedUp2 = previousIsPickedUp
-	previousIsPickedUp = rigidbody.is_picked_up
+		var currentAcceleration = ((previousVelocity - currentVelocity)/_delta)*0.01;
+		var currentRotAccel = ((previousRotation - currentRotation)/_delta)*0.01;
+		
+		var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
+		if(!previousIsPickedUp2 and !onlyPlayOnCollision and impact > impact_threshold):
+			var volume = min(-40 + pow(impact,1.5),0) + initVolume
+			if(destruction_audios != null and impact > destruction_threshold and !broken):
+				destruction_audios.play()
+				break_object()
+			else:
+				playImpactSound(volume)
+			
+			
+		previousVelocity = rigidbody.linear_velocity
+		previousRotation = rigidbody.angular_velocity
+		
+		previousIsPickedUp3 = previousIsPickedUp2
+		previousIsPickedUp2 = previousIsPickedUp
+		previousIsPickedUp = rigidbody.is_picked_up
 func _on_body_entered(body):
 	#var other_body_velocity = body.linear_velocity if body is RigidBody3D else Vector3.ZERO
 	#var relative_velocity = get_parent().linear_velocity - other_body_velocity

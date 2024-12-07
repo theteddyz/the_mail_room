@@ -1404,7 +1404,6 @@ mesh = SubResource("ArrayMesh_r2vi3")
 skeleton = NodePath("")
 
 [node name="footstep_collider_carpet" type="Area3D" parent="FLOOR/Plane1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 32768
 collision_mask = 32768
 script = ExtResource("33_xxnyf")
@@ -1424,7 +1423,6 @@ shape = SubResource("BoxShape3D_4dmao")
 
 [node name="CEILING" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305175, 0)
-visible = false
 
 [node name="CeilingTileHR12" parent="CEILING" instance=ExtResource("33_8rcrw")]
 transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 2.619)

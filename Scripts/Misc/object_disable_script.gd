@@ -13,13 +13,8 @@ func _setup():
 
 func _on_screen_entered():
 	if mesh_target:
-		mesh_target.visible = true
+		#mesh_target.visible = true
 		parent_body.freeze = false
-		if check_distance_to_player():
-			mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-		else:
-			mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-			mesh_target.lod_bias = 0.5
 	#if parent_body:
 		#if check_distance_to_player():
 			#parent_body.freeze = false
@@ -35,15 +30,18 @@ func find_first_mesh(node: Node):
 
 func _on_screen_exited():
 	if mesh_target and !check_distance_to_player():
-		mesh_target.visible = false
-		mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		pass
+		#mesh_target.visible = false
+		#mesh_target.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	if parent_body:
 		if parent_body.linear_velocity == Vector3.ZERO :
 			parent_body.freeze = true
 
 func check_distance_to_player()-> bool:
-	var distance = parent_body.global_transform.origin.distance_to(player.global_transform.origin)
-	if distance <= distance_threshold:
-		return true
-	else:
-		return false
+	if parent_body and player:
+		var distance = parent_body.global_transform.origin.distance_to(player.global_transform.origin)
+		if distance <= distance_threshold:
+			return true
+		else:
+			return false
+	return false

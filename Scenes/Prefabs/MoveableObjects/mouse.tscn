@@ -55,6 +55,7 @@ collision_layer = 2
 collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_rctak")
 sleeping = true
+freeze = true
 script = ExtResource("1_0sutp")
 
 [node name="Mouse" type="MeshInstance3D" parent="Grabbable"]

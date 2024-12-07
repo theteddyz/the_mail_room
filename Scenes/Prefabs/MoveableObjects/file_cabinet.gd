@@ -21,18 +21,19 @@ var colorPrefabs: String
 var main_material: Material
 var cabinet_material: Material
 func _ready():
-	main_material = mesh.surface_get_material(0)
-	if main_material:
-		main_material = main_material.duplicate()
-	else:
-		main_material = StandardMaterial3D.new()
-	
-	main_material.resource_local_to_scene = true
-	mesh.surface_set_material(0, main_material)
-	cabinet_material = cabinet_1.mesh.surface_get_material(0)
-	cabinet_material.resource_local_to_scene = true
-	cabinet_1.mesh.surface_set_material(0, cabinet_material)
-	update_colors()
+	if cabinet_1:
+		main_material = mesh.surface_get_material(0)
+		if main_material:
+			main_material = main_material.duplicate()
+		else:
+			main_material = StandardMaterial3D.new()
+		
+		main_material.resource_local_to_scene = true
+		mesh.surface_set_material(0, main_material)
+		cabinet_material = cabinet_1.mesh.surface_get_material(0)
+		cabinet_material.resource_local_to_scene = true
+		cabinet_1.mesh.surface_set_material(0, cabinet_material)
+		update_colors()
 func _process(delta):
 	if Engine.is_editor_hint():
 		update_colors()
