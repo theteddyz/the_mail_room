@@ -42,4 +42,5 @@ func despawn_rigid_bodies(zone:String):
 					"parent": object.get_parent(),
 					"scale": object.scale
 				}
-				object.queue_free()
+				object.visible = false
+				object.process_mode = Node.PROCESS_MODE_DISABLED
