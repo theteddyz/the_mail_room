@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://c148bm0rukaqe"]
+[gd_scene load_steps=12 format=4 uid="uid://c148bm0rukaqe"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_sdwat"]
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_ucm3o"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_fc23j"]
 [ext_resource type="AudioStream" uid="uid://c0g6vygpih50f" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium.mp3" id="5_260e6"]
 [ext_resource type="AudioStream" uid="uid://bhw8ffqsxic61" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium3.mp3" id="6_lhgpa"]
-[ext_resource type="Script" path="res://Scripts/Misc/object_disable_script.gd" id="7_e80ip"]
 [ext_resource type="AudioStream" uid="uid://7dlyqcruvt7" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium2.mp3" id="7_pybtk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jg0x"]
@@ -56,13 +55,6 @@ stream_1/stream = ExtResource("6_lhgpa")
 stream_2/stream = ExtResource("7_pybtk")
 
 [node name="Node3D2" type="Node3D"]
-
-[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="." node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.241312, 0)
-enable_mode = 2
-enable_node_path = NodePath("../Cardboard_box_medium")
-script = ExtResource("7_e80ip")
-target = NodePath("../Cardboard_box_medium")
 
 [node name="Cardboard_box_medium" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.241312, 0)
