@@ -101,8 +101,8 @@ func add_tape(tape):
 	tapes_collected.append(tape)
 	
 	var tape_index = tapes_collected.size() - 1
-	var tapes_per_row = int(floor(box_dimensions.x / (tape_size.x * x_padding)))  # Width of the box along the x-axis now determines number of tapes per row
-	var internal_box_width = box_dimensions.x - (2 * wall_thickness.x) 
+	var tapes_per_row = (floor(box_dimensions.x / (tape_size.x * x_padding)))  # Width of the box along the x-axis now determines number of tapes per row
+	#var internal_box_width = box_dimensions.x - (2 * wall_thickness.x) 
 	var row = floor(tape_index / tapes_per_row)
 	var col = tape_index % tapes_per_row
 	var new_position = base_position + Vector3(
@@ -128,8 +128,8 @@ func grab_current_tape():
 	if !radio.has_tape:
 		if tapes_collected.size() > 0:
 			var current_tape = tapes_collected[current_index]
-			var box_position  = current_tape.position
-			var box_rotation = current_tape.rotation
+			#var box_position  = current_tape.position
+			#var box_rotation = current_tape.rotation
 			current_index = 0
 			using_box = false
 			await current_tape.insert_tape(player_camera)
@@ -153,7 +153,7 @@ func stop_interaction():
 func start_interaction():
 	if !using_box:
 		EventBus.emitCustomSignal("disable_player_movement",[true,true])
-		var original_global_transform = player_camera.global_transform
+		#var original_global_transform = player_camera.global_transform
 		interactableFinder.enabled = false
 		look_icon.hide()
 		var icon = Gui.icon_manager

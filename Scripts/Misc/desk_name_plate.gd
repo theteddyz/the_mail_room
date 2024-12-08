@@ -2,7 +2,7 @@
 extends Node3D
 
 @export_multiline var name_text:String
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint():
 		update_text()
 

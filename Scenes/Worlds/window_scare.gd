@@ -23,7 +23,7 @@ func _ready():
 	ScareDirector.connect("package_delivered", activate_scare)
 	ScareDirector.connect("monster_seen", monster_seen_function)
 
-func monster_seen_function(boolean: bool):
+func monster_seen_function(_boolean: bool):
 	monster_seen = true
 	if(ready_to_start):
 		ready_to_start = false

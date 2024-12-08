@@ -36,7 +36,7 @@ func _on_area_entered(area):
 
 func _on_area_exited(area):
 	var light = area.get_parent()
-	var lights: Array = []
+	#var lights: Array = []
 	if((light is OmniLight3D or light is SpotLight3D) and light.shadow_enabled and !light.is_in_group("ignore_shadowculling")):
 		if(!light.is_in_group("alwaysshadow")):
 			light.shadow_enabled = false

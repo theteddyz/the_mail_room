@@ -81,7 +81,7 @@ func _hide_monster():
 	queue_free()
 
 
-func _on_anticipation_starter_body_entered(body: Node3D) -> void:
+func _on_anticipation_starter_body_entered(_body: Node3D) -> void:
 	var arr = packageholder.get_children()
 	var mail_cart = player.find_child("Mailcart")
 	if mail_cart!= null:

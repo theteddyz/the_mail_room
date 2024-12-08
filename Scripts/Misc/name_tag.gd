@@ -4,7 +4,7 @@ extends Node3D
 @export_multiline var name_text:String
 var mesh_set = false
 var showing:bool = false
-func _process(delta):
+func _process(_delta):
 	if Engine.is_editor_hint() and !mesh_set:
 		update_text()
 

@@ -13,7 +13,7 @@ var sound: Resource
 func _ready():
 	sound = load(sound_resource_path)
 
-func _on_body_entered(body: Node3D) -> void:
+func _on_body_entered(_body: Node3D) -> void:
 	if starter:
 		AudioController.play_resource(sound, modifiers)
 	else:

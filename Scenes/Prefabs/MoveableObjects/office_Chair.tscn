@@ -319,7 +319,8 @@ collision_layer = 2
 collision_mask = 15
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2rnrn")
-freeze = true
+sleeping = true
+freeze_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Chair/RigidBody3D5"]
 transform = Transform3D(3.58423, 0, 0, 0, 3.58423, 0, 0, 0, 3.58423, 1.55812, -2.79481, -0.05951)
@@ -336,7 +337,8 @@ collision_layer = 2
 collision_mask = 15
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2rnrn")
-freeze = true
+sleeping = true
+freeze_mode = 1
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Chair/RigidBody3D4"]
 transform = Transform3D(3.58423, 0, 0, 0, 3.58423, 0, 0, 0, 3.58423, 0.348148, -2.81648, -1.68921)
@@ -353,7 +355,8 @@ collision_layer = 2
 collision_mask = 15
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2rnrn")
-freeze = true
+sleeping = true
+freeze_mode = 1
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Chair/RigidBody3D3"]
 transform = Transform3D(3.58423, 0, 0, 0, 3.58423, 0, 0, 0, 3.58423, -1.50282, -2.81648, -1.05975)
@@ -370,7 +373,8 @@ collision_layer = 2
 collision_mask = 15
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2rnrn")
-freeze = true
+sleeping = true
+freeze_mode = 1
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Chair/RigidBody3D2"]
 transform = Transform3D(3.58423, 0, 0, 0, 3.58423, 0, 0, 0, 3.58423, -1.50282, -2.79481, 1.00781)
@@ -387,7 +391,8 @@ collision_layer = 2
 collision_mask = 15
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2rnrn")
-freeze = true
+sleeping = true
+freeze_mode = 1
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Chair/RigidBody3D"]
 transform = Transform3D(3.58423, 0, 0, 0, 3.58423, 0, 0, 0, 3.58423, 0.382695, -2.79481, 1.55144)

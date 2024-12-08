@@ -24,7 +24,7 @@ func _ready():
 	ScareDirector.connect("monster_seen", monster_seen_function)
 
 
-func _on_area_3d_body_entered(body):
+func _on_area_3d_body_entered(_body):
 	if !closed and !scare_finished:
 		flicker_light_sound.stop()
 		anim.play("first_trigger")

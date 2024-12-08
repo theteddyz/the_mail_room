@@ -87,7 +87,7 @@ func _physics_process(_delta: float):
 	previousIsPickedUp3 = previousIsPickedUp2
 	previousIsPickedUp2 = previousIsPickedUp
 	previousIsPickedUp = rigidbody.is_picked_up
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	#var other_body_velocity = body.linear_velocity if body is RigidBody3D else Vector3.ZERO
 	#var relative_velocity = get_parent().linear_velocity - other_body_velocity
 	#var impulse = relative_velocity.length()

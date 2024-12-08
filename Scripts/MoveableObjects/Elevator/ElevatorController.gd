@@ -55,10 +55,10 @@ func move_floors()->void:
 	swap_floor_collider(false)
 	if previous_floor > current_floor:
 		await close_doors()
-		var player = GameManager.get_player()
+		#var player = GameManager.get_player()
 		#player.reparent(Elevator,true)
-		if detector.mailcart_exists_in_elevator == true:
-			var mail_cart = GameManager.get_mail_cart()
+		#if detector.mailcart_exists_in_elevator == true:
+			#var mail_cart = GameManager.get_mail_cart()
 			#mail_cart.reparent(Elevator,true)
 		await move_elevator_down()
 		return
@@ -67,7 +67,7 @@ func move_floors()->void:
 		if detector.mailcart_exists_in_elevator == true:
 			var mail_cart = GameManager.get_mail_cart()
 			#mail_cart.reparent(Elevator,true)
-		var player = GameManager.get_player()
+		#var player = GameManager.get_player()
 		#player.reparent(Elevator,true)
 		for ceiling in get_tree().get_nodes_in_group("Ceiling"):
 			ceiling.hide()
@@ -89,7 +89,7 @@ func set_floor(path,new_floor:int):
 
 func load_floor():
 	swap_floor_collider(false)
-	var player = GameManager.get_player()
+	#var player = GameManager.get_player()
 	var mail_cart = GameManager.get_mail_cart()
 	var map_instance = mail_cart.get_node("Map_Position").get_child(0)
 	map_instance.set_map()
@@ -117,28 +117,28 @@ func load_floor():
 
 func swap_floor_collider(on:bool):
 	if on:
-		for floor in get_tree().get_nodes_in_group("Real_Floor"):
-			if floor is CollisionShape3D:
-				var collider:StaticBody3D = floor.get_parent()
+		for floor_ in get_tree().get_nodes_in_group("Real_Floor"):
+			if floor_ is CollisionShape3D:
+				var collider:StaticBody3D = floor_.get_parent()
 				collider.set_collision_layer_value(4,true)
 				collider.set_collision_layer_value(3,true)
-			floor.visible = true
-		for floors in get_tree().get_nodes_in_group("Fake_Floor"):
-			floors.visible = false
+			floor_.visible = true
+		for _floors in get_tree().get_nodes_in_group("Fake_Floor"):
+			_floors.visible = false
 	else:
-		for floor in get_tree().get_nodes_in_group("Real_Floor"):
-			if floor is CollisionShape3D:
-				var collider:StaticBody3D = floor.get_parent()
+		for _floor in get_tree().get_nodes_in_group("Real_Floor"):
+			if _floor is CollisionShape3D:
+				var collider:StaticBody3D = _floor.get_parent()
 				collider.set_collision_layer_value(4,false)
 				collider.set_collision_layer_value(3,false)
-			floor.visible = false
-	for floors in get_tree().get_nodes_in_group("Fake_Floor"):
-		floors.visible = true
+			_floor.visible = false
+	for _floors in get_tree().get_nodes_in_group("Fake_Floor"):
+		_floors.visible = true
 
-func close_doors(reparent = true)-> void:
+func close_doors(_reparent = true)-> void:
 	var player = GameManager.get_player()
 	var mailcart = GameManager.get_mail_cart()
-	if reparent:
+	if _reparent:
 		player.reparent(Elevator,true)
 		player.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)	
 		mailcart.reparent(Elevator,true)

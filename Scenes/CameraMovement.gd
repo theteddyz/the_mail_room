@@ -46,7 +46,7 @@ func _process(delta: float):
 
 		# Apply the initial offset to the head's quaternion
 		# Extract only the Y-axis rotation from the initial offset
-		var y_only_offset = Quaternion(Vector3.UP, initial_rotation_offset.get_euler().y)
+		#var y_only_offset = Quaternion(Vector3.UP, initial_rotation_offset.get_euler().y)
 		
 		# Apply only the Y-axis offset to the head's rotation
 		var adjusted_head_quat = current_head_quat
@@ -77,7 +77,7 @@ func _process(delta: float):
 
 
 		# Compute the rotational difference between current and target
-		var rotational_difference = target_cumulative_rotation - current_cumulative_rotation 
+		#var rotational_difference = target_cumulative_rotation - current_cumulative_rotation 
 
 		# Apply the spring force and damping
 		#var angular_acceleration = rotational_difference * spring_strength 
@@ -111,7 +111,7 @@ func _process(delta: float):
 		global_rotation.z += angular_velocity.y*0.008
 		
 		
-		var rotation_quaternion = Quaternion.from_euler(global_rotation)
+		#var rotation_quaternion = Quaternion.from_euler(global_rotation)
 		followingVelocity = global_position - head.global_position
 		velocityLerpTowards = velocityLerpTowards.lerp(((followingVelocity - previousFollowingVelocity)/delta)*0.1, delta*2)
 		
@@ -119,7 +119,7 @@ func _process(delta: float):
 		var angle: float = deg_to_rad(90)     # 90 degrees in radians
 
 		# Create a quaternion representing a 90-degree rotation around the chosen axis
-		var rotation_quat_90 = Quaternion(axis, angle)
+		#var rotation_quat_90 = Quaternion(axis, angle)
 		
 		#global_rotation += rotation_quat_90 * (rotation_quaternion * velocityLerpTowards);
 		previousFollowingVelocity = followingVelocity
@@ -143,7 +143,7 @@ func calculatePosition(delta: float):
 	var position_difference = target_position - global_position
 
 	# Calculate a "spring" force towards the target position
-	var position_acceleration = position_difference * position_spring_strength
+	#var position_acceleration = position_difference * position_spring_strength
 	#position_acceleration.y += -982*delta
 
 	# Update the velocity with acceleration and apply damping
@@ -225,14 +225,14 @@ func spring_damper_exact(
 	x_goal: float, 
 	v_goal: float, 
 	stiffness: float, 
-	damping: float, 
+	_damping: float, 
 	dt: float, 
 	eps: float = 1e-5
 ) -> Dictionary:
 	var g = x_goal
 	var q = v_goal
 	var s = stiffness
-	var d = damping
+	var d = _damping
 	var c = g + (d * q) / (s + eps)
 	var y = d / 2.0
 

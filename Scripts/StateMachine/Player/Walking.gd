@@ -69,8 +69,8 @@ var is_leaning:bool = false
 var original_neck_position:Vector3
 # Called when the node enters the scene tree for the first time.
 var stamina_bar
-signal object_hovered(node)
-signal object_unhovered()
+#signal object_hovered(node)
+#signal object_unhovered()
 #walking Sounds
 var walking_audio_player:AudioStreamPlayer3D
 var audio_timer:Timer
@@ -144,10 +144,13 @@ func handle_general_interaction():
 	if mailcart == null:
 		mailcart = GameManager.get_mail_cart()
 	var collider = interactable_finder.get_interactable()
+	var mail_cart_name = ""
+	if mailcart:
+		mail_cart_name = mailcart.name
 	if collider and !is_holding_object:
 		ScareDirector.grabbable.emit(collider.name)
 		match collider.name:
-			mailcart.name:
+			mail_cart_name:
 				if is_holding_package:
 					collider.add_package(package_last_held,true)
 					package_last_held = null
@@ -265,7 +268,7 @@ func stop_leaning():
 	lean_angle = 0.0
 	is_leaning = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	apply_pushes()
 
 func _process(delta):

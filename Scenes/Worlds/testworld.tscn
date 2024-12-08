@@ -1,25 +1,19 @@
-[gd_scene load_steps=37 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=30 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/Prefabs/gui/interactable_test.tscn" id="4_p0gx3"]
 [ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="5_6517x"]
-[ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="5_tbsk3"]
-[ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="6_2o7dd"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall_door.tscn" id="15_2x2rp"]
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_with_door.tscn" id="15_tm150"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_door.tscn" id="15_toag5"]
-[ext_resource type="PackedScene" uid="uid://bwnbou1pjcf8l" path="res://Scenes/Prefabs/MoveableObjects/plant.tscn" id="17_b78s4"]
-[ext_resource type="PackedScene" uid="uid://ksn67lit7pjy" path="res://Scenes/Prefabs/MoveableObjects/key.tscn" id="17_ma4ii"]
 [ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="19_va06c"]
-[ext_resource type="PackedScene" uid="uid://b837cq0s3mn0s" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="20_5b6he"]
 [ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="21_fscik"]
 [ext_resource type="PackedScene" uid="uid://duh0mp4ga7irm" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover.tscn" id="22_cdvgx"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="22_n7wpk"]
-[ext_resource type="PackedScene" uid="uid://biilk0erp2roe" path="res://Scenes/Prefabs/MoveableObjects/tape_template.tscn" id="22_p3lgw"]
-[ext_resource type="PackedScene" uid="uid://box8t8l24q1si" path="res://Assets/Models/desk.tscn" id="23_3qde4"]
 [ext_resource type="Script" path="res://Scripts/Misc/zone_optimizer.gd" id="24_s3eqx"]
+[ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="25_rport"]
 [ext_resource type="PackedScene" uid="uid://uuhrokgnd64l" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall.tscn" id="39_l18u8"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
@@ -69,9 +63,6 @@ size = Vector3(11.7309, 11.1433, 9.20322)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxn8k"]
 size = Vector3(2.33154, 3.16882, 4.45436)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_503w5"]
-size = Vector3(2.4791, 1.14551, 1.27423)
-
 [node name="world" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_y5q3h")
 floor_num = -1
@@ -81,9 +72,6 @@ floor_num = -1
 [node name="Player" parent="." instance=ExtResource("2_n1cxu")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2092, 0.0844421, 8.67806)
-
-[node name="Mailcart" parent="." instance=ExtResource("5_tbsk3")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 0.280565, -4)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -113,11 +101,6 @@ transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 2, -5.82439)
 [node name="StaticBody3D3" parent="NavigationRegion3D" instance=ExtResource("15_2x2rp")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5, 0.5, -10)
 
-[node name="Key" parent="NavigationRegion3D" instance=ExtResource("17_ma4ii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0553, 1.64425, -1.6986)
-disable_mode = 1
-unlock_num = 1
-
 [node name="meeting_room_wall_Door" parent="NavigationRegion3D" instance=ExtResource("15_tm150")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.6894, 0.504028, -9.97101)
 
@@ -130,13 +113,6 @@ transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 4.31258, 2.
 
 [node name="StaticBody3D" parent="NavigationRegion3D" instance=ExtResource("15_toag5")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.70716, 0.504029, -10.007)
-
-[node name="Grabbable" parent="NavigationRegion3D" instance=ExtResource("17_b78s4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4181, 0.599854, -2.45184)
-
-[node name="TAPE_NEW" parent="NavigationRegion3D" instance=ExtResource("22_p3lgw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113563, 1.66132, -1.59701)
-collision_mask = 2
 
 [node name="StaticBody3D2" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
 transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 26.481, 0.509067, 0.89951)
@@ -208,29 +184,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0477006, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64869, -0.198545, -1.01932)
 shape = SubResource("BoxShape3D_xc3id")
 
-[node name="GrabableObjectTemplate" parent="." instance=ExtResource("6_2o7dd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0862904, 1.54579, -0.245461)
-
-[node name="GrabableObjectTemplate2" parent="." instance=ExtResource("6_2o7dd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.23789, 1.54579, -0.245461)
-
-[node name="GrabableObjectTemplate3" parent="." instance=ExtResource("6_2o7dd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.34321, 1.54579, -0.245461)
-
-[node name="GrabableObjectTemplate4" parent="." instance=ExtResource("6_2o7dd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.89685, 1.54579, -0.245461)
-
-[node name="GrabableObjectTemplate5" parent="." instance=ExtResource("6_2o7dd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.66205, 1.54579, -0.245461)
-
-[node name="GrabableObjectTemplate6" parent="." instance=ExtResource("6_2o7dd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.2147, 1.54579, -0.245461)
-
 [node name="base_airduct" parent="." instance=ExtResource("19_va06c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7115, 0.858505, -1.48411)
-
-[node name="Mouse" parent="." instance=ExtResource("20_5b6he")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17731, 0.388621, 0.665632)
 
 [node name="airduct_longer" parent="." instance=ExtResource("21_fscik")]
 transform = Transform3D(1.47, 0, 0, 0, 2.49, 0, 0, 0, 1.47, 14.4115, 0.57453, 3.80822)
@@ -266,18 +221,8 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.448975, 0.835388, -0.134636)
 shape = SubResource("BoxShape3D_vxn8k")
 
-[node name="Desk" parent="." instance=ExtResource("23_3qde4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.519, 0.00906754, 5.88061)
-
-[node name="Area3D" type="Area3D" parent="Desk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.91483, 0.260137)
-collision_layer = 0
-collision_mask = 65536
-script = ExtResource("22_n7wpk")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1.00008, 0, 0, 0, 1, 0.034544, -0.332542, -0.123391)
-shape = SubResource("BoxShape3D_503w5")
+[node name="Desk2" parent="." instance=ExtResource("25_rport")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10216, 0.00906754, 2.82062)
 
 [connection signal="body_entered" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_exited"]
@@ -285,8 +230,6 @@ shape = SubResource("BoxShape3D_503w5")
 [connection signal="body_exited" from="ZoneOptimizer" to="ZoneOptimizer" method="_on_body_exited"]
 [connection signal="body_entered" from="ZoneOptimizer/DetectionArea" to="ZoneOptimizer" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="ZoneOptimizer/DetectionArea" to="ZoneOptimizer" method="_on_detection_area_body_exited"]
-[connection signal="body_entered" from="Desk/Area3D" to="Desk/Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="Desk/Area3D" to="Desk/Area3D" method="_on_body_exited"]
 
 [editable path="NavigationRegion3D/StaticBody3D3"]
 [editable path="NavigationRegion3D/meeting_room_wall_Door"]

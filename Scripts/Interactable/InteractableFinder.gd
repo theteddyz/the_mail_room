@@ -7,7 +7,7 @@ func _ready():
 func _process(_delta):
 	_check_for_interactables()
 
-func _dropped_object(object,object2):
+func _dropped_object(_object,_object2):
 	object_being_looked_at = null
 
 func _check_for_interactables():

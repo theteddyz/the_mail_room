@@ -52,7 +52,7 @@ func _process(delta):
 	else:
 		reset_highlight()
 func grabbed():
-	var player = GameManager.get_player()
+	player = GameManager.get_player()
 	var key_tween = create_tween()
 	key_tween.tween_property(self,"global_position",Vector3(player.global_position.x,(player.global_position.y+ 1.6),player.global_position.z),0.2)
 	await key_tween.finished

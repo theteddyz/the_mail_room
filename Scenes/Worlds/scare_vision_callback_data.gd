@@ -7,7 +7,6 @@ enum Effect { NONE, MONSTER_SEEN, DELAY }
 @export var effect_type: Effect = Effect.NONE
 @export var delay_length: float = 0
 @export var keep_scare_vision: bool = false
-signal callback_done
 
 # External callback function that could have some delay or complex operations
 func scare_vision_external_callback() -> void:

@@ -34,5 +34,5 @@ func _end_scare():
 	monitor.get_node("ComputerOff").visible = true
 
 
-func _on_quiet_scare_starter_body_entered(body: Node3D) -> void:
+func _on_quiet_scare_starter_body_entered(_body: Node3D) -> void:
 	activate_scare()

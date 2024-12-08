@@ -145,7 +145,7 @@ O={
 3d/run_on_separate_thread=true
 common/physics_ticks_per_second=45
 3d/physics_engine="JoltPhysics3D"
-3d/solver/solver_iterations=6
+3d/solver/solver_iterations=10
 jolt_3d/solver/velocity_iterations=5
 jolt_3d/solver/position_iterations=1
 

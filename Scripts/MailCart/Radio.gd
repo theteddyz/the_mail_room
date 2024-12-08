@@ -46,7 +46,7 @@ func eject_tape():
 	audio.stream = null
 
 
-func delivery_sound(i):
+func delivery_sound(_i):
 	power = true
 	audio.stream = delievery_sound
 	audio.play()

@@ -23,8 +23,8 @@ func _ready():
 
 func interact():
 	var icon = Gui.icon_manager
-	var d
-	icon.hide_all_icons(d)
+	var _d
+	icon.hide_all_icons(_d)
 	EventBus.emitCustomSignal("disable_player_movement",[false,true])
 	interacting = true
 	parent.reparent(player_camera,true)
@@ -64,7 +64,7 @@ func returnMap():
 	parent.reparent(cart,true)
 	interacting = false
 	var return_tween_position = create_tween()
-	var return_tween_rotation = create_tween()
+	#var return_tween_rotation = create_tween()
 	return_tween_position.tween_property(parent, "position", cart_position, 0.5).set_ease(Tween.EASE_IN_OUT)
 	return_tween_position.set_parallel(true)
 	return_tween_position.tween_property(parent, "rotation_degrees", cart_rotation, 0.5).set_ease(Tween.EASE_IN_OUT)

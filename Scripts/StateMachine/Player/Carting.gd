@@ -33,14 +33,14 @@ var forward_velocity_signswitch_cooldown: float = 0
 var directionX: Vector3 = Vector3.ZERO
 var directionZ: Vector3 = Vector3.ZERO
 var direction: Vector3 = Vector3.ZERO
-var _rotate: float = 0.0
+#var _rotate: float = 0.0
 var was_moving: bool = false
 var target_volume: float = -80.0
 var hinge_joint
 # GUI and carting state
 var gui_anim
 var is_carting
-var sign = 0
+var _sign = 0
 var drifting = false
 var handlePos: Node3D
 
@@ -51,7 +51,7 @@ var previous_head_quat: Quaternion  # Store the previous frame's head rotation i
 var target_cumulative_rotation: Vector3 = Vector3.ZERO  # Track cumulative rotations for the target
 var angular_velocity: Vector3 = Vector3.ZERO  # Track the angular velocity
 var spring_strength: float = 210.0  # Controls how fast it accelerates towards target
-var damping: float = 15.0 # Controls how fast it slows down after overshooting
+var _damping: float = 15.0 # Controls how fast it slows down after overshooting
 var mailcartRotation: Quaternion
 
 func _ready():
@@ -145,7 +145,7 @@ func _physics_process(delta):
 	
 		
 		# Get the velocity of the mailcart
-	var velocity = mailcart.linear_velocity
+	#var velocity = mailcart.linear_velocity
 
 	## Check if the velocity is significant enough to calculate rotation
 	#if velocity.length() > 0.001:  # Adjust the threshold as needed
@@ -190,7 +190,7 @@ func _physics_process(delta):
 		current_head_quat = head.global_transform.basis.get_rotation_quaternion()
 	# Apply the initial offset to the head's quaternion
 	# Extract only the Y-axis rotation from the initial offset
-	var y_only_offset = Quaternion(Vector3.UP, initial_rotation_offset.get_euler().y)
+	#var y_only_offset = Quaternion(Vector3.UP, initial_rotation_offset.get_euler().y)
 	
 	# Apply only the Y-axis offset to the head's rotation
 	var adjusted_head_quat = current_head_quat
@@ -210,9 +210,9 @@ func _physics_process(delta):
 
 
 	# Compute the rotational difference between current and target
-	var rotational_difference = target_cumulative_rotation - current_cumulative_rotation 
+	#var rotational_difference = target_cumulative_rotation - current_cumulative_rotation 
 	
-	var resultY : Dictionary = spring_damper_exact(current_cumulative_rotation.y,angular_velocity.y,target_cumulative_rotation.y,0,spring_strength / (1+calculate_difference(current_cumulative_rotation.y, target_cumulative_rotation.y)*2.25),damping,delta )
+	var resultY : Dictionary = spring_damper_exact(current_cumulative_rotation.y,angular_velocity.y,target_cumulative_rotation.y,0,spring_strength / (1+calculate_difference(current_cumulative_rotation.y, target_cumulative_rotation.y)*2.25),_damping,delta )
 								
 	angular_velocity.y = resultY.v
 
@@ -227,7 +227,7 @@ func _physics_process(delta):
 
 
 
-func calculate_sideways_counter_force(delta):
+func calculate_sideways_counter_force(_delta):
 	var local_right = Vector3(1, 0, 0)
 	var global_right = mailcart.transform.basis * local_right  # Transform local right to global right
 	var velocity_in_right = mailcart.linear_velocity.dot(global_right)  # Project linear velocity onto global right
@@ -235,7 +235,7 @@ func calculate_sideways_counter_force(delta):
 	mailcart.linear_velocity -= global_right * velocity_in_right * 0.05
 	
 	
-func deaccelerate_forwards_momentum(delta):
+func deaccelerate_forwards_momentum(_delta):
 	var local_forward = Vector3(0, 0, 1)  # Forward in local space is usually the negative Z-axis, but we are funky
 	# Convert the local forward direction to the global space using the object's current transform
 	var global_forward = mailcart.global_transform.basis * local_forward
@@ -247,7 +247,7 @@ func deaccelerate_forwards_momentum(delta):
 		mailcart.linear_velocity -= global_forward * velocity_in_forward * 0.02
 	
 
-func calculate_linear_velocity(delta):
+func calculate_linear_velocity(_delta):
 	if abs(direction.y) > 0:
 		# Get the forward direction in the object's local space (usually -Z axis in 3D)
 		var local_forward = Vector3(0, 0, 1)  # Forward in local space is usually the negative Z-axis, but we are funky
@@ -262,7 +262,7 @@ func calculate_linear_velocity(delta):
 		mailcart.linear_velocity += global_forward * direction.y * current_speed *0.09
 
 
-func calculate_rotation_velocity(input_dir: Vector2, delta):
+func calculate_rotation_velocity(_input_dir: Vector2, _delta):
 	if abs(direction.x) > 0:
 		#var velocity_difference := (Quaternion.from_euler(global_rotation).inverse() * mailcart.linear_velocity)
 		#var global_velocity = mailcart.linear_velocity
@@ -282,7 +282,7 @@ func calculate_rotation_velocity(input_dir: Vector2, delta):
 		var global_right = mailcart.global_transform.basis * local_right
 		mailcart.linear_velocity += global_right * direction.x * current_speed *0.09
 
-func stop_linear_movement(delta):
+func stop_linear_movement(_delta):
 	pass
 	#mailcart.linear_velocity.z = move_toward(mailcart.linear_velocity.z, 0, delta * 1.33)
 	#mailcart.linear_velocity.x = move_toward(mailcart.linear_velocity.x, 0, delta * 1.33)
@@ -381,14 +381,14 @@ func spring_damper_exact(
 	x_goal: float, 
 	v_goal: float, 
 	stiffness: float, 
-	damping: float, 
+	_damping: float, 
 	dt: float, 
 	eps: float = 1e-5
 ) -> Dictionary:
 	var g = x_goal
 	var q = v_goal
 	var s = stiffness
-	var d = damping
+	var d = _damping
 	var c = g + (d * q) / (s + eps)
 	var y = d / 2.0
 

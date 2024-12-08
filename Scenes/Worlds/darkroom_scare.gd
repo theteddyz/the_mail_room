@@ -43,7 +43,7 @@ func activate_scare(key_num:int):
 		scare_active = true
 		print("SCARE ACTIVATED!")
 		
-func monster_seen_event(test):
+func monster_seen_event(_test):
 	if(scare_active):
 		scare_active = false
 		if wall_to_nuke != null:

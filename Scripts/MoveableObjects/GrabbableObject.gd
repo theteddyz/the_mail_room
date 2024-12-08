@@ -5,6 +5,7 @@ extends Grabbable
 @export var max_lift_height: float = 100.0
 @export var max_force:float = 300.0
 @export var distance_threshold: float = 6.0
+@export var distance_threshold2: float = 20.0
 @export var drop_time_threshold: float = 0.5
 @export var tether_distance: float = 2.5
 @export var regrab_cooldown: float = 0.5
@@ -41,7 +42,7 @@ var is_tether_max_range: bool = false
 var is_being_looked_at
 var grab_point_indicator
 var player_cross_hair
-signal collided(other_body)
+#signal collided(other_body)
 const DOOR_TORQUE_MULTIPLIER: float = 0.02
 const DRAWER_TORQUE_MULTIPLIER: float = 0.01
 var mouse_line: MeshInstance3D
@@ -56,11 +57,12 @@ var door_forward_position
 var door_global_position
 #This is just for the on screen visualizer very stupid fix should have one bool for this
 var grabbed:bool
+var spawned = true
+var modified:bool = false
 func _ready():
-	var new_optimizer = optimizer.instantiate()
-	add_child(new_optimizer)
-	new_optimizer._setup()
-	
+	#var new_optimizer = optimizer.instantiate()
+	#add_child(new_optimizer)
+	#new_optimizer._setup()
 	set_collision_layer_value(5,true)
 	set_collision_mask_value(5,true)
 	set_collision_mask_value(13,true)
@@ -110,6 +112,13 @@ func is_player_inside_room()-> bool:
 
 
 func _process(_delta): #Tether the player to the object
+	if spawned:
+		freeze = false
+		sleeping = false
+		if is_at_rest():
+			spawned = false
+			freeze = true
+			sleeping = true
 	if is_picked_up:
 		mouse_velocity = Vector2.ZERO
 		var playerPosition:Vector3 = player.transform.origin;
@@ -134,26 +143,18 @@ func _process(_delta): #Tether the player to the object
 		if !is_picked_up and is_grabbing_bool:
 			is_grabbing_bool = false
 			mouse_line.queue_free()
+	if check_distance_to_player():
+		freeze = false
+	elif is_at_rest():
+		freeze = true
+	
 
 func _physics_process(delta):
-	#if camera.global_transform.origin.distance_to(global_transform.origin) > 15:
-	#	sleeping = true
-		#visible = false
-	#else:
-		#visible = true
-#	var distance_squared = camera_position.distance_to(object_position)
-		
-	# Quick check: is the object too far away?
-	#if camera.global_transform.origin.distance_to(global_transform.origin) > 45:	
-		#visible = false
-#		return
-	#else:
-		#visible = true
 	if is_picked_up:
 		handle_pickup(delta)
 		update_rotation(delta)
-	elif should_freeze and is_at_rest():
-		freeze = true
+	#elif is_at_rest() and !check_distance_to_player() and !freeze and !spawned:
+		#freeze = true
 func handle_pickup(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
@@ -178,6 +179,7 @@ func grab():
 	grabbed = true
 	freeze = false
 	sleeping = false
+	modified = true
 	#process_mode = ProcessMode.PROCESS_MODE_ALWAYS
 	if pickup_timer.is_stopped():
 		if !timerAdded:
@@ -228,8 +230,8 @@ func dropMe(throw:bool):
 		angular_damp = starting_angular_damp
 		if disable_collider_on_grab:
 			set_collision_layer_value(2,true)
-		#if should_freeze:
-			#sleeping = true
+		if should_freeze:
+			sleeping = true
 	else:
 		throw_direction = (playerHead.global_transform.basis.z * -1).normalized()
 		EventBus.emitCustomSignal("dropped_object",[mass,self])
@@ -256,7 +258,7 @@ func pickmeUp():
 
 func rotate_vector_global(offset: Vector3) -> Vector3:
 	# Get the object's global transform
-	var global_transform = self.global_transform
+	#var _global_transform = self.global_transform
 	# Extract the basis (rotation matrix) from the global transform
 	var basisen = global_transform.basis
 	
@@ -299,31 +301,31 @@ func update_position(delta):
 		else:
 			force_above_threshold_time = 0.0
 	elif is_door and !is_drawer:
-		var mouse_velocity = previous_mouse_position / delta
+		mouse_velocity = previous_mouse_position / delta
 		if !mouse_velocity.is_finite():
 			print("Invalid mouse velocity:", mouse_velocity)
 		apply_door_torque(mouse_velocity * 0.5)
 	elif !is_door and is_drawer:
-		var mouse_velocity = previous_mouse_position / delta
+		mouse_velocity = previous_mouse_position / delta
 		if !mouse_velocity.is_finite():
 			print("Invalid mouse velocity:", mouse_velocity)
 		apply_drawer_impluse(mouse_velocity)
-func apply_drawer_impluse(mouse_velocity:Vector2):
-	var impulse_amount = mouse_velocity.y * DOOR_TORQUE_MULTIPLIER
+func apply_drawer_impluse(_mouse_velocity:Vector2):
+	var impulse_amount = _mouse_velocity.y * DOOR_TORQUE_MULTIPLIER
 	var local_motion_axis = Vector3(0, 0, 1)
 	var global_motion_axis = (global_transform.basis * local_motion_axis).normalized()
 	var linear_impulse = global_motion_axis * impulse_amount * mass
 	apply_central_impulse(linear_impulse * 0.1)
 	apply_central_impulse(-linear_velocity * 0.1)
-func apply_door_torque(mouse_velocity: Vector2):
+func apply_door_torque(_mouse_velocity: Vector2):
 	var player_inside = is_player_inside_room()
 	var torque_direction = -1
 	var torque
 	if player_inside:
 		torque_direction = 1 
 	if player_inside:
-		torque = mouse_velocity.y * DOOR_TORQUE_MULTIPLIER * torque_direction
-	else: torque =  mouse_velocity.y * DOOR_TORQUE_MULTIPLIER
+		torque = _mouse_velocity.y * DOOR_TORQUE_MULTIPLIER * torque_direction
+	else: torque =  _mouse_velocity.y * DOOR_TORQUE_MULTIPLIER
 	var torque_force = Vector3(0, torque * mass, 0) 
 	apply_torque_impulse(torque_force)
 	apply_torque_impulse(-angular_velocity * 0.05) 
@@ -404,20 +406,28 @@ func _init_mouse_line():
 
 	var result = await line(Vector3.ZERO, Vector3.ZERO, Color.WHITE)
 	mouse_line = result
+func check_distance_to_player()-> bool:
+	if player:
+		var distance = global_transform.origin.distance_to(player.global_transform.origin)
+		if distance <= distance_threshold2:
+			return true
+		else:
+			return false
+	return false
 
 func _update_mouse_line(position1:Vector3, position2:Vector3):
 	if mouse_line != null:
 		var mouse_pos = position1
 		var mouse_line_immediate_mesh = mouse_line.mesh as ImmediateMesh
 		if mouse_pos != null:
-			var mouse_pos_V3:Vector3 = mouse_pos
+			#var mouse_pos_V3:Vector3 = mouse_pos
 			mouse_line_immediate_mesh.clear_surfaces()
 			mouse_line_immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES,mouse_line_material)
 			mouse_line_immediate_mesh.surface_add_vertex(position2)
 			mouse_line_immediate_mesh.surface_add_vertex(position1)
 			mouse_line_immediate_mesh.surface_end()	
 
-func line(pos1: Vector3, pos2: Vector3, color = Color.WHITE, persist_ms = 0):
+func line(pos1: Vector3, pos2: Vector3, _color = Color.WHITE, persist_ms = 0):
 	var mesh_instance := MeshInstance3D.new()
 	var immediate_mesh := ImmediateMesh.new()	
 

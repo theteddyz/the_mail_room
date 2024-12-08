@@ -34,7 +34,7 @@ func _ready():
 	pager_hide_position = position
 	inital_text_position = text1.position
 	#target_object = world.find_child("Package")
-	#player_camera = player.find_child("Neck").find_child("Head").find_child("HeadbopRoot").find_child("Camera")
+	player_camera = player.find_child("Neck").find_child("Head").find_child("HeadbopRoot").find_child("Camera")
 
 func add_package_to_queue(object: Node3D):
 	target_objects.append(object)
@@ -46,23 +46,24 @@ func remove_package(object: Node3D):
 	check_pager_status()
 
 func check_pager_status():
-	if target_objects.size() > 0:
-		await ensure_message_finished()
-		var closest_object = target_objects[0]
-		var closest_distance = player_camera.global_transform.origin.distance_to(closest_object.global_transform.origin)
-		for object in target_objects:
-			var distance = player_camera.global_transform.origin.distance_to(object.global_transform.origin)
-			if distance < closest_distance:
-				closest_distance = distance
-				closest_object = object
-		target_object = closest_object
-		activate_package_tracker(target_object) 
-		set_pager_text("Tracking: " + target_object.name,false)
-		if !pager_showing:
-			toggle_pager(true)
-	else:
-		if pager_active:
-			toggle_pager(false)
+	if player_camera:
+		if target_objects.size() > 0:
+			await ensure_message_finished()
+			var closest_object = target_objects[0]
+			var closest_distance = player_camera.global_transform.origin.distance_to(closest_object.global_transform.origin)
+			for object in target_objects:
+				var distance = player_camera.global_transform.origin.distance_to(object.global_transform.origin)
+				if distance < closest_distance:
+					closest_distance = distance
+					closest_object = object
+			target_object = closest_object
+			activate_package_tracker(target_object) 
+			set_pager_text("Tracking: " + target_object.name,false)
+			if !pager_showing:
+				toggle_pager(true)
+		else:
+			if pager_active:
+				toggle_pager(false)
 
 func activate_package_tracker(object):
 	target_object = object

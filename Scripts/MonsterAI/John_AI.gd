@@ -24,7 +24,7 @@ extends CharacterBody3D
 @onready var hit_sound: AudioStreamPlayer3D = $Hit_Sound
 @onready var hit_laugh: AudioStreamPlayer3D = $Hit_Laugh
 var hit_death
-var is_visible = false
+var _is_visible = false
 @onready var heard_sound: AudioStreamPlayer3D = $Heard_Sound
 @onready var sound_heard_timer: Timer = $Sound_Heard_Timer
 @onready var sound_heard_chase_timer: Timer = $Sound_Heard_Chase_Timer
@@ -246,10 +246,10 @@ func _on_turn_timer_timeout() -> void:
 	monster_anim.play("WalkScary")
 
 func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
-	is_visible = true
+	_is_visible = true
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
-	is_visible = false
+	_is_visible = false
 
 func _on_sound_heard_chase_timer_timeout() -> void:
 	if roaming_to_sound:
@@ -276,7 +276,7 @@ func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
 			count += 1
 
 
-func _on_navigation_agent_3d_link_reached(details: Dictionary) -> void:
+func _on_navigation_agent_3d_link_reached(_details: Dictionary) -> void:
 	navlink_cooldown_timer.start()
 	
 	
@@ -287,7 +287,7 @@ enum Effect { NONE, MONSTER_SEEN, DELAY }
 @export var effect_type: Effect = Effect.NONE
 @export var delay_length: float = 0
 var keep_scare_vision: bool = true
-signal callback_done
+#signal callback_done
 
 # External callback function that could have some delay or complex operations
 func scare_vision_external_callback() -> void:
