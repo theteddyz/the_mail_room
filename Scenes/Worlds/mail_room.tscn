@@ -226,9 +226,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2804, 2.72705, 1.83474)
 [node name="Desk2" parent="stage/Objects" instance=ExtResource("13_smksi")]
 transform = Transform3D(-0.00181511, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00181511, -9.82366, 0, -0.469987)
 
-[node name="PackageDestination" parent="stage/Objects/Desk2/MailboxStand" index="2"]
-accepted_num = 7
-
 [node name="Cardboard_box_big" parent="stage/Objects" instance=ExtResource("14_thyyr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9616, 3.2618, 1.67041)
 
