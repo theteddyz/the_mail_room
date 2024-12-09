@@ -15,17 +15,18 @@ var ready_to_start = false
 var monster_anim
 var monster_seen = false
 @onready var john_typing_sound: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
-
+var window_scare_initial_sound
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	monster_body.visible = false
+	window_scare_initial_sound = preload("res://Assets/Audio/SoundFX/AmbientScares/WindowScareInitial.ogg")
 	monster_anim = monster_body.find_child("AnimationPlayer")
 	ScareDirector.connect("package_delivered", activate_scare)
 	ScareDirector.connect("monster_seen", monster_seen_function)
 
 func monster_seen_function(_boolean: bool):
-	monster_seen = true
-	if(ready_to_start):
+	monster_seen = _boolean
+	if(_boolean and ready_to_start):
 		ready_to_start = false
 		start_scare()
 
@@ -45,11 +46,10 @@ func activate_scare(package_num):
 
 func start_scare():
 	ScareDirector.emit_signal("scare_activated", scare_index)
-	sighting_sound.play()
-	sighting_ambience.play()
+	AudioController.play_resource(window_scare_initial_sound, 0, func():, 16)
 	window_scare_toner.play("tone")
 	light_flicker_firstroom.play("flicker")
-	var timer = get_tree().create_timer(4.77)
+	var timer = get_tree().create_timer(8.7)
 	timer.timeout.connect(_jumpscare)
 
 func _jumpscare():

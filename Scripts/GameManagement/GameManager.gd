@@ -1,7 +1,7 @@
 extends Node
 
 # DEVMODE, CHANGE THIS WHEN WE BUILD
-var devmode = false
+var devmode = true
 
 const FILE_NAME = "user://game-data.json"
 @export var blacklist = ["pos_x", "pos_y", "pos_z", "nodepath"]
