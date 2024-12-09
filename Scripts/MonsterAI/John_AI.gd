@@ -30,6 +30,8 @@ var _is_visible = false
 @onready var sound_heard_chase_timer: Timer = $Sound_Heard_Chase_Timer
 @onready var draw_timer: Timer = $DrawTimer
 @onready var navlink_cooldown_timer: Timer = $NavlinkCooldownTimer
+@onready var window_scare: Node3D = $"../1ST FLOOR SCARES/WINDOW SCARE"
+@onready var darkroom_scare: Node3D = $"../1ST FLOOR SCARES/DARKROOM SCARE"
 
 var roaming_to_sound = false
 var locations: Array[Vector3] = []
@@ -67,14 +69,11 @@ func _ready():
 	monster_anim = find_child("AnimationPlayer")
 	player = GameManager.get_player()
 	aggro_timer.wait_time = aggro_timeout
+	ScareDirector.connect("package_delivered", enable_john)
 	
-func enable_john():
-	monster_anim.play("Idle")
-	roaming_timer.start(25)
-	roaming = true
-	visible = true
-	disabled = false
-	col.disabled = false
+func enable_john(package_num):
+	if package_num == 5 and window_scare == null and darkroom_scare == null:
+		cooldown_timer.start(randi_range(9, 25))
 
 func _input(event):
 	if event.is_action_pressed("p"):

@@ -9,7 +9,7 @@ var ready_to_start = false
 @onready var door_close = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/DoorClose"
 @onready var window_scare_toner: AnimationPlayer = $"../../CeilingLights/CeilingLightOn32/WINDOW_SCARE_TONER"
 
-@onready var scare_anim = $jumpscare
+@onready var scare_anim: AnimationPlayer = $jumpscare
 @onready var sighting_sound = $SightingSound
 @onready var sighting_ambience = $SightingAmbiance
 var monster_anim
@@ -56,3 +56,7 @@ func _jumpscare():
 	light_flicker_firstroom.stop()
 	sighting_ambience.stop()
 	scare_anim.play("scare")
+	scare_anim.animation_finished.connect(_delete_scare)
+
+func _delete_scare(anim):
+	queue_free()
