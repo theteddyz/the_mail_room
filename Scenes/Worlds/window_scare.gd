@@ -46,7 +46,7 @@ func activate_scare(package_num):
 
 func start_scare():
 	ScareDirector.emit_signal("scare_activated", scare_index)
-	AudioController.play_resource(window_scare_initial_sound, 0, func():, 16)
+	AudioController.play_resource(window_scare_initial_sound, 0, func():, 8.5)
 	window_scare_toner.play("tone")
 	light_flicker_firstroom.play("flicker")
 	var timer = get_tree().create_timer(8.7)
