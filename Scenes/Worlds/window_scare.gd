@@ -3,7 +3,7 @@ extends Node3D
 var scare_index = 2
 var has_been_executed = false
 var ready_to_start = false
-@onready var monster_body = $godot_rig
+@onready var monster_body: Node3D = $godot_rig
 @onready var door_lock = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/RigidBody3D3/Door_Lock"
 @onready var light_flicker_firstroom = $"../../CeilingLights/CeilingLightOn23/LightFlickering"
 @onready var door_close = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/DoorClose"
@@ -16,6 +16,7 @@ var monster_anim
 var monster_seen = false
 @onready var john_typing_sound: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
 var window_scare_initial_sound
+var player
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	monster_body.visible = false
@@ -23,12 +24,19 @@ func _ready():
 	monster_anim = monster_body.find_child("AnimationPlayer")
 	ScareDirector.connect("package_delivered", activate_scare)
 	ScareDirector.connect("monster_seen", monster_seen_function)
+	player = GameManager.player_reference
 
 func monster_seen_function(_boolean: bool):
 	monster_seen = _boolean
 	if(_boolean and ready_to_start):
 		ready_to_start = false
 		start_scare()
+
+func _process(delta: float) -> void:
+	if(has_been_executed):
+		var target_vector = global_position.direction_to(player.position)
+		var target_basis= Basis.looking_at(target_vector)
+		basis = basis.slerp(target_basis, 0.5)
 
 func activate_scare(package_num):
 	if package_num == 4:
