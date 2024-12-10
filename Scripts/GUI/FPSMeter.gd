@@ -60,6 +60,7 @@ func _process(_delta):
 	text = "FPS: "+str(fps)+"
 	FPS AVG: "+str(average)+"
 	FPS HIGH: "+str(highestFPS)+"
+	FPS LOW: "+str(lowestFPS)+"
 	DRAWC: "+str(drawCalls)+"
 	DRAWC AVG: "+str(averageDrawcall)+"
 	DRAWC HIGH: "+str(drawCallHighest)+"
