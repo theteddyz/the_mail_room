@@ -24,13 +24,15 @@ func _ready():
 
 func _on_visible_on_screen_enabler_3d_screen_exited() -> void:
 	#print("OFF")
-	omni_range = 0
-	light_energy = 0
+	if _range:
+		omni_range = 0
+		light_energy = 0
 	visible = false
 
 
 func _on_visible_on_screen_enabler_3d_screen_entered() -> void:
 	#print("ON")
-	omni_range = _range
-	light_energy = _energy
+	if _range:
+		omni_range = _range
+		light_energy = _energy
 	visible = true

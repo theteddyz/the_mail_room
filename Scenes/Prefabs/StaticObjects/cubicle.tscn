@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=4 uid="uid://dhy137f2q5r8l"]
+[gd_scene load_steps=25 format=4 uid="uid://dhy137f2q5r8l"]
 
 [ext_resource type="Texture2D" uid="uid://bkvlvm2p6x0ad" path="res://Assets/Textures/BlenderTextures/CubicleDesk.png" id="2_xnpqn"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="3_076f0"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="3_q3bsi"]
 [ext_resource type="Script" path="res://Scripts/Misc/multi_mesh_type.gd" id="4_it8i7"]
 [ext_resource type="ArrayMesh" uid="uid://lml3otaq7y4s" path="res://Assets/multimesh/cubicle.mesh" id="5_wcexe"]
+[ext_resource type="PackedScene" uid="uid://3bbxkn5brr4h" path="res://Scenes/Prefabs/crouch_assistant.tscn" id="6_f22qd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdi4w"]
 resource_name = "CubicleDesk"
@@ -156,6 +157,12 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uvabb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_io51i"]
+size = Vector3(1.1806, 1, 1.77893)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yfgs7"]
+size = Vector3(2.84666, 1, 1.06412)
 
 [node name="Cubicle" type="Node3D"]
 
@@ -370,3 +377,15 @@ wall_typed = "cubicle"
 [node name="Cubicle" type="MeshInstance3D" parent="MultimeshPointer"]
 mesh = ExtResource("5_wcexe")
 skeleton = NodePath("")
+
+[node name="Crouch_Assistant" parent="." instance=ExtResource("6_f22qd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419168, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crouch_Assistant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16763, 0.207126, -0.224182)
+shape = SubResource("BoxShape3D_io51i")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Crouch_Assistant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.334598, 0.207126, 1.08865)
+shape = SubResource("BoxShape3D_yfgs7")
