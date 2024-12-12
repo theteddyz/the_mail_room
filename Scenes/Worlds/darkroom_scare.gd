@@ -78,8 +78,6 @@ func monster_seen_event(_test):
 
 func _on_slam():
 	AudioController.play_resource(closed_ambiance)
-	ScareDirector.emit_signal("monster_seen", false)
-
 
 func _hide_monster():
 	monster_body.queue_free()
