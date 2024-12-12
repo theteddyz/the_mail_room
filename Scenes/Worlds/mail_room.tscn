@@ -1183,13 +1183,13 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 13.4043,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
 
 [node name="CeilingLightOn27" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 20.3587, 6.21164, -10.1995)
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 20.3587, 6.367, -10.3117)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn27" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
 
 [node name="CeilingLightOn28" parent="stage/Lights" instance=ExtResource("7_84et1")]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 21.1856, 6.13923, -0.278646)
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 21.8864, 6.35831, -0.278646)
 
 [node name="OmniLight3D2" parent="stage/Lights/CeilingLightOn28" instance=ExtResource("17_0ceh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
@@ -1281,7 +1281,7 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.5649, 4.541, 0
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 4.93435, 4.541, 0.708138)
 
 [node name="Ceiling44" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 16.2839, 6.31438, 0.00734043)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 16.284, 6.31, 0.007)
 
 [node name="Ceiling45" parent="stage/Roof" instance=ExtResource("6_rd5j2")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 21.8928, 6.31438, -0.165226)
