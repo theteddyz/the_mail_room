@@ -101,7 +101,7 @@ func _input(event):
 		handle_mouse_motion(event)
 	elif event is InputEventJoypadMotion:
 		handle_joypad_motion(event)
-	elif event is InputEventMouseButton or InputEventJoypadButton:
+	elif event is InputEventMouseButton:
 		handle_mouse_button(event)
 	elif event is InputEventKey:
 		handle_keyboard_press(event)
