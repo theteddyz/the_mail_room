@@ -1155,3 +1155,7 @@ stream = ExtResource("14_rtdkd")
 
 [connection signal="body_entered" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_entered"]
 [connection signal="body_exited" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_exited"]
+
+[editable path="ElevatorShaft"]
+[editable path="ElevatorShaft3"]
+[editable path="ElevatorShaft4"]

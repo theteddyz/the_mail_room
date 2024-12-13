@@ -156,7 +156,7 @@ func _physics_process(delta):
 	#elif is_at_rest() and !check_distance_to_player() and !freeze and !spawned:
 		#freeze = true
 func handle_pickup(delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.is_joy_button_pressed(0,JOY_BUTTON_RIGHT_SHOULDER):
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 			if not is_rotating:
 				start_rotating()

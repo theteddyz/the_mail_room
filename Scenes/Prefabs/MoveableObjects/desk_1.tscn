@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://ce71rwirfiafw"]
+[gd_scene load_steps=36 format=4 uid="uid://ce71rwirfiafw"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_hork0"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_2qwev"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bh7pseacjj5se" path="res://Assets/Audio/SoundFX/CabinetClosed.mp3" id="8_kp863"]
 [ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="9_dga2v"]
 [ext_resource type="PackedScene" uid="uid://bupcu04fap7xp" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="10_wk3io"]
+[ext_resource type="PackedScene" uid="uid://3bbxkn5brr4h" path="res://Scenes/Prefabs/crouch_assistant.tscn" id="15_o3tfw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
 size = Vector3(2.69171, 0.0540848, 1.33634)
@@ -140,6 +141,9 @@ stream_0/stream = ExtResource("7_7yygg")
 playback_mode = 1
 streams_count = 1
 stream_0/stream = ExtResource("8_kp863")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vlwi"]
+size = Vector3(1.42514, 1.04016, 1.22727)
 
 [node name="Desk" type="Node3D"]
 
@@ -310,3 +314,11 @@ size = Vector3(0.720642, 1.08237, 1.11525)
 [node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000239968, 0.568491, -0.518002)
 size = Vector3(2.41283, 1.08237, 0.0366831)
+
+[node name="Crouch_Assistant" parent="." instance=ExtResource("15_o3tfw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419168, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crouch_Assistant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.219313, 0.227207, 0.0836834)
+shape = SubResource("BoxShape3D_5vlwi")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=31 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall_door.tscn" id="15_2x2rp"]
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_with_door.tscn" id="15_tm150"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_door.tscn" id="15_toag5"]
+[ext_resource type="PackedScene" uid="uid://bcrcp8v8fg3md" path="res://Scenes/Prefabs/MoveableObjects/body_from_ceiling.tscn" id="19_p7jh4"]
 [ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="19_va06c"]
 [ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="21_fscik"]
 [ext_resource type="PackedScene" uid="uid://duh0mp4ga7irm" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover.tscn" id="22_cdvgx"]
@@ -223,6 +224,8 @@ shape = SubResource("BoxShape3D_vxn8k")
 
 [node name="Desk2" parent="." instance=ExtResource("25_rport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10216, 0.00906754, 2.82062)
+
+[node name="BodyFromCeiling" parent="." instance=ExtResource("19_p7jh4")]
 
 [connection signal="body_entered" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_exited"]

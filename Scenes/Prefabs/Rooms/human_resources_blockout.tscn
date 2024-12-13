@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://cajo2f1jhe000"]
+[gd_scene load_steps=112 format=4 uid="uid://cajo2f1jhe000"]
 
 [ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="1_m6mp8"]
 [ext_resource type="Texture2D" uid="uid://c3qyu5oicypra" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_tezco256r.png" id="1_qdt4i"]
@@ -50,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://g3iqvb0k1cr6" path="res://Scenes/Prefabs/StaticObjects/ceilinglight_on.tscn" id="42_r4cul"]
 [ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="43_a6txl"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="44_q2nu3"]
+[ext_resource type="PackedScene" uid="uid://bcrcp8v8fg3md" path="res://Scenes/Prefabs/MoveableObjects/body_from_ceiling.tscn" id="51_xcu5a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vv71w"]
 size = Vector3(1.50781, 7.758, 0.264832)
@@ -2592,6 +2593,132 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -58.3871
 
 [node name="OmniLight3D" parent="CeilingLightOn3" index="2"]
 light_bake_mode = 2
+
+[node name="BodyFromCeiling" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4363, 0.913572, 23.7705)
+
+[node name="BodyFromCeiling2" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2954, 0.913572, 23.7705)
+
+[node name="BodyFromCeiling3" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3425, 0.913572, 23.7705)
+
+[node name="BodyFromCeiling4" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0573, 0.913572, 23.7705)
+
+[node name="BodyFromCeiling5" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7514, 0.913572, 23.7705)
+
+[node name="BodyFromCeiling6" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5947, 0.913572, 23.7705)
+
+[node name="BodyFromCeiling7" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9325, 0.913572, 23.7705)
+
+[node name="BodyFromCeiling29" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4363, 0.913572, 28.6842)
+
+[node name="BodyFromCeiling30" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2954, 0.913572, 28.6842)
+
+[node name="BodyFromCeiling31" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3425, 0.913572, 28.6842)
+
+[node name="BodyFromCeiling32" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0573, 0.913572, 28.6842)
+
+[node name="BodyFromCeiling33" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7514, 0.913572, 28.6842)
+
+[node name="BodyFromCeiling34" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5947, 0.913572, 28.6842)
+
+[node name="BodyFromCeiling35" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9325, 0.913572, 28.6842)
+
+[node name="BodyFromCeiling36" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4363, 0.913572, 15.3781)
+
+[node name="BodyFromCeiling37" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2954, 0.913572, 15.3781)
+
+[node name="BodyFromCeiling38" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3425, 0.913572, 15.3781)
+
+[node name="BodyFromCeiling39" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0573, 0.913572, 15.3781)
+
+[node name="BodyFromCeiling40" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7514, 0.913572, 15.3781)
+
+[node name="BodyFromCeiling41" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5947, 0.913572, 15.3781)
+
+[node name="BodyFromCeiling42" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9325, 0.913572, 15.3781)
+
+[node name="BodyFromCeiling8" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4363, 0.913572, 26.7267)
+
+[node name="BodyFromCeiling9" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2954, 0.913572, 26.7267)
+
+[node name="BodyFromCeiling10" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3425, 0.913572, 26.7267)
+
+[node name="BodyFromCeiling11" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0573, 0.913572, 26.7267)
+
+[node name="BodyFromCeiling12" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7514, 0.913572, 26.7267)
+
+[node name="BodyFromCeiling13" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5947, 0.913572, 26.7267)
+
+[node name="BodyFromCeiling14" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9325, 0.913572, 26.7267)
+
+[node name="BodyFromCeiling15" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4363, 0.913572, 20.6421)
+
+[node name="BodyFromCeiling16" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2954, 0.913572, 20.6421)
+
+[node name="BodyFromCeiling17" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3425, 0.913572, 20.6421)
+
+[node name="BodyFromCeiling18" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0573, 0.913572, 20.6421)
+
+[node name="BodyFromCeiling19" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7514, 0.913572, 20.6421)
+
+[node name="BodyFromCeiling20" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5947, 0.913572, 20.6421)
+
+[node name="BodyFromCeiling21" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9325, 0.913572, 20.6421)
+
+[node name="BodyFromCeiling22" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4363, 0.913572, 17.5946)
+
+[node name="BodyFromCeiling23" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2954, 0.913572, 17.5946)
+
+[node name="BodyFromCeiling24" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3425, 0.913572, 17.5946)
+
+[node name="BodyFromCeiling25" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0573, 0.913572, 17.5946)
+
+[node name="BodyFromCeiling26" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.7514, 0.913572, 17.5946)
+
+[node name="BodyFromCeiling27" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5947, 0.913572, 17.5946)
+
+[node name="BodyFromCeiling28" parent="." instance=ExtResource("51_xcu5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9325, 0.913572, 17.5946)
 
 [connection signal="body_entered" from="WALLS/HR_ArchwayWall2/RigidBody3D2/Monster_Detector" to="WALLS/HR_ArchwayWall2/RigidBody3D2/Monster_Detector" method="_on_body_entered"]
 [connection signal="body_entered" from="WALLS/HR_ArchwayWall2/RigidBody3D3/Monster_Detector" to="WALLS/HR_ArchwayWall2/RigidBody3D3/Monster_Detector" method="_on_body_entered"]

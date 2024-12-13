@@ -286,16 +286,25 @@ enum Effect { NONE, MONSTER_SEEN, DELAY }
 @export var effect_type: Effect = Effect.NONE
 @export var delay_length: float = 0
 var keep_scare_vision: bool = true
+signal external_callback
+var _running_callback = false
 #signal callback_done
 
 # External callback function that could have some delay or complex operations
 func scare_vision_external_callback() -> void:
+	_running_callback = true
 	match effect_type:
 		Effect.MONSTER_SEEN:
 			await _seen_check_for(false)
 		Effect.DELAY:
 			await delay_length
-	emit_signal("callback_done")
+	emit_signal("external_callback")
+	_running_callback = false
+
+func _exit_tree() -> void:
+	if _running_callback:
+		emit_signal("external_callback")
+		_running_callback = false
 	
 func _seen_check_for(seen: bool):
 	var flag = !seen 

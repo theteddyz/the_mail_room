@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcrcp8v8fg3md"]
+
+[ext_resource type="PackedScene" uid="uid://xfbhfdolkav4" path="res://Scenes/Prefabs/MoveableObjects/chain.tscn" id="1_qdbdo"]
+[ext_resource type="PackedScene" uid="uid://bh0yssp2mj37v" path="res://Scenes/Prefabs/MoveableObjects/bodybag.tscn" id="2_jn6ch"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hkf63"]
+size = Vector3(0.236084, 0.552612, 0.109009)
+
+[node name="BodyFromCeiling" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.515909, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70297, 3.79187, 0.728916)
+
+[node name="PinJoint3D" type="PinJoint3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0346913, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody3D")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70297, 3.84808, 0.728916)
+
+[node name="Chain" parent="RigidBody3D" instance=ExtResource("1_qdbdo")]
+chain_count = 14
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0162354, -0.223694, 0.0078125)
+shape = SubResource("BoxShape3D_hkf63")
+
+[node name="PinJoint3D" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70297, 2.55106, 0.728916)
+node_a = NodePath("../RigidBody3D")
+node_b = NodePath("../RigidBody3D2")
+
+[node name="RigidBody3D2" parent="." instance=ExtResource("2_jn6ch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7164, 2.20827, 0.730893)
+mass = 35.0

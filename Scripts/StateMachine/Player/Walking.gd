@@ -76,6 +76,9 @@ var walking_audio_player:AudioStreamPlayer3D
 var audio_timer:Timer
 var push_force = 2
 var vertical_velocity_last_frame = 0
+var right_stick_smoothing: Vector2 = Vector2.ZERO
+var smoothing_factor: float = 0.1  # Adjust this value for desired responsiveness
+var dead_zone: float = 0.1 
 func _ready():
 	package_holder = persistent_state.find_child("PackageHolder")
 	mailcart = GameManager.get_mail_cart()
@@ -96,6 +99,8 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseMotion:
 		handle_mouse_motion(event)
+	elif event is InputEventJoypadMotion:
+		handle_joypad_motion(event)
 	elif event is InputEventMouseButton:
 		handle_mouse_button(event)
 	elif event is InputEventKey:
@@ -103,14 +108,29 @@ func _input(event):
 
 func handle_mouse_motion(event):
 	if !is_reading and !disable_look_movement:
-		persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
-		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
-		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+		if event is InputEventMouseMotion:
+			persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
+			head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
+			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
+func handle_joypad_motion(event):
+	if !is_reading and !disable_look_movement:
+		var joystick_sense = 2.0
+		if event.axis == JOY_AXIS_RIGHT_X:  # Horizontal movement
+			if abs(event.axis_value) > dead_zone:
+				right_stick_smoothing.x = lerp(right_stick_smoothing.x, event.axis_value, smoothing_factor)
+			else:
+				right_stick_smoothing.x = 0.0
+		elif event.axis == JOY_AXIS_RIGHT_Y: # Right stick vertical axis
+			if abs(event.axis_value) > dead_zone:
+				right_stick_smoothing.y = lerp(right_stick_smoothing.y, event.axis_value, smoothing_factor)
+			else:
+				right_stick_smoothing.y = 0.0
 func handle_mouse_button(event):
 	if event.is_action_released("interact"):
 		pass
 	elif  event.is_action_pressed("interact"):
+		
 		handle_general_interaction()
 	elif event.is_action_pressed("inspect"):
 			handle_inspect()
@@ -272,6 +292,10 @@ func _physics_process(_delta):
 	apply_pushes()
 
 func _process(delta):
+	if !is_reading and !disable_look_movement:
+		persistent_state.rotate_y(deg_to_rad(-right_stick_smoothing.x * 2.0))  # Adjust sensitivity as needed
+		head.rotate_x(deg_to_rad(-right_stick_smoothing.y * 2.0))
+		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 	apply_movement(delta)
 	if !crouch_assist:
 		apply_leaning(delta)

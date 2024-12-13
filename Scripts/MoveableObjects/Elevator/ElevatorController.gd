@@ -9,6 +9,7 @@ extends Node3D
 @onready var detector = $Elevator/ObjectDetectionShape
 @onready var elevator_audio:AudioStreamPlayer3D = $Elevator/AudioStreamPlayer3D
 @onready var wall_door_audio:AudioStreamPlayer3D = $Elevator_Wall/AudioStreamPlayer3D
+@onready var elevator_shafts:Array = [$ElevatorShaft/ElevatorShaft2,$ElevatorShaft4/ElevatorShaft2,$ElevatorShaft3]
 var wall_door_close = preload("res://Assets/Audio/SoundFX/ElevatorDoorClose.mp3")
 var wall_door_open = preload("res://Assets/Audio/SoundFX/ElevatorDoorOpen.mp3")
 var elevator_entrance_open = preload("res://Assets/Audio/SoundFX/ElevatorEntranceDoorOpen.mp3")
@@ -22,6 +23,7 @@ var is_called:bool = false
 var cart:bool = false
 var floor_mesh
 var current_scene
+var mail_room:bool = false
 @export var locked = false
 # Called when the node enters the scene tree for the first time.
 
@@ -29,6 +31,12 @@ var current_scene
 func _ready():
 	GameManager.register_elevator(self)
 	EventBus.connect("moved_to_floor",set_floor)
+	if mail_room:
+		for i in elevator_shafts:
+			i.visible= false
+	else:
+		for i in elevator_shafts:
+			i.visible= true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
@@ -143,15 +151,16 @@ func close_doors(_reparent = true)-> void:
 		player.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)	
 		mailcart.reparent(Elevator,true)
 		mailcart.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
-	var close_door_tween = create_tween()
-	close_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-0.867,0,0), 3).set_ease(Tween.EASE_IN_OUT)
-	close_door_tween.set_parallel(true)
-	close_door_tween.tween_property(Right_Wall_Door, "position", Vector3(0,0,0), 3).set_ease(Tween.EASE_IN_OUT)
-	close_door_tween.set_parallel(true)
-	close_door_tween.tween_property(Elevator_Door,"blend_shapes/ElevatorDoor",1,3)
-	wall_door_audio.play()
-	await close_door_tween.finished
-	return
+	if !mail_room:
+		var close_door_tween = create_tween()
+		close_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-0.867,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+		close_door_tween.set_parallel(true)
+		close_door_tween.tween_property(Right_Wall_Door, "position", Vector3(0,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+		close_door_tween.set_parallel(true)
+		close_door_tween.tween_property(Elevator_Door,"blend_shapes/ElevatorDoor",1,3)
+		wall_door_audio.play()
+		await close_door_tween.finished
+		return
 
 func open_doors()->void:
 	var player = GameManager.get_player()
@@ -164,25 +173,26 @@ func open_doors()->void:
 		mailcart.reparent(GameManager.current_scene,true)
 		mailcart.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, false)
 		mailcart.calculate_spacing()
-
-	var open_door_tween = create_tween()
-	open_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-1.705,0,0), 3).set_ease(Tween.EASE_IN_OUT)
-	open_door_tween.set_parallel(true)
-	open_door_tween.tween_property(Right_Wall_Door, "position", Vector3(0.832,0,0), 3).set_ease(Tween.EASE_IN_OUT)
-	open_door_tween.set_parallel(true)
-	open_door_tween.tween_property(Elevator_Door,"blend_shapes/ElevatorDoor",0,3)
-	elevator_audio.stream = elevator_entrance_open
-	elevator_audio.play()
-	wall_door_audio.stream = wall_door_open
-	wall_door_audio.play()
-	await open_door_tween.finished
-	Elevator_Collider.get_child(0).disabled = true
-	return 
+	if !mail_room:
+		var open_door_tween = create_tween()
+		open_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-1.705,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+		open_door_tween.set_parallel(true)
+		open_door_tween.tween_property(Right_Wall_Door, "position", Vector3(0.832,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+		open_door_tween.set_parallel(true)
+		open_door_tween.tween_property(Elevator_Door,"blend_shapes/ElevatorDoor",0,3)
+		elevator_audio.stream = elevator_entrance_open
+		elevator_audio.play()
+		wall_door_audio.stream = wall_door_open
+		wall_door_audio.play()
+		await open_door_tween.finished
+		Elevator_Collider.get_child(0).disabled = true
+		return 
 	
 func call_elevator_down()->void:
+	
 	Elevator.position = Vector3(2,8.82,0.946)
 	var elevator_called_down_tween = create_tween()
-	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(2,0.8,0.846), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(1.987,0.8,0.696), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await elevator_called_down_tween.finished
@@ -193,7 +203,7 @@ func call_elevator_down()->void:
 func call_elevator_up()->void:
 	Elevator.position = Vector3(2,-6.90,0.946)
 	var elevator_called_up_tween = create_tween()
-	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(2,0.8,0.846), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(1.987,0.8,0.696), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await elevator_called_up_tween.finished
@@ -203,10 +213,17 @@ func call_elevator_up()->void:
 	await open_doors()
 	return 
 func move_elevator_down()-> void:
+	if current_floor == -1:
+		Elevator_Wall.visible = false
+		for i in elevator_shafts:
+				i.visible= false
+	else:
+		for i in elevator_shafts:
+			i.visible= true
 	var mailcart = GameManager.get_mail_cart()
 	mailcart.calculate_spacing()
 	var move_elevator_down_tween = create_tween()
-	move_elevator_down_tween.tween_property(Elevator, "position", Vector3(2,-6.944,0.846), 5).set_ease(Tween.EASE_IN_OUT)
+	move_elevator_down_tween.tween_property(Elevator, "position", Vector3(1.987,-6.944,0.696), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await move_elevator_down_tween.finished
@@ -215,7 +232,7 @@ func move_elevator_up()-> void:
 	var mailcart = GameManager.get_mail_cart()
 	mailcart.calculate_spacing()
 	var move_elevator_up_tween = create_tween()
-	move_elevator_up_tween.tween_property(Elevator, "position", Vector3(2,9.304,0.846), 5).set_ease(Tween.EASE_IN_OUT)
+	move_elevator_up_tween.tween_property(Elevator, "position", Vector3(1.987,9.304,0.696), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await move_elevator_up_tween.finished

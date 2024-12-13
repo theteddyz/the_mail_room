@@ -42,8 +42,9 @@ func _effect(overlap):
 	# Play any existing effect-type on the current scare-vision source (StopSeeing / Delay)
 	await _call_external_function(overlap)
 	is_running_effect = false
-	if overlap.keep_scare_vision != null and overlap.keep_scare_vision:
-		overlap.remove_from_group("observed")
+	if overlap != null:
+		if overlap.keep_scare_vision != null and overlap.keep_scare_vision:
+			overlap.remove_from_group("observed")
 	
 	# Fade to standard world-environment
 	tween = create_tween()
@@ -58,8 +59,9 @@ func _effect(overlap):
 	#await tween.finished
 	
 func _call_external_function(overlap):
-	if overlap and overlap.has_method("scare_vision_external_callback"):
-		await overlap.scare_vision_external_callback()
+	if overlap != null and overlap.has_method("scare_vision_external_callback"):
+		overlap.scare_vision_external_callback()
+		await overlap.external_callback
 
 func timout(overlap: Node):
 	overlap.remove_from_group("observed")
