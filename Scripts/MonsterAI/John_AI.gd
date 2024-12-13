@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var disabled:bool = false
 @export var roaming: bool = false
-@export var speed : float = 5.0
+@export var speed : float = 4.75
 @export var push_force : float = 100.0
 @onready var nav:NavigationAgent3D = $NavigationAgent3D
 @onready var spawnpoints: Node = get_parent().find_child("MonsterSpawnPositions")

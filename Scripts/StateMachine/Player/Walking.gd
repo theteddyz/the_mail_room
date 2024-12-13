@@ -18,9 +18,9 @@ var mailcart
 
 var crouch_assist:bool = false
 # Speeds
-var sprinting_speed:float = 10.0
+var sprinting_speed:float = 7.5
 var previous_sprinting_speed:float
-var walking_speed:float = 5.0
+var walking_speed:float = 4.15
 var previous_walk_speed:float
 var movement_lerp_speed:float = 8.2
 var crouching_speed:float = 3.1
@@ -269,12 +269,12 @@ func droppped_object(_mass:float,_object):
 		is_holding_package = false
 		package_last_held = null
 		crouching_speed = 3.1
-		walking_speed = 5.0
-		sprinting_speed = 10.0
+		walking_speed = 4.1
+		sprinting_speed = 7.5
 	else:
 		crouching_speed = 3.1
-		walking_speed = 5.0
-		sprinting_speed = 10.0
+		walking_speed = 4.1
+		sprinting_speed = 7.5
 		is_holding_object = false
 		object_last_held = null
 
