@@ -3,7 +3,7 @@ extends MeshInstance3D
 
 @export_enum("Grey", "Dark Green", "Light Green", "Beige", "Black")
 var colorPreset: String = "Grey"
-
+var current_color = null
 # Define a mapping from string values to integer enums
 const COLOR_MAPPING = {
 	"Grey": 1,
@@ -40,6 +40,11 @@ func _process(delta):
 
 
 func update_colors():
+	if main_material:
+		current_color = main_material.albedo_color
+	elif cabinet_material:
+		current_color = cabinet_material.albedo_color
+	var finalColor = null
 	
 	# Debugging output to check what colorPrefab holds
 
@@ -61,7 +66,6 @@ func update_colors():
 			_:
 				colorPrefabs = "Unknown color"
 
-	var finalColor = null
 	if color != Color(0,0,0):
 		finalColor = color
 	else:
