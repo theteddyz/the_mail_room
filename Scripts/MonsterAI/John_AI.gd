@@ -152,6 +152,7 @@ func chase_player():
 		chase_sound_initial.playing = true
 		AudioController.play_resource(chase_sound, 0)
 		AudioController.play_resource(aggro_sound, 0)
+		monster_anim.speed_scale = 1.33
 		monster_anim.play("Run")
 		chasing = true
 		roaming = false
@@ -159,6 +160,8 @@ func chase_player():
 
 func stop_chasing_player():
 	if chasing:
+		monster_anim.speed_scale = 1
+		monster_anim.play("Idle")
 		AudioController.stop_resource(sound_resource_path, 2)
 		chasing = false
 		disabled = true
