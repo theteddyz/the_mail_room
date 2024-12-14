@@ -26,21 +26,13 @@ func despawn_rigid_bodies(zone:String):
 		despawned = true
 		var objects = get_tree().get_nodes_in_group(zone)
 		for object in objects:
-			var should_despawn = true
-			for rb in object.get_children(true):
-				if rb is RigidBody3D:
-					if rb.modified:
-						object.remove_from_group(zone)
-						should_despawn = false
-						break
-			if should_despawn:
-				var instance_id = object.get_instance_id()
-				despawned_bodies[instance_id] = {
-					"scene_path": object.scene_file_path,  # Use meta data for prefab path
-					"position": object.transform.origin,
-					"rotation": object.transform.basis.get_rotation_quaternion(),
-					"parent": object.get_parent(),
-					"scale": object.scale
-				}
-				object.visible = false
-				object.process_mode = Node.PROCESS_MODE_DISABLED
+			var instance_id = object.get_instance_id()
+			despawned_bodies[instance_id] = {
+				"scene_path": object.scene_file_path,  # Use meta data for prefab path
+				"position": object.transform.origin,
+				"rotation": object.transform.basis.get_rotation_quaternion(),
+				"parent": object.get_parent(),
+				"scale": object.scale,
+				"process_mode": object.process_mode
+			}
+			object.visible = false

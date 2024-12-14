@@ -11,9 +11,7 @@ func _ready():
 
 
 func _respawn_objects_on_new_thread(zone:String,despawned_bodies:Dictionary):
-	var thread:Thread
-	thread = Thread.new()
-	thread.start(respawn_rigid_bodies.bind(zone,despawned_bodies))
+	respawn_rigid_bodies(zone,despawned_bodies)
 	
 
 func respawn_rigid_bodies(zone:String,despawned_bodies:Dictionary):
@@ -24,23 +22,8 @@ func respawn_rigid_bodies(zone:String,despawned_bodies:Dictionary):
 		var object = instance_from_id(instance_id)
 		if scene:
 			object.visible = true
-			object.process_mode = Node.PROCESS_MODE_INHERIT
-			#object.visible = true
-			#object.process_mode = Node.PROCESS_MODE_DISABLED
-			#data["parent"].call_deferred("add_child", body)
-			#body.call_deferred("add_to_group",zone)
-			##for children in body.get_children(true):
-				##children.call_deferred("request_ready")
-			#var new_transform = Transform3D(
-				#Basis(data["rotation"]),
-				#data["position"]
-			#)
-			#body.transform = new_transform
-			#body.scale = data["scale"]
-			#rigid_body_data[body.get_instance_id()] = data
-			#count += 1
-			#if count == 1:
-				#await get_tree().process_frame
-				#await get_tree().process_frame
-				#await get_tree().process_frame
-				#count = 0
+			if object is RigidBody3D:
+				object.sleeping = true
+			for rb in object.get_children():
+				if rb is RigidBody3D:
+					rb.sleeping = true
