@@ -90,11 +90,11 @@ func _input(event):
 		else:
 			set_new_nav_position()
 
-func _physics_process(_delta):
+func _process(delta):
 	if !disabled:
-		move_to_target()
+		move_to_target(delta)
 
-func move_to_target():
+func move_to_target(delta):
 	if roaming and !roaming_to_sound:
 		speed = 1.5
 	elif roaming_to_sound:
@@ -108,9 +108,11 @@ func move_to_target():
 	new_velocity = Vector3(new_velocity.x, 0, new_velocity.z)
 	velocity = new_velocity
 	move_and_slide()
-
-	if velocity.abs() > Vector3.ZERO:
-		look_at(global_position + velocity, Vector3.UP)
+	if velocity.length() > 0.01:
+		var target_rotation = Transform3D(Basis().looking_at(velocity.normalized(), Vector3.UP), global_position)
+		global_transform.basis = global_transform.basis.slerp(target_rotation.basis, 10 * delta)  # Adjust 0.1 for rotation speed
+	#if velocity.abs() > Vector3.ZERO:
+		#look_at(global_position + velocity, Vector3.UP)
 	if distance_to_goal < stop_threshold:
 		if roaming_to_sound:
 			roaming_to_sound = false
