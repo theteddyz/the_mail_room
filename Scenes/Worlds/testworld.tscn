@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=32 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/Prefabs/gui/interactable_test.tscn" id="4_p0gx3"]
 [ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="5_6517x"]
+[ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="10_m81cq"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall_door.tscn" id="15_2x2rp"]
 [ext_resource type="PackedScene" uid="uid://5dnxe87nmekr" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_with_door.tscn" id="15_tm150"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_door.tscn" id="15_toag5"]
@@ -100,7 +101,7 @@ dark_properties = {
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0, 2, -5.82439)
 
 [node name="StaticBody3D3" parent="NavigationRegion3D" instance=ExtResource("15_2x2rp")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5, 0.5, -10)
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 20.607, 0.5, 0.773668)
 
 [node name="meeting_room_wall_Door" parent="NavigationRegion3D" instance=ExtResource("15_tm150")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.6894, 0.504028, -9.97101)
@@ -150,6 +151,9 @@ visible = false
 [node name="StaticBody3D11" parent="NavigationRegion3D" groups=["multimesh"] instance=ExtResource("39_l18u8")]
 transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 35.481, 0.509067, 20.8995)
 visible = false
+
+[node name="HR_ArchwayWall" parent="NavigationRegion3D" instance=ExtResource("10_m81cq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.09748, 0.509068, -7.88002)
 
 [node name="Elevator" parent="." instance=ExtResource("41_n2l23")]
 transform = Transform3D(0.0293697, 0, 0.999569, 0, 1, 0, -0.999569, 0, 0.0293697, -18.7858, -0.245457, 3.82707)
@@ -234,5 +238,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10216, 0.00906754, 2.82062
 [connection signal="body_entered" from="ZoneOptimizer/DetectionArea" to="ZoneOptimizer" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="ZoneOptimizer/DetectionArea" to="ZoneOptimizer" method="_on_detection_area_body_exited"]
 
-[editable path="NavigationRegion3D/StaticBody3D3"]
 [editable path="NavigationRegion3D/meeting_room_wall_Door"]
