@@ -42,7 +42,14 @@ func _ready():
 func display_hint(key: String, duration: float):
 	assert(hint_dict.has(key), "The hint for key " + key + " does not exist. Create one or delete the calling reference.")
 	if !(hint_dict[key]["fired"] and hint_dict[key]["one_shot"]):
+		
 		hint_dict[key]["fired"] = true
+		
+		if !(hint_dict[key]["text"].length() > 50):
+			breadtext.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		else: 
+			breadtext.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+			
 		if !typing_presentation_variation:
 			breadtext.text = hint_dict[key]
 
