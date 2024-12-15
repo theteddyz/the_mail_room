@@ -9,6 +9,8 @@ extends Control
 @onready var loading_screen:Node = $loading_screen
 @onready var look_icon:Node = $look_icon
 @onready var pager:Node = $Pager
+@onready var hint_container: Control = $Hint_Container
+
 func get_item_reader()->Node:
 	return item_reader
 func get_icon_manager() ->Node:
@@ -29,3 +31,5 @@ func get_look_icon() -> Node:
 	return look_icon
 func get_pager() -> Node:
 	return pager
+func get_hint_controller() -> Node:
+	return hint_container

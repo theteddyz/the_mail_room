@@ -13,8 +13,3 @@ func save():
 	
 func _ready():
 	GameManager.register_world(self)
-	#var timer = Timer.new()
-	#add_child(timer)
-	#timer.one_shot = false
-	#timer.start(10)
-	#timer.timeout.connect(func(): AudioController.play_spatial_resource(load("res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble4.ogg")))

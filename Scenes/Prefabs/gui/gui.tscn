@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=48 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -24,6 +24,14 @@
 [ext_resource type="Script" path="res://Scripts/GUI/Stamina.gd" id="18_rhd6x"]
 [ext_resource type="Texture2D" uid="uid://ctd3t06rqjwy8" path="res://Assets/TemporaryAssets/30996.png" id="22_0xxbf"]
 [ext_resource type="Script" path="res://Scripts/GUI/pager.gd" id="22_pbhup"]
+[ext_resource type="LabelSettings" uid="uid://bn7hplxlp82q1" path="res://label_settings_hint_title.tres" id="25_k7ptb"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/gui/hint_controller.gd" id="25_q5q4k"]
+[ext_resource type="LabelSettings" uid="uid://cm2x5qae4ckr1" path="res://label_settings_hint_breadtext.tres" id="26_i14v0"]
+[ext_resource type="AudioStream" uid="uid://be4jr5086ma7q" path="res://Assets/Audio/SoundFX/ImpactKey4.mp3" id="28_k3p00"]
+[ext_resource type="AudioStream" uid="uid://ywvj2274edsm" path="res://Assets/Audio/SoundFX/ImpactKey5.mp3" id="29_hs3p6"]
+[ext_resource type="AudioStream" uid="uid://drfn1olnt3pk2" path="res://Assets/Audio/SoundFX/ImpactKey2.mp3" id="30_jjmc6"]
+[ext_resource type="AudioStream" uid="uid://nofos1dpjyv" path="res://Assets/Audio/SoundFX/ImpactKey3.mp3" id="31_s4pnh"]
+[ext_resource type="AudioStream" uid="uid://c2ogg8vuga7y0" path="res://Assets/Audio/SoundFX/ImpactKey.mp3" id="32_1ly6y"]
 
 [sub_resource type="Gradient" id="Gradient_10so2"]
 
@@ -148,6 +156,18 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_er2ah"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_h63ra"]
+random_pitch = 1.27
+random_volume_offset_db = 2.98
+streams_count = 5
+stream_0/stream = ExtResource("28_k3p00")
+stream_1/stream = ExtResource("29_hs3p6")
+stream_2/stream = ExtResource("30_jjmc6")
+stream_3/stream = ExtResource("31_s4pnh")
+stream_4/stream = ExtResource("32_1ly6y")
 
 [node name="GUI" type="Control"]
 z_index = 1
@@ -666,5 +686,45 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Hint_Container" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.155864
+grow_horizontal = 2
+script = ExtResource("25_q5q4k")
+typing_presentation_variation = true
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Hint_Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.845
+offset_bottom = 28.845
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HintTitle" type="Label" parent="Hint_Container/MarginContainer"]
+material = SubResource("CanvasItemMaterial_er2ah")
+layout_mode = 2
+size_flags_vertical = 0
+text = "HINT"
+label_settings = ExtResource("25_k7ptb")
+horizontal_alignment = 1
+
+[node name="Breadtext" type="Label" parent="Hint_Container/MarginContainer"]
+custom_minimum_size = Vector2(735, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "This is a hint, they will pop up in relevant contexts and provide you with useful information, such as controls."
+label_settings = ExtResource("26_i14v0")
+autowrap_mode = 2
+
+[node name="TypewriteSFX" type="AudioStreamPlayer" parent="Hint_Container"]
+stream = SubResource("AudioStreamRandomizer_h63ra")
+volume_db = -19.0
 
 [connection signal="timeout" from="Adress_Displayer/Timer" to="Adress_Displayer" method="_on_timer_timeout"]

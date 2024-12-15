@@ -1,0 +1,13 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bn7hplxlp82q1"]
+
+[ext_resource type="FontFile" uid="uid://cumwuexlyyg4m" path="res://Assets/Fonts/LEMONMILK-RegularItalic.otf" id="1_ijb5k"]
+
+[resource]
+font = ExtResource("1_ijb5k")
+font_size = 19
+font_color = Color(0.246112, 0.693904, 1, 1)
+outline_size = 2
+outline_color = Color(0, 0.709804, 1, 1)
+shadow_size = 4
+shadow_color = Color(0.211765, 0, 0.972549, 0.54902)
+shadow_offset = Vector2(0.756, -0.196)
