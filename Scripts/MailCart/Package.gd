@@ -32,6 +32,7 @@ var inspect_tween:Tween
 var stop_inspect_tween:Tween
 var should_freeze = true
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+var hint_controller 
 
 func _ready():
 	package_material = get_child(0)
@@ -40,6 +41,7 @@ func _ready():
 	text_displayer = Gui.get_address_displayer()
 	EventBus.connect("object_looked_at",on_seen)
 	EventBus.connect("no_object_found",on_unseen)
+	hint_controller = Gui.get_hint_controller()
 
 func on_seen(node):
 	if node == self:
@@ -81,6 +83,7 @@ func reset_highlight():
 	if shader_material:
 		package_material.material_overlay.set_shader_parameter("outline_width", 0)
 func grabbed():
+	hint_controller.display_hint("inspect",3)
 	if is_being_tracked:
 		var pager = Gui.get_pager()
 		pager.remove_package(self)
