@@ -17,6 +17,12 @@ signal key_pickedup(key_num:int)
 # Emitted on any interacted grabbable
 signal grabbable(name: String)
 
+# Emitted on high-alert moments such as chases or "scripted events"
+signal enable_intensity_flag()
+
+# Emitted when a high-alert moment is supposed to end
+signal disable_intensity_flag()
+
 func _ready():
 	connect("monster_seen", _monster_seen_log)
 	
