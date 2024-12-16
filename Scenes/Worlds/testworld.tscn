@@ -105,6 +105,7 @@ transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813
 
 [node name="meeting_room_wall_Door" parent="NavigationRegion3D" instance=ExtResource("15_tm150")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.6894, 0.504028, -9.97101)
+open_percentage = 0.5
 
 [node name="WallMeetingRoomWithDoorGlass" parent="NavigationRegion3D/meeting_room_wall_Door" index="4"]
 transform = Transform3D(0.999997, 0.00253072, 0, -0.00253072, 0.999997, 0, 0, 0, 1, 0, 0, 0)
