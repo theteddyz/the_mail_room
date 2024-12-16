@@ -117,6 +117,7 @@ func save():
 		save_game.store_line(json_string)
 
 func goto_scene(path, _floor):
+	elevator_reference.show_or_hide_door()
 	if current_scene == null:
 		var root = get_tree().root
 		current_scene = root.get_child(root.get_child_count() - 1)
@@ -190,18 +191,7 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 		timer.timeout.connect(setWorldEnvironmentFog.bind(false, we))
 		var timer2 = get_tree().create_timer(0.4)
 		timer2.timeout.connect(setWorldEnvironmentFog.bind(true, we))
-	
-	# Reparent player and cart to elevator if necessary
-	if(is_not_scene_load):
-		pass
-		#player_reference.reparent(elevator_reference.find_child("Elevator").get_node("ElevatorOrigin"), false)
-		#player_reference.position = player_relative_to_elevator
-		#player_reference.rotation = player_relativerotation_to_elevator
-		
-		#if(mailcart_in_elevator):
-			#mail_cart_reference.reparent(elevator_reference.find_child("Elevator"), false)
-			#mail_cart_reference.position = mailcart_relative_to_elevator
-			#mail_cart_reference.rotation = mailcart_relativerotation_to_elevator
+	 
 	
 	if(is_not_scene_load):
 		elevator_reference.load_floor()

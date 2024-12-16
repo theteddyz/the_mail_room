@@ -37,9 +37,6 @@ func _ready():
 	else:
 		for i in elevator_shafts:
 			i.visible= true
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
 
 
 func call_elevator():
@@ -85,6 +82,7 @@ func move_floors()->void:
 func set_floor(path,new_floor:int):
 	previous_floor = current_floor
 	current_floor = new_floor
+	
 	await move_floors()
 	#var loading_screen = Gui.get_loading_screen()
 	#if loading_screen:
@@ -97,6 +95,7 @@ func set_floor(path,new_floor:int):
 
 func load_floor():
 	swap_floor_collider(false)
+	
 	#var player = GameManager.get_player()
 	var mail_cart = GameManager.get_mail_cart()
 	var map_instance = mail_cart.get_node("Map_Position").get_child(0)
@@ -115,6 +114,7 @@ func load_floor():
 		swap_floor_collider(true)
 		await open_doors()
 	else:
+		
 		await call_elevator_up()
 		var root = get_tree().root
 		current_scene = root.get_child(root.get_child_count() - 1)
@@ -189,8 +189,7 @@ func open_doors()->void:
 		return 
 	
 func call_elevator_down()->void:
-	
-	Elevator.position = Vector3(2,8.82,0.946)
+	Elevator.position = Vector3(1.987,8.82,0.696)
 	var elevator_called_down_tween = create_tween()
 	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(1.987,0.8,0.696), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
@@ -201,7 +200,7 @@ func call_elevator_down()->void:
 	await elevator_audio.finished
 	return 
 func call_elevator_up()->void:
-	Elevator.position = Vector3(2,-6.90,0.946)
+	Elevator.position = Vector3(1.987,-6.90,0.696)
 	var elevator_called_up_tween = create_tween()
 	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(1.987,0.8,0.696), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
@@ -213,13 +212,7 @@ func call_elevator_up()->void:
 	await open_doors()
 	return 
 func move_elevator_down()-> void:
-	if current_floor == -1:
-		Elevator_Wall.visible = false
-		for i in elevator_shafts:
-				i.visible= false
-	else:
-		for i in elevator_shafts:
-			i.visible= true
+	
 	var mailcart = GameManager.get_mail_cart()
 	mailcart.calculate_spacing()
 	var move_elevator_down_tween = create_tween()
@@ -237,8 +230,13 @@ func move_elevator_up()-> void:
 	elevator_audio.play()
 	await move_elevator_up_tween.finished
 	return 
-#func move_indicator(floor:int):
-	#if floor in floors:
-		#var target_rotation = floors[floor]
-		#var tween = get_tree().create_tween()
-		#tween.tween_property(floor_indicator, "rotation_degrees:z", target_rotation, 5.0).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+
+func show_or_hide_door():
+	if current_floor == -1:
+		Elevator_Wall.visible = false
+		for i in elevator_shafts:
+				i.visible= false
+	else:
+		Elevator_Wall.visible = true
+		for i in elevator_shafts:
+			i.visible= true
