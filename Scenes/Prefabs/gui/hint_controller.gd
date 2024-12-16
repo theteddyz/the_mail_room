@@ -29,6 +29,12 @@ var hint_dict = {
 	}
 	
 }
+
+var cancellation_breadtext_suffixes = [
+	"€AxAe@!eO5% gw6Aki ¤j0Vb9k$xA e@!e5Fer%()xj0Vb9k$ xAe@!ej0Vb9k35Fer%()x5-,! eO5%gw66Aki;",
+	"o1!35Fer%()x5-,!eO5%gw66Aki¤j-,!eO6r%()x5-,9k$t1kL $163G3G @c[]1()x5;",
+	"xJ%t1 kL$163G@c[ ]1()x5-,!eO6Aki¤j0Vb 9k$t1kL$163G@c[ 0Vb9k$xAe@ !e5Fer%()x;",
+]
 @onready var hint_title: Label = $MarginContainer/HintTitle
 @onready var breadtext: Label = $MarginContainer/Breadtext
 @onready var margin_container: MarginContainer = $MarginContainer
@@ -38,27 +44,43 @@ var previously_displayed_hint
 var local_tween: Tween
 var coroutine_passer
 
+var label_settings_hint_title_resource
+var label_settings_hint_title_cancelled_resource
+
 func _ready():
 	margin_container.set_modulate(Color(1, 1, 1, 0))
 	ScareDirector.disable_intensity_flag.connect(disable_intensity_flag)
 	ScareDirector.enable_intensity_flag.connect(enable_intensity_flag)
-	
+	label_settings_hint_title_resource = preload("res://label_settings_hint_title.tres")
+	label_settings_hint_title_cancelled_resource = preload("res://label_settings_hint_title_cancelled.tres")
+
 func enable_intensity_flag():
 	intensity_flag = true
 	if local_tween != null:
 		local_tween.kill()
 		previously_displayed_hint["fired"] = false
 		coroutine_passer = Time.get_unix_time_from_system()
+		hint_title.label_settings = label_settings_hint_title_cancelled_resource
+		
+		local_tween = create_tween().set_parallel(true)
+		local_tween.tween_property(hint_title, "position", Vector2(-10, hint_title.position.y), 0.08);
+		local_tween.chain().tween_property(hint_title, "position", Vector2(10, hint_title.position.y), 0.13);
+		local_tween.chain().tween_property(hint_title, "position", Vector2(-6, hint_title.position.y), 0.16);
+		local_tween.chain().tween_property(hint_title, "position", Vector2(6, hint_title.position.y), 0.215);
+		local_tween.chain().tween_property(hint_title, "position", Vector2(0, hint_title.position.y), 0.25);
+		local_tween.chain().tween_property(margin_container, "modulate", Color(1, 1, 1, 0), 1.98);
+		for symbol in cancellation_breadtext_suffixes.pick_random():
+			await get_tree().create_timer(randf_range(0.009, 0.022)).timeout
+			breadtext.text += symbol
 
 func disable_intensity_flag():
 	intensity_flag = false
-	assert(local_tween != null, "A hint coroutine has started even though our intensity flag is true, this should never happen")
-	
 
 # Display a hint from the dictionary
 func display_hint(key: String, duration: float):
 	assert(hint_dict.has(key), "The hint for key " + key + " does not exist. Create one or delete the calling reference.")
 	if !(hint_dict[key]["fired"] and hint_dict[key]["one_shot"] and !intensity_flag):
+		hint_title.label_settings = label_settings_hint_title_resource
 		coroutine_passer = Time.get_unix_time_from_system()
 		var start_pass = coroutine_passer
 		previously_displayed_hint = hint_dict[key]
@@ -95,8 +117,8 @@ func display_hint(key: String, duration: float):
 func type_breadtext(text: String, wait_time: float, start_pass):
 	breadtext.text = ""
 	breadtext.modulate = Color(1, 1, 1, 1)
-	if start_pass == coroutine_passer:
-		for symbol in text:
+	for symbol in text:
+		if start_pass == coroutine_passer:
 			await get_tree().create_timer(randf_range(0.0075, 0.038)).timeout
 			breadtext.text += symbol
 			typewrite_sfx.playing = true
