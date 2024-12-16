@@ -1,7 +1,7 @@
 extends StaticBody3D
 @onready var door:RigidBody3D
 
-@export_range(0.0,1.0) var open_percentage = 0
+@export_range(0.0,1.0) var open_percentage:float = 0
 
 const CLOSE_POSITION = Vector3(0.001, 0.0, 0.007)
 const CLOSE_ROTATION = Vector3(0.0, 0.0, 0.0)
