@@ -4,9 +4,9 @@ extends Node3D
 @export_multiline var name_text:String
 var mesh_set = false
 var showing:bool = false
-func _process(_delta):
-	if Engine.is_editor_hint() and !mesh_set:
-		update_text()
+#func _process(_delta):
+	#if Engine.is_editor_hint() and !mesh_set:
+		#update_text()
 
 func _ready():
 	var text_mesh = $Holder/Tag/MeshInstance3D

@@ -1,6 +1,7 @@
 [gd_scene load_steps=33 format=4 uid="uid://5dnxe87nmekr"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_76lnn"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/Tiles/Door_Customizer.gd" id="1_s17gj"]
 [ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="2_ejart"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_si1lf"]
 [ext_resource type="Texture2D" uid="uid://bgqnmx2g3lx72" path="res://Assets/Textures/BlenderTextures/Door.png" id="3_ertuc"]
@@ -11,10 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://dcv3fcs5k3ykn" path="res://Assets/Audio/SoundFX/Door/DoorLocked4.ogg" id="5_3gbol"]
 [ext_resource type="AudioStream" uid="uid://cr47bel457b3v" path="res://Assets/Audio/SoundFX/Door/DoorLocked.ogg" id="6_qonu1"]
 [ext_resource type="Script" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="8_f53fw"]
-
-[sub_resource type="GDScript" id="GDScript_k1vab"]
-script/source = "extends StaticBody3D
-"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ubnwn"]
 
@@ -159,7 +156,7 @@ size = Vector3(0.714172, 1.72184, 0.455663)
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
 collision_layer = 133
 collision_mask = 133
-script = SubResource("GDScript_k1vab")
+script = ExtResource("1_s17gj")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
 collision_layer = 2

@@ -383,6 +383,21 @@ shape = SubResource("BoxShape3D_uhg2l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0197489, 2.53029, -0.0187198)
 shape = SubResource("BoxShape3D_03vr2")
 
+[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="."]
+limit_enabled = true
+limit_upper = 1.5708
+node_a = NodePath("..")
+node_b = NodePath("../RigidBody3D2")
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 1.23574, 1.03994, -0.00488952)
+
+[node name="JoltHingeJoint3D3" type="JoltHingeJoint3D" parent="."]
+limit_enabled = true
+limit_upper = 1.5708
+limit_spring_enabled = true
+node_a = NodePath("..")
+node_b = NodePath("../RigidBody3D3")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.3379, 1.01394, 0.0123012)
+
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.24042, 0, 0.0376517)
 collision_layer = 2
@@ -396,14 +411,6 @@ script = ExtResource("15_qrbg8")
 disable_collider_on_grab = false
 is_door = true
 can_rotate = false
-
-[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="RigidBody3D2"]
-limit_enabled = true
-limit_upper = -3.14159
-limit_spring_enabled = true
-node_a = NodePath("..")
-node_b = NodePath("../..")
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 
 [node name="Door_Lock" type="Node" parent="RigidBody3D2"]
 script = ExtResource("16_j4tbd")
@@ -454,14 +461,6 @@ script = ExtResource("15_qrbg8")
 disable_collider_on_grab = false
 is_door = true
 can_rotate = false
-
-[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="RigidBody3D3"]
-limit_enabled = true
-limit_upper = -3.14159
-limit_spring_enabled = true
-node_a = NodePath("..")
-node_b = NodePath("../..")
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 
 [node name="Door_Lock" type="Node" parent="RigidBody3D3"]
 script = ExtResource("16_j4tbd")

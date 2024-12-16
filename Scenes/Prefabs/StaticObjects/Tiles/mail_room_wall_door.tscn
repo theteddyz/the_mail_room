@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=4 uid="uid://duwevejxlw37b"]
+[gd_scene load_steps=25 format=4 uid="uid://duwevejxlw37b"]
 
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_m84f3"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/Tiles/Door_Customizer.gd" id="1_slcyk"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="2_iitep"]
 [ext_resource type="Texture2D" uid="uid://cq76nrxbehxdk" path="res://Assets/Textures/BlenderTextures/DoorMailRoom.png" id="2_wb6se"]
 [ext_resource type="Texture2D" uid="uid://y2pmwstysa37" path="res://Assets/Textures/BlenderTextures/WallMailRoom.png" id="3_b3idl"]
@@ -116,6 +117,7 @@ shadow_mesh = SubResource("ArrayMesh_gsqk3")
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
 collision_layer = 133
 collision_mask = 133
+script = ExtResource("1_slcyk")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
 collision_layer = 2

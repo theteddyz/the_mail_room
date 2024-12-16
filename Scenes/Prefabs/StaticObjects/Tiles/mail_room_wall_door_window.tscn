@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=4 uid="uid://dw7ahxmjrcoci"]
+[gd_scene load_steps=28 format=4 uid="uid://dw7ahxmjrcoci"]
 
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/Tiles/Door_Customizer.gd" id="1_4t5y6"]
 [ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_pi56o"]
 [ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="2_yjeuv"]
 [ext_resource type="Texture2D" uid="uid://cq76nrxbehxdk" path="res://Assets/Textures/BlenderTextures/DoorMailRoom.png" id="3_6a4r3"]
@@ -154,6 +155,7 @@ shadow_mesh = SubResource("ArrayMesh_ee16x")
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
 collision_layer = 133
 collision_mask = 133
+script = ExtResource("1_4t5y6")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
 collision_layer = 2
