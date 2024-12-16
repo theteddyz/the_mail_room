@@ -26,40 +26,55 @@ var sound_dict = {
 @export var maximum_ambiance_restart_time: int = 60
 @export var minimum_ambiance_restart_time: int = 12
 
+var intensity_flag = false
+
 func _ready() -> void:
 	timer.start(2)
 	awaited_sound_key = "vent1"
 	timer.timeout.connect(_timerdown_play_awaited_sound)
 	ScareDirector.connect("scare_activated", john_is_out_change)
+	ScareDirector.connect("enable_intensity_flag", enable_intensity_flag)
+	ScareDirector.connect("disable_intensity_flag", disable_intensity_flag)
+
 	#var timer = Timer.new()
 	#add_child(timer)
 	#timer.one_shot = false
 	#timer.start(10)
 	#timer.timeout.connect(func(): AudioController.play_spatial_resource(load("res://Assets/Audio/SoundFX/AmbientNeutral/VentilationRumble4.ogg")))
 	
+func disable_intensity_flag():
+	intensity_flag = false
+	
+func enable_intensity_flag():
+	intensity_flag = true
+	
 func _timerdown_play_awaited_sound():
-	print("now playing ambiance..." + awaited_sound_key)
-	play_specific_sound(awaited_sound_key)
-	previously_awaited_sound_key = String(awaited_sound_key)
-	var new_sound_key = ""
-	var count = 0
-	while(new_sound_key.is_empty()):
-		count += 1
-		assert(count < 100, "We have played this loop for too long! Possible that all sounds are locked up? Check!")
-		var picked_key = sound_dict.keys().pick_random()
-		# If the category is allowed
-		if active_categories.has(sound_dict[picked_key]["category"]):
-			# If the previous sound allows stacking OR the sounds dont share category
-			#if sound_dict[previously_awaited_sound_key]["allow_stacking"] == true or (sound_dict[picked_key]["category"] != sound_dict[previously_awaited_sound_key]["category"]):
-				#new_sound_key = picked_key
-			if sound_dict.has(previously_awaited_sound_key):
-				var sounds_share_category = sound_dict[picked_key]["category"] == sound_dict[previously_awaited_sound_key]["category"] 
-				var previous_sound_no_stacking = sound_dict[previously_awaited_sound_key]["allow_stacking"] == false
-				if (!sounds_share_category or !previous_sound_no_stacking) and picked_key != previously_awaited_sound_key:
+	if !intensity_flag:
+		print("now playing ambiance..." + awaited_sound_key)
+		play_specific_sound(awaited_sound_key)
+		previously_awaited_sound_key = String(awaited_sound_key)
+		var new_sound_key = ""
+		var count = 0
+		while(new_sound_key.is_empty()):
+			count += 1
+			assert(count < 100, "We have played this loop for too long! Possible that all sounds are locked up? Check!")
+			var picked_key = sound_dict.keys().pick_random()
+			# If the category is allowed
+			if active_categories.has(sound_dict[picked_key]["category"]):
+				# If the previous sound allows stacking OR the sounds dont share category
+				#if sound_dict[previously_awaited_sound_key]["allow_stacking"] == true or (sound_dict[picked_key]["category"] != sound_dict[previously_awaited_sound_key]["category"]):
+					#new_sound_key = picked_key
+				if sound_dict.has(previously_awaited_sound_key):
+					var sounds_share_category = sound_dict[picked_key]["category"] == sound_dict[previously_awaited_sound_key]["category"] 
+					var previous_sound_no_stacking = sound_dict[previously_awaited_sound_key]["allow_stacking"] == false
+					if (!sounds_share_category or !previous_sound_no_stacking) and picked_key != previously_awaited_sound_key:
+						new_sound_key = picked_key
+				else:
 					new_sound_key = picked_key
-			else:
-				new_sound_key = picked_key
-	awaited_sound_key = new_sound_key
+		awaited_sound_key = new_sound_key
+	else:
+		timer.start(randi_range(minimum_ambiance_restart_time, maximum_ambiance_restart_time))
+
 
 func play_specific_sound(sound_dict_key: String):
 	var sound_object = sound_dict[sound_dict_key]
