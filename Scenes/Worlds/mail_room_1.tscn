@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://0hwxvod2i3hn"]
+[gd_scene load_steps=26 format=4 uid="uid://0hwxvod2i3hn"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_k4xxo"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_dtci6"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b01421mbq0uvp" path="res://Assets/Textures/BlenderTextures/ElevatorShaft.png" id="10_5bd8b"]
 [ext_resource type="PackedScene" uid="uid://c5gsbgt4sbxui" path="res://Scenes/Prefabs/StaticObjects/MailRoomFloorLayout.tscn" id="11_7pkkb"]
 [ext_resource type="Texture2D" uid="uid://c6ajcb8q4d2y7" path="res://Assets/Textures/BlenderTextures/CartLight.png" id="12_1q60m"]
+[ext_resource type="PackedScene" uid="uid://clgw1aqyoiqcq" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall_cuttable.tscn" id="13_v0vi6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ru4ij"]
 size = Vector3(4.52856, 3.04559, 4.39209)
@@ -154,6 +155,12 @@ environment = ExtResource("3_jh2lx")
 script = ExtResource("4_ol4n4")
 
 [node name="mailroom_prefab" parent="." instance=ExtResource("5_4oqjk")]
+
+[node name="Door_Lock" parent="mailroom_prefab/Walls/StaticBody3D14/RigidBody3D3" index="1"]
+locked = false
+
+[node name="StaticBody3D54" parent="mailroom_prefab/Walls" index="26"]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -8.09625, 3.97045, -12.5865)
 
 [node name="Elevator" parent="." instance=ExtResource("6_mxo3x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.7281, 0.411036, -7.179)
@@ -340,5 +347,29 @@ spot_angle_attenuation = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5928, 6.12578, -7.48261)
 mesh = SubResource("BoxMesh_xx5t2")
 
+[node name="root" parent="." instance=ExtResource("13_v0vi6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.082, -12.583)
+
+[node name="Cutout" parent="root/CSGCombiner3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.835733, 0.59532, 0)
+
+[node name="CollisionShape3D" parent="root/LeftCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34463, 3.97421, 0)
+
+[node name="CollisionShape3D" parent="root/RightCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18037, 3.859, -0.00457764)
+
+[node name="CollisionShape3D" parent="root/TopCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49166, -0.005)
+
+[node name="CollisionShape3D" parent="root/BottomCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, -0.01484, -0.00457764)
+
 [connection signal="body_entered" from="TutorialManager/Start_Area" to="TutorialManager" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="TutorialManager/Tutorial_Start" to="TutorialManager" method="_on_tutorial_start_body_entered"]
+
+[editable path="mailroom_prefab"]
+[editable path="mailroom_prefab/Objects/Desk2"]
+[editable path="mailroom_prefab/Walls/StaticBody3D14"]
+[editable path="mailroom_prefab/Walls/StaticBody3D17"]
+[editable path="root"]
