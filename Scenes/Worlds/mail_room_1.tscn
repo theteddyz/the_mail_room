@@ -365,6 +365,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49166, -0.005)
 [node name="CollisionShape3D" parent="root/BottomCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, -0.01484, -0.00457764)
 
+[node name="airduct_longer" parent="root" index="5"]
+transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -0.873786, 0.540328, -2.50929)
+
 [connection signal="body_entered" from="TutorialManager/Start_Area" to="TutorialManager" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="TutorialManager/Tutorial_Start" to="TutorialManager" method="_on_tutorial_start_body_entered"]
 
