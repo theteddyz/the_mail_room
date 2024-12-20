@@ -414,6 +414,8 @@ can_rotate = false
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 node_a = NodePath("..")
 node_b = NodePath("../..")
+angular_limit/enable = true
+angular_limit/lower = 0.0
 
 [node name="Door_Lock" type="Node" parent="StaticBody3D/RigidBody3D2"]
 script = ExtResource("13_koqpk")

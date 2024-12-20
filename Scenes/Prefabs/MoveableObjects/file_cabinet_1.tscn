@@ -203,6 +203,8 @@ can_rotate = false
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
 node_a = NodePath("../..")
 node_b = NodePath("..")
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -238,14 +240,13 @@ stream = SubResource("AudioStreamRandomizer_q3b3w")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Drawer"]
 stream = SubResource("AudioStreamRandomizer_qsn4c")
 
-[node name="DrawerScript" type="Node3D" parent="Drawer" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="Drawer" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
 script = ExtResource("9_cofie")
-volume = -20.0
-joint_axis_local = Vector3(0, 0, -1)
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("")
+volume = -20.0
+joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Drawer2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, 0.181111, -0.241367)
@@ -262,6 +263,8 @@ can_rotate = false
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
 node_a = NodePath("../..")
 node_b = NodePath("..")
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -297,14 +300,13 @@ stream = SubResource("AudioStreamRandomizer_nkvpf")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Drawer2"]
 stream = SubResource("AudioStreamRandomizer_v7rky")
 
-[node name="DrawerScript" type="Node3D" parent="Drawer2" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="Drawer2" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
 script = ExtResource("9_cofie")
-volume = -20.0
-joint_axis_local = Vector3(0, 0, -1)
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("")
+volume = -20.0
+joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Drawer3" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, -0.186194, -0.241367)
@@ -321,6 +323,8 @@ can_rotate = false
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
 node_a = NodePath("../..")
 node_b = NodePath("..")
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -356,14 +360,13 @@ stream = SubResource("AudioStreamRandomizer_0qv6t")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Drawer3"]
 stream = SubResource("AudioStreamRandomizer_5m073")
 
-[node name="DrawerScript" type="Node3D" parent="Drawer3" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="Drawer3" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
 script = ExtResource("9_cofie")
-volume = -20.0
-joint_axis_local = Vector3(0, 0, -1)
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("")
+volume = -20.0
+joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Drawer4" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, -0.552292, -0.241367)
@@ -380,6 +383,8 @@ can_rotate = false
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
 node_a = NodePath("../..")
 node_b = NodePath("..")
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -415,14 +420,13 @@ stream = SubResource("AudioStreamRandomizer_mn6nx")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Drawer4"]
 stream = SubResource("AudioStreamRandomizer_a62y1")
 
-[node name="DrawerScript" type="Node3D" parent="Drawer4" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="Drawer4" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
 script = ExtResource("9_cofie")
-volume = -20.0
-joint_axis_local = Vector3(0, 0, -1)
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("")
+volume = -20.0
+joint_axis_local = Vector3(0, 0, -1)
 
 [node name="Collision_Handler" type="Node3D" parent="."]
 script = ExtResource("6_pe8d1")

@@ -48,14 +48,14 @@ func disable_shadows(rigid_body):
 	for child in rigid_body.get_children():
 		if child is MeshInstance3D:  # Check if the child is a MeshInstance3D (or MeshInstance in older versions)
 			child.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-			#child.visible = false
+			child.visible = false
 			
 
 func enable_shadows(rigid_body):
 	for child in rigid_body.get_children():
 		if child is MeshInstance3D:  # Check if the child is a MeshInstance3D (or MeshInstance in older versions)
 			child.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-			#child.visible = true
+			child.visible = true
 func unFreeze(body: RigidBody3D):
 	if body.freeze:
 		body.freeze = false

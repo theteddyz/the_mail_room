@@ -60,16 +60,15 @@ var grabbed:bool
 var spawned = true
 var modified:bool = false
 func _ready():
-	#var new_optimizer = optimizer.instantiate()
-	#add_child(new_optimizer)
-	#new_optimizer._setup()
+	var new_optimizer = optimizer.instantiate()
+	add_child(new_optimizer)
+	new_optimizer._setup()
 	set_collision_layer_value(5,true)
 	set_collision_mask_value(5,true)
 	set_collision_mask_value(13,true)
 	set_collision_mask_value(6,true)
 	if GameManager.get_player() != null:
 		player = GameManager.get_player()
-	object_Interpolator = find_child("Interpolator")
 	starting_angular_damp = angular_damp
 	player_cross_hair = Gui.get_crosshair()
 	if player:
