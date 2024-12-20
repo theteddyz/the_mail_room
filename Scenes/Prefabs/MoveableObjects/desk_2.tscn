@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=4 uid="uid://b2c5c47wnbu3f"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_jg2d3"]
+[ext_resource type="Script" uid="uid://bek6uusiwfbtv" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_jg2d3"]
 [ext_resource type="Texture2D" uid="uid://dgy6bdhr0juyx" path="res://Assets/Textures/BlenderTextures/Desk.png" id="2_et87b"]
 [ext_resource type="Texture2D" uid="uid://cehb1r025iuxj" path="res://Assets/Textures/BlenderTextures/Cabinet1.png" id="3_7pooc"]
 [ext_resource type="AudioStream" uid="uid://dpjw33ok63rwv" path="res://Assets/Audio/SoundFX/CabinetMovingFast.mp3" id="3_r8odw"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="5_o7hfs"]
 [ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="5_oa1cl"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="6_vcavl"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="7_gtf3g"]
+[ext_resource type="Script" uid="uid://c2bhb72ytvio" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="7_gtf3g"]
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="7_ls0s4"]
 [ext_resource type="PackedScene" uid="uid://bupcu04fap7xp" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="8_thyg7"]
 [ext_resource type="PackedScene" uid="uid://b837cq0s3mn0s" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="9_1wexv"]
@@ -276,14 +276,12 @@ linear_damp = 6.0
 script = ExtResource("1_jg2d3")
 is_drawer = true
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="Desk/DrawerTop"]
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="Desk/DrawerTop"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.624854)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.624854)
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/DrawerTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
@@ -319,12 +317,11 @@ stream = SubResource("AudioStreamRandomizer_ev8xy")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_66o6r")
 
-[node name="DrawerScript" type="Node3D" parent="Desk/DrawerTop" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="Desk/DrawerTop" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
 script = ExtResource("7_gtf3g")
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
 volume = -20.0
 
 [node name="DrawerBottom" type="RigidBody3D" parent="Desk"]
@@ -339,14 +336,12 @@ linear_damp = 6.0
 script = ExtResource("1_jg2d3")
 is_drawer = true
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="Desk/DrawerBottom"]
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="Desk/DrawerBottom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.642156)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.642156)
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
@@ -385,12 +380,11 @@ stream = SubResource("AudioStreamRandomizer_x6bdg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003829, 0.458465, -0.00205201)
 stream = SubResource("AudioStreamRandomizer_8jt6j")
 
-[node name="DrawerScript" type="Node3D" parent="Desk/DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="Desk/DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
 script = ExtResource("7_gtf3g")
 drawerOpenedSound = NodePath("../DrawerAudioOpen2")
 drawerClosedSound = NodePath("../DrawerAudioClose2")
 drawerLoopSound = NodePath("../DrawerAudioLoop2")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
 volume = -20.0
 
 [node name="Cables" parent="Desk" instance=ExtResource("10_8x7js")]

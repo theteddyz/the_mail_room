@@ -2,7 +2,7 @@ extends Area3D
 
 var called = false
 var bit = 0
-@onready var raycaster = $VisionRayCast
+@onready var raycaster:RayCast3D = $VisionRayCast
 signal visiontimer_signal(nodes)
 
 var tracked_gameobjects: Array = []
@@ -30,7 +30,8 @@ func _on_vision_timer_timeout():
 				if overlap.find_child("raycast_look_position") != null:
 					monsterPosition = overlap.get_node("raycast_look_position").global_transform.origin
 				raycaster.look_at(monsterPosition)
-				raycaster.force_raycast_update()
+				#Was getting an error here might not need to do it
+				#raycaster.force_raycast_update()
 				if (raycaster.is_colliding() and raycaster.get_collider().name == overlap.name) and !tracked_gameobjects.has(raycaster.get_collider()):
 					var _col = raycaster.get_collider()
 					if(_col.is_visible_in_tree()):

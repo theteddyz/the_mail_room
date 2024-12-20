@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=4 uid="uid://ce71rwirfiafw"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_hork0"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_2qwev"]
+[ext_resource type="Script" uid="uid://bek6uusiwfbtv" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_hork0"]
+[ext_resource type="Script" uid="uid://yfdslqiugp0s" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_2qwev"]
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="2_rbvap"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="3_ee5i4"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="4_6fufh"]
@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="7_7yygg"]
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="7_nth33"]
 [ext_resource type="AudioStream" uid="uid://bh7pseacjj5se" path="res://Assets/Audio/SoundFX/CabinetClosed.mp3" id="8_kp863"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="9_dga2v"]
+[ext_resource type="Script" uid="uid://c2bhb72ytvio" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="9_dga2v"]
 [ext_resource type="PackedScene" uid="uid://bupcu04fap7xp" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="10_wk3io"]
 [ext_resource type="PackedScene" uid="uid://3bbxkn5brr4h" path="res://Scenes/Prefabs/crouch_assistant.tscn" id="15_o3tfw"]
 
@@ -210,12 +210,12 @@ skeleton = NodePath("")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cvogw")
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="Desk/DrawerTop"]
-limit_enabled = true
-limit_upper = 0.5
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="Desk/DrawerTop"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246593, -0.000298202, -0.529209)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246593, -0.000298202, -0.529209)
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
 
 [node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_mjf3r")
@@ -258,14 +258,12 @@ skeleton = NodePath("")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cvogw")
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="Desk/DrawerBottom"]
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="Desk/DrawerBottom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.574206)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.574206)
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
 
 [node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Desk/DrawerBottom"]
 stream = SubResource("AudioStreamRandomizer_qtvk3")
@@ -276,12 +274,11 @@ stream = SubResource("AudioStreamRandomizer_o45tc")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Desk/DrawerBottom"]
 stream = SubResource("AudioStreamRandomizer_1dong")
 
-[node name="DrawerScript" type="Node3D" parent="Desk/DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="Desk/DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
 script = ExtResource("9_dga2v")
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
 volume = -20.0
 
 [node name="GrabableObjectTemplate" parent="Desk" instance=ExtResource("4_6fufh")]

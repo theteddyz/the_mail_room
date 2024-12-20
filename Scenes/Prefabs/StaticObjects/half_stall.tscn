@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayOccluder3D" uid="uid://cs0bxqtfn7nx2" path="res://Scenes/Prefabs/StaticObjects/Tiles/half_stall.occ" id="1_cw1p3"]
 [ext_resource type="Texture2D" uid="uid://41emsnlmgt7f" path="res://Assets/Models/test_models/bathroom_stall_together_bathroom_stall_open1.png" id="1_fger0"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_3s2js"]
+[ext_resource type="Script" uid="uid://bek6uusiwfbtv" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_3s2js"]
 [ext_resource type="Texture2D" uid="uid://c0t7ilu5qma60" path="res://Assets/Models/test_models/bathroom_stall_together_Bathroom_door.png" id="3_n78pb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j82e2"]
@@ -118,14 +118,10 @@ disable_collider_on_grab = false
 is_door = true
 can_rotate = false
 
-[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="bathroom_door"]
-limit_enabled = true
-limit_lower = -1.5708
-limit_spring_enabled = true
-limit_spring_damping = 2.0
+[node name="JoltHingeJoint3D" type="HingeJoint3D" parent="bathroom_door"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0.0100327, 0.0109953, -0.599975)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0.0100327, 0.0109953, -0.599975)
 
 [node name="Bathroom_door" type="MeshInstance3D" parent="bathroom_door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0405864, 0)

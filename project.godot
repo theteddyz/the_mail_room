@@ -12,7 +12,7 @@ config_version=5
 
 config/name="the-mail-room"
 run/main_scene="res://Scenes/Worlds/Finance.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/image="res://Assets/TemporaryAssets/image.png"
 config/icon="res://icon.png"
 
@@ -157,9 +157,9 @@ O={
 [physics]
 
 3d/run_on_separate_thread=true
-common/physics_ticks_per_second=45
-3d/physics_engine="JoltPhysics3D"
+3d/physics_engine="Jolt Physics"
 3d/solver/solver_iterations=10
+common/physics_interpolation=true
 jolt_3d/solver/velocity_iterations=5
 jolt_3d/solver/position_iterations=1
 

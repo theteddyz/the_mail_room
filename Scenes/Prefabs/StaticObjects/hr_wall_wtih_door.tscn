@@ -1,7 +1,7 @@
 [gd_scene load_steps=52 format=4 uid="uid://b2rvvsrl03wcr"]
 
 [ext_resource type="Texture2D" uid="uid://t6r0hauythae" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Color.jpg" id="1_78l2t"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/Tiles/Door_Customizer.gd" id="1_fy1kr"]
+[ext_resource type="Script" uid="uid://cklj08863yrdl" path="res://Scenes/Prefabs/StaticObjects/Tiles/Door_Customizer.gd" id="1_fy1kr"]
 [ext_resource type="Texture2D" uid="uid://cto7grgckbt34" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Metalness-Concrete042A_1K-JPG_Roughness.png" id="2_170l3"]
 [ext_resource type="Texture2D" uid="uid://cxh7m6pspxtno" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_NormalGL.jpg" id="3_jjh2c"]
 [ext_resource type="Texture2D" uid="uid://h7hmrarl8wju" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_GlobalCorpIcon.png" id="4_1xi3o"]
@@ -12,14 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://dhepsytbckakx" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_NormalGL.jpg" id="9_xdrh3"]
 [ext_resource type="Texture2D" uid="uid://gqsedkoyeak2" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Color.jpg" id="10_rqmso"]
 [ext_resource type="Texture2D" uid="uid://dtprrraywwk3u" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Roughness.png" id="11_kftjq"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="12_t1j08"]
-[ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="13_koqpk"]
+[ext_resource type="Script" uid="uid://bek6uusiwfbtv" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="12_t1j08"]
+[ext_resource type="Script" uid="uid://dmtprj5gddj6g" path="res://Scripts/Interactable/Door.gd" id="13_koqpk"]
 [ext_resource type="AudioStream" uid="uid://dwhgdxuiprgyt" path="res://Assets/Audio/SoundFX/Door/DoorLocked2.ogg" id="14_uggcp"]
 [ext_resource type="AudioStream" uid="uid://dupxwf04cwpmy" path="res://Assets/Audio/SoundFX/Door/DoorLocked3.ogg" id="15_jr1oe"]
 [ext_resource type="AudioStream" uid="uid://dcv3fcs5k3ykn" path="res://Assets/Audio/SoundFX/Door/DoorLocked4.ogg" id="16_kscad"]
 [ext_resource type="AudioStream" uid="uid://cr47bel457b3v" path="res://Assets/Audio/SoundFX/Door/DoorLocked.ogg" id="17_hw6bt"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="18_cmiur"]
-[ext_resource type="Script" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="19_mcir4"]
+[ext_resource type="Script" uid="uid://dui22n87pky58" path="res://Scripts/MoveableObjects/door_audio.gd" id="18_cmiur"]
+[ext_resource type="Script" uid="uid://ye54x0y0d6q6" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="19_mcir4"]
 [ext_resource type="Texture2D" uid="uid://dhdnlvv5l34c5" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Metal011_1K-JPG_Color.jpg" id="20_ftsf1"]
 [ext_resource type="Texture2D" uid="uid://chgxj8mjkp40s" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Metal011_1K-JPG_Metalness-Metal011_1K-JPG_Roughness.png" id="21_qrg8g"]
 [ext_resource type="Texture2D" uid="uid://7mrtswngejk" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Metal011_1K-JPG_NormalDX.jpg" id="22_vcgbb"]
@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://b8mdg5ogdpqnv" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_Color.jpg" id="24_6jcfq"]
 [ext_resource type="Texture2D" uid="uid://cds7t3reqk5jw" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_Roughness.png" id="25_hvcfm"]
 [ext_resource type="Texture2D" uid="uid://dc3gt1rsfct0l" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_NormalGL.jpg" id="26_6xiac"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/glass_shader.gdshader" id="27_h4xcx"]
+[ext_resource type="Shader" uid="uid://bu2krdkeltydh" path="res://Scripts/Shaders/glass_shader.gdshader" id="27_h4xcx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_awmmr"]
 size = Vector3(2.01044, 7.71723, 0.252686)
@@ -410,13 +410,10 @@ disable_collider_on_grab = false
 is_door = true
 can_rotate = false
 
-[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="StaticBody3D/RigidBody3D2"]
-limit_enabled = true
-limit_upper = -3.14159
-limit_spring_enabled = true
+[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="StaticBody3D/RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 node_a = NodePath("..")
 node_b = NodePath("../..")
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 
 [node name="Door_Lock" type="Node" parent="StaticBody3D/RigidBody3D2"]
 script = ExtResource("13_koqpk")

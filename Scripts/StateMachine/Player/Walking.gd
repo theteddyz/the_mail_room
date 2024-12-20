@@ -288,15 +288,16 @@ func stop_leaning():
 	lean_angle = 0.0
 	is_leaning = false
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	apply_pushes()
+	apply_movement(delta)
 
 func _process(delta):
 	if !is_reading and !disable_look_movement:
 		persistent_state.rotate_y(deg_to_rad(-right_stick_smoothing.x * 2.0))  # Adjust sensitivity as needed
 		head.rotate_x(deg_to_rad(-right_stick_smoothing.y * 2.0))
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-	apply_movement(delta)
+	
 	if !crouch_assist:
 		apply_leaning(delta)
 	#recover_stamina(delta)

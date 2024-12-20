@@ -1,11 +1,11 @@
 [gd_scene load_steps=63 format=4 uid="uid://bb75w210dxt14"]
 
 [ext_resource type="Texture2D" uid="uid://n3a6s3w3vg03" path="res://Assets/Textures/Concrete042A_1K-JPG_Color.jpg" id="1_t3jus"]
-[ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="2_v6d8g"]
+[ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="2_v6d8g"]
 [ext_resource type="PackedScene" uid="uid://cyamc4lfjib8r" path="res://Scenes/Prefabs/StaticObjects/4_way_airduct.tscn" id="3_ax8b1"]
 [ext_resource type="PackedScene" uid="uid://b2vyyytppayk3" path="res://Scenes/Prefabs/StaticObjects/airduct_lid.tscn" id="4_u66s4"]
 [ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="5_s8t73"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="6_i57p6"]
+[ext_resource type="Script" uid="uid://bek6uusiwfbtv" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="6_i57p6"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="6_x1u63"]
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="7_jtbbm"]
 [ext_resource type="PackedScene" uid="uid://b65csccqsl1l1" path="res://Scenes/Prefabs/StaticObjects/industrial_table.tscn" id="7_lddy1"]
@@ -20,8 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://dfbuid76trvb0" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_mini.tscn" id="12_gnkrv"]
 [ext_resource type="AudioStream" uid="uid://bh7pseacjj5se" path="res://Assets/Audio/SoundFX/CabinetClosed.mp3" id="12_rq34w"]
 [ext_resource type="PackedScene" uid="uid://bwkdr1hhs71ee" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="13_i56vn"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="13_jn5w4"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="14_1wq6m"]
+[ext_resource type="Script" uid="uid://c2bhb72ytvio" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="13_jn5w4"]
+[ext_resource type="Script" uid="uid://yfdslqiugp0s" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="14_1wq6m"]
 [ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall_door.tscn" id="14_hap60"]
 [ext_resource type="PackedScene" uid="uid://uuhrokgnd64l" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall.tscn" id="15_gpy5i"]
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="15_pfqk3"]
@@ -317,11 +317,21 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cvogw")
 
 [node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="Objects/Desk3/Desk/DrawerTop"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 limit_enabled = true
 limit_upper = 0.5
 node_a = NodePath("../..")
 node_b = NodePath("..")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246593, -0.000298202, -0.529209)
+script = null
 
 [node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Objects/Desk3/Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_mjf3r")
@@ -365,6 +375,15 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cvogw")
 
 [node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="Objects/Desk3/Desk/DrawerBottom"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
 limit_enabled = true
 limit_upper = 0.5
 limit_spring_enabled = true
@@ -372,6 +391,7 @@ limit_spring_damping = 3.0
 node_a = NodePath("../..")
 node_b = NodePath("..")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.574206)
+script = null
 
 [node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Objects/Desk3/Desk/DrawerBottom"]
 stream = SubResource("AudioStreamRandomizer_qtvk3")

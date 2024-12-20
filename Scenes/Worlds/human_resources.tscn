@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://dsbem806big2h"]
 
-[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
+[ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
 [ext_resource type="Environment" uid="uid://52by3g1q6hkh" path="res://human_resources_worldenvironment.tres" id="2_6iufn"]
-[ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="3_jahih"]
-[ext_resource type="Shader" path="res://Scenes/Worlds/hr_freezer_fog_shader.gdshader" id="4_5j6qe"]
+[ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="3_jahih"]
+[ext_resource type="Shader" uid="uid://clbekin5v2qpp" path="res://Scenes/Worlds/hr_freezer_fog_shader.gdshader" id="4_5j6qe"]
 [ext_resource type="LightmapGIData" uid="uid://bbkeubndw8sfl" path="res://Scenes/Worlds/human_resources.lmbake" id="4_5pumb"]
 [ext_resource type="PackedScene" uid="uid://c6e8r8hgcxdyp" path="res://Scenes/Prefabs/Rooms/human_resources_lobby_room.tscn" id="4_71dsc"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="4_83x7j"]
@@ -27,11 +27,11 @@ shader_parameter/movement_dir = Vector3(1.84, 0, 2.775)
 shader_parameter/density_mult = 0.035
 shader_parameter/albedoColor = Color(7.94157e-07, 0, 0.403408, 1)
 shader_parameter/emissionColor = Color(0, 0.00166111, 0.180892, 1)
+shader_parameter/gradient = SubResource("GradientTexture2D_22e4p")
 shader_parameter/fade_out_height = 2.0
 shader_parameter/fade_out_distance = 1.5
 shader_parameter/fade_out_horiz = 31.08
 shader_parameter/colorRand = 38.94
-shader_parameter/gradient = SubResource("GradientTexture2D_22e4p")
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_85eyn"]
 vertices = PackedVector3Array(-7.86226, 7, 0.597722, -7.86226, 7, 4.84772, 13.3877, 7, 4.84772, 13.3877, 7, 0.597722, -7.61226, 0.5, 1.84772, -8.11226, 0.5, 2.09772, -7.61226, 0.5, 4.84772, 5.88774, 0.5, 1.34772, 5.38774, 0.5, 0.847722, 2.38774, 0.5, 0.847722, 2.13774, 0.5, 0.347722, -2.11226, 0.5, 0.347722, -2.36226, 0.5, 0.847722, -7.61226, 0.5, 0.847722, 5.88774, 0.5, 4.84772, 13.3877, 0.5, 0.847722, 10.3877, 0.5, 0.847722, 10.1377, 0.5, 1.59772, 13.6377, 0.5, 1.84772, 13.3877, 0.5, 4.84772)

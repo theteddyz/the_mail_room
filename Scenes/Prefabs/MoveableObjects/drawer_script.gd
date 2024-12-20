@@ -3,13 +3,13 @@ extends Node3D
 @export var drawerOpenedSound: AudioStreamPlayer3D
 @export var drawerClosedSound: AudioStreamPlayer3D
 @export var drawerLoopSound: AudioStreamPlayer3D
-@export var drawerSliderJoint: JoltSliderJoint3D
+@export var drawerSliderJoint: SliderJoint3D
 var drawerMinDistance: float
 var drawerMaxDistance: float
 var tolerance: float = 0.01  # Small tolerance to account for precision issues
 
-@onready var body_a_path = drawerSliderJoint.get_node_a() # The first body
-@onready var body_b_path = drawerSliderJoint.get_node_b()  # The second body
+var body_a_path # The first body
+var body_b_path  # The second body
 
 var body_a: RigidBody3D
 var body_b: RigidBody3D
@@ -28,17 +28,22 @@ var isEnabled = false
 var coyoteTime = 0
 
 func _ready() -> void:
+	if drawerSliderJoint == null:
+		for child in get_parent().get_children():
+			if child is SliderJoint3D:
+				drawerSliderJoint = child
 	grabbable_script = get_parent()
-	
+	body_a_path = drawerSliderJoint.node_a 
+	body_b_path = drawerSliderJoint.node_b
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",dropped_object)
-	
-	body_a = get_node(body_a_path) as RigidBody3D
-	body_b = get_node(body_b_path) as RigidBody3D
+	if body_a_path and body_b_path:
+		body_a = get_node(body_a_path) as RigidBody3D
+		body_b = get_node(body_b_path) as RigidBody3D
 	
 	if drawerSliderJoint:
-		drawerMinDistance = drawerSliderJoint.limit_lower
-		drawerMaxDistance = drawerSliderJoint.limit_upper
+		drawerMinDistance = drawerSliderJoint.PARAM_LINEAR_LIMIT_LOWER
+		drawerMaxDistance = drawerSliderJoint.PARAM_LINEAR_LIMIT_UPPER
 	# Calculate the initial offset when the scene starts
 	initial_offset = get_relative_position_along_joint_axis()
 

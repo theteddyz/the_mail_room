@@ -6,7 +6,7 @@ extends Node3D
 #Any objects which will break apart from this origin object
 @export var seperation_breakage_models: Array[RigidBody3D] = []
 
-@export var breakable_hinges: Array[JoltHingeJoint3D] = []
+@export var breakable_hinges: Array[HingeJoint3D] = []
 #Basic model, the default state, not required if broken_models is empty
 @export var normal_model: Node
 #Threshold before the impact causes a breakage
@@ -47,46 +47,52 @@ func _ready():
 	#if(destruction_audios != null):
 		#destruction_audios.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
 		#destruction_audios.unit_size = 10
-	impact_audios2 = impact_audios.duplicate(true)
-	impact_audios3 = impact_audios.duplicate(true)
-	add_child(impact_audios2)
-	add_child(impact_audios3)
-	impact_audios.max_polyphony = 50
-	impact_audios2.max_polyphony = 50
-	impact_audios3.max_polyphony = 50
+	if impact_audios2:
+		impact_audios2 = impact_audios.duplicate(true)
+		add_child(impact_audios2)
+		impact_audios2.max_polyphony = 50
+		
+	if impact_audios3:
+		impact_audios3 = impact_audios.duplicate(true)
+		add_child(impact_audios3)
+		impact_audios3.max_polyphony = 50
+		
+	if impact_audios:
+		impact_audios.max_polyphony = 50
 	broken = false
 	rigidbody = get_parent()
 	if instabreak:
 		break_object()
 
 func _physics_process(_delta: float):
-	if rigidbody.freeze:
-		return
-	if rigidbody.sleeping:
-		return
-	var currentVelocity = rigidbody.linear_velocity
-	
-	var currentRotation = rigidbody.angular_velocity
-	
-	var currentAcceleration = ((previousVelocity - currentVelocity)/_delta)*0.01;
-	var currentRotAccel = ((previousRotation - currentRotation)/_delta)*0.01;
-	
-	var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
-	if(!previousIsPickedUp2 and !onlyPlayOnCollision and impact > impact_threshold):
-		var volume = min(-40 + pow(impact,1.5),0) + initVolume
-		if(destruction_audios != null and impact > destruction_threshold and !broken):
-			destruction_audios.play()
-			break_object()
-		else:
-			playImpactSound(volume)
+	if impact_audios and impact_audios2 and impact_audios3:
+		if rigidbody.freeze:
+			return
+		if rigidbody.sleeping:
+			return
+		var currentVelocity = rigidbody.linear_velocity
 		
+		var currentRotation = rigidbody.angular_velocity
 		
-	previousVelocity = rigidbody.linear_velocity
-	previousRotation = rigidbody.angular_velocity
-	
-	previousIsPickedUp3 = previousIsPickedUp2
-	previousIsPickedUp2 = previousIsPickedUp
-	previousIsPickedUp = rigidbody.is_picked_up
+		var currentAcceleration = ((previousVelocity - currentVelocity)/_delta)*0.01;
+		var currentRotAccel = ((previousRotation - currentRotation)/_delta)*0.01;
+		
+		var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
+		if(!previousIsPickedUp2 and !onlyPlayOnCollision and impact > impact_threshold):
+			var volume = min(-40 + pow(impact,1.5),0) + initVolume
+			if(destruction_audios != null and impact > destruction_threshold and !broken):
+				destruction_audios.play()
+				break_object()
+			else:
+				playImpactSound(volume)
+			
+			
+		previousVelocity = rigidbody.linear_velocity
+		previousRotation = rigidbody.angular_velocity
+		
+		previousIsPickedUp3 = previousIsPickedUp2
+		previousIsPickedUp2 = previousIsPickedUp
+		previousIsPickedUp = rigidbody.is_picked_up
 func _on_body_entered(_body):
 	#var other_body_velocity = body.linear_velocity if body is RigidBody3D else Vector3.ZERO
 	#var relative_velocity = get_parent().linear_velocity - other_body_velocity

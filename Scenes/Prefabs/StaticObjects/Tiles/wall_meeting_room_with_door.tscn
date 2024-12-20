@@ -1,17 +1,17 @@
 [gd_scene load_steps=33 format=4 uid="uid://5dnxe87nmekr"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_76lnn"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/Tiles/Door_Customizer.gd" id="1_s17gj"]
-[ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="2_ejart"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_si1lf"]
+[ext_resource type="Script" uid="uid://cklj08863yrdl" path="res://Scenes/Prefabs/StaticObjects/Tiles/Door_Customizer.gd" id="1_s17gj"]
+[ext_resource type="Script" uid="uid://dmtprj5gddj6g" path="res://Scripts/Interactable/Door.gd" id="2_ejart"]
+[ext_resource type="Script" uid="uid://bek6uusiwfbtv" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_si1lf"]
 [ext_resource type="Texture2D" uid="uid://bgqnmx2g3lx72" path="res://Assets/Textures/BlenderTextures/Door.png" id="3_ertuc"]
 [ext_resource type="AudioStream" uid="uid://dwhgdxuiprgyt" path="res://Assets/Audio/SoundFX/Door/DoorLocked2.ogg" id="3_jkwbl"]
 [ext_resource type="Material" uid="uid://cnc7prympsjb7" path="res://Assets/glass.tres" id="4_8kdjq"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="4_jaj0r"]
+[ext_resource type="Script" uid="uid://dui22n87pky58" path="res://Scripts/MoveableObjects/door_audio.gd" id="4_jaj0r"]
 [ext_resource type="AudioStream" uid="uid://dupxwf04cwpmy" path="res://Assets/Audio/SoundFX/Door/DoorLocked3.ogg" id="4_sjaow"]
 [ext_resource type="AudioStream" uid="uid://dcv3fcs5k3ykn" path="res://Assets/Audio/SoundFX/Door/DoorLocked4.ogg" id="5_3gbol"]
 [ext_resource type="AudioStream" uid="uid://cr47bel457b3v" path="res://Assets/Audio/SoundFX/Door/DoorLocked.ogg" id="6_qonu1"]
-[ext_resource type="Script" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="8_f53fw"]
+[ext_resource type="Script" uid="uid://ye54x0y0d6q6" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="8_f53fw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ubnwn"]
 
@@ -171,13 +171,10 @@ disable_collider_on_grab = false
 is_door = true
 can_rotate = false
 
-[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="RigidBody3D3"]
-limit_enabled = true
-limit_upper = 1.5708
-limit_spring_enabled = true
+[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="RigidBody3D3"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
 node_a = NodePath("..")
 node_b = NodePath("../..")
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
 
 [node name="Door_Lock" type="Node" parent="RigidBody3D3"]
 script = ExtResource("2_ejart")
