@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://y2pmwstysa37" path="res://Assets/Textures/BlenderTextures/WallMailRoom.png" id="1_nw34a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qjlte"]
-size = Vector3(8.60376, 11.8784, 0.349243)
+size = Vector3(3.41205, 11.9449, 0.349243)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mpw0"]
 resource_name = "WallMailRoom"

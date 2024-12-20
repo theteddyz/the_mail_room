@@ -149,6 +149,7 @@ collision_layer = 2
 collision_mask = 15
 mass = 5.0
 script = ExtResource("2_ghinr")
+is_door = true
 
 [node name="ChuteHatch" type="MeshInstance3D" parent="Chute/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00885499)

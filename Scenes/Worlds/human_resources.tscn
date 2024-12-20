@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsbem806big2h"]
+[gd_scene load_steps=17 format=3 uid="uid://dsbem806big2h"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
 [ext_resource type="Environment" uid="uid://52by3g1q6hkh" path="res://human_resources_worldenvironment.tres" id="2_6iufn"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://crepsdd3t3j4a" path="res://Scenes/Prefabs/Rooms/human_resources_opening_room.tscn" id="7_kvilq"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="7_o0ubx"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="8_rl6tn"]
-[ext_resource type="PackedScene" uid="uid://c4pl5nvegl5x" path="res://Scenes/Prefabs/Rooms/human_resources_blockout_lagula.tscn" id="12_8870j"]
+[ext_resource type="PackedScene" uid="uid://cajo2f1jhe000" path="res://Scenes/Prefabs/Rooms/human_resources_blockout.tscn" id="10_2p478"]
+[ext_resource type="PackedScene" uid="uid://bp71m8yu3rrl8" path="res://Scenes/Prefabs/StaticObjects/hospital_Bench.tscn" id="12_udmur"]
 
 [sub_resource type="Gradient" id="Gradient_owl4l"]
 
@@ -75,8 +76,11 @@ navigation_mesh = SubResource("NavigationMesh_85eyn")
 [node name="HumanResourcesOpeningRoom" parent="NavigationRegion3D" instance=ExtResource("7_kvilq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.1247, 0, 2.73919)
 
-[node name="HumanResourcesBlockout2" parent="NavigationRegion3D" instance=ExtResource("12_8870j")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.1542, 0, 2.81301)
+[node name="HumanResourcesBlockout" parent="NavigationRegion3D" instance=ExtResource("10_2p478")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.1571, 0, 2.80744)
 
 [node name="Mailcart" parent="." instance=ExtResource("8_rl6tn")]
 transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979, 3.55372, 0.316447, 1.73329)
+
+[node name="Bench" parent="." instance=ExtResource("12_udmur")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.9773, 0.540568, 35.7292)
