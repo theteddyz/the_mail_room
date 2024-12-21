@@ -5,7 +5,7 @@ extends Node
 # Emitted on any package delivery on any floor
 signal package_delivered(package_num:int)
 
-# Emitted when any "monster"-grouped node is in players' viewcone
+# Emitted when any "monster"-grouped node is in plHayers' viewcone
 signal monster_seen(is_seen:bool)
 
 #  Emitted when a scare is activated
