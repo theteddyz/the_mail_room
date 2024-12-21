@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvlpmgu31pj1k"]
+[gd_scene load_steps=25 format=3 uid="uid://dvlpmgu31pj1k"]
 
 [ext_resource type="Script" path="res://Scripts/CutoutCollisionShaper.gd" id="2_6lvgx"]
 [ext_resource type="Texture2D" uid="uid://h7hmrarl8wju" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_GlobalCorpIcon.png" id="2_vv4wu"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dwcdylwdyjk6k" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_Roughness.png" id="10_im4nt"]
 [ext_resource type="Texture2D" uid="uid://dhepsytbckakx" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_NormalGL.jpg" id="11_0yvse"]
 [ext_resource type="Texture2D" uid="uid://gqsedkoyeak2" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Color.jpg" id="12_akjai"]
+[ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="12_hdwvc"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="13_68k0q"]
 [ext_resource type="Texture2D" uid="uid://dtprrraywwk3u" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Roughness.png" id="13_jxcy1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfoc6"]
@@ -83,17 +85,20 @@ normal_texture = ExtResource("11_0yvse")
 uv1_scale = Vector3(0.692, -0.008, 0.012)
 texture_filter = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ypr7i"]
+size = Vector3(0.644165, 0.463867, 2.41257)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0rqq1"]
-size = Vector3(0.783035, 7.893, 0.26)
+size = Vector3(0.759247, 7.893, 0.26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cg3ht"]
-size = Vector3(3.76697, 7.70207, 0.349243)
+size = Vector3(3.79075, 7.70207, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t708c"]
-size = Vector3(5.80928, 6.10206, 0.349243)
+size = Vector3(5.80928, 6.23672, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_308pl"]
-size = Vector3(5.72033, 0.410945, 0.349243)
+size = Vector3(5.72033, 0.276277, 0.349243)
 
 [node name="hr_base_wall_cuttable" type="Node3D"]
 
@@ -170,10 +175,23 @@ size = Vector3(5.704, 0.026, 0.0699062)
 material = SubResource("StandardMaterial3D_7lql5")
 
 [node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49197, 1.03594, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51575, 0.901277, -4.76837e-07)
 operation = 2
 calculate_tangents = false
 size = Vector3(1.25, 1.25, 1)
+
+[node name="airduct_longer" parent="CSGCombiner3D/Cutout" instance=ExtResource("12_hdwvc")]
+transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -0.0277901, -0.00451994, -2.49999)
+
+[node name="Area3D" type="Area3D" parent="CSGCombiner3D/Cutout/airduct_longer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.260137)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("13_68k0q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/Cutout/airduct_longer/Area3D"]
+transform = Transform3D(0.999997, 0, 0, 0, 1.00008, 0, 0, 0, 0.999993, 0.0042125, 0.00830394, 0.628134)
+shape = SubResource("BoxShape3D_ypr7i")
 
 [node name="LeftCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
 collision_layer = 133
@@ -185,7 +203,7 @@ axis_to_adjust = Vector3(1, 0, 0)
 sign = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50848, 3.97421, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52038, 3.97421, 0)
 shape = SubResource("BoxShape3D_0rqq1")
 
 [node name="RightCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
@@ -198,7 +216,7 @@ axis_to_adjust = Vector3(1, 0, 0)
 sign = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01652, 3.859, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00462, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_cg3ht")
 
 [node name="TopCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
@@ -211,7 +229,7 @@ axis_to_adjust = Vector3(0, 1, 0)
 sign = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TopCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.71197, -0.005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64464, -0.005)
 shape = SubResource("BoxShape3D_t708c")
 
 [node name="BottomCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
@@ -224,5 +242,8 @@ axis_to_adjust = Vector3(0, 1, 0)
 sign = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BottomCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.205472, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.138138, -0.00457764)
 shape = SubResource("BoxShape3D_308pl")
+
+[connection signal="body_entered" from="CSGCombiner3D/Cutout/airduct_longer/Area3D" to="CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="CSGCombiner3D/Cutout/airduct_longer/Area3D" to="CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_exited"]
