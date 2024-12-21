@@ -316,22 +316,10 @@ skeleton = NodePath("")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cvogw")
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="Objects/Desk3/Desk/DrawerTop"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-limit_enabled = true
-limit_upper = 0.5
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="Objects/Desk3/Desk/DrawerTop"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246593, -0.000298202, -0.529209)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246593, -0.000298202, -0.529209)
-script = null
 
 [node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Objects/Desk3/Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_mjf3r")
@@ -347,7 +335,7 @@ script = ExtResource("13_jn5w4")
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
+drawerSliderJoint = NodePath("")
 volume = -20.0
 
 [node name="DrawerBottom" type="RigidBody3D" parent="Objects/Desk3/Desk"]
@@ -374,24 +362,10 @@ skeleton = NodePath("")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cvogw")
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="Objects/Desk3/Desk/DrawerBottom"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="Objects/Desk3/Desk/DrawerBottom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.574206)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.574206)
-script = null
 
 [node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Objects/Desk3/Desk/DrawerBottom"]
 stream = SubResource("AudioStreamRandomizer_qtvk3")
@@ -407,7 +381,7 @@ script = ExtResource("13_jn5w4")
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
+drawerSliderJoint = NodePath("")
 volume = -20.0
 
 [node name="Lamp" parent="Objects/Desk3/Desk" instance=ExtResource("15_pfqk3")]

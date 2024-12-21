@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://cp3vbfvy03meb"]
+[gd_scene load_steps=8 format=4 uid="uid://cp3vbfvy03meb"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_cxko0"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_ueyo3"]
 [ext_resource type="Texture2D" uid="uid://d3g8q0wnjpd0o" path="res://Assets/Textures/BlenderTextures/CrumpledPaper.png" id="1_wy8ns"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_we7v6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5crnf"]
 bounce = 0.2
@@ -56,12 +55,9 @@ mass = 0.7
 physics_material_override = SubResource("PhysicsMaterial_5crnf")
 linear_damp = 1.0
 angular_damp = 2.5
-script = ExtResource("1_cxko0")
+script = ExtResource("1_ueyo3")
 
-[node name="Interpolator" type="Node3D" parent="."]
-script = ExtResource("2_we7v6")
-
-[node name="CrumpledPaper" type="MeshInstance3D" parent="Interpolator"]
+[node name="CrumpledPaper" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_mqgtv")
 skeleton = NodePath("")
 

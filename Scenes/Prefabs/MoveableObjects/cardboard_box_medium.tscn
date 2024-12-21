@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=4 uid="uid://c148bm0rukaqe"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_sdwat"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_mwuln"]
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_ucm3o"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_fc23j"]
+[ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_fc23j"]
 [ext_resource type="AudioStream" uid="uid://c0g6vygpih50f" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium.mp3" id="5_260e6"]
 [ext_resource type="AudioStream" uid="uid://bhw8ffqsxic61" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium3.mp3" id="6_lhgpa"]
 [ext_resource type="AudioStream" uid="uid://7dlyqcruvt7" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium2.mp3" id="7_pybtk"]
@@ -60,8 +60,9 @@ stream_2/stream = ExtResource("7_pybtk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.241312, 0)
 collision_layer = 2
 collision_mask = 15
+freeze = true
 angular_damp = 1.0
-script = ExtResource("1_sdwat")
+script = ExtResource("1_mwuln")
 
 [node name="CardboardBoxMedium" type="MeshInstance3D" parent="Cardboard_box_medium"]
 transform = Transform3D(0.318303, 0, 0, 0, 0.318303, 0, 0, 0, 0.318303, 0, 0, 0)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://fupc50qetuxi"]
 
 [ext_resource type="Texture2D" uid="uid://b4lvvd23ey3q4" path="res://Assets/Textures/BlenderTextures/CeilingLight.png" id="1_xnbkj"]
-[ext_resource type="Script" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="2_xivj2"]
+[ext_resource type="Script" uid="uid://c8838fg8k4eli" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="2_xivj2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nd43"]
 resource_name = "CeilingLight.001"
@@ -100,6 +100,7 @@ aabb = AABB(-10.0748, -5.94489, -9.70125, 20.1497, 11.8898, 19.4025)
 enable_node_path = NodePath("../OmniLight3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
+physics_interpolation_mode = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.17141, 0)
 light_energy = 0.425
 light_indirect_energy = 0.218

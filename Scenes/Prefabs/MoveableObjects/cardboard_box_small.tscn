@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=4 uid="uid://bwkdr1hhs71ee"]
 
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_g146w"]
 [ext_resource type="Texture2D" uid="uid://c1eyj8ihex4kn" path="res://Assets/Textures/BlenderTextures/CardboardBox.png" id="1_i66kl"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_nk5b2"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_502s3"]
+[ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_502s3"]
 [ext_resource type="AudioStream" uid="uid://dako4mxrtfujo" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxSmall.mp3" id="5_ujam3"]
 [ext_resource type="AudioStream" uid="uid://d2be8311jqr06" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxSmall2.mp3" id="6_cmumc"]
 [ext_resource type="AudioStream" uid="uid://ckcdwiicqyq4" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxSmall3.mp3" id="7_gtcqg"]
@@ -66,7 +66,8 @@ disable_mode = 2
 collision_layer = 2
 collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_ll5ie")
-script = ExtResource("1_nk5b2")
+freeze = true
+script = ExtResource("1_g146w")
 
 [node name="CardboardBoxSmall" type="MeshInstance3D" parent="cardboard_box_small"]
 transform = Transform3D(0.318303, 0, 0, 0, 0.318303, 0, 0, 0, 0.318303, 0, 0, 0)

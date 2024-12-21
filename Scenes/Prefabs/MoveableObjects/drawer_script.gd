@@ -28,6 +28,7 @@ var isEnabled = false
 var coyoteTime = 0
 
 func _ready() -> void:
+	
 	if drawerSliderJoint == null:
 		for child in get_parent().get_children():
 			if child is SliderJoint3D:
@@ -40,7 +41,6 @@ func _ready() -> void:
 	if body_a_path and body_b_path:
 		body_a = get_node(body_a_path) as RigidBody3D
 		body_b = get_node(body_b_path) as RigidBody3D
-	
 	if drawerSliderJoint:
 		drawerMinDistance = drawerSliderJoint.PARAM_LINEAR_LIMIT_LOWER
 		drawerMaxDistance = drawerSliderJoint.PARAM_LINEAR_LIMIT_UPPER
@@ -49,6 +49,7 @@ func _ready() -> void:
 
 func held_object(t, j):
 	if j == grabbable_script:
+		set_physics_process(true)
 		isEnabled = true
 
 func dropped_object(t, j):
@@ -56,36 +57,39 @@ func dropped_object(t, j):
 		isEnabled = false
 
 func _physics_process(delta: float) -> void:
-	if isEnabled:
-		coyoteTime = 2
-	else:
-		coyoteTime -= delta
-	if coyoteTime > 0:
-		if body_b.sleeping:
-			return
-		var velocityMagnitude = abs((body_b.linear_velocity - body_a.linear_velocity).length())#abs(get_velocity_along_axis())
-		var relative_position = get_relative_position_along_joint_axis() - initial_offset
-
-		# Normalize the relative position based on the min and max distances
-		relative_position = clamp(relative_position, drawerMinDistance, drawerMaxDistance)
-		
-		if relative_position >= (drawerMaxDistance - tolerance) and velocityMagnitude > 0.5:
-			if !drawerOpenedSound.playing:
-				drawerOpenedSound.volume_db = min(-30 + velocityMagnitude * 2 + volume, volume)
-				drawerOpenedSound.play()
-
-		if relative_position <= (drawerMinDistance + tolerance) and velocityMagnitude > 0.5:
-			if !drawerClosedSound.playing:
-				drawerClosedSound.volume_db = min(-30 + velocityMagnitude * 2 + volume, volume)
-				drawerClosedSound.play()
-
-		if velocityMagnitude > 0.2 and drawerLoopSound:
-			drawerLoopSound.volume_db = min(-20 + velocityMagnitude * 2 + volume, volume)
-			if !drawerLoopSound.playing:
-				drawerLoopSound.play()
+	if !body_b.freeze:
+		if isEnabled:
+			coyoteTime = 2
 		else:
-			if drawerLoopSound:
-				drawerLoopSound.stop()
+			coyoteTime -= delta
+		if coyoteTime > 0:
+			if body_b.sleeping:
+				return
+			var velocityMagnitude = abs((body_b.linear_velocity - body_a.linear_velocity).length())#abs(get_velocity_along_axis())
+			var relative_position = get_relative_position_along_joint_axis() - initial_offset
+
+			# Normalize the relative position based on the min and max distances
+			relative_position = clamp(relative_position, drawerMinDistance, drawerMaxDistance)
+			
+			if relative_position >= (drawerMaxDistance - tolerance) and velocityMagnitude > 0.5:
+				if !drawerOpenedSound.playing:
+					drawerOpenedSound.volume_db = min(-30 + velocityMagnitude * 2 + volume, volume)
+					drawerOpenedSound.play()
+
+			if relative_position <= (drawerMinDistance + tolerance) and velocityMagnitude > 0.5:
+				if !drawerClosedSound.playing:
+					drawerClosedSound.volume_db = min(-30 + velocityMagnitude * 2 + volume, volume)
+					drawerClosedSound.play()
+
+			if velocityMagnitude > 0.2 and drawerLoopSound:
+				drawerLoopSound.volume_db = min(-20 + velocityMagnitude * 2 + volume, volume)
+				if !drawerLoopSound.playing:
+					drawerLoopSound.play()
+			else:
+				if drawerLoopSound:
+					drawerLoopSound.stop()
+	else:
+		set_physics_process(false)
 
 func get_relative_position_along_joint_axis() -> float:
 	# Get the transform of body_a (the reference body)

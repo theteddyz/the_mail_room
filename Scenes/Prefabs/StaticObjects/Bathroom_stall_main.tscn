@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=4 uid="uid://bdvhb1nhdbexm"]
 
 [ext_resource type="Texture2D" uid="uid://cutb6mmfgx62i" path="res://Assets/Models/test_models/bathroom_stall_together_bathroom_stall.png" id="1_1hdwg"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_8pqpg"]
 [ext_resource type="Texture2D" uid="uid://c0t7ilu5qma60" path="res://Assets/Models/test_models/bathroom_stall_together_Bathroom_door.png" id="2_hntdr"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="2_lpsro"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rdrg4"]
 resource_name = "Material.002"
@@ -130,17 +130,13 @@ collision_layer = 2
 collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_uvfu0")
 gravity_scale = 0.0
-script = ExtResource("2_8pqpg")
-can_rotate = false
+script = ExtResource("2_lpsro")
+grab_type = "door"
 
-[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="RigidBody3D"]
-limit_enabled = true
-limit_lower = -1.5708
-limit_spring_enabled = true
-limit_spring_damping = 2.0
+[node name="JoltHingeJoint3D" type="HingeJoint3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0.0100327, 0.0109953, -0.599975)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0.0100327, 0.0109953, -0.599975)
 
 [node name="Bathroom_door" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0405864, 0)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://cwc2c6vi5o20n"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_q3u7l"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_oj0sk"]
 [ext_resource type="Texture2D" uid="uid://ct4ox3vj1hsvo" path="res://Assets/Textures/BlenderTextures/Printer.png" id="2_00evb"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_aksgk"]
@@ -92,7 +92,7 @@ collision_layer = 2
 collision_mask = 15
 mass = 100.0
 physics_material_override = SubResource("PhysicsMaterial_aksgk")
-script = ExtResource("1_q3u7l")
+script = ExtResource("1_oj0sk")
 
 [node name="Printer" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ocdkr")

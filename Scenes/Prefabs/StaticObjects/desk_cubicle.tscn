@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=4 uid="uid://csbg8ispl6x18"]
+[gd_scene load_steps=12 format=4 uid="uid://csbg8ispl6x18"]
 
 [ext_resource type="Texture2D" uid="uid://bkvlvm2p6x0ad" path="res://Assets/Textures/BlenderTextures/CubicleDesk.png" id="2_qmrou"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="3_gwlcn"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="4_optrj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdi4w"]
@@ -115,7 +114,6 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
-script = ExtResource("3_gwlcn")
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D6"]
 transform = Transform3D(1, 0, 2.84217e-14, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0)
@@ -125,13 +123,9 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D6"]
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="RigidBody3D6"]
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
-node_b = NodePath("..")
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="RigidBody3D6"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.584183)
+node_b = NodePath("..")
 
 [node name="RigidBody3D5" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 3.69482e-13, 0, 1, 0, -3.69482e-13, 0, 1, 2.38178, 0.691243, -1.17513)
@@ -144,7 +138,6 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
-script = ExtResource("3_gwlcn")
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D5"]
 transform = Transform3D(1, 0, 2.84217e-14, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0)
@@ -155,13 +148,9 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -2.36848e-14, 0, 1, 0, 2.36848e-14, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D" type="JoltSliderJoint3D" parent="RigidBody3D5"]
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
-node_b = NodePath("..")
+[node name="SliderJoint3D" type="SliderJoint3D" parent="RigidBody3D5"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226641, -0.0221735, -0.668024)
+node_b = NodePath("..")
 
 [node name="RigidBody3D7" type="RigidBody3D" parent="."]
 transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -1.16305, 1.47777, 2.38959)
@@ -174,7 +163,6 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
-script = ExtResource("3_gwlcn")
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D7"]
 transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
@@ -184,13 +172,9 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D7"]
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="RigidBody3D7"]
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
-node_b = NodePath("..")
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="RigidBody3D7"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.683189)
+node_b = NodePath("..")
 
 [node name="RigidBody3D8" type="RigidBody3D" parent="."]
 transform = Transform3D(-4.37116e-08, 0, 1, 0, 1, 0, -1, 0, -4.37116e-08, -1.18748, 0.691243, 2.40345)
@@ -203,7 +187,6 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_mwo5q")
-script = ExtResource("3_gwlcn")
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D8"]
 transform = Transform3D(1, 0, 2.84217e-14, 0, 1, 0, -2.84217e-14, 0, 1, 0, 0, 0)
@@ -214,10 +197,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -2.36848e-14, 0, 1, 0, 2.36848e-14, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_qyu8v")
 
-[node name="SliderJoint3D" type="JoltSliderJoint3D" parent="RigidBody3D8"]
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
-node_b = NodePath("..")
+[node name="SliderJoint3D" type="SliderJoint3D" parent="RigidBody3D8"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226641, -0.0221735, -0.627111)
+node_b = NodePath("..")

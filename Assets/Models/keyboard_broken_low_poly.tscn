@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://ccaqjm1sg3mgx"]
+[gd_scene load_steps=9 format=4 uid="uid://ccaqjm1sg3mgx"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_7cm3v"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_ec587"]
 [ext_resource type="Texture2D" uid="uid://igbeho62sgj2" path="res://Assets/Textures/BlenderTextures/KeyboardBrokenLowRez.png" id="2_ak2jy"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_s1sol"]
 [ext_resource type="AudioStream" uid="uid://te2s31axt3sw" path="res://Assets/Audio/SoundFX/DestructionKeyboard.mp3" id="4_5pccp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgjbb"]
@@ -52,12 +51,9 @@ size = Vector3(0.656799, 0.0468867, 0.213135)
 collision_layer = 2
 collision_mask = 15
 angular_damp = 3.0
-script = ExtResource("1_7cm3v")
+script = ExtResource("1_ec587")
 
-[node name="Interpolator" type="Node3D" parent="."]
-script = ExtResource("2_s1sol")
-
-[node name="KeyboardBrokenLowPoly" type="MeshInstance3D" parent="Interpolator"]
+[node name="KeyboardBrokenLowPoly" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.011999, 0, 0, 0, 0.011999, 0, 0, 0, 0.011999, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_wgjbb")
 mesh = SubResource("ArrayMesh_w32oq")

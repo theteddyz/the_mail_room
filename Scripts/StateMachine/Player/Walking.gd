@@ -184,12 +184,12 @@ func handle_general_interaction():
 					package_last_held = null
 					is_holding_package = false
 				else:
-					collider.grab()
+					GrabbingManager.grabbed_object(collider)
 			"ButtonRB2":
 				collider.interact()
 			_:
-				if collider.has_method("grab"):
-					collider.grab()
+				if "grab_type" in collider:
+					GrabbingManager.grabbed_object(collider)
 				elif collider.has_method("check_key"):
 					collider.get_parent().grab()
 				elif collider.has_method("interact"):

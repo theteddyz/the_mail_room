@@ -1,9 +1,8 @@
-[gd_scene load_steps=36 format=4 uid="uid://ce71rwirfiafw"]
+[gd_scene load_steps=35 format=4 uid="uid://ce71rwirfiafw"]
 
-[ext_resource type="Script" uid="uid://bek6uusiwfbtv" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_hork0"]
-[ext_resource type="Script" uid="uid://yfdslqiugp0s" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_2qwev"]
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="2_rbvap"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="3_ee5i4"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="3_liklh"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="4_6fufh"]
 [ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="4_nflhx"]
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="5_t6sno"]
@@ -152,10 +151,6 @@ collision_layer = 2
 collision_mask = 15
 mass = 50.0
 freeze = true
-script = ExtResource("1_hork0")
-should_freeze = true
-disable_collider_on_grab = false
-can_rotate = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.13829, 0.000576701)
@@ -198,8 +193,8 @@ gravity_scale = 0.0
 sleeping = true
 freeze = true
 linear_damp = 6.0
-script = ExtResource("1_hork0")
-is_drawer = true
+script = ExtResource("3_liklh")
+grab_type = "drawer"
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="Desk/DrawerTop"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -243,13 +238,10 @@ gravity_scale = 0.0
 sleeping = true
 freeze = true
 linear_damp = 6.0
-script = ExtResource("1_hork0")
-is_drawer = true
+script = ExtResource("3_liklh")
+grab_type = "drawer"
 
-[node name="Interpolator" type="Node3D" parent="Desk/DrawerBottom"]
-script = ExtResource("2_2qwev")
-
-[node name="CabinetDesk2" type="MeshInstance3D" parent="Desk/DrawerBottom/Interpolator"]
+[node name="CabinetDesk2" type="MeshInstance3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = SubResource("ArrayMesh_qr8se")
 skeleton = NodePath("")

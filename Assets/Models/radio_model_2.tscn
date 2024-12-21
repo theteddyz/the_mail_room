@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=4 uid="uid://cxx4tf5grxfu8"]
 
 [ext_resource type="Texture2D" uid="uid://dqvl503sdqana" path="res://Assets/Textures/BlenderTextures/Radio.png" id="1_0s5h3"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_4cq81"]
-[ext_resource type="Script" path="res://Scripts/MailCart/radio_animation.gd" id="2_3yv3g"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_sgcy1"]
+[ext_resource type="Script" uid="uid://cc3k7in8w42bw" path="res://Scripts/MailCart/radio_animation.gd" id="2_3yv3g"]
 [ext_resource type="AudioStream" uid="uid://dqybje1nstb5t" path="res://Assets/Audio/Narrator/IntroCutsceneVoice.mp3" id="3_clxld"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3d3pb"]
@@ -100,14 +100,14 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1p3ey"]
 _data = {
-"RESET": SubResource("Animation_kcrap"),
-"blinking": SubResource("Animation_kfppn")
+&"RESET": SubResource("Animation_kcrap"),
+&"blinking": SubResource("Animation_kfppn")
 }
 
 [node name="RigidBody3D" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 15
-script = ExtResource("1_4cq81")
+script = ExtResource("1_sgcy1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.23819, 0, 0, 0, 0.23819, 0, 0, 0, 0.23819, 0, 0.178296, 0)
@@ -126,7 +126,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_x557n")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Radio"]
 libraries = {
-"": SubResource("AnimationLibrary_1p3ey")
+&"": SubResource("AnimationLibrary_1p3ey")
 }
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Radio"]

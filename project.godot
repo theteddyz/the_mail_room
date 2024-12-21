@@ -23,6 +23,7 @@ EventBus="*res://Scripts/GameManagement/EventBus.gd"
 Gui="*res://Scenes/Prefabs/gui/gui.tscn"
 ScareDirector="*res://Scenes/Managers/scareDirector.tscn"
 AudioController="*res://Scenes/Managers/audio_controller.tscn"
+GrabbingManager="*res://Scenes/Managers/Grabbing_Manager.tscn"
 
 [display]
 

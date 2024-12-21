@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=4 uid="uid://drg2uvvenxq80"]
 
 [ext_resource type="Texture2D" uid="uid://dhrb1vm20wh32" path="res://Assets/Models/test_models/Toilet/toilet3_toilet.png" id="1_60e3d"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_sgam8"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="2_e57c2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxgk2"]
 resource_name = "Material.001"
@@ -193,8 +193,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0209717, 0, -0.00762612)
 collision_layer = 2
 collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_vpaw0")
-script = ExtResource("2_sgam8")
-should_freeze = true
+script = ExtResource("2_e57c2")
 
 [node name="ToiletLid2" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(0.243, 0, 0, 0, 0.014, 0, 0, 0, 0.347, 0.00766039, 0.527312, -0.364875)
@@ -205,13 +204,8 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00565338, 0.524489, -0.0197331)
 shape = SubResource("BoxShape3D_fdql5")
 
-[node name="JoltHingeJoint3D" type="JoltHingeJoint3D" parent="RigidBody3D"]
-limit_enabled = true
-limit_lower = -1.5708
-limit_spring_enabled = true
-limit_spring_frequency = 2.0
-limit_spring_damping = 2.0
+[node name="JoltHingeJoint3D" type="HingeJoint3D" parent="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.527481, -0.368542)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 exclude_nodes_from_collision = false
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.527481, -0.368542)

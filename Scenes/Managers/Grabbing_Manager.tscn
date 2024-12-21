@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwndif4q6cd0l"]
+
+[ext_resource type="Script" uid="uid://b2y43e2323obh" path="res://Scripts/GameManagement/grabbing_manager.gd" id="1_fjs8d"]
+[ext_resource type="Script" uid="uid://bdqwcv3rroesp" path="res://Scripts/Grabbing_Types/Grabbable_Dynamic.gd" id="2_jof6m"]
+[ext_resource type="Script" uid="uid://cqxig2gkxjela" path="res://Scripts/Grabbing_Types/Grabbable_Door.gd" id="3_3dovm"]
+[ext_resource type="Script" uid="uid://cmug7gi0sojb2" path="res://Scripts/Grabbing_Types/Grabbale_Drawer.gd" id="4_jhlcw"]
+
+[node name="GrabbingManager" type="Node"]
+script = ExtResource("1_fjs8d")
+
+[node name="Dynamic_object" type="Node" parent="."]
+script = ExtResource("2_jof6m")
+
+[node name="Door" type="Node" parent="."]
+script = ExtResource("3_3dovm")
+
+[node name="Drawer" type="Node" parent="."]
+script = ExtResource("4_jhlcw")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=37 format=4 uid="uid://xy4w3c35frqw"]
 
-[ext_resource type="Script" uid="uid://bek6uusiwfbtv" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_6ip5t"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_cdijq"]
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="2_obbdd"]
 [ext_resource type="Texture2D" uid="uid://dv4g5c8vuwrtt" path="res://Assets/Textures/BlenderTextures/LampUpper.png" id="3_uc4mx"]
 [ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_a2cyg"]
@@ -209,7 +209,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168053, 0.228108)
 collision_layer = 2
 collision_mask = 15
 freeze = true
-script = ExtResource("1_6ip5t")
+script = ExtResource("1_cdijq")
 
 [node name="Lamp" type="MeshInstance3D" parent="LampBase"]
 transform = Transform3D(0.136544, 0, 0, 0, 0.136544, 0, 0, 0, 0.136544, 0, -0.168053, -0.228108)
@@ -253,7 +253,7 @@ collision_layer = 2
 collision_mask = 15
 sleeping = true
 freeze = true
-script = ExtResource("1_6ip5t")
+script = ExtResource("1_cdijq")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="LampArm"]
 transform = Transform3D(1, 0, 0, 0, -0.86028, 0.509822, 0, -0.509822, -0.86028, 0, 0.120491, -0.541251)

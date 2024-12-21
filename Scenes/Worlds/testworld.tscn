@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=28 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
@@ -6,11 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/Prefabs/gui/interactable_test.tscn" id="4_p0gx3"]
 [ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="5_6517x"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="15_87p0u"]
-[ext_resource type="PackedScene" uid="uid://ugwqaphpkcxp" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_long.tscn" id="16_uddld"]
-[ext_resource type="PackedScene" uid="uid://c148bm0rukaqe" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_medium.tscn" id="17_bf1bd"]
-[ext_resource type="PackedScene" uid="uid://dfbuid76trvb0" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_mini.tscn" id="18_4j86i"]
-[ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall_door.tscn" id="19_87p0u"]
-[ext_resource type="PackedScene" uid="uid://bwkdr1hhs71ee" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="19_dbw12"]
+[ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_door.tscn" id="15_koth6"]
+[ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="16_olrcr"]
 [ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="19_va06c"]
 [ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="21_fscik"]
 [ext_resource type="PackedScene" uid="uid://duh0mp4ga7irm" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover.tscn" id="22_cdvgx"]
@@ -172,26 +169,13 @@ shape = SubResource("BoxShape3D_vxn8k")
 
 [node name="Cardboard_box_big" parent="." instance=ExtResource("15_87p0u")]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8942, 0.0220325, -1.95912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1671, 0.325687, 0.501174)
 
-[node name="Cardboard_box_long" parent="." instance=ExtResource("16_uddld")]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.60442, 0.00906754, 1.64717)
+[node name="StaticBody3D" parent="." instance=ExtResource("15_koth6")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -3.45649, 0.00906801, -7.39729)
 
-[node name="Node3D2" parent="." instance=ExtResource("17_bf1bd")]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1097, 0.00906754, -1.21423)
-
-[node name="cardboard_box_mini" parent="." instance=ExtResource("18_4j86i")]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03713, 0.00906754, 0.66561)
-
-[node name="Node3D3" parent="." instance=ExtResource("19_dbw12")]
-physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.19612, 0.0117687, 2.27715)
-
-[node name="Door" parent="." instance=ExtResource("19_87p0u")]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 2.59688, 0.0114818, -12.2197)
+[node name="Desk" parent="." instance=ExtResource("16_olrcr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14609, 0, 0)
 
 [connection signal="body_entered" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_exited"]

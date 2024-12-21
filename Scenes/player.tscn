@@ -34,7 +34,7 @@ radius = 50.9001
 points = PackedVector3Array(0.235, 0.136, 0.15, 0.235, 0.136, -0.09, -0.235, 0.136, 0.15, 0, 0, 0, -0.235, 0.136, -0.095)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_75rh5"]
-radius = 5.0
+radius = 2.8521
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
 collision_layer = 65540
@@ -126,16 +126,14 @@ script = ExtResource("12_8ck00")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/Area3D"]
 shape = SubResource("SphereShape3D_75rh5")
+disabled = true
 
 [node name="Timer" type="Timer" parent="Neck/Head/HeadbopRoot/Area3D"]
-wait_time = 0.2
 autostart = true
 
-[node name="LightLevelDetection" parent="Neck/Head/HeadbopRoot" node_paths=PackedStringArray("player", "camera", "timer") instance=ExtResource("8_6f6ef")]
+[node name="LightLevelDetection" parent="Neck/Head/HeadbopRoot" instance=ExtResource("8_6f6ef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247054, -0.292751)
-player = NodePath("../../../..")
-camera = NodePath("../Camera")
-timer = NodePath("Refresh Timer")
+active = false
 
 [node name="Refresh Timer" parent="Neck/Head/HeadbopRoot/LightLevelDetection" index="0"]
 wait_time = 0.22

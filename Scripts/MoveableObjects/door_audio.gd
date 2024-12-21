@@ -19,18 +19,15 @@ func _ready():
 	#door_close_1 = preload("res://Assets/Audio/SoundFX/DoorClosed.mp3")
 	#door_close_2 = preload("res://Assets/Audio/SoundFX/DoorClosed2.mp3")
 	#door_close_3 =  preload("res://Assets/Audio/SoundFX/DoorClosed3.mp3")
-	
+	if parent_node:
+		parent_node.angular_damp = 5
+		parent_node.linear_damp = 5
 	parent_node = get_parent()
 	if parent_node:
 		initial_angle = parent_node.rotation_degrees.y
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if parent_node:
-		parent_node.angular_damp = 5
-		parent_node.linear_damp = 5
-		#update_door_audio(parent_node.rotation_degrees.y)
 
 func update_door_audio(_current_angle: float):
 	var _angle_difference = _current_angle - initial_angle

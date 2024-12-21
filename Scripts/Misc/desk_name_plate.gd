@@ -2,9 +2,6 @@
 extends Node3D
 
 @export_multiline var name_text:String
-func _process(_delta):
-	if Engine.is_editor_hint():
-		update_text()
 
 func _ready():
 	var text_mesh = $RigidBody3D/MeshInstance3D

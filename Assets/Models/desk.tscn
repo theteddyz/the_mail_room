@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="1_ijyv1"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="2_bppe2"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_hnkys"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="2_pnlu4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn1yr"]
 resource_name = "Desk2"
@@ -122,8 +122,6 @@ points = PackedVector3Array(0.520555, 0.387969, -8.73804e-05, -1.96695e-06, 0.23
 collision_layer = 2
 collision_mask = 15
 mass = 100.0
-script = ExtResource("2_hnkys")
-can_rotate = false
 
 [node name="Desk2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -182,9 +180,7 @@ axis_lock_linear_x = true
 axis_lock_linear_y = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
-script = ExtResource("2_hnkys")
-is_drawer = true
-can_rotate = false
+script = ExtResource("2_pnlu4")
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D6"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -210,9 +206,7 @@ axis_lock_linear_x = true
 axis_lock_linear_y = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
-script = ExtResource("2_hnkys")
-is_drawer = true
-can_rotate = false
+script = ExtResource("2_pnlu4")
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D5"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

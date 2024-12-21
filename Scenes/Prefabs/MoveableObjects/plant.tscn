@@ -1,8 +1,7 @@
-[gd_scene load_steps=34 format=4 uid="uid://bwnbou1pjcf8l"]
+[gd_scene load_steps=33 format=4 uid="uid://bwnbou1pjcf8l"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_6o0jj"]
 [ext_resource type="Texture2D" uid="uid://b571rjlxpyhvt" path="res://Assets/Textures/BlenderTextures/Plant.png" id="1_y0vx6"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_3uksl"]
+[ext_resource type="Script" uid="uid://yfdslqiugp0s" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_3uksl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6wq47"]
 
@@ -362,7 +361,6 @@ collision_layer = 2
 collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_6wq47")
-script = ExtResource("1_6o0jj")
 
 [node name="Plant" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.147098, 0)
@@ -385,25 +383,9 @@ script = ExtResource("2_3uksl")
 mesh = SubResource("ArrayMesh_brjpg")
 skeleton = NodePath("")
 
-[node name="JoltPinJoint3D" type="JoltGeneric6DOFJoint3D" parent="Plant/Plant_leaf"]
-linear_spring_x/enabled = true
-linear_spring_x/frequency = 5.0
-angular_limit_x/upper = 0.349066
-angular_limit_x/lower = -0.349066
-angular_limit_y/upper = 0.349066
-angular_limit_y/lower = -0.349066
-angular_limit_z/upper = 0.349066
-angular_limit_z/lower = -0.349066
-angular_motor_x/target_velocity = 0.0523599
-angular_motor_x/max_torque = 3.0
-angular_motor_y/target_velocity = 0.0523599
-angular_motor_y/max_torque = 3.0
-angular_motor_z/target_velocity = 0.0523599
-angular_motor_z/max_torque = 3.0
+[node name="JoltPinJoint3D" type="PinJoint3D" parent="Plant/Plant_leaf"]
 node_a = NodePath("../../..")
 node_b = NodePath("..")
-solver_velocity_iterations = 3
-solver_position_iterations = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plant/Plant_leaf"]
 transform = Transform3D(0.896185, 0.266859, 0.354456, -0.0128528, -0.782948, 0.621954, 0.443495, -0.561942, -0.698236, 0.11816, 0.140645, -0.352595)
@@ -418,7 +400,7 @@ physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
 angular_damp = 2.0
 
-[node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="Plant/Plant_leaf_2"]
+[node name="JoltGeneric6DOFJoint3D" type="Generic6DOFJoint3D" parent="Plant/Plant_leaf_2"]
 node_a = NodePath("..")
 node_b = NodePath("../../..")
 
@@ -439,13 +421,7 @@ physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
 angular_damp = 2.0
 
-[node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="Plant/plant_leaf_3"]
-angular_limit_x/upper = 0.349066
-angular_limit_x/lower = 0.349066
-angular_limit_y/upper = 0.349066
-angular_limit_y/lower = 0.349066
-angular_limit_z/upper = 0.349066
-angular_limit_z/lower = 0.349066
+[node name="JoltGeneric6DOFJoint3D" type="Generic6DOFJoint3D" parent="Plant/plant_leaf_3"]
 node_a = NodePath("../../..")
 node_b = NodePath("..")
 
@@ -466,13 +442,7 @@ physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
 angular_damp = 2.0
 
-[node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="Plant/plant_leaf_4"]
-angular_limit_x/upper = 0.349066
-angular_limit_x/lower = 0.349066
-angular_limit_y/upper = 0.349066
-angular_limit_y/lower = 0.349066
-angular_limit_z/upper = 0.349066
-angular_limit_z/lower = 0.349066
+[node name="JoltGeneric6DOFJoint3D" type="Generic6DOFJoint3D" parent="Plant/plant_leaf_4"]
 node_a = NodePath("../../..")
 node_b = NodePath("..")
 
@@ -493,13 +463,7 @@ physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
 angular_damp = 2.0
 
-[node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="Plant/plant_leaf_5"]
-angular_limit_x/upper = 0.349066
-angular_limit_x/lower = -0.349066
-angular_limit_y/upper = 0.349066
-angular_limit_y/lower = -0.349066
-angular_limit_z/upper = 0.349066
-angular_limit_z/lower = -0.349066
+[node name="JoltGeneric6DOFJoint3D" type="Generic6DOFJoint3D" parent="Plant/plant_leaf_5"]
 node_a = NodePath("../../..")
 node_b = NodePath("..")
 
@@ -520,13 +484,7 @@ physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
 angular_damp = 2.0
 
-[node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="Plant/plant_leaf_6"]
-angular_limit_x/upper = 0.349066
-angular_limit_x/lower = -0.349066
-angular_limit_y/upper = 0.349066
-angular_limit_y/lower = -0.349066
-angular_limit_z/upper = 0.349066
-angular_limit_z/lower = -0.349066
+[node name="JoltGeneric6DOFJoint3D" type="Generic6DOFJoint3D" parent="Plant/plant_leaf_6"]
 node_a = NodePath("../../..")
 node_b = NodePath("..")
 
@@ -547,13 +505,7 @@ physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
 angular_damp = 2.0
 
-[node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="Plant/plant_leaf_7"]
-angular_limit_x/upper = 0.349066
-angular_limit_x/lower = -0.349066
-angular_limit_y/upper = 0.349066
-angular_limit_y/lower = -0.349066
-angular_limit_z/upper = 0.349066
-angular_limit_z/lower = -0.349066
+[node name="JoltGeneric6DOFJoint3D" type="Generic6DOFJoint3D" parent="Plant/plant_leaf_7"]
 node_a = NodePath("../../..")
 node_b = NodePath("..")
 
@@ -574,13 +526,7 @@ physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
 angular_damp = 2.0
 
-[node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="Plant/plant_leaf_8"]
-angular_limit_x/upper = 0.349066
-angular_limit_x/lower = -0.349066
-angular_limit_y/upper = 0.349066
-angular_limit_y/lower = -0.349066
-angular_limit_z/upper = 0.349066
-angular_limit_z/lower = -0.349066
+[node name="JoltGeneric6DOFJoint3D" type="Generic6DOFJoint3D" parent="Plant/plant_leaf_8"]
 node_a = NodePath("../../..")
 node_b = NodePath("..")
 

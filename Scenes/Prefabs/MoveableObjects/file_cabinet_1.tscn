@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=4 uid="uid://c7e4imgjbdx46"]
 
-[ext_resource type="Script" uid="uid://bek6uusiwfbtv" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_kseb0"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_1xdp2"]
 [ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="3_5nqi4"]
 [ext_resource type="Script" uid="uid://t0gqci6jputc" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet.gd" id="4_rx22h"]
 [ext_resource type="ArrayMesh" uid="uid://cfgt0u4t6je4c" path="res://Assets/Materials/cabinet_drawer.tres" id="6_0wjlh"]
@@ -15,7 +15,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xdp2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fo7lw"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -47,7 +47,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_1xdp2"),
+"material": SubResource("StandardMaterial3D_fo7lw"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -157,10 +157,7 @@ collision_mask = 15
 mass = 60.0
 physics_material_override = SubResource("PhysicsMaterial_i0t41")
 freeze = true
-script = ExtResource("1_kseb0")
-should_freeze = true
-disable_collider_on_grab = false
-can_rotate = false
+script = ExtResource("1_1xdp2")
 
 [node name="FileCabinet" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -195,9 +192,8 @@ collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
-script = ExtResource("1_kseb0")
-is_drawer = true
-can_rotate = false
+script = ExtResource("1_1xdp2")
+grab_type = "drawer"
 
 [node name="JoltSliderJoint3D" type="SliderJoint3D" parent="Drawer"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -255,9 +251,8 @@ collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
-script = ExtResource("1_kseb0")
-is_drawer = true
-can_rotate = false
+script = ExtResource("1_1xdp2")
+grab_type = "drawer"
 
 [node name="JoltSliderJoint3D" type="SliderJoint3D" parent="Drawer2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -315,9 +310,8 @@ collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
-script = ExtResource("1_kseb0")
-is_drawer = true
-can_rotate = false
+script = ExtResource("1_1xdp2")
+grab_type = "drawer"
 
 [node name="JoltSliderJoint3D" type="SliderJoint3D" parent="Drawer3"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -375,9 +369,8 @@ collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
-script = ExtResource("1_kseb0")
-is_drawer = true
-can_rotate = false
+script = ExtResource("1_1xdp2")
+grab_type = "drawer"
 
 [node name="JoltSliderJoint3D" type="SliderJoint3D" parent="Drawer4"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)

@@ -24,7 +24,7 @@ var index: int
 #Particles which to play during a breakage
 @export var breakage_particles: Array[GPUParticles3D]
 
-var grabbable_script = preload("res://Scripts/MoveableObjects/GrabbableObject.gd")
+var grabbable_script = preload("res://Scripts/Grabbing_Types/Grab_Type.gd")
 
 var broken:bool
 
@@ -65,6 +65,10 @@ func _ready():
 		break_object()
 
 func _physics_process(_delta: float):
+	if rigidbody.freeze:
+		set_physics_process(false)
+	else:
+		set_physics_process(true)
 	if impact_audios and impact_audios2 and impact_audios3:
 		if rigidbody.freeze:
 			return
@@ -103,7 +107,7 @@ func _on_body_entered(_body):
 	var currentAcceleration = (previousVelocity - rigidbody.linear_velocity);
 	var currentRotAccel = (previousRotation - rigidbody.angular_velocity);
 	var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
-	if((rigidbody.is_picked_up or onlyPlayOnCollision) and impact > impact_threshold):
+	if((GrabbingManager.current_grabbed_object == self or onlyPlayOnCollision) and impact > impact_threshold):
 		var volume = min(-40 + pow(impact,1.5),0) + initVolume
 		if(destruction_audios != null and impact > destruction_threshold and !broken):
 			destruction_audios.play()

@@ -1,18 +1,17 @@
-[gd_scene load_steps=112 format=4 uid="uid://cajo2f1jhe000"]
+[gd_scene load_steps=111 format=4 uid="uid://cajo2f1jhe000"]
 
 [ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="1_m6mp8"]
 [ext_resource type="Texture2D" uid="uid://c3qyu5oicypra" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_tezco256r.png" id="1_qdt4i"]
 [ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="2_bgrhv"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_s6kub"]
 [ext_resource type="Texture2D" uid="uid://bdqjdhf72u4sj" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png" id="2_xpgkx"]
 [ext_resource type="Texture2D" uid="uid://cfpfwkaakamns" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg" id="3_ydku5"]
-[ext_resource type="Script" path="res://Scripts/Interactable/Door.gd" id="3_yl83b"]
+[ext_resource type="Script" uid="uid://dmtprj5gddj6g" path="res://Scripts/Interactable/Door.gd" id="3_yl83b"]
 [ext_resource type="AudioStream" uid="uid://dwhgdxuiprgyt" path="res://Assets/Audio/SoundFX/Door/DoorLocked2.ogg" id="4_2nm74"]
 [ext_resource type="AudioStream" uid="uid://dupxwf04cwpmy" path="res://Assets/Audio/SoundFX/Door/DoorLocked3.ogg" id="5_1iuql"]
 [ext_resource type="AudioStream" uid="uid://dcv3fcs5k3ykn" path="res://Assets/Audio/SoundFX/Door/DoorLocked4.ogg" id="6_q7461"]
 [ext_resource type="AudioStream" uid="uid://cr47bel457b3v" path="res://Assets/Audio/SoundFX/Door/DoorLocked.ogg" id="7_w7rji"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/door_audio.gd" id="8_2q10v"]
-[ext_resource type="Script" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="9_8s24c"]
+[ext_resource type="Script" uid="uid://dui22n87pky58" path="res://Scripts/MoveableObjects/door_audio.gd" id="8_2q10v"]
+[ext_resource type="Script" uid="uid://ye54x0y0d6q6" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="9_8s24c"]
 [ext_resource type="Texture2D" uid="uid://dhdnlvv5l34c5" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Metal011_1K-JPG_Color.jpg" id="10_c32sn"]
 [ext_resource type="Texture2D" uid="uid://chgxj8mjkp40s" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Metal011_1K-JPG_Metalness-Metal011_1K-JPG_Roughness.png" id="11_bicgq"]
 [ext_resource type="Texture2D" uid="uid://7mrtswngejk" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Metal011_1K-JPG_NormalDX.jpg" id="12_iwl5f"]
@@ -20,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b8mdg5ogdpqnv" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_Color.jpg" id="14_x3vkx"]
 [ext_resource type="Texture2D" uid="uid://cds7t3reqk5jw" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_Roughness.png" id="15_6y4d7"]
 [ext_resource type="Texture2D" uid="uid://dc3gt1rsfct0l" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_NormalGL.jpg" id="16_17qbk"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/glass_shader.gdshader" id="17_lun73"]
+[ext_resource type="Shader" uid="uid://bu2krdkeltydh" path="res://Scripts/Shaders/glass_shader.gdshader" id="17_lun73"]
 [ext_resource type="Texture2D" uid="uid://t6r0hauythae" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Color.jpg" id="18_x42mi"]
 [ext_resource type="Texture2D" uid="uid://cto7grgckbt34" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Metalness-Concrete042A_1K-JPG_Roughness.png" id="19_kebby"]
 [ext_resource type="Texture2D" uid="uid://cxh7m6pspxtno" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_NormalGL.jpg" id="20_36ypd"]
@@ -34,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://dtprrraywwk3u" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Roughness.png" id="28_c7t63"]
 [ext_resource type="PackedScene" uid="uid://b2rvvsrl03wcr" path="res://Scenes/Prefabs/StaticObjects/hr_wall_wtih_door.tscn" id="30_nvc73"]
 [ext_resource type="PackedScene" uid="uid://dhih34co5hg26" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_hr.tscn" id="33_8rcrw"]
-[ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="33_xxnyf"]
+[ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="33_xxnyf"]
 [ext_resource type="PackedScene" uid="uid://bkj6u72ci18q1" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_hr.tscn" id="34_gktgy"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling.tscn" id="35_ebik0"]
 [ext_resource type="Texture2D" uid="uid://bvvp4ly004ww1" path="res://Assets/Models/test_models/Floor2/Ceiling/ceilingHospital_Ceiling_light_BaseColor.png" id="36_3q6on"]
@@ -43,12 +42,12 @@
 [ext_resource type="Texture2D" uid="uid://djwggaqodycjb" path="res://Assets/Models/test_models/Floor2/Ceiling/ceilingHospital_Ceiling_light_Normal.png" id="38_6epkg"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="38_w3fe3"]
 [ext_resource type="AudioStream" uid="uid://dpjw33ok63rwv" path="res://Assets/Audio/SoundFX/CabinetMovingFast.mp3" id="39_biwi8"]
-[ext_resource type="Script" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="39_sx2wu"]
+[ext_resource type="Script" uid="uid://c8838fg8k4eli" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="39_sx2wu"]
 [ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="40_yh5tu"]
 [ext_resource type="AudioStream" uid="uid://bh7pseacjj5se" path="res://Assets/Audio/SoundFX/CabinetClosed.mp3" id="41_wfcwu"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="42_i0v22"]
+[ext_resource type="Script" uid="uid://c2bhb72ytvio" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="42_i0v22"]
 [ext_resource type="PackedScene" uid="uid://g3iqvb0k1cr6" path="res://Scenes/Prefabs/StaticObjects/ceilinglight_on.tscn" id="42_r4cul"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="43_a6txl"]
+[ext_resource type="Script" uid="uid://yfdslqiugp0s" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="43_a6txl"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="44_q2nu3"]
 [ext_resource type="PackedScene" uid="uid://bcrcp8v8fg3md" path="res://Scenes/Prefabs/MoveableObjects/body_from_ceiling.tscn" id="51_xcu5a"]
 
@@ -884,18 +883,11 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_87lbr")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
-script = ExtResource("2_s6kub")
-disable_collider_on_grab = false
-is_door = true
-can_rotate = false
 
-[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="WALLS/HR_ArchwayWall2/RigidBody3D2"]
-limit_enabled = true
-limit_upper = -3.14159
-limit_spring_enabled = true
+[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="WALLS/HR_ArchwayWall2/RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 node_a = NodePath("..")
 node_b = NodePath("../..")
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 
 [node name="Door_Lock" type="Node" parent="WALLS/HR_ArchwayWall2/RigidBody3D2"]
 script = ExtResource("3_yl83b")
@@ -942,18 +934,11 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_87lbr")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
-script = ExtResource("2_s6kub")
-disable_collider_on_grab = false
-is_door = true
-can_rotate = false
 
-[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="WALLS/HR_ArchwayWall2/RigidBody3D3"]
-limit_enabled = true
-limit_upper = -3.14159
-limit_spring_enabled = true
+[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="WALLS/HR_ArchwayWall2/RigidBody3D3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 node_a = NodePath("..")
 node_b = NodePath("../..")
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 
 [node name="Door_Lock" type="Node" parent="WALLS/HR_ArchwayWall2/RigidBody3D3"]
 script = ExtResource("3_yl83b")
@@ -1032,18 +1017,11 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_87lbr")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
-script = ExtResource("2_s6kub")
-disable_collider_on_grab = false
-is_door = true
-can_rotate = false
 
-[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="WALLS/HR_ArchwayWall4/RigidBody3D2"]
-limit_enabled = true
-limit_upper = -3.14159
-limit_spring_enabled = true
+[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="WALLS/HR_ArchwayWall4/RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 node_a = NodePath("..")
 node_b = NodePath("../..")
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 
 [node name="Door_Lock" type="Node" parent="WALLS/HR_ArchwayWall4/RigidBody3D2"]
 script = ExtResource("3_yl83b")
@@ -1090,18 +1068,11 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_87lbr")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
-script = ExtResource("2_s6kub")
-disable_collider_on_grab = false
-is_door = true
-can_rotate = false
 
-[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="WALLS/HR_ArchwayWall4/RigidBody3D3"]
-limit_enabled = true
-limit_upper = -3.14159
-limit_spring_enabled = true
+[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="WALLS/HR_ArchwayWall4/RigidBody3D3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 node_a = NodePath("..")
 node_b = NodePath("../..")
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 
 [node name="Door_Lock" type="Node" parent="WALLS/HR_ArchwayWall4/RigidBody3D3"]
 script = ExtResource("3_yl83b")
@@ -1180,18 +1151,11 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_87lbr")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
-script = ExtResource("2_s6kub")
-disable_collider_on_grab = false
-is_door = true
-can_rotate = false
 
-[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="WALLS/HR_ArchwayWall6/RigidBody3D2"]
-limit_enabled = true
-limit_upper = -3.14159
-limit_spring_enabled = true
+[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="WALLS/HR_ArchwayWall6/RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 node_a = NodePath("..")
 node_b = NodePath("../..")
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 
 [node name="Door_Lock" type="Node" parent="WALLS/HR_ArchwayWall6/RigidBody3D2"]
 script = ExtResource("3_yl83b")
@@ -1238,18 +1202,11 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_87lbr")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
-script = ExtResource("2_s6kub")
-disable_collider_on_grab = false
-is_door = true
-can_rotate = false
 
-[node name="JoltHingeJoint3D2" type="JoltHingeJoint3D" parent="WALLS/HR_ArchwayWall6/RigidBody3D3"]
-limit_enabled = true
-limit_upper = -3.14159
-limit_spring_enabled = true
+[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="WALLS/HR_ArchwayWall6/RigidBody3D3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 node_a = NodePath("..")
 node_b = NodePath("../..")
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
 
 [node name="Door_Lock" type="Node" parent="WALLS/HR_ArchwayWall6/RigidBody3D3"]
 script = ExtResource("3_yl83b")
@@ -2194,10 +2151,6 @@ collision_layer = 2
 collision_mask = 15
 mass = 50.0
 freeze = true
-script = ExtResource("2_s6kub")
-should_freeze = true
-disable_collider_on_grab = false
-can_rotate = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OBJECTS/Desk/Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.13829, 0.000576701)
@@ -2234,8 +2187,6 @@ gravity_scale = 0.0
 sleeping = true
 freeze = true
 linear_damp = 6.0
-script = ExtResource("2_s6kub")
-is_drawer = true
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -2246,12 +2197,10 @@ skeleton = NodePath("")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cvogw")
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
-limit_enabled = true
-limit_upper = 0.5
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246593, -0.000298202, -0.529209)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246593, -0.000298202, -0.529209)
 
 [node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_mjf3r")
@@ -2267,7 +2216,7 @@ script = ExtResource("42_i0v22")
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
+drawerSliderJoint = NodePath("")
 volume = -20.0
 
 [node name="DrawerBottom" type="RigidBody3D" parent="OBJECTS/Desk/Desk"]
@@ -2279,8 +2228,6 @@ gravity_scale = 0.0
 sleeping = true
 freeze = true
 linear_damp = 6.0
-script = ExtResource("2_s6kub")
-is_drawer = true
 
 [node name="Interpolator" type="Node3D" parent="OBJECTS/Desk/Desk/DrawerBottom"]
 script = ExtResource("43_a6txl")
@@ -2294,14 +2241,10 @@ skeleton = NodePath("")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_cvogw")
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="OBJECTS/Desk/Desk/DrawerBottom"]
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="OBJECTS/Desk/Desk/DrawerBottom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.574206)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.574206)
 
 [node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="OBJECTS/Desk/Desk/DrawerBottom"]
 stream = SubResource("AudioStreamRandomizer_qtvk3")
@@ -2317,7 +2260,7 @@ script = ExtResource("42_i0v22")
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
+drawerSliderJoint = NodePath("")
 volume = -20.0
 
 [node name="GrabableObjectTemplate" parent="OBJECTS/Desk/Desk" instance=ExtResource("44_q2nu3")]

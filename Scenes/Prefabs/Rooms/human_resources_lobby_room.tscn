@@ -12,15 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://c148bm0rukaqe" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_medium.tscn" id="9_ypsoa"]
 [ext_resource type="PackedScene" uid="uid://bwnbou1pjcf8l" path="res://Scenes/Prefabs/MoveableObjects/plant.tscn" id="10_w2uwk"]
 [ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="11_mnnbh"]
-[ext_resource type="Script" path="res://Scripts/Misc/desk.gd" id="13_0hs5o"]
+[ext_resource type="Script" uid="uid://dv8wcw5yxxmtv" path="res://Scripts/Misc/desk.gd" id="13_0hs5o"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="14_7s746"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="15_c5irg"]
 [ext_resource type="Texture2D" uid="uid://dgy6bdhr0juyx" path="res://Assets/Textures/BlenderTextures/Desk.png" id="16_k71uv"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="16_y6o2x"]
 [ext_resource type="Texture2D" uid="uid://cehb1r025iuxj" path="res://Assets/Textures/BlenderTextures/Cabinet1.png" id="17_0kdvj"]
 [ext_resource type="AudioStream" uid="uid://dpjw33ok63rwv" path="res://Assets/Audio/SoundFX/CabinetMovingFast.mp3" id="18_sbve7"]
 [ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="19_xl1dv"]
 [ext_resource type="AudioStream" uid="uid://bh7pseacjj5se" path="res://Assets/Audio/SoundFX/CabinetClosed.mp3" id="20_xkbuv"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="21_mln3m"]
+[ext_resource type="Script" uid="uid://c2bhb72ytvio" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="21_mln3m"]
 [ext_resource type="PackedScene" uid="uid://cdj2vclj1i0vn" path="res://Scenes/Prefabs/StaticObjects/papers_low.tscn" id="22_iudpr"]
 [ext_resource type="PackedScene" uid="uid://bx8wu2gkh3xu0" path="res://Scenes/Prefabs/StaticObjects/paper_single.tscn" id="23_hb7a7"]
 [ext_resource type="PackedScene" uid="uid://bc4e2pkwjrbhi" path="res://Scenes/Prefabs/StaticObjects/papers_tall.tscn" id="24_u78h6"]
@@ -306,10 +306,7 @@ shape = SubResource("BoxShape3D_a835v")
 collision_layer = 2
 collision_mask = 15
 mass = 50.0
-script = ExtResource("15_c5irg")
-should_freeze = true
-disable_collider_on_grab = false
-can_rotate = false
+script = ExtResource("16_y6o2x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OBJECTS/Desk/Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038018, 1.11285, 0.0113189)
@@ -363,17 +360,13 @@ collision_mask = 3
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 linear_damp = 6.0
-script = ExtResource("15_c5irg")
-is_drawer = true
+script = ExtResource("16_y6o2x")
+grab_type = "drawer"
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.624854)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.624854)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
@@ -424,17 +417,13 @@ collision_mask = 3
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 linear_damp = 6.0
-script = ExtResource("15_c5irg")
-is_drawer = true
+script = ExtResource("16_y6o2x")
+grab_type = "drawer"
 
-[node name="SliderJoint3D2" type="JoltSliderJoint3D" parent="OBJECTS/Desk/Desk/DrawerBottom"]
-limit_enabled = true
-limit_upper = 0.5
-limit_spring_enabled = true
-limit_spring_damping = 3.0
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="OBJECTS/Desk/Desk/DrawerBottom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.642156)
 node_a = NodePath("../..")
 node_b = NodePath("..")
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.642156)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OBJECTS/Desk/Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)

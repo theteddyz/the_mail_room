@@ -16,10 +16,12 @@ func _ready():
 			icons[child.name] = child
 			child.hide()
 
-
 func show_icon(object):
 	hide_all_icons(self)
 	var object_name
+	if object is RigidBody3D:
+		if "grab_type" in object:
+			object_name = object.icon_type
 	if object_held is RigidBody3D and object_held is not Package:
 		object_name = "grabClosed"
 	else:
@@ -39,10 +41,11 @@ func show_icon(object):
 				"MailboxStand":
 					object_name = "deliverable"
 				_:
-					if "icon_type" in object:
-						object_name = object.icon_type
-					else:
-						pass
+					object_name = "grab"
+					#if "icon_type" in object:
+						#object_name = "grab"
+					#else:
+						#pass
 	if object_name != null:
 			if object_name in icons:
 				icons[object_name].show()

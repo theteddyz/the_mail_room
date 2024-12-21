@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=4 uid="uid://b8iui7iq0t8y6"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_fgjb5"]
 [ext_resource type="Texture2D" uid="uid://b1aua8leky6kp" path="res://Assets/Textures/BlenderTextures/TrashCan.png" id="1_h8v2l"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_1bdfq"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_sh53v"]
+[ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_1bdfq"]
 [ext_resource type="AudioStream" uid="uid://da6ok0h75e5me" path="res://Assets/Audio/SoundFX/Impacts/ImpactTrashCan1.ogg" id="4_tbxtk"]
 [ext_resource type="AudioStream" uid="uid://bmfyfruu8wn1i" path="res://Assets/Audio/SoundFX/Impacts/ImpactTrashCan2.ogg" id="5_pgl1d"]
 [ext_resource type="AudioStream" uid="uid://chjg8ct8my4fs" path="res://Assets/Audio/SoundFX/Impacts/ImpactTrashCan3.ogg" id="6_ploul"]
@@ -105,7 +105,7 @@ shadow_mesh = SubResource("ArrayMesh_ie26e")
 collision_layer = 2
 collision_mask = 15
 freeze = true
-script = ExtResource("1_fgjb5")
+script = ExtResource("1_sh53v")
 
 [node name="TrashCan" type="MeshInstance3D" parent="GarbageCan"]
 transform = Transform3D(0.487262, 0, 0, 0, 0.487262, 0, 0, 0, 0.487262, 0, 0, 0)

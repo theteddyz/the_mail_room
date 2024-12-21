@@ -1,0 +1,36 @@
+extends Node
+var current_grabbed_object:RigidBody3D
+var holding_object:bool = false
+@onready var dynamic_type:Node = $Dynamic_object
+@onready var door_type:Node = $Door
+@onready var drawer_type:Node = $Drawer
+
+func grabbed_object(object:RigidBody3D):
+	current_grabbed_object = object
+	match object.grab_type:
+		"dynamic":
+			dynamic_type.grab()
+		"door":
+			door_type.grab()
+		"drawer":
+			drawer_type.grab()
+
+func _input(event):
+	if current_grabbed_object:
+		if event.is_action_released("interact"):
+			match current_grabbed_object.grab_type:
+				"dynamic":
+					dynamic_type.drop_object()
+				"door":
+					door_type.drop_object()
+				"drawer":
+					drawer_type.drop_object()
+			current_grabbed_object = null
+			holding_object = false
+		if current_grabbed_object != null:
+			if current_grabbed_object.grab_type == "door" or "drawer":
+				if event is InputEventMouseMotion:
+					if current_grabbed_object.grab_type == "door":
+						door_type.move_door_with_mouse(event)
+					else:
+						drawer_type.move_drawer_with_mouse(event)

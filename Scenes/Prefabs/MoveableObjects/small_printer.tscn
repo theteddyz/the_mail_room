@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://c4ofvlskpxht1"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_cjg4o"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_7caj7"]
 [ext_resource type="Texture2D" uid="uid://djxby88th8ihi" path="res://Assets/Textures/BlenderTextures/Printer3.png" id="2_2lai4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7su6"]
@@ -65,7 +65,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.448543, 0)
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_layer = 2
 collision_mask = 15
-script = ExtResource("1_cjg4o")
+script = ExtResource("1_7caj7")
 
 [node name="Printer_002" type="MeshInstance3D" parent="RigidBody3D"]
 transform = Transform3D(1.0606, 0, 0, 0, 1.0606, 0, 0, 0, 1.0606, 0, 0, 0)
