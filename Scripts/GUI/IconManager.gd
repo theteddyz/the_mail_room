@@ -19,10 +19,7 @@ func _ready():
 func show_icon(object):
 	hide_all_icons(self)
 	var object_name
-	if object is RigidBody3D:
-		if "grab_type" in object:
-			object_name = object.icon_type
-	if object_held is RigidBody3D and object_held is not Package:
+	if GrabbingManager.current_grabbed_object == object:
 		object_name = "grabClosed"
 	else:
 		if !object_held:

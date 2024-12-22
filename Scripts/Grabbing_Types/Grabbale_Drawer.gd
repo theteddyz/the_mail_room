@@ -29,13 +29,12 @@ func grab():
 	object = get_parent().current_grabbed_object
 	object.freeze = false
 	object.sleeping = false
-	object.set_collision_layer_value(2,false)
 	_mass = object.mass
 	grab_offset = player_raycast.get_collision_point() - object.global_transform.origin
 	EventBus.emitCustomSignal("disable_player_movement",[true,false])
 	holding_drawer = true
 	enable_collision_detection()
-	#EventBus.emitCustomSignal("show_icon",["grabClosed"])
+	EventBus.emitCustomSignal("show_icon",[object])
 	#if pickup_timer.is_stopped():
 		#if !timerAdded:
 			#add_child(pickup_timer)
@@ -47,7 +46,6 @@ func move_drawer_with_mouse(_event):
 
 func drop_object():
 	holding_drawer = false
-	object.set_collision_layer_value(2,true)
 	EventBus.emitCustomSignal("disable_player_movement",[false,false])
 	EventBus.emitCustomSignal("dropped_object", [object.mass,self])
 	object = null

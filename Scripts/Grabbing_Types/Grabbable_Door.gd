@@ -40,7 +40,7 @@ func grab():
 	EventBus.emitCustomSignal("disable_player_movement",[true,false])
 	holding_door = true
 	enable_collision_detection()
-	#EventBus.emitCustomSignal("show_icon",["grabClosed"])
+	EventBus.emitCustomSignal("show_icon",[object])
 	#if pickup_timer.is_stopped():
 		#if !timerAdded:
 			#add_child(pickup_timer)

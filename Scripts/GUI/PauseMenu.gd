@@ -46,7 +46,7 @@ func game_paused():
 	is_paused = !is_paused
 	is_paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	#get_tree().paused = true
+	get_tree().paused = true
 	var controls = get_parent().find_child("Controls")
 	
 	Icon_Manager.hide()
