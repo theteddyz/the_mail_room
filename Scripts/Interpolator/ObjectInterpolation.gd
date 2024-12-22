@@ -3,9 +3,9 @@
 
 extends Grabbable
 ##Grabbing Variables
-func _ready():
-	print("DONT USE THIS, USE OBJECT_TYPE DELETING: ", self)
-	queue_free()
+#func _ready():
+	#print("DONT USE THIS, USE OBJECT_TYPE DELETING: ", self)
+	#queue_free()
 #@export var throw_strength: float = 700.0  
 #@export var weightLimit: float = 1000.0  
 #@export var max_lift_height: float = 100.0
