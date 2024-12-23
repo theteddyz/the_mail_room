@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=20 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" uid="uid://cp4jrj7a18avb" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" uid="uid://bqadv5daugpb2" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 [ext_resource type="Script" uid="uid://cq5fmqrcunrhp" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
 [ext_resource type="AudioStream" uid="uid://cin4ngwhr1g72" path="res://Scenes/Prefabs/AudioPlayers/carpet_footsteps.tres" id="9_pey34"]
-[ext_resource type="Script" uid="uid://cv2jsdue1yj1r" path="res://Scripts/Player/rb_enabler.gd" id="12_8ck00"]
 [ext_resource type="Script" uid="uid://cvbypy47gfal3" path="res://Scenes/scare_vision_controller.gd" id="14_jppxj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
@@ -32,9 +31,6 @@ radius = 50.9001
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fmr2d"]
 points = PackedVector3Array(0.235, 0.136, 0.15, 0.235, 0.136, -0.09, -0.235, 0.136, 0.15, 0, 0, 0, -0.235, 0.136, -0.095)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_75rh5"]
-radius = 2.8521
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
 collision_layer = 65540
@@ -119,18 +115,6 @@ debug_shape_thickness = 1
 [node name="ViewFrustum" parent="Neck/Head/HeadbopRoot/MonsterDetector" instance=ExtResource("7_1o2es")]
 visible = false
 
-[node name="Area3D" type="Area3D" parent="Neck/Head/HeadbopRoot"]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("12_8ck00")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/Area3D"]
-shape = SubResource("SphereShape3D_75rh5")
-disabled = true
-
-[node name="Timer" type="Timer" parent="Neck/Head/HeadbopRoot/Area3D"]
-autostart = true
-
 [node name="LightLevelDetection" parent="Neck/Head/HeadbopRoot" instance=ExtResource("8_6f6ef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247054, -0.292751)
 active = false
@@ -206,6 +190,5 @@ script = ExtResource("14_jppxj")
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]
 [connection signal="timeout" from="Neck/Head/HeadbopRoot/MonsterDetector/Vision_Timer" to="Neck/Head/HeadbopRoot/MonsterDetector" method="_on_vision_timer_timeout"]
-[connection signal="timeout" from="Neck/Head/HeadbopRoot/Area3D/Timer" to="Neck/Head/HeadbopRoot/Area3D" method="_on_timer_timeout"]
 
 [editable path="Neck/Head/HeadbopRoot/LightLevelDetection"]

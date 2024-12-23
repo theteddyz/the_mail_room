@@ -42,7 +42,6 @@ func grab():
 	object.sleeping = false
 	_mass = object.mass
 	grab_offset = object.to_local(player_raycast.get_collision_point())
-	print(grab_offset)
 	#if pickup_timer.is_stopped():
 		#if !timerAdded:
 			#add_child(pickup_timer)
@@ -96,7 +95,6 @@ func _physics_process(delta):
 
 
 func pick_up_object():
-	print("PICKED UP")
 	#object.angular_damp = 10
 	EventBus.emitCustomSignal("object_held", [_mass, object])
 	holding_object = true
@@ -112,7 +110,7 @@ func throw_object():
 	drop_object()
 
 func start_rotating():
-	print("Rotating")
+	pass
 func stop_rotating():
 	pass
 
