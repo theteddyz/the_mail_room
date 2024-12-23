@@ -34,3 +34,7 @@ func _input(event):
 						door_type.move_door_with_mouse(event)
 					else:
 						drawer_type.move_drawer_with_mouse(event)
+		if event.is_action_pressed("drive") and current_grabbed_object.grab_type == "dynamic":
+			dynamic_type.throw_object()
+			current_grabbed_object = null
+			holding_object = false

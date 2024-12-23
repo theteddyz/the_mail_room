@@ -19,8 +19,10 @@ var force_above_threshold_time: float = 0.0
 @export var tether_distance: float = 2.5
 @export var distance_threshold: float = 6.0
 @export var drop_time_threshold: float = 0.5
+@export var throw_strength: float = 700.0  
 var mouse_line: MeshInstance3D
 var mouse_line_material: ORMMaterial3D
+var throw_direction = Vector3.ZERO
 func _ready():
 	player = GameManager.get_player()
 	camera = player.find_child("Camera")
@@ -104,7 +106,10 @@ func enable_collision_detection():
 	object.set_contact_monitor(true)
 	object.set_max_contacts_reported(10)
 
-
+func throw_object():
+	throw_direction = (player_head.global_transform.basis.z * -1).normalized()
+	object.apply_force(throw_direction * throw_strength, throw_direction)
+	drop_object()
 
 func start_rotating():
 	print("Rotating")
