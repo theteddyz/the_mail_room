@@ -29,7 +29,7 @@ func _ready():
 	mouse_line_material = ORMMaterial3D.new()
 	mouse_line_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mouse_line_material.albedo_color = Color(0.5,0.5,0.5)
-
+	call_deferred("_init_mouse_line")
 
 
 func grab():
@@ -67,6 +67,10 @@ func grab():
 	EventBus.emitCustomSignal("show_icon",[object])
 
 
+func _process(delta):
+	if holding_object:
+		update_line_position(delta)
+
 func _physics_process(delta):
 	if holding_object:
 		update_position(delta)
@@ -85,7 +89,7 @@ func _physics_process(delta):
 			is_tether_max_range = true;
 		else:
 			is_tether_max_range = false;
-		#call_deferred("_init_mouse_line")
+		
 		#update_rotation(delta)
 
 
@@ -112,19 +116,26 @@ func drop_object():
 	holding_object = false
 	EventBus.emitCustomSignal("dropped_object", [object.mass,self])
 	EventBus.emitCustomSignal("hide_icon",["grabClosed"])
-	object.angular_damp = 1
-	object.linear_damp = 0.1
+	#object.angular_damp = 1
+	#object.linear_damp = 0.1
+	_update_mouse_line(Vector3.ZERO,Vector3.ZERO)
 
+func update_line_position(delta):
+	var rotation_offset = rotate_vector_global(grab_offset)
+	var forward = -camera.global_transform.basis.z
+	var targetPosition: Vector3 = Vector3.ZERO
+	var grab_range = grab_distance
+	targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
+	var currentPosition:Vector3 = object.global_transform.origin
+	_update_mouse_line((targetPosition + rotation_offset),currentPosition + rotation_offset)
 
 func update_position(delta):
 	var rotation_offset = rotate_vector_global(grab_offset)
 	var forward = -camera.global_transform.basis.z
 	var targetPosition: Vector3 = Vector3.ZERO
-	var grab_range = 0
-	grab_range = grab_distance
+	var grab_range = grab_distance
 	targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
 	var currentPosition:Vector3 = object.global_transform.origin
-	#_update_mouse_line((targetPosition + rotation_offset),currentPosition + rotation_offset)
 	var directionTo:Vector3 = targetPosition - currentPosition
 	var distance:float = currentPosition.distance_to(targetPosition)
 	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
