@@ -103,7 +103,7 @@ func _on_body_entered(_body):
 	#var impulse = relative_velocity.length()
 	#var impulse = state.get_contact_impulse
 	#var collision_force = impulse
-	
+	print("COLLIDED")
 	var currentAcceleration = (previousVelocity - rigidbody.linear_velocity);
 	var currentRotAccel = (previousRotation - rigidbody.angular_velocity);
 	var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
