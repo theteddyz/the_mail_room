@@ -39,7 +39,7 @@ func grab():
 	object.freeze = false
 	object.sleeping = false
 	_mass = object.mass
-	grab_offset = player_raycast.get_collision_point() - object.global_transform.origin
+	grab_offset = object.to_local(player_raycast.get_collision_point())
 	print(grab_offset)
 	#if pickup_timer.is_stopped():
 		#if !timerAdded:
