@@ -10,3 +10,13 @@ func _ready():
 	add_child(enabler)
 	enabler.setup()
 	physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_ON
+	connect("body_entered",Callable(self,"unfreeze_object"))
+
+
+
+func unfreeze_object(col):
+	if col is RigidBody3D:
+		if "grab_type" in col:
+			if !col.should_freeze:
+				col.freeze = false
+ 
