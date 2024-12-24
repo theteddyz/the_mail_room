@@ -36,14 +36,15 @@ func unlock():
 	locked = false
 
 func _input(event):
-	if event.is_action_pressed("interact") and parent_is_looked_at:
-		var gui = Gui.get_item_icon_displayer()
-		gui.hide_icon()
-		if !locked and !has_played_sound:
-			audio_player.stream = door_unlocked
-			audio_player.play()
-		elif locked:
-			audio_player.play()
+	if parent_is_looked_at:
+		if event.is_action_pressed("interact"):
+			var gui = Gui.get_item_icon_displayer()
+			gui.hide_icon()
+			if !locked and !has_played_sound:
+				audio_player.stream = door_unlocked
+				audio_player.play()
+			elif locked:
+				audio_player.play()
 
 func door_opened(node):
 	if node == parent:
