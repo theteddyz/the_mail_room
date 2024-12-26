@@ -9,6 +9,10 @@ func grabbed_object(object:RigidBody3D):
 	current_grabbed_object = object
 	match object.grab_type:
 		"dynamic":
+			var current_parent = object.get_parent()
+			if current_parent is VisibleOnScreenNotifier3D:
+				print("HELLO")
+				EventBus.emitCustomSignal("modified_object", [object])
 			dynamic_type.grab()
 		"door":
 			door_type.grab()

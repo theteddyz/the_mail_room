@@ -3,12 +3,17 @@ extends RigidBody3D
 @export var should_freeze:bool = false
 @export_enum("grab", "light", "package") var icon_type: String = "grab"
 @export_enum("dynamic","door","drawer") var grab_type:String = "dynamic"
+@export_enum("monitor","desk1","desk2","mouse","chair","lamp","mailbox","garabage_can","keyboard") var object:String
+var modified:bool = false
+var on_screen:bool = false
 var rb_controller = preload("res://Scenes/Prefabs/MoveableObjects/rb_enabler.tscn")
 var enabler
 func _ready():
 	enabler = rb_controller.instantiate()
 	add_child(enabler)
 	enabler.setup()
+	if grab_type == "dynamic":
+		EventBus.emitCustomSignal("register_object",[self])
 	physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_ON
 	connect("body_entered",Callable(self,"unfreeze_object"))
 
@@ -18,5 +23,10 @@ func unfreeze_object(col):
 	if col is RigidBody3D:
 		if "grab_type" in col:
 			if !col.should_freeze:
+				var current_parent = col.get_parent()
+				if current_parent is VisibleOnScreenNotifier3D:
+					EventBus.emitCustomSignal("modified_object", [col])
+					col.modified = true
+				#EventBus.emitCustomSignal("modified_object", [col])
 				col.freeze = false
  

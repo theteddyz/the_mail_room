@@ -96,6 +96,7 @@ func _physics_process(delta):
 
 func pick_up_object():
 	#object.angular_damp = 10
+	
 	EventBus.emitCustomSignal("object_held", [_mass, object])
 	holding_object = true
 

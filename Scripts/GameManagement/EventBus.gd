@@ -29,6 +29,12 @@ signal object_looked_at(node)
 signal no_object_found(node)
 
 #Connecting Functions
+
+signal request_object(node,node2)
+signal register_object(node)
+signal fufilled_request(node)
+signal modified_object(node)
+signal return_object(node)
 func emitCustomSignal(signal_name: String, args = []):
 	if has_signal(signal_name):
 		var method_name = "emit_signal"
