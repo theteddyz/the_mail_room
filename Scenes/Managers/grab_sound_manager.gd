@@ -87,6 +87,7 @@ func _drawer_sound(delta):
 				loop_sound.stop()
 
 func _door_sound(delta):
+	return
 	if isEnabled:
 		coyoteTime = 2
 	else:
