@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccyxjjgmwifrm"]
+
+[ext_resource type="Script" uid="uid://b3ts5234pnx1" path="res://Scripts/MoveableObjects/pooled_object.gd" id="1_ykafi"]
+[ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="2_ykafi"]
+
+[node name="pooled_mailbox" type="VisibleOnScreenNotifier3D"]
+script = ExtResource("1_ykafi")
+object = "mailbox"
+
+[node name="MailboxStand" parent="." instance=ExtResource("2_ykafi")]

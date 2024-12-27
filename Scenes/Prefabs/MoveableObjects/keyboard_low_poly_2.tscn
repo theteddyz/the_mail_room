@@ -141,7 +141,7 @@ collision_mask = 15
 sleeping = true
 freeze = true
 script = ExtResource("1_uovxv")
-object = "keyboard"
+object_name = "keyboard"
 
 [node name="KeyboardLowPoly2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0119987, 0, 0, 0, 0.0119988, 0, 0, 0, 0.0119987, 0, 0, 0)

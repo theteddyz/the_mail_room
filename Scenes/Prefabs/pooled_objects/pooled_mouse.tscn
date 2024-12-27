@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvyjw818rqsj2"]
+
+[ext_resource type="Script" uid="uid://b3ts5234pnx1" path="res://Scripts/MoveableObjects/pooled_object.gd" id="1_b8tnp"]
+[ext_resource type="PackedScene" uid="uid://b837cq0s3mn0s" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="2_b8tnp"]
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D"]
+script = ExtResource("1_b8tnp")
+object = "mouse"
+
+[node name="Mouse" parent="." instance=ExtResource("2_b8tnp")]

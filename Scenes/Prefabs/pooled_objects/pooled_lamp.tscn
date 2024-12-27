@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhnyaopyc00id"]
+
+[ext_resource type="Script" uid="uid://b3ts5234pnx1" path="res://Scripts/MoveableObjects/pooled_object.gd" id="1_5q3w0"]
+[ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="2_5q3w0"]
+
+[node name="Pooled_lamp" type="VisibleOnScreenNotifier3D"]
+script = ExtResource("1_5q3w0")
+object = "lamp"
+
+[node name="Lamp" parent="." instance=ExtResource("2_5q3w0")]

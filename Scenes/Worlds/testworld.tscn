@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/Prefabs/gui/interactable_test.tscn" id="4_p0gx3"]
 [ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="5_6517x"]
+[ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="12_dbw12"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="15_87p0u"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_door.tscn" id="15_koth6"]
+[ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="16_4j86i"]
 [ext_resource type="PackedScene" uid="uid://bvha2qolbtfko" path="res://Scenes/Prefabs/MoveableObjects/desk_2_Only.tscn" id="18_uddld"]
-[ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="19_va06c"]
 [ext_resource type="PackedScene" uid="uid://b837cq0s3mn0s" path="res://Scenes/Prefabs/MoveableObjects/mouse.tscn" id="20_4j86i"]
 [ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="21_fscik"]
 [ext_resource type="PackedScene" uid="uid://duh0mp4ga7irm" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover.tscn" id="22_cdvgx"]
@@ -18,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="28_sv7fo"]
 [ext_resource type="Script" uid="uid://b3ts5234pnx1" path="res://Scripts/MoveableObjects/pooled_object.gd" id="30_021rd"]
 [ext_resource type="PackedScene" uid="uid://bupcu04fap7xp" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="30_emij4"]
-[ext_resource type="Script" uid="uid://bekjxyk654vyc" path="res://Scripts/Misc/object_pool_manager.gd" id="30_gvem4"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
 [ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="44_epuy0"]
@@ -137,9 +137,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0477006, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64869, -0.198545, -1.01932)
 shape = SubResource("BoxShape3D_xc3id")
 
-[node name="base_airduct" parent="." instance=ExtResource("19_va06c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7115, 0.858505, -1.48411)
-
 [node name="airduct_longer" parent="." instance=ExtResource("21_fscik")]
 transform = Transform3D(1.47, 0, 0, 0, 2.49, 0, 0, 0, 1.47, 14.4115, 0.57453, 3.80822)
 visible = false
@@ -157,6 +154,9 @@ shape = SubResource("BoxShape3D_sc46n")
 [node name="airduct_vent_cover" parent="." instance=ExtResource("22_cdvgx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5565, 1.29504, 6.18498)
 visible = false
+
+[node name="Lamp2" parent="." instance=ExtResource("12_dbw12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4433, 0.902411, 3.11904)
 
 [node name="ZoneOptimizer" type="Area3D" parent="."]
 collision_layer = 0
@@ -185,6 +185,78 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -3.45649, 0.00906
 
 [node name="pool_position" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5438, 0, 0.972548)
+
+[node name="Desk" parent="pool_position" instance=ExtResource("18_uddld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.912001, 0.155882, 1.90759)
+
+[node name="Desk2" parent="pool_position" instance=ExtResource("18_uddld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.912001, 0.155882, 1.90759)
+
+[node name="Desk3" parent="pool_position" instance=ExtResource("18_uddld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.912001, 0.155882, 1.90759)
+
+[node name="Desk4" parent="pool_position" instance=ExtResource("18_uddld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.912001, 0.155882, 1.90759)
+
+[node name="Grabbable" parent="pool_position" instance=ExtResource("20_4j86i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0311, 1.2133, 1.22075)
+
+[node name="Grabbable2" parent="pool_position" instance=ExtResource("20_4j86i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0311, 1.2133, 1.22075)
+
+[node name="Grabbable3" parent="pool_position" instance=ExtResource("20_4j86i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0311, 1.2133, 1.22075)
+
+[node name="Grabbable4" parent="pool_position" instance=ExtResource("20_4j86i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0311, 1.2133, 1.22075)
+
+[node name="Keyboard" parent="pool_position" instance=ExtResource("30_emij4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.562601, 1.21578, 1.25211)
+
+[node name="Keyboard2" parent="pool_position" instance=ExtResource("30_emij4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.562601, 1.21578, 1.25211)
+
+[node name="Keyboard3" parent="pool_position" instance=ExtResource("30_emij4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.562601, 1.21578, 1.25211)
+
+[node name="Keyboard4" parent="pool_position" instance=ExtResource("30_emij4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.562601, 1.21578, 1.25211)
+
+[node name="Monitor2" parent="pool_position" instance=ExtResource("26_2qdf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.793299, 0.334204, 2.35123)
+
+[node name="Node3D2" parent="pool_position" instance=ExtResource("28_sv7fo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.736399, 2.52005, 0.617482)
+
+[node name="Node3D3" parent="pool_position" instance=ExtResource("28_sv7fo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.736399, 2.52005, 0.617482)
+
+[node name="Node3D4" parent="pool_position" instance=ExtResource("28_sv7fo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.736399, 2.52005, 0.617482)
+
+[node name="Node3D5" parent="pool_position" instance=ExtResource("28_sv7fo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.736399, 2.52005, 0.617482)
+
+[node name="GarbageCan" parent="pool_position" instance=ExtResource("16_4j86i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270201, 1.62147, 1.53765)
+
+[node name="GarbageCan2" parent="pool_position" instance=ExtResource("16_4j86i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270201, 1.62147, 1.53765)
+
+[node name="GarbageCan3" parent="pool_position" instance=ExtResource("16_4j86i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270201, 1.62147, 1.53765)
+
+[node name="Monitor" parent="pool_position" instance=ExtResource("26_2qdf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26437, 1.33331, 2.24223)
+
+[node name="Monitor3" parent="pool_position" instance=ExtResource("26_2qdf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.43707, 1.33331, 1.26882)
+
+[node name="Monitor4" parent="pool_position" instance=ExtResource("26_2qdf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876566, 1.33331, 0.99163)
+
+[node name="Lamp" parent="pool_position" instance=ExtResource("12_dbw12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65434, 2.43104, 2.72637)
 
 [node name="Desk_1_Optimizer" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 29.9206, 1.00885, -0.445764)
@@ -246,8 +318,338 @@ transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827
 script = ExtResource("30_021rd")
 object = "chair"
 
+[node name="Desk_1_Optimizer4" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 29.9206, 1.00885, 3.39396)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer4"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer4"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer4"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer4"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer4"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
+[node name="Desk_1_Optimizer5" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 29.9206, 1.00885, 10.4867)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer5"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer5"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer5"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer5"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer5"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
+[node name="Desk_1_Optimizer6" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 29.9206, 1.00885, 15.2134)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer6"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer6"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer6"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer6"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer6"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
+[node name="Desk_1_Optimizer7" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 29.9206, 1.00885, -12.2139)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer7"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer7"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer7"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer7"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer7"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
+[node name="Desk_1_Optimizer8" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74227e-08, 0, 1, 0, 8.74227e-08, 0, -1, 29.9206, 1.00885, -20.6319)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer8"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer8"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer8"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer8"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer8"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
+[node name="Desk_1_Optimizer9" type="Node3D" parent="."]
+transform = Transform3D(-0.0443865, 0, -0.999014, 0, 1, 0, 0.999014, 0, -0.0443865, 9.58998, 1.00885, -30.0634)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer9"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer9"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer9"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer9"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer9"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
+[node name="Desk_1_Optimizer10" type="Node3D" parent="."]
+transform = Transform3D(-0.0443865, 0, -0.999014, 0, 1, 0, 0.999014, 0, -0.0443865, 3.46644, 1.00885, -30.0634)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer10"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer10"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer10"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer10"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer10"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
+[node name="Desk_1_Optimizer11" type="Node3D" parent="."]
+transform = Transform3D(-0.0443865, 0, -0.999014, 0, 1, 0, 0.999014, 0, -0.0443865, -3.08598, 1.00885, -30.0634)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer11"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer11"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer11"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer11"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer11"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
+[node name="Desk_1_Optimizer12" type="Node3D" parent="."]
+transform = Transform3D(-0.0443865, 0, -0.999014, 0, 1, 0, 0.999014, 0, -0.0443865, -10.2673, 1.00885, -30.0634)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer12"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer12"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer12"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer12"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer12"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
+[node name="Desk_1_Optimizer13" type="Node3D" parent="."]
+transform = Transform3D(-0.0443865, 0, -0.999014, 0, 1, 0, 0.999014, 0, -0.0443865, -16.3065, 1.00885, -30.0634)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer13"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer13"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer13"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer13"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer13"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
+[node name="Desk_1_Optimizer14" type="Node3D" parent="."]
+transform = Transform3D(-0.0443865, 0, -0.999014, 0, 1, 0, 0.999014, 0, -0.0443865, -24.8123, 1.00885, -30.0634)
+
+[node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer14"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "monitor"
+
+[node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer14"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "desk2"
+
+[node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer14"]
+transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
+script = ExtResource("30_021rd")
+object = "keyboard"
+
+[node name="Mouse" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer14"]
+transform = Transform3D(-4.37722e-08, 0, -1, 0, 1, 0, 1, 0, -4.37722e-08, -0.194687, 0.175937, -0.417117)
+script = ExtResource("30_021rd")
+object = "mouse"
+
+[node name="Chair" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer14"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827084, -0.0982687, 0.130433)
+script = ExtResource("30_021rd")
+object = "chair"
+
 [node name="Desk_1_Optimizer2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1318, 1.00885, -0.445764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1318, 1.00885, 2.05277)
 
 [node name="Monitor" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer2"]
 transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, -0.812422, 0.563948, 0.00775659)
@@ -255,11 +657,23 @@ aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
 script = ExtResource("30_021rd")
 object = "monitor"
 
+[node name="Monitor2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer2"]
+transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 7.46513, 0.563948, 0.00775647)
+aabb = AABB(-1, -1.06824, -1, 2, 2.13648, 2)
+script = ExtResource("30_021rd")
+object = "lamp"
+
 [node name="Desk_2" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer2"]
 transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, -0.975279, 0.00536871)
 aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
 script = ExtResource("30_021rd")
 object = "desk2"
+
+[node name="Garabage_can" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer2"]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, -0.562294, 3.09248, -1.68499)
+aabb = AABB(-1.35974, -1.47177, -1.05802, 2.71947, 2.94353, 2.11605)
+script = ExtResource("30_021rd")
+object = "bin"
 
 [node name="Keyboard" type="VisibleOnScreenNotifier3D" parent="Desk_1_Optimizer2"]
 transform = Transform3D(-4.56348e-08, 0, 1, 0, 1, 0, -1, 0, -4.56348e-08, -0.15316, 0.16524, 0.128457)
@@ -275,26 +689,6 @@ object = "mouse"
 transform = Transform3D(-4.19095e-08, 0, -1, 0, 1, 0, 1, 0, -4.19095e-08, 0.0827077, -0.168953, 0.130433)
 script = ExtResource("30_021rd")
 object = "chair"
-
-[node name="Object_pool_manager" type="Node" parent="."]
-script = ExtResource("30_gvem4")
-
-[node name="Desk" parent="." instance=ExtResource("18_uddld")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6369, 0.0474928, 2.07696)
-object = "desk2"
-
-[node name="Grabbable" parent="." instance=ExtResource("20_4j86i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5127, 1.2133, 2.1933)
-
-[node name="Keyboard" parent="." instance=ExtResource("30_emij4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9812, 1.21578, 2.22466)
-
-[node name="Chair" parent="." instance=ExtResource("28_sv7fo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6865, 2.47073, 1.99818)
-
-[node name="Monitor2" parent="." instance=ExtResource("26_2qdf3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3371, 0.334204, 3.32378)
-object = "monitor"
 
 [connection signal="body_entered" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_exited"]

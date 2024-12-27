@@ -146,60 +146,64 @@ playback_mode = 1
 streams_count = 1
 stream_0/stream = ExtResource("6_8vp8r")
 
-[node name="Desk" type="RigidBody3D"]
+[node name="Desk" type="Node3D"]
+
+[node name="Desk" type="RigidBody3D" parent="."]
 collision_layer = 2
 collision_mask = 15
 mass = 50.0
 sleeping = true
 freeze = true
 script = ExtResource("1_md8ep")
+object_name = "desk2"
+special_object = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038018, 1.11285, 0.0113189)
 shape = SubResource("BoxShape3D_c71w3")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21723, 0.537765, 0.000289917)
 shape = SubResource("BoxShape3D_1ixxc")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15536, 0.537765, 0.000289917)
 shape = SubResource("BoxShape3D_1ixxc")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0295289, 0.54573, -0.53981)
 shape = SubResource("BoxShape3D_40acm")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489217, 0.533982, 0.0293579)
 shape = SubResource("BoxShape3D_125wn")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806904, 0.072074, 0.0293579)
 shape = SubResource("BoxShape3D_2wk0n")
 
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000686646, 1.07565, 0.000205994)
 size = Vector3(2.48099, 0.109436, 1.16286)
 
-[node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="."]
+[node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000686646, 0.549789, -0.526014)
 size = Vector3(2.48099, 1.16116, 0.110416)
 
-[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="."]
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.861446, 0.497324, 0.000205994)
 size = Vector3(0.756721, 1.05678, 1.16286)
 
-[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="."]
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18044, 0.497324, 0.000205994)
 size = Vector3(0.0978718, 1.05678, 1.16286)
 
-[node name="Desk2" type="MeshInstance3D" parent="."]
+[node name="Desk2" type="MeshInstance3D" parent="Desk"]
 transform = Transform3D(0.586763, 0, 0, 0, 0.586763, 0, 0, 0, 0.586763, 0.000423431, 0.548338, 0)
 mesh = SubResource("ArrayMesh_7wwxh")
 skeleton = NodePath("")
 
-[node name="DrawerTop" type="RigidBody3D" parent="."]
+[node name="DrawerTop" type="RigidBody3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.813896, 0.775369, 0.566391)
 collision_layer = 2
 collision_mask = 3
@@ -211,55 +215,55 @@ linear_damp = 6.0
 script = ExtResource("1_md8ep")
 grab_type = "drawer"
 
-[node name="SliderJoint3D2" type="SliderJoint3D" parent="DrawerTop"]
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="Desk/DrawerTop"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.101329, -0.088805, -0.624854)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.5
 linear_limit/lower_distance = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DrawerTop"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/DrawerTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
 shape = SubResource("BoxShape3D_dircq")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="DrawerTop"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Desk/DrawerTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000274658, -0.0454483, -0.782487)
 shape = SubResource("BoxShape3D_3c5e1")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="DrawerTop"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Desk/DrawerTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00218201, -0.199443, -0.417395)
 shape = SubResource("BoxShape3D_ff747")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="DrawerTop"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Desk/DrawerTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287199, -0.0384938, -0.418367)
 shape = SubResource("BoxShape3D_xc1rp")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="DrawerTop"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Desk/DrawerTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.286908, -0.0384938, -0.418367)
 shape = SubResource("BoxShape3D_xc1rp")
 
-[node name="Cabinet_002" type="MeshInstance3D" parent="DrawerTop"]
+[node name="Cabinet_002" type="MeshInstance3D" parent="Desk/DrawerTop"]
 transform = Transform3D(0.586763, 0, 0, 0, 0.586763, 0, 0, 0, 0.586763, 0, 0, 0)
 mesh = SubResource("ArrayMesh_5i715")
 skeleton = NodePath("")
 
-[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="DrawerTop"]
+[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_mscjt")
 
-[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="DrawerTop"]
+[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_ev8xy")
 
-[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="DrawerTop"]
+[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_66o6r")
 
-[node name="DrawerScript" type="Node3D" parent="DrawerTop" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
+[node name="DrawerScript" type="Node3D" parent="Desk/DrawerTop" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
 script = ExtResource("7_ng78p")
 drawerOpenedSound = NodePath("../DrawerAudioOpen")
 drawerClosedSound = NodePath("../DrawerAudioClose")
 drawerLoopSound = NodePath("../DrawerAudioLoop")
 volume = -20.0
 
-[node name="DrawerBottom" type="RigidBody3D" parent="."]
+[node name="DrawerBottom" type="RigidBody3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817725, 0.316904, 0.568443)
 collision_layer = 2
 collision_mask = 3
@@ -271,59 +275,59 @@ linear_damp = 6.0
 script = ExtResource("1_md8ep")
 grab_type = "drawer"
 
-[node name="SliderJoint3D2" type="SliderJoint3D" parent="DrawerBottom"]
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.642156)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.5
 linear_limit/lower_distance = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DrawerBottom"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
 shape = SubResource("BoxShape3D_dircq")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="DrawerBottom"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000274658, -0.0454483, -0.782487)
 shape = SubResource("BoxShape3D_3c5e1")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="DrawerBottom"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00218201, -0.199443, -0.417395)
 shape = SubResource("BoxShape3D_ff747")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="DrawerBottom"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.287199, -0.0384938, -0.418367)
 shape = SubResource("BoxShape3D_xc1rp")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="DrawerBottom"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.286908, -0.0384938, -0.418367)
 shape = SubResource("BoxShape3D_xc1rp")
 
-[node name="Cabinet_002" type="MeshInstance3D" parent="DrawerBottom"]
+[node name="Cabinet_002" type="MeshInstance3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(0.586763, 0, 0, 0, 0.586763, 0, 0, 0, 0.586763, 0, 0, 0)
 mesh = SubResource("ArrayMesh_5i715")
 skeleton = NodePath("")
 
-[node name="DrawerAudioLoop2" type="AudioStreamPlayer3D" parent="DrawerBottom"]
+[node name="DrawerAudioLoop2" type="AudioStreamPlayer3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003829, 0.458465, -0.00205201)
 stream = SubResource("AudioStreamRandomizer_rnvc5")
 
-[node name="DrawerAudioOpen2" type="AudioStreamPlayer3D" parent="DrawerBottom"]
+[node name="DrawerAudioOpen2" type="AudioStreamPlayer3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003829, 0.458465, -0.00205201)
 stream = SubResource("AudioStreamRandomizer_x6bdg")
 
-[node name="DrawerAudioClose2" type="AudioStreamPlayer3D" parent="DrawerBottom"]
+[node name="DrawerAudioClose2" type="AudioStreamPlayer3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003829, 0.458465, -0.00205201)
 stream = SubResource("AudioStreamRandomizer_8jt6j")
 
-[node name="DrawerScript" type="Node3D" parent="DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
+[node name="DrawerScript" type="Node3D" parent="Desk/DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
 script = ExtResource("7_ng78p")
 drawerOpenedSound = NodePath("../DrawerAudioOpen2")
 drawerClosedSound = NodePath("../DrawerAudioClose2")
 drawerLoopSound = NodePath("../DrawerAudioLoop2")
 volume = -20.0
 
-[node name="Cables" parent="." instance=ExtResource("8_xtqal")]
+[node name="Cables" parent="Desk" instance=ExtResource("8_xtqal")]
 transform = Transform3D(-0.00716127, 0, -6.26058e-10, 0, 0.00716127, 0, 6.26058e-10, 0, -0.00716127, 1.14201, 1.61422, -0.298056)
 
-[node name="Cables_001" parent="." instance=ExtResource("9_p1fk1")]
+[node name="Cables_001" parent="Desk" instance=ExtResource("9_p1fk1")]
 transform = Transform3D(-0.0103461, 0, -9.04485e-10, 0, 0.0103461, 0, 9.04485e-10, 0, -0.0103461, 1.23608, 1.80742, -0.390357)

@@ -3,11 +3,13 @@ extends RigidBody3D
 @export var should_freeze:bool = false
 @export_enum("grab", "light", "package") var icon_type: String = "grab"
 @export_enum("dynamic","door","drawer") var grab_type:String = "dynamic"
-@export_enum("monitor","desk1","desk2","mouse","chair","lamp","mailbox","garabage_can","keyboard") var object:String
-var modified:bool = false
-var on_screen:bool = false
+@export_enum("monitor","desk1","desk2","mouse","chair","lamp","mailbox","bin","keyboard") var object_name:String
+@export var modified:bool = false
+@export var on_screen:bool = false
+
 var rb_controller = preload("res://Scenes/Prefabs/MoveableObjects/rb_enabler.tscn")
 var enabler
+@export var special_object:bool = false
 func _ready():
 	enabler = rb_controller.instantiate()
 	add_child(enabler)
