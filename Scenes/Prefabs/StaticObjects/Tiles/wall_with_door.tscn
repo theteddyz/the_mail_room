@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://ceasmrd6qawc5"]
+[gd_scene load_steps=36 format=4 uid="uid://ceasmrd6qawc5"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_iji0o"]
 [ext_resource type="Script" uid="uid://cklj08863yrdl" path="res://Scenes/Prefabs/StaticObjects/Tiles/Door_Customizer.gd" id="1_iuugw"]
@@ -12,6 +12,11 @@
 [ext_resource type="Script" uid="uid://ye54x0y0d6q6" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="6_12o50"]
 [ext_resource type="AudioStream" uid="uid://cr47bel457b3v" path="res://Assets/Audio/SoundFX/Door/DoorLocked.ogg" id="6_yph8u"]
 [ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="10_xsucp"]
+[ext_resource type="AudioStream" uid="uid://c6txdw12dxjcy" path="res://Assets/Audio/SoundFX/DoorOpened.mp3" id="11_5qi2l"]
+[ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="12_hrh4l"]
+[ext_resource type="AudioStream" uid="uid://p1lp413rpcng" path="res://Assets/Audio/SoundFX/DoorClosed2.mp3" id="13_xugnn"]
+[ext_resource type="AudioStream" uid="uid://c63x30unvtimj" path="res://Assets/Audio/SoundFX/DoorClosed3.mp3" id="14_q6p5b"]
+[ext_resource type="AudioStream" uid="uid://ip6udv2rog8q" path="res://Assets/Audio/SoundFX/DoorClosed.mp3" id="15_ocrky"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_awmmr"]
 size = Vector3(3.20605, 11.8827, 0.252686)
@@ -79,6 +84,23 @@ size = Vector3(1.88855, 3.82867, 1)
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ng8e4"]
 size = Vector3(1.89377, 3.93951, 0.221408)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7vxo4"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("11_5qi2l")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4w0t6"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("12_hrh4l")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8cgor"]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("13_xugnn")
+stream_1/stream = ExtResource("14_q6p5b")
+stream_2/stream = ExtResource("15_ocrky")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykqxa"]
 size = Vector3(3.16969, 11.8827, 0.252686)
 
@@ -138,7 +160,7 @@ shape = SubResource("BoxShape3D_awmmr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00866699, 8.00066, -0.0250549)
 shape = SubResource("BoxShape3D_4h6yd")
 
-[node name="RigidBody3D2" type="RigidBody3D" parent="."]
+[node name="RigidBody3D2" type="RigidBody3D" parent="." node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 collision_layer = 2
 collision_mask = 14
 axis_lock_linear_y = true
@@ -148,6 +170,9 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 script = ExtResource("2_q2nmo")
 grab_type = "door"
+open_sound = NodePath("DrawerAudioOpen")
+close_sound = NodePath("DrawerAudioClose")
+loop_sound = NodePath("DrawerAudioLoop")
 
 [node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="RigidBody3D2"]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
@@ -198,6 +223,15 @@ shape = SubResource("BoxShape3D_2gtk4")
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="RigidBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0292662, 1.97721, 0)
 occluder = SubResource("BoxOccluder3D_ng8e4")
+
+[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="RigidBody3D2"]
+stream = SubResource("AudioStreamRandomizer_7vxo4")
+
+[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="RigidBody3D2"]
+stream = SubResource("AudioStreamRandomizer_4w0t6")
+
+[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="RigidBody3D2"]
+stream = SubResource("AudioStreamRandomizer_8cgor")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79594, 6.02398, 0.00671387)

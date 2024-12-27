@@ -13,7 +13,9 @@ func grabbed_object(object:RigidBody3D):
 			dynamic_type.grab()
 		"door":
 			door_type.grab()
+			grab_sound_manager.enable_sound(current_grabbed_object)
 		"drawer":
+			grab_sound_manager.enable_sound(current_grabbed_object)
 			drawer_type.grab()
 
 func _input(event):
@@ -23,8 +25,10 @@ func _input(event):
 				"dynamic":
 					dynamic_type.drop_object()
 				"door":
+					grab_sound_manager.isEnabled =false
 					door_type.drop_object()
 				"drawer":
+					grab_sound_manager.isEnabled =false
 					drawer_type.drop_object()
 			current_grabbed_object = null
 			holding_object = false
