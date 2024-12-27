@@ -1,27 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://y7yvgpj3e425"]
+[gd_scene load_steps=9 format=3 uid="uid://y7yvgpj3e425"]
 
 [ext_resource type="PackedScene" uid="uid://mfqj1o3vkdbs" path="res://Scenes/Prefabs/pooled_objects/pooled_bin.tscn" id="1_qkm78"]
 [ext_resource type="PackedScene" uid="uid://beqrkhf7gjkfd" path="res://Scenes/Prefabs/pooled_objects/pooled_chair.tscn" id="2_6grb1"]
 [ext_resource type="PackedScene" uid="uid://bsgjs12wusok" path="res://Scenes/Prefabs/pooled_objects/pooled_desk2.tscn" id="3_w0ftw"]
 [ext_resource type="PackedScene" uid="uid://c54l3nq65pbdm" path="res://Scenes/Prefabs/pooled_objects/pooled_keyboard.tscn" id="4_ojrlc"]
 [ext_resource type="PackedScene" uid="uid://bbf33iv4ea55q" path="res://Scenes/Prefabs/pooled_objects/pooled_monitor.tscn" id="6_tmvev"]
+[ext_resource type="PackedScene" uid="uid://bhnyaopyc00id" path="res://Scenes/Prefabs/pooled_objects/pooled_lamp.tscn" id="7_6grb1"]
 [ext_resource type="PackedScene" uid="uid://bvyjw818rqsj2" path="res://Scenes/Prefabs/pooled_objects/pooled_mouse.tscn" id="7_t11xy"]
+[ext_resource type="PackedScene" uid="uid://ccyxjjgmwifrm" path="res://Scenes/Prefabs/pooled_objects/pooled_mailbox.tscn" id="8_w0ftw"]
 
 [node name="Pooled_desk_2_Together" type="Node3D"]
 
 [node name="pooled_bin" parent="." instance=ExtResource("1_qkm78")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.452, 0.226913, -0.160967)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73356, 0.263033, -0.160967)
 
 [node name="pooled_chair" parent="." instance=ExtResource("2_6grb1")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.243839, 0.756778, 0.607109)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.243839, 0.847315, 0.607109)
 
 [node name="pooled_desk2" parent="." instance=ExtResource("3_w0ftw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000269294, 0.0407838, 0.00016892)
 
 [node name="pooled_keyboard" parent="." instance=ExtResource("4_ojrlc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1407, 1.12454, 0.324152)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1407, 1.18628, 0.387363)
 
 [node name="pooled_monitor" parent="." instance=ExtResource("6_tmvev")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.162267, 1.48531, -0.227738)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.162267, 1.63326, -0.227738)
 
 [node name="pooled_mouse" parent="." instance=ExtResource("7_t11xy")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.429403, 1.15119, 0.367829)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.429403, 1.19284, 0.367829)
+
+[node name="Pooled_lamp" parent="." instance=ExtResource("7_6grb1")]
+transform = Transform3D(-0.785003, 0, 0.619491, 0, 1, 0, -0.619491, 0, -0.785003, 1.07329, 1.32442, 0.0213188)
+
+[node name="pooled_mailbox" parent="." instance=ExtResource("8_w0ftw")]
+transform = Transform3D(-0.999749, 0, -0.0223906, 0, 1, 0, 0.0223906, 0, -0.999749, -0.973095, 1.19947, -0.230314)

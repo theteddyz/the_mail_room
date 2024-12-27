@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://exdfecwdu5sd"]
+
+[ext_resource type="Script" uid="uid://b3ts5234pnx1" path="res://Scripts/MoveableObjects/pooled_object.gd" id="1_svffo"]
+[ext_resource type="PackedScene" uid="uid://bdkwvecbhq6w8" path="res://Scenes/Prefabs/MoveableObjects/desk_1_Desk_only.tscn" id="2_svffo"]
+
+[node name="Pooled_desk1" type="VisibleOnScreenNotifier3D"]
+script = ExtResource("1_svffo")
+object = "desk1"
+
+[node name="Desk1" parent="." instance=ExtResource("2_svffo")]
