@@ -394,11 +394,13 @@ shape = SubResource("BoxShape3D_ldf5r")
 transform = Transform3D(1, 0, 0, 0, 0.969063, 0.246813, 0, -0.246813, 0.969063, -0.0371457, -0.0417328, -0.399572)
 shape = SubResource("CylinderShape3D_217yb")
 
-[node name="Node3D" type="Node3D" parent="Chair"]
+[node name="Node3D" type="Node3D" parent="Chair" node_paths=PackedStringArray("impact_audios")]
 script = ExtResource("5_rl2gy")
+impact_audios = NodePath("../AudioStreamPlayer3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Chair"]
 stream = SubResource("AudioStreamRandomizer_5gbm1")
+bus = &"RigidBodies"
 
 [node name="Wheel1" type="HingeJoint3D" parent="Chair"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.109935, -0.720126, 0.455696)

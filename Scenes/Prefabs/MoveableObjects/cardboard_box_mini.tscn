@@ -79,5 +79,6 @@ impact_audios = NodePath("../AudioStreamPlayer3D")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="cardboard_box_mini"]
 stream = SubResource("AudioStreamRandomizer_d7d0v")
+bus = &"RigidBodies"
 
 [connection signal="body_entered" from="cardboard_box_mini" to="cardboard_box_mini/Node3D" method="_on_body_entered"]

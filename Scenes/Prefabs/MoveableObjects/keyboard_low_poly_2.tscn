@@ -155,8 +155,13 @@ material_override = SubResource("StandardMaterial3D_54ars")
 mesh = SubResource("ArrayMesh_adb7y")
 skeleton = NodePath("")
 
-[node name="Key_Board_Collision_Handler" type="Node3D" parent="."]
+[node name="Key_Board_Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("broken_models", "normal_model", "impact_audios", "destruction_audios", "breakage_particles")]
 script = ExtResource("14_y1cj2")
+broken_models = [NodePath("../KeyboardBrokenLowPoly")]
+normal_model = NodePath("../KeyboardLowPoly2")
+impact_audios = NodePath("../Impact")
+destruction_audios = NodePath("../Destruction")
+breakage_particles = [NodePath("../GPUParticles3D")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 0.0135615, -0.0201416)
@@ -165,10 +170,12 @@ shape = SubResource("BoxShape3D_gdow7")
 [node name="Impact" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_fkdpg")
 attenuation_model = 1
+bus = &"RigidBodies"
 
 [node name="Destruction" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_7ba51")
 attenuation_model = 1
+bus = &"RigidBodies"
 
 [node name="ParticleCollision" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_7ba51")

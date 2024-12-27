@@ -1,16 +1,16 @@
 [gd_scene load_steps=36 format=4 uid="uid://tw0mk31qdtge"]
 
-[ext_resource type="Script" uid="uid://bdsyubsxpo06p" path="res://Scripts/MailCart/Mailcart.gd" id="1_1hgo0"]
+[ext_resource type="Script" path="res://Scripts/MailCart/Mailcart.gd" id="1_1hgo0"]
 [ext_resource type="PhysicsMaterial" uid="uid://b1bqehkmdmmd7" path="res://Scenes/Prefabs/MoveableObjects/mailcart_physicsmaterial.tres" id="1_sg5ll"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="2_jjppu"]
-[ext_resource type="Script" uid="uid://bodt1l40yhg4h" path="res://Scripts/MailCart/Radio.gd" id="3_t7kbh"]
+[ext_resource type="Script" path="res://Scripts/MailCart/Radio.gd" id="3_t7kbh"]
 [ext_resource type="AudioStream" uid="uid://c0t8xaftuek6t" path="res://Assets/Audio/SoundFX/Cart.mp3" id="4_eev6i"]
 [ext_resource type="Texture2D" uid="uid://bpmaq4gl82cgl" path="res://Assets/Textures/BlenderTextures/Radio2.png" id="4_mlnkp"]
-[ext_resource type="Script" uid="uid://bnpju68ive8k8" path="res://Scripts/MailCart/clipboard.gd" id="6_5j3yk"]
+[ext_resource type="Script" path="res://Scripts/MailCart/clipboard.gd" id="6_5j3yk"]
 [ext_resource type="Texture2D" uid="uid://ccb6x7kk3ub7b" path="res://Assets/TemporaryAssets/Wood063_1K-JPG_Color.jpg" id="7_6r3jr"]
 [ext_resource type="Texture2D" uid="uid://785uc626og8a" path="res://Assets/Models/test_models/Desk_name_plate/desk_name_plate_Metal049B_1K-JPG_Roughness.jpg" id="8_giftv"]
-[ext_resource type="Script" uid="uid://blodt01y3aacp" path="res://Scripts/MailCart/tape_manager.gd" id="9_438jo"]
-[ext_resource type="Script" uid="uid://cxht27f0vbpap" path="res://Scripts/MailCart/tape_interaction_detector.gd" id="10_ckeqo"]
+[ext_resource type="Script" path="res://Scripts/MailCart/tape_manager.gd" id="9_438jo"]
+[ext_resource type="Script" path="res://Scripts/MailCart/tape_interaction_detector.gd" id="10_ckeqo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ypu4y"]
 size = Vector3(0.814026, 0.0893555, 0.127289)

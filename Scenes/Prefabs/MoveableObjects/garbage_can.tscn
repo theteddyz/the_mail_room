@@ -119,12 +119,14 @@ transform = Transform3D(0.487262, 0, 0, 0, 0.487262, 0, 0, 0, 0.487262, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_mm73l")
 disabled = true
 
-[node name="Collision_Handler" type="Node3D" parent="."]
+[node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
 script = ExtResource("4_1bdfq")
+impact_audios = NodePath("../ImpactAudioPlayer")
 
 [node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_rrpps")
 volume_db = -10.0
+bus = &"RigidBodies"
 
 [node name="TrashCanCollision" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.487262, 0, 0, 0, 0.487262, 0, 0, 0, 0.487262, 0, 0, 0)
