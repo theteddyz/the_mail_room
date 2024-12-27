@@ -16,3 +16,5 @@ script = ExtResource("3_3dovm")
 
 [node name="Drawer" type="Node" parent="."]
 script = ExtResource("4_jhlcw")
+
+[node name="grab_sound_manager" type="Node" parent="."]

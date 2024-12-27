@@ -4,19 +4,11 @@ var holding_object:bool = false
 @onready var dynamic_type:Node = $Dynamic_object
 @onready var door_type:Node = $Door
 @onready var drawer_type:Node = $Drawer
-
+@onready var grab_sound_manager:Node = $grab_sound_manager
 func grabbed_object(object:RigidBody3D):
 	current_grabbed_object = object
 	match object.grab_type:
 		"dynamic":
-			var current_parent = object.get_parent()
-			if object.special_object:
-				var _temp = object.get_parent()
-				current_parent = _temp.get_parent()
-				
-			if current_parent is VisibleOnScreenNotifier3D:
-				print("HELLO")
-				EventBus.emitCustomSignal("modified_object", [object])
 			dynamic_type.grab()
 		"door":
 			door_type.grab()
