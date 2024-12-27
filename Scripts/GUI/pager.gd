@@ -34,7 +34,8 @@ func _ready():
 	pager_hide_position = position
 	inital_text_position = text1.position
 	#target_object = world.find_child("Package")
-	player_camera = player.find_child("Neck").find_child("Head").find_child("HeadbopRoot").find_child("Camera")
+	if player:
+		player_camera = player.find_child("Neck").find_child("Head").find_child("HeadbopRoot").find_child("Camera")
 
 func add_package_to_queue(object: Node3D):
 	target_objects.append(object)

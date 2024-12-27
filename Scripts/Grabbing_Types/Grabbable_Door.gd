@@ -22,11 +22,17 @@ func _physics_process(delta):
 
 func _ready():
 	player = GameManager.get_player()
-	camera = player.find_child("Camera")
-	player_head = player.find_child("Head")
-	player_raycast = player.find_child("InteractableFinder")
+	if player:
+		camera = player.find_child("Camera")
+		player_head = player.find_child("Head")
+		player_raycast = player.find_child("InteractableFinder")
 
 func grab():
+	if !player:
+		player = GameManager.get_player()
+		camera = player.find_child("Camera")
+		player_head = player.find_child("Head")
+		player_raycast = player.find_child("InteractableFinder")
 	set_physics_process(true)
 	set_process(true)
 	object = get_parent().current_grabbed_object

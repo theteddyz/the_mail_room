@@ -1,7 +1,6 @@
-[gd_scene load_steps=150 format=4 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=149 format=4 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_gv15l"]
-[ext_resource type="LightmapGIData" uid="uid://csepdxhb2v4q8" path="res://Scenes/Worlds/testcutscene.lmbake" id="2_m5k7h"]
 [ext_resource type="Environment" uid="uid://b6cvpqqdwan5k" path="res://Scenes/Worlds/introlevel.tres" id="3_4oqgv"]
 [ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="4_2j0x3"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="4_s3jaw"]
@@ -1315,11 +1314,6 @@ light_volumetric_fog_energy = 0.201
 shadow_enabled = true
 shadow_blur = 1.871
 
-[node name="LightmapGI" type="LightmapGI" parent="."]
-bounces = 4
-generate_probes_subdiv = 3
-light_data = ExtResource("2_m5k7h")
-
 [node name="stage_Cubicles2_OfficeCubicle44_GrabableObjectTemplate_Interpolator#PostItNotes_003" parent="." instance=ExtResource("15_jkjua")]
 transform = Transform3D(0.0166806, 0, 0.0131066, 0, 0.0212138, 0, -0.0131066, 0, 0.0166806, -0.71169, 0.238958, -10.5069)
 
@@ -2276,7 +2270,6 @@ physics_material_override = SubResource("PhysicsMaterial_60xfd")
 
 [node name="Radio" parent="." instance=ExtResource("14_3vnu1")]
 transform = Transform3D(0.895997, -0.00446116, 0.444037, 0.00372548, 0.99999, 0.00252927, -0.444044, -0.000611962, 0.896005, -3.55959, 1.73602, -11.3585)
-script = null
 
 [node name="PostItNotes_016" parent="Radio" instance=ExtResource("33_p462o")]
 transform = Transform3D(9.71938e-05, -0.00141371, -0.0211664, -0.00309269, 0.0209395, -0.00141276, 0.0209869, 0.00309226, -0.000110164, 0.0617616, 0.215037, -0.0798807)
