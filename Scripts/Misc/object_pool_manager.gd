@@ -29,24 +29,24 @@ func _ready():
 
 func fufill_request(object_requested: String, notifier: VisibleOnScreenNotifier3D):
 	var fufilled = false
-	for obj in pool_pos.get_children():
-		if fufilled:
-			break
-		if obj is RigidBody3D:
-			if obj.object_name == object_requested:
-				reuse_object(obj, notifier)
-				fufilled = true
+	if pool_pos:
+		for obj in pool_pos.get_children():
+			if fufilled:
 				break
-		else:
-			for child in obj.get_children():
-				if "grab_type" in child:
-					if child.object_name == object_requested:
-						reuse_object(child, notifier)
-						fufilled = true
-						break
-	if not fufilled:
-		print("No available object found for:", object_requested)
-		create_new_object(object_requested, notifier)
+			if obj is RigidBody3D:
+				if obj.object_name == object_requested:
+					reuse_object(obj, notifier)
+					fufilled = true
+					break
+			else:
+				for child in obj.get_children():
+					if "grab_type" in child:
+						if child.object_name == object_requested:
+							reuse_object(child, notifier)
+							fufilled = true
+							break
+		if not fufilled:
+			create_new_object(object_requested, notifier)
 
 
 
@@ -56,7 +56,6 @@ func reuse_object(obj, notifier):
 		obj.reparent(notifier)
 		obj.transform = Transform3D()
 		obj.visible = true
-		print("Assigned object:", obj.name, "to notifier:", notifier)
 		notifier.handle_fufilled_request(obj)
 	else:
 		var obj_parent = obj.get_parent()
@@ -64,24 +63,25 @@ func reuse_object(obj, notifier):
 		obj_parent.visible = true
 		obj_parent.reparent(notifier)
 		obj_parent.transform = Transform3D()
-		print("Assigned object:", obj.name, "to notifier:", notifier)
+		notifier.handle_fufilled_request(obj)
 
 func create_new_object(object_requested: String, notifier: VisibleOnScreenNotifier3D):
 	var scene_path = object_paths.get(object_requested, "")
 	if scene_path == "":
-		print("Error: Path not found for object:", object_requested)
 		return
 	var new_instance = load(scene_path).instantiate()
 	if new_instance is RigidBody3D:
 		new_instance.on_screen = true
+		#notifier.handle_fufilled_request(new_instance)
 	else:
 		for child in new_instance.get_children():
 			if "grab_type" in child:
 				child.on_screen = true
+				#notifier.handle_fufilled_request(child)
 				break
 	new_instance.transform = Transform3D()
 	notifier.add_child(new_instance)
-	print("Created and assigned new object:", new_instance.name)
+	
 
 
 func return_object(object):
@@ -100,7 +100,6 @@ func return_object(object):
 		obj_parent.transform = pool_pos.transform
 		object.freeze = true
 		obj_parent.visible = false
-	print("Object returned to pool:", object.name,object.on_screen)
 
 func remove_object_from_pool(object):
 	if !object.special_object:
@@ -114,7 +113,6 @@ func remove_object_from_pool(object):
 		object.modified = true
 		object_parent.reparent(world)
 		visual_node.queue_free()
-	print("removed")
 
 func register_object(object):
 	object.on_screen = false

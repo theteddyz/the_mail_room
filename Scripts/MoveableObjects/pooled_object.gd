@@ -11,12 +11,14 @@ func _ready():
 
 func _on_screen_entered():
 	if get_child_count() == 0:
-		print("Requesting object:", object, "from instance:", self)
-		ObjectPoolManager.fufill_request(object,self)
+		pass
+		#ObjectPoolManager.fufill_request(object,self)
 	
 
 func handle_fufilled_request(_object):
-	print("Assigning new object:", _object.name, "to instance:", self)
+	_object.freeze = false
+	await get_tree().create_timer(1.0).timeout
+	_object.freeze = true
 
 func check_object(grabbed_object):
 	pass
@@ -30,12 +32,8 @@ func _on_screen_exited():
 			for child in current_object.get_children():
 				if "grab_type" in child:
 					if child.freeze == true:
-						print("Returning object to pool:", child.name)
-						ObjectPoolManager.return_object(child)
-						child.on_screen = false
+						#ObjectPoolManager.return_object(child)
 						current_object = null
 		elif current_object and current_object.freeze:
-			print("Returning object to pool:", current_object.name)
-			ObjectPoolManager.return_object(current_object)
-			current_object.on_screen = false
+			#ObjectPoolManager.return_object(current_object)
 			current_object = null
