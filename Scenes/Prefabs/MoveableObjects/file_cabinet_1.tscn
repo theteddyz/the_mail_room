@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_1xdp2"]
 [ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="3_5nqi4"]
-[ext_resource type="Script" uid="uid://t0gqci6jputc" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet.gd" id="4_rx22h"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet.gd" id="4_rx22h"]
 [ext_resource type="ArrayMesh" uid="uid://cfgt0u4t6je4c" path="res://Assets/Materials/cabinet_drawer.tres" id="6_0wjlh"]
 [ext_resource type="AudioStream" uid="uid://dj4twnqnl5bav" path="res://Assets/Audio/SoundFX/Drawers/FileCabinetMovingFast.ogg" id="6_d2jk7"]
 [ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="6_pe8d1"]
@@ -15,7 +15,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fo7lw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xdp2"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -47,7 +47,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_fo7lw"),
+"material": SubResource("StandardMaterial3D_1xdp2"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -421,8 +421,10 @@ drawerLoopSound = NodePath("../DrawerAudioLoop")
 volume = -20.0
 joint_axis_local = Vector3(0, 0, -1)
 
-[node name="Collision_Handler" type="Node3D" parent="."]
+[node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
 script = ExtResource("6_pe8d1")
+impact_audios = NodePath("../ImpactAudioPlayer")
 
 [node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_77cjm")
+bus = &"RigidBodies"

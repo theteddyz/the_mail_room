@@ -157,14 +157,20 @@ mesh = SubResource("ArrayMesh_fngp1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00201416, -0.00274658, -0.0255737)
 shape = SubResource("BoxShape3D_e7wfd")
 
-[node name="Monitor_Collision_Handler" type="Node3D" parent="."]
+[node name="Monitor_Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("broken_models", "normal_model", "impact_audios", "destruction_audios")]
 script = ExtResource("4_tyhgj")
+broken_models = [NodePath("../ComputerOff")]
+normal_model = NodePath("../ComputerOn")
+impact_audios = NodePath("../ImpactAudioPlayer")
+destruction_audios = NodePath("../BreakageAudioPlayer")
 
 [node name="BreakageAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_hp4ao")
+bus = &"RigidBodies"
 
 [node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_v3hii")
+bus = &"RigidBodies"
 
 [connection signal="body_entered" from="." to="Monitor_Collision_Handler" method="_on_body_entered"]
 

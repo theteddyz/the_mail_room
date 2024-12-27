@@ -6,6 +6,7 @@ var holding_object:bool = false
 @onready var drawer_type:Node = $Drawer
 @onready var grab_sound_manager:Node = $grab_sound_manager
 func grabbed_object(object:RigidBody3D):
+	holding_object = true
 	current_grabbed_object = object
 	match object.grab_type:
 		"dynamic":

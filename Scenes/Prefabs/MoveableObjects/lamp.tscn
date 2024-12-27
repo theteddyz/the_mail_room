@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="2_obbdd"]
 [ext_resource type="Texture2D" uid="uid://dv4g5c8vuwrtt" path="res://Assets/Textures/BlenderTextures/LampUpper.png" id="3_uc4mx"]
 [ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_a2cyg"]
-[ext_resource type="Script" uid="uid://xo3ci46wok3h" path="res://Scripts/MoveableObjects/DesklampButton.gd" id="4_ra0ww"]
+[ext_resource type="Script" path="res://Scripts/MoveableObjects/DesklampButton.gd" id="4_ra0ww"]
 [ext_resource type="AudioStream" uid="uid://30cxaviuwree" path="res://Assets/Audio/SoundFX/LampButton.mp3" id="5_ob3rf"]
 [ext_resource type="AudioStream" uid="uid://bbeekmlgkwvxp" path="res://Assets/Audio/SoundFX/LampButton3.mp3" id="6_xh0i2"]
 [ext_resource type="AudioStream" uid="uid://bdx8qlgb45o3p" path="res://Assets/Audio/SoundFX/LampButton2.mp3" id="7_5mdxf"]
@@ -323,16 +323,23 @@ shape = SubResource("CylinderShape3D_ggja8")
 transform = Transform3D(1, 0, 0, 0, 0.871779, -0.4899, 0, 0.4899, 0.871779, 0, 0.239071, -0.473754)
 shape = SubResource("CylinderShape3D_d8feb")
 
-[node name="LampCollisionDetector" type="Node3D" parent="LampArm"]
+[node name="LampCollisionDetector" type="Node3D" parent="LampArm" node_paths=PackedStringArray("broken_models", "normal_model", "impact_audios", "destruction_audios", "breakage_particles")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117633, -0.240402)
 script = ExtResource("4_a2cyg")
+broken_models = [NodePath("../LampUpperBroken")]
+normal_model = NodePath("../LampUpper")
+impact_audios = NodePath("../ImpactAudioPlayer")
+destruction_audios = NodePath("../BreakageAudioPlayer")
+breakage_particles = [NodePath("../GPUParticles3D")]
 
 [node name="BreakageAudioPlayer" type="AudioStreamPlayer3D" parent="LampArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165858, -0.240402)
 stream = ExtResource("7_65t1v")
+bus = &"RigidBodies"
 
 [node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="LampArm"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.165858, -0.240402)
 stream = SubResource("AudioStreamRandomizer_gctal")
+bus = &"RigidBodies"
 
 [connection signal="body_entered" from="LampArm" to="LampArm/LampCollisionDetector" method="_on_body_entered"]
