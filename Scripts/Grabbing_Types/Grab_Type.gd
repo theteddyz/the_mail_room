@@ -6,7 +6,11 @@ extends RigidBody3D
 #@export_enum("monitor","desk1","desk2","mouse","chair","lamp","mailbox","bin","keyboard") var object_name:String
 @export var modified:bool = false
 @export var on_screen:bool = false
-
+####only needed if this is a door or drawer
+@export var open_sound: AudioStreamPlayer3D
+@export var close_sound: AudioStreamPlayer3D
+@export var loop_sound: AudioStreamPlayer3D
+####
 var rb_controller = preload("res://Scenes/Prefabs/MoveableObjects/rb_enabler.tscn")
 var enabler
 #@export var special_object:bool = false

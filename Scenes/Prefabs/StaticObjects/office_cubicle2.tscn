@@ -203,7 +203,7 @@ shadow_mesh = SubResource("ArrayMesh_uhpbl")
 [node name="Cubicle" parent="." instance=ExtResource("1_nqotf")]
 
 [node name="GrabableObjectTemplate" parent="." instance=ExtResource("2_6qlar")]
-transform = Transform3D(0.896695, 0, 0.442649, 0, 1, 0, -0.442649, 0, 0.896695, 1.11988, 1.212, 1.06225)
+transform = Transform3D(0.896695, 0, 0.442649, 0, 1, 0, -0.442649, 0, 0.896695, 1.11988, 1.58217, 1.06225)
 
 [node name="KeyboardLowPoly2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.00963453, -0.00071164, -0.00711608, -1.35767e-10, 0.0119392, -0.00119397, 0.00715158, -0.000958715, -0.00958672, 0.80631, 1.18298, 0.475196)
@@ -221,7 +221,7 @@ mesh = SubResource("ArrayMesh_b5xio")
 skeleton = NodePath("")
 
 [node name="Chair" parent="." instance=ExtResource("5_8iucu")]
-transform = Transform3D(0.999944, 0, -0.0105591, 0, 1, 0, 0.0105591, 0, 0.999944, 0.402892, 0, -0.213888)
+transform = Transform3D(0.556513, 0, 0.830839, 0, 1, 0, -0.830839, 0, 0.556513, 0.413657, 0.865577, 0.368442)
 
 [node name="Cylinder" parent="." instance=ExtResource("6_8ods1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27527, 0, -0.751191)

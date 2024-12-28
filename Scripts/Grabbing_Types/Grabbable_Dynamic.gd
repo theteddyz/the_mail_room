@@ -25,16 +25,22 @@ var mouse_line_material: ORMMaterial3D
 var throw_direction = Vector3.ZERO
 func _ready():
 	player = GameManager.get_player()
-	camera = player.find_child("Camera")
-	player_head = player.find_child("Head")
-	player_raycast = player.find_child("InteractableFinder")
-	mouse_line_material = ORMMaterial3D.new()
-	mouse_line_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	mouse_line_material.albedo_color = Color(0.5,0.5,0.5)
-	call_deferred("_init_mouse_line")
+	if player:
+		camera = player.find_child("Camera")
+		player_head = player.find_child("Head")
+		player_raycast = player.find_child("InteractableFinder")
+		mouse_line_material = ORMMaterial3D.new()
+		mouse_line_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		mouse_line_material.albedo_color = Color(0.5,0.5,0.5)
+		call_deferred("_init_mouse_line")
 
 
 func grab():
+	if !player:
+		player = GameManager.get_player()
+		camera = player.find_child("Camera")
+		player_head = player.find_child("Head")
+		player_raycast = player.find_child("InteractableFinder")
 	set_physics_process(true)
 	set_process(true)
 	object = get_parent().current_grabbed_object
