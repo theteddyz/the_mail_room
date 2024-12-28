@@ -97,7 +97,7 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and !is_reading:
 		handle_mouse_motion(event)
 	elif event is InputEventJoypadMotion:
 		handle_joypad_motion(event)
@@ -417,6 +417,7 @@ func recover_stamina(delta):
 			current_stamina = max_stamina
 
 func disable_movement_event(l:bool,w:bool):
+	is_reading = true
 	persistent_state.velocity = Vector3.ZERO
 	disable_look_movement = l
 	disable_walk_movement = w

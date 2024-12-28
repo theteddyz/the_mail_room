@@ -8,8 +8,11 @@ var camera_rotation:Vector3 = Vector3(0,-180,0)
 var being_used
 var look_icon 
 var interactableFinder:RayCast3D
+var collision_shape:CollisionShape3D
+@onready var monitor_handler = $"../MonitorHandler"
 @onready var mail_pong = $"../MonitorHandler/SubViewport/GUI/MailPongBackground/MailPong"
 func _ready():
+	collision_shape = get_child(0)
 	var player = GameManager.get_player()
 	look_icon = Gui.look_icon
 	player_camera_parent = player.find_child("Neck").find_child("Head").find_child("HeadbopRoot")
@@ -31,12 +34,14 @@ func stop_using_pc():
 	EventBus.emitCustomSignal("disable_player_movement",[false,false])
 	look_icon.show()
 	being_used = false
+	monitor_handler.is_mouse_inside = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	var col:CollisionShape3D = get_child(0)
 	col.disabled = false
 
 func interact():
 	if !being_used:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 		player_camera.reparent(self)
 		interactableFinder.enabled = false
 		EventBus.emitCustomSignal("disable_player_movement",[true,true])
@@ -51,7 +56,8 @@ func interact():
 		camera_tween_rotation.tween_property(player_camera,"rotation_degrees",camera_rotation,1.5).set_ease(Tween.EASE_IN_OUT)
 		camera_tween_rotation.set_parallel(true)
 		await camera_tween_position.finished
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 		being_used = true
+		monitor_handler.is_mouse_inside = true
 		var col:CollisionShape3D = get_child(0)
 		col.disabled = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
