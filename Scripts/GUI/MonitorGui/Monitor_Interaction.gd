@@ -34,7 +34,6 @@ func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Ve
 	var event_pos3D = event_position
 	# Current time in seconds since engine start.
 	var now: float = Time.get_ticks_msec() / 1000.0
-	print(event)
 	# Convert position to a coordinate space relative to the Area3D node.
 	# NOTE: affine_inverse accounts for the Area3D node's scale, rotation, and position in the scene!
 	event_pos3D = node_quad.global_transform.affine_inverse() * event_pos3D
@@ -44,7 +43,6 @@ func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Ve
 	var event_pos2D: Vector2 = Vector2()
 
 	if is_mouse_inside:
-		print("MOVING")
 		# Convert the relative event position from 3D to 2D.
 		event_pos2D = Vector2(event_pos3D.x, -event_pos3D.y)
 		mouse_cursor.position = event_pos2D
