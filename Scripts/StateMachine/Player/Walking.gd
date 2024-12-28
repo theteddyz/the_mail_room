@@ -417,7 +417,6 @@ func recover_stamina(delta):
 			current_stamina = max_stamina
 
 func disable_movement_event(l:bool,w:bool):
-	is_reading = true
 	persistent_state.velocity = Vector3.ZERO
 	disable_look_movement = l
 	disable_walk_movement = w
