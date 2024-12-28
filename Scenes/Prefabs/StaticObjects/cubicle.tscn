@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bkvlvm2p6x0ad" path="res://Assets/Textures/BlenderTextures/CubicleDesk.png" id="2_xnpqn"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="3_076f0"]
 [ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="4_it8i7"]
-[ext_resource type="ArrayMesh" uid="uid://lml3otaq7y4s" path="res://Assets/multimesh/cubicle.mesh" id="5_wcexe"]
+[ext_resource type="ArrayMesh" path="res://Assets/multimesh/cubicle.mesh" id="5_wcexe"]
 [ext_resource type="PackedScene" uid="uid://3bbxkn5brr4h" path="res://Scenes/Prefabs/crouch_assistant.tscn" id="6_f22qd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdi4w"]

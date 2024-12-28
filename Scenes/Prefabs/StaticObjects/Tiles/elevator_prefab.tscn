@@ -1056,7 +1056,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, -0.368675, 0)
 collision_layer = 3
 script = ExtResource("10_vk1p5")
-target_scene_path = "res://Scenes/Worlds/mail_room.tscn"
+target_scene_path = "res://Scenes/Worlds/mail_room_0.tscn"
 floor_num = -1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/MailRoom/Area3D"]
