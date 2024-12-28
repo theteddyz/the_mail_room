@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="2_obbdd"]
 [ext_resource type="Texture2D" uid="uid://dv4g5c8vuwrtt" path="res://Assets/Textures/BlenderTextures/LampUpper.png" id="3_uc4mx"]
 [ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_a2cyg"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/DesklampButton.gd" id="4_ra0ww"]
+[ext_resource type="Script" uid="uid://xo3ci46wok3h" path="res://Scripts/MoveableObjects/DesklampButton.gd" id="4_ra0ww"]
 [ext_resource type="AudioStream" uid="uid://30cxaviuwree" path="res://Assets/Audio/SoundFX/LampButton.mp3" id="5_ob3rf"]
 [ext_resource type="AudioStream" uid="uid://bbeekmlgkwvxp" path="res://Assets/Audio/SoundFX/LampButton3.mp3" id="6_xh0i2"]
 [ext_resource type="AudioStream" uid="uid://bdx8qlgb45o3p" path="res://Assets/Audio/SoundFX/LampButton2.mp3" id="7_5mdxf"]
@@ -202,6 +202,12 @@ stream_2/stream = ExtResource("10_0on02")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.166935, 0.23978)
 node_a = NodePath("../LampBase")
 node_b = NodePath("../LampArm")
+angular_limit/enable = true
+angular_limit/upper = 0.666716
+angular_limit/lower = -1.71217
+motor/enable = true
+motor/target_velocity = 0.0
+motor/max_impulse = 45.0
 
 [node name="LampBase" type="RigidBody3D" parent="."]
 physics_interpolation_mode = 1
@@ -210,8 +216,6 @@ collision_layer = 2
 collision_mask = 15
 freeze = true
 script = ExtResource("1_cdijq")
-object_name = "lamp"
-special_object = true
 
 [node name="Lamp" type="MeshInstance3D" parent="LampBase"]
 transform = Transform3D(0.136544, 0, 0, 0, 0.136544, 0, 0, 0, 0.136544, 0, -0.168053, -0.228108)
