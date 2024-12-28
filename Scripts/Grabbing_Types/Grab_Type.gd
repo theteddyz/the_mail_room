@@ -20,6 +20,9 @@ func _ready():
 	enabler.setup()
 	physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_ON
 	connect("body_entered",Callable(self,"unfreeze_object"))
+	freeze = false
+	await get_tree().create_timer(3.0).timeout
+	freeze = true
 
 
 
