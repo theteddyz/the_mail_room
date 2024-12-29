@@ -1,11 +1,10 @@
-[gd_scene load_steps=63 format=4 uid="uid://bb75w210dxt14"]
+[gd_scene load_steps=62 format=4 uid="uid://bb75w210dxt14"]
 
 [ext_resource type="Texture2D" uid="uid://n3a6s3w3vg03" path="res://Assets/Textures/Concrete042A_1K-JPG_Color.jpg" id="1_t3jus"]
 [ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="2_v6d8g"]
 [ext_resource type="PackedScene" uid="uid://cyamc4lfjib8r" path="res://Scenes/Prefabs/StaticObjects/4_way_airduct.tscn" id="3_ax8b1"]
 [ext_resource type="PackedScene" uid="uid://b2vyyytppayk3" path="res://Scenes/Prefabs/StaticObjects/airduct_lid.tscn" id="4_u66s4"]
 [ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="5_s8t73"]
-[ext_resource type="Script" uid="uid://bek6uusiwfbtv" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="6_i57p6"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="6_x1u63"]
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="7_jtbbm"]
 [ext_resource type="PackedScene" uid="uid://b65csccqsl1l1" path="res://Scenes/Prefabs/StaticObjects/industrial_table.tscn" id="7_lddy1"]
@@ -258,10 +257,6 @@ collision_layer = 2
 collision_mask = 15
 mass = 50.0
 freeze = true
-script = ExtResource("6_i57p6")
-should_freeze = true
-disable_collider_on_grab = false
-can_rotate = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Desk3/Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.13829, 0.000576701)
@@ -304,8 +299,6 @@ gravity_scale = 0.0
 sleeping = true
 freeze = true
 linear_damp = 6.0
-script = ExtResource("6_i57p6")
-is_drawer = true
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="Objects/Desk3/Desk/DrawerTop"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -330,13 +323,8 @@ stream = SubResource("AudioStreamRandomizer_uflfa")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Objects/Desk3/Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_32lyv")
 
-[node name="DrawerScript" type="Node3D" parent="Objects/Desk3/Desk/DrawerTop" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="Objects/Desk3/Desk/DrawerTop"]
 script = ExtResource("13_jn5w4")
-drawerOpenedSound = NodePath("../DrawerAudioOpen")
-drawerClosedSound = NodePath("../DrawerAudioClose")
-drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("")
-volume = -20.0
 
 [node name="DrawerBottom" type="RigidBody3D" parent="Objects/Desk3/Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.354336, 0.535279)
@@ -347,8 +335,6 @@ gravity_scale = 0.0
 sleeping = true
 freeze = true
 linear_damp = 6.0
-script = ExtResource("6_i57p6")
-is_drawer = true
 
 [node name="Interpolator" type="Node3D" parent="Objects/Desk3/Desk/DrawerBottom"]
 script = ExtResource("14_1wq6m")
@@ -376,13 +362,8 @@ stream = SubResource("AudioStreamRandomizer_o45tc")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Objects/Desk3/Desk/DrawerBottom"]
 stream = SubResource("AudioStreamRandomizer_1dong")
 
-[node name="DrawerScript" type="Node3D" parent="Objects/Desk3/Desk/DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="Objects/Desk3/Desk/DrawerBottom"]
 script = ExtResource("13_jn5w4")
-drawerOpenedSound = NodePath("../DrawerAudioOpen")
-drawerClosedSound = NodePath("../DrawerAudioClose")
-drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("")
-volume = -20.0
 
 [node name="Lamp" parent="Objects/Desk3/Desk" instance=ExtResource("15_pfqk3")]
 transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448, 1.05325, 1.37807, -0.335846)
@@ -1279,33 +1260,39 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -17.8642
 
 [node name="OmniLight3D2" parent="Lights/CeilingLightOn25" instance=ExtResource("22_aruuo")]
 transform = Transform3D(1, 0, -1.84566e-14, 0, 1, 0, 1.84566e-14, 0, 1, 0, -2.8731, -0.981712)
+visible = false
 
 [node name="CeilingLightOn14" parent="Lights" instance=ExtResource("21_gga1c")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -2.39881, 4.62041, -0.452828)
 
 [node name="OmniLight3D2" parent="Lights/CeilingLightOn14" instance=ExtResource("22_aruuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.87311, 0)
+visible = false
 
 [node name="CeilingLightOn8" parent="Lights" instance=ExtResource("21_gga1c")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -9.33502, 4.6609, -5.04403)
 
 [node name="OmniLight3D2" parent="Lights/CeilingLightOn8" instance=ExtResource("22_aruuo")]
 transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.8731, 0)
+visible = false
 
 [node name="CeilingLightOn17" parent="Lights" instance=ExtResource("21_gga1c")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 0.7841, 4.541, -9.907)
 
 [node name="OmniLight3D2" parent="Lights/CeilingLightOn17" instance=ExtResource("22_aruuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+visible = false
 
 [node name="CeilingLightOn16" parent="Lights" instance=ExtResource("21_gga1c")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -10.6269, 4.58639, -9.907)
 
 [node name="OmniLight3D2" parent="Lights/CeilingLightOn16" instance=ExtResource("22_aruuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+visible = false
 
 [node name="CeilingLightOn10" parent="Lights" instance=ExtResource("21_gga1c")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -0.776337, 4.59801, -5.04403)
+visible = false
 
 [node name="OmniLight3D2" parent="Lights/CeilingLightOn10" instance=ExtResource("22_aruuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
@@ -1315,24 +1302,28 @@ transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 7.76402,
 
 [node name="OmniLight3D2" parent="Lights/CeilingLightOn24" instance=ExtResource("22_aruuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+visible = false
 
 [node name="CeilingLightOn26" parent="Lights" instance=ExtResource("21_gga1c")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 13.4043, 4.65248, -5.04403)
 
 [node name="OmniLight3D2" parent="Lights/CeilingLightOn26" instance=ExtResource("22_aruuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+visible = false
 
 [node name="CeilingLightOn27" parent="Lights" instance=ExtResource("21_gga1c")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 20.3587, 6.367, -10.3117)
 
 [node name="OmniLight3D2" parent="Lights/CeilingLightOn27" instance=ExtResource("22_aruuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+visible = false
 
 [node name="CeilingLightOn28" parent="Lights" instance=ExtResource("21_gga1c")]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 21.8864, 6.35831, -0.278646)
 
 [node name="OmniLight3D2" parent="Lights/CeilingLightOn28" instance=ExtResource("22_aruuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+visible = false
 
 [node name="Roof" type="Node3D" parent="."]
 

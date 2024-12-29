@@ -7,6 +7,7 @@ tonemap_exposure = 1.08
 tonemap_white = 0.72
 ssr_depth_tolerance = 56.71
 ssao_horizon = 0.56
+ssil_enabled = true
 ssil_radius = 0.01
 ssil_intensity = 7.35
 sdfgi_use_occlusion = true

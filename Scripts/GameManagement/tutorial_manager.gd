@@ -15,7 +15,7 @@ var tutorial_step_3 = preload("res://Assets/Audio/SoundFX/VoiceLines/TutorialSte
 var tutorial_end = preload("res://Assets/Audio/SoundFX/VoiceLines/TutorialEnd.ogg")
 var that_just_happened = preload("res://Assets/Audio/SoundFX/VoiceLines/ThatJustHappened.ogg")
 var mailroom_discovery_audio = preload("res://Assets/Audio/SoundFX/AmbientNeutral/MailRoomTransitionalAmbience1.ogg")
-@onready var finance_floor_chute = $"../stage/Objects/StaticBody3D6"
+@onready var finance_floor_chute = $"../mailroom_prefab/Objects/StaticBody3D6"
 func _ready():
 	player_radio = GameManager.get_player_radio()
 	mail_cart = GameManager.get_mail_cart()
