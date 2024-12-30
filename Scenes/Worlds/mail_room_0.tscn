@@ -1,15 +1,16 @@
-[gd_scene load_steps=59 format=4 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=60 format=4 uid="uid://ct5178luew5jj"]
 
-[ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_3nw8p"]
+[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_3nw8p"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_2im65"]
 [ext_resource type="Environment" uid="uid://bhc42hyiv0lac" path="res://Scenes/Worlds/mail_room.tres" id="3_r8df3"]
-[ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="4_gvu72"]
+[ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="4_gvu72"]
 [ext_resource type="PackedScene" uid="uid://bb75w210dxt14" path="res://Scenes/Prefabs/Rooms/mailroom.tscn" id="6_b44l8"]
 [ext_resource type="Texture2D" uid="uid://cewsovmotus3" path="res://Assets/Models/BlenderModels/desk_CRTTV.png" id="13_p37jt"]
 [ext_resource type="Texture2D" uid="uid://dphnskrnpyyh3" path="res://Assets/Models/BlenderModels/desk_CRTTVCart.png" id="14_ub5ip"]
 [ext_resource type="Texture2D" uid="uid://cfvehcdifot2o" path="res://Assets/Models/BlenderModels/desk_CartWheelFront.png" id="15_6rxuj"]
 [ext_resource type="Texture2D" uid="uid://c4d5jhhms640h" path="res://Assets/Models/BlenderModels/desk_VHSPlayer.png" id="16_xp7ou"]
-[ext_resource type="VideoStream" path="res://Assets/CRT Video Final Master Peter 3.ogv" id="17_td6tk"]
+[ext_resource type="VideoStream" path="res://Assets/crt-video-final-master-peter-3-1-jnne1j.ogv" id="17_p37jt"]
+[ext_resource type="AudioStream" uid="uid://cqiw4v1eyh2jv" path="res://Assets/CRT Video Final Master Peter 3 (1).mp3" id="17_ub5ip"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="29_3ttsr"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="30_xol48"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="31_3qdax"]
@@ -491,9 +492,10 @@ viewport_path = NodePath("Crttv/CRTTVScreen/SubViewport")
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_ub5ip")
 emission_enabled = true
+emission_energy_multiplier = 0.5
 emission_texture = SubResource("ViewportTexture_6rxuj")
-uv1_scale = Vector3(8.225, 8.225, 8.225)
-uv1_offset = Vector3(0, 0.105, 0)
+uv1_scale = Vector3(8.27, 9.36, 8.27)
+uv1_offset = Vector3(0, -1.32, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sadm6"]
 resource_name = "CRTTV"
@@ -561,14 +563,44 @@ accepted_num = 7
 [node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn3" index="1"]
 visible = true
 
+[node name="CeilingLightOn5" parent="mailroom_prefab/Lights" index="1"]
+visible = true
+
 [node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn5" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn25" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn14" index="1"]
 visible = true
 
 [node name="CeilingLightOn8" parent="mailroom_prefab/Lights" index="4"]
 transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -9.33502, 4.6609, -1.74609)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn10" index="1"]
-visible = false
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn8" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn17" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn16" index="1"]
+visible = true
+
+[node name="CeilingLightOn10" parent="mailroom_prefab/Lights" index="7"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn24" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn26" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn27" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn28" index="1"]
+visible = true
 
 [node name="Elevator" parent="." instance=ExtResource("29_3ttsr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.7281, 0.411036, -7.179)
@@ -756,7 +788,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5928, 6.12578, -7.48261)
 mesh = SubResource("BoxMesh_xx5t2")
 
 [node name="Crttv" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.95438, 0, 1.76943)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.14041, 0, -4.91843)
 
 [node name="CRTTV" type="MeshInstance3D" parent="Crttv"]
 transform = Transform3D(0.859494, 0, 0, 0, 0.859494, 0, 0, 0, 0.859494, 0, 1.89868, 0)
@@ -809,6 +841,13 @@ material_override = SubResource("StandardMaterial3D_lck6i")
 mesh = SubResource("ArrayMesh_bf1bd")
 skeleton = NodePath("")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Crttv/CRTTVScreen"]
+transform = Transform3D(-1.16348, -1.01714e-07, 0, 1.01714e-07, -1.16348, 0, 0, 0, 1.16348, 0, 0, 0)
+stream = ExtResource("17_ub5ip")
+unit_size = 5.0
+autoplay = true
+bus = &"CRT TV"
+
 [node name="SubViewport" type="SubViewport" parent="Crttv/CRTTVScreen"]
 size = Vector2i(400, 300)
 
@@ -824,7 +863,8 @@ offset_right = 200.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("17_td6tk")
+audio_track = 1
+stream = ExtResource("17_p37jt")
 autoplay = true
 expand = true
 loop = true

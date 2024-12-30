@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cqiw4v1eyh2jv"
+path="res://.godot/imported/CRT Video Final Master Peter 3 (1).mp3-e18156c4e3d4d0b92a0948e2a70b983e.mp3str"
+
+[deps]
+
+source_file="res://Assets/CRT Video Final Master Peter 3 (1).mp3"
+dest_files=["res://.godot/imported/CRT Video Final Master Peter 3 (1).mp3-e18156c4e3d4d0b92a0948e2a70b983e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
