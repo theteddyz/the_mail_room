@@ -1,10 +1,11 @@
-[gd_scene load_steps=62 format=4 uid="uid://bb75w210dxt14"]
+[gd_scene load_steps=63 format=4 uid="uid://bb75w210dxt14"]
 
 [ext_resource type="Texture2D" uid="uid://n3a6s3w3vg03" path="res://Assets/Textures/Concrete042A_1K-JPG_Color.jpg" id="1_t3jus"]
 [ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="2_v6d8g"]
 [ext_resource type="PackedScene" uid="uid://cyamc4lfjib8r" path="res://Scenes/Prefabs/StaticObjects/4_way_airduct.tscn" id="3_ax8b1"]
 [ext_resource type="PackedScene" uid="uid://b2vyyytppayk3" path="res://Scenes/Prefabs/StaticObjects/airduct_lid.tscn" id="4_u66s4"]
 [ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="5_s8t73"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="6_u7rba"]
 [ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="6_x1u63"]
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="7_jtbbm"]
 [ext_resource type="PackedScene" uid="uid://b65csccqsl1l1" path="res://Scenes/Prefabs/StaticObjects/industrial_table.tscn" id="7_lddy1"]
@@ -257,6 +258,8 @@ collision_layer = 2
 collision_mask = 15
 mass = 50.0
 freeze = true
+script = ExtResource("6_u7rba")
+should_freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Desk3/Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.13829, 0.000576701)
@@ -299,6 +302,8 @@ gravity_scale = 0.0
 sleeping = true
 freeze = true
 linear_damp = 6.0
+script = ExtResource("6_u7rba")
+grab_type = "drawer"
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="Objects/Desk3/Desk/DrawerTop"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -335,6 +340,8 @@ gravity_scale = 0.0
 sleeping = true
 freeze = true
 linear_damp = 6.0
+script = ExtResource("6_u7rba")
+grab_type = "drawer"
 
 [node name="Interpolator" type="Node3D" parent="Objects/Desk3/Desk/DrawerBottom"]
 script = ExtResource("14_1wq6m")

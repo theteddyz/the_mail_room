@@ -1,9 +1,9 @@
 [gd_scene load_steps=60 format=4 uid="uid://ct5178luew5jj"]
 
-[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_3nw8p"]
+[ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_3nw8p"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_2im65"]
 [ext_resource type="Environment" uid="uid://bhc42hyiv0lac" path="res://Scenes/Worlds/mail_room.tres" id="3_r8df3"]
-[ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="4_gvu72"]
+[ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="4_gvu72"]
 [ext_resource type="PackedScene" uid="uid://bb75w210dxt14" path="res://Scenes/Prefabs/Rooms/mailroom.tscn" id="6_b44l8"]
 [ext_resource type="Texture2D" uid="uid://cewsovmotus3" path="res://Assets/Models/BlenderModels/desk_CRTTV.png" id="13_p37jt"]
 [ext_resource type="Texture2D" uid="uid://dphnskrnpyyh3" path="res://Assets/Models/BlenderModels/desk_CRTTVCart.png" id="14_ub5ip"]
@@ -846,7 +846,6 @@ transform = Transform3D(-1.16348, -1.01714e-07, 0, 1.01714e-07, -1.16348, 0, 0, 
 stream = ExtResource("17_ub5ip")
 unit_size = 5.0
 autoplay = true
-bus = &"CRT TV"
 
 [node name="SubViewport" type="SubViewport" parent="Crttv/CRTTVScreen"]
 size = Vector2i(400, 300)
