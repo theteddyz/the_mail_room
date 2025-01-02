@@ -88,7 +88,6 @@ func _physics_process(_delta: float):
 				destruction_audios.play()
 				break_object()
 			else:
-				print("IMPACT")
 				playImpactSound(volume)
 			
 			
@@ -99,7 +98,6 @@ func _physics_process(_delta: float):
 		previousIsPickedUp2 = previousIsPickedUp
 		if GrabbingManager.current_grabbed_object and GrabbingManager.current_grabbed_object.grab_type == "dynamic" and GrabbingManager.current_grabbed_object == rigidbody:
 			previousIsPickedUp = GrabbingManager.holding_object
-			print("HOLDING: ", GrabbingManager.holding_object)
 		else:
 			previousIsPickedUp = false
 		

@@ -122,7 +122,6 @@ center_of_mass_mode = 1
 sleeping = true
 freeze = true
 script = ExtResource("1_wrt3k")
-object_name = "monitor"
 
 [node name="ComputerOn" parent="." instance=ExtResource("3_gdndj")]
 transform = Transform3D(0.403, 0, 0, 0, 0.403, 0, 0, 0, 0.403, 0, 0, 0)
