@@ -1,10 +1,10 @@
-[gd_scene load_steps=31 format=4 uid="uid://c03lqw7vrgadb"]
+[gd_scene load_steps=38 format=4 uid="uid://c03lqw7vrgadb"]
 
 [ext_resource type="Texture2D" uid="uid://dphnskrnpyyh3" path="res://Assets/Models/BlenderModels/desk_CRTTVCart.png" id="1_frkt2"]
 [ext_resource type="Texture2D" uid="uid://cewsovmotus3" path="res://Assets/Models/BlenderModels/desk_CRTTV.png" id="1_vfpea"]
 [ext_resource type="Texture2D" uid="uid://cfvehcdifot2o" path="res://Assets/Models/BlenderModels/desk_CartWheelFront.png" id="3_y0b1x"]
 [ext_resource type="Texture2D" uid="uid://c4d5jhhms640h" path="res://Assets/Models/BlenderModels/desk_VHSPlayer.png" id="4_b0pts"]
-[ext_resource type="PackedScene" uid="uid://b3tdwehc6j730" path="res://Scenes/Prefabs/crttv_screen.tscn" id="5_b0pts"]
+[ext_resource type="Script" uid="uid://c8r5modbpawxo" path="res://Scripts/Interactable/crt_interactable.gd" id="5_b0pts"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v151g"]
 resource_name = "CRTTV"
@@ -341,16 +341,35 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kqgym")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_01m82"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0b1x"]
+size = Vector3(1.0575, 0.0352783, 1.05029)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lck6i"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_01m82")
-uv1_scale = Vector3(8.225, 8.225, 8.225)
-uv1_offset = Vector3(0, 0.105, 0)
+[sub_resource type="BoxShape3D" id="BoxShape3D_b0pts"]
+size = Vector3(1.0625, 0.0297546, 0.845337)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_01m82"]
+size = Vector3(0.848328, 0.85965, 0.876526)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lck6i"]
+size = Vector3(0.431732, 0.118301, 0.380692)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gqft0"]
+size = Vector3(0.0350494, 0.939178, 0.0408936)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iq545"]
+size = Vector3(0.0350494, 0.546318, 0.0408936)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_grpv4"]
+size = Vector3(0.0350494, 1.42662, 0.0408936)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b474g"]
+size = Vector3(0.0350494, 1.41881, 0.0408936)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w0pj4"]
+size = Vector3(0.455162, 0.140694, 0.429035)
 
 [node name="Crttv" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="CRTTV" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.859494, 0, 0, 0, 0.859494, 0, 0, 0, 0.859494, 0, 1.89868, 0)
@@ -397,6 +416,58 @@ transform = Transform3D(0.00677614, 0, 0, 0, 0.00677614, 0, 0, 0, 0.00677614, -0
 mesh = SubResource("ArrayMesh_l6scq")
 skeleton = NodePath("")
 
-[node name="CRTTVScreen" parent="." instance=ExtResource("5_b0pts")]
-transform = Transform3D(0.859494, 0, 0, 0, 0.859494, 0, 0, 0, 0.859494, 0, 1.85992, -0.00275397)
-material_override = SubResource("StandardMaterial3D_lck6i")
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00311279, 0.0487671, -0.202393)
+shape = SubResource("BoxShape3D_y0b1x")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00311279, 0.773398, -0.202393)
+shape = SubResource("BoxShape3D_y0b1x")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000976562, 1.47179, -0.0988159)
+shape = SubResource("BoxShape3D_b0pts")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000274658, 1.90606, -0.0611877)
+shape = SubResource("BoxShape3D_01m82")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000381456, 0.84077, -0.48234)
+shape = SubResource("BoxShape3D_lck6i")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514381, 0.509781, -0.710451)
+shape = SubResource("BoxShape3D_gqft0")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514247, 0.509781, -0.710451)
+shape = SubResource("BoxShape3D_gqft0")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 1.45789e-08, -2.50289e-09, -1.45789e-08, 0.94274, -0.333527, -2.50289e-09, 0.333527, 0.94274, -0.514246, 1.22378, -0.62032)
+shape = SubResource("BoxShape3D_iq545")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 1.45789e-08, -2.50289e-09, -1.45789e-08, 0.94274, -0.333527, -2.50289e-09, 0.333527, 0.94274, 0.51217, 1.22378, -0.62032)
+shape = SubResource("BoxShape3D_iq545")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.514381, 0.753502, 0.303139)
+shape = SubResource("BoxShape3D_grpv4")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514246, 0.749596, 0.303139)
+shape = SubResource("BoxShape3D_b474g")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("5_b0pts")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00149156, 0.851967, -0.482178)
+shape = SubResource("BoxShape3D_w0pj4")
