@@ -1,0 +1,75 @@
+[gd_scene load_steps=10 format=4 uid="uid://dwppa8t33rotp"]
+
+[ext_resource type="Script" uid="uid://cn213mrcaenhg" path="res://Scenes/Prefabs/Floors/floor_tiler.gd" id="1_85gfo"]
+[ext_resource type="Texture2D" uid="uid://c3qyu5oicypra" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_tezco256r.png" id="1_v8n8b"]
+[ext_resource type="Texture2D" uid="uid://bdqjdhf72u4sj" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png" id="2_85gfo"]
+[ext_resource type="Texture2D" uid="uid://cfpfwkaakamns" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg" id="3_xwl5v"]
+[ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="4_kroat"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85gfo"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_v8n8b")
+metallic_texture = ExtResource("2_85gfo")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_85gfo")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_xwl5v")
+uv1_scale = Vector3(0.2, 0.2, 0)
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_37b6v"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP//AAD//wAA//8AAAAAAAAAAAAA//8AAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vwcxl"]
+resource_name = "floor_2_flooring_Plane"
+lightmap_size_hint = Vector2i(590, 362)
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray("AAAAAAAAgD92yH8/e6V/PwD/fz8AAAAA6ydeOucJtToAAIA/AP9/P3bIfz/nCbU6AAAAAAAAAADrJ146e6V/Pw=="),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
+"material": SubResource("StandardMaterial3D_85gfo"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AACAvwAAAAAAAIA/AACAPwAAAAAAAIC/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC//3/9//7//7//f/3//v//v/9//f/+//+//3/9//7//78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_37b6v")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fr2tg"]
+size = Vector3(1.99915, 0.502625, 1.99759)
+
+[node name="hr_base_floor" type="Node3D"]
+script = ExtResource("1_85gfo")
+active = true
+tile_size = Vector2(5, 5)
+
+[node name="Plane1" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("ArrayMesh_vwcxl")
+skeleton = NodePath("")
+
+[node name="footstep_collider_carpet" type="Area3D" parent="Plane1"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("4_kroat")
+floor_type = "bathroom"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane1/footstep_collider_carpet"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000931914, -0.248688, 0.00121226)
+shape = SubResource("BoxShape3D_fr2tg")
