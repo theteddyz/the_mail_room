@@ -1,9 +1,9 @@
 [gd_scene load_steps=79 format=4 uid="uid://dsbem806big2h"]
 
-[ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
+[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
 [ext_resource type="Environment" uid="uid://52by3g1q6hkh" path="res://human_resources_worldenvironment.tres" id="2_6iufn"]
-[ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="3_jahih"]
-[ext_resource type="Shader" uid="uid://clbekin5v2qpp" path="res://Scenes/Worlds/hr_freezer_fog_shader.gdshader" id="4_5j6qe"]
+[ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="3_jahih"]
+[ext_resource type="Shader" path="res://Scenes/Worlds/hr_freezer_fog_shader.gdshader" id="4_5j6qe"]
 [ext_resource type="LightmapGIData" uid="uid://bbkeubndw8sfl" path="res://Scenes/Worlds/human_resources.lmbake" id="4_5pumb"]
 [ext_resource type="PackedScene" uid="uid://c6e8r8hgcxdyp" path="res://Scenes/Prefabs/Rooms/human_resources_lobby_room.tscn" id="4_71dsc"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="4_83x7j"]

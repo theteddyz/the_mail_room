@@ -9,6 +9,7 @@ var is_rotating = false
 var is_door:bool = false
 var is_drawer:bool = false
 var grab_offset: Vector3 = Vector3.ZERO
+var grab_offset_tether: Vector3 = Vector3.ZERO
 var player_raycast:RayCast3D
 var initial_basis = Basis()
 var grab_distance = 0
@@ -48,6 +49,7 @@ func grab():
 	object.sleeping = false
 	_mass = object.mass
 	grab_offset = object.to_local(player_raycast.get_collision_point())
+	grab_offset_tether = player_raycast.get_collision_point() - object.global_transform.origin
 	#if pickup_timer.is_stopped():
 		#if !timerAdded:
 			#add_child(pickup_timer)
@@ -81,24 +83,24 @@ func _process(delta):
 func _physics_process(delta):
 	if holding_object:
 		update_position(delta)
-		var playerPosition:Vector3 = player.transform.origin;
-		playerPosition.y = 0;
-		#var targetPosition: Vector3 = itemPos.global_transform.origin + -grab_offset
-		var objectPosition:Vector3 = object.global_transform.origin + grab_offset;
-		objectPosition.y = 0;
-		var directionTo:Vector3 = playerPosition - objectPosition;
-		directionTo = directionTo.normalized();
-		var distance:float = playerPosition.distance_to(objectPosition);
-		if distance > tether_distance:
-			var destination = objectPosition + directionTo*tether_distance;
-			player.transform.origin.x = destination.x;
-			player.transform.origin.z = destination.z;
-			is_tether_max_range = true;
-		else:
-			is_tether_max_range = false;
-		
-		#update_rotation(delta)
+		tether_player()
 
+func tether_player():
+	var playerPosition:Vector3 = player.transform.origin;
+	playerPosition.y = 0;
+	#var targetPosition: Vector3 = itemPos.global_transform.origin + -grab_offset
+	var objectPosition:Vector3 = object.global_transform.origin + grab_offset_tether;
+	objectPosition.y = 0;
+	var directionTo:Vector3 = playerPosition - objectPosition;
+	directionTo = directionTo.normalized();
+	var distance:float = playerPosition.distance_to(objectPosition);
+	if distance > tether_distance:
+		var destination = objectPosition + directionTo*tether_distance;
+		player.transform.origin.x = destination.x;
+		player.transform.origin.z = destination.z;
+		is_tether_max_range = true;
+	else:
+		is_tether_max_range = false;
 
 func pick_up_object():
 	#object.angular_damp = 10

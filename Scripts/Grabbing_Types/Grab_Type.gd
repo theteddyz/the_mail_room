@@ -24,8 +24,12 @@ func _ready():
 	await get_tree().create_timer(3.0).timeout
 	freeze = true
 
-
-
+func _physics_process(delta: float) -> void:
+	if should_freeze and freeze == false:
+		if GrabbingManager.current_grabbed_object != self:
+			if linear_velocity.length() < 0.001 and angular_velocity.length() < 0.001:
+				freeze = true
+			
 func unfreeze_object(col):
 	if col is RigidBody3D:
 		if "grab_type" in col:

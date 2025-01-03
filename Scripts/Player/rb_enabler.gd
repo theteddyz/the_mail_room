@@ -11,5 +11,5 @@ func _on_body_exited(body):
 
 
 func _on_body_entered(body):
-	if body.name == "Player":
+	if body.name == "Player" and rb.should_freeze == false:
 		rb.freeze = false

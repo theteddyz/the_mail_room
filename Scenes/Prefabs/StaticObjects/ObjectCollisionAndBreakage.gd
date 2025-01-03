@@ -142,7 +142,7 @@ func break_object():
 		particle.emitting = true
 		
 	for hinge in breakable_hinges:
-		hinge.motor_enabled = false
+		hinge.set_flag(hinge.FLAG_ENABLE_MOTOR, false)
 	#for model in seperation_breakage_models:
 	#	model.reparent(get_tree().root.get_child(3))
 	#	model.gravity_scale = 1

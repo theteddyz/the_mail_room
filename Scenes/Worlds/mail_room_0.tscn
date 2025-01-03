@@ -1,13 +1,14 @@
-[gd_scene load_steps=35 format=4 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=36 format=4 uid="uid://ct5178luew5jj"]
 
-[ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_3nw8p"]
+[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_3nw8p"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_2im65"]
 [ext_resource type="Environment" uid="uid://bhc42hyiv0lac" path="res://Scenes/Worlds/mail_room.tres" id="3_r8df3"]
-[ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="4_gvu72"]
+[ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="4_gvu72"]
 [ext_resource type="PackedScene" uid="uid://bb75w210dxt14" path="res://Scenes/Prefabs/Rooms/mailroom.tscn" id="6_b44l8"]
 [ext_resource type="Texture2D" uid="uid://cewsovmotus3" path="res://Assets/Models/BlenderModels/desk_CRTTV.png" id="13_p37jt"]
 [ext_resource type="PackedScene" uid="uid://c03lqw7vrgadb" path="res://Scenes/Prefabs/StaticObjects/crttv.tscn" id="13_pdcxx"]
-[ext_resource type="VideoStream" path="res://Assets/crt-video-final-master-peter-3-1-jnne1j.ogv" id="17_p37jt"]
+[ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="17_6rxuj"]
+[ext_resource type="VideoStream" uid="uid://cnbk21vsheyrr" path="res://Assets/crt-video-final-master-peter-3-1-jnne1j.ogv" id="17_p37jt"]
 [ext_resource type="AudioStream" uid="uid://cqiw4v1eyh2jv" path="res://Assets/CRT Video Final Master Peter 3 (1).mp3" id="17_ub5ip"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="29_3ttsr"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="30_xol48"]
@@ -486,6 +487,9 @@ grow_vertical = 2
 audio_track = 1
 stream = ExtResource("17_p37jt")
 expand = true
+
+[node name="Node3D" parent="." instance=ExtResource("17_6rxuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2066, -0.176723, -5.97259)
 
 [connection signal="body_entered" from="TutorialManager/Start_Area" to="TutorialManager" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="TutorialManager/Tutorial_Start" to="TutorialManager" method="_on_tutorial_start_body_entered"]
