@@ -1,24 +1,17 @@
-[gd_scene load_steps=26 format=4 uid="uid://0hwxvod2i3hn"]
+[gd_scene load_steps=23 format=4 uid="uid://0hwxvod2i3hn"]
 
-[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_k4xxo"]
+[ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_k4xxo"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_dtci6"]
 [ext_resource type="Environment" uid="uid://bhc42hyiv0lac" path="res://Scenes/Worlds/mail_room.tres" id="3_jh2lx"]
-[ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="4_ol4n4"]
+[ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="4_ol4n4"]
 [ext_resource type="PackedScene" uid="uid://bb75w210dxt14" path="res://Scenes/Prefabs/Rooms/mailroom.tscn" id="5_4oqjk"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="6_mxo3x"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="7_jjsy5"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="8_i23t7"]
-[ext_resource type="Script" path="res://Scripts/GameManagement/tutorial_manager.gd" id="9_xc83m"]
 [ext_resource type="Texture2D" uid="uid://b01421mbq0uvp" path="res://Assets/Textures/BlenderTextures/ElevatorShaft.png" id="10_5bd8b"]
 [ext_resource type="PackedScene" uid="uid://c5gsbgt4sbxui" path="res://Scenes/Prefabs/StaticObjects/MailRoomFloorLayout.tscn" id="11_7pkkb"]
 [ext_resource type="Texture2D" uid="uid://c6ajcb8q4d2y7" path="res://Assets/Textures/BlenderTextures/CartLight.png" id="12_1q60m"]
 [ext_resource type="PackedScene" uid="uid://clgw1aqyoiqcq" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall_cuttable.tscn" id="13_v0vi6"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ru4ij"]
-size = Vector3(4.52856, 3.04559, 4.39209)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_j45ys"]
-size = Vector3(1, 3.7345, 3.41296)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01aq2"]
 resource_name = "ElevatorShaft"
@@ -289,26 +282,6 @@ package_num = 7
 [node name="Mailcart" parent="." instance=ExtResource("8_i23t7")]
 transform = Transform3D(0.938559, 0, 0.345118, 0, 1, 0, -0.345118, 0, 0.938559, 8.51151, 0.291614, -3.08491)
 
-[node name="TutorialManager" type="Node3D" parent="."]
-script = ExtResource("9_xc83m")
-
-[node name="Start_Area" type="Area3D" parent="TutorialManager"]
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/Start_Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1695, 1.0228, -4.86059)
-shape = SubResource("BoxShape3D_ru4ij")
-
-[node name="Tutorial_Start" type="Area3D" parent="TutorialManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.92318)
-collision_layer = 0
-collision_mask = 12
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TutorialManager/Tutorial_Start"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8631, 1.83688, -2.19447)
-shape = SubResource("BoxShape3D_j45ys")
-
 [node name="ElevatorShaft2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, 20.0495, 8.42512, -9.73292)
 mesh = SubResource("ArrayMesh_wd6yl")
@@ -373,9 +346,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49166, -0.005)
 
 [node name="CollisionShape3D" parent="root/BottomCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, -0.01484, -0.00457764)
-
-[connection signal="body_entered" from="TutorialManager/Start_Area" to="TutorialManager" method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="TutorialManager/Tutorial_Start" to="TutorialManager" method="_on_tutorial_start_body_entered"]
 
 [editable path="mailroom_prefab"]
 [editable path="mailroom_prefab/Objects/Desk2"]

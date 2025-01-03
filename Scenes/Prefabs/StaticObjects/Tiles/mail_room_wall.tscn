@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://y2pmwstysa37" path="res://Assets/Textures/BlenderTextures/WallMailRoom.png" id="1_nw34a"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qjlte"]
-size = Vector3(3.41205, 11.9449, 0.349243)
+[sub_resource type="BoxShape3D" id="BoxShape3D_urr31"]
+size = Vector3(8.82482, 11.9449, 0.349243)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mpw0"]
 resource_name = "WallMailRoom"
@@ -49,8 +49,8 @@ collision_layer = 133
 collision_mask = 133
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0299072, 5.99332, -0.00457764)
-shape = SubResource("BoxShape3D_qjlte")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00310893, 5.99332, -0.00457764)
+shape = SubResource("BoxShape3D_urr31")
 
 [node name="WallMailRoom" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_lfxco")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://iogmkwy1n8lg"]
+[gd_scene load_steps=55 format=4 uid="uid://iogmkwy1n8lg"]
 
 [ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="1_5q88x"]
 [ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="2_fsy3c"]
@@ -28,10 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dhepsytbckakx" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_NormalGL.jpg" id="26_r54lp"]
 [ext_resource type="Texture2D" uid="uid://gqsedkoyeak2" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Color.jpg" id="27_chayg"]
 [ext_resource type="Texture2D" uid="uid://dtprrraywwk3u" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Roughness.png" id="28_tsokn"]
-[ext_resource type="Texture2D" uid="uid://c3qyu5oicypra" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_tezco256r.png" id="29_vclns"]
-[ext_resource type="Texture2D" uid="uid://bdqjdhf72u4sj" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png" id="30_5u33l"]
-[ext_resource type="Texture2D" uid="uid://cfpfwkaakamns" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg" id="31_j0haw"]
-[ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="32_r78rn"]
+[ext_resource type="PackedScene" uid="uid://dwppa8t33rotp" path="res://Scenes/Prefabs/Floors/hr_base_floor.tscn" id="29_fsy3c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1veq"]
 size = Vector3(1.50781, 7.758, 0.264832)
@@ -430,54 +427,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nimvp")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_leeic"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_texture = ExtResource("29_vclns")
-metallic_texture = ExtResource("30_5u33l")
-metallic_texture_channel = 2
-roughness_texture = ExtResource("30_5u33l")
-roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("31_j0haw")
-uv1_scale = Vector3(9.355, 9.355, 9.355)
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_37b6v"]
-_surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
-"format": 34896613377,
-"index_count": 6,
-"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAAP//AAD//wAA//8AAAAAAAAAAAAA//8AAAAAAAA=")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_24t6h"]
-resource_name = "floor_2_flooring_Plane"
-lightmap_size_hint = Vector2i(590, 362)
-_surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
-"attribute_data": PackedByteArray("AAAAAAAAgD92yH8/e6V/PwD/fz8AAAAA6ydeOucJtToAAIA/AP9/P3bIfz/nCbU6AAAAAAAAAADrJ146e6V/Pw=="),
-"format": 34359742519,
-"index_count": 6,
-"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"material": SubResource("StandardMaterial3D_leeic"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AACAvwAAAAAAAIA/AACAPwAAAAAAAIC/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC//3/9//7//7//f/3//v//v/9//f/+//+//3/9//7//78=")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_37b6v")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4u7hx"]
-size = Vector3(2.01099, 0.502625, 1.97589)
-
 [node name="human_resources_caracss_and_butcher" type="Node3D"]
 
 [node name="WALLS" type="Node3D" parent="."]
@@ -559,18 +508,6 @@ physics_material_override = SubResource("PhysicsMaterial_jp7h1")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 
-[node name="JoltHingeJoint3D2" parent="WALLS/HR_ArchwayWall2/RigidBody3D2"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
-
 [node name="Door_Lock" type="Node" parent="WALLS/HR_ArchwayWall2/RigidBody3D2"]
 script = ExtResource("3_jijxs")
 
@@ -616,18 +553,6 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_jp7h1")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
-
-[node name="JoltHingeJoint3D2" parent="WALLS/HR_ArchwayWall2/RigidBody3D3"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
 
 [node name="Door_Lock" type="Node" parent="WALLS/HR_ArchwayWall2/RigidBody3D3"]
 script = ExtResource("3_jijxs")
@@ -707,18 +632,6 @@ physics_material_override = SubResource("PhysicsMaterial_jp7h1")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 
-[node name="JoltHingeJoint3D2" parent="WALLS/HR_ArchwayWall3/RigidBody3D2"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
-
 [node name="Door_Lock" type="Node" parent="WALLS/HR_ArchwayWall3/RigidBody3D2"]
 script = ExtResource("3_jijxs")
 
@@ -764,18 +677,6 @@ mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_jp7h1")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
-
-[node name="JoltHingeJoint3D2" parent="WALLS/HR_ArchwayWall3/RigidBody3D3"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
 
 [node name="Door_Lock" type="Node" parent="WALLS/HR_ArchwayWall3/RigidBody3D3"]
 script = ExtResource("3_jijxs")
@@ -840,20 +741,8 @@ transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -8.41531, 
 
 [node name="FLOOR" type="Node3D" parent="."]
 
-[node name="Plane1" type="MeshInstance3D" parent="FLOOR"]
-transform = Transform3D(11.26, 0, 0, 0, 1.184, 0, 0, 0, 14.325, 0, 0, -5.55265)
-mesh = SubResource("ArrayMesh_24t6h")
-skeleton = NodePath("")
-
-[node name="footstep_collider_carpet" type="Area3D" parent="FLOOR/Plane1"]
-collision_layer = 32768
-collision_mask = 32768
-script = ExtResource("32_r78rn")
-floor_type = "bathroom"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FLOOR/Plane1/footstep_collider_carpet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00498939, -0.248688, -0.00963698)
-shape = SubResource("BoxShape3D_4u7hx")
+[node name="hr_base_floor" parent="FLOOR" instance=ExtResource("29_fsy3c")]
+transform = Transform3D(1.124, 0, 0, 0, 1, 0, 0, 0, 1.454, 0, 0, -5.358)
 
 [node name="CEILING" type="Node3D" parent="."]
 

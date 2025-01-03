@@ -2302,13 +2302,8 @@ stream = SubResource("AudioStreamRandomizer_uflfa")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_32lyv")
 
-[node name="DrawerScript" type="Node3D" parent="OBJECTS/Desk/Desk/DrawerTop" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
 script = ExtResource("42_i0v22")
-drawerOpenedSound = NodePath("../DrawerAudioOpen")
-drawerClosedSound = NodePath("../DrawerAudioClose")
-drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
-volume = -20.0
 
 [node name="DrawerBottom" type="RigidBody3D" parent="OBJECTS/Desk/Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.354336, 0.535279)
@@ -2360,13 +2355,8 @@ stream = SubResource("AudioStreamRandomizer_o45tc")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="OBJECTS/Desk/Desk/DrawerBottom"]
 stream = SubResource("AudioStreamRandomizer_1dong")
 
-[node name="DrawerScript" type="Node3D" parent="OBJECTS/Desk/Desk/DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="OBJECTS/Desk/Desk/DrawerBottom"]
 script = ExtResource("42_i0v22")
-drawerOpenedSound = NodePath("../DrawerAudioOpen")
-drawerClosedSound = NodePath("../DrawerAudioClose")
-drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
-volume = -20.0
 
 [node name="GrabableObjectTemplate" parent="OBJECTS/Desk/Desk" instance=ExtResource("44_q2nu3")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.0862923, 1.54579, -0.245459)
