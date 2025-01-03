@@ -1,12 +1,11 @@
-[gd_scene load_steps=49 format=4 uid="uid://b85fvq8nn7wpm"]
+[gd_scene load_steps=47 format=4 uid="uid://b85fvq8nn7wpm"]
 
 [ext_resource type="Script" path="res://Scripts/GUI/MonitorGui/MonitorVariables.gd" id="1_messh"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_r004m"]
 [ext_resource type="PackedScene" uid="uid://d3hn5glhsxdca" path="res://Assets/Models/computer.tscn" id="3_urhub"]
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="4_8cojr"]
-[ext_resource type="Script" path="res://Scripts/Interactable/ComputerInteractionHandler.gd" id="4_pdath"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="5_bjdtd"]
-[ext_resource type="Script" path="res://Scripts/GUI/MonitorGui/Monitor_Interaction.gd" id="5_cb522"]
+[ext_resource type="Script" uid="uid://8n68sstn22x" path="res://Scripts/Interactable/ComputerInteractionHandler.gd" id="4_pdath"]
+[ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="5_bjdtd"]
+[ext_resource type="Script" uid="uid://60o6youec62i" path="res://Scripts/GUI/MonitorGui/Monitor_Interaction.gd" id="5_cb522"]
 [ext_resource type="Script" path="res://Scripts/GUI/MonitorGui/login_menu.gd" id="6_cspqt"]
 [ext_resource type="AudioStream" uid="uid://5f5atatab1fl" path="res://Assets/Audio/SoundFX/DestructionComputer2.mp3" id="6_xamx0"]
 [ext_resource type="FontFile" uid="uid://s8snq2lwjjdn" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="7_g2b4m"]
@@ -121,7 +120,7 @@ size = Vector3(1.73148, 1.36295, 1.57025)
 resource_name = "Material.001"
 albedo_texture = ExtResource("4_8cojr")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_m5obd"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ghg7e"]
 resource_local_to_scene = true
 resource_name = "desk_Cube_001"
 _surfaces = [{
@@ -183,9 +182,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_amp1h")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_e7wfd"]
-size = Vector3(0.710388, 0.80896, 0.532669)
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hp4ao"]
 streams_count = 2
 stream_0/stream = ExtResource("6_xamx0")
@@ -207,10 +203,11 @@ script = ExtResource("1_messh")
 [node name="Monitor" type="RigidBody3D" parent="."]
 collision_layer = 18
 collision_mask = 31
+input_ray_pickable = false
 mass = 18.0
 center_of_mass_mode = 1
 sleeping = true
-script = ExtResource("1_r004m")
+freeze = true
 
 [node name="ComputerOn" type="MeshInstance3D" parent="Monitor"]
 transform = Transform3D(0.402973, 0, 0, 0, 0.402973, 0, 0, 0, 0.402973, 0, 0, 0)
@@ -221,6 +218,7 @@ skeleton = NodePath("")
 [node name="Area3D" type="Area3D" parent="Monitor/ComputerOn"]
 collision_layer = 2
 collision_mask = 2
+input_ray_pickable = false
 script = ExtResource("4_pdath")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Monitor/ComputerOn/Area3D"]
@@ -691,14 +689,10 @@ spot_angle = 102.6
 transform = Transform3D(0.403, 0, 0, 0, 0.403, 0, 0, 0, 0.403, 0, 0, 0)
 visible = false
 gi_mode = 1
-mesh = SubResource("ArrayMesh_m5obd")
+mesh = SubResource("ArrayMesh_ghg7e")
 
 [node name="Screen2" parent="Monitor/ComputerOff" index="0"]
 mesh = SubResource("ArrayMesh_fngp1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Monitor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00802603, -0.00274658, -0.00449379)
-shape = SubResource("BoxShape3D_e7wfd")
 
 [node name="Monitor_Collision_Handler" type="Node3D" parent="Monitor" node_paths=PackedStringArray("broken_models", "impact_audios", "destruction_audios")]
 script = ExtResource("5_bjdtd")

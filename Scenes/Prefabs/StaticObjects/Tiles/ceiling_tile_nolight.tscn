@@ -1,6 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://c8uw4jij34csj"]
+[gd_scene load_steps=7 format=4 uid="uid://c8uw4jij34csj"]
 
 [ext_resource type="Texture2D" uid="uid://bja0m3p5hofsb" path="res://Assets/Textures/BlenderTextures/LowPolyCeiling.png" id="1_2nfcf"]
+[ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_ki48j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v2j1w"]
+size = Vector3(8.77533, 1, 8.82343)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7ys1"]
 resource_name = "LowPolyCeiling"
@@ -40,16 +44,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3qehb")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_v2j1w"]
-size = Vector3(8.77533, 1, 8.82343)
-
-[node name="ceiling_tile_nolight" type="MeshInstance3D"]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
-mesh = SubResource("ArrayMesh_jiauj")
-skeleton = NodePath("")
+[node name="Node3D" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458066, 0.476197, 0.0591738)
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0.0296369, 0.308099, 0.0382854)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
@@ -57,3 +55,12 @@ shape = SubResource("BoxShape3D_v2j1w")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="StaticBody3D"]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -0.016174, 0.458589, -0.0208939)
+
+[node name="MultimeshPointer" type="Node3D" parent="." groups=["multimesh"]]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
+script = ExtResource("1_ki48j")
+wall_typed = "ceiling_tile"
+
+[node name="ceiling_tile_nolight" type="MeshInstance3D" parent="MultimeshPointer"]
+mesh = SubResource("ArrayMesh_jiauj")
+skeleton = NodePath("")

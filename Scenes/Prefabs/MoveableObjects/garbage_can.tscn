@@ -99,40 +99,39 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ie26e")
 
-[node name="GarbageCan" type="Node3D"]
-
-[node name="GarbageCan" type="RigidBody3D" parent="."]
+[node name="GarbageCan" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 15
 freeze = true
 script = ExtResource("1_sh53v")
+object_name = "bin"
 
-[node name="TrashCan" type="MeshInstance3D" parent="GarbageCan"]
+[node name="TrashCan" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.487262, 0, 0, 0, 0.487262, 0, 0, 0, 0.487262, 0, 0, 0)
 mesh = SubResource("ArrayMesh_sts1l")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GarbageCan"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_xr58b")
 
-[node name="ConcaveCollider" type="CollisionShape3D" parent="GarbageCan"]
+[node name="ConcaveCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.487262, 0, 0, 0, 0.487262, 0, 0, 0, 0.487262, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_mm73l")
 disabled = true
 
-[node name="Collision_Handler" type="Node3D" parent="GarbageCan" node_paths=PackedStringArray("impact_audios")]
+[node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
 script = ExtResource("4_1bdfq")
 impact_audios = NodePath("../ImpactAudioPlayer")
-initVolume = -20.0
 
-[node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="GarbageCan"]
+[node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_rrpps")
 volume_db = -10.0
+bus = &"RigidBodies"
 
-[node name="TrashCanCollision" type="MeshInstance3D" parent="GarbageCan"]
+[node name="TrashCanCollision" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.487262, 0, 0, 0, 0.487262, 0, 0, 0, 0.487262, 0, 0, 0)
 visible = false
 mesh = SubResource("ArrayMesh_05a8w")
 skeleton = NodePath("")
 
-[connection signal="body_entered" from="GarbageCan" to="GarbageCan/Collision_Handler" method="_on_body_entered"]
+[connection signal="body_entered" from="." to="Collision_Handler" method="_on_body_entered"]

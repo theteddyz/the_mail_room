@@ -15,27 +15,33 @@ const DOOR_TORQUE_MULTIPLIER: float = 0.02
 func _physics_process(delta):
 	if holding_drawer:
 		update_position(delta)
-
+func _enter_tree():
+	request_ready()
 
 func _ready():
 	player = GameManager.get_player()
-	camera = player.find_child("Camera")
-	player_head = player.find_child("Head")
-	player_raycast = player.find_child("InteractableFinder")
+	if player:
+		camera = player.find_child("Camera")
+		player_head = player.find_child("Head")
+		player_raycast = player.find_child("InteractableFinder")
 
 func grab():
+	if !player:
+		player = GameManager.get_player()
+		camera = player.find_child("Camera")
+		player_head = player.find_child("Head")
+		player_raycast = player.find_child("InteractableFinder")
 	set_physics_process(true)
 	set_process(true)
 	object = get_parent().current_grabbed_object
 	object.freeze = false
 	object.sleeping = false
-	object.set_collision_layer_value(2,false)
 	_mass = object.mass
 	grab_offset = player_raycast.get_collision_point() - object.global_transform.origin
 	EventBus.emitCustomSignal("disable_player_movement",[true,false])
 	holding_drawer = true
 	enable_collision_detection()
-	#EventBus.emitCustomSignal("show_icon",["grabClosed"])
+	EventBus.emitCustomSignal("show_icon",[object])
 	#if pickup_timer.is_stopped():
 		#if !timerAdded:
 			#add_child(pickup_timer)
@@ -47,7 +53,6 @@ func move_drawer_with_mouse(_event):
 
 func drop_object():
 	holding_drawer = false
-	object.set_collision_layer_value(2,true)
 	EventBus.emitCustomSignal("disable_player_movement",[false,false])
 	EventBus.emitCustomSignal("dropped_object", [object.mass,self])
 	object = null

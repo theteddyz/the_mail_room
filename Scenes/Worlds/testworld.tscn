@@ -1,21 +1,24 @@
-[gd_scene load_steps=28 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=33 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
-[ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
+[ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/Prefabs/gui/interactable_test.tscn" id="4_p0gx3"]
-[ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="5_6517x"]
+[ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="5_6517x"]
+[ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="12_dbw12"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="15_87p0u"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_door.tscn" id="15_koth6"]
-[ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="16_olrcr"]
-[ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="19_va06c"]
+[ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="16_olrcr"]
+[ext_resource type="PackedScene" uid="uid://bvha2qolbtfko" path="res://Scenes/Prefabs/MoveableObjects/desk_2_Only.tscn" id="17_mpvvd"]
+[ext_resource type="PackedScene" uid="uid://b85fvq8nn7wpm" path="res://Scenes/Prefabs/MoveableObjects/Monitor_interactable.tscn" id="18_87p0u"]
+[ext_resource type="PackedScene" uid="uid://b3tdwehc6j730" path="res://Scenes/Prefabs/crttv_screen.tscn" id="19_87p0u"]
 [ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="21_fscik"]
-[ext_resource type="PackedScene" uid="uid://duh0mp4ga7irm" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover.tscn" id="22_cdvgx"]
-[ext_resource type="Script" uid="uid://cbvb1snf756vu" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="22_n7wpk"]
-[ext_resource type="Script" uid="uid://cyfh53j3y05m0" path="res://Scripts/Misc/zone_optimizer.gd" id="24_s3eqx"]
+[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover.tscn" id="22_cdvgx"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="22_n7wpk"]
+[ext_resource type="Script" path="res://Scripts/Misc/zone_optimizer.gd" id="24_s3eqx"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
-[ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="44_epuy0"]
+[ext_resource type="Script" path="res://Scripts/Misc/floor_type.gd" id="44_epuy0"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_5ah0g"]
 vertices = PackedVector3Array(0, 1, -3.25, 0, 1, -5, -0.75, 1, -5.25, -1.5, 1, -2.5, -4.25, 1, -9.5, -4, 1, -10.75, -14.5, 1, -14.5, -0.75, 1, -6.25, 0, 1, -6.5, 0, 1, -9.25, -2.5, 1, -10.75, -2.75, 1, -14.5, -1.5, 1, -1.75, -14.5, 1, -1.75, 14, 1, -10.75, 14.25, 1, -10, 14.5, 1, -10, 14.5, 1, -14.5, 14, 1, -9.25, 11.25, 1, -5, 11.5, 1, -4, 14.5, 1, -4, 5.5, 1, -9.25, 5.75, 1, -4.5, 6, 1, -5, 2.75, 1, -2.25, 4.25, 1, -2.25, 4.25, 1, -3.25, 2.5, 1, -3.25, 0.75, 1, -6.25, 0.75, 1, -5.25, 5.75, 1, -3.5, 6.5, 1, -2, 5.75, 1, -1.25, 6, 1, -0.75, 7.5, 1, -0.5, 11.25, 1, -3.25, 7.25, 1, 1, 6, 1, 14.5, 14.5, 1, 14.5, 6.25, 1, -3.25, 6, 1, 1, 5.5, 1, -0.5, 4.5, 1, -1.25, 5.5, 1, 0.75, 1.5, 1, -0.25, 0, 1, -0.25, -0.5, 1, 14.5, 2.75, 1, -1, -0.5, 1, -0.75, -1.5, 1, -1.25, -14.5, 1, 14.5)
@@ -61,7 +64,17 @@ size = Vector3(11.7309, 11.1433, 9.20322)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxn8k"]
 size = Vector3(2.33154, 3.16882, 4.45436)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_uddld"]
+viewport_path = NodePath("CRTTVScreen/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bf1bd"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_uddld")
+uv1_scale = Vector3(8.225, 8.225, 8.225)
+uv1_offset = Vector3(0, 0.105, 0)
+
 [node name="world" type="Node3D" groups=["Persist"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00758815)
 script = ExtResource("1_y5q3h")
 floor_num = -1
 
@@ -130,11 +143,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0477006, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64869, -0.198545, -1.01932)
 shape = SubResource("BoxShape3D_xc3id")
 
-[node name="base_airduct" parent="." instance=ExtResource("19_va06c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7115, 0.858505, -1.48411)
-
 [node name="airduct_longer" parent="." instance=ExtResource("21_fscik")]
 transform = Transform3D(1.47, 0, 0, 0, 2.49, 0, 0, 0, 1.47, 14.4115, 0.57453, 3.80822)
+visible = false
 
 [node name="Area3D" type="Area3D" parent="airduct_longer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.260137)
@@ -143,11 +154,15 @@ collision_mask = 65536
 script = ExtResource("22_n7wpk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="airduct_longer/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1.00008, 0, 0, 0, 1, 0.00421238, 0.00830393, 0.635229)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00421238, 0.00830393, 0.635229)
 shape = SubResource("BoxShape3D_sc46n")
 
 [node name="airduct_vent_cover" parent="." instance=ExtResource("22_cdvgx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5565, 1.29504, 6.18498)
+visible = false
+
+[node name="Lamp2" parent="." instance=ExtResource("12_dbw12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4433, 0.902411, 3.11904)
 
 [node name="ZoneOptimizer" type="Area3D" parent="."]
 collision_layer = 0
@@ -169,13 +184,25 @@ shape = SubResource("BoxShape3D_vxn8k")
 
 [node name="Cardboard_box_big" parent="." instance=ExtResource("15_87p0u")]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1671, 0.325687, 0.501174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1671, 0.325687, 7.29156)
 
 [node name="StaticBody3D" parent="." instance=ExtResource("15_koth6")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -3.45649, 0.00906801, -7.39729)
 
 [node name="Desk" parent="." instance=ExtResource("16_olrcr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14609, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.93076, 0.0369394, -1.36663)
+
+[node name="Desk2" parent="." instance=ExtResource("17_mpvvd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08481, 0.0474928, 4.44076)
+
+[node name="Monitor" parent="." instance=ExtResource("18_87p0u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.02617, 1.58316, 4.67029)
+usernames = Array[String](["John"])
+passwords = Array[String](["aaa"])
+
+[node name="CRTTVScreen" parent="." instance=ExtResource("19_87p0u")]
+transform = Transform3D(4.37114e-08, -6.60023e-15, 1, -1.50996e-07, -1, 2.5411e-21, 1, -1.50996e-07, -4.37114e-08, 8.34449, 1.6725, 8.79802)
+material_override = SubResource("StandardMaterial3D_bf1bd")
 
 [connection signal="body_entered" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_exited"]

@@ -1,14 +1,19 @@
-[gd_scene load_steps=25 format=4 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=36 format=4 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Script" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_3nw8p"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_2im65"]
 [ext_resource type="Environment" uid="uid://bhc42hyiv0lac" path="res://Scenes/Worlds/mail_room.tres" id="3_r8df3"]
 [ext_resource type="Script" path="res://Scenes/Worlds/world_environment_data.gd" id="4_gvu72"]
 [ext_resource type="PackedScene" uid="uid://bb75w210dxt14" path="res://Scenes/Prefabs/Rooms/mailroom.tscn" id="6_b44l8"]
+[ext_resource type="Texture2D" uid="uid://cewsovmotus3" path="res://Assets/Models/BlenderModels/desk_CRTTV.png" id="13_p37jt"]
+[ext_resource type="PackedScene" uid="uid://c03lqw7vrgadb" path="res://Scenes/Prefabs/StaticObjects/crttv.tscn" id="13_pdcxx"]
+[ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="17_6rxuj"]
+[ext_resource type="VideoStream" uid="uid://cnbk21vsheyrr" path="res://Assets/crt-video-final-master-peter-3-1-jnne1j.ogv" id="17_p37jt"]
+[ext_resource type="AudioStream" uid="uid://cqiw4v1eyh2jv" path="res://Assets/CRT Video Final Master Peter 3 (1).mp3" id="17_ub5ip"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="29_3ttsr"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="30_xol48"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="31_3qdax"]
-[ext_resource type="Script" path="res://Scripts/GameManagement/tutorial_manager.gd" id="32_yjldp"]
+[ext_resource type="Script" uid="uid://dtdjtui3dj5fj" path="res://Scripts/GameManagement/tutorial_manager.gd" id="32_yjldp"]
 [ext_resource type="Texture2D" uid="uid://b01421mbq0uvp" path="res://Assets/Textures/BlenderTextures/ElevatorShaft.png" id="33_fpqgk"]
 [ext_resource type="PackedScene" uid="uid://c5gsbgt4sbxui" path="res://Scenes/Prefabs/StaticObjects/MailRoomFloorLayout.tscn" id="34_wi3qf"]
 [ext_resource type="Texture2D" uid="uid://c6ajcb8q4d2y7" path="res://Assets/Textures/BlenderTextures/CartLight.png" id="35_hf3b2"]
@@ -141,6 +146,61 @@ shadow_mesh = SubResource("ArrayMesh_yd030")
 [sub_resource type="BoxMesh" id="BoxMesh_xx5t2"]
 size = Vector3(1.47, 1, 32.53)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ub5ip"]
+viewport_path = NodePath("Crttv/CRTTVScreen/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6rxuj"]
+viewport_path = NodePath("Crttv/CRTTVScreen/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lck6i"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ub5ip")
+emission_enabled = true
+emission_energy_multiplier = 0.5
+emission_texture = SubResource("ViewportTexture_6rxuj")
+uv1_scale = Vector3(8.27, 9.36, 8.27)
+uv1_offset = Vector3(0, -1.32, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sadm6"]
+resource_name = "CRTTV"
+cull_mode = 2
+albedo_texture = ExtResource("13_p37jt")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sxr0h"]
+_surfaces = [{
+"aabb": AABB(-0.39236, -0.344154, -0.517475, 0.784719, 0.81461, 0.0743194),
+"format": 34896613377,
+"index_count": 150,
+"index_data": PackedByteArray("FAACAAAAFAABAAIAHQAUAAAAHQAAAAYAHgABABQAHgADAAEAHwAUAB0AHwAeABQAFQAdAAYAFQAGAAwAGwAfAB0AGwAdABUAIAADAB4AIAAEAAMAFwAeAB8AFwAgAB4AGQAfABsAGQAXAB8AFgAEACAAFgAJAAQACAAJABYACAAKAAkABwAIABYAGAAWACAABwAWABgAGAAgABcABQAHABgAIQAYABcABQAYACEAIQAXABkADQAFACEADQAhABoAGgAhABkAEwANABoAEwAaABIAGgAZACIAEgAaACIAIgAZABsAEgAiABEAIgAbACMAEQAiACMAIwAbABUAEQAjAAsAIwAVABwACwAjABwAHAAVAAwACwAcAA8AHAAMAA4ADwAcAA4ADwAOABAA"),
+"lods": [0.00688285, PackedByteArray("FAACAAAAFAABAAIAFAADAAEAFQAUAAAAFQAAAAYAFgADABQAFgAEAAMAFQAGAAwAFgAJAAQAFwAUABUAFwAWABQACAAJABYACAAKAAkABwAIABYABwAWABgAGAAWABcABQAHABgADQAFABgAGAAXABkADQAYABoAGgAYABkAEwANABoAEwAaABIAEgAaABEAGQAXABsAGgAZABsAGwAXABUAEQAaABwAGgAbABwAHAAbABUAEQAcAAsAHAAVAAwACwAcAA8AHAAMAA4ADwAcAA4ADwAOABAA"), 0.0425732, PackedByteArray("AAABAAIAAAADAAEABAADAAAABQAEAAAABQAAAAYABwAEAAUABwAIAAQACAAJAAQACAAKAAkACwAFAAYACwAGAAwADQAFAAsACwAMAA4ADwALAA4ADwAOABAAEQANAAsAEgANABEAEwANABIA")],
+"name": "CRTTV",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("//8yM+qfAADMzAAAhqcAAP//AAD+/wAAmZkAAKWDAABmZgAApYMAAAAAmZnIewAA//9lZsh7AAAAAGVmyHsAAAAAMzPqnwAAMzMAAIanAAAAAAAA/v8AAJmZ//+lgwAA//+Ymch7AAAAAMvM6p8AAP//y8zqnwAAzMz//4anAAD///////8AAGZm//+lgwAAMzP//4anAAAAAP////8AAMzMMjOUOgAAzMyYmcQZAAAzMzIzlDoAAGZmZWYAAAAAMzNlZsQZAABmZpmZAAAAADMzy8yUOgAAmZmYmQAAAADMzMvMlDoAAMzMZWbEGQAAmZkyM+sbAACZmWVmAAAAAGZmMjPrGwAAMzOZmcQZAABmZsvM6xsAAJmZy8zrGwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bf1bd"]
+resource_name = "desk_Cube_178"
+_surfaces = [{
+"aabb": AABB(-0.39236, -0.344154, -0.517475, 0.784719, 0.81461, 0.0743194),
+"attribute_data": PackedByteArray("DPizXy7ymFki+INZR+ybWWHmmVmZ2vNrCvjTZZja02WW2rFfeOCVWYLaf1lD7C54DPjza5faE3IN+BVyLPIyeCL4R3hd5it4duAueILaQ3gX8slfE/Lra47gyF9o5t1lkeDbZWfm6muN4P1xPOzqaxby/nEU8ttlPuzMXzzs3GVn5sxfkODra2Xm+nE87Ppx"),
+"format": 34896613399,
+"index_count": 150,
+"index_data": PackedByteArray("FAACAAAAFAABAAIAHQAUAAAAHQAAAAYAHgABABQAHgADAAEAHwAUAB0AHwAeABQAFQAdAAYAFQAGAAwAGwAfAB0AGwAdABUAIAADAB4AIAAEAAMAFwAeAB8AFwAgAB4AGQAfABsAGQAXAB8AFgAEACAAFgAJAAQACAAJABYACAAKAAkABwAIABYAGAAWACAABwAWABgAGAAgABcABQAHABgAIQAYABcABQAYACEAIQAXABkADQAFACEADQAhABoAGgAhABkAEwANABoAEwAaABIAGgAZACIAEgAaACIAIgAZABsAEgAiABEAIgAbACMAEQAiACMAIwAbABUAEQAjAAsAIwAVABwACwAjABwAHAAVAAwACwAcAA8AHAAMAA4ADwAcAA4ADwAOABAA"),
+"lods": [0.00688285, PackedByteArray("FAACAAAAFAABAAIAFAADAAEAFQAUAAAAFQAAAAYAFgADABQAFgAEAAMAFQAGAAwAFgAJAAQAFwAUABUAFwAWABQACAAJABYACAAKAAkABwAIABYABwAWABgAGAAWABcABQAHABgADQAFABgAGAAXABkADQAYABoAGgAYABkAEwANABoAEwAaABIAEgAaABEAGQAXABsAGgAZABsAGwAXABUAEQAaABwAGgAbABwAHAAbABUAEQAcAAsAHAAVAAwACwAcAA8AHAAMAA4ADwAcAA4ADwAOABAA"), 0.0425732, PackedByteArray("AAABAAIAAAADAAEABAADAAAABQAEAAAABQAAAAYABwAEAAUABwAIAAQACAAJAAQACAAKAAkACwAFAAYACwAGAAwADQAFAAsACwAMAA4ADwALAA4ADwAOABAAEQANAAsAEgANABEAEwANABIA")],
+"material": SubResource("StandardMaterial3D_sadm6"),
+"name": "CRTTV",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("//8yM+qfE/vMzAAAhqeM+P//AAD+/7b4mZkAAKWDdvhmZgAApYN1+AAAmZnIe77+//9lZsh7u/4AAGVmyHu7/gAAMzPqnxP7MzMAAIani/gAAAAA/v+2+JmZ//+lg3X4//+Ymch7vv4AAMvM6p8T+///y8zqnxP7zMz//4ani/j///////+2+GZm//+lg3b4MzP//4anjPgAAP////+2+MzMMjOUOhv7zMyYmcQZ1P4zMzIzlDob+2ZmZWYAAPD+MzNlZsQZ1P5mZpmZAADw/jMzy8yUOhv7mZmYmQAA8P7MzMvMlDob+8zMZWbEGdT+mZkyM+sbLfuZmWVmAADw/mZmMjPrGy37MzOZmcQZ1P5mZsvM6xst+5mZy8zrGy37MgBgdTMAUIcHAMp1KwAcggAC7X/L/9GKYwACdf0KY4CfCjKASAfUfzsKD4D+/RGALPXLf8z/nopf9cx/tvgqgMP173/T/+J9y/+uePf/NIoAAO54BPn/fxIH/3+TAf5/+gb+f/7/a37+/xCHa/4AgOz4/38AAPqGDQDVgQAAk4HWAfF//v8EefH/KX4o/g2A")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_sxr0h")
+
 [node name="world" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_3nw8p")
@@ -154,6 +214,57 @@ environment = ExtResource("3_r8df3")
 script = ExtResource("4_gvu72")
 
 [node name="mailroom_prefab" parent="." instance=ExtResource("6_b44l8")]
+
+[node name="StaticBody3D" parent="mailroom_prefab/Objects" index="6" node_paths=PackedStringArray("game_objects")]
+game_objects = [NodePath("../../../Package7")]
+
+[node name="RigidBody3D" parent="mailroom_prefab/Objects/StaticBody3D6/Chute" index="1"]
+script = null
+
+[node name="PackageDestination" parent="mailroom_prefab/Objects/Desk2/MailboxStand" index="2"]
+accepted_num = 7
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn3" index="1"]
+visible = true
+
+[node name="CeilingLightOn5" parent="mailroom_prefab/Lights" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn5" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn25" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn14" index="1"]
+visible = true
+
+[node name="CeilingLightOn8" parent="mailroom_prefab/Lights" index="4"]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -9.33502, 4.6609, -1.74609)
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn8" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn17" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn16" index="1"]
+visible = true
+
+[node name="CeilingLightOn10" parent="mailroom_prefab/Lights" index="7"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn24" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn26" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn27" index="1"]
+visible = true
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn28" index="1"]
+visible = true
 
 [node name="Elevator" parent="." instance=ExtResource("29_3ttsr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.7281, 0.411036, -7.179)
@@ -256,7 +367,7 @@ cart_position = Vector3(0, 0.65, 0)
 package_num = 6
 
 [node name="Package7" parent="." instance=ExtResource("30_xol48")]
-transform = Transform3D(1, 0, 0, 0, 0.819693, -0.572804, 0, 0.572804, 0.819693, -19.4692, 2.23437, -11.8425)
+transform = Transform3D(1, 0, 0, 0, 0.819693, -0.572804, 0, 0.572804, 0.819693, -11.4546, 2.23437, -11.8425)
 visible = false
 freeze = true
 package_full_address = "Package 1
@@ -340,5 +451,53 @@ spot_angle_attenuation = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5928, 6.12578, -7.48261)
 mesh = SubResource("BoxMesh_xx5t2")
 
+[node name="Crttv" parent="." instance=ExtResource("13_pdcxx")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.14041, 0, -4.91843)
+
+[node name="Area3D" parent="Crttv" index="10" node_paths=PackedStringArray("video_player", "audio_player")]
+video_player = NodePath("../CRTTVScreen/SubViewport/VideoStreamPlayer")
+audio_player = NodePath("../CRTTVScreen/AudioStreamPlayer3D")
+
+[node name="CRTTVScreen" type="MeshInstance3D" parent="Crttv"]
+transform = Transform3D(-0.859494, 7.51393e-08, -1.06581e-14, -7.51393e-08, -0.859494, 0, -1.06581e-14, 6.35275e-22, 0.859494, 0, 1.99082, -0.00275421)
+material_override = SubResource("StandardMaterial3D_lck6i")
+mesh = SubResource("ArrayMesh_bf1bd")
+skeleton = NodePath("")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Crttv/CRTTVScreen"]
+transform = Transform3D(-1.16348, -1.01714e-07, 0, 1.01714e-07, -1.16348, 0, 0, 0, 1.16348, 0, 0, 0)
+stream = ExtResource("17_ub5ip")
+unit_size = 5.0
+
+[node name="SubViewport" type="SubViewport" parent="Crttv/CRTTVScreen"]
+size = Vector2i(400, 300)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Crttv/CRTTVScreen/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+audio_track = 1
+stream = ExtResource("17_p37jt")
+expand = true
+
+[node name="Node3D" parent="." instance=ExtResource("17_6rxuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2066, -0.176723, -5.97259)
+
 [connection signal="body_entered" from="TutorialManager/Start_Area" to="TutorialManager" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="TutorialManager/Tutorial_Start" to="TutorialManager" method="_on_tutorial_start_body_entered"]
+
+[editable path="mailroom_prefab"]
+[editable path="mailroom_prefab/Objects/StaticBody3D6"]
+[editable path="mailroom_prefab/Objects/Desk2"]
+[editable path="mailroom_prefab/Objects/Desk2/MailboxStand"]
+[editable path="mailroom_prefab/Walls/StaticBody3D14"]
+[editable path="mailroom_prefab/Walls/StaticBody3D17"]
+[editable path="Crttv"]

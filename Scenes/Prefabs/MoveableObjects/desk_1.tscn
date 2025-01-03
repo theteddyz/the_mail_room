@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bupcu04fap7xp" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="10_wk3io"]
 [ext_resource type="PackedScene" uid="uid://3bbxkn5brr4h" path="res://Scenes/Prefabs/crouch_assistant.tscn" id="15_o3tfw"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_78s4l"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
 size = Vector3(2.69171, 0.0540848, 1.33634)
 
@@ -33,7 +35,7 @@ cull_mode = 2
 albedo_texture = ExtResource("2_rbvap")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_eqkyc"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_liklh"]
 _surfaces = [{
 "aabb": AABB(-2.24306, -0.9522, -1.11668, 4.48611, 1.9044, 2.23337),
 "format": 34896613377,
@@ -63,9 +65,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("vvIAAGoZ//++8gAAahlU1b7yAABqGf//vvIAAHfw//++8gAAd/BU1b7yAAB38P//QA0AAGoZ//9ADQAAahn//0ANAABqGf+/QA0AAHfw//9ADQAAd/D//0ANAAB38P+/+u4AAHfw///67gAAd/BU1fruAAB38IXB+u4AAHfw/7/67gAAahn///ruAABqGVTVBBEAACki/78EEQAAKSL//wQRAAApIlTVBBEAACki/78EEQAAahn//wQRAABqGf//BBEAAHfw//8EEQAAd/D//wQRAAB38FTV+u4AACkiVNX67gAAKSL/v/ruAAApIv+/vvIAAHkhVNW+8gAAeSH//0ANAAB5If//QA0AAHkh/79ADfPxd/D//0AN8/F38P//QA3z8Xfw/7++8vPxahn//77y8/FqGf//vvLz8WoZ//++8vPxd/D//77y8/F38P//vvLz8Xfw//9ADfPxahn//0AN8/FqGf//QA3z8WoZ/7/67vPxd/D///ru8/F38MXV+u7z8Xfw///67vPxd/CFwfru8/FqGf//+u7z8WoZ//8EEfPxahn//wQR8/FqGf//BBHz8Xfw//8EEfPxd/C+1QQR8/F38P//BBHz8XfwVtUEEfPxd/BU1b7y8/F5If//vvLz8Xkh//9ADfPxeSH//0AN8/F5If+/BBHz8SkiVtUEEfPxKSJU1QQR8/EpIv+/Fe9rFkoi//8V72sWSiL/vxXvaxZKIv+/Fe9rFtPq/38V72sW0+r//xXvaxbT6oXBFe9rFtPq/78V7xPy0+r/fxXvE/LT6sbVFe8T8tPqhcF1rmsWSiL//3WuaxZKIv+/da5rFkoi/791rmsWSiJU1XWuE/JKIlbVda4T8koi/791rhPySiJU1XWuaxbT6v9/da5rFtPq//91rmsW0+pU1XWuE/LT6v9/da4T8tPqvtV1rhPy0+pW1XWuE/LT6lTVeeyN7NPq/3957I3s0+r//3nsjezT6lTVeezxG9Pq/3957PEb0+pU1Xns8RvT6lTVELHxG9Pq/38QsfEb0+pU1RCx8RvT6v+/ELGN7NPq/38QsY3s0+r//xCxjezT6v+/eeyN7LJF/7957I3sskX//3nsjeyyRVTVeezxG7JF/7957PEbskVU1Xns8RuyRVTVELHxG7JF/78QsfEbskVU1RCx8RuyRf+/ELGN7LJF/78QsY3sskX//xCxjeyyRf+/9jJgFjAi/7/2MmAWMCL///YyYBYwIlTV9jJgFjAi/79FTmAWNiL//0VOYBY2Iv+/RU5gFjYi/79FTmAWNiJU1UVOAAApIlTVRU4AACki/79FTgAAKSJU1fYyAAApIv+/9jIAACki///2MgAAKSJU1UVOAABqGf//RU4AAGoZVNVFTgAAahlU1fYyAABqGf//9jIAAGoZ///2MgAAahlU1UVOYBZqGf//RU5gFmoZ//9FTmAWahlU1fYyYBZqGf//9jJgFmoZ///2MmAWahlU1QAA8/H+////AADz8f7///8AAPPx/v//vwAA///+////AAD///7/VNUAAP///v//vwAA///aGFTVAAD//9oY/78AAP//AAD//wAA//8AAFTVAAD//wAA/7//////AAD///////8AAFTV/////wAAVNX/////2hhU1f/////aGFTVfvXz8QAA//9+9fPxAAD/////8/EAAP/////z8QAA//////PxAABU1YAK8/H+////gArz8f7//////////v/////////+/1TV//////7/VNX///Px/v//////8/H+///////z8f7/VNUAAPPxAAD//wAA8/EAAP//AADz8QAA/79+9f///v///371///+/1TVfvXz8f7///9+9fPx/v///371//8AAP//fvX//wAAVNWACv//AAD//4AK//8AAFTVgArz8QAA//+ACvPxAAD//4AK///+////gAr///7/VNX///Px2hj/////8/HaGFTVAADz8doY//8AAPPx2hj/v/+//79UVVRV/7//f/9//39UVVRV/7//f/+//7//f/8//3////9//3//f/8//3/+//9//39UVVRV/3/+/66Amv7/v/+/VFVUVeZ/5n//f/8/qqpUVfh/BoD/v/+//3//P/9//3//f/8/qqpUVVRVVFWkf6d/roCa/lRVVFX/v/9//3//P/9/////f/9//3//P/9/////v/+//3//P/+//3//f/9//3//P/+//3//v/+//3//P/9/////f/9/7ioP1f9//z//f/7//7//v/9//z//v/+//3//P/9//3/pKgbV/3//P6gqU9WqqlRV/3//P/+//3//f/8//3///6gqU9WqqlRV+H8GgP9//z+kf6d/roCa/v//////f/8//3/+/66Amv7/f///7ioQ1f9//v//f/8/pH+nf/h/BoBU1VTVqCpT1fh/BoBU1VTV/3////9//z9U1VTV/////+kqBtWoKlPVVNVU1f9/////f/8/VNVU1f////+qqqqqVNVU1f9///+qqqqq/38AAP//////f/8//38AAP9//3//f/8/VNVU1f9//3+qqqqqVNVU1f9//3+qqqqq/38AAP9//3//f/8//38AAOZ/5n//f/8/qqpVVfh/BoD/f/8/pH+nf/h/BoBU1VTVVFVUVaR/p39U1VTV5n/mf/9//z+qqlVV/7//v1RVVFVU1VTV/7//v/9//z+qqlVV/7//v/9//z9U1VTV/7//v/9//z+qqlRV//////9//z//f////3//f6qqqar/f///qqqpqv9/////v/+/qqqpqv9/////v/+/qqqqqqqqVFWqqqqqqqpUVf+//7//f/8//7//v/9//z+qqlRV/3//f/9//z//f/9/qqqqqqqqVFX/f/9//3//P6qqVFX/v/+//3//P/9/////f/9/qqqqqv9//3//f/8//7//v6qqqqr/v/+/qqqpqv+//7//f/8//3//f6qqqqr/f/8/qqpUVf9//z//f///")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_eqkyc")
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_78s4l"]
+shadow_mesh = SubResource("ArrayMesh_liklh")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8mkc3"]
 
@@ -144,13 +144,33 @@ stream_0/stream = ExtResource("8_kp863")
 [sub_resource type="BoxShape3D" id="BoxShape3D_5vlwi"]
 size = Vector3(1.42514, 1.04016, 1.22727)
 
-[node name="Desk" type="Node3D"]
+[node name="Node3D" type="Node3D"]
+
+[node name="MailboxStand" parent="." instance=ExtResource("4_nflhx")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.90258, 1.16724, -0.248536)
+physics_material_override = SubResource("PhysicsMaterial_78s4l")
+sleeping = true
+freeze = true
+
+[node name="Lamp" parent="." instance=ExtResource("5_t6sno")]
+transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448, 1.05325, 1.37807, -0.335846)
+
+[node name="Chair" parent="." instance=ExtResource("6_huuqb")]
+transform = Transform3D(-0.999968, 0, -0.00808077, 0, 1, 0, 0.00808077, 0, -0.999968, -0.403, 0.886213, 1.054)
+
+[node name="GarbageCan" parent="." instance=ExtResource("7_nth33")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78488, 0.334743, 0.0209348)
+
+[node name="Keyboard" parent="." instance=ExtResource("10_wk3io")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15408, 1.16596, 0.442178)
 
 [node name="Desk" type="RigidBody3D" parent="."]
 collision_layer = 2
 collision_mask = 15
 mass = 50.0
 freeze = true
+script = ExtResource("3_liklh")
+should_freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.13829, 0.000576701)
@@ -166,7 +186,6 @@ shape = SubResource("BoxShape3D_1ixxc")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00372458, 0.570121, -0.515287)
-visible = false
 shape = SubResource("BoxShape3D_40acm")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Desk"]
@@ -177,12 +196,6 @@ shape = SubResource("BoxShape3D_xtl34")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.60024, 0)
 mesh = SubResource("ArrayMesh_1uyv0")
 skeleton = NodePath("")
-
-[node name="MailboxStand" parent="Desk" instance=ExtResource("4_nflhx")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.90258, 1.16724, -0.248536)
-physics_material_override = SubResource("PhysicsMaterial_78s4l")
-sleeping = true
-freeze = true
 
 [node name="DrawerTop" type="RigidBody3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.824136, 0.535279)
@@ -221,13 +234,8 @@ stream = SubResource("AudioStreamRandomizer_uflfa")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_32lyv")
 
-[node name="DrawerScript" type="Node3D" parent="Desk/DrawerTop" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="Desk/DrawerTop"]
 script = ExtResource("9_dga2v")
-drawerOpenedSound = NodePath("../DrawerAudioOpen")
-drawerClosedSound = NodePath("../DrawerAudioClose")
-drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
-volume = -20.0
 
 [node name="DrawerBottom" type="RigidBody3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.354336, 0.535279)
@@ -266,27 +274,8 @@ stream = SubResource("AudioStreamRandomizer_o45tc")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="Desk/DrawerBottom"]
 stream = SubResource("AudioStreamRandomizer_1dong")
 
-[node name="DrawerScript" type="Node3D" parent="Desk/DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound")]
+[node name="DrawerScript" type="Node3D" parent="Desk/DrawerBottom"]
 script = ExtResource("9_dga2v")
-drawerOpenedSound = NodePath("../DrawerAudioOpen")
-drawerClosedSound = NodePath("../DrawerAudioClose")
-drawerLoopSound = NodePath("../DrawerAudioLoop")
-volume = -20.0
-
-[node name="GrabableObjectTemplate" parent="Desk" instance=ExtResource("4_6fufh")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0862904, 1.54579, -0.245461)
-
-[node name="Lamp" parent="Desk" instance=ExtResource("5_t6sno")]
-transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448, 1.05325, 1.37807, -0.335846)
-
-[node name="Chair" parent="Desk" instance=ExtResource("6_huuqb")]
-transform = Transform3D(-0.999968, 0, -0.00808077, 0, 1, 0, 0.00808077, 0, -0.999968, -0.403, 0.886213, 1.054)
-
-[node name="GarbageCan" parent="Desk" instance=ExtResource("7_nth33")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78488, 0.334743, 0.0209348)
-
-[node name="Keyboard" parent="Desk" instance=ExtResource("10_wk3io")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15408, 1.16596, 0.442178)
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015564, 1.1401, -0.00088501)
@@ -304,10 +293,13 @@ size = Vector3(0.720642, 1.08237, 1.11525)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000239968, 0.568491, -0.518002)
 size = Vector3(2.41283, 1.08237, 0.0366831)
 
-[node name="Crouch_Assistant" parent="." instance=ExtResource("15_o3tfw")]
+[node name="Crouch_Assistant" parent="Desk" instance=ExtResource("15_o3tfw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419168, 0)
 collision_layer = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Crouch_Assistant"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/Crouch_Assistant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.219313, 0.227207, 0.0836834)
 shape = SubResource("BoxShape3D_5vlwi")
+
+[node name="Monitor" parent="." instance=ExtResource("4_6fufh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.142885, 1.59009, -0.26953)

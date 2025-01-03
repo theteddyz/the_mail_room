@@ -97,7 +97,7 @@ func _ready():
 
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and !is_reading:
 		handle_mouse_motion(event)
 	elif event is InputEventJoypadMotion:
 		handle_joypad_motion(event)
@@ -427,8 +427,11 @@ func sound_timeout():
 func apply_pushes():
 	for i in persistent_state.get_slide_collision_count():
 		var c = persistent_state.get_slide_collision(i)
-		if c.get_collider() is RigidBody3D and c.get_collider().name != "Mailcart":
-			print(c.get_collider().name)
-			if c.get_collider().freeze and !c.get_collider().should_freeze:
-				c.get_collider().freeze = false
-			c.get_collider().apply_central_force(-c.get_normal() * current_speed*5)
+		var col = c.get_collider()
+		if col is RigidBody3D and col.name != "Mailcart":
+			if col.freeze:
+				if "grab_type" in col and !col.should_freeze:
+					col.freeze = false
+				else:
+					col.freeze = false
+			col.apply_central_force(-c.get_normal() * current_speed*5)

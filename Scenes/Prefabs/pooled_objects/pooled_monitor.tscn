@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbf33iv4ea55q"]
+
+[ext_resource type="Script" uid="uid://b3ts5234pnx1" path="res://Scripts/MoveableObjects/pooled_object.gd" id="1_pmvjj"]
+
+[node name="Pooled_monitor" type="VisibleOnScreenNotifier3D"]
+script = ExtResource("1_pmvjj")
+object = "monitor"

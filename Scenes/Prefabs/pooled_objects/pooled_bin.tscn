@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://mfqj1o3vkdbs"]
+
+[ext_resource type="Script" uid="uid://b3ts5234pnx1" path="res://Scripts/MoveableObjects/pooled_object.gd" id="1_jt7pb"]
+[ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="2_jt7pb"]
+
+[node name="pooled_bin" type="VisibleOnScreenNotifier3D"]
+script = ExtResource("1_jt7pb")
+object = "bin"
+
+[node name="GarbageCan" parent="." instance=ExtResource("2_jt7pb")]

@@ -12,21 +12,9 @@ var scale_factor = 0.5
 @onready var node_area = $"../Screen/Area3D"
 @onready var mouse_cursor = $SubViewport/GUI/MouseCursor
 func _ready():
-	node_area.mouse_entered.connect(_mouse_entered_area)
-	node_area.mouse_exited.connect(_mouse_exited_area)
+	#node_area.mouse_entered.connect(_mouse_entered_area)
+	#node_area.mouse_exited.connect(_mouse_exited_area)
 	node_area.input_event.connect(_mouse_input_event)
-	
-	if node_quad.get_surface_override_material(0).billboard_mode == BaseMaterial3D.BillboardMode.BILLBOARD_DISABLED:
-		set_process(false)
-
-
-
-func _mouse_entered_area():
-	is_mouse_inside = true
-
-
-func _mouse_exited_area():
-	is_mouse_inside = false
 
 
 func _unhandled_input(event):
@@ -42,12 +30,10 @@ func _unhandled_input(event):
 func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int):
 	# Get mesh size to detect edges and make conversions. This code only support PlaneMesh and QuadMesh.
 	var quad_mesh_size = node_quad.mesh.size
-
 	# Event position in Area3D in world coordinate space.
 	var event_pos3D = event_position
 	# Current time in seconds since engine start.
 	var now: float = Time.get_ticks_msec() / 1000.0
-
 	# Convert position to a coordinate space relative to the Area3D node.
 	# NOTE: affine_inverse accounts for the Area3D node's scale, rotation, and position in the scene!
 	event_pos3D = node_quad.global_transform.affine_inverse() * event_pos3D

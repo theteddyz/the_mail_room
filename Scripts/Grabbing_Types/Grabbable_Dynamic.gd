@@ -9,6 +9,7 @@ var is_rotating = false
 var is_door:bool = false
 var is_drawer:bool = false
 var grab_offset: Vector3 = Vector3.ZERO
+var grab_offset_tether: Vector3 = Vector3.ZERO
 var player_raycast:RayCast3D
 var initial_basis = Basis()
 var grab_distance = 0
@@ -16,40 +17,46 @@ var force:Vector3 = Vector3.ZERO
 var is_tether_max_range: bool = false
 var _mass
 var force_above_threshold_time: float = 0.0 
+@export var tether_distance: float = 2.5
 @export var distance_threshold: float = 6.0
 @export var drop_time_threshold: float = 0.5
+@export var throw_strength: float = 700.0  
 var mouse_line: MeshInstance3D
 var mouse_line_material: ORMMaterial3D
+var throw_direction = Vector3.ZERO
 func _ready():
 	player = GameManager.get_player()
-	camera = player.find_child("Camera")
-	player_head = player.find_child("Head")
-	player_raycast = player.find_child("InteractableFinder")
-	mouse_line_material = ORMMaterial3D.new()
-	mouse_line_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	mouse_line_material.albedo_color = Color(0.5,0.5,0.5)
-
+	if player:
+		camera = player.find_child("Camera")
+		player_head = player.find_child("Head")
+		player_raycast = player.find_child("InteractableFinder")
+		mouse_line_material = ORMMaterial3D.new()
+		mouse_line_material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		mouse_line_material.albedo_color = Color(0.5,0.5,0.5)
+		call_deferred("_init_mouse_line")
 
 
 func grab():
+	if !player:
+		player = GameManager.get_player()
+		camera = player.find_child("Camera")
+		player_head = player.find_child("Head")
+		player_raycast = player.find_child("InteractableFinder")
 	set_physics_process(true)
 	set_process(true)
 	object = get_parent().current_grabbed_object
 	object.freeze = false
 	object.sleeping = false
-	object.set_collision_layer_value(2,false)
 	_mass = object.mass
-	grab_offset = player_raycast.get_collision_point() - object.global_transform.origin
+	grab_offset = object.to_local(player_raycast.get_collision_point())
+	grab_offset_tether = player_raycast.get_collision_point() - object.global_transform.origin
 	#if pickup_timer.is_stopped():
 		#if !timerAdded:
 			#add_child(pickup_timer)
 			#timerAdded=true
-		#TODO: Add support for door / drawers check the object that is grabbed
-		#if is_door or is_drawer:
-			#EventBus.emitCustomSignal("disable_player_movement",[true,false])
 
 	if player_raycast.is_colliding():
-		grab_offset = player_raycast.get_collision_point() - object.global_transform.origin
+		#grab_offset = player_raycast.get_collision_point() - object.global_transform.origin
 		### For some reason you need this when reparenting the camera from/to player. player.find_child(camera) does not work.
 		if camera == null:
 			print("Camera not found!")
@@ -66,21 +73,38 @@ func grab():
 			
 	pick_up_object()
 	enable_collision_detection()
-	EventBus.emitCustomSignal("show_icon",["grabClosed"])
+	EventBus.emitCustomSignal("show_icon",[object])
 
+
+func _process(delta):
+	if holding_object:
+		update_line_position(delta)
 
 func _physics_process(delta):
 	if holding_object:
 		update_position(delta)
-		#update_rotation(delta)
+		tether_player()
 
-#func _process(delta):
-	#if holding_object:
-		#call_deferred("_init_mouse_line")
+func tether_player():
+	var playerPosition:Vector3 = player.transform.origin;
+	playerPosition.y = 0;
+	#var targetPosition: Vector3 = itemPos.global_transform.origin + -grab_offset
+	var objectPosition:Vector3 = object.global_transform.origin + grab_offset_tether;
+	objectPosition.y = 0;
+	var directionTo:Vector3 = playerPosition - objectPosition;
+	directionTo = directionTo.normalized();
+	var distance:float = playerPosition.distance_to(objectPosition);
+	if distance > tether_distance:
+		var destination = objectPosition + directionTo*tether_distance;
+		player.transform.origin.x = destination.x;
+		player.transform.origin.z = destination.z;
+		is_tether_max_range = true;
+	else:
+		is_tether_max_range = false;
 
 func pick_up_object():
-	print("PICKED UP")
-	object.angular_damp = 10
+	#object.angular_damp = 10
+	
 	EventBus.emitCustomSignal("object_held", [_mass, object])
 	holding_object = true
 
@@ -89,29 +113,13 @@ func enable_collision_detection():
 	object.set_contact_monitor(true)
 	object.set_max_contacts_reported(10)
 
-
-#func handle_pickup(delta):
-	#if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or Input.is_joy_button_pressed(0,JOY_BUTTON_RIGHT_SHOULDER):
-		#if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-			#if not is_rotating:
-				#start_rotating()
-		#else:
-			#if is_rotating:
-				#stop_rotating()
-			#update_position(delta)
-		#if Input.is_action_just_pressed("drive"):
-			#if is_rotating:
-				#stop_rotating()
-			##dropMe(true)
-			##apply_force(throw_direction * throw_strength, throw_direction)
-			##is_picked_up = false
-	#else:
-		#if is_rotating:
-			#stop_rotating()
-		#dropMe(false)
+func throw_object():
+	throw_direction = (player_head.global_transform.basis.z * -1).normalized()
+	object.apply_force(throw_direction * throw_strength, throw_direction)
+	drop_object()
 
 func start_rotating():
-	print("Rotating")
+	pass
 func stop_rotating():
 	pass
 
@@ -120,20 +128,26 @@ func drop_object():
 	holding_object = false
 	EventBus.emitCustomSignal("dropped_object", [object.mass,self])
 	EventBus.emitCustomSignal("hide_icon",["grabClosed"])
-	object.angular_damp = 1
-	object.linear_damp = 0.1
-	object.set_collision_layer_value(2,true)
+	#object.angular_damp = 1
+	#object.linear_damp = 0.1
+	_update_mouse_line(Vector3.ZERO,Vector3.ZERO)
 
+func update_line_position(delta):
+	var rotation_offset = rotate_vector_global(grab_offset)
+	var forward = -camera.global_transform.basis.z
+	var targetPosition: Vector3 = Vector3.ZERO
+	var grab_range = grab_distance
+	targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
+	var currentPosition:Vector3 = object.global_transform.origin
+	_update_mouse_line((targetPosition + rotation_offset),currentPosition + rotation_offset)
 
 func update_position(delta):
 	var rotation_offset = rotate_vector_global(grab_offset)
 	var forward = -camera.global_transform.basis.z
 	var targetPosition: Vector3 = Vector3.ZERO
-	var grab_range = 0
-	grab_range = grab_distance
+	var grab_range = grab_distance
 	targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
 	var currentPosition:Vector3 = object.global_transform.origin
-	#_update_mouse_line((targetPosition + rotation_offset),currentPosition + rotation_offset)
 	var directionTo:Vector3 = targetPosition - currentPosition
 	var distance:float = currentPosition.distance_to(targetPosition)
 	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
@@ -143,13 +157,11 @@ func update_position(delta):
 		force = (camera.global_transform.origin - currentPosition).normalized() * _mass * 15
 		object.apply_central_force(force)
 	#var angleBetweenForceAndVelocity = min(90,force.angle_to(linear_velocity))*2
-	
 	object.apply_force(-object.linear_velocity * 20, rotation_offset) #* angleBetweenForceAndVelocity)		
 	if distance > distance_threshold:
 		force_above_threshold_time += delta
 		if force_above_threshold_time >= drop_time_threshold:
-			pass
-			#dropMe(false)
+			drop_object()
 	else:
 		force_above_threshold_time = 0.0
 	

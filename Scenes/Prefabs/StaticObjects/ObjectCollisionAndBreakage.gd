@@ -47,12 +47,12 @@ func _ready():
 	#if(destruction_audios != null):
 		#destruction_audios.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
 		#destruction_audios.unit_size = 10
-	if impact_audios2:
+	if impact_audios:
 		impact_audios2 = impact_audios.duplicate(true)
 		add_child(impact_audios2)
 		impact_audios2.max_polyphony = 50
 		
-	if impact_audios3:
+	if impact_audios:
 		impact_audios3 = impact_audios.duplicate(true)
 		add_child(impact_audios3)
 		impact_audios3.max_polyphony = 50
@@ -65,10 +65,10 @@ func _ready():
 		break_object()
 
 func _physics_process(_delta: float):
-	if rigidbody.freeze:
-		set_physics_process(false)
-	else:
-		set_physics_process(true)
+	#if rigidbody.freeze:
+		#set_physics_process(false)
+	#else:
+		#set_physics_process(true)
 	if impact_audios and impact_audios2 and impact_audios3:
 		if rigidbody.freeze:
 			return
@@ -96,23 +96,29 @@ func _physics_process(_delta: float):
 		
 		previousIsPickedUp3 = previousIsPickedUp2
 		previousIsPickedUp2 = previousIsPickedUp
-		previousIsPickedUp = rigidbody.is_picked_up
+		if GrabbingManager.current_grabbed_object and GrabbingManager.current_grabbed_object.grab_type == "dynamic" and GrabbingManager.current_grabbed_object == rigidbody:
+			previousIsPickedUp = GrabbingManager.holding_object
+		else:
+			previousIsPickedUp = false
+		
 func _on_body_entered(_body):
+	if(!previousIsPickedUp2 and !onlyPlayOnCollision):
+		return
 	#var other_body_velocity = body.linear_velocity if body is RigidBody3D else Vector3.ZERO
 	#var relative_velocity = get_parent().linear_velocity - other_body_velocity
 	#var impulse = relative_velocity.length()
 	#var impulse = state.get_contact_impulse
 	#var collision_force = impulse
-	
 	var currentAcceleration = (previousVelocity - rigidbody.linear_velocity);
 	var currentRotAccel = (previousRotation - rigidbody.angular_velocity);
 	var impact = currentAcceleration.length()*2 + currentRotAccel.length()*2;
-	if((GrabbingManager.current_grabbed_object == self or onlyPlayOnCollision) and impact > impact_threshold):
+	if impact > impact_threshold:
 		var volume = min(-40 + pow(impact,1.5),0) + initVolume
 		if(destruction_audios != null and impact > destruction_threshold and !broken):
 			destruction_audios.play()
 			break_object()
 		else:
+			print("COLLIDED")
 			playImpactSound(volume)
 		
 		
@@ -136,7 +142,7 @@ func break_object():
 		particle.emitting = true
 		
 	for hinge in breakable_hinges:
-		hinge.motor_enabled = false
+		hinge.set_flag(hinge.FLAG_ENABLE_MOTOR, false)
 	#for model in seperation_breakage_models:
 	#	model.reparent(get_tree().root.get_child(3))
 	#	model.gravity_scale = 1
@@ -168,6 +174,8 @@ func _on_sound_event_area_body_entered(body):
 
 func playImpactSound(volume: int):
 	spawn_sound_event(false)
+	impact_audios.volume_db = volume
+	impact_audios.play()
 	match index:
 		0:
 			impact_audios.volume_db = volume

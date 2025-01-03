@@ -170,13 +170,13 @@ stream_3/stream = ExtResource("31_s4pnh")
 stream_4/stream = ExtResource("32_1ly6y")
 
 [node name="GUI" type="Control"]
-z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_udi3s")
 
 [node name="Panel" type="Panel" parent="."]

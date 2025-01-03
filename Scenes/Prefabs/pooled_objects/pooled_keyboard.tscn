@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c54l3nq65pbdm"]
+
+[ext_resource type="Script" uid="uid://b3ts5234pnx1" path="res://Scripts/MoveableObjects/pooled_object.gd" id="1_7rd53"]
+[ext_resource type="PackedScene" uid="uid://bupcu04fap7xp" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="2_7rd53"]
+
+[node name="pooled_keyboard" type="VisibleOnScreenNotifier3D"]
+script = ExtResource("1_7rd53")
+object = "keyboard"
+
+[node name="Keyboard" parent="." instance=ExtResource("2_7rd53")]

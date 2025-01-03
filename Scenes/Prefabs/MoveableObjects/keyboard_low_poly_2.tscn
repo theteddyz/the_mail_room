@@ -135,52 +135,53 @@ collision_mode = 1
 collision_friction = 0.29
 collision_bounce = 0.25
 
-[node name="Keyboard" type="Node3D"]
-
-[node name="Keyboard" type="RigidBody3D" parent="."]
+[node name="Keyboard" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 15
 sleeping = true
+freeze = true
 script = ExtResource("1_uovxv")
+object_name = "keyboard"
 
-[node name="KeyboardLowPoly2" type="MeshInstance3D" parent="Keyboard"]
+[node name="KeyboardLowPoly2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0119987, 0, 0, 0, 0.0119988, 0, 0, 0, 0.0119987, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7d406")
 skeleton = NodePath("")
 
-[node name="KeyboardBrokenLowPoly" type="MeshInstance3D" parent="Keyboard"]
+[node name="KeyboardBrokenLowPoly" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.011999, 0, 0, 0, 0.011999, 0, 0, 0, 0.011999, 0, 0, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_54ars")
 mesh = SubResource("ArrayMesh_adb7y")
 skeleton = NodePath("")
 
-[node name="Key_Board_Collision_Handler" type="Node3D" parent="Keyboard" node_paths=PackedStringArray("broken_models", "normal_model", "impact_audios", "destruction_audios", "breakage_particles")]
+[node name="Key_Board_Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("broken_models", "normal_model", "impact_audios", "destruction_audios", "breakage_particles")]
 script = ExtResource("14_y1cj2")
-breakable = true
 broken_models = [NodePath("../KeyboardBrokenLowPoly")]
 normal_model = NodePath("../KeyboardLowPoly2")
 impact_audios = NodePath("../Impact")
 destruction_audios = NodePath("../Destruction")
 breakage_particles = [NodePath("../GPUParticles3D")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Keyboard"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 0.0135615, -0.0201416)
 shape = SubResource("BoxShape3D_gdow7")
 
-[node name="Impact" type="AudioStreamPlayer3D" parent="Keyboard"]
+[node name="Impact" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_fkdpg")
 attenuation_model = 1
+bus = &"RigidBodies"
 
-[node name="Destruction" type="AudioStreamPlayer3D" parent="Keyboard"]
+[node name="Destruction" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_7ba51")
+attenuation_model = 1
+bus = &"RigidBodies"
+
+[node name="ParticleCollision" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_7ba51")
 attenuation_model = 1
 
-[node name="ParticleCollision" type="AudioStreamPlayer3D" parent="Keyboard"]
-stream = SubResource("AudioStreamRandomizer_7ba51")
-attenuation_model = 1
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Keyboard"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0622949, 0)
 material_override = ExtResource("12_omiy1")
 cast_shadow = 0
@@ -193,4 +194,4 @@ collision_base_size = 0.02
 process_material = SubResource("ParticleProcessMaterial_1c4hu")
 draw_pass_1 = ExtResource("13_g2rmd")
 
-[connection signal="body_entered" from="Keyboard" to="Keyboard/Key_Board_Collision_Handler" method="_on_body_entered"]
+[connection signal="body_entered" from="." to="Key_Board_Collision_Handler" method="_on_body_entered"]

@@ -1,5 +1,5 @@
 extends MultiMeshInstance3D
-@export_enum("base_wall","cubicle","base_wall_wood","small_wall","shelf","wall_with_door") var wall_type: String
+@export_enum("base_wall","cubicle","base_wall_wood","small_wall","shelf","wall_with_door","ceiling_tile") var wall_type: String
 @export var disabled:bool = false
 
 func _ready():
