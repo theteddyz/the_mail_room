@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhyepbfxwhdat"]
 
-[ext_resource type="Script" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="1_5at14"]
+[ext_resource type="Script" uid="uid://c8838fg8k4eli" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="1_5at14"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xm1cx"]
 size = Vector3(2.07477, 1, 7.01355)
