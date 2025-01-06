@@ -4,7 +4,6 @@ extends Node3D
 @export var tile_size: Vector2 = Vector2(1, 1):
 	set(new_size):
 		tile_size = new_size
-		update_texture_scale()
 @onready var mesh: MeshInstance3D = $Plane1
 
 func _process(delta):
