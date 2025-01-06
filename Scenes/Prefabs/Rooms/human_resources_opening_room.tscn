@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://crepsdd3t3j4a"]
+[gd_scene load_steps=39 format=4 uid="uid://crepsdd3t3j4a"]
 
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_007.tscn" id="1_e5rh3"]
 [ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall.tscn" id="1_u61r0"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c7e4imgjbdx46" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_1.tscn" id="14_glkt7"]
 [ext_resource type="Texture2D" uid="uid://ds7iq4cuuukcs" path="res://Assets/TemporaryAssets/9219-removebg-preview.png" id="14_sep8r"]
 [ext_resource type="Texture2D" uid="uid://c2ii435juona8" path="res://Assets/Models/Temp_models/textures/Chairs_table_1/Chairs_tables_1_BaseColor.png" id="15_glkt7"]
+[ext_resource type="PackedScene" uid="uid://br1uwkkcvlmla" path="res://Scenes/Prefabs/StaticObjects/Bookshelf.tscn" id="18_3fkeo"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pej8r"]
 size = Vector3(23.855, 1, 14.06)
@@ -331,7 +332,7 @@ transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 14.8776, 4.67047,
 transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 9.73377, 4.67047, -24.9531)
 
 [node name="CeilingLightOn" parent="CeilingLight/CeilingLowPoly" index="0"]
-transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 1.97189, 0.0661001, -2.38419e-07)
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 1.97189, 0.0661001, 4.37643)
 
 [node name="FLOOR" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.4228)
@@ -364,8 +365,8 @@ transform = Transform3D(1.91, 0, 0, 0, 1.91, 0, 0, 0, 1.91, 13.0513, 4.12754, 5.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00259972, 0.00588369, -0.0676646)
 
 [node name="Decal" type="Decal" parent="base_half_airduct/airduct_vent_cover"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0043335, -0.0430453, 0.101631)
-size = Vector3(0.557495, 0.55069, 0.345718)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0043335, -0.131315, 0.093334)
+size = Vector3(0.557495, 0.727228, 0.362312)
 texture_albedo = ExtResource("14_sep8r")
 
 [node name="Objects" type="Node3D" parent="."]
@@ -460,6 +461,9 @@ skeleton = NodePath("")
 [node name="Desk2" parent="Objects" instance=ExtResource("13_2wfcn")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.4828, 0.0649989, -0.59915)
 
+[node name="PackageDestination" parent="Objects/Desk2/MailboxStand" index="2"]
+accepted_num = 1
+
 [node name="File_Cabinet11" parent="Objects" instance=ExtResource("14_glkt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86766, 0.853157, -3.46673)
 
@@ -472,7 +476,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2492, 0.853157, -3.46673)
 [node name="File_Cabinet14" parent="Objects" instance=ExtResource("14_glkt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8399, 0.853157, -3.46673)
 
+[node name="Bookshelf" parent="Objects" instance=ExtResource("18_3fkeo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.884, 1.61237, 5.81751)
+
 [connection signal="screen_entered" from="CeilingLight/CeilingLightOn3/VisibleOnScreenEnabler3D" to="CeilingLight/CeilingLightOn3/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_entered"]
 [connection signal="screen_exited" from="CeilingLight/CeilingLightOn3/VisibleOnScreenEnabler3D" to="CeilingLight/CeilingLightOn3/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_exited"]
 
 [editable path="CeilingLight/CeilingLowPoly"]
+[editable path="Objects/Desk2"]
+[editable path="Objects/Desk2/MailboxStand"]
