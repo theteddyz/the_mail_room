@@ -77,7 +77,7 @@ transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.08326
 navigation_mesh = SubResource("NavigationMesh_85eyn")
 
 [node name="human_resources_reception" parent="NavigationRegion3D" instance=ExtResource("8_egpi0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.722, 0.217992, -5.9091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7226, 0.21583, -5.9112)
 
 [node name="HumanResourcesLobbyRoom" parent="NavigationRegion3D" instance=ExtResource("4_71dsc")]
 

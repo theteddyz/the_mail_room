@@ -198,6 +198,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.826, -3.53482, 33.703)
 [node name="HR_Wall_Wtih_Door" parent="WALLS" instance=ExtResource("3_vy4ov")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2083, 4.76837e-07, 11.2647)
 
+[node name="Door_Lock" parent="WALLS/HR_Wall_Wtih_Door/StaticBody3D/RigidBody3D2" index="1"]
+locked = true
+
 [node name="FLOOR" type="Node3D" parent="."]
 
 [node name="Plane1" type="MeshInstance3D" parent="FLOOR"]
@@ -729,3 +732,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.77728, 4.75755, 45.4829)
 
 [node name="Ceiling_Light_HR2" parent="." instance=ExtResource("34_gktgy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.02306, 4.75755, 5.97853)
+
+[editable path="WALLS/HR_Wall_Wtih_Door"]
