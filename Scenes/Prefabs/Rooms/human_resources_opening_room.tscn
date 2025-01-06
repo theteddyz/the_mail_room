@@ -1,18 +1,16 @@
-[gd_scene load_steps=29 format=4 uid="uid://crepsdd3t3j4a"]
+[gd_scene load_steps=28 format=4 uid="uid://crepsdd3t3j4a"]
 
-[ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="1_g2xuk"]
-[ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="2_6ywnp"]
-[ext_resource type="PackedScene" uid="uid://bqlwocq20ovh3" path="res://Scenes/Prefabs/StaticObjects/ceiling_tile_hr_old_(DEPRECATED).tscn" id="4_62xu8"]
+[ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_007.tscn" id="1_e5rh3"]
+[ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall.tscn" id="1_u61r0"]
+[ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_door.tscn" id="2_e5rh3"]
 [ext_resource type="Texture2D" uid="uid://b4lvvd23ey3q4" path="res://Assets/Textures/BlenderTextures/CeilingLight.png" id="4_a1r31"]
 [ext_resource type="Texture2D" uid="uid://bdqjdhf72u4sj" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png" id="5_g7d1p"]
 [ext_resource type="Texture2D" uid="uid://c3qyu5oicypra" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_tezco256r.png" id="5_ta8j1"]
-[ext_resource type="Script" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="5_tqfw8"]
+[ext_resource type="Script" uid="uid://c8838fg8k4eli" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="5_tqfw8"]
+[ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling.tscn" id="5_u61r0"]
 [ext_resource type="Texture2D" uid="uid://cfpfwkaakamns" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg" id="6_se81x"]
-[ext_resource type="PackedScene" uid="uid://dq58acybudo20" path="res://Scenes/Prefabs/StaticObjects/autopsy_sink.tscn" id="9_hu7iw"]
-[ext_resource type="PackedScene" uid="uid://d2byssce15uq2" path="res://Scenes/Prefabs/StaticObjects/scale.tscn" id="10_1u7gv"]
-[ext_resource type="PackedScene" uid="uid://27882ty3rph6" path="res://Scenes/Prefabs/StaticObjects/cadaver_cart.tscn" id="11_l0gwk"]
-[ext_resource type="PackedScene" uid="uid://d028oad24cf2a" path="res://Scenes/Prefabs/StaticObjects/wall_cabinet.tscn" id="12_lkinv"]
-[ext_resource type="PackedScene" uid="uid://iesbwlljm5ll" path="res://Scenes/Prefabs/StaticObjects/hr_wall_table.tscn" id="13_n3xi5"]
+[ext_resource type="PackedScene" uid="uid://cke6ikrxa55dv" path="res://Scenes/Prefabs/StaticObjects/base_half_airduct.tscn" id="10_uiq7f"]
+[ext_resource type="PackedScene" uid="uid://duh0mp4ga7irm" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover.tscn" id="11_wbwad"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_pej8r"]
 size = Vector3(23.855, 1, 14.06)
@@ -147,53 +145,72 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cm2u3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x2w43"]
-size = Vector3(17.0636, 1, 11.5515)
+size = Vector3(22.6393, 1, 11.5515)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dlrgi"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.152941)
-emission_enabled = true
-emission = Color(0.869957, 0.847296, 0.83238, 0.286275)
-emission_energy_multiplier = 8.46
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nu52y"]
+load_path = "res://.godot/imported/Carpet.png-c2ea077c2bad62480908f013c2e710bc.s3tc.ctex"
 
-[sub_resource type="BoxMesh" id="BoxMesh_j4pdp"]
-material = SubResource("StandardMaterial3D_dlrgi")
-size = Vector3(1, 1, 3.475)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u61r0"]
+albedo_texture = SubResource("CompressedTexture2D_nu52y")
+emission_energy_multiplier = 13.22
+uv1_scale = Vector3(18.941, 4.298, 13.259)
+texture_filter = 2
+point_size = 128.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_e5rh3"]
+lightmap_size_hint = Vector2i(148, 59)
+add_uv2 = true
+size = Vector2(29.21, 11.57)
 
 [node name="HumanResourcesOpeningRoom" type="Node3D"]
 
 [node name="Walls" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.4228)
 
-[node name="HR_ArchwayWall" parent="Walls" instance=ExtResource("1_g2xuk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.067)
+[node name="StaticBody3D3" parent="Walls" instance=ExtResource("1_e5rh3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 7.11625, 0, -24.572)
 
-[node name="HR_baseWall7" parent="Walls" instance=ExtResource("2_6ywnp")]
+[node name="wall" parent="Walls" instance=ExtResource("1_u61r0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.689, 0, -17.067)
 
-[node name="HR_baseWall8" parent="Walls" instance=ExtResource("2_6ywnp")]
+[node name="wall11" parent="Walls" instance=ExtResource("1_u61r0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3514, 0, -17.067)
+
+[node name="wall2" parent="Walls" instance=ExtResource("1_u61r0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.689, 0, -17.067)
 
-[node name="HR_baseWall9" parent="Walls" instance=ExtResource("2_6ywnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.689, 0, -28.445)
+[node name="wall3" parent="Walls" instance=ExtResource("1_u61r0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.689, 0, -27.5347)
 
-[node name="HR_baseWall14" parent="Walls" instance=ExtResource("2_6ywnp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -28.445)
+[node name="wall4" parent="Walls" instance=ExtResource("1_u61r0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.358, 0, -27.5347)
 
-[node name="HR_baseWall10" parent="Walls" instance=ExtResource("2_6ywnp")]
+[node name="wall7" parent="Walls" instance=ExtResource("1_u61r0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00941265, 0, -27.5347)
+
+[node name="wall5" parent="Walls" instance=ExtResource("1_u61r0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.689, 0, -28.445)
 
-[node name="HR_baseWall11" parent="Walls" instance=ExtResource("2_6ywnp")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.60738, 0, -19.9902)
+[node name="wall6" parent="Walls" instance=ExtResource("1_u61r0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.689, 0, -27.5347)
 
-[node name="HR_baseWall12" parent="Walls" instance=ExtResource("2_6ywnp")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.429, 0, -19.99)
+[node name="StaticBody3D" parent="Walls" instance=ExtResource("2_e5rh3")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, -17.067)
 
-[node name="HR_baseWall13" parent="Walls" instance=ExtResource("2_6ywnp")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.60738, 0, -25.6792)
+[node name="StaticBody3D2" parent="Walls" instance=ExtResource("2_e5rh3")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 7.11625, 0, -18.8856)
 
-[node name="HR_baseWall16" parent="Walls" instance=ExtResource("2_6ywnp")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.429, 0, -25.679)
+[node name="wall12" parent="Walls" instance=ExtResource("1_u61r0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.0668, 0, -24.6022)
+
+[node name="wall13" parent="Walls" instance=ExtResource("1_u61r0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.0668, 0, -19.0123)
+
+[node name="wall9" parent="Walls" instance=ExtResource("1_u61r0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.39926, 0, -19.9902)
+
+[node name="wall10" parent="Walls" instance=ExtResource("1_u61r0")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.39926, 0, -25.6792)
 
 [node name="CeilingLight" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.4228)
@@ -203,42 +220,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82, 6.11439, -23.0816)
 visible = false
 mesh = SubResource("BoxMesh_pej8r")
 surface_material_override/0 = SubResource("StandardMaterial3D_cc7qq")
-
-[node name="CeilingTileHR2" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13886, 4.525, -19.5751)
-
-[node name="CeilingTileHR3" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94204, 4.525, -19.5751)
-
-[node name="CeilingTileHR4" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24607, 4.525, -19.5751)
-
-[node name="CeilingTileHR5" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.42661, 4.525, -19.5751)
-
-[node name="CeilingTileHR6" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13886, 4.525, -24.6938)
-
-[node name="CeilingTileHR7" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94204, 4.525, -24.6938)
-
-[node name="CeilingTileHR8" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24607, 4.525, -24.6938)
-
-[node name="CeilingTileHR9" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.42661, 4.525, -24.6938)
-
-[node name="CeilingTileHR10" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13886, 4.525, -29.8639)
-
-[node name="CeilingTileHR11" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94204, 4.525, -29.8639)
-
-[node name="CeilingTileHR12" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24607, 4.525, -29.8639)
-
-[node name="CeilingTileHR13" parent="CeilingLight" instance=ExtResource("4_62xu8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.42661, 4.525, -29.8639)
 
 [node name="CeilingLightOn3" type="MeshInstance3D" parent="CeilingLight"]
 transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, 0.088167, 5.13697, -22.6286)
@@ -273,11 +254,42 @@ collision_mask = 0
 transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -2.4813, -0.0225391)
 shape = SubResource("BoxShape3D_i0ya6")
 
+[node name="Ceiling" parent="CeilingLight" instance=ExtResource("5_u61r0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -5.78394, 4.67047, -19.7855)
+
+[node name="Ceiling2" parent="CeilingLight" instance=ExtResource("5_u61r0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -5.78394, 4.67047, -24.9571)
+
+[node name="Ceiling3" parent="CeilingLight" instance=ExtResource("5_u61r0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -0.711809, 4.67047, -24.9571)
+
+[node name="Ceiling4" parent="CeilingLight" instance=ExtResource("5_u61r0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -0.711809, 4.67047, -19.8104)
+
+[node name="Ceiling5" parent="CeilingLight" instance=ExtResource("5_u61r0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.43491, 4.67047, -19.8104)
+
+[node name="Ceiling6" parent="CeilingLight" instance=ExtResource("5_u61r0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 4.43491, 4.67047, -24.9322)
+
+[node name="Ceiling7" parent="CeilingLight" instance=ExtResource("5_u61r0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 9.74143, 4.67047, -19.8104)
+
+[node name="Ceiling8" parent="CeilingLight" instance=ExtResource("5_u61r0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 9.74143, 4.67047, -24.9322)
+
+[node name="Ceiling9" parent="CeilingLight" instance=ExtResource("5_u61r0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 14.8776, 4.67047, -19.8104)
+
+[node name="Ceiling10" parent="CeilingLight" instance=ExtResource("5_u61r0")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, 14.8776, 4.67047, -24.9322)
+
 [node name="FLOOR" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.4228)
 
 [node name="Plane2" type="MeshInstance3D" parent="FLOOR"]
 transform = Transform3D(9, 0, 0, 0, 1, 0, 0, 0, 6.61, 0.00407791, 9.53674e-07, -23.5939)
+visible = false
 mesh = SubResource("ArrayMesh_xad4t")
 skeleton = NodePath("")
 
@@ -287,79 +299,20 @@ collision_layer = 133
 collision_mask = 149
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FLOOR/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780475, -0.475541, -6.57911)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70982, -0.475541, -6.57911)
 shape = SubResource("BoxShape3D_x2w43")
 
-[node name="Flashbang" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62025, 5.49251)
-visible = false
+[node name="carpet_mesh" type="MeshInstance3D" parent="FLOOR" groups=["Real_Floor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47525, 0, -22.6077)
+layers = 1023
+material_override = SubResource("StandardMaterial3D_u61r0")
+mesh = SubResource("PlaneMesh_e5rh3")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Flashbang"]
-transform = Transform3D(0.00942462, 0.0248149, -0.999648, 0, 0.999692, 0.024816, 0.999956, -0.000233882, 0.00942172, 0, 0, 0)
-light_energy = 8.0
-light_bake_mode = 0
-shadow_enabled = true
-omni_range = 11.584
+[node name="base_half_airduct" parent="." instance=ExtResource("10_uiq7f")]
+transform = Transform3D(1.91, 0, 0, 0, 1.91, 0, 0, 0, 1.91, 13.0513, 4.12754, 5.48798)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Flashbang"]
-transform = Transform3D(0.00942462, 0.0248149, -0.999648, 0, 0.999692, 0.024816, 0.999956, -0.000233882, 0.00942172, 0, 0, 0)
-light_energy = 8.0
-light_bake_mode = 0
-shadow_enabled = true
-omni_range = 11.584
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Flashbang"]
-transform = Transform3D(0.00942462, 0, -0.999956, 0, 1, 0, 0.999956, 0, 0.00942462, 0, 0, 0)
-mesh = SubResource("BoxMesh_j4pdp")
-skeleton = NodePath("../..")
-
-[node name="AutopsySink" parent="." instance=ExtResource("9_hu7iw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.43463, -0.032578, 0.175036)
-
-[node name="AutopsySink2" parent="." instance=ExtResource("9_hu7iw")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.60699, -0.0392073, 0.175036)
-
-[node name="Node3D" parent="." instance=ExtResource("10_1u7gv")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.56542, 1.27265, 2.61508)
-
-[node name="Node3D2" parent="." instance=ExtResource("10_1u7gv")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.6631, 1.27265, -2.42333)
-
-[node name="cadaverCart" parent="." instance=ExtResource("11_l0gwk")]
-transform = Transform3D(-0.00644016, 0, 0.999979, 0, 1, 0, -0.999979, 0, -0.00644016, -6.03555, 0.189508, 1.06798)
-
-[node name="cadaverCart2" parent="." instance=ExtResource("11_l0gwk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.9943, 0.210604, 5.47927)
-
-[node name="cadaverCart4" parent="." instance=ExtResource("11_l0gwk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.84898, 0.210604, 5.47927)
-
-[node name="cadaverCart3" parent="." instance=ExtResource("11_l0gwk")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.89209, 0.210604, 5.47927)
-
-[node name="Node3D3" parent="." instance=ExtResource("12_lkinv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.303, 1.97553, -4.37053)
-
-[node name="Node3D4" parent="." instance=ExtResource("12_lkinv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.42586, 1.97553, -4.37053)
-
-[node name="Node3D5" parent="." instance=ExtResource("12_lkinv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54042, 1.97553, -4.37053)
-
-[node name="Node3D6" parent="." instance=ExtResource("12_lkinv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.12897, 1.97553, -4.37053)
-
-[node name="Node3D7" parent="." instance=ExtResource("12_lkinv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00611, 1.97553, -4.37053)
-
-[node name="Node3D8" parent="." instance=ExtResource("12_lkinv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.89155, 1.97553, -4.37053)
-
-[node name="HR_Wall_Table2" parent="." instance=ExtResource("13_n3xi5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29119, 1.18896, -4.15336)
-
-[node name="HR_Wall_Table3" parent="." instance=ExtResource("13_n3xi5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7695, 1.18896, -4.15336)
+[node name="airduct_vent_cover" parent="base_half_airduct" instance=ExtResource("11_wbwad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00259972, 0.00588369, -0.0676646)
 
 [connection signal="screen_entered" from="CeilingLight/CeilingLightOn3/VisibleOnScreenEnabler3D" to="CeilingLight/CeilingLightOn3/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_entered"]
 [connection signal="screen_exited" from="CeilingLight/CeilingLightOn3/VisibleOnScreenEnabler3D" to="CeilingLight/CeilingLightOn3/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_exited"]
