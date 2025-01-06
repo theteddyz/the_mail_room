@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://dsbem806big2h"]
+[gd_scene load_steps=87 format=4 uid="uid://dsbem806big2h"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
 [ext_resource type="Environment" uid="uid://52by3g1q6hkh" path="res://human_resources_worldenvironment.tres" id="2_6iufn"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://crepsdd3t3j4a" path="res://Scenes/Prefabs/Rooms/human_resources_opening_room.tscn" id="7_kvilq"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="7_o0ubx"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="8_rl6tn"]
-[ext_resource type="PackedScene" uid="uid://b8yc0cdclfava" path="res://Scenes/Prefabs/Rooms/human_resources_primary_wing.tscn" id="10_2p478"]
+[ext_resource type="PackedScene" uid="uid://cajo2f1jhe000" path="res://Scenes/Prefabs/Rooms/human_resources_primary_wing.tscn" id="10_2p478"]
 [ext_resource type="PackedScene" uid="uid://c7e4imgjbdx46" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_1.tscn" id="11_3n5di"]
 [ext_resource type="Texture2D" uid="uid://c5mmywyhve46x" path="res://Assets/Models/test_models/Floor2/Objects/HospitalAssets_cloth.png" id="11_eosba"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="11_idn3g"]
@@ -29,10 +29,17 @@
 [ext_resource type="Texture2D" uid="uid://cnj156jlm4nsl" path="res://Assets/Models/Temp_models/textures/wheel_chair/Wheel_chair_BaseColor.png" id="15_x034y"]
 [ext_resource type="Texture2D" uid="uid://c2ii435juona8" path="res://Assets/Models/Temp_models/textures/Chairs_table_1/Chairs_tables_1_BaseColor.png" id="16_n4age"]
 [ext_resource type="Texture2D" uid="uid://dxpqf6ex1vyh6" path="res://Assets/Models/test_models/Floor2/Objects/HospitalAssets_Plastic011_1K-JPG_Roughness.png" id="16_natdv"]
+[ext_resource type="PackedScene" uid="uid://cw73gvtr6pu36" path="res://Scenes/Prefabs/Rooms/human_resources_storage_1.tscn" id="17_eqbjs"]
 [ext_resource type="Texture2D" uid="uid://borgfng21j3ra" path="res://Assets/Models/test_models/Floor2/Objects/HospitalAssets_blackball.png" id="17_idn3g"]
 [ext_resource type="Texture2D" uid="uid://dbg75ed54dmmg" path="res://Assets/Models/test_models/Floor2/Objects/HospitalAssets_Porcelain003_1K-JPG_Roughness.png" id="18_3n5di"]
+[ext_resource type="PackedScene" uid="uid://clua0pmvhx6av" path="res://Scenes/Prefabs/Rooms/human_resources_surgery.tscn" id="18_aoamn"]
+[ext_resource type="PackedScene" uid="uid://2yj1fempg2oa" path="res://Scenes/Prefabs/Rooms/human_resources_incinerator.tscn" id="19_bvyar"]
 [ext_resource type="Texture2D" uid="uid://bdt1u6ik6pyyt" path="res://Assets/Models/test_models/Floor2/Objects/HospitalAssets_whiteball.png" id="19_eqbjs"]
 [ext_resource type="Texture2D" uid="uid://46em6e2iwlvo" path="res://Assets/Models/test_models/Floor2/Objects/HospitalAssets_Marble025_1K-JPG_Roughness.png" id="20_aoamn"]
+[ext_resource type="PackedScene" uid="uid://bq0ylb4jeiliy" path="res://Scenes/Prefabs/Rooms/human_resources_examination.tscn" id="20_fwsw7"]
+[ext_resource type="PackedScene" uid="uid://cfd2f46sbbd33" path="res://Scenes/Prefabs/Rooms/human_resources_secondary_wing.tscn" id="21_phfjw"]
+[ext_resource type="PackedScene" uid="uid://iogmkwy1n8lg" path="res://Scenes/Prefabs/Rooms/human_resources_caracss_and_butcher.tscn" id="22_fe0j1"]
+[ext_resource type="PackedScene" uid="uid://dwppa8t33rotp" path="res://Scenes/Prefabs/Floors/hr_base_floor.tscn" id="23_fe0j1"]
 [ext_resource type="PackedScene" uid="uid://dicq0w2sau0cw" path="res://Scenes/Prefabs/MoveableObjects/Monitor.tscn" id="29_eosba"]
 [ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="30_2f1p5"]
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="30_tewrb"]
@@ -589,69 +596,89 @@ transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.08326
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_85eyn")
 
-[node name="FLOOR" type="Node" parent="NavigationRegion3D"]
-
 [node name="HumanResourcesLobbyRoom" parent="NavigationRegion3D" instance=ExtResource("4_71dsc")]
 
 [node name="HumanResourcesOpeningRoom" parent="NavigationRegion3D" instance=ExtResource("7_kvilq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.1247, 0, 2.73919)
 
-[node name="HumanResourcesBlockout" parent="NavigationRegion3D" instance=ExtResource("10_2p478")]
+[node name="human_resources_primary_wing" parent="NavigationRegion3D" instance=ExtResource("10_2p478")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.1571, 0, 2.80744)
 
-[node name="Cardboard_box_big" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("11_idn3g")]
+[node name="Cardboard_box_big" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("11_idn3g")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.5817, 0.342762, 6.59048)
 
-[node name="Cardboard_box_big2" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("11_idn3g")]
+[node name="Cardboard_box_big2" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("11_idn3g")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.5779, 0.342762, 7.24994)
 
-[node name="Cardboard_box_long" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("12_3n5di")]
+[node name="Cardboard_box_long" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("12_3n5di")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.6696, 0.623385, 6.94519)
 
-[node name="Node3D2" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("13_eqbjs")]
+[node name="Node3D2" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("13_eqbjs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.5376, 0.0271598, 6.1034)
 
-[node name="Node3D3" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("14_aoamn")]
+[node name="Node3D3" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("14_aoamn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.1591, 0.0244589, 0.930168)
 
-[node name="Node3D4" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("14_aoamn")]
+[node name="Node3D4" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("14_aoamn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.7352, 0.0244591, 0.886272)
 
-[node name="Node3D5" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("14_aoamn")]
+[node name="Node3D5" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("14_aoamn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.0709, 0.0244589, 1.87574)
 
-[node name="cardboard_box_mini" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("15_bvyar")]
+[node name="cardboard_box_mini" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("15_bvyar")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.2931, 0.0489926, 6.15451)
 
-[node name="Node3D6" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("13_eqbjs")]
+[node name="Node3D6" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("13_eqbjs")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.5919, 0.0271596, 7.75984)
 
-[node name="Cardboard_box_long2" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("12_3n5di")]
+[node name="Cardboard_box_long2" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("12_3n5di")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.7439, 0.0244589, 5.19934)
 
-[node name="File_Cabinet" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("11_3n5di")]
+[node name="File_Cabinet" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("11_3n5di")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.8128, 0.853157, 3.02339)
 
-[node name="File_Cabinet2" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("11_3n5di")]
+[node name="File_Cabinet2" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("11_3n5di")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.8128, 0.853157, 3.58296)
 
-[node name="File_Cabinet3" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("11_3n5di")]
+[node name="File_Cabinet3" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("11_3n5di")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.8128, 0.853157, 4.1205)
 
-[node name="File_Cabinet4" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("11_3n5di")]
+[node name="File_Cabinet4" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("11_3n5di")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8728, 0.853157, 0.753543)
 
-[node name="File_Cabinet5" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("11_3n5di")]
+[node name="File_Cabinet5" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("11_3n5di")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4323, 0.853157, 0.755641)
 
-[node name="File_Cabinet6" parent="NavigationRegion3D/HumanResourcesBlockout" instance=ExtResource("11_3n5di")]
+[node name="File_Cabinet6" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("11_3n5di")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9699, 0.853157, 0.757658)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/HumanResourcesBlockout"]
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/human_resources_primary_wing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9968, 2.95896, 5.58598)
 light_energy = 0.2
 omni_range = 8.042
 omni_attenuation = 1.762
+
+[node name="human_resources_storage_1" parent="NavigationRegion3D" instance=ExtResource("17_eqbjs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 48.9653, 9.53674e-07, -5.67255)
+
+[node name="human_resources_surgery" parent="NavigationRegion3D" instance=ExtResource("18_aoamn")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 70.067, 0, 29.302)
+
+[node name="human_resources_incinerator" parent="NavigationRegion3D" instance=ExtResource("19_bvyar")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 82.479, 0, 54.347)
+
+[node name="human_resources_examination" parent="NavigationRegion3D" instance=ExtResource("20_fwsw7")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.794, 0, 57.075)
+
+[node name="human_resources_secondary_wing" parent="NavigationRegion3D" instance=ExtResource("21_phfjw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 49.522, 0, 45.096)
+
+[node name="human_resources_caracss_and_butcher" parent="NavigationRegion3D" instance=ExtResource("22_fe0j1")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.6717, 0, 28.2217)
+
+[node name="hr_base_floor" parent="NavigationRegion3D" instance=ExtResource("23_fe0j1")]
+transform = Transform3D(4.52, 0, 0, 0, 1, 0, 0, 0, 4.55, 59.358, 0, 26.5775)
+tile_size = Vector2(0.4, 0.4)
 
 [node name="Mailcart" parent="." instance=ExtResource("8_rl6tn")]
 transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979, 3.55372, 0.316447, 1.73329)

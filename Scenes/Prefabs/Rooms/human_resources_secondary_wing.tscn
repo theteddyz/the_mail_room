@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfd2f46sbbd33"]
+[gd_scene load_steps=2 format=3 uid="uid://cfd2f46sbbd33"]
 
 [ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="1_28bwd"]
-[ext_resource type="PackedScene" uid="uid://dwppa8t33rotp" path="res://Scenes/Prefabs/Floors/hr_base_floor.tscn" id="2_mkjs8"]
 
 [node name="human_resources_secondary_wing" type="Node3D"]
 
@@ -43,9 +42,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.719
 [node name="HR_baseWall50" parent="WALLS" instance=ExtResource("1_28bwd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.71381, 0, -1.59915)
 
-[node name="HR_baseWall51" parent="WALLS" instance=ExtResource("1_28bwd")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.67171, 0, -6.29615)
-
 [node name="HR_baseWall56" parent="WALLS" instance=ExtResource("1_28bwd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.82851, 0, -21.2881)
 
@@ -56,10 +52,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.008
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.0085144, 0, 1.29585)
 
 [node name="FLOOR" type="Node3D" parent="."]
-
-[node name="hr_base_floor" parent="FLOOR" instance=ExtResource("2_mkjs8")]
-transform = Transform3D(0.574, 0, 0, 0, 1, 0, 0, 0, 2.409, -0.0308982, 0.018, 2.736)
-tile_size = Vector2(0.5, 0.5)
 
 [node name="CEILING" type="Node3D" parent="."]
 
