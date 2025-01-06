@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://cajo2f1jhe000"]
+[gd_scene load_steps=16 format=4 uid="uid://cajo2f1jhe000"]
 
 [ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="1_m6mp8"]
 [ext_resource type="Texture2D" uid="uid://c3qyu5oicypra" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_tezco256r.png" id="1_qdt4i"]
 [ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="2_bgrhv"]
 [ext_resource type="Texture2D" uid="uid://bdqjdhf72u4sj" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png" id="2_xpgkx"]
+[ext_resource type="PackedScene" uid="uid://b2rvvsrl03wcr" path="res://Scenes/Prefabs/StaticObjects/hr_wall_wtih_door.tscn" id="3_vy4ov"]
 [ext_resource type="Texture2D" uid="uid://cfpfwkaakamns" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg" id="3_ydku5"]
 [ext_resource type="PackedScene" uid="uid://dhih34co5hg26" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_hr.tscn" id="33_8rcrw"]
 [ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="33_xxnyf"]
@@ -79,9 +80,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.1, 
 
 [node name="HR_baseWall4" parent="WALLS" instance=ExtResource("2_bgrhv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.1, 0, 8.46)
-
-[node name="HR_baseWall5" parent="WALLS" instance=ExtResource("2_bgrhv")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 11.28, 0, 11.28)
 
 [node name="HR_baseWall6" parent="WALLS" instance=ExtResource("2_bgrhv")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.64, 0, 11.28)
@@ -197,6 +195,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.35, -48.128, 0, -1.016)
 [node name="HR_wall_test2" type="Node3D" parent="WALLS"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.826, -3.53482, 33.703)
 
+[node name="HR_Wall_Wtih_Door" parent="WALLS" instance=ExtResource("3_vy4ov")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2083, 4.76837e-07, 11.2647)
+
 [node name="FLOOR" type="Node3D" parent="."]
 
 [node name="Plane1" type="MeshInstance3D" parent="FLOOR"]
@@ -225,7 +226,6 @@ shape = SubResource("BoxShape3D_4dmao")
 
 [node name="CEILING" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305175, 0)
-visible = false
 
 [node name="CeilingTileHR12" parent="CEILING" instance=ExtResource("33_8rcrw")]
 transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 2.619)
