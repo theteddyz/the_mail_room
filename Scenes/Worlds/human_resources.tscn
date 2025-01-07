@@ -102,7 +102,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.794
 [node name="human_resources_secondary_wing" parent="NavigationRegion3D" instance=ExtResource("21_phfjw")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 49.522, 0, 45.096)
 
-[node name="human_resources_caracss_and_butcher" parent="NavigationRegion3D" instance=ExtResource("22_fe0j1")]
+[node name="human_resources_carcass_and_butcher" parent="NavigationRegion3D" instance=ExtResource("22_fe0j1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.6717, 0, 28.2217)
 
 [node name="hr_base_floor" parent="NavigationRegion3D" instance=ExtResource("23_fe0j1")]

@@ -239,7 +239,7 @@ shape = SubResource("BoxShape3D_nb07o")
 [node name="CEILING" type="Node" parent="."]
 
 [node name="ceiling_tile_nolight2" parent="CEILING" instance=ExtResource("4_o4axa")]
-transform = Transform3D(-2.82772e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, -2.82772e-08, -4.76837e-07, 4.525, 2.80035)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.76837e-07, 4.525, 2.80035)
 
 [node name="CeilingBroken3" parent="CEILING" instance=ExtResource("5_o02fh")]
 transform = Transform3D(8.48315e-08, 0, -0.646906, 0, 0.646906, 0, 0.646906, 0, 8.48315e-08, 5.64, 4.53112, 2.82)
@@ -402,13 +402,8 @@ stream = SubResource("AudioStreamRandomizer_ev8xy")
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_66o6r")
 
-[node name="DrawerScript" type="Node3D" parent="OBJECTS/Desk/Desk/DrawerTop" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="OBJECTS/Desk/Desk/DrawerTop"]
 script = ExtResource("21_mln3m")
-drawerOpenedSound = NodePath("../DrawerAudioOpen")
-drawerClosedSound = NodePath("../DrawerAudioClose")
-drawerLoopSound = NodePath("../DrawerAudioLoop")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
-volume = -20.0
 
 [node name="DrawerBottom" type="RigidBody3D" parent="OBJECTS/Desk/Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817725, 0.316904, 0.568443)
@@ -462,13 +457,8 @@ stream = SubResource("AudioStreamRandomizer_x6bdg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003829, 0.458465, -0.00205201)
 stream = SubResource("AudioStreamRandomizer_8jt6j")
 
-[node name="DrawerScript" type="Node3D" parent="OBJECTS/Desk/Desk/DrawerBottom" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="OBJECTS/Desk/Desk/DrawerBottom"]
 script = ExtResource("21_mln3m")
-drawerOpenedSound = NodePath("../DrawerAudioOpen2")
-drawerClosedSound = NodePath("../DrawerAudioClose2")
-drawerLoopSound = NodePath("../DrawerAudioLoop2")
-drawerSliderJoint = NodePath("../SliderJoint3D2")
-volume = -20.0
 
 [node name="PapersLow" parent="OBJECTS/Desk" instance=ExtResource("22_iudpr")]
 transform = Transform3D(-0.110452, 0, 0.108753, 0, 0.146489, 0, -0.0774833, 0, -0.155027, -0.952538, 1.2224, -0.180663)
