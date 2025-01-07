@@ -1,0 +1,27 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://nkqrjpqa1u4s"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1m0pq"]
+load_path = "res://.godot/imported/floor_2_flooring_tezco256r.png-ca2a91e099e66448f145f3e0b659537d.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_atvu2"]
+load_path = "res://.godot/imported/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png-e3a0ccd90c6d9cd69d59085180fbc70b.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v8n8b"]
+load_path = "res://.godot/imported/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg-e4167691087db6852f3752760ddc9073.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85gfo"]
+load_path = "res://.godot/imported/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png-e3a0ccd90c6d9cd69d59085180fbc70b.s3tc.ctex"
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_1m0pq")
+metallic_texture = SubResource("CompressedTexture2D_atvu2")
+metallic_texture_channel = 2
+roughness_texture = SubResource("CompressedTexture2D_85gfo")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_v8n8b")
+uv1_scale = Vector3(2.13, 1.4375, 0)
+texture_filter = 2

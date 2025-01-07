@@ -1,10 +1,7 @@
-[gd_scene load_steps=52 format=4 uid="uid://cajo2f1jhe000"]
+[gd_scene load_steps=44 format=4 uid="uid://cajo2f1jhe000"]
 
 [ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="1_m6mp8"]
-[ext_resource type="Texture2D" uid="uid://c3qyu5oicypra" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_tezco256r.png" id="1_qdt4i"]
 [ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="2_bgrhv"]
-[ext_resource type="Texture2D" uid="uid://bdqjdhf72u4sj" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png" id="2_xpgkx"]
-[ext_resource type="Texture2D" uid="uid://cfpfwkaakamns" path="res://Assets/Models/test_models/Floor2/Floor/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg" id="3_ydku5"]
 [ext_resource type="Texture2D" uid="uid://dhdnlvv5l34c5" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Metal011_1K-JPG_Color.jpg" id="4_dl4lk"]
 [ext_resource type="Texture2D" uid="uid://chgxj8mjkp40s" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Metal011_1K-JPG_Metalness-Metal011_1K-JPG_Roughness.png" id="5_qv87i"]
 [ext_resource type="Texture2D" uid="uid://7mrtswngejk" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Metal011_1K-JPG_NormalDX.jpg" id="6_41us8"]
@@ -23,9 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://dwcdylwdyjk6k" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_Roughness.png" id="19_8cf3n"]
 [ext_resource type="Texture2D" uid="uid://dhepsytbckakx" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_NormalGL.jpg" id="20_34js1"]
 [ext_resource type="Texture2D" uid="uid://gqsedkoyeak2" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Color.jpg" id="21_rx47j"]
+[ext_resource type="PackedScene" uid="uid://dwppa8t33rotp" path="res://Scenes/Prefabs/Floors/hr_base_floor.tscn" id="22_twwcq"]
 [ext_resource type="Texture2D" uid="uid://dtprrraywwk3u" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Roughness.png" id="22_vm0c6"]
 [ext_resource type="PackedScene" uid="uid://dhih34co5hg26" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_hr.tscn" id="33_8rcrw"]
-[ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="33_xxnyf"]
 [ext_resource type="PackedScene" uid="uid://bkj6u72ci18q1" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_hr.tscn" id="34_gktgy"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling.tscn" id="35_ebik0"]
 
@@ -342,57 +339,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qg8em")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j07io"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_texture = ExtResource("1_qdt4i")
-metallic_texture = ExtResource("2_xpgkx")
-metallic_texture_channel = 2
-roughness_texture = ExtResource("2_xpgkx")
-roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("3_ydku5")
-uv1_scale = Vector3(23.375, 23.375, 23.375)
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_yoymp"]
-_surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
-"format": 34896613377,
-"index_count": 6,
-"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AAAAAP//AAD//wAA//8AAAAAAAAAAAAA//8AAAAAAAA=")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_r2vi3"]
-resource_name = "floor_2_flooring_Plane"
-lightmap_size_hint = Vector2i(590, 362)
-_surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
-"attribute_data": PackedByteArray("AAAAAAAAgD92yH8/e6V/PwD/fz8AAAAA6ydeOucJtToAAIA/AP9/P3bIfz/nCbU6AAAAAAAAAADrJ146e6V/Pw=="),
-"format": 34359742519,
-"index_count": 6,
-"index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"material": SubResource("StandardMaterial3D_j07io"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 4,
-"vertex_data": PackedByteArray("AACAvwAAAAAAAIA/AACAPwAAAAAAAIC/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC//3/9//7//7//f/3//v//v/9//f/+//+//3/9//7//78=")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_yoymp")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_esra5"]
-size = Vector3(2.01099, 0.502625, 2.39929)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4dmao"]
-size = Vector3(89.1, 1, 105.3)
-
 [node name="human_resources_primary_wing" type="Node3D"]
 
 [node name="WALLS" type="Node3D" parent="."]
@@ -574,32 +520,21 @@ skeleton = NodePath("")
 
 [node name="FLOOR" type="Node3D" parent="."]
 
-[node name="Plane1" type="MeshInstance3D" parent="FLOOR"]
-transform = Transform3D(44.475, 0, 0, 0, 4.236, 0, 0, 0, 44.475, -30.258, 0, 44.4305)
-visible = false
-mesh = SubResource("ArrayMesh_r2vi3")
-skeleton = NodePath("")
+[node name="hr_base_floor" parent="FLOOR" instance=ExtResource("22_twwcq")]
+transform = Transform3D(0.854, 0, 0, 0, 1, 0, 0, 0, 0.575, 5.67725, 0, 5.58992)
 
-[node name="footstep_collider_carpet" type="Area3D" parent="FLOOR/Plane1"]
-collision_layer = 32768
-collision_mask = 32768
-script = ExtResource("33_xxnyf")
-floor_type = "bathroom"
+[node name="hr_base_floor2" parent="FLOOR" instance=ExtResource("22_twwcq")]
+transform = Transform3D(0.285, 0, 0, 0, 1, 0, 0, 0, 1.964, 0, 0, 30.9731)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FLOOR/Plane1/footstep_collider_carpet"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00498939, -0.248688, 0.202063)
-shape = SubResource("BoxShape3D_esra5")
+[node name="hr_base_floor3" parent="FLOOR" instance=ExtResource("22_twwcq")]
+transform = Transform3D(0.58, 0, 0, 0, 1, 0, 0, 0, 0.57, -8.63258, 0, 22.5401)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="FLOOR"]
-collision_layer = 133
-collision_mask = 149
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FLOOR/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.3422, -0.475541, 52.5059)
-shape = SubResource("BoxShape3D_4dmao")
+[node name="hr_base_floor4" parent="FLOOR" instance=ExtResource("22_twwcq")]
+transform = Transform3D(1.711, 0, 0, 0, 1, 0, 0, 0, 0.58, -19.952, -0.001, 44.938)
 
 [node name="CEILING" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305175, 0)
+visible = false
 
 [node name="CeilingTileHR12" parent="CEILING" instance=ExtResource("33_8rcrw")]
 transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 2.619)

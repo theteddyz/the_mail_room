@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://iogmkwy1n8lg"]
+[gd_scene load_steps=61 format=4 uid="uid://iogmkwy1n8lg"]
 
 [ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="1_5q88x"]
 [ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="2_fsy3c"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dhepsytbckakx" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_NormalGL.jpg" id="26_r54lp"]
 [ext_resource type="Texture2D" uid="uid://gqsedkoyeak2" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Color.jpg" id="27_chayg"]
 [ext_resource type="Texture2D" uid="uid://dtprrraywwk3u" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Roughness.png" id="28_tsokn"]
+[ext_resource type="PackedScene" uid="uid://dwppa8t33rotp" path="res://Scenes/Prefabs/Floors/hr_base_floor.tscn" id="29_vclns"]
 [ext_resource type="Texture2D" uid="uid://bvvp4ly004ww1" path="res://Assets/Models/test_models/Floor2/Ceiling/ceilingHospital_Ceiling_light_BaseColor.png" id="30_vclns"]
 [ext_resource type="Texture2D" uid="uid://c2fs6mcayvju6" path="res://Assets/Models/test_models/Floor2/Ceiling/ceilingHospital_Ceiling_light_Metallic-Ceiling_light_Roughness.png" id="31_5u33l"]
 [ext_resource type="Texture2D" uid="uid://djwggaqodycjb" path="res://Assets/Models/test_models/Floor2/Ceiling/ceilingHospital_Ceiling_light_Normal.png" id="32_j0haw"]
@@ -791,6 +792,12 @@ transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -8.41531, 
 transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -8.41531, 0, -11.2746)
 
 [node name="FLOOR" type="Node3D" parent="."]
+
+[node name="hr_base_floor" parent="FLOOR" instance=ExtResource("29_vclns")]
+transform = Transform3D(1.125, 0, 0, 0, 1, 0, 0, 0, 0.839, 0, 0, 0.19091)
+
+[node name="hr_base_floor2" parent="FLOOR" instance=ExtResource("29_vclns")]
+transform = Transform3D(0.855, 0, 0, 0, 1, 0, 0, 0, 0.563, 0, 0, -14.0124)
 
 [node name="CEILING" type="Node3D" parent="."]
 

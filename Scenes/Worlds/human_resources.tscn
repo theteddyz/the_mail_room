@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dsbem806big2h"]
+[gd_scene load_steps=23 format=3 uid="uid://dsbem806big2h"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
 [ext_resource type="Environment" uid="uid://52by3g1q6hkh" path="res://human_resources_worldenvironment.tres" id="2_6iufn"]
@@ -18,7 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://bq0ylb4jeiliy" path="res://Scenes/Prefabs/Rooms/human_resources_examination.tscn" id="20_fwsw7"]
 [ext_resource type="PackedScene" uid="uid://cfd2f46sbbd33" path="res://Scenes/Prefabs/Rooms/human_resources_secondary_wing.tscn" id="21_phfjw"]
 [ext_resource type="PackedScene" uid="uid://iogmkwy1n8lg" path="res://Scenes/Prefabs/Rooms/human_resources_caracss_and_butcher.tscn" id="22_fe0j1"]
-[ext_resource type="PackedScene" uid="uid://dwppa8t33rotp" path="res://Scenes/Prefabs/Floors/hr_base_floor.tscn" id="23_fe0j1"]
 
 [sub_resource type="Gradient" id="Gradient_owl4l"]
 
@@ -104,10 +103,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 49.522
 
 [node name="human_resources_carcass_and_butcher" parent="NavigationRegion3D" instance=ExtResource("22_fe0j1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.6717, 0, 28.2217)
-
-[node name="hr_base_floor" parent="NavigationRegion3D" instance=ExtResource("23_fe0j1")]
-transform = Transform3D(4.52, 0, 0, 0, 1, 0, 0, 0, 4.55, 59.358, 0, 26.5775)
-tile_size = Vector2(0.4, 0.4)
 
 [node name="Mailcart" parent="." instance=ExtResource("8_rl6tn")]
 transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979, 3.55372, 0.316447, 1.73329)

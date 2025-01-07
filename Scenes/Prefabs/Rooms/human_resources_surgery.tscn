@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://clua0pmvhx6av"]
+[gd_scene load_steps=6 format=3 uid="uid://clua0pmvhx6av"]
 
 [ext_resource type="PackedScene" uid="uid://bloyfj1wl5sup" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.tscn" id="1_2h7nt"]
 [ext_resource type="PackedScene" uid="uid://b2rvvsrl03wcr" path="res://Scenes/Prefabs/StaticObjects/hr_wall_wtih_door.tscn" id="2_7gs2s"]
 [ext_resource type="PackedScene" uid="uid://dhih34co5hg26" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_hr.tscn" id="3_uh6vi"]
 [ext_resource type="PackedScene" uid="uid://bkj6u72ci18q1" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_hr.tscn" id="4_rw620"]
+[ext_resource type="PackedScene" uid="uid://dwppa8t33rotp" path="res://Scenes/Prefabs/Floors/hr_base_floor.tscn" id="5_uh6vi"]
 
 [node name="human_resources_surgery" type="Node3D"]
 
@@ -43,6 +44,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.666
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.76035, 0, -5.20197)
 
 [node name="CEILING" type="Node3D" parent="."]
+visible = false
 
 [node name="CeilingTileHR129" parent="CEILING" instance=ExtResource("3_uh6vi")]
 transform = Transform3D(1.069, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -1.87261, 3.913, 8.18237)
@@ -84,5 +86,8 @@ transform = Transform3D(1.069, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 14.8496, 3.913, -
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19792, 4.50416, 0.378211)
 
 [node name="FLOOR" type="Node3D" parent="."]
+
+[node name="hr_base_floor" parent="FLOOR" instance=ExtResource("5_uh6vi")]
+transform = Transform3D(0.846, 0, 0, 0, 1, 0, 0, 0, 0.569, 3.87809, 0, 0.512937)
 
 [node name="OBJECTS" type="Node3D" parent="."]
