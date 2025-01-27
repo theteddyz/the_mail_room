@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://clgw1aqyoiqcq"]
 
 [ext_resource type="Texture2D" uid="uid://y2pmwstysa37" path="res://Assets/Textures/BlenderTextures/WallMailRoom.png" id="1_ifukg"]
-[ext_resource type="Script" path="res://Scripts/CutoutCollisionShaper.gd" id="2_1uj1p"]
+[ext_resource type="Script" uid="uid://dukwbapxl8v66" path="res://Scripts/CutoutCollisionShaper.gd" id="2_1uj1p"]
 [ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="3_64d6a"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="4_o4wyx"]
+[ext_resource type="Script" uid="uid://cbvb1snf756vu" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="4_o4wyx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i46u3"]
 resource_name = "WallMailRoom"
@@ -33,16 +33,16 @@ texture_filter = 2
 size = Vector3(0.644165, 0.463867, 2.41257)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kp38p"]
-size = Vector3(0.890699, 7.893, 0.26)
+size = Vector3(3.11073, 7.893, 0.26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_084io"]
-size = Vector3(3.6593, 7.70207, 0.349243)
+size = Vector3(1.43927, 7.70207, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbd3s"]
-size = Vector3(5.80928, 6.26727, 0.349243)
+size = Vector3(5.80928, 6.54268, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_25jim"]
-size = Vector3(5.72033, 0.245733, 0.349243)
+size = Vector3(5.72033, 0.02968, 0.349243)
 
 [node name="mail_room_wall_cuttable" type="Node3D"]
 
@@ -131,7 +131,7 @@ axis_to_adjust = Vector3(0, 1, 0)
 sign = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BottomCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.122866, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.122867, -0.00457764)
 shape = SubResource("BoxShape3D_25jim")
 
 [connection signal="body_entered" from="CSGCombiner3D/Cutout/airduct_longer/Area3D" to="CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]

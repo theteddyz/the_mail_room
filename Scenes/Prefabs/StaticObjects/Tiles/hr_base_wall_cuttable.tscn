@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://dvlpmgu31pj1k"]
 
-[ext_resource type="Script" path="res://Scripts/CutoutCollisionShaper.gd" id="2_6lvgx"]
+[ext_resource type="Script" uid="uid://dukwbapxl8v66" path="res://Scripts/CutoutCollisionShaper.gd" id="2_6lvgx"]
 [ext_resource type="Texture2D" uid="uid://h7hmrarl8wju" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_GlobalCorpIcon.png" id="2_vv4wu"]
 [ext_resource type="Texture2D" uid="uid://bi0sg43x5igji" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Paint002_1K-JPG_Roughness.png" id="3_rrwy8"]
 [ext_resource type="Texture2D" uid="uid://b6dfcbmrqyhh3" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Paint002_1K-JPG_NormalGL.jpg" id="4_smc37"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dhepsytbckakx" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_NormalGL.jpg" id="11_0yvse"]
 [ext_resource type="Texture2D" uid="uid://gqsedkoyeak2" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Color.jpg" id="12_akjai"]
 [ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="12_hdwvc"]
-[ext_resource type="Script" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="13_68k0q"]
+[ext_resource type="Script" uid="uid://cbvb1snf756vu" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="13_68k0q"]
 [ext_resource type="Texture2D" uid="uid://dtprrraywwk3u" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Roughness.png" id="13_jxcy1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfoc6"]
@@ -89,7 +89,7 @@ texture_filter = 2
 size = Vector3(0.644165, 0.463867, 2.41257)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0rqq1"]
-size = Vector3(0.759247, 7.893, 0.26)
+size = Vector3(0.75925, 7.893, 0.26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cg3ht"]
 size = Vector3(3.79075, 7.70207, 0.349243)
@@ -242,7 +242,7 @@ axis_to_adjust = Vector3(0, 1, 0)
 sign = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BottomCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.138138, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.138139, -0.00457764)
 shape = SubResource("BoxShape3D_308pl")
 
 [connection signal="body_entered" from="CSGCombiner3D/Cutout/airduct_longer/Area3D" to="CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]
