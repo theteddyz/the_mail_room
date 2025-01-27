@@ -146,6 +146,12 @@ transform = Transform3D(0.536564, 0, 0.84386, 0, 1, 0, -0.84386, 0, 0.536564, 14
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_jh2lx")
 script = ExtResource("4_ol4n4")
+dark_properties = {
+"adjustment_contrast": 1.25,
+"tonemap_exposure": 5.0
+}
+light_value = 0.1
+dark_value = 0.025
 
 [node name="mailroom_prefab" parent="." instance=ExtResource("5_4oqjk")]
 
@@ -333,19 +339,19 @@ mesh = SubResource("BoxMesh_xx5t2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.082, -12.583)
 
 [node name="Cutout" parent="root/CSGCombiner3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.835733, 0.59532, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.570479, 1.79267, 0)
 
 [node name="CollisionShape3D" parent="root/LeftCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34463, 3.97421, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47726, 3.97421, 0)
 
 [node name="CollisionShape3D" parent="root/RightCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18037, 3.859, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04774, 3.859, -0.00457764)
 
 [node name="CollisionShape3D" parent="root/TopCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49166, -0.005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09034, -0.005)
 
 [node name="CollisionShape3D" parent="root/BottomCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, -0.01484, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.583835, -0.00457764)
 
 [editable path="mailroom_prefab"]
 [editable path="mailroom_prefab/Objects/Desk2"]

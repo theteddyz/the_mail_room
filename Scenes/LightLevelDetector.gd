@@ -16,6 +16,8 @@ var starttimer: Timer
 # THIS SCRIPT IS KIND OF HEAVY, PROBABLY RELATED TO LUMINANCE CALCULATION, CURRENT REMEDY; ONLY RUNS ONCE EVER 0.75 (or whatver refresh-timer is set to)
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player = GameManager.get_player()
+	camera = GameManager.camera_reference
 	timer = find_child("Refresh Timer")
 	lightvalue = 1
 	

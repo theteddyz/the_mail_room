@@ -36,6 +36,7 @@ func _ready() -> void:
 	top_level = false
 	head = get_parent()
 	previous_head_quat = Quaternion.IDENTITY #head.global_transform.basis.get_rotation_quaternion()
+	GameManager.register_camera(self)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

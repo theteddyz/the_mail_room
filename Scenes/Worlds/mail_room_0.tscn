@@ -211,6 +211,12 @@ transform = Transform3D(-0.00603879, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.0060
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_r8df3")
 script = ExtResource("4_gvu72")
+dark_properties = {
+"adjustment_contrast": 1.25,
+"tonemap_exposure": 5.0
+}
+light_value = 0.1
+dark_value = 0.025
 
 [node name="mailroom_prefab" parent="." instance=ExtResource("6_b44l8")]
 

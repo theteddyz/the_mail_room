@@ -33,16 +33,16 @@ texture_filter = 2
 size = Vector3(0.644165, 0.463867, 2.41257)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kp38p"]
-size = Vector3(3.11073, 7.893, 0.26)
+size = Vector3(0.858482, 7.893, 0.26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_084io"]
-size = Vector3(1.43927, 7.70207, 0.349243)
+size = Vector3(3.69152, 7.70207, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbd3s"]
-size = Vector3(5.80928, 6.54268, 0.349243)
+size = Vector3(5.80928, 3.57412, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_25jim"]
-size = Vector3(5.72033, 0.02968, 0.349243)
+size = Vector3(5.72033, 2.93888, 0.349243)
 
 [node name="mail_room_wall_cuttable" type="Node3D"]
 
@@ -64,7 +64,7 @@ size = Vector3(5.73, 1.495, 0.265)
 material = SubResource("StandardMaterial3D_652il")
 
 [node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3843, 0.870733, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41652, 3.56388, 0)
 operation = 2
 calculate_tangents = false
 size = Vector3(1.25, 1.25, 1)
@@ -92,7 +92,7 @@ axis_to_adjust = Vector3(1, 0, 0)
 sign = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.45465, 3.97421, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.47076, 3.97421, 0)
 shape = SubResource("BoxShape3D_kp38p")
 
 [node name="RightCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
@@ -105,7 +105,7 @@ axis_to_adjust = Vector3(1, 0, 0)
 sign = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07035, 3.859, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05424, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_084io")
 
 [node name="TopCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
@@ -118,7 +118,7 @@ axis_to_adjust = Vector3(0, 1, 0)
 sign = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TopCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62937, -0.005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.97594, -0.005)
 shape = SubResource("BoxShape3D_vbd3s")
 
 [node name="BottomCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
@@ -131,7 +131,7 @@ axis_to_adjust = Vector3(0, 1, 0)
 sign = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BottomCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.122867, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 1.46944, -0.00457764)
 shape = SubResource("BoxShape3D_25jim")
 
 [connection signal="body_entered" from="CSGCombiner3D/Cutout/airduct_longer/Area3D" to="CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]

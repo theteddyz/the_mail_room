@@ -119,7 +119,6 @@ visible = false
 
 [node name="LightLevelDetection" parent="Neck/Head/HeadbopRoot" instance=ExtResource("8_6f6ef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247054, -0.292751)
-active = false
 
 [node name="Refresh Timer" parent="Neck/Head/HeadbopRoot/LightLevelDetection" index="0"]
 wait_time = 0.22

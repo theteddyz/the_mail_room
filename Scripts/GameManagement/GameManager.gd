@@ -7,6 +7,7 @@ const FILE_NAME = "user://game-data.json"
 @export var blacklist = ["pos_x", "pos_y", "pos_z", "nodepath"]
 var current_scene : Node
 var player_reference: Node
+var camera_reference: Camera3D
 var elevator_reference: Node
 var mail_cart_reference: Node
 var scare_director_reference: Node
@@ -17,6 +18,9 @@ var player_radio:Node
 #Quite a few script rely on these setter getter, proceed with caution if deleted
 func register_player(new_player):
 	player_reference = new_player
+	
+func register_camera(new_camera):
+	camera_reference = new_camera
 	
 func register_mail_cart(cart):
 	mail_cart_reference = cart

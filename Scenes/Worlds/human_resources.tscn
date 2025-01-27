@@ -1,4 +1,4 @@
-[gd_scene load_steps=208 format=4 uid="uid://dsbem806big2h"]
+[gd_scene load_steps=209 format=4 uid="uid://dsbem806big2h"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
 [ext_resource type="Environment" uid="uid://52by3g1q6hkh" path="res://human_resources_worldenvironment.tres" id="2_6iufn"]
@@ -83,6 +83,7 @@
 [ext_resource type="PackedScene" uid="uid://c7e4imgjbdx46" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_1.tscn" id="53_d3cnj"]
 [ext_resource type="Texture2D" uid="uid://c2ii435juona8" path="res://Assets/Models/Temp_models/textures/Chairs_table_1/Chairs_tables_1_BaseColor.png" id="54_ujy8q"]
 [ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/Bookshelf.tscn" id="55_8v85g"]
+[ext_resource type="PackedScene" uid="uid://dvlpmgu31pj1k" path="res://Scenes/Prefabs/StaticObjects/Tiles/hr_base_wall_cuttable.tscn" id="78_g3l24"]
 [ext_resource type="PackedScene" uid="uid://b2rvvsrl03wcr" path="res://Scenes/Prefabs/StaticObjects/hr_wall_wtih_door.tscn" id="83_x3c4t"]
 [ext_resource type="Script" uid="uid://dmtprj5gddj6g" path="res://Scripts/Interactable/Door.gd" id="84_ah427"]
 [ext_resource type="AudioStream" uid="uid://dwhgdxuiprgyt" path="res://Assets/Audio/SoundFX/Door/DoorLocked2.ogg" id="85_g3l24"]
@@ -874,16 +875,16 @@ texture_filter = 2
 size = Vector3(0.644165, 0.463867, 2.41257)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0rqq1"]
-size = Vector3(0.31251, 7.893, 0.26)
+size = Vector3(1.29976, 7.893, 0.26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cg3ht"]
-size = Vector3(4.23749, 7.70207, 0.349243)
+size = Vector3(3.25024, 7.70207, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t708c"]
-size = Vector3(5.80928, 6.20296, 0.349243)
+size = Vector3(5.80928, 6.27055, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_308pl"]
-size = Vector3(5.72033, 0.31004, 0.349243)
+size = Vector3(5.72033, 0.242452, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1veq"]
 size = Vector3(1.50781, 7.758, 0.264832)
@@ -1338,7 +1339,12 @@ floor_num = 3
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_6iufn")
 script = ExtResource("3_jahih")
-dark_value = 0.01
+dark_properties = {
+"adjustment_contrast": 1.25,
+"tonemap_exposure": 5.0
+}
+light_value = 0.1
+dark_value = 0.025
 
 [node name="FreezerFogVolume" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.555, 1.125, 28.129)
@@ -2761,163 +2767,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("ArrayMesh_2sxqi")
 skeleton = NodePath("")
 
-[node name="hr_base_wall_cuttable" type="Node3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.63732, -0.233, 11.265)
+[node name="hr_base_wall_cuttable" parent="NavigationRegion3D/human_resources_primary_wing/WALLS" instance=ExtResource("78_g3l24")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.634, -0.224, 11.258)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable"]
+[node name="Cutout" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64237, 0.843971, 0)
 
-[node name="TopSection" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.363, 0)
-size = Vector3(5.705, 3.266, 0.223)
-material = SubResource("StandardMaterial3D_cfoc6")
+[node name="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/LeftCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.941314, 3.97421, 0)
 
-[node name="BottomSection" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.48725, 0)
-size = Vector3(5.704, 4.51164, 0.224)
-material = SubResource("StandardMaterial3D_af7ox")
+[node name="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/RightCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58369, 3.859, -0.00457764)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51, 0)
-size = Vector3(5.704, 0.179, 0.25)
-material = SubResource("StandardMaterial3D_7lql5")
+[node name="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/TopCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61599, -0.005)
 
-[node name="LowRim" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.380758, -0.114795)
-size = Vector3(5.704, 0.297484, 0.0104102)
-material = SubResource("StandardMaterial3D_162ye")
-
-[node name="LowRim2" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.439, -0.128)
-size = Vector3(5.704, 0.047, 0.013)
-material = SubResource("StandardMaterial3D_70j87")
-
-[node name="LowRim3" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.312, -0.128)
-size = Vector3(5.704, 0.047, 0.013)
-material = SubResource("StandardMaterial3D_70j87")
-
-[node name="LowRim4" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.69625e-10, 0.380758, 0.116)
-size = Vector3(5.704, 0.297484, 0.0104102)
-material = SubResource("StandardMaterial3D_162ye")
-
-[node name="LowRim5" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84807e-10, 0.439, 0.116)
-size = Vector3(5.704, 0.047, 0.013)
-material = SubResource("StandardMaterial3D_70j87")
-
-[node name="LowRim6" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.84807e-10, 0.312, 0.116)
-size = Vector3(5.704, 0.047, 0.013)
-material = SubResource("StandardMaterial3D_70j87")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51, 0)
-size = Vector3(5.704, 0.128, 0.306)
-material = SubResource("StandardMaterial3D_7lql5")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.588, -0.12)
-size = Vector3(5.704, 0.026, 0.0699062)
-material = SubResource("StandardMaterial3D_7lql5")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 1.433, -0.119)
-size = Vector3(5.704, 0.026, 0.0699062)
-material = SubResource("StandardMaterial3D_7lql5")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(-1, 6.18172e-08, -6.18172e-08, 0, 0.707107, 0.707107, 8.74228e-08, 0.707107, -0.707107, 0, 1.588, 0.119)
-size = Vector3(5.704, 0.026, 0.0699062)
-material = SubResource("StandardMaterial3D_7lql5")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(-1, -6.18172e-08, -6.18172e-08, 0, 0.707107, -0.707107, 8.74228e-08, -0.707107, -0.707107, 0, 1.433, 0.119)
-size = Vector3(5.704, 0.026, 0.0699062)
-material = SubResource("StandardMaterial3D_7lql5")
-
-[node name="Cutout" type="CSGBox3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.179, 0.906969, 0)
-operation = 2
-calculate_tangents = false
-size = Vector3(1.25, 1.25, 1)
-
-[node name="airduct_longer" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout" instance=ExtResource("32_1mqnp")]
-transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -0.0277901, -0.00451994, -2.49999)
-
-[node name="Area3D" type="Area3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout/airduct_longer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.260137)
-collision_layer = 0
-collision_mask = 65536
-script = ExtResource("33_ktdkg")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout/airduct_longer/Area3D"]
-transform = Transform3D(0.999997, 0, 0, 0, 1.00008, 0, 0, 0, 0.999993, 0.0042125, 0.00830394, 0.628134)
-shape = SubResource("BoxShape3D_ypr7i")
-
-[node name="LeftCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
-script = ExtResource("34_jugg3")
-collision_area = NodePath("CollisionShape3D")
-cutout = NodePath("../CSGCombiner3D/Cutout")
-axis_to_adjust = Vector3(1, 0, 0)
-sign = 1
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/LeftCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.673, 3.97421, 0)
-shape = SubResource("BoxShape3D_0rqq1")
-
-[node name="RightCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
-script = ExtResource("34_jugg3")
-collision_area = NodePath("CollisionShape3D")
-cutout = NodePath("../CSGCombiner3D/Cutout")
-axis_to_adjust = Vector3(1, 0, 0)
-sign = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/RightCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.852, 3.859, -0.00457764)
-shape = SubResource("BoxShape3D_cg3ht")
-
-[node name="TopCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
-script = ExtResource("34_jugg3")
-collision_area = NodePath("CollisionShape3D")
-cutout = NodePath("../CSGCombiner3D/Cutout")
-axis_to_adjust = Vector3(0, 1, 0)
-sign = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/TopCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.64748, -0.005)
-shape = SubResource("BoxShape3D_t708c")
-
-[node name="BottomCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
-script = ExtResource("34_jugg3")
-collision_area = NodePath("CollisionShape3D")
-cutout = NodePath("../CSGCombiner3D/Cutout")
-axis_to_adjust = Vector3(0, 1, 0)
-sign = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/BottomCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.140985, -0.00457764)
-shape = SubResource("BoxShape3D_308pl")
-
-[node name="airduct_longer" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" instance=ExtResource("32_1mqnp")]
-transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -2.21079, 0.926606, -5.14305)
-
-[node name="airduct_longer2" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" instance=ExtResource("32_1mqnp")]
-transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -2.21079, 0.926606, -7.78874)
-
-[node name="airduct_longer3" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" instance=ExtResource("32_1mqnp")]
-transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 2.21, -2.21079, 0.926606, -11.776)
-
-[node name="airduct_longer4" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" instance=ExtResource("32_1mqnp")]
-transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -2.21079, 0.926606, -14.425)
+[node name="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/BottomCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.109486, -0.00457764)
 
 [node name="FLOOR" type="Node3D" parent="NavigationRegion3D/human_resources_primary_wing"]
 
@@ -3067,7 +2933,7 @@ size = Vector3(5.704, 0.026, 0.0699062)
 material = SubResource("StandardMaterial3D_7lql5")
 
 [node name="Cutout" type="CSGBox3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.96249, 0.93504, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.975243, 0.867452, 0)
 operation = 2
 calculate_tangents = false
 size = Vector3(1.25, 1.25, 1)
@@ -3095,7 +2961,7 @@ axis_to_adjust = Vector3(1, 0, 0)
 sign = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable/LeftCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74375, 3.97421, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25012, 3.97421, 0)
 shape = SubResource("BoxShape3D_0rqq1")
 
 [node name="RightCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
@@ -3108,7 +2974,7 @@ axis_to_adjust = Vector3(1, 0, 0)
 sign = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable/RightCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.781255, 3.859, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27488, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_cg3ht")
 
 [node name="TopCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
@@ -3121,7 +2987,7 @@ axis_to_adjust = Vector3(0, 1, 0)
 sign = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable/TopCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.66152, -0.005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62773, -0.005)
 shape = SubResource("BoxShape3D_t708c")
 
 [node name="BottomCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
@@ -3134,7 +3000,7 @@ axis_to_adjust = Vector3(0, 1, 0)
 sign = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable/BottomCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.15502, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.121226, -0.00457764)
 shape = SubResource("BoxShape3D_308pl")
 
 [node name="FLOOR" type="Node3D" parent="NavigationRegion3D/human_resources_storage_1"]
@@ -3618,8 +3484,6 @@ transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979
 
 [connection signal="screen_entered" from="NavigationRegion3D/HumanResourcesOpeningRoom/CeilingLight/CeilingLightOn3/VisibleOnScreenEnabler3D" to="NavigationRegion3D/HumanResourcesOpeningRoom/CeilingLight/CeilingLightOn3/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_entered"]
 [connection signal="screen_exited" from="NavigationRegion3D/HumanResourcesOpeningRoom/CeilingLight/CeilingLightOn3/VisibleOnScreenEnabler3D" to="NavigationRegion3D/HumanResourcesOpeningRoom/CeilingLight/CeilingLightOn3/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_exited"]
-[connection signal="body_entered" from="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_exited"]
 [connection signal="body_entered" from="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_exited"]
 [connection signal="body_entered" from="NavigationRegion3D/human_resources_carcass_and_butcher/WALLS/HR_ArchwayWall2/RigidBody3D2/Monster_Detector" to="NavigationRegion3D/human_resources_carcass_and_butcher/WALLS/HR_ArchwayWall2/RigidBody3D2/Monster_Detector" method="_on_body_entered"]
@@ -3634,3 +3498,4 @@ transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979
 [editable path="NavigationRegion3D/HumanResourcesOpeningRoom/CeilingLight/CeilingLowPoly"]
 [editable path="NavigationRegion3D/HumanResourcesOpeningRoom/Objects/Desk2"]
 [editable path="NavigationRegion3D/HumanResourcesOpeningRoom/Objects/Desk2/MailboxStand"]
+[editable path="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable"]

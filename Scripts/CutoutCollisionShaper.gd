@@ -14,6 +14,7 @@ var lowestmost_point = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	assert(collision_area != null && cutout != null && axis_to_adjust != null, "You are required to add these in the inspector")
+	_adjust_shape()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
