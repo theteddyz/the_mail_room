@@ -28,6 +28,7 @@ GrabbingManager="*res://Scenes/Managers/Grabbing_Manager.tscn"
 [display]
 
 window/energy_saving/keep_screen_on=false
+window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
 [file_customization]

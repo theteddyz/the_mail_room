@@ -61,6 +61,7 @@ script = ExtResource("2_eyvdn")
 [node name="HeadbopRoot" type="Node3D" parent="Neck/Head"]
 
 [node name="Camera" type="Camera3D" parent="Neck/Head/HeadbopRoot"]
+physics_interpolation_mode = 1
 cull_mask = 524287
 doppler_tracking = 2
 current = true
