@@ -1,0 +1,29 @@
+[gd_scene load_steps=9 format=3 uid="uid://bg0yb6l0prbc8"]
+
+[ext_resource type="Texture2D" uid="uid://coqvfrh4ury7i" path="res://Assets/Textures/OfficeCeiling001_1K-JPG_AmbientOcclusion.jpg" id="1_fhlyu"]
+[ext_resource type="Texture2D" uid="uid://bby4qp3jnay5g" path="res://Assets/Textures/OfficeCeiling001_1K-JPG_Color.jpg" id="1_o0kqf"]
+[ext_resource type="Texture2D" uid="uid://ctjwtafp7c824" path="res://Assets/Textures/OfficeCeiling001_1K-JPG_Emission.jpg" id="2_7g583"]
+[ext_resource type="Texture2D" uid="uid://cjp75f8xprgoj" path="res://Assets/Textures/OfficeCeiling001_1K-JPG_NormalDX.jpg" id="3_o0kqf"]
+[ext_resource type="Texture2D" uid="uid://bk3jnmc6v5b1x" path="res://Assets/Textures/OfficeCeiling001_1K-JPG_Displacement.jpg" id="4_l4m2o"]
+[ext_resource type="Texture2D" uid="uid://bhig6eg1b23w6" path="res://Assets/Textures/OfficeCeiling001_1K-JPG_Roughness.jpg" id="6_l4m2o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4m2o"]
+albedo_texture = ExtResource("1_o0kqf")
+albedo_texture_force_srgb = true
+roughness_texture = ExtResource("6_l4m2o")
+emission_texture = ExtResource("2_7g583")
+normal_texture = ExtResource("3_o0kqf")
+ao_enabled = true
+ao_texture = ExtResource("1_fhlyu")
+heightmap_scale = -0.978
+heightmap_texture = ExtResource("4_l4m2o")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ppfqh"]
+material = SubResource("StandardMaterial3D_l4m2o")
+size = Vector2(5.07, 5.115)
+
+[node name="HR_Floor_Ceiling" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.659119, 0)
+mesh = SubResource("PlaneMesh_ppfqh")

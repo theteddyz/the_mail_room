@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=4 uid="uid://dsbem806big2h"]
+[gd_scene load_steps=210 format=4 uid="uid://dsbem806big2h"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_oyi4d"]
 [ext_resource type="Environment" uid="uid://52by3g1q6hkh" path="res://human_resources_worldenvironment.tres" id="2_6iufn"]
@@ -82,7 +82,7 @@
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="52_q8swy"]
 [ext_resource type="PackedScene" uid="uid://c7e4imgjbdx46" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_1.tscn" id="53_d3cnj"]
 [ext_resource type="Texture2D" uid="uid://c2ii435juona8" path="res://Assets/Models/Temp_models/textures/Chairs_table_1/Chairs_tables_1_BaseColor.png" id="54_ujy8q"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/Bookshelf.tscn" id="55_8v85g"]
+[ext_resource type="PackedScene" uid="uid://br1uwkkcvlmla" path="res://Scenes/Prefabs/StaticObjects/Bookshelf.tscn" id="55_8v85g"]
 [ext_resource type="PackedScene" uid="uid://dvlpmgu31pj1k" path="res://Scenes/Prefabs/StaticObjects/Tiles/hr_base_wall_cuttable.tscn" id="78_g3l24"]
 [ext_resource type="PackedScene" uid="uid://b2rvvsrl03wcr" path="res://Scenes/Prefabs/StaticObjects/hr_wall_wtih_door.tscn" id="83_x3c4t"]
 [ext_resource type="Script" uid="uid://dmtprj5gddj6g" path="res://Scripts/Interactable/Door.gd" id="84_ah427"]
@@ -155,6 +155,9 @@ size = Vector3(22.44, 1, 5.625)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n80ug"]
 albedo_color = Color(0.0110876, 0.0110876, 0.0110876, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g3l24"]
+size = Vector3(82.1, 1, 78.485)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a835v"]
 size = Vector3(2.45142, 0.537109, 1.15601)
@@ -1370,472 +1373,508 @@ transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.08326
 navigation_mesh = SubResource("NavigationMesh_85eyn")
 
 [node name="CEILING" type="Node3D" parent="NavigationRegion3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.1571, 0.305175, 2.80744)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.1571, 0.965308, 2.80744)
 
 [node name="CeilingTileHR12" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 2.619)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -0.0854204, 3.913, 2.619)
 
 [node name="CeilingTileHR13" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.4, 3.913, 2.619)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.1465, 3.913, 2.619)
 
 [node name="CeilingTileHR14" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.8, 3.913, 2.619)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.3755, 3.913, 2.619)
 
 [node name="CeilingTileHR15" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 16.2, 3.913, 2.619)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 15.6114, 3.913, 2.619)
 
 [node name="CeilingTileHR16" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 7.96043)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -0.0854206, 3.913, 7.89191)
 
 [node name="CeilingTileHR17" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.4, 3.913, 7.96043)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.1465, 3.913, 7.89191)
 
 [node name="CeilingTileHR18" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.8, 3.913, 7.96043)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.3755, 3.913, 7.89191)
 
 [node name="CeilingTileHR19" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 16.2, 3.913, 7.96043)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 15.6114, 3.913, 7.89191)
 
 [node name="CeilingTileHR20" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 13.2961)
-
-[node name="CeilingTileHR24" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 18.64)
-
-[node name="CeilingTileHR25" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 23.9773)
-
-[node name="CeilingTileHR26" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 29.2777)
-
-[node name="CeilingTileHR72" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.44762, 3.913, 18.64)
-
-[node name="CeilingTileHR73" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.44762, 3.913, 23.9773)
-
-[node name="CeilingTileHR74" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.44762, 3.913, 29.2777)
-
-[node name="CeilingTileHR75" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.8512, 3.913, 18.64)
-
-[node name="CeilingTileHR76" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.8512, 3.913, 23.9773)
-
-[node name="CeilingTileHR77" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.8512, 3.913, 29.2777)
-
-[node name="CeilingTileHR110" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -16.2336, 3.94244, 18.64)
-
-[node name="CeilingTileHR111" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -16.2336, 3.94244, 23.9773)
-
-[node name="CeilingTileHR112" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -16.2336, 3.94244, 29.2777)
-
-[node name="CeilingTileHR106" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.44762, 3.913, 34.1917)
-
-[node name="CeilingTileHR107" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.8512, 3.913, 34.1917)
-
-[node name="CeilingTileHR108" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -16.1899, 3.913, 34.1917)
-
-[node name="CeilingTileHR109" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.5935, 3.913, 34.1917)
-
-[node name="CeilingTileHR78" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -17.0186, 3.913, 18.64)
-
-[node name="CeilingTileHR81" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -17.0186, 3.913, 13.3037)
-
-[node name="CeilingTileHR79" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -17.0186, 3.913, 23.9773)
-
-[node name="CeilingTileHR80" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -17.0186, 3.913, 29.2777)
-
-[node name="CeilingTileHR82" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -22.4278, 3.913, 18.64)
-
-[node name="CeilingTileHR83" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -22.4278, 3.913, 13.3037)
-
-[node name="CeilingTileHR84" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -22.4278, 3.913, 23.9773)
-
-[node name="CeilingTileHR85" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -22.4278, 3.913, 29.2777)
-
-[node name="CeilingTileHR86" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -27.8059, 3.913, 18.64)
-
-[node name="CeilingTileHR87" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -27.8059, 3.913, 13.3037)
-
-[node name="CeilingTileHR88" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -27.8059, 3.913, 23.9773)
-
-[node name="CeilingTileHR89" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -27.8059, 3.913, 29.2777)
-
-[node name="CeilingTileHR90" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -33.1661, 3.913, 18.64)
-
-[node name="CeilingTileHR91" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -33.1661, 3.913, 13.3037)
-
-[node name="CeilingTileHR115" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.164, -17.0186, 3.913, 7.6137)
-
-[node name="CeilingTileHR116" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.164, -22.4278, 3.913, 7.6137)
-
-[node name="CeilingTileHR117" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.164, -27.8059, 3.913, 7.6137)
-
-[node name="CeilingTileHR118" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.164, -33.1661, 3.913, 7.6137)
-
-[node name="CeilingTileHR119" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.164, -17.0186, 3.913, 1.604)
-
-[node name="CeilingTileHR120" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.164, -22.4278, 3.913, 1.604)
-
-[node name="CeilingTileHR121" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.164, -27.8059, 3.913, 1.604)
-
-[node name="CeilingTileHR122" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.164, -33.1661, 3.913, 1.604)
-
-[node name="CeilingTileHR92" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -33.1661, 3.913, 23.9773)
-
-[node name="CeilingTileHR93" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -33.1661, 3.913, 29.2777)
-
-[node name="CeilingTileHR94" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -38.4941, 3.913, 18.64)
-
-[node name="CeilingTileHR95" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -38.4941, 3.913, 13.3037)
-
-[node name="CeilingTileHR96" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -38.4941, 3.913, 23.9773)
-
-[node name="CeilingTileHR97" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -38.4941, 3.913, 29.2777)
-
-[node name="CeilingTileHR98" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -43.8777, 3.913, 18.64)
-
-[node name="CeilingTileHR99" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -43.8777, 3.913, 13.3037)
-
-[node name="CeilingTileHR100" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -43.8777, 3.913, 23.9773)
-
-[node name="CeilingTileHR101" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -43.8777, 3.913, 29.2777)
-
-[node name="CeilingTileHR102" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -49.253, 3.913, 18.64)
-
-[node name="CeilingTileHR103" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -49.253, 3.913, 13.3037)
-
-[node name="CeilingTileHR104" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -49.253, 3.913, 23.9773)
-
-[node name="CeilingTileHR105" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -49.253, 3.913, 29.2777)
-
-[node name="CeilingTileHR132" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -54.678, 3.913, 18.64)
-
-[node name="CeilingTileHR133" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -54.678, 3.913, 13.3037)
-
-[node name="CeilingTileHR134" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -54.678, 3.913, 23.9773)
-
-[node name="CeilingTileHR135" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -54.678, 3.913, 29.2777)
-
-[node name="CeilingTileHR136" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -60.097, 3.913, 18.64)
-
-[node name="CeilingTileHR137" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -60.097, 3.913, 13.3037)
-
-[node name="CeilingTileHR138" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -60.097, 3.913, 23.9773)
-
-[node name="CeilingTileHR139" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -60.097, 3.913, 29.2777)
-
-[node name="CeilingTileHR113" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -43.8777, 3.91645, 34.4998)
-
-[node name="CeilingTileHR114" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -49.253, 3.91645, 34.4998)
-
-[node name="CeilingTileHR27" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 34.4835)
-
-[node name="CeilingTileHR28" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 39.8069)
-
-[node name="CeilingTileHR126" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.69, 3.913, 29.2777)
-
-[node name="CeilingTileHR127" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.69, 3.913, 34.4835)
-
-[node name="CeilingTileHR128" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.69, 3.913, 39.8069)
-
-[node name="CeilingTileHR129" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.069, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 11.189, 3.913, 29.2777)
-
-[node name="CeilingTileHR130" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.069, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 11.189, 3.913, 34.4835)
-
-[node name="CeilingTileHR131" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.069, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 11.189, 3.913, 39.8069)
-
-[node name="CeilingTileHR29" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 45.1443)
-
-[node name="CeilingTileHR30" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 50.4815)
-
-[node name="CeilingTileHR31" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 0, 3.913, 55.8035)
-
-[node name="CeilingTileHR32" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.4, 3.913, 39.8069)
-
-[node name="CeilingTileHR33" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.4, 3.913, 45.1443)
-
-[node name="CeilingTileHR34" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.4, 3.913, 50.4815)
-
-[node name="CeilingTileHR35" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.4, 3.913, 55.8035)
-
-[node name="CeilingTileHR36" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.8, 3.913, 39.8069)
-
-[node name="CeilingTileHR37" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.8, 3.913, 45.1443)
-
-[node name="CeilingTileHR38" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.8, 3.913, 50.4815)
-
-[node name="CeilingTileHR39" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.8, 3.913, 55.8035)
-
-[node name="CeilingTileHR40" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -16.2, 3.913, 39.8069)
-
-[node name="CeilingTileHR41" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -16.2, 3.913, 45.1443)
-
-[node name="CeilingTileHR42" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -16.2, 3.913, 50.4815)
-
-[node name="CeilingTileHR43" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -16.2, 3.913, 55.8035)
-
-[node name="CeilingTileHR44" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.6, 3.913, 39.8069)
-
-[node name="CeilingTileHR45" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.6, 3.913, 45.1443)
-
-[node name="CeilingTileHR46" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.6, 3.913, 50.4815)
-
-[node name="CeilingTileHR47" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.6, 3.913, 55.8035)
-
-[node name="CeilingTileHR48" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -27, 3.913, 39.8069)
-
-[node name="CeilingTileHR49" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -27, 3.913, 45.1443)
-
-[node name="CeilingTileHR50" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -27, 3.913, 50.4815)
-
-[node name="CeilingTileHR51" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -27, 3.913, 55.8035)
-
-[node name="CeilingTileHR52" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -32.4, 3.913, 39.8069)
-
-[node name="CeilingTileHR53" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -32.4, 3.913, 45.1443)
-
-[node name="CeilingTileHR54" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -32.4, 3.913, 50.4815)
-
-[node name="CeilingTileHR55" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -32.4, 3.913, 55.8035)
-
-[node name="CeilingTileHR142" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -37.8118, 3.913, 55.8035)
-
-[node name="CeilingTileHR59" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.166, -16.2, 3.913, 61.4935)
-
-[node name="CeilingTileHR123" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.166, -21.6, 3.913, 61.4935)
-
-[node name="CeilingTileHR124" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.166, -27, 3.913, 61.4935)
-
-[node name="CeilingTileHR125" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.166, -32.4, 3.913, 61.4935)
-
-[node name="CeilingTileHR56" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -37.8, 3.913, 39.8069)
-
-[node name="CeilingTileHR57" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -37.8, 3.913, 45.1443)
-
-[node name="CeilingTileHR58" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -37.8, 3.913, 50.4815)
-
-[node name="CeilingTileHR60" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -43.2, 3.913, 39.8069)
-
-[node name="CeilingTileHR61" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -43.2, 3.913, 45.1443)
-
-[node name="CeilingTileHR62" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -43.2, 3.913, 50.4815)
-
-[node name="CeilingTileHR63" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -43.2, 3.913, 55.8035)
-
-[node name="CeilingTileHR64" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -48.6, 3.913, 39.8069)
-
-[node name="CeilingTileHR65" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -48.6, 3.913, 45.1443)
-
-[node name="CeilingTileHR66" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -48.6, 3.913, 50.4815)
-
-[node name="CeilingTileHR67" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -48.6, 3.913, 55.8035)
-
-[node name="CeilingTileHR140" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -43.2, 3.894, 59.389)
-
-[node name="CeilingTileHR141" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -48.6, 3.894, 59.389)
-
-[node name="CeilingTileHR150" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -37.7907, 3.894, 59.8154)
-
-[node name="CeilingTileHR143" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -33.9251, 2.52276, 55.8035)
-
-[node name="CeilingTileHR151" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -33.9041, 2.50376, 59.8154)
-
-[node name="CeilingTileHR144" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -54.0319, 3.894, 59.389)
-
-[node name="CeilingTileHR145" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -59.4319, 3.894, 59.389)
-
-[node name="CeilingTileHR148" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -64.8568, 3.894, 59.389)
-
-[node name="CeilingTileHR68" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -54, 3.913, 39.8069)
-
-[node name="CeilingTileHR69" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -54, 3.913, 45.1443)
-
-[node name="CeilingTileHR70" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -54, 3.913, 50.4815)
-
-[node name="CeilingTileHR71" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -54, 3.913, 55.8035)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -0.0854208, 3.913, 13.1805)
 
 [node name="CeilingTileHR21" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.4, 3.913, 13.2961)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.1465, 3.913, 13.1805)
 
 [node name="CeilingTileHR22" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.8, 3.913, 13.2961)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.3755, 3.913, 13.1805)
 
 [node name="CeilingTileHR23" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
-transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 16.1913, 3.913, 13.1572)
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 15.6114, 3.913, 13.1805)
 
-[node name="Ceiling" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -53.2552, 4.1773, 64.6483)
+[node name="CeilingTileHR24" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -0.0854211, 3.913, 18.4527)
 
-[node name="Ceiling5" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -58.3959, 4.1773, 64.6483)
+[node name="CeilingTileHR25" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.1465, 3.913, 18.4527)
 
-[node name="Ceiling6" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -63.5517, 4.1773, 64.6483)
+[node name="CeilingTileHR26" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.3755, 3.913, 18.4527)
 
-[node name="Ceiling2" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -48.0959, 4.1773, 64.6483)
+[node name="CeilingTileHR27" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 15.6114, 3.913, 18.4527)
 
-[node name="Ceiling3" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -42.935, 4.1773, 64.6483)
+[node name="CeilingTileHR28" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -0.0854213, 3.913, 23.7301)
 
-[node name="Ceiling4" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -37.7749, 4.1773, 64.6483)
+[node name="CeilingTileHR29" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.1465, 3.913, 23.7301)
 
-[node name="Ceiling7" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -53.2552, 4.1773, 69.8005)
+[node name="CeilingTileHR30" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.3755, 3.913, 23.7301)
 
-[node name="Ceiling8" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -58.3959, 4.1773, 69.8005)
+[node name="CeilingTileHR31" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 15.6114, 3.913, 23.7301)
 
-[node name="Ceiling9" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -63.5517, 4.1773, 69.8005)
+[node name="CeilingTileHR32" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -0.0854216, 3.913, 28.9976)
 
-[node name="Ceiling10" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -48.0959, 4.1773, 69.8005)
+[node name="CeilingTileHR33" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.1465, 3.913, 28.9976)
 
-[node name="Ceiling11" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -42.935, 4.1773, 69.8005)
+[node name="CeilingTileHR34" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.3755, 3.913, 28.9976)
 
-[node name="Ceiling12" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -37.7749, 4.1773, 69.8005)
+[node name="CeilingTileHR35" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 15.6114, 3.913, 28.9976)
 
-[node name="Ceiling13" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -53.2552, 4.1773, 74.9479)
+[node name="CeilingTileHR36" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -0.0854218, 3.913, 34.2673)
 
-[node name="Ceiling14" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -58.3959, 4.1773, 74.9479)
+[node name="CeilingTileHR37" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.1465, 3.913, 34.2673)
 
-[node name="Ceiling15" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -63.5517, 4.1773, 74.9479)
+[node name="CeilingTileHR38" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.3755, 3.913, 34.2673)
 
-[node name="Ceiling16" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -48.0959, 4.1773, 74.9479)
+[node name="CeilingTileHR39" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 15.6114, 3.913, 34.2673)
 
-[node name="Ceiling17" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -42.935, 4.1773, 74.9479)
+[node name="CeilingTileHR40" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -0.085422, 3.913, 39.5505)
 
-[node name="Ceiling18" parent="NavigationRegion3D/CEILING" instance=ExtResource("35_l7nah")]
-transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -37.7749, 4.1773, 74.9479)
+[node name="CeilingTileHR41" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.1465, 3.913, 39.5505)
+
+[node name="CeilingTileHR42" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.3755, 3.913, 39.5505)
+
+[node name="CeilingTileHR43" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 15.6114, 3.913, 39.5505)
+
+[node name="CeilingTileHR44" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -0.0854223, 3.913, 44.8381)
+
+[node name="CeilingTileHR45" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.1465, 3.913, 44.8381)
+
+[node name="CeilingTileHR46" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.3755, 3.913, 44.8381)
+
+[node name="CeilingTileHR47" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 15.6114, 3.913, 44.8381)
+
+[node name="CeilingTileHR48" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -0.0854225, 3.913, 50.1287)
+
+[node name="CeilingTileHR52" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.30934, 3.913, 2.619)
+
+[node name="CeilingTileHR53" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.30934, 3.913, 7.89191)
+
+[node name="CeilingTileHR54" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.30934, 3.913, 13.1805)
+
+[node name="CeilingTileHR55" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.30934, 3.913, 18.4527)
+
+[node name="CeilingTileHR56" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.30935, 3.913, 23.7301)
+
+[node name="CeilingTileHR57" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.30935, 3.913, 28.9976)
+
+[node name="CeilingTileHR58" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.30935, 3.913, 34.2673)
+
+[node name="CeilingTileHR59" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.30935, 3.913, 39.5505)
+
+[node name="CeilingTileHR60" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.30935, 3.913, 44.8381)
+
+[node name="CeilingTileHR61" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -5.30935, 3.913, 50.1287)
+
+[node name="CeilingTileHR62" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.5373, 3.913, 2.619)
+
+[node name="CeilingTileHR63" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.5373, 3.913, 7.89191)
+
+[node name="CeilingTileHR64" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.5373, 3.913, 13.1805)
+
+[node name="CeilingTileHR65" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.5373, 3.913, 18.4527)
+
+[node name="CeilingTileHR66" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.5373, 3.913, 23.7301)
+
+[node name="CeilingTileHR67" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.5373, 3.913, 28.9976)
+
+[node name="CeilingTileHR68" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.5373, 3.913, 34.2673)
+
+[node name="CeilingTileHR69" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.5373, 3.913, 39.5505)
+
+[node name="CeilingTileHR70" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.5373, 3.913, 44.8381)
+
+[node name="CeilingTileHR71" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -10.5373, 3.913, 50.1287)
+
+[node name="CeilingTileHR72" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -15.764, 3.913, 2.619)
+
+[node name="CeilingTileHR73" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -15.764, 3.913, 7.89191)
+
+[node name="CeilingTileHR74" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -15.764, 3.913, 13.1805)
+
+[node name="CeilingTileHR75" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -15.764, 3.913, 18.4527)
+
+[node name="CeilingTileHR76" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -15.764, 3.913, 23.7301)
+
+[node name="CeilingTileHR77" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -15.764, 3.913, 28.9976)
+
+[node name="CeilingTileHR78" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -15.764, 3.913, 34.2673)
+
+[node name="CeilingTileHR79" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -15.764, 3.913, 39.5505)
+
+[node name="CeilingTileHR80" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -15.764, 3.913, 44.8381)
+
+[node name="CeilingTileHR81" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -15.764, 3.913, 50.1287)
+
+[node name="CeilingTileHR82" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.0395, 3.913, 2.619)
+
+[node name="CeilingTileHR83" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.0395, 3.913, 7.89191)
+
+[node name="CeilingTileHR84" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.0395, 3.913, 13.1805)
+
+[node name="CeilingTileHR85" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.0395, 3.913, 18.4527)
+
+[node name="CeilingTileHR86" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.0395, 3.913, 23.7301)
+
+[node name="CeilingTileHR87" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.0395, 3.913, 28.9976)
+
+[node name="CeilingTileHR88" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.0395, 3.913, 34.2673)
+
+[node name="CeilingTileHR89" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.0395, 3.913, 39.5505)
+
+[node name="CeilingTileHR90" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.0395, 3.913, 44.8381)
+
+[node name="CeilingTileHR91" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -21.0395, 3.913, 50.1287)
+
+[node name="CeilingTileHR92" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -26.2775, 3.913, 2.619)
+
+[node name="CeilingTileHR93" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -26.2775, 3.913, 7.89191)
+
+[node name="CeilingTileHR94" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -26.2775, 3.913, 13.1805)
+
+[node name="CeilingTileHR95" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -26.2775, 3.913, 18.4527)
+
+[node name="CeilingTileHR96" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -26.2775, 3.913, 23.7301)
+
+[node name="CeilingTileHR97" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -26.2775, 3.913, 28.9976)
+
+[node name="CeilingTileHR98" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -26.2775, 3.913, 34.2673)
+
+[node name="CeilingTileHR99" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -26.2775, 3.913, 39.5505)
+
+[node name="CeilingTileHR100" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -26.2775, 3.913, 44.8381)
+
+[node name="CeilingTileHR101" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -26.2775, 3.913, 50.1287)
+
+[node name="CeilingTileHR102" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -31.5201, 3.913, 2.619)
+
+[node name="CeilingTileHR103" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -31.5201, 3.913, 7.89191)
+
+[node name="CeilingTileHR104" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -31.5201, 3.913, 13.1805)
+
+[node name="CeilingTileHR105" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -31.5201, 3.913, 18.4527)
+
+[node name="CeilingTileHR106" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -31.5201, 3.913, 23.7301)
+
+[node name="CeilingTileHR107" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -31.5201, 3.913, 28.9976)
+
+[node name="CeilingTileHR108" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -31.5201, 3.913, 34.2673)
+
+[node name="CeilingTileHR109" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -31.5201, 3.913, 39.5505)
+
+[node name="CeilingTileHR110" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -31.5201, 3.913, 44.8381)
+
+[node name="CeilingTileHR111" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -31.5201, 3.913, 50.1287)
+
+[node name="CeilingTileHR112" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -36.7615, 3.913, 2.619)
+
+[node name="CeilingTileHR113" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -36.7615, 3.913, 7.89191)
+
+[node name="CeilingTileHR114" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -36.7615, 3.913, 13.1805)
+
+[node name="CeilingTileHR115" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -36.7615, 3.913, 18.4527)
+
+[node name="CeilingTileHR116" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -36.7615, 3.913, 23.7301)
+
+[node name="CeilingTileHR117" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -36.7615, 3.913, 28.9976)
+
+[node name="CeilingTileHR118" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -36.7615, 3.913, 34.2673)
+
+[node name="CeilingTileHR119" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -36.7615, 3.913, 39.5505)
+
+[node name="CeilingTileHR120" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -36.7615, 3.913, 44.8381)
+
+[node name="CeilingTileHR121" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -36.7615, 3.913, 50.1287)
+
+[node name="CeilingTileHR122" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 2.619)
+
+[node name="CeilingTileHR123" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 7.89191)
+
+[node name="CeilingTileHR124" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 13.1805)
+
+[node name="CeilingTileHR125" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 18.4527)
+
+[node name="CeilingTileHR126" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 23.7301)
+
+[node name="CeilingTileHR127" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 28.9976)
+
+[node name="CeilingTileHR128" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 34.2673)
+
+[node name="CeilingTileHR129" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 39.5505)
+
+[node name="CeilingTileHR130" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 44.8381)
+
+[node name="CeilingTileHR131" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 50.1287)
+
+[node name="CeilingTileHR132" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 2.619)
+
+[node name="CeilingTileHR133" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2283, 3.913, 7.89191)
+
+[node name="CeilingTileHR134" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 13.1805)
+
+[node name="CeilingTileHR135" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 18.4527)
+
+[node name="CeilingTileHR136" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 23.7301)
+
+[node name="CeilingTileHR137" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 28.9976)
+
+[node name="CeilingTileHR138" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2283, 3.913, 34.2673)
+
+[node name="CeilingTileHR139" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2283, 3.913, 39.5505)
+
+[node name="CeilingTileHR140" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 44.8381)
+
+[node name="CeilingTileHR141" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 50.1287)
+
+[node name="CeilingTileHR162" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 55.4181)
+
+[node name="CeilingTileHR163" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 55.4181)
+
+[node name="CeilingTileHR164" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 60.687)
+
+[node name="CeilingTileHR165" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 60.687)
+
+[node name="CeilingTileHR174" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4444, 3.913, 60.687)
+
+[node name="CeilingTileHR175" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.6477, 3.913, 60.687)
+
+[node name="CeilingTileHR166" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 65.9169)
+
+[node name="CeilingTileHR167" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 65.9169)
+
+[node name="CeilingTileHR168" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -41.9885, 3.913, 71.2053)
+
+[node name="CeilingTileHR169" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -47.2282, 3.913, 71.2053)
+
+[node name="CeilingTileHR170" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.3745, 3.913, 65.9169)
+
+[node name="CeilingTileHR171" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.6143, 3.913, 65.9169)
+
+[node name="CeilingTileHR172" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.3745, 3.913, 71.2053)
+
+[node name="CeilingTileHR173" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.6143, 3.913, 71.2053)
+
+[node name="CeilingTileHR176" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -62.8761, 3.913, 60.687)
+
+[node name="CeilingTileHR177" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -62.8427, 3.913, 65.9169)
+
+[node name="CeilingTileHR178" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -62.8427, 3.913, 71.2053)
+
+[node name="CeilingTileHR142" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4544, 3.913, 2.619)
+
+[node name="CeilingTileHR143" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4544, 3.913, 7.89191)
+
+[node name="CeilingTileHR144" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4544, 3.913, 13.1805)
+
+[node name="CeilingTileHR145" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4544, 3.913, 18.4527)
+
+[node name="CeilingTileHR146" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4544, 3.913, 23.7301)
+
+[node name="CeilingTileHR147" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4544, 3.913, 28.9976)
+
+[node name="CeilingTileHR148" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4544, 3.913, 34.2673)
+
+[node name="CeilingTileHR149" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4544, 3.913, 39.5505)
+
+[node name="CeilingTileHR150" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4544, 3.913, 44.8381)
+
+[node name="CeilingTileHR151" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -52.4544, 3.913, 50.1287)
+
+[node name="CeilingTileHR152" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.7022, 3.913, 2.619)
+
+[node name="CeilingTileHR153" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.7022, 3.913, 7.89191)
+
+[node name="CeilingTileHR154" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.7022, 3.913, 13.1805)
+
+[node name="CeilingTileHR155" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.7022, 3.913, 18.4526)
+
+[node name="CeilingTileHR156" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.7022, 3.913, 23.73)
+
+[node name="CeilingTileHR157" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.7022, 3.913, 28.9976)
+
+[node name="CeilingTileHR158" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.7022, 3.913, 34.2673)
+
+[node name="CeilingTileHR159" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.7022, 3.913, 39.5505)
+
+[node name="CeilingTileHR160" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.7022, 3.913, 44.8381)
+
+[node name="CeilingTileHR161" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, -57.7022, 3.913, 50.1287)
+
+[node name="CeilingTileHR49" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 5.1465, 3.913, 50.1287)
+
+[node name="CeilingTileHR50" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 10.3755, 3.913, 50.1287)
+
+[node name="CeilingTileHR51" parent="NavigationRegion3D/CEILING" instance=ExtResource("34_1b7se")]
+transform = Transform3D(1.035, 0, 0, 0, 1.035, 0, 0, 0, 1.035, 15.6114, 3.913, 50.1287)
 
 [node name="human_resources_reception" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7226, 0.21583, -5.9112)
@@ -2088,6 +2127,11 @@ light_bake_mode = 2
 [node name="ceiling_block_mesh" type="MeshInstance3D" parent="NavigationRegion3D/HumanResourcesLobbyRoom/CEILING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82, 6.11439, 2.82)
 mesh = SubResource("BoxMesh_7ghw1")
+surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
+
+[node name="ceiling_block_mesh2" type="MeshInstance3D" parent="NavigationRegion3D/HumanResourcesLobbyRoom/CEILING"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.878, 6.11439, 26.4238)
+mesh = SubResource("BoxMesh_g3l24")
 surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
 
 [node name="OBJECTS" type="Node" parent="NavigationRegion3D/HumanResourcesLobbyRoom"]
@@ -2375,7 +2419,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.4228)
 
 [node name="ceiling_block_mesh" type="MeshInstance3D" parent="NavigationRegion3D/HumanResourcesOpeningRoom/CeilingLight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82, 6.11439, -23.0816)
-visible = false
 mesh = SubResource("BoxMesh_pej8r")
 surface_material_override/0 = SubResource("StandardMaterial3D_cc7qq")
 
@@ -2774,10 +2817,10 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.634,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64237, 0.843971, 0)
 
 [node name="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/LeftCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.941314, 3.97421, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.941315, 3.97421, 0)
 
 [node name="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/RightCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58369, 3.859, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.58368, 3.859, -0.00457764)
 
 [node name="CollisionShape3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable/TopCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61599, -0.005)
@@ -2788,7 +2831,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.109486, -0.004
 [node name="FLOOR" type="Node3D" parent="NavigationRegion3D/human_resources_primary_wing"]
 
 [node name="hr_base_floor_ULTIMATE" parent="NavigationRegion3D/human_resources_primary_wing/FLOOR" instance=ExtResource("33_7cch6")]
-transform = Transform3D(4.685, 0, 0, 0, 1, 0, 0, 0, 5.203, -22.698, 0.001, 51.966)
+transform = Transform3D(4.685, 0, 0, 0, 1, 0, 0, 0, 5.203, -22.7129, -0.0284523, 51.9566)
 
 [node name="OBJECTS" type="Node3D" parent="NavigationRegion3D/human_resources_primary_wing"]
 
@@ -2796,37 +2839,37 @@ transform = Transform3D(4.685, 0, 0, 0, 1, 0, 0, 0, 5.203, -22.698, 0.001, 51.96
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -32.1829, 9.53674e-07, 56.025)
 
 [node name="Ceiling_Light_HR" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874513, 4.75755, 5.96546)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874512, 4.14857, 5.96546)
 
 [node name="Ceiling_Light_HR3" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0768824, 4.75755, 13.8502)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0768824, 4.14857, 13.8502)
 
 [node name="Ceiling_Light_HR4" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0769355, 4.75755, 21.9505)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0769355, 4.14857, 21.9505)
 
 [node name="Ceiling_Light_HR16" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.61194, 4.75755, 21.9505)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.61194, 4.14857, 21.9505)
 
 [node name="Ceiling_Light_HR5" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0769355, 4.75755, 30.0505)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0769353, 4.14857, 30.0505)
 
 [node name="Ceiling_Light_HR6" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0769355, 4.75755, 38.1505)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0769355, 4.14857, 38.1505)
 
 [node name="Ceiling_Light_HR10" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0769355, 4.75755, 46.2505)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0769353, 4.14857, 46.2505)
 
 [node name="Ceiling_Light_HR7" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3773, 4.75755, 45.4829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3773, 4.14857, 45.4829)
 
 [node name="Ceiling_Light_HR8" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5773, 4.75755, 45.4829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5773, 4.14857, 45.4829)
 
 [node name="Ceiling_Light_HR9" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.77728, 4.75755, 45.4829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.77728, 4.14857, 45.4829)
 
 [node name="Ceiling_Light_HR2" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.02306, 4.75755, 5.97853)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.02306, 4.14857, 5.97853)
 
 [node name="human_resources_storage_1" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 48.9653, 9.53674e-07, -5.67255)
@@ -3466,7 +3509,7 @@ transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -8.41531, 
 [node name="OBJECTS" type="Node3D" parent="NavigationRegion3D/human_resources_carcass_and_butcher"]
 
 [node name="Ceiling_Light_HR17" type="Node3D" parent="NavigationRegion3D/human_resources_carcass_and_butcher"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3161, 4.75755, -1.4172)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3161, 4.07173, -1.4172)
 
 [node name="Ceiling_Light2" type="MeshInstance3D" parent="NavigationRegion3D/human_resources_carcass_and_butcher/Ceiling_Light_HR17"]
 transform = Transform3D(1.965, 0, 0, 0, 1.965, 0, 0, 0, 1.965, 0, 0, 0)
