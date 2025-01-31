@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://cun8jxk2tnn8j"]
 
-[ext_resource type="Script" path="res://Scripts/Misc/name_tag.gd" id="1_qtril"]
+[ext_resource type="Script" uid="uid://dep7ovkrgmnta" path="res://Scripts/Misc/name_tag.gd" id="1_qtril"]
 [ext_resource type="PackedScene" uid="uid://df1kxo5t8mthw" path="res://Assets/Models/name_plate_holder_model.tscn" id="1_rchq5"]
-[ext_resource type="Script" path="res://Scripts/GUI/name_tag_reader.gd" id="2_7rar3"]
+[ext_resource type="Script" uid="uid://d4cwsvxfx8oj5" path="res://Scripts/GUI/name_tag_reader.gd" id="2_7rar3"]
 [ext_resource type="Texture2D" uid="uid://cq2pqurdul6yu" path="res://Assets/Models/test_models/NamePlates/namePlate_Metal049B_1K-JPG_Color.jpg" id="2_wje8t"]
 [ext_resource type="PackedScene" uid="uid://dunfx1l5jl7qd" path="res://Assets/Models/name_tag.tscn" id="3_tfkoi"]
 

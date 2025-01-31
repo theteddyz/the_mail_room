@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://dtpyxdhxy0h8w"]
 
-[ext_resource type="Script" path="res://Scripts/MailCart/Package.gd" id="1_q28do"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/outline.gdshader" id="2_rwl8k"]
+[ext_resource type="Script" uid="uid://pcb7hj5u2hv7" path="res://Scripts/MailCart/Package.gd" id="1_q28do"]
+[ext_resource type="Shader" uid="uid://ckm3rg83kq22u" path="res://Scripts/Shaders/outline.gdshader" id="2_rwl8k"]
 [ext_resource type="Texture2D" uid="uid://dihv862kohm3a" path="res://Assets/Textures/BlenderTextures/Package.png" id="2_scjrp"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ohyoc"]
