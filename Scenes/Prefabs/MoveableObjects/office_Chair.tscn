@@ -350,8 +350,6 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.3, 0)
 freeze = true
 script = ExtResource("1_snj7q")
-object_name = "chair"
-special_object = true
 
 [node name="Chair" type="MeshInstance3D" parent="Chair"]
 transform = Transform3D(0.279, 0, 0, 0, 0.279, 0, 0, 0, 0.279, 0, 0, 0)
