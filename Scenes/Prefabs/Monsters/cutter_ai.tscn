@@ -26,6 +26,7 @@ height = 2.64187
 
 [node name="cutter_ai" type="CharacterBody3D"]
 script = ExtResource("1_p50mg")
+can_see_player = false
 
 [node name="Model" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.79, 0, 6.9064e-08, 0, 0.79, 0, -6.9064e-08, 0, -0.79, 0, 1.38771, 0)

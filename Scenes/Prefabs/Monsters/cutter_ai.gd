@@ -12,6 +12,8 @@ extends CharacterBody3D
 
 # Debug export
 @export var enabled: bool = true
+@export var can_see_player: bool = true
+
 
 @onready var functional_timers = [de_aggro_timer, get_player_position_timer, navigation_timer]
 var is_venting: bool = false
@@ -105,7 +107,7 @@ func charge():
 
 # VISION FUNCTION
 func on_player_in_vision():
-	if enabled and !player_in_vision_flag:
+	if enabled and !player_in_vision_flag and can_see_player:
 		de_aggro_timer.stop()
 		player_in_vision_flag = true
 		if !aggrod:
