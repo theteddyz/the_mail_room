@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://erkjuywjqecv"]
+[gd_scene load_steps=49 format=4 uid="uid://erkjuywjqecv"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_8l1s5"]
 [ext_resource type="Texture2D" uid="uid://t6r0hauythae" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Color.jpg" id="1_vj8na"]
@@ -54,9 +54,6 @@ stream_3/stream = ExtResource("20_hy75y")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ydc4h"]
 size = Vector3(2.06232, 2.33894, 0.888916)
-
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_nxw67"]
-size = Vector3(1.68472, 2.70141, 0.221408)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xpm01"]
 resource_name = "MiddleDoor"
@@ -427,10 +424,6 @@ script = ExtResource("22_itqju")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0941466, 1.27354, 0.419556)
 shape = SubResource("BoxShape3D_ydc4h")
 
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="RigidBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.596898, 1.26744, 0)
-occluder = SubResource("BoxOccluder3D_nxw67")
-
 [node name="HospitalDoor2" type="MeshInstance3D" parent="RigidBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0174038, 0, -3.72529e-09)
 mesh = SubResource("ArrayMesh_vpr0s")
@@ -474,10 +467,6 @@ script = ExtResource("22_itqju")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3/Monster_Detector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0941466, 1.27354, 0.419556)
 shape = SubResource("BoxShape3D_ydc4h")
-
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="RigidBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.596898, 1.26744, 0)
-occluder = SubResource("BoxOccluder3D_nxw67")
 
 [node name="HospitalDoor2" type="MeshInstance3D" parent="RigidBody3D3"]
 mesh = SubResource("ArrayMesh_vpr0s")
