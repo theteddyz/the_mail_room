@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=49 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" uid="uid://cggbaeh823mtn" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://brxkp2olxc3ie" path="res://Assets/TemporaryAssets/png-clipart-compact-cassette-computer-icons-magnetic-tape-cassette-miscellaneous-music-download-removebg-preview.png" id="14_6uwhy"]
 [ext_resource type="Script" uid="uid://cg1aprpsvxca4" path="res://Scripts/GUI/Stamina.gd" id="18_rhd6x"]
 [ext_resource type="Texture2D" uid="uid://ctd3t06rqjwy8" path="res://Assets/TemporaryAssets/30996.png" id="22_0xxbf"]
+[ext_resource type="Script" uid="uid://pfgvi5b6icl1" path="res://Scenes/Prefabs/gui/timer_debugger_item.gd" id="22_3op3p"]
 [ext_resource type="Script" uid="uid://cay60iqk3rp6" path="res://Scripts/GUI/pager.gd" id="22_pbhup"]
 [ext_resource type="LabelSettings" uid="uid://bn7hplxlp82q1" path="res://label_settings_hint_title.tres" id="25_k7ptb"]
 [ext_resource type="Script" uid="uid://cds3c84rsv62n" path="res://Scenes/Prefabs/gui/hint_controller.gd" id="25_q5q4k"]
@@ -548,8 +549,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_tojdy")
 }
 
+[node name="Monster_Debugger_Item" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 297.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("22_3op3p")
+
 [node name="DEBUGGING" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

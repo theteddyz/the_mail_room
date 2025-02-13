@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cnerano15ywvl"]
 
-[ext_resource type="Script" path="res://Scenes/Worlds/Is_Observed_Spawnmarker.gd" id="1_37bgg"]
+[ext_resource type="Script" uid="uid://cr8owt1lfnfaj" path="res://Scenes/Worlds/Is_Observed_Spawnmarker.gd" id="1_37bgg"]
 
 [node name="Spawnpoint" type="Marker3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.63126, 1.31403, 18.8232)

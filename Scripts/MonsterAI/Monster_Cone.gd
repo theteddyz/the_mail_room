@@ -1,18 +1,18 @@
 extends Area3D
-var parent
-func _ready():
-	parent = get_parent()
-func _on_vision_timer_timeout():
+@export var parent: CharacterBody3D
+@export var vision_blocker_raycast: RayCast3D
+
+
+func _on_vision_refresh_timer_timeout() -> void:
 	if parent.visible:
 		var overlaps = get_overlapping_bodies()
 		if overlaps.size() > 0:
 			for overlap in overlaps:
 				if overlap.name == "Player" or (overlap.name == "Mailcart" and GameManager.player_reference.state is CartingState):
 					var playerPosition = overlap.global_transform.origin
-					$VisionRayCast.look_at(playerPosition)
-					$VisionRayCast.force_raycast_update()
-					if $VisionRayCast.is_colliding():
-						var col = $VisionRayCast.get_collider()
+					vision_blocker_raycast.look_at(playerPosition)
+					if vision_blocker_raycast.is_colliding():
+						var col = vision_blocker_raycast.get_collider()
 						if col.name == "Player" or col.name == "Mailcart":
 							parent.on_player_in_vision()
 							return

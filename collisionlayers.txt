@@ -51,3 +51,7 @@ cm = 0
 crouching_assistant
 cl = 17
 cm = 0
+
+vent_surface
+cl = 21
+cm = 0
