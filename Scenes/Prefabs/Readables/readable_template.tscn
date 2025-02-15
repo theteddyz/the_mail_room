@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://8qbaxg8k1nrt"]
 
-[ext_resource type="Script" path="res://Scripts/GUI/readable_objectg.gd" id="1_k3dof"]
+[ext_resource type="Script" uid="uid://bksx2gvkyoruh" path="res://Scripts/GUI/readable_objectg.gd" id="1_k3dof"]
 [ext_resource type="Texture2D" uid="uid://dt3wgaigqqoj7" path="res://Assets/Textures/BlenderTextures/Papers.png" id="2_f1jkx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ju2nc"]
