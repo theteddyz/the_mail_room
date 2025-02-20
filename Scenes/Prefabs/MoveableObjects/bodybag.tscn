@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://7dlyqcruvt7" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium2.mp3" id="9_b4ehw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jpg2j"]
-radius = 0.363354
+radius = 0.286794
 height = 2.94387
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s71ex"]

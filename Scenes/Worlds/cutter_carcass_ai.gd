@@ -5,7 +5,17 @@ var player: CharacterBody3D
 @onready var behaviour_duration_timer: Timer = $behaviour_duration_timer
 @onready var deescalate_timer: Timer = $deescalate_timer
 @onready var cutter_model_for_animation_player: Node3D = $cutter_model_for_animations
+@onready var behaviour_soundbark_timer: Timer = $behaviour_soundbark_timer
 
+@onready var audio_players = [
+	$AudioStreamPlayer3D,
+	$AudioStreamPlayer3D2,
+	$AudioStreamPlayer3D3,
+	$AudioStreamPlayer3D4,
+	$AudioStreamPlayer3D5,
+	$AudioStreamPlayer3D6,
+	$AudioStreamPlayer3D7
+]
 var tween: Tween
 
 func _ready():
@@ -36,6 +46,7 @@ func deescalate():
 
 func start_carcass_behaviour():
 	behaviour_duration_timer.start(randi_range(16, 28))
+	behaviour_soundbark_timer.start(randi_range(1.88, 3.5))
 	pass
 	# start a random timer before monster leaves the area
 	# play "random" ambiance sounds a bit all over the room, generally behind the player
@@ -43,6 +54,9 @@ func start_carcass_behaviour():
 	
 func on_hearing_sound():
 	if behaviour_duration_timer.time_left > 0 and deescalate_timer.is_stopped():
+		for key in audio_players:
+			if key.playing:
+				key.stop()
 		var timer = get_tree().create_timer(randi_range(1.33, 2.65))
 		await timer.timeout
 		_instakill()
@@ -64,4 +78,16 @@ func _instakill():
 	#optimally, maybe play 1 of a random selection of animations
 
 func _on_behaviour_duration_timer_timeout() -> void:
+	behaviour_soundbark_timer.stop()
+	for key in audio_players:
+		if key.playing:
+			key.stop()
 	cutter_ai.respawn_timer.start(randi_range(4, 9))
+
+func _on_behaviour_soundbark_timer_timeout() -> void:
+	# Maybe make this psuedo-random for better control
+	var chosen_player = audio_players.pick_random()
+	if !chosen_player.playing:
+		chosen_player.pitch_scale = randi_range(0.8, 1.2)
+		chosen_player.play()
+	behaviour_soundbark_timer.start(randi_range(1.88, 3.5))

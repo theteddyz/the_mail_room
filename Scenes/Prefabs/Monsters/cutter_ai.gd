@@ -22,6 +22,7 @@ var charging: bool = false
 var player_in_vision_flag: bool = false
 var player: CharacterBody3D
 var monster_speed = 5.0
+@onready var startposition = position.y
 var charge_position: Vector3 = Vector3.ZERO
 
 func stopTimers():
@@ -177,13 +178,13 @@ func _on_respawn_timer_timeout() -> void:
 		for i in arr:
 			if !i.observed:
 				visible = true
-				collision_shape_3d.disabled = false
 				stopTimers()
 				set_position(i.global_position)
 				set_rotation(i.rotation)
-				position.y = 0.05
+				position.y = startposition
 				navigation_timer.start()
 				set_new_nav_position()
+				collision_shape_3d.disabled = false
 				return
 
 # VENTING AND THE LIKE
