@@ -29,7 +29,7 @@ func stopTimers():
 		t.stop()
 
 func _ready():
-	player = GameManager.player_reference
+	player = GameManager.get_player()
 	set_enabled(enabled)
 	
 func _input(event: InputEvent) -> void:
@@ -147,6 +147,13 @@ func deAggro():
 	collision_shape_3d.disabled = true
 	stopTimers()
 	respawn_timer.start(randi_range(19, 33))
+	
+func enable_carcass_behaviour():
+	monster_speed = 0
+	stopTimers()
+	visible = false
+	collision_shape_3d.disabled = true
+
 
 
 # TIMERS

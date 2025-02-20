@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://bh0yssp2mj37v"]
+[gd_scene load_steps=15 format=4 uid="uid://bh0yssp2mj37v"]
 
 [ext_resource type="Texture2D" uid="uid://b3fvvds55m2g" path="res://Assets/TemporaryAssets/red-ink-splatter-set.png" id="4_bo435"]
 [ext_resource type="Texture2D" uid="uid://bp3ka2w0cblfj" path="res://Assets/Models/test_models/Floor2/bodybag_fabric_111_albedo-1K.png" id="4_rtpky"]
+[ext_resource type="Script" uid="uid://dqh7ewtb4gxue" path="res://Scenes/Prefabs/MoveableObjects/object_collision_sound_emission.gd" id="5_4l7go"]
 [ext_resource type="Texture2D" uid="uid://dk18oxob0cr0s" path="res://Assets/Models/test_models/Floor2/bodybag_fabric_111_roughness-1K.png" id="5_ya4nx"]
 [ext_resource type="Texture2D" uid="uid://e8chhotdo1ut" path="res://Assets/Models/test_models/Floor2/bodybag_fabric_111_normal-1K.png" id="6_gbogh"]
+[ext_resource type="AudioStream" uid="uid://ckcdwiicqyq4" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxSmall3.mp3" id="6_lb47r"]
+[ext_resource type="AudioStream" uid="uid://t4pnta4oxcj6" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxLarge.mp3" id="7_04x0m"]
+[ext_resource type="AudioStream" uid="uid://cbd42qbrc0oo0" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxLarge2.mp3" id="8_ne0tm"]
+[ext_resource type="AudioStream" uid="uid://7dlyqcruvt7" path="res://Assets/Audio/SoundFX/ImpactCardboardBoxMedium2.mp3" id="9_b4ehw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jpg2j"]
 radius = 0.363354
@@ -79,8 +84,16 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_t3rks")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fubu3"]
+streams_count = 4
+stream_0/stream = ExtResource("6_lb47r")
+stream_1/stream = ExtResource("7_04x0m")
+stream_2/stream = ExtResource("8_ne0tm")
+stream_3/stream = ExtResource("9_b4ehw")
+
 [node name="RigidBody3D" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50485, 0)
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16169, 0)
@@ -95,3 +108,11 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0366516, -1.18715, -0.252675)
 size = Vector3(1.37335, 2.95975, 1.48338)
 texture_albedo = ExtResource("4_bo435")
+
+[node name="ObjectColliderSoundEmitter" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
+script = ExtResource("5_4l7go")
+impact_audios = NodePath("../AudioStreamPlayer3D")
+initVolume = -8.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_fubu3")

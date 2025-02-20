@@ -24,3 +24,7 @@ func update_chain():
 		link_instance.rotation_degrees = Vector3(0, 0, 90) if i % 2 == 0 else Vector3(90, 0, 0)  # Alternate rotation
 		link_instance.position = Vector3(0, -i * link_spacing, 0)  # Move down based on index
 		add_child(link_instance)
+
+
+func _on_rigid_body_3d_2_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
+	pass # Replace with function body.

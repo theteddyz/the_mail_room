@@ -24,7 +24,9 @@ height = 0.383
 radius = 0.755547
 height = 2.64187
 
-[node name="cutter_ai" type="CharacterBody3D"]
+[node name="cutter_ai" type="CharacterBody3D" groups=["monster", "scarevision"]]
+collision_layer = 4096
+collision_mask = 4100
 script = ExtResource("1_p50mg")
 can_see_player = false
 
@@ -48,6 +50,8 @@ shape = SubResource("CapsuleShape3D_p50mg")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.5
 target_desired_distance = 0.75
+avoidance_layers = 0
+avoidance_mask = 2
 debug_enabled = true
 debug_path_custom_color = Color(0.491815, 0, 0.251935, 1)
 

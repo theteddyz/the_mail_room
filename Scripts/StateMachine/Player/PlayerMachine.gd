@@ -49,7 +49,7 @@ func hit_by_entity():
 		var par = get_parent()
 		if par.name == "Mailcart":
 			par = par.get_parent()
-		scare_vision_controller.tween.kill()
+		scare_vision_controller.tween.kill() if scare_vision_controller.tween != null else null
 		scare_vision_controller.reset_world_environment_visual()
 		par.get_node("WorldEnvironment").set_environment(DAMAGE_GRADIENT_TEXTURE)
 		var timer = get_tree().create_timer(0.08)
@@ -62,7 +62,7 @@ func game_over():
 	get_tree().change_scene_to_file("res://Scenes/Prefabs/gui/MainMenu.tscn")
 	
 func _reset_we_visual():
-	scare_vision_controller.tween.kill()
+	scare_vision_controller.tween.kill() if scare_vision_controller.tween != null else null
 	scare_vision_controller.reset_world_environment_visual()
 	
 func save():

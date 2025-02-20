@@ -435,3 +435,12 @@ func apply_pushes():
 				else:
 					col.freeze = false
 			col.apply_central_force(-c.get_normal() * current_speed*5)
+			print("collider: " + col.name)
+			print("shape: " + c.get_collider_shape().name)
+			if col.has_method("collide_with_player"):
+				col.collider_with_player()
+			else:
+				var col_node = col as Node
+				var child_with_method = col_node.get_children(false).filter(func(child): return child.has_method("collide_with_player"))
+				for key in child_with_method:
+					key.collide_with_player()

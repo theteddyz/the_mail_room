@@ -7,7 +7,7 @@ func _init():
 		"walking": WalkingState,
 		"carting": CartingState,
 		"grabcart": GrabCartState
-	}	
+	}
 
 func get_state(state_name):
 	if states.has(state_name):

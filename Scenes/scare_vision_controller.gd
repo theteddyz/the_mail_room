@@ -19,7 +19,7 @@ func _search(overlaps: Array):
 				if overlap.find_child("raycast_look_position") != null:
 					pos = overlap.get_node("raycast_look_position").global_transform.origin
 				raycaster.look_at(pos)
-				raycaster.force_raycast_update()
+				#raycaster.force_raycast_update()
 				if raycaster.is_colliding() and raycaster.get_collider().name == overlap.name:
 					if current_sources.has(overlap) and !is_running_effect:
 						tween.kill()
