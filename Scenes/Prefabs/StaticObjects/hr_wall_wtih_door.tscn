@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://b2rvvsrl03wcr"]
+[gd_scene load_steps=51 format=4 uid="uid://b2rvvsrl03wcr"]
 
 [ext_resource type="Texture2D" uid="uid://t6r0hauythae" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Color.jpg" id="1_78l2t"]
 [ext_resource type="Script" uid="uid://cklj08863yrdl" path="res://Scenes/Prefabs/StaticObjects/Tiles/Door_Customizer.gd" id="1_fy1kr"]
@@ -229,9 +229,6 @@ stream_3/stream = ExtResource("17_hw6bt")
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5eiw"]
 size = Vector3(2.06232, 2.33894, 0.888916)
 
-[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_gn6hl"]
-size = Vector3(1.68472, 2.70141, 0.221408)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xpm01"]
 resource_name = "MiddleDoor"
 cull_mode = 2
@@ -397,22 +394,21 @@ mesh = SubResource("ArrayMesh_2sxqi")
 skeleton = NodePath("")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="StaticBody3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.638179, 0, 0.0376517)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.587652, 0, 0.0376517)
 collision_layer = 2
 collision_mask = 14
 axis_lock_linear_y = true
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_sj45w")
-center_of_mass_mode = 1
-center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 script = ExtResource("13_ha7mp")
+grab_type = "door"
 
 [node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="StaticBody3D/RigidBody3D2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00468136, 0.220342, -0.0129209)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00171691, 1.02485, -0.0129209)
 node_a = NodePath("..")
 node_b = NodePath("../..")
 angular_limit/enable = true
-angular_limit/lower = 0.0
+angular_limit/upper = 0.0
 
 [node name="Door_Lock" type="Node" parent="StaticBody3D/RigidBody3D2"]
 script = ExtResource("13_koqpk")
@@ -435,10 +431,6 @@ script = ExtResource("19_mcir4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/RigidBody3D2/Monster_Detector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0941466, 1.27354, 0.419556)
 shape = SubResource("BoxShape3D_w5eiw")
-
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="StaticBody3D/RigidBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.596898, 1.26744, 0)
-occluder = SubResource("BoxOccluder3D_gn6hl")
 
 [node name="HospitalDoor2" type="MeshInstance3D" parent="StaticBody3D/RigidBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0174038, 0, -3.72529e-09)
