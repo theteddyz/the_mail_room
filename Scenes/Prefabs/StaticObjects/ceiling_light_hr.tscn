@@ -55,7 +55,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v1iwv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rn0fw"]
-size = Vector3(2.07477, 1, 7.01355)
+size = Vector3(5.92221, 3.13461, 7.01355)
 
 [node name="Ceiling_Light_HR" type="Node3D"]
 
@@ -66,8 +66,8 @@ mesh = SubResource("ArrayMesh_d7etv")
 skeleton = NodePath("")
 
 [node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="Ceiling_Light2"]
-transform = Transform3D(2.58, 0, 0, 0, 2.58, 0, 0, 0, 2.58, 0, -11.8978, 0)
-aabb = AABB(-10.0748, -5.94489, -9.70125, 20.1497, 11.8898, 19.4025)
+transform = Transform3D(2.58, 0, 0, 0, 2.58, 0, 0, 0, 2.58, 0, 0.0935004, 0)
+aabb = AABB(-4.24703, -2.09619, -3.9081, 8.49415, 4.19239, 7.8162)
 enable_node_path = NodePath("../OmniLight3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Ceiling_Light2"]
@@ -78,6 +78,10 @@ light_volumetric_fog_energy = 1.348
 light_specular = 1.645
 light_bake_mode = 1
 shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 35.0
+distance_fade_shadow = 20.0
+distance_fade_length = 9.0
 omni_range = 9.977
 omni_attenuation = 1.54
 script = ExtResource("4_c4gdx")
@@ -88,7 +92,7 @@ collision_layer = 524288
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ceiling_Light2/OmniLight3D/LightDetectionArea"]
-transform = Transform3D(0.999975, 0, 0, 0, 0.999975, 0, 0, 0, 0.999975, -0.00796416, -2.4813, -0.0225391)
+transform = Transform3D(0.999952, 0, 0, 0, 0.999952, 0, 0, 0, 0.999952, -0.0812213, -2.56346, -0.0225391)
 shape = SubResource("BoxShape3D_rn0fw")
 
 [connection signal="screen_entered" from="Ceiling_Light2/VisibleOnScreenEnabler3D" to="Ceiling_Light2/OmniLight3D" method="_on_visible_on_screen_enabler_3d_screen_entered"]
