@@ -9,6 +9,8 @@ extends CharacterBody3D
 @onready var de_aggro_timer: Timer = $DeAggroTimer
 @onready var respawn_timer: Timer = $RespawnTimer
 @onready var get_player_position_timer: Timer = $GetPlayerPositionTimer
+@onready var charge_slashing_soundplayer: AudioStreamPlayer3D = $charge_slashing_soundplayer
+@onready var hit_by_soundplayer: AudioStreamPlayer3D = $hit_by_soundplayer
 
 # Debug export
 @export var enabled: bool = true
@@ -17,6 +19,7 @@ extends CharacterBody3D
 
 @onready var functional_timers = [de_aggro_timer, get_player_position_timer, navigation_timer]
 var is_venting: bool = false
+var _charge_kill_distance: float = 1.5
 var aggrod: bool = false
 var charging: bool = false
 var player_in_vision_flag: bool = false
@@ -37,8 +40,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("DEBUG"):
 		set_new_nav_position(player.global_position)
 
-func set_enabled(enabled: bool):
-	if enabled:
+func set_enabled(flag: bool):
+	if flag:
 		visible = true
 		set_new_nav_position()
 		navigation_timer.start()
@@ -54,26 +57,48 @@ func _physics_process(delta: float):
 		update_velocity(monster_speed)
 		update_rotation(delta)
 		move_and_slide()
+		check_if_slideto_player()
 	else: 
 		if !charging:
 			update_velocity(monster_speed)
 			update_rotation(delta)
 			move_and_slide()
+			check_if_slideto_player()
 			if can_charge_timer.is_stopped() and player_in_vision_flag and !is_venting:
 				charge()
+		else:
+			check_player_distance_for_kill()
 
 func update_velocity(speed: float):
 	var current_location = global_transform.origin
 	var next_location = navigation_agent_3d.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * speed
-	var distance_to_goal = abs(navigation_agent_3d.get_final_position().distance_to(current_location))
+	#var distance_to_goal = abs(navigation_agent_3d.get_final_position().distance_to(current_location))
 	new_velocity = Vector3(new_velocity.x, 0, new_velocity.z)
 	velocity = new_velocity
 
 func update_rotation(delta: float):
 	if velocity.length() > 0.01:
-		var target_rotation = Transform3D(Basis().looking_at(velocity.normalized(), Vector3.UP), global_position)
+		var target_rotation = Transform3D(Basis.looking_at(velocity.normalized(), Vector3.UP), global_position)
 		global_transform.basis = global_transform.basis.slerp(target_rotation.basis, 10 * delta)  # Adjust 0.1 for rotation speed
+		
+func check_if_slideto_player():
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider().name == "Player" or c.get_collider().name == "Mailcart":
+			hit_by_soundplayer.play()
+			c.get_collider().extra_life = 0
+			c.get_collider().hit_by_entity()
+			#hit_sound.playing = true
+			#AudioController.play_resource(hit_death)
+			#stop_chasing_player()
+
+func check_player_distance_for_kill():
+	var distance_to_player = abs(global_position.distance_to(player.global_position))
+	if distance_to_player <= _charge_kill_distance:
+		hit_by_soundplayer.play()
+		player.extra_life = 0
+		player.hit_by_entity()
 
 func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
 	if pos == Vector3.ZERO:
@@ -98,6 +123,7 @@ func charge():
 	var distance_to_player = charge_position.distance_to(global_position)
 	# Max time to travel * distance_factor(actual distance /maximum_distance)
 	var time_to_travel = 1.15 * (distance_to_player / 25.5)
+	charge_slashing_soundplayer.play()
 	tween.tween_property(self, "global_position", Vector3(charge_position.x, global_position.y, charge_position.z), time_to_travel);
 	await tween.finished
 	can_charge_timer.start()
@@ -195,8 +221,8 @@ func _on_respawn_timer_timeout() -> void:
 # VENTING AND THE LIKE
 func _on_navigation_agent_3d_link_reached(details: Dictionary) -> void:
 	nav_link_cooldown_timer.start()
-	var owner = details.owner as Node
-	if owner.is_in_group("NavigationLinkVent"):
+	var ow = details.owner as Node
+	if ow.is_in_group("NavigationLinkVent"):
 		await leave_vent() if is_venting else enter_vent()
 
 func enter_vent():
