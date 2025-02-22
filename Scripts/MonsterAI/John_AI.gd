@@ -90,7 +90,7 @@ func _input(event):
 		else:
 			set_new_nav_position()
 
-func _process(delta):
+func _physics_process(delta: float):
 	if !disabled:
 		move_to_target(delta)
 

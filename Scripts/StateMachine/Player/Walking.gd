@@ -2,8 +2,8 @@ extends State
 class_name WalkingState
 
 # Nodes
-@onready var neck = get_parent().get_node("Neck")
-@onready var head = neck.get_node("Head")
+@onready var neck: Node3D = get_parent().get_node("Neck")
+@onready var head: Node3D = neck.get_node("Head")
 @onready var standing_collision_shape = get_parent().get_node("standing_collision_shape")
 @onready var crouching_collision_shape = get_parent().get_node("crouching_collision_shape")
 @onready var headbop_root:Node = head.get_node("HeadbopRoot")
@@ -66,7 +66,9 @@ var lean_angle:float = 0.0
 const max_lean_angle:float = 15.0
 const lean_speed:float = 5.0
 var is_leaning:bool = false
+var is_lookingbehind:bool = false
 var original_neck_position:Vector3
+var original_neck_rotation: Vector3
 # Called when the node enters the scene tree for the first time.
 var stamina_bar
 #signal object_hovered(node)
@@ -85,6 +87,8 @@ func _ready():
 	starting_height = neck.position.y
 	crouching_depth = starting_height - 0.5
 	original_neck_position = neck.position
+	original_neck_rotation = neck.rotation
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
@@ -96,7 +100,7 @@ func _ready():
 	audio_timer.connect("timeout", sound_timeout)
 
 
-func _input(event):
+func _input(event: InputEvent):
 	if event is InputEventMouseMotion and !is_reading:
 		handle_mouse_motion(event)
 	elif event is InputEventJoypadMotion:
@@ -106,14 +110,14 @@ func _input(event):
 	elif event is InputEventKey:
 		handle_keyboard_press(event)
 
-func handle_mouse_motion(event):
+func handle_mouse_motion(event: InputEvent):
 	if !is_reading and !disable_look_movement:
 		if event is InputEventMouseMotion:
 			persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 			head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
-func handle_joypad_motion(event):
+func handle_joypad_motion(event: InputEvent):
 	if !is_reading and !disable_look_movement:
 		var joystick_sense = 2.0
 		if event.axis == JOY_AXIS_RIGHT_X:  # Horizontal movement
@@ -126,7 +130,7 @@ func handle_joypad_motion(event):
 				right_stick_smoothing.y = lerp(right_stick_smoothing.y, event.axis_value, smoothing_factor)
 			else:
 				right_stick_smoothing.y = 0.0
-func handle_mouse_button(event):
+func handle_mouse_button(event: InputEvent):
 	if event.is_action_released("interact"):
 		pass
 	elif  event.is_action_pressed("interact"):
@@ -142,8 +146,12 @@ func handle_mouse_button(event):
 		handle_scroll(false)
 
 
-func handle_keyboard_press(event):
-	if event.is_action_pressed("lean_left"):
+func handle_keyboard_press(event: InputEvent):
+	if event.is_action_pressed("look_behind"):
+		look_behind()
+	elif event.is_action_released("look_behind"):
+		stop_looking_behind()
+	elif event.is_action_pressed("lean_left"):
 		lean_left()
 	elif event.is_action_pressed("lean_right"):
 		lean_right()
@@ -278,6 +286,14 @@ func droppped_object(_mass:float,_object):
 		is_holding_object = false
 		object_last_held = null
 
+func look_behind():
+	is_lookingbehind = true
+	disable_look_movement = true
+func stop_looking_behind():
+	is_lookingbehind = false
+	disable_look_movement = false
+
+
 func lean_left():
 	lean_angle = max_lean_angle
 	is_leaning = true
@@ -300,6 +316,7 @@ func _process(delta):
 	
 	if !crouch_assist:
 		apply_leaning(delta)
+		apply_lookbehind(delta)
 	#recover_stamina(delta)
 	#stamina_bar.update_stamina_bar(current_stamina)
 
@@ -392,7 +409,7 @@ func handle_head_bopping(delta):
 		headbop_root.rotation.x = lerp(headbop_root.rotation.x, head_bopping_vector.y * 0.0075, delta * 3.95)
 
 func apply_leaning(delta):
-	if is_leaning:
+	if is_leaning and !is_lookingbehind:
 		var lean_offset = Vector3()
 		if lean_angle > 0:
 			lean_offset.x = -0.3  # Move left
@@ -403,12 +420,21 @@ func apply_leaning(delta):
 		var target_rotation_quat = Quaternion(Vector3(0, 0, 1), deg_to_rad(lean_angle))
 		var interpolated_rotation_quat = current_rotation_quat.slerp(target_rotation_quat, delta * lean_speed)
 		neck.rotation = interpolated_rotation_quat.get_euler()
-	else:
+	elif !is_lookingbehind:
 		neck.position = neck.position.lerp(original_neck_position, delta * lean_speed)
 		var current_rotation_quat = Quaternion.from_euler(neck.rotation)
 		var target_rotation_quat = Quaternion(Vector3(0, 0, 1), deg_to_rad(lean_angle))
 		var interpolated_rotation_quat = current_rotation_quat.slerp(target_rotation_quat, delta * lean_speed)
 		neck.rotation = interpolated_rotation_quat.get_euler()
+
+func apply_lookbehind(delta: float):
+	if is_lookingbehind and !is_leaning:
+		var current_rotation_quat := Quaternion.from_euler(neck.rotation)
+		var target_rotation_quat := Quaternion(Vector3(0, 1, 0.08).normalized(), deg_to_rad(-148))
+		var interpolated_rotation_quat = current_rotation_quat.slerp(target_rotation_quat, delta * 9.8)
+		neck.rotation = interpolated_rotation_quat.get_euler()
+	elif !is_leaning:
+		neck.rotation = neck.rotation.lerp(original_neck_rotation, delta * 9.2)
 
 func recover_stamina(delta):
 	if not is_sprinting and current_stamina < max_stamina:
