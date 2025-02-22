@@ -2076,6 +2076,8 @@ transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979
 
 [node name="cutter_ai" parent="." instance=ExtResource("99_q8swy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.8966, 0.224121, 15.7883)
+enabled = false
+can_see_player = false
 
 [node name="cutter_carcass_ai" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8182, 2.06857, 28.3236)
@@ -3003,7 +3005,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
 
 [node name="ceiling_block_mesh2" type="MeshInstance3D" parent="NavigationRegion3D/HumanResourcesLobbyRoom/CEILING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.878, 6.11439, 26.4238)
-visible = false
 mesh = SubResource("BoxMesh_g3l24")
 surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
 
@@ -3906,25 +3907,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0769355, 4.2129, 38.1505)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.045, 4.20277, 45.2131)
 
 [node name="OmniLight3D" parent="NavigationRegion3D/human_resources_primary_wing/Ceiling_Light_HR7/Ceiling_Light2" index="1"]
-light_energy = 0.884
-omni_range = 13.719
-omni_attenuation = 0.625
+transform = Transform3D(0.508906, 0, 0, 0, 0.508906, 0, 0, 0, 0.508906, -0.0203896, -0.141586, 0)
+light_energy = 1.124
+light_volumetric_fog_energy = 3.453
+light_specular = 1.195
+omni_range = 13.744
+omni_attenuation = 1.36
 
 [node name="Ceiling_Light_HR8" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8246, 4.20277, 45.2131)
 
 [node name="OmniLight3D" parent="NavigationRegion3D/human_resources_primary_wing/Ceiling_Light_HR8/Ceiling_Light2" index="1"]
-light_energy = 0.884
-omni_range = 13.719
-omni_attenuation = 0.625
+transform = Transform3D(0.508906, 0, 0, 0, 0.508906, 0, 0, 0, 0.508906, -0.0203867, -0.141586, 0)
+light_energy = 1.124
+light_volumetric_fog_energy = 3.453
+light_specular = 1.195
+omni_range = 13.744
+omni_attenuation = 1.36
 
 [node name="Ceiling_Light_HR9" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.46585, 4.20277, 45.2131)
 
 [node name="OmniLight3D" parent="NavigationRegion3D/human_resources_primary_wing/Ceiling_Light_HR9/Ceiling_Light2" index="1"]
-light_energy = 0.884
-omni_range = 13.719
-omni_attenuation = 0.625
+transform = Transform3D(0.508906, 0, 0, 0, 0.508906, 0, 0, 0, 0.508906, -0.0203867, -0.141586, 0)
+light_energy = 1.124
+light_volumetric_fog_energy = 3.453
+light_specular = 1.195
+omni_range = 13.744
+omni_attenuation = 0.815
 
 [node name="Ceiling_Light_HR2" parent="NavigationRegion3D/human_resources_primary_wing" instance=ExtResource("36_nwbox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.97504, 4.2129, 5.97853)

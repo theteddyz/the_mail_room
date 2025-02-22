@@ -75,7 +75,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141586, 0)
 light_color = Color(0.890232, 1, 0.999903, 1)
 light_energy = 0.442
 light_volumetric_fog_energy = 1.348
-light_specular = 1.645
+light_specular = 2.235
 light_bake_mode = 1
 shadow_enabled = true
 distance_fade_enabled = true
@@ -83,7 +83,7 @@ distance_fade_begin = 35.0
 distance_fade_shadow = 20.0
 distance_fade_length = 9.0
 omni_range = 9.977
-omni_attenuation = 1.54
+omni_attenuation = 1.32
 script = ExtResource("4_c4gdx")
 
 [node name="LightDetectionArea" type="Area3D" parent="Ceiling_Light2/OmniLight3D"]
