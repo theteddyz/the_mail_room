@@ -1,17 +1,18 @@
-[gd_scene load_steps=35 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=36 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_n1cxu"]
+[ext_resource type="Script" uid="uid://ob85tc4yf3a0" path="res://Scripts/Cutscenes/test_cutscene.gd" id="4_dbw12"]
 [ext_resource type="PackedScene" uid="uid://bxeem4u06w0gh" path="res://Scenes/Prefabs/gui/interactable_test.tscn" id="4_p0gx3"]
 [ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="5_6517x"]
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="12_dbw12"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="15_87p0u"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_door.tscn" id="15_koth6"]
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="16_olrcr"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/desk_2_Only.tscn" id="17_mpvvd"]
+[ext_resource type="PackedScene" uid="uid://bvha2qolbtfko" path="res://Scenes/Prefabs/MoveableObjects/desk_2_Only.tscn" id="17_mpvvd"]
 [ext_resource type="PackedScene" uid="uid://b85fvq8nn7wpm" path="res://Scenes/Prefabs/MoveableObjects/Monitor_interactable.tscn" id="18_87p0u"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/crttv_screen.tscn" id="19_87p0u"]
+[ext_resource type="PackedScene" uid="uid://b3tdwehc6j730" path="res://Scenes/Prefabs/crttv_screen.tscn" id="19_87p0u"]
 [ext_resource type="PackedScene" uid="uid://erkjuywjqecv" path="res://Scenes/Prefabs/StaticObjects/hr_archway_wall.tscn" id="20_uddld"]
 [ext_resource type="PackedScene" uid="uid://b2rvvsrl03wcr" path="res://Scenes/Prefabs/StaticObjects/hr_wall_wtih_door.tscn" id="21_bf1bd"]
 [ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="21_fscik"]
@@ -81,6 +82,11 @@ script = ExtResource("1_y5q3h")
 floor_num = -1
 
 [node name="ScareDirector" parent="." instance=ExtResource("1_faoyl")]
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("cutscene_camera")]
+transform = Transform3D(1, 0, 0, 0, 0.253066, 0.967449, 0, -0.967449, 0.253066, -0.45395, 5.90737, 5.81774)
+script = ExtResource("4_dbw12")
+cutscene_camera = NodePath(".")
 
 [node name="Player" parent="." instance=ExtResource("2_n1cxu")]
 unique_name_in_owner = true
