@@ -154,7 +154,11 @@ func enable_carcass_behaviour():
 	stopTimers()
 	visible = false
 	collision_shape_3d.disabled = true
-
+	var spawnpoint = spawnpoints.get_children().pick_random()
+	set_position(spawnpoint.global_position)
+	set_rotation(spawnpoint.rotation)
+	position.y = startposition
+	return
 
 
 # TIMERS
@@ -182,6 +186,7 @@ func _on_respawn_timer_timeout() -> void:
 				set_position(i.global_position)
 				set_rotation(i.rotation)
 				position.y = startposition
+				monster_speed = 5.0
 				navigation_timer.start()
 				set_new_nav_position()
 				collision_shape_3d.disabled = false
