@@ -10,6 +10,7 @@ extends Node3D
 @onready var elevator_audio:AudioStreamPlayer3D = $Elevator/AudioStreamPlayer3D
 @onready var wall_door_audio:AudioStreamPlayer3D = $Elevator_Wall/AudioStreamPlayer3D
 @onready var elevator_shafts:Array = [$ElevatorShaft/ElevatorShaft2,$ElevatorShaft4/ElevatorShaft2,$ElevatorShaft3]
+@onready var music_player:AudioStreamPlayer3D = $Elevator/Music_Player
 var wall_door_close = preload("res://Assets/Audio/SoundFX/ElevatorDoorClose.mp3")
 var wall_door_open = preload("res://Assets/Audio/SoundFX/ElevatorDoorOpen.mp3")
 var elevator_entrance_open = preload("res://Assets/Audio/SoundFX/ElevatorEntranceDoorOpen.mp3")
@@ -81,6 +82,7 @@ func move_floors()->void:
 		return
 
 func set_floor(path,new_floor:int):
+	music_player.play()
 	previous_floor = current_floor
 	current_floor = new_floor
 	
@@ -198,6 +200,7 @@ func call_elevator_down()->void:
 	await elevator_called_down_tween.finished
 	elevator_audio.stream = elevator_ding
 	elevator_audio.play()
+	music_player.stop()
 	await elevator_audio.finished
 	return 
 func call_elevator_up()->void:
@@ -209,6 +212,7 @@ func call_elevator_up()->void:
 	await elevator_called_up_tween.finished
 	elevator_audio.stream = elevator_ding
 	elevator_audio.play()
+	music_player.stop()
 	await elevator_audio.finished
 	await open_doors()
 	return 
