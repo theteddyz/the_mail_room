@@ -41,6 +41,8 @@ func _ready():
 
 func call_elevator():
 	var world = get_tree().get_first_node_in_group("world")
+	if !world:
+		assert(true,"NO WORLD WAS FOUND MAKE SURE ROOT NODE IS IN GROUP WORLD" )
 	var player_floor = world.floor_num
 	if !is_called:
 		is_called = true
