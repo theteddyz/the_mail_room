@@ -7,6 +7,7 @@ var has_been_executed = false
 var player
 @onready var monster_position: Node3D = $MonsterPosition
 @onready var monster_collider: CollisionShape3D = $"../../monster/CollisionShape3D"
+@onready var elevator = $"../../Elevator"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,4 +26,5 @@ func activate_scare(package_num:int):
 		monster_body.set_rotation(monster_position.rotation)
 		animator.play("Idle")
 		ScareDirector.emit_signal("scare_activated", scare_index)
+		elevator.locked = false
 		print("SCARE ACTIVATED!")
