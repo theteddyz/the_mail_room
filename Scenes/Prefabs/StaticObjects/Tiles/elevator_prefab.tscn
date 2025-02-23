@@ -1,7 +1,7 @@
-[gd_scene load_steps=76 format=4 uid="uid://wd85mtseuke1"]
+[gd_scene load_steps=82 format=4 uid="uid://wd85mtseuke1"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/ElevatorController.gd" id="1_mn1y7"]
-[ext_resource type="Script" path="res://Scripts/Misc/elevator_wall.gd" id="2_qjipe"]
+[ext_resource type="Script" uid="uid://dlbsokwqhx25t" path="res://Scripts/MoveableObjects/Elevator/ElevatorController.gd" id="1_mn1y7"]
+[ext_resource type="Script" uid="uid://dobmxeg1053tb" path="res://Scripts/Misc/elevator_wall.gd" id="2_qjipe"]
 [ext_resource type="Texture2D" uid="uid://cjvcemufdcvx8" path="res://Assets/Textures/BlenderTextures/ElevatorEntranceDoor.png" id="3_fwyx8"]
 [ext_resource type="Texture2D" uid="uid://b7ccf5fmuf5wj" path="res://Assets/Textures/BlenderTextures/ElevatorIndicator.png" id="4_tsuvn"]
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="5_7hi44"]
@@ -9,11 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://bmjy1n0uwnbhb" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_shaft.tscn" id="7_5pilt"]
 [ext_resource type="Texture2D" uid="uid://d24ont78p0umt" path="res://Assets/Textures/BlenderTextures/Elevator.png" id="8_0mkvx"]
 [ext_resource type="Texture2D" uid="uid://6c28m22muuhm" path="res://Assets/Textures/BlenderTextures/ElevatorButtons.png" id="9_6m6q4"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/ElevatorButton.gd" id="10_vk1p5"]
+[ext_resource type="Script" uid="uid://bqdjula85riil" path="res://Scripts/MoveableObjects/Elevator/ElevatorButton.gd" id="10_vk1p5"]
 [ext_resource type="Texture2D" uid="uid://cwo0wqxreionr" path="res://Assets/Textures/BlenderTextures/ElevatorDoor.png" id="11_ukciq"]
-[ext_resource type="Script" path="res://Assets/Models/ElevatorObjectDetector.gd" id="12_j5k40"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/Elevator/Call_Elevator_Button.gd" id="13_gspt1"]
+[ext_resource type="Script" uid="uid://kg3votra7mob" path="res://Assets/Models/ElevatorObjectDetector.gd" id="12_j5k40"]
+[ext_resource type="Script" uid="uid://bjegkn4l3ij3v" path="res://Scripts/MoveableObjects/Elevator/Call_Elevator_Button.gd" id="13_gspt1"]
 [ext_resource type="AudioStream" uid="uid://bfacn7yx3dikm" path="res://Assets/Audio/SoundFX/ElevatorCallButton.mp3" id="14_rtdkd"]
+[ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall.tscn" id="15_msrme"]
+[ext_resource type="PackedScene" uid="uid://4grqlanfjx0n" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_door_opened.tscn" id="16_4btxm"]
+[ext_resource type="Texture2D" uid="uid://dyq5dddljok30" path="res://grey-barcode-carpet-stack-1800-mm-architextures.jpg" id="17_4btxm"]
+[ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_nolight.tscn" id="18_qdrax"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h2nw5"]
 size = Vector3(0.849854, 2.7659, 0.0459595)
@@ -813,6 +817,15 @@ size = Vector3(3.245, 3.715, 4.33195)
 [sub_resource type="SphereShape3D" id="SphereShape3D_yfroe"]
 radius = 0.263849
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdrax"]
+albedo_texture = ExtResource("17_4btxm")
+uv1_scale = Vector3(12.025, 12.025, 12.025)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_45d0r"]
+lightmap_size_hint = Vector2i(74, 79)
+add_uv2 = true
+size = Vector2(14.51, 15.575)
+
 [node name="Elevator" type="Node3D"]
 script = ExtResource("1_mn1y7")
 
@@ -1152,6 +1165,118 @@ shape = SubResource("SphereShape3D_yfroe")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Area3D"]
 stream = ExtResource("14_rtdkd")
+
+[node name="FakeRoom" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00381494, -8.75217, 5.60304)
+
+[node name="wall" parent="FakeRoom" instance=ExtResource("15_msrme")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.49566, -0.605361, -3.03347)
+
+[node name="wall2" parent="FakeRoom" instance=ExtResource("15_msrme")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.54035, -0.605361, -5.64162)
+
+[node name="wall3" parent="FakeRoom" instance=ExtResource("15_msrme")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -7.18429, -0.605, -5.642)
+
+[node name="wall4" parent="FakeRoom" instance=ExtResource("15_msrme")]
+transform = Transform3D(-4.09782e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.09782e-08, 1.50198, -0.605361, 7.07594)
+
+[node name="wall7" parent="FakeRoom" instance=ExtResource("15_msrme")]
+transform = Transform3D(-4.09782e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.09782e-08, -10.1135, -0.605361, -2.86621)
+
+[node name="wall9" parent="FakeRoom" instance=ExtResource("15_msrme")]
+transform = Transform3D(-4.09782e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.09782e-08, -10.1135, -0.605361, 7.07957)
+
+[node name="wall5" parent="FakeRoom" instance=ExtResource("15_msrme")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.48142, -0.605361, 9.05862)
+
+[node name="wall6" parent="FakeRoom" instance=ExtResource("15_msrme")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -7.15806, -0.605, 9.05823)
+
+[node name="StaticBody3D" parent="FakeRoom" instance=ExtResource("16_4btxm")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -10.11, -0.605, 2.727)
+
+[node name="Floor" type="Node3D" parent="FakeRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.172698, 0)
+
+[node name="FloorMesh" type="MeshInstance3D" parent="FakeRoom/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.88783, -0.356847, 2.09367)
+material_override = SubResource("StandardMaterial3D_qdrax")
+mesh = SubResource("PlaneMesh_45d0r")
+
+[node name="Node3D" parent="FakeRoom" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.46595, 4.35501, -2.77807)
+
+[node name="Node3D2" parent="FakeRoom" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.19459, 4.35501, -2.77807)
+
+[node name="Node3D3" parent="FakeRoom" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.46595, 4.35501, 2.89493)
+
+[node name="Node3D4" parent="FakeRoom" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.19459, 4.35501, 2.89493)
+
+[node name="Node3D5" parent="FakeRoom" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.46595, 4.35501, 8.60338)
+
+[node name="Node3D6" parent="FakeRoom" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.19459, 4.35501, 8.60338)
+
+[node name="FakeRoom2" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00381494, 8.87002, 5.60304)
+
+[node name="wall" parent="FakeRoom2" instance=ExtResource("15_msrme")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.49566, -0.605361, -3.03347)
+
+[node name="wall2" parent="FakeRoom2" instance=ExtResource("15_msrme")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.54035, -0.605361, -5.64162)
+
+[node name="wall3" parent="FakeRoom2" instance=ExtResource("15_msrme")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -7.18429, -0.605, -5.642)
+
+[node name="wall4" parent="FakeRoom2" instance=ExtResource("15_msrme")]
+transform = Transform3D(-4.09782e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.09782e-08, 1.50198, -0.605361, 7.07594)
+
+[node name="wall7" parent="FakeRoom2" instance=ExtResource("15_msrme")]
+transform = Transform3D(-4.09782e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.09782e-08, -10.1135, -0.605361, -2.86621)
+
+[node name="wall9" parent="FakeRoom2" instance=ExtResource("15_msrme")]
+transform = Transform3D(-4.09782e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.09782e-08, -10.1135, -0.605361, 7.07957)
+
+[node name="wall5" parent="FakeRoom2" instance=ExtResource("15_msrme")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -1.48142, -0.605361, 9.05862)
+
+[node name="wall6" parent="FakeRoom2" instance=ExtResource("15_msrme")]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -7.15806, -0.605, 9.05823)
+
+[node name="StaticBody3D" parent="FakeRoom2" instance=ExtResource("16_4btxm")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -10.11, -0.605, 2.727)
+
+[node name="Floor" type="Node3D" parent="FakeRoom2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.172698, 0)
+
+[node name="FloorMesh" type="MeshInstance3D" parent="FakeRoom2/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.88783, -0.356847, 2.09367)
+material_override = SubResource("StandardMaterial3D_qdrax")
+mesh = SubResource("PlaneMesh_45d0r")
+
+[node name="Node3D" parent="FakeRoom2" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.46595, 4.35501, -2.77807)
+
+[node name="Node3D2" parent="FakeRoom2" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.19459, 4.35501, -2.77807)
+
+[node name="Node3D3" parent="FakeRoom2" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.46595, 4.35501, 2.89493)
+
+[node name="Node3D4" parent="FakeRoom2" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.19459, 4.35501, 2.89493)
+
+[node name="Node3D5" parent="FakeRoom2" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.46595, 4.35501, 8.60338)
+
+[node name="Node3D6" parent="FakeRoom2" instance=ExtResource("18_qdrax")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.19459, 4.35501, 8.60338)
 
 [connection signal="body_entered" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_entered"]
 [connection signal="body_exited" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_exited"]

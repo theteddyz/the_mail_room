@@ -135,7 +135,7 @@ shadow_mesh = SubResource("ArrayMesh_yd030")
 [sub_resource type="BoxMesh" id="BoxMesh_xx5t2"]
 size = Vector3(1.47, 1, 32.53)
 
-[node name="world" type="Node3D"]
+[node name="world" type="Node3D" groups=["world"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_k4xxo")
 floor_num = -1
@@ -348,7 +348,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47726, 3.97421, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04774, 3.859, -0.00457764)
 
 [node name="CollisionShape3D" parent="root/TopCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09034, -0.005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09033, -0.005)
 
 [node name="CollisionShape3D" parent="root/BottomCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.583835, -0.00457764)

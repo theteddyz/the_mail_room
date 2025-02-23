@@ -95,7 +95,7 @@
 [ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="52_q8swy"]
 [ext_resource type="PackedScene" uid="uid://c7e4imgjbdx46" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet_1.tscn" id="53_d3cnj"]
 [ext_resource type="PackedScene" uid="uid://o8b236qw8bju" path="res://Scenes/Prefabs/MoveableObjects/chair_3.tscn" id="54_4ikls"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/Bookshelf.tscn" id="55_8v85g"]
+[ext_resource type="PackedScene" uid="uid://br1uwkkcvlmla" path="res://Scenes/Prefabs/StaticObjects/Bookshelf.tscn" id="55_8v85g"]
 [ext_resource type="PackedScene" uid="uid://b2rvvsrl03wcr" path="res://Scenes/Prefabs/StaticObjects/hr_wall_wtih_door.tscn" id="83_x3c4t"]
 [ext_resource type="PackedScene" uid="uid://dnbbs4xrfe7gb" path="res://Scenes/Prefabs/StaticObjects/hr_wall_with_window.tscn" id="85_qvlnn"]
 [ext_resource type="Texture2D" uid="uid://bvvp4ly004ww1" path="res://Assets/Models/test_models/Floor2/Ceiling/ceilingHospital_Ceiling_light_BaseColor.png" id="91_ujy8q"]
@@ -127,7 +127,7 @@
 [ext_resource type="AudioStream" uid="uid://bxtc04ia8pi8" path="res://Assets/Audio/SoundFX/ImpactComputer5.mp3" id="117_v5rbb"]
 [ext_resource type="AudioStream" uid="uid://hhwvwau3w4b1" path="res://Assets/Audio/SoundFX/ImpactComputer6.mp3" id="118_7e2fh"]
 [ext_resource type="Texture2D" uid="uid://cf80rjdjnekh0" path="res://Assets/Textures/BlenderTextures/Lamp.png" id="119_7e2fh"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/MoveableObjects/desk_2_Only.tscn" id="120_1kkg0"]
+[ext_resource type="PackedScene" uid="uid://bvha2qolbtfko" path="res://Scenes/Prefabs/MoveableObjects/desk_2_Only.tscn" id="120_1kkg0"]
 [ext_resource type="Script" uid="uid://xo3ci46wok3h" path="res://Scripts/MoveableObjects/DesklampButton.gd" id="120_spech"]
 [ext_resource type="AudioStream" uid="uid://30cxaviuwree" path="res://Assets/Audio/SoundFX/LampButton.mp3" id="121_1kkg0"]
 [ext_resource type="AudioStream" uid="uid://bbeekmlgkwvxp" path="res://Assets/Audio/SoundFX/LampButton3.mp3" id="122_xmqt4"]
@@ -2016,7 +2016,7 @@ stream_3/stream = ExtResource("116_dcw0o")
 stream_4/stream = ExtResource("117_v5rbb")
 stream_5/stream = ExtResource("118_7e2fh")
 
-[node name="world" type="Node3D" groups=["Persist"]]
+[node name="world" type="Node3D" groups=["Persist", "world"]]
 script = ExtResource("1_oyi4d")
 floor_num = 3
 

@@ -40,8 +40,7 @@ func _ready():
 
 
 func call_elevator():
-	var root = get_tree().root
-	var world = root.get_child(root.get_child_count() - 1)
+	var world = get_tree().get_first_node_in_group("world")
 	var player_floor = world.floor_num
 	if !is_called:
 		is_called = true

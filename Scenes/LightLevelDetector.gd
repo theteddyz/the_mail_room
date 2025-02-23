@@ -23,6 +23,8 @@ func _ready():
 	
 func timerdown():
 	if(active):
+		if player == null:
+			player = GameManager.get_player()
 		global_position = player.global_position + Vector3(0, 1.2, 0)
 		var texture = camera.get_viewport().get_texture()
 		var color = get_average_color(texture,15)

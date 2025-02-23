@@ -604,7 +604,7 @@ collision_mode = 1
 collision_friction = 0.29
 collision_bounce = 0.25
 
-[node name="world" type="Node3D" groups=["Persist"]]
+[node name="world" type="Node3D" groups=["Persist", "world"]]
 script = ExtResource("1_gv15l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -1162,6 +1162,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.31
 
 [node name="OfficeCubicle38" parent="stage/Cubicles2" instance=ExtResource("10_sg7q5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -22.0904, -0.0473664, -12.5003)
+
+[node name="Chair" parent="stage/Cubicles2/OfficeCubicle38/Chair" index="5"]
+collision_layer = 0
 
 [node name="Lamp" parent="stage/Cubicles2/OfficeCubicle38" index="7"]
 transform = Transform3D(0.227552, 0, -0.973766, 0, 1, 0, 0.973766, 0, 0.227552, -1.53418, 1.40059, 1.13464)
@@ -1774,6 +1777,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.7539
 [editable path="stage/Cubicles2/OfficeCubicle37"]
 [editable path="stage/Cubicles2/OfficeCubicle44"]
 [editable path="stage/Cubicles2/OfficeCubicle38"]
+[editable path="stage/Cubicles2/OfficeCubicle38/Chair"]
 [editable path="stage/Cubicles2/OfficeCubicle38/Lamp"]
 [editable path="stage/Cubicles2/OfficeCubicle28"]
 [editable path="stage/Cubicles2/OfficeCubicle11"]

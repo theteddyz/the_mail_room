@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://baptcuq8kyfxi"]
 
-[ext_resource type="Script" path="res://Scripts/GUI/MainMenu.gd" id="1_i6cvx"]
+[ext_resource type="Script" uid="uid://dpeeuooacln7j" path="res://Scripts/GUI/MainMenu.gd" id="1_i6cvx"]
 [ext_resource type="FontFile" uid="uid://dbs2h2vl8oxig" path="res://Assets/Fonts/LEMONMILK-Medium.otf" id="2_3fwka"]
 
 [node name="Control" type="Control"]
