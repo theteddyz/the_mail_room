@@ -265,10 +265,10 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.6466
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215344, 0, 0.0469142)
 collision_layer = 2
 collision_mask = 5
-mass = 0.001
+mass = 0.021
 physics_material_override = SubResource("PhysicsMaterial_8jcur")
 sleeping = true
-freeze_mode = 1
+freeze = true
 script = ExtResource("3_t7kbh")
 
 [node name="Camera_Position" type="Node3D" parent="RadioPosition/Radio"]
@@ -281,10 +281,5 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RadioPosition/Radio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011673, -0.0255204, 0.000335693)
 shape = SubResource("BoxShape3D_o8pl8")
-
-[node name="JoltHingeJoint3D" type="HingeJoint3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, -0.25109, 0.967964, -1.09755e-08, -0.967964, -0.25109, -4.2311e-08, 0.556225, 0.783035, -0.194165)
-node_a = NodePath("..")
-node_b = NodePath("../RadioPosition/Radio")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
