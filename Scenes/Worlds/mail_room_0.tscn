@@ -277,6 +277,9 @@ visible = true
 [node name="Elevator" parent="." instance=ExtResource("29_3ttsr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.7281, 0.411036, -7.179)
 
+[node name="Elevator_Wall" parent="Elevator" index="0"]
+visible = false
+
 [node name="Package" parent="." instance=ExtResource("30_xol48")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.1246, 2.37412, 1.83842)
 visible = false
@@ -506,4 +509,8 @@ expand = true
 [editable path="mailroom_prefab/Objects/Desk2/MailboxStand"]
 [editable path="mailroom_prefab/Walls/StaticBody3D14"]
 [editable path="mailroom_prefab/Walls/StaticBody3D17"]
+[editable path="Elevator"]
+[editable path="Elevator/ElevatorShaft"]
+[editable path="Elevator/ElevatorShaft3"]
+[editable path="Elevator/ElevatorShaft4"]
 [editable path="Crttv"]
