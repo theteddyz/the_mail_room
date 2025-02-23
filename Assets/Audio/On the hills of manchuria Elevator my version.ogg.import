@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dj3krh5og4b6g"
+path="res://.godot/imported/On the hills of manchuria Elevator my version.ogg-460b3a57e7b575252864d92d59fb0d0b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/On the hills of manchuria Elevator my version.ogg"
+dest_files=["res://.godot/imported/On the hills of manchuria Elevator my version.ogg-460b3a57e7b575252864d92d59fb0d0b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

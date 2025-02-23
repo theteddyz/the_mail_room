@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://bqdjula85riil" path="res://Scripts/MoveableObjects/Elevator/ElevatorButton.gd" id="10_vk1p5"]
 [ext_resource type="Texture2D" uid="uid://cwo0wqxreionr" path="res://Assets/Textures/BlenderTextures/ElevatorDoor.png" id="11_ukciq"]
 [ext_resource type="Script" uid="uid://kg3votra7mob" path="res://Assets/Models/ElevatorObjectDetector.gd" id="12_j5k40"]
-[ext_resource type="AudioStream" uid="uid://6xb6o4q6qamj" path="res://Assets/Audio/On the hills of manchuria elevator tune.ogg" id="13_45d0r"]
+[ext_resource type="AudioStream" uid="uid://dj3krh5og4b6g" path="res://Assets/Audio/On the hills of manchuria Elevator my version.ogg" id="13_45d0r"]
 [ext_resource type="Script" uid="uid://bjegkn4l3ij3v" path="res://Scripts/MoveableObjects/Elevator/Call_Elevator_Button.gd" id="13_gspt1"]
 [ext_resource type="AudioStream" uid="uid://bfacn7yx3dikm" path="res://Assets/Audio/SoundFX/ElevatorCallButton.mp3" id="14_rtdkd"]
 [ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall.tscn" id="15_msrme"]
