@@ -42,11 +42,15 @@ func _input(event: InputEvent) -> void:
 
 func set_enabled(flag: bool):
 	if flag:
+		enabled = flag
+		collision_shape_3d.disabled = false
 		visible = true
 		set_new_nav_position()
 		navigation_timer.start()
 	else:
+		enabled = flag
 		visible = false
+		collision_shape_3d.disabled = true
 		stopTimers()
 
 
