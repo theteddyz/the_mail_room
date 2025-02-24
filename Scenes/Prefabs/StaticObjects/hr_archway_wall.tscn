@@ -380,6 +380,12 @@ shape = SubResource("BoxShape3D_uhg2l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0197489, 2.53029, -0.0187198)
 shape = SubResource("BoxShape3D_03vr2")
 
+[node name="Door_Lock" type="Node" parent="." node_paths=PackedStringArray("door1", "door2", "audio_player")]
+script = ExtResource("16_j4tbd")
+door1 = NodePath("../RigidBody3D2")
+door2 = NodePath("../RigidBody3D3")
+audio_player = NodePath("../RigidBody3D2/AudioStreamPlayer3D")
+
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.24042, 0, 0.0376517)
 collision_layer = 2
@@ -398,9 +404,6 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 angular_limit/enable = true
 angular_limit/lower = 0.0
-
-[node name="Door_Lock" type="Node" parent="RigidBody3D2"]
-script = ExtResource("16_j4tbd")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.645213, 1.27219, -0.0614319)
@@ -442,9 +445,6 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 script = ExtResource("1_8l1s5")
 grab_type = "door"
-
-[node name="Door_Lock" type="Node" parent="RigidBody3D3"]
-script = ExtResource("16_j4tbd")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.645213, 1.27219, -0.0614319)
