@@ -380,16 +380,6 @@ shape = SubResource("BoxShape3D_uhg2l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0197489, 2.53029, -0.0187198)
 shape = SubResource("BoxShape3D_03vr2")
 
-[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 1.23574, 1.03994, -0.00488952)
-node_a = NodePath("..")
-node_b = NodePath("../RigidBody3D2")
-
-[node name="JoltHingeJoint3D3" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.3379, 1.01394, 0.0123012)
-node_a = NodePath("..")
-node_b = NodePath("../RigidBody3D3")
-
 [node name="RigidBody3D2" type="RigidBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.24042, 0, 0.0376517)
 collision_layer = 2
@@ -401,6 +391,13 @@ center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 script = ExtResource("1_8l1s5")
 grab_type = "door"
+
+[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="RigidBody3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00332236, 1.03994, -0.0183402)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+angular_limit/enable = true
+angular_limit/lower = 0.0
 
 [node name="Door_Lock" type="Node" parent="RigidBody3D2"]
 script = ExtResource("16_j4tbd")
@@ -476,6 +473,13 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634822, 1.72682, 0.0252205)
 mesh = SubResource("BoxMesh_dxs71")
 surface_material_override/0 = SubResource("ShaderMaterial_hj2yo")
+
+[node name="JoltHingeJoint3D3" type="HingeJoint3D" parent="RigidBody3D3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0018518, 1.01394, -0.0516862)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+angular_limit/enable = true
+angular_limit/lower = 0.0
 
 [node name="ArchwayWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

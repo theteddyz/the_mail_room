@@ -1,9 +1,12 @@
 extends Area3D
 @export var parent: CharacterBody3D
 @export var vision_blocker_raycast: RayCast3D
+@export var timer: Timer
 
-
-func _on_vision_refresh_timer_timeout() -> void:
+func _ready():
+	timer.timeout.connect(_on_vision_timer_timeout)
+	
+func _on_vision_timer_timeout() -> void:
 	if parent.visible:
 		var overlaps = get_overlapping_bodies()
 		if overlaps.size() > 0:

@@ -26,6 +26,11 @@ var hint_dict = {
 		"text":"To inspect packages, hold right click.",
 		"one_shot":true,
 		"fired":false
+	},
+	"mailcart_blocked": {
+		"text": "Certain paths cannot be accessed with the mailcart.",
+		"one_shot": true,
+		"fired": false,
 	}
 	
 }
@@ -79,14 +84,14 @@ func disable_intensity_flag():
 # Display a hint from the dictionary
 func display_hint(key: String, duration: float):
 	assert(hint_dict.has(key), "The hint for key " + key + " does not exist. Create one or delete the calling reference.")
-	if !(hint_dict[key]["fired"] and hint_dict[key]["one_shot"] and !intensity_flag):
+	if (!hint_dict[key]["one_shot"] or (hint_dict[key]["one_shot"] and !hint_dict[key]["fired"])) and !intensity_flag:
 		hint_title.label_settings = label_settings_hint_title_resource
 		coroutine_passer = Time.get_unix_time_from_system()
 		var start_pass = coroutine_passer
 		previously_displayed_hint = hint_dict[key]
 		hint_dict[key]["fired"] = true
 		
-		if !(hint_dict[key]["text"].length() > 50):
+		if !(hint_dict[key]["text"].length() > 51):
 			breadtext.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		else: 
 			breadtext.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT

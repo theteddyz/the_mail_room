@@ -1,7 +1,7 @@
 extends Node
 
 # DEVMODE, CHANGE THIS WHEN WE BUILD
-var devmode = true
+var devmode = false
 
 const FILE_NAME = "user://game-data.json"
 @export var blacklist = ["pos_x", "pos_y", "pos_z", "nodepath"]
@@ -20,6 +20,7 @@ func register_player(new_player):
 	player_reference = new_player
 	
 func register_camera(new_camera):
+	print(new_camera)
 	camera_reference = new_camera
 	
 func register_mail_cart(cart):
@@ -54,7 +55,8 @@ func get_player_radio() ->Node:
 	
 func get_world() ->Node:
 	return world_reference
-	
+func get_player_camera() ->Node:
+	return camera_reference
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)

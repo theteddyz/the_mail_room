@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="4_gvu72"]
 [ext_resource type="PackedScene" uid="uid://bb75w210dxt14" path="res://Scenes/Prefabs/Rooms/mailroom.tscn" id="6_b44l8"]
 [ext_resource type="Texture2D" uid="uid://cewsovmotus3" path="res://Assets/Models/BlenderModels/desk_CRTTV.png" id="13_p37jt"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/crttv.tscn" id="13_pdcxx"]
-[ext_resource type="VideoStream" uid="uid://dcahllgl8gobw" path="res://Assets/crt-video-final-master-peter-3-1-jnne1j.ogv" id="17_p37jt"]
+[ext_resource type="PackedScene" uid="uid://c03lqw7vrgadb" path="res://Scenes/Prefabs/StaticObjects/crttv.tscn" id="13_pdcxx"]
+[ext_resource type="VideoStream" uid="uid://cc38oxjciiksl" path="res://Assets/crt-video-final-master-peter-3-1-jnne1j.ogv" id="17_p37jt"]
 [ext_resource type="AudioStream" uid="uid://cqiw4v1eyh2jv" path="res://Assets/CRT Video Final Master Peter 3 (1).mp3" id="17_ub5ip"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="29_3ttsr"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="30_xol48"]
@@ -200,7 +200,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_sxr0h")
 
-[node name="world" type="Node3D"]
+[node name="world" type="Node3D" groups=["world"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_3nw8p")
 floor_num = -1
@@ -222,6 +222,9 @@ dark_value = 0.025
 
 [node name="StaticBody3D" parent="mailroom_prefab/Objects" index="6" node_paths=PackedStringArray("game_objects")]
 game_objects = [NodePath("../../../Package7")]
+
+[node name="StaticBody3D6" parent="mailroom_prefab/Objects" index="7" node_paths=PackedStringArray("game_objects")]
+game_objects = [NodePath("../../../Package"), NodePath("../../../Package2"), NodePath("../../../Package3"), NodePath("../../../Package4"), NodePath("../../../Package5"), NodePath("../../../Package6")]
 
 [node name="RigidBody3D" parent="mailroom_prefab/Objects/StaticBody3D6/Chute" index="1"]
 script = null
@@ -274,8 +277,11 @@ visible = true
 [node name="Elevator" parent="." instance=ExtResource("29_3ttsr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.7281, 0.411036, -7.179)
 
+[node name="Elevator_Wall" parent="Elevator" index="0"]
+visible = false
+
 [node name="Package" parent="." instance=ExtResource("30_xol48")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -19.9377, 2.37412, 1.83842)
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.1246, 2.37412, 1.83842)
 visible = false
 collision_mask = 3
 freeze = true
@@ -291,7 +297,7 @@ cart_position = Vector3(0, 0.65, 0)
 package_num = 1
 
 [node name="Package2" parent="." instance=ExtResource("30_xol48")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -19.9377, 2.49173, 1.67145)
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.1246, 2.49173, 1.67145)
 visible = false
 collision_mask = 3
 freeze = true
@@ -307,7 +313,7 @@ cart_position = Vector3(0, 0.65, 0)
 package_num = 2
 
 [node name="Package3" parent="." instance=ExtResource("30_xol48")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 2.67684, 1.99393)
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.287, 2.67684, 1.99393)
 visible = false
 collision_mask = 3
 freeze = true
@@ -323,7 +329,7 @@ cart_position = Vector3(0, 0.65, 0)
 package_num = 3
 
 [node name="Package4" parent="." instance=ExtResource("30_xol48")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 3.02079, 1.99393)
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.287, 3.02079, 1.99393)
 visible = false
 collision_mask = 3
 freeze = true
@@ -340,7 +346,7 @@ cart_position = Vector3(0, 0.65, 0)
 package_num = 4
 
 [node name="Package5" parent="." instance=ExtResource("30_xol48")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 3.21096, 1.99393)
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.287, 3.21096, 1.99393)
 visible = false
 collision_mask = 3
 freeze = true
@@ -356,7 +362,7 @@ cart_position = Vector3(0, 0.65, 0)
 package_num = 5
 
 [node name="Package6" parent="." instance=ExtResource("30_xol48")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 2.85979, 1.99393)
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.287, 2.85979, 1.99393)
 visible = false
 collision_mask = 3
 freeze = true
@@ -503,4 +509,8 @@ expand = true
 [editable path="mailroom_prefab/Objects/Desk2/MailboxStand"]
 [editable path="mailroom_prefab/Walls/StaticBody3D14"]
 [editable path="mailroom_prefab/Walls/StaticBody3D17"]
+[editable path="Elevator"]
+[editable path="Elevator/ElevatorShaft"]
+[editable path="Elevator/ElevatorShaft3"]
+[editable path="Elevator/ElevatorShaft4"]
 [editable path="Crttv"]

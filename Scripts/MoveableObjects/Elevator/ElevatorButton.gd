@@ -1,6 +1,8 @@
 extends Interactable
 @export var target_scene_path := ""
 @export var floor_num:int
+var mail_room_version_after = "res://Scenes/Worlds/mail_room_1.tscn"
+@onready var mail_room_button = $"../../MailRoom/Area3D"
 var text_displayer
 func _ready():
 	EventBus.connect("object_looked_at",on_seen)
@@ -8,6 +10,7 @@ func _ready():
 	text_displayer = Gui.get_address_displayer()
 func interact():
 	print("GOING TO NEW SCENE ",target_scene_path)
+	mail_room_button.target_scene_path = mail_room_version_after
 	EventBus.emitCustomSignal("moved_to_floor", [target_scene_path,floor_num])
 
 

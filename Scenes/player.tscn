@@ -30,7 +30,7 @@ height = 0.589089
 radius = 50.9001
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fmr2d"]
-points = PackedVector3Array(0.235, 0.136, 0.15, 0.235, 0.136, -0.09, -0.235, 0.136, 0.15, 0, 0, 0, -0.235, 0.136, -0.095)
+points = PackedVector3Array(1.905, 0.316, 0.64, 2.02, 0.411, -0.355, -1.905, 0.321, 0.615, 0, 0, 0, -1.905, 0.371, -0.43)
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
 collision_layer = 65540
@@ -91,7 +91,7 @@ script = ExtResource("5_ic8gt")
 shape = SubResource("SphereShape3D_0heh4")
 
 [node name="Cone" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/LightOptimizerDetector"]
-transform = Transform3D(1454.04, 0, 0, 0, -6.35579e-05, 1454.04, 0, -1454.04, -6.35579e-05, 0, 0, 0.795996)
+transform = Transform3D(1454.15, 0, 0, 0, -6.35627e-05, 1454.15, 0, -1454.15, -6.35627e-05, 0, 0, 0.795996)
 shape = SubResource("ConvexPolygonShape3D_fmr2d")
 
 [node name="MonsterDetector" type="Area3D" parent="Neck/Head/HeadbopRoot"]
