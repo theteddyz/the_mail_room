@@ -410,8 +410,10 @@ node_b = NodePath("../..")
 angular_limit/enable = true
 angular_limit/upper = 0.0
 
-[node name="Door_Lock" type="Node" parent="StaticBody3D/RigidBody3D2"]
+[node name="Door_Lock" type="Node" parent="StaticBody3D/RigidBody3D2" node_paths=PackedStringArray("door1", "audio_player")]
 script = ExtResource("13_koqpk")
+door1 = NodePath("..")
+audio_player = NodePath("../AudioStreamPlayer3D")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D/RigidBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.645213, 1.27219, -0.0614319)

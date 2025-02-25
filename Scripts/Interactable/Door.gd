@@ -1,39 +1,52 @@
 extends Node
 
 @export var locked:bool
-var parent
+@export var door1:RigidBody3D
+@export var door2:RigidBody3D
 var parent_is_looked_at
 var can_be_unlocked:bool = false
 @export var unlock_number:int
-@onready var audio_player:AudioStreamPlayer3D = $"../AudioStreamPlayer3D"
+@export var audio_player:AudioStreamPlayer3D
 var door_unlocked
 var has_played_sound:bool = false
 
-
 func _ready():
-	parent = get_parent()
-	EventBus.connect("picked_up_key",check_key)
+	if locked:
+		EventBus.connect("picked_up_key",check_key)
 	EventBus.connect("object_looked_at",door_opened)
 	EventBus.connect("no_object_found",not_looked_at)
 	door_unlocked = preload("res://Assets/Audio/SoundFX/Door/DoorUnlocked.ogg")
+
 	if locked:
-		parent.should_freeze = true
-		parent.freeze = true
-		parent.lock_rotation = true
+		door1.should_freeze = true
+		door1.freeze = true
+		door1.lock_rotation = true
+		if door2:
+			door2.should_freeze = true
+			door2.freeze = true
+			door2.lock_rotation = true
 	else:
 		has_played_sound = true
 
 func lock_door():
-	parent.should_freeze = true
-	parent.freeze = true
-	parent.lock_rotation = true
+	door1.should_freeze = true
+	door1.freeze = true
+	door1.lock_rotation = true
 	locked = true
+	if door2:
+		door2.should_freeze = true
+		door2.freeze = true
+		door2.lock_rotation = true
 
 func unlock():
-	parent.should_freeze = false
-	parent.freeze = false
-	parent.lock_rotation = false
+	door1.should_freeze = false
+	door1.freeze = false
+	door1.lock_rotation = false
 	locked = false
+	if door2:
+		door2.should_freeze = false
+		door2.freeze = false
+		door2.lock_rotation = false
 
 func _input(event):
 	if parent_is_looked_at:
@@ -43,20 +56,20 @@ func _input(event):
 			if !locked and !has_played_sound:
 				audio_player.stream = door_unlocked
 				audio_player.play()
+				has_played_sound = true
 			elif locked:
 				audio_player.play()
 
 func door_opened(node):
-	if node == parent:
+	if node == door1 or node == door2:
+		print("INSIDE")
 		parent_is_looked_at = true
 
 func not_looked_at(node):
-	if node == parent and parent_is_looked_at:
+	if node == door1 and parent_is_looked_at or node == door2 and parent_is_looked_at :
 		parent_is_looked_at = false
 func check_key(key):
 	if key.unlock_num == unlock_number:
 		can_be_unlocked = true
 		locked = false
-		parent.freeze = false
-		parent.should_freeze = false
-		parent.lock_rotation = false
+		unlock()
