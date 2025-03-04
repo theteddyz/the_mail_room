@@ -41,6 +41,7 @@ var rigidbody:RigidBody3D
 @export var onlyPlayOnCollision:bool = false
 
 func _ready():
+	
 	#if(impact_audios != null):
 		#impact_audios.attenuation_model = AudioStreamPlayer3D.ATTENUATION_INVERSE_SQUARE_DISTANCE
 		#impact_audios.unit_size = 10
@@ -61,6 +62,7 @@ func _ready():
 		impact_audios.max_polyphony = 50
 	broken = false
 	rigidbody = get_parent()
+	initVolume = impact_audios.volume_db
 	if instabreak:
 		break_object()
 
