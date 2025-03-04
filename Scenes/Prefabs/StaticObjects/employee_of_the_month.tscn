@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=4 uid="uid://b0c0na53v35lp"]
+
+[ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_ai2pu"]
+[ext_resource type="Texture2D" uid="uid://cdw1gy3mef8id" path="res://Assets/Textures/BlenderTextures/EmployeeOfTheMonth.png" id="2_ai2pu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ai2pu"]
+size = Vector3(0.734606, 0.907929, 0.0233231)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4y3x0"]
+resource_name = "EmployeeOfTheMonth"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("2_ai2pu")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j15ng"]
+_surfaces = [{
+"aabb": AABB(-0.36719, -0.455022, -0.0233066, 0.734381, 0.910045, 0.0233065),
+"format": 34896613377,
+"index_count": 192,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAwACAAQABQAAAAMAAAAFAAEABgADAAQABQADAAYABwAEAAIABwACAAEABgAEAAcABQAIAAEABgAJAAUABQAJAAgABwAKAAYABgAKAAkAAQALAAcAAQAIAAsABwALAAoACQAMAAgACwANAAoACgAOAAkACQAOAAwACgANAA4ACAAMAA8ACAAPAAsADgAPAAwACwAPAA0ADgANAA8AEAARABIAEwASABEAEwAUABIAEAAVABEAFQAQABYAFwAWABQAFQAWABcAFwAUABMAFQAYABEAFwAZABUAFQAZABgAEwAaABcAFwAaABkAEQAbABMAEQAYABsAEwAbABoAGQAcABgAGwAdABoAGgAeABkAGQAeABwAGgAdAB4AGAAcAB8AGAAfABsAHgAfABwAGwAfAB0AHgAdAB8AIAAhACIAIwAiACEAIwAkACIAIAAlACEAJQAjACEAJQAgACYAJwAkACMAJQAnACMAJwAmACQAJQAmACcA"),
+"name": "EmployeeOfTheMonth",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray("AAAAAP//AADgAEr/oGsAAAAA/////wAA//8AAP//AAD///////8AAOAAtACgawAAHv+0AKBrAAAe/0r/oGsAACUDev0+MgAAJQOEAj4yAADZ/IQCPjIAANn8ev0+MgAAdgbe+gtXAACI+SAFC1cAAHYGIAULVwAAiPne+gtXAAC4Nk5E4HQAADg3/OnOIAAAuDZ16uB0AADGyPzpziAAAEbJdergdAAAODfIRM4gAABGyU5E4HQAAMbIyETOIAAA7Dhh6AAAAADsOGJGAAAAABLHYkYAAAAAEsdh6AAAAAC/O+Xl60YAAD/E3kjrRgAAvzveSOtGAAA/xOXl60YAAEcvPxd3uAAARy+TOHEmAABHL5M4d7gAALfQkzhxJgAAt9CTOHe4AABHLz8XcSYAALfQPxd3uAAAt9A/F3EmAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_iirv3"]
+resource_name = "desk_Cube_170"
+_surfaces = [{
+"aabb": AABB(-0.36719, -0.455022, -0.0233066, 0.734381, 0.910045, 0.0233065),
+"attribute_data": PackedByteArray("HAJKT78EZ/0cAuL9vwTFT1gGK/xYBgFRKgxn/ZAKAVEqDMVPkAor/M0O4v3NDkpPl/vIgtae1w+X+9cP1p7IgvghZ/1VH/1w+CF5cVUf4v2PIyf8jyO5cmoqZ/3IJ/1waip5ccgn4v0CLCf8Aiy5cvUU4v0FE4BU9RS4UgUTG/ycknR0gZQP/JyS4v2BlEd2npri/bmYR3aemnR0uZgP/B0b4v0tGYBUHRu4Ui0ZG/zWngGHuv3i/dae4v26/QGH0jJuc1QxbwLSMhwCVDEbczowhwM6MANyiThvAqI5A3KJOBtzojmHAwo3HAIKN25zVSrFbMgnC1ZVKgtWyCfFbEN0KHPCcsUiQ3QLI8JybnN/dThyf3X8Izh7KHO3ecUiOHsLI7d5bnN0fDhydHz8Iw9E8gQMRrxxD0RucwxGpAYYiW5z/obAJhiJMiX+huBxxoJuc62AwCbGgjIlrYDgcdo98gTXP7xx2j1uc9c/pAZkjuL9OjCmd2SOpnc6MOL9RUpuc/9glBr/YG5zRUqUGpySgVkplTtwnJI7cCmVgVk4ZZQaxWduczhlbnPFZ5Qaim5uc/1rlBqKbpQa/Wtucw=="),
+"format": 34896613399,
+"index_count": 192,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABgAHAAgABgAJAAcACAAKAAYACAALAAoADAANAA4ADAAPAA0AEAARABIAEAATABEAEgAUABAAEgAVABQAFgAXABgAFgAZABcAGAAaABYAGAAbABoAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEAMwA0ADEAMwA1ADQANgA3ADgANgA5ADcAOAA6ADYAOAA7ADoAPAA9AD4APAA/AD0AQABBAEIAQABDAEEAQgBEAEAAQgBFAEQARgBHAEgARgBJAEcASABKAEYASABLAEoATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZABlAGYAZABnAGUAaABpAGoAaABrAGkAbABtAG4AbABvAG0A"),
+"material": SubResource("StandardMaterial3D_4y3x0"),
+"name": "EmployeeOfTheMonth",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 112,
+"vertex_data": PackedByteArray("AAAAAP/////gAEr/oGv//wAA////////4AC0AKBr//8lA3r9PjL//yUDhAI+Mv//Hv9K/6Br///Z/IQCPjL//x7/tACga///2fx6/T4y////////////////AAD///////8AAP//AIAAAP////8AgP///////wCAAAAAAP//AIDgALQAoGvM3///AAD//8PZHv+0AKBrzN8AAAAA///D2SUDhAI+Mo/s2fyEAj4yj+we/0r/oGvM3wAA/////8PZ4ABK/6BrzN/////////D2dn8ev0+Mo/sJQN6/T4yj+zZ/Hr9PjL//4j5IAULV///2fyEAj4y//+I+d76C1f//9n8hAI+Mgr2dgYgBQtXCvYlA4QCPjIK9oj5IAULVwr2JQN6/T4yCvaI+d76C1cK9tn8ev0+Mgr2dgbe+gtXCvYlA4QCPjI18nYG3voLVzXyJQN6/T4yNfJ2BiAFC1c18nYGIAULV///iPne+gtX//92Bt76C1f//4j5IAULV///uDZOROB0hMc4N/zpziCf0bg2dergdITHODfIRM4gn9HsOGHoAACm6ew4YkYAAKbpxsj86c4gn9ESx2JGAACm6cbIyETOIKDREsdh6AAApulGyXXq4HSEx0bJTkTgdITHRy8/F3e4/79HL5M4cSb/v0cvkzh3uP+/Ry8/F3Em/784N8hEziAr4kbJTkTgdJ7axsjIRM4gK+K4Nk5E4HSe2uw4YkYAACjyEsdiRgAAKPLGyPzpziAr4rg2dergdJ7aODf86c4gK+JGyXXq4HSe2hLHYegAACjy7Dhh6AAAKPISx2HoAACV5D/E3kjrRpXkEsdiRgAAleQ/xOXl60aV5BLHYkYAAPjtvzveSOtG+O3sOGJGAAD47T/E3kjrRvjt7Dhh6AAA+O0/xOXl60b47RLHYegAAPjtvzvl5etG+O3sOGJGAAD//7875eXrRv//7Dhh6AAA//+/O95I60b//7873kjrRv//P8Tl5etG//+/O+Xl60b//z/E3kjrRv//Ry8/F3Em//+30JM4cSb//0cvkzhxJv//t9A/F3Em//+30D8XcSb//7fQkzh3uP//t9CTOHEm//+30D8Xd7j//0cvPxdxJlTVt9A/F3e4VNW30D8XcSZU1UcvPxd3uFTVt9CTOHEmVNVHL5M4d7hU1UcvkzhxJlTVt9CTOHe4VNX//xO6//8/sv//E7r//z+y//9Sof//UqG+zf9/q97/f77N/3+r3v9/68X/f+vF/3//f////3////9/////f///rU+tT8tSy1KtT61Py1LLUqJJokmiSaJJrc9RMMvSMy2tz1Ewy9IzLaLJXDaiyVw2//+skv//rJL//6yS//+sktm62brZutm62brZutm62bolRSVFJUUlRSVFJUUlRSVF/38AAP9/AAD/fwAA/38AAP///3////9/////f////3//f////3////9/////f////3////9/////fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///hE6ETlVSVVKEToROVVJVUgNHA0cDRwNHhM56MVXSqS2EznoxVdKpLQLH/DgCx/w4/3////9/////f////3////rIBDf6yAQ3+sgEN/rIBDf6SPpI+kj6SPpI+kj6SPpI1d7/f9Xe/3/V3v9/1d7/f/9/////f////3////9/////v/+//7//v/+//7//v/+//7//f/+//3//v/9//7//f6oqVNWqKlTVqipU1aoqVNVU1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_j15ng")
+
+[node name="Painting" type="StaticBody3D"]
+collision_mask = 0
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.055e-05, 0.000411987, -0.0118907)
+shape = SubResource("BoxShape3D_ai2pu")
+
+[node name="MultimeshPointer" type="Node3D" parent="." groups=["multimesh"]]
+script = ExtResource("1_ai2pu")
+wall_typed = "shelf"
+
+[node name="EmployeeOfTheMonth" type="MeshInstance3D" parent="MultimeshPointer"]
+mesh = SubResource("ArrayMesh_iirv3")
+skeleton = NodePath("")

@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=4 uid="uid://eibau86lcgdu"]
+
+[ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_17ggx"]
+[ext_resource type="Texture2D" uid="uid://blsdc7pnt7vq4" path="res://Assets/Textures/BlenderTextures/PinBoard.png" id="2_17ggx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ixnk7"]
+size = Vector3(1.29715, 0.907929, 0.0248451)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3se4q"]
+resource_name = "PinBoard"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("2_17ggx")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kqgym"]
+_surfaces = [{
+"aabb": AABB(-0.64769, -0.453171, -0.0245949, 1.29538, 0.906343, 0.0245949),
+"format": 34896613377,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAwACAAQABQAAAAMAAAAFAAEABgADAAQABQADAAYABwAEAAIABwACAAEABgAEAAcABQAIAAEABgAJAAUABQAJAAgABwAKAAYABgAKAAkAAQALAAcAAQAIAAsABwALAAoACQAMAAgACwANAAoACgAOAAkACQAOAAwACgANAA4ACAAMAA8ACAAPAAsADgAPAAwACwAPAA0ADgANAA8A"),
+"name": "PinBoard",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAA//8AAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD/////AAAAAEkECfoAAAAASQT1BQAAAAC1+/UFAAAAALX7CfoAAAAASQQJ+ljdAAC1+/UFWN0AAEkE9QVY3QAAtfsJ+ljdAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1yyol"]
+resource_name = "desk_Cube_163"
+_surfaces = [{
+"aabb": AABB(-0.64769, -0.453171, -0.0245949, 1.29538, 0.906343, 0.0245949),
+"attribute_data": PackedByteArray("ygEVRI1090CNdBVEygH3QECFWVrsh6H7QIVg/uyHGF3KAW1KjXRQR410bUrKAVBHygFg/o10WVqNdGD+ygFZWnN4WVqRe2D+c3hg/pF7WVrpgWD+zH5ZWumBWVrMfmD+xQFaUE2gqE1NoFpQxQGoTcoBtD3hcfQ6jXS0PXUE9DqNdPI0dQSxN8oB8jThcbE3741g/kOLGF3vjVlaQ4uh+3v+sV8PkTn+D5GxX3v+Of7FAVxWTaCrU02gXFbFAatTyQGgMTVv7y41b6AxyQHvLjVv7CjJAZ0ryQHsKDVvnSs="),
+"format": 34896613399,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUA"),
+"material": SubResource("StandardMaterial3D_3se4q"),
+"name": "PinBoard",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 56,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAP//AAD//7X7CfoAAP///////wAA//9JBAn6AAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAABU1f//AAD//1TV//8AAAAAVNUAAAAA//9U1f////8AAFTVAAD/////VNUAAP//AABU1f///////1TVtfv1BQAA//9JBPUFWN3//0kE9QUAAP//tfv1BVjd//8AAAAAAAD//0kECfoAAP//AAD//wAA//9JBPUFAAD///////8AAP//tfv1BQAA/////wAAAAD//7X7CfoAAP////8AAAAA//9JBPUFAAD//wAAAAAAAP//tfv1BQAA//9JBPUFWN3//7X7CfpY3f//SQQJ+ljd//+1+/UFWN3//0kECfoAAP+/tfsJ+ljd/7+1+wn6AAD/v0kECfpY3f+/SQT1BQAAVNVJBAn6WN1U1UkECfoAAFTVSQT1BVjdVNW1+wn6AABU1bX79QVY3VTVtfv1BQAAVNW1+wn6WN1U1VTVVNVU1VTVVNVU1VTVVNX/P/+//z//v/8//7//P/+/qiqqKqoqqiqqKqoqqiqqKv////////////////////+qKlTVqipU1aoqVNWqKlTVVNWqKlTVqipU1aoqVNWqKv9//7//f/+//3//v/9//7//v/+//7//v/+//7//v/+//7//v/+//7//v/+//7//v/8//7//P/+//z//v/8//7//P/+//z//v/8//7//P/+/AAD/fwAA/38AAP9/AAD/f6oqqiqqKqoqqiqqKqoqqipU1VTVVNVU1VTVVNVU1VTV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kqgym")
+
+[node name="Pinboard" type="StaticBody3D"]
+collision_mask = 0
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.03795e-05, 0.000411987, -0.0126517)
+shape = SubResource("BoxShape3D_ixnk7")
+
+[node name="MultimeshPointer" type="Node3D" parent="." groups=["multimesh"]]
+script = ExtResource("1_17ggx")
+wall_typed = "shelf"
+
+[node name="PinBoard" type="MeshInstance3D" parent="MultimeshPointer"]
+mesh = SubResource("ArrayMesh_1yyol")
+skeleton = NodePath("")

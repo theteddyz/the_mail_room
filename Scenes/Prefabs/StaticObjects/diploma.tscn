@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=4 uid="uid://bjrxruan2h3lp"]
+
+[ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_p6n0v"]
+[ext_resource type="Texture2D" uid="uid://ckpyc0r0su6yg" path="res://Assets/Textures/BlenderTextures/Diploma.png" id="2_p6n0v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yfhse"]
+size = Vector3(0.452759, 0.596558, 0.0334167)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlf8d"]
+resource_name = "Diploma"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("2_p6n0v")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7mlod"]
+_surfaces = [{
+"aabb": AABB(-0.226046, -0.298763, -0.0327893, 0.452091, 0.597526, 0.0327893),
+"format": 34896613377,
+"index_count": 156,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAwACAAQABQAAAAMAAAAFAAEABgADAAQABQADAAYABwAEAAIABwACAAEABgAEAAcABQAIAAEABgAJAAUABQAJAAgABwAKAAYABgAKAAkAAQALAAcAAQAIAAsABwALAAoACQAMAAgACAANAAsACAAMAA0ACwAOAAoACwANAA4ACgAPAAkACQAPAAwACgAOAA8AEAANAAwAEQAOAA0AEQANABAAEgAPAA4AEgAOABEAEwAMAA8AEwAPABIAEAAMABMAEQAUABIAEAAVABEAEQAVABQAEwAWABAAEAAWABUAEgAXABMAEgAUABcAEwAXABYAFgAYABUAFAAZABcAFwAaABYAFgAaABgAFwAZABoAFQAYABsAFQAbABQAGwAYABoAFAAbABkAGwAaABkA"),
+"name": "Diploma",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//Vl4AAAAA/////wAA//8AAP//AAD///////8AAAAAAABWXgAA//8AAFZeAAD/////Vl4AAAAA//8AAAAAAAAAAAAAAAD//wAAAAAAAP////8AAAAAGglh+AUJAADk9mH4BQkAAOT2nQcFCQAAGgmdBwUJAADk9mH4W2cAAOT2nQdbZwAAGgmdB1tnAAAaCWH4W2cAABszrh5gcAAA48yuHmBwAADjzKXEYHAAABszpcRgcAAAO9CuHp3lAABzNqXEneUAADvQpcSd5QAAczauHp3lAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gclwc"]
+resource_name = "desk_Cube_158"
+_surfaces = [{
+"aabb": AABB(-0.226046, -0.298763, -0.0327893, 0.452091, 0.597526, 0.0327893),
+"attribute_data": PackedByteArray("pXMT/vRuqHalc6h29G4T/jdsqHY3bBP+vpG2fo6i3vG+kRP+jqIUmi58E/58d6h2Lnyodnx3E/7rfhP+636odmBoE/7rAah2YGiodusBE/7An2oUcaTfesCf33pxpGoUA51qFAOd33pvlt96vpFqFG+WahS+kd96LJnfeiyZahQxxRQj2cjfejHF33rZyBQjvpET/hrg3/Hq8BP+jqLe8evwtn6OohSavpG2fhvgFJrq8BP+G+AUmuvwtn4a4N/xQVJeco0EiQNBUokDjQRecupgRTVRZHtx6mDRclFk7jMoaO4zj2vRcihoe3GPa0U1WNDferDMFCNY0BQjsMzfep2+sxtawd96nb7felrBsxsT/hP+Vvu3fhP+t35W+xP+540T/kCKr3rnjah2QIoM+kioahRSrDp3SKjfelKsDhgytN96KbAOGDK0ahQpsDp3woKodmmGDPrCghP+aYavegm4sxvGut96Cbjfesa6sxvC9Ld+f/cT/sL0E/5/97d+"),
+"format": 34896613399,
+"index_count": 156,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABgAHAAgABgAJAAcACgALAAwACgANAAsADAAOAAoADAAPAA4AEAARABIAEAATABEAFAAVABYAFAAXABUAFgAYABQAFgAZABgAGgAbABwAGgAdABsAHAAeABoAHAAfAB4AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0A"),
+"material": SubResource("StandardMaterial3D_hlf8d"),
+"name": "Diploma",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 96,
+"vertex_data": PackedByteArray("AAAAAP///78AAP//Vl7/vwAA//////+/AAAAAFZe/78AAP//AAD/vwAAAAAAAP+/5PZh+FtnXP/jzK4eYHBc/+T2nQdbZ1z/48ylxGBwXP///wAAVl7/v/////////+//////1Ze/7///wAA////v///AAAAAP+//////wAA/7///wAA//8AgAAA/////wCA////////AIAAAAAA//8AgAAAAABWXlTV//8AAP//VNX//wAAVl5U1QAAAAD//1TVAAAAAAAAVNX//wAAAABU1f////9WXlTVAAD/////VNUAAP//Vl5U1f///////1TV/////wAAVNUAAP//AABU1ePMpcRgcLuwO9CuHp3lu7DjzK4eYHC7sDvQpcSd5buw5PadB1tn//8bM64eYHD//xoJnQdbZ///48yuHmBw//8aCWH4W2f//+PMpcRgcP//5PZh+Ftn//8bM6XEYHD//xoJnQdbZ1z/GzOlxGBwXP8aCWH4W2dc/xszrh5gcFz/czauHp3l//870KXEneX//3M2pcSd5f//O9CuHp3l///jzK4eYHBU1XM2rh6d5VTVGzOuHmBwVNU70K4eneVU1RszpcRgcFTVO9ClxJ3lVNXjzKXEYHBU1XM2pcSd5VTVGzOuHmBwQs9zNqXEneVCzxszpcRgcELPczauHp3lQs/k9mH4W2dU1RoJYfgFCVTVGglh+FtnVNXk9mH4BQlU1eT2nQdbZ/+/5PZh+AUJ/7/k9mH4W2f/v+T2nQcFCf+/AAAAAAAAEv0aCWH4BQkS/QAA//8AABL9GgmdBwUJEv0AAP//AAAg/uT2YfgFCSD+/////wAAIP4aCWH4BQkg/v//AAAAACD+GgmdBwUJIP4AAAAAAAAg/uT2nQcFCSD+/////wAAEv3k9p0HBQkS/f//AAAAABL95PZh+AUJEv0aCZ0HW2dU1eT2nQcFCVTV5PadB1tnVNUaCZ0HBQlU1RoJYfhbZ/+/GgmdBwUJ/78aCZ0HW2f/vxoJYfgFCf+//3////9/////f////3////9/////f///AYD9//x/+//9f/3/AYD9//9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////f////3////9///+qKlTVqipU1aoqVNWqKlTVqipU1aoqVNVU1aoqVNWqKlTVqipU1aoqVNWqKlTVqir/f////3////9/////f////3+i/v9/ov7/f6L+/3+i/pyA//+cgP//nID//5yA///9fwEA/38AAP9/AAD8fwMA/3////9/////f////3///6qqqqqqqqqqqqqqqqqqqqqqKlTVqipU1aoqVNWqKlTV/38AAP9/AAD/fwAA/38AAFRVVFVUVVRVVFVUVVRVVFX/f////3////9/////f////38AAP9/AAD/fwAA/38AAPk+BcH5PgXB+T4Fwfk+BcEFwfk+BcH5PgXB+T4Fwfk+/3////9/////f////3///1TVqipU1aoqVNWqKlTVqir/fwAA/38AAP9/AAD/fwAA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_7mlod")
+
+[node name="Diploma" type="StaticBody3D"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000305176, -0.000183105, -0.0162811)
+shape = SubResource("BoxShape3D_yfhse")
+
+[node name="MultimeshPointer" type="Node3D" parent="." groups=["multimesh"]]
+script = ExtResource("1_p6n0v")
+wall_typed = "shelf"
+
+[node name="Diploma" type="MeshInstance3D" parent="MultimeshPointer"]
+mesh = SubResource("ArrayMesh_gclwc")
+skeleton = NodePath("")
