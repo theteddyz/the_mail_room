@@ -15,9 +15,9 @@ var rb_controller = preload("res://Scenes/Prefabs/MoveableObjects/rb_enabler.tsc
 var enabler
 #@export var special_object:bool = false
 func _ready():
-	enabler = rb_controller.instantiate()
-	add_child(enabler)
-	enabler.setup()
+	#enabler = rb_controller.instantiate()
+	#add_child(enabler)
+	#enabler.setup()
 	physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_ON
 	connect("body_entered",Callable(self,"unfreeze_object"))
 	freeze = false
@@ -36,4 +36,7 @@ func unfreeze_object(col):
 			if !col.should_freeze:
 				var current_parent = col.get_parent()
 				col.freeze = false
+				for body in get_colliding_bodies():
+					if body is RigidBody3D:
+						freeze = false
  
