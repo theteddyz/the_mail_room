@@ -193,6 +193,26 @@ shape = SubResource("BoxShape3D_vxn8k")
 [node name="Cardboard_box_big" parent="." instance=ExtResource("15_87p0u")]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1671, 0.325687, 7.29156)
+contact_monitor = true
+max_contacts_reported = 10
+
+[node name="Cardboard_box_big2" parent="." instance=ExtResource("15_87p0u")]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1671, 0.325687, 7.92122)
+contact_monitor = true
+max_contacts_reported = 10
+
+[node name="Cardboard_box_big3" parent="." instance=ExtResource("15_87p0u")]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8172, 0.325687, 7.75441)
+contact_monitor = true
+max_contacts_reported = 10
+
+[node name="Cardboard_box_big4" parent="." instance=ExtResource("15_87p0u")]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72618, 0.985113, 7.97805)
+contact_monitor = true
+max_contacts_reported = 10
 
 [node name="StaticBody3D" parent="." instance=ExtResource("15_koth6")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -3.45649, 0.00906801, -7.39729)

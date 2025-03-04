@@ -37,7 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://cds7t3reqk5jw" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_Roughness.png" id="18_2wnm1"]
 [ext_resource type="PackedScene" uid="uid://bo2i15tfc2pl2" path="res://Scenes/Prefabs/StaticObjects/table1.tscn" id="18_d3cnj"]
 [ext_resource type="PackedScene" uid="uid://k8lfivepg4gx" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_archway.tscn" id="18_frqdg"]
-[ext_resource type="Texture2D" uid="uid://dc3gt1rsfct0l" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_NormalGL.jpg" id="19_jb8rv"]
+[ext_resource type="Texture2D" uid="uid://bvfp0ix21nbi8" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_NormalGL.jpg" id="19_jb8rv"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_nolight.tscn" id="19_momyh"]
 [ext_resource type="Texture2D" uid="uid://ciibnfrfm55x1" path="res://Assets/Models/Temp_models/textures/Magazine/Magazine_Base_color.png" id="19_ujy8q"]
 [ext_resource type="PackedScene" uid="uid://csml3h8jd6hni" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_broken_3.tscn" id="20_orijv"]
@@ -117,7 +117,7 @@
 [ext_resource type="Texture2D" uid="uid://bc5opxw1qloxn" path="res://Assets/Models/test_models/bigceiling_T_AutopsyLight_surface.png" id="105_rquwu"]
 [ext_resource type="Texture2D" uid="uid://bekgt4stctmj8" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts02_metal-modular_airduct_rectangular_01_parts02_rough.png" id="105_tberc"]
 [ext_resource type="Texture2D" uid="uid://chr0sbw5hqglj" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts02_nor_gl.png" id="106_o1uid"]
-[ext_resource type="Texture2D" uid="uid://datcyo3eitr2a" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_diff.png" id="107_dpat2"]
+[ext_resource type="Texture2D" uid="uid://e7e1x6c82c6v" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_diff.png" id="107_dpat2"]
 [ext_resource type="PackedScene" uid="uid://cun8jxk2tnn8j" path="res://Scenes/Prefabs/StaticObjects/name_tag_template.tscn" id="108_1kkg0"]
 [ext_resource type="PackedScene" uid="uid://d3hn5glhsxdca" path="res://Assets/Models/computer.tscn" id="108_g6uex"]
 [ext_resource type="Texture2D" uid="uid://fapygil0o55s" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_metal.png-modular_airduct_rectangular_01_parts01_rough.png" id="108_v7dgj"]
@@ -2084,7 +2084,7 @@ stream_5/stream = ExtResource("118_7e2fh")
 script = ExtResource("1_oyi4d")
 floor_num = 3
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["worldEnviorment"]]
 environment = ExtResource("2_6iufn")
 script = ExtResource("3_jahih")
 dark_properties = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=108 format=4 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_gv15l"]
 [ext_resource type="Environment" uid="uid://b6cvpqqdwan5k" path="res://Scenes/Worlds/introlevel.tres" id="3_4oqgv"]
@@ -21,7 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://b4lvvd23ey3q4" path="res://Assets/Textures/BlenderTextures/CeilingLight.png" id="12_qxdqn"]
 [ext_resource type="Script" uid="uid://c8838fg8k4eli" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="13_d7bqr"]
 [ext_resource type="PackedScene" uid="uid://c6ieyqmj3l12c" path="res://Scenes/Prefabs/StaticObjects/postit_cluster8.tscn" id="13_onj3p"]
-[ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="13_v6ybj"]
 [ext_resource type="PackedScene" uid="uid://cxx4tf5grxfu8" path="res://Assets/Models/radio_model_2.tscn" id="14_3vnu1"]
 [ext_resource type="PackedScene" uid="uid://c8lmxgc2q8m15" path="res://Scenes/Prefabs/StaticObjects/postit_cluster6.tscn" id="14_ms35g"]
 [ext_resource type="PackedScene" uid="uid://b2i8h2u0shlc2" path="res://Scenes/Prefabs/StaticObjects/postit_cluster3.tscn" id="15_em8dl"]
@@ -341,8 +340,6 @@ albedo_color = Color(0.366595, 0.366595, 0.366595, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_ths37"]
 size = Vector3(60.525, 1, 32.03)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_60xfd"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpktv"]
 resource_name = "Material.001"
 albedo_texture = ExtResource("25_jj16k")
@@ -621,7 +618,7 @@ transform = Transform3D(0.0166806, 0, 0.0131066, 0, 0.0212138, 0, -0.0131066, 0,
 [node name="Player" parent="." instance=ExtResource("4_s3jaw")]
 transform = Transform3D(-0.514664, 0, 0.857392, 0, 1, 0, -0.857392, 0, -0.514664, -3.41695, 0.5, -12.5391)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["worldEnviorment"]]
 environment = ExtResource("3_4oqgv")
 script = ExtResource("4_2j0x3")
 
@@ -1458,11 +1455,6 @@ mesh = SubResource("BoxMesh_ths37")
 
 [node name="File_Cabinet_Drawer2#PostItNotes_014" parent="." instance=ExtResource("30_10uy3")]
 transform = Transform3D(-9.27285e-10, 0, -0.0212138, 0, 0.0212138, 0, 0.0212138, 0, -9.27285e-10, -0.156579, 0.130436, -0.00262737)
-
-[node name="Mailcart" parent="." instance=ExtResource("13_v6ybj")]
-transform = Transform3D(0.0488149, 0, -0.998808, 0, 1, 0, 0.998808, 0, 0.0488149, 2.22359, 0.78271, 27.75)
-collision_mask = 19
-physics_material_override = SubResource("PhysicsMaterial_60xfd")
 
 [node name="Radio" parent="." instance=ExtResource("14_3vnu1")]
 transform = Transform3D(0.895997, -0.00446116, 0.444037, 0.00372548, 0.99999, 0.00252927, -0.444044, -0.000611962, 0.896005, -3.55959, 1.73602, -11.3585)

@@ -143,7 +143,7 @@ floor_num = -1
 [node name="Player" parent="." instance=ExtResource("2_dtci6")]
 transform = Transform3D(0.536564, 0, 0.84386, 0, 1, 0, -0.84386, 0, 0.536564, 14.4209, 2.38419e-07, -1.6153)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["worldEnviorment"]]
 environment = ExtResource("3_jh2lx")
 script = ExtResource("4_ol4n4")
 dark_properties = {

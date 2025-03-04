@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bb75w210dxt14" path="res://Scenes/Prefabs/Rooms/mailroom.tscn" id="6_b44l8"]
 [ext_resource type="Texture2D" uid="uid://cewsovmotus3" path="res://Assets/Models/BlenderModels/desk_CRTTV.png" id="13_p37jt"]
 [ext_resource type="PackedScene" uid="uid://c03lqw7vrgadb" path="res://Scenes/Prefabs/StaticObjects/crttv.tscn" id="13_pdcxx"]
-[ext_resource type="VideoStream" uid="uid://cc38oxjciiksl" path="res://Assets/crt-video-final-master-peter-3-1-jnne1j.ogv" id="17_p37jt"]
+[ext_resource type="VideoStream" uid="uid://dcahllgl8gobw" path="res://Assets/crt-video-final-master-peter-3-1-jnne1j.ogv" id="17_p37jt"]
 [ext_resource type="AudioStream" uid="uid://cqiw4v1eyh2jv" path="res://Assets/CRT Video Final Master Peter 3 (1).mp3" id="17_ub5ip"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="29_3ttsr"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="30_xol48"]
@@ -208,7 +208,7 @@ floor_num = -1
 [node name="Player" parent="." instance=ExtResource("2_2im65")]
 transform = Transform3D(-0.00603879, 0, 0.999982, 0, 1, 0, -0.999982, 0, -0.00603879, 4.837, 0, -5.319)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["worldEnviorment"]]
 environment = ExtResource("3_r8df3")
 script = ExtResource("4_gvu72")
 dark_properties = {

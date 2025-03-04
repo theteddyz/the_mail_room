@@ -24,6 +24,7 @@ var force_above_threshold_time: float = 0.0
 var mouse_line: MeshInstance3D
 var mouse_line_material: ORMMaterial3D
 var throw_direction = Vector3.ZERO
+
 func _ready():
 	player = GameManager.get_player()
 	if player:
@@ -42,11 +43,14 @@ func grab():
 		camera = player.find_child("Camera")
 		player_head = player.find_child("Head")
 		player_raycast = player.find_child("InteractableFinder")
-	set_physics_process(true)
-	set_process(true)
 	object = get_parent().current_grabbed_object
+	object.set_process(true)
+	object.set_physics_process(true)
 	object.freeze = false
 	object.sleeping = false
+	var neighbor_objects = object.get_colliding_bodies()
+	for object in neighbor_objects:
+		print("HELLO")
 	_mass = object.mass
 	grab_offset = object.to_local(player_raycast.get_collision_point())
 	grab_offset_tether = player_raycast.get_collision_point() - object.global_transform.origin

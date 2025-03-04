@@ -7,47 +7,28 @@ var rb:RigidBody3D
 
 
 func setup():
-	for bodies in get_overlapping_bodies():
-		if bodies.name == \"Player\":
-			rb.freeze = false
-	rb = get_parent()
-
-func _on_body_exited(body):
-	if body.name == \"Player\":
-		check_and_freeze(rb)
-
-
-func _on_body_entered(body):
-	if rb == null:
-		rb = get_parent()
-	if body.name == \"Player\":
-		if !rb.should_freeze:
-			rb.freeze = false
-
-
-func check_and_freeze(rb):
-	if rb.linear_velocity.length() > 0.01:
-		await get_tree().create_timer(2.0).timeout
-		check_and_freeze(rb)
-	else:
-		rb.freeze = true
+	position = Vector3.ZERO
+	var bodies = get_overlapping_bodies()
+	print(bodies)
+	for body in bodies:
+		if body is RigidBody3D:
+			bodies.freeze = false
+			print(\"unfreezing\")
+	#queue_free()
 "
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8a6a3"]
-margin = 0.4
-size = Vector3(7, 7, 7)
+[sub_resource type="SphereShape3D" id="SphereShape3D_8a6a3"]
+radius = 5.0
 
 [node name="Rb_enabler" type="Area3D"]
 transform = Transform3D(0.999912, 0.013299, 0, -0.013299, 0.999912, 0, 0, 0, 1, 0, 0, 0)
-collision_layer = 4
-collision_mask = 4
-monitorable = false
+collision_layer = 14
+collision_mask = 14
 script = SubResource("GDScript_8a6a3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 1.76947e-08, 0, -1.76947e-08, 1, 0, 0, 0, 1, 0.60424, 1.10422, -0.100311)
-shape = SubResource("BoxShape3D_8a6a3")
-debug_fill = false
+shape = SubResource("SphereShape3D_8a6a3")
+debug_color = Color(0.927994, 0, 0.283595, 0.42)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

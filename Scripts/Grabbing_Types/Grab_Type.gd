@@ -11,8 +11,7 @@ extends RigidBody3D
 @export var close_sound: AudioStreamPlayer3D
 @export var loop_sound: AudioStreamPlayer3D
 ####
-var rb_controller = preload("res://Scenes/Prefabs/MoveableObjects/rb_enabler.tscn")
-var enabler
+
 #@export var special_object:bool = false
 func _ready():
 	#enabler = rb_controller.instantiate()
@@ -23,12 +22,18 @@ func _ready():
 	freeze = false
 	await get_tree().create_timer(3.0).timeout
 	freeze = true
+	contact_monitor = true
+	set_max_contacts_reported(10)
+
+
 
 func _physics_process(delta: float) -> void:
 	if should_freeze and freeze == false:
 		if GrabbingManager.current_grabbed_object != self:
 			if linear_velocity.length() < 0.001 and angular_velocity.length() < 0.001:
 				freeze = true
+				contact_monitor = true
+				set_max_contacts_reported(10)
 			
 func unfreeze_object(col):
 	if col is RigidBody3D:

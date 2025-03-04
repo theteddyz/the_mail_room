@@ -98,11 +98,11 @@ func set_floor(path,new_floor:int):
 
 func load_floor():
 	swap_floor_collider(false)
-	
 	#var player = GameManager.get_player()
 	var mail_cart = GameManager.get_mail_cart()
-	var map_instance = mail_cart.get_node("Map_Position").get_child(0)
-	map_instance.set_map()
+	if mail_cart:
+		var map_instance = mail_cart.get_node("Map_Position").get_child(0)
+		map_instance.set_map()
 	#player.reparent(Elevator,true)
 	if detector.mailcart_exists_in_elevator == true:
 		pass
@@ -151,9 +151,10 @@ func close_doors(_reparent = true)-> void:
 	var mailcart = GameManager.get_mail_cart()
 	if _reparent:
 		player.reparent(Elevator,true)
-		player.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)	
-		mailcart.reparent(Elevator,true)
-		mailcart.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
+		player.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
+		if mailcart:
+			mailcart.reparent(Elevator,true)
+			mailcart.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
 	if !mail_room:
 		var close_door_tween = create_tween()
 		close_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-0.867,0,0), 3).set_ease(Tween.EASE_IN_OUT)
@@ -170,7 +171,6 @@ func open_doors()->void:
 	if Elevator.is_ancestor_of(player):
 		player.reparent(GameManager.current_scene,true)
 		player.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, false)
-
 	var mailcart = GameManager.get_mail_cart()
 	if Elevator.is_ancestor_of(mailcart):
 		mailcart.reparent(GameManager.current_scene,true)
@@ -218,8 +218,6 @@ func call_elevator_up()->void:
 	return 
 func move_elevator_down()-> void:
 	
-	var mailcart = GameManager.get_mail_cart()
-	mailcart.calculate_spacing()
 	var move_elevator_down_tween = create_tween()
 	move_elevator_down_tween.tween_property(Elevator, "position", Vector3(1.987,-6.944,0.696), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving
@@ -227,8 +225,6 @@ func move_elevator_down()-> void:
 	await move_elevator_down_tween.finished
 	return 
 func move_elevator_up()-> void:
-	var mailcart = GameManager.get_mail_cart()
-	mailcart.calculate_spacing()
 	var move_elevator_up_tween = create_tween()
 	move_elevator_up_tween.tween_property(Elevator, "position", Vector3(1.987,9.304,0.696), 5).set_ease(Tween.EASE_IN_OUT)
 	elevator_audio.stream = elevator_moving

@@ -163,15 +163,15 @@ func _deferred_goto_scene(path, is_not_scene_load = false):
 		player_reference.owner = current_scene
 		player_reference._ready()
 	
-	# Find and replace any potential mailcart node in new scene
-	var new_mailcart = current_scene.find_child("Mailcart")
-	if(new_mailcart != null):
-		new_mailcart.free()
+	
 	# We do not want to add the mailcart to the new scene in some cases
 	if(mailcart_in_elevator):
 		var mailcart = elevator_reference.get_node("Elevator").get_node("Mailcart")
 		mailcart.perform_package_replacement(current_scene)
-		
+		# Find and replace any potential mailcart node in new scene
+		var new_mailcart = current_scene.find_child("Mailcart")
+		if(new_mailcart != null):
+			new_mailcart.free()
 	# Find and replace the elevator node
 	var new_elevator = current_scene.find_child("Elevator")
 	#var new_elevator_rotation = new_elevator.rotation
