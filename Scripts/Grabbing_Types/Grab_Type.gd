@@ -23,7 +23,7 @@ func _ready():
 	await get_tree().create_timer(3.0).timeout
 	freeze = true
 	contact_monitor = true
-	set_max_contacts_reported(10)
+	set_max_contacts_reported(1)
 
 
 
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 			if linear_velocity.length() < 0.001 and angular_velocity.length() < 0.001:
 				freeze = true
 				contact_monitor = true
-				set_max_contacts_reported(10)
+				set_max_contacts_reported(1)
 			
 func unfreeze_object(col):
 	if col is RigidBody3D:
