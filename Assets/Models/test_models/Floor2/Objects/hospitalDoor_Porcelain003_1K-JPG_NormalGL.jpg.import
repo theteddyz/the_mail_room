@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc3gt1rsfct0l"
+uid="uid://bvfp0ix21nbi8"
 path.s3tc="res://.godot/imported/hospitalDoor_Porcelain003_1K-JPG_NormalGL.jpg-2801538d96480b0e06c2bac558102a67.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "b71f63705063d9e61ef2c7bad8fc58a4"
 }
 
 [deps]

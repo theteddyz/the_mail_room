@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://datcyo3eitr2a"
+uid="uid://e7e1x6c82c6v"
 path.s3tc="res://.godot/imported/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_diff.png-8121674365b24db047979de7d8087a8a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "1a4dfce1ad851cd2adbe313411dcb9b2"
 }
 
 [deps]
