@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=39 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
@@ -18,7 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="21_fscik"]
 [ext_resource type="PackedScene" uid="uid://duh0mp4ga7irm" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover.tscn" id="22_cdvgx"]
 [ext_resource type="Script" uid="uid://cbvb1snf756vu" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="22_n7wpk"]
+[ext_resource type="PackedScene" uid="uid://bdx1ipveuafpp" path="res://Scenes/Prefabs/StaticObjects/computer_tower_tall.tscn" id="23_dbw12"]
+[ext_resource type="PackedScene" uid="uid://c88ceo5ug6aah" path="res://Scenes/Prefabs/MoveableObjects/mug.tscn" id="24_h0jgm"]
 [ext_resource type="Script" uid="uid://cyfh53j3y05m0" path="res://Scripts/Misc/zone_optimizer.gd" id="24_s3eqx"]
+[ext_resource type="PackedScene" uid="uid://cis7so1fqoyyd" path="res://Scenes/Prefabs/MoveableObjects/file_folder.tscn" id="25_ckfhg"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
 [ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="44_epuy0"]
@@ -237,6 +240,15 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.5307
 
 [node name="HR_Wall_Wtih_Door" parent="." instance=ExtResource("21_bf1bd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.86763, 0.0923328, -7.63503)
+
+[node name="ComputerTowerTall" parent="." instance=ExtResource("23_dbw12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12863, 1.91117, 4.76756)
+
+[node name="Mug" parent="." instance=ExtResource("24_h0jgm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87936, 1.251, 4.67764)
+
+[node name="FileFolder" parent="." instance=ExtResource("25_ckfhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11862, 1.19824, 4.27995)
 
 [connection signal="body_entered" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_exited"]
