@@ -82,6 +82,8 @@ func _hide_monster():
 
 
 func _on_anticipation_starter_body_entered(_body: Node3D) -> void:
+	if !packageholder:
+		_ready()
 	var arr = packageholder.get_children()
 	var mail_cart = player.find_child("Mailcart")
 	if mail_cart!= null:
