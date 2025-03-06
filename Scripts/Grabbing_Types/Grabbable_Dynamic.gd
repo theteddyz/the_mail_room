@@ -24,7 +24,7 @@ var force_above_threshold_time: float = 0.0
 var mouse_line: MeshInstance3D
 var mouse_line_material: ORMMaterial3D
 var throw_direction = Vector3.ZERO
-
+var rb_enabler = preload("res://Scenes/Prefabs/MoveableObjects/rb_enabler.tscn")
 func _ready():
 	player = GameManager.get_player()
 	if player:
@@ -48,9 +48,18 @@ func grab():
 	object.set_physics_process(true)
 	object.freeze = false
 	object.sleeping = false
+	var enabler = rb_enabler.instantiate()
+	object.add_child(enabler)
+	var child_objects = object.get_children()
+	for rb in child_objects:
+		if rb is RigidBody3D:
+			rb.freeze = false
+			print("unfreezing")
 	var neighbor_objects = object.get_colliding_bodies()
 	for object in neighbor_objects:
-		print("HELLO")
+		if object is RigidBody3D:
+			object.freeze = false
+			print(object.name)
 	_mass = object.mass
 	grab_offset = object.to_local(player_raycast.get_collision_point())
 	grab_offset_tether = player_raycast.get_collision_point() - object.global_transform.origin

@@ -6,15 +6,18 @@ script/source = "extends Area3D
 var rb:RigidBody3D 
 
 
-func setup():
-	position = Vector3.ZERO
-	var bodies = get_overlapping_bodies()
-	print(bodies)
-	for body in bodies:
-		if body is RigidBody3D:
-			bodies.freeze = false
-			print(\"unfreezing\")
-	#queue_free()
+
+func kill_me():
+	await get_tree().create_timer(3.0)
+	queue_free()
+
+
+func _on_body_entered(body):
+	if body is RigidBody3D:
+		if \"grab_type\" in body:
+			body.unfreeze()
+		
+	
 "
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_8a6a3"]
@@ -31,4 +34,3 @@ shape = SubResource("SphereShape3D_8a6a3")
 debug_color = Color(0.927994, 0, 0.283595, 0.42)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
