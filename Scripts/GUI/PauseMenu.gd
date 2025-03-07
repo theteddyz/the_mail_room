@@ -43,7 +43,7 @@ func _on_restart_pressed():
 		var _new_scene = new_scene.instantiate()
 		get_tree().get_root().add_child(_new_scene)
 		GameManager._ready()
-		
+		Gui.call_ready()
 		get_tree().set_current_scene(_new_scene)
 		_reset_pause_state()
 

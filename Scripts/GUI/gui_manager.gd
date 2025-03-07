@@ -33,3 +33,7 @@ func get_pager() -> Node:
 	return pager
 func get_hint_controller() -> Node:
 	return hint_container
+
+func call_ready():
+	icon_manager.show()
+	
