@@ -267,6 +267,7 @@ mass = 0.021
 physics_material_override = SubResource("PhysicsMaterial_8jcur")
 sleeping = true
 freeze = true
+freeze_mode = 1
 script = ExtResource("3_t7kbh")
 
 [node name="Camera_Position" type="Node3D" parent="RadioPosition/Radio"]
