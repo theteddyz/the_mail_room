@@ -266,7 +266,6 @@ collision_mask = 5
 mass = 0.021
 physics_material_override = SubResource("PhysicsMaterial_8jcur")
 sleeping = true
-freeze = true
 freeze_mode = 1
 script = ExtResource("3_t7kbh")
 
