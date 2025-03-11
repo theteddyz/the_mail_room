@@ -1,5 +1,6 @@
-[gd_scene load_steps=23 format=4 uid="uid://bdx1ipveuafpp"]
+[gd_scene load_steps=24 format=4 uid="uid://bdx1ipveuafpp"]
 
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_5k6dx"]
 [ext_resource type="Texture2D" uid="uid://ddhvfcxyoeb41" path="res://Assets/Textures/BlenderTextures/ComputerTower.png" id="1_60mpf"]
 [ext_resource type="Texture2D" uid="uid://d0rpbmloe0xw" path="res://Assets/Textures/BlenderTextures/MailboxMesh.png" id="2_5k6dx"]
 [ext_resource type="Script" uid="uid://djyr37e5cdrug" path="res://Scripts/Misc/computerFans.gd" id="3_g8tim"]
@@ -235,8 +236,11 @@ shadow_mesh = SubResource("ArrayMesh_5xrpr")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ou1xs"]
 size = Vector3(0.507446, 1.0011, 1.05493)
 
-[node name="ComputerTowerTall" type="StaticBody3D"]
+[node name="ComputerTowerTall" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.718736, 0)
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_5k6dx")
 
 [node name="ComputerTower" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ckl0s")
