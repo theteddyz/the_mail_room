@@ -60,4 +60,4 @@ func interact():
 		monitor_handler.is_mouse_inside = true
 		var col:CollisionShape3D = get_child(0)
 		col.disabled = true
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)

@@ -1,21 +1,21 @@
 [gd_scene load_steps=47 format=4 uid="uid://b85fvq8nn7wpm"]
 
-[ext_resource type="Script" path="res://Scripts/GUI/MonitorGui/MonitorVariables.gd" id="1_messh"]
+[ext_resource type="Script" uid="uid://c5gd3r3nrlcm2" path="res://Scripts/GUI/MonitorGui/MonitorVariables.gd" id="1_messh"]
 [ext_resource type="PackedScene" uid="uid://d3hn5glhsxdca" path="res://Assets/Models/computer.tscn" id="3_urhub"]
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="4_8cojr"]
 [ext_resource type="Script" uid="uid://8n68sstn22x" path="res://Scripts/Interactable/ComputerInteractionHandler.gd" id="4_pdath"]
 [ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="5_bjdtd"]
 [ext_resource type="Script" uid="uid://60o6youec62i" path="res://Scripts/GUI/MonitorGui/Monitor_Interaction.gd" id="5_cb522"]
-[ext_resource type="Script" path="res://Scripts/GUI/MonitorGui/login_menu.gd" id="6_cspqt"]
+[ext_resource type="Script" uid="uid://c6ti3in8u0lby" path="res://Scripts/GUI/MonitorGui/login_menu.gd" id="6_cspqt"]
 [ext_resource type="AudioStream" uid="uid://5f5atatab1fl" path="res://Assets/Audio/SoundFX/DestructionComputer2.mp3" id="6_xamx0"]
 [ext_resource type="FontFile" uid="uid://s8snq2lwjjdn" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="7_g2b4m"]
 [ext_resource type="AudioStream" uid="uid://bm3nm1l6pmfn7" path="res://Assets/Audio/SoundFX/DestructionComputer.mp3" id="7_kr46o"]
-[ext_resource type="Script" path="res://Scripts/GUI/MonitorGui/home_screen.gd" id="8_h5kc7"]
+[ext_resource type="Script" uid="uid://jiqujx6hy1om" path="res://Scripts/GUI/MonitorGui/home_screen.gd" id="8_h5kc7"]
 [ext_resource type="AudioStream" uid="uid://batn5vnkweh7n" path="res://Assets/Audio/SoundFX/ImpactComputer.mp3" id="8_usiik"]
-[ext_resource type="Script" path="res://Scripts/GUI/MonitorGui/drawing_app.gd" id="9_u7ayr"]
+[ext_resource type="Script" uid="uid://do7qntkp2p01b" path="res://Scripts/GUI/MonitorGui/drawing_app.gd" id="9_u7ayr"]
 [ext_resource type="AudioStream" uid="uid://dc7uvwggouwhj" path="res://Assets/Audio/SoundFX/ImpactComputer2.mp3" id="9_ysvnn"]
 [ext_resource type="AudioStream" uid="uid://hhkh5wwplqt5" path="res://Assets/Audio/SoundFX/ImpactComputer3.mp3" id="10_js1oj"]
-[ext_resource type="Script" path="res://Scripts/GUI/MonitorGui/mail_pong.gd" id="10_rudfg"]
+[ext_resource type="Script" uid="uid://nm8yk0a4vk8u" path="res://Scripts/GUI/MonitorGui/mail_pong.gd" id="10_rudfg"]
 [ext_resource type="Texture2D" uid="uid://di8ml6vnfq0rb" path="res://Assets/TemporaryAssets/Pong/left_pallete.png" id="11_flq0r"]
 [ext_resource type="AudioStream" uid="uid://c3o1w0k2nmxql" path="res://Assets/Audio/SoundFX/ImpactComputer4.mp3" id="11_iwbrn"]
 [ext_resource type="Texture2D" uid="uid://cvqyakqqrg635" path="res://Assets/TemporaryAssets/Pong/right_pallete.png" id="12_c03ar"]
@@ -232,13 +232,22 @@ script = ExtResource("5_cb522")
 process_mode = 3
 gui_embed_subwindows = true
 size = Vector2i(560, 360)
+size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="GUI" type="Control" parent="Monitor/ComputerOn/MonitorHandler/SubViewport"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 560.0
-offset_bottom = 360.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -180.0
+offset_right = 280.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
@@ -647,10 +656,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_6biuy")
 
 [node name="MouseCursor" type="TextureRect" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
 layout_mode = 0
-offset_left = 260.0
-offset_top = 120.0
-offset_right = 285.0
-offset_bottom = 145.0
+offset_top = 70.255
+offset_right = 25.0
+offset_bottom = 95.255
 mouse_filter = 2
 texture = ExtResource("15_0x4wk")
 expand_mode = 1
