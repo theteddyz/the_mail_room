@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxd0eechinn1m"]
+[gd_scene load_steps=5 format=3 uid="uid://bxd0eechinn1m"]
 
 [ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_6bycu"]
 [ext_resource type="ArrayMesh" uid="uid://dgjb4fskn6x4k" path="res://Assets/multimesh/finance_wall.mesh" id="1_fc6i6"]
+[ext_resource type="ArrayOccluder3D" uid="uid://dqpmb3gk5q8e1" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall.occ" id="3_hdrd0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y4g4g"]
 size = Vector3(5.53668, 7.68627, 0.349243)
@@ -26,3 +27,6 @@ shape = SubResource("BoxShape3D_y4g4g")
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="CollisionShape3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179444, -0.0193481, 0.00692749)
 size = Vector3(5.67017, 7.73035, 0.225525)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("3_hdrd0")

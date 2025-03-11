@@ -89,6 +89,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_8oymh")
 skeleton = NodePath("")
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="WallWithoutWallPaper"]
+transform = Transform3D(1.54582, 0, 0, 0, 1.54582, 0, 0, 0, 1.54582, 0, 0, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00107574, 3.91721, 0.00439453)
 shape = SubResource("BoxShape3D_mri8i")

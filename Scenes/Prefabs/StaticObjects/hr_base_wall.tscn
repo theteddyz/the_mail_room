@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bloyfj1wl5sup"]
+[gd_scene load_steps=20 format=4 uid="uid://bloyfj1wl5sup"]
 
 [ext_resource type="Texture2D" uid="uid://t6r0hauythae" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Color.jpg" id="1_lgs5j"]
 [ext_resource type="Texture2D" uid="uid://cto7grgckbt34" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Metalness-Concrete042A_1K-JPG_Roughness.png" id="2_u88ha"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dhepsytbckakx" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_NormalGL.jpg" id="9_pq2e3"]
 [ext_resource type="Texture2D" uid="uid://gqsedkoyeak2" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Color.jpg" id="10_mi85o"]
 [ext_resource type="Texture2D" uid="uid://dtprrraywwk3u" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Roughness.png" id="11_bc8ei"]
+[ext_resource type="ArrayOccluder3D" uid="uid://c5gc6cke17obg" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.occ" id="12_ehhbu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84nc4"]
 size = Vector3(5.68358, 7.69862, 0.24707)
@@ -175,3 +176,6 @@ shape = SubResource("BoxShape3D_84nc4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("ArrayMesh_7suth")
 skeleton = NodePath("")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("12_ehhbu")
