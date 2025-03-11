@@ -131,20 +131,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_h3c3w")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_t48gs"]
-size = Vector3(0.224609, 0.0927734, 0.241272)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o5jj1"]
+height = 0.0939941
+radius = 0.112793
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_30evj"]
-size = Vector3(0.0466309, 0.0892334, 0.0623932)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vs0t1"]
+height = 0.0818329
+radius = 0.0239258
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_m2l8d"]
-size = Vector3(0.0183105, 0.212524, 0.0412331)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pmexy"]
+height = 0.190308
+radius = 0.0229492
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_x8a01"]
-size = Vector3(0.001, 0.131256, 0.0269098)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qmvvw"]
+height = 0.1539
+radius = 0.0234375
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hcnb4"]
-size = Vector3(0.427008, 0.236378, 0.110121)
+size = Vector3(0.39911, 0.220655, 0.110121)
 
 [node name="LibraryLamp" type="RigidBody3D"]
 
@@ -164,21 +168,21 @@ mesh = SubResource("ArrayMesh_n868q")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00195313, 0.0219727, 0.0140076)
-shape = SubResource("BoxShape3D_t48gs")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00195313, 0.029419, 0.0140076)
+shape = SubResource("CylinderShape3D_o5jj1")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000610352, 0.120001, 0.00749254)
-shape = SubResource("BoxShape3D_30evj")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000610352, 0.112669, 0.00749254)
+shape = SubResource("CylinderShape3D_vs0t1")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.821149, -0.570714, 0, 0.570714, 0.821149, 0.000854492, 0.243087, 0.0693714)
-shape = SubResource("BoxShape3D_m2l8d")
+transform = Transform3D(1, 0, 0, 0, 0.740687, -0.67185, 0, 0.67185, 0.740687, 0.000854492, 0.233564, 0.061953)
+shape = SubResource("CylinderShape3D_pmexy")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.688354, 0.725374, 0, -0.725374, 0.688354, 0.00950977, 0.398998, 0.0784577)
-shape = SubResource("BoxShape3D_x8a01")
+transform = Transform3D(1, 0, 0, 0, 0.688354, 0.725374, 0, -0.725374, 0.688354, 0.000483556, 0.392034, 0.0775028)
+shape = SubResource("CylinderShape3D_qmvvw")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.00379883, 0.462856, -0.0731691)
+transform = Transform3D(1, 0, 0, 0, -0.154262, -0.98803, 0, 0.98803, -0.154262, -0.000532704, 0.463962, -0.0991534)
 shape = SubResource("BoxShape3D_hcnb4")

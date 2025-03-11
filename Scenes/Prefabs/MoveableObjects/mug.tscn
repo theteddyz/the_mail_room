@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://c88ceo5ug6aah"]
+[gd_scene load_steps=8 format=4 uid="uid://c88ceo5ug6aah"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_4v460"]
 [ext_resource type="Texture2D" uid="uid://qi62ukww5k7i" path="res://Assets/Textures/BlenderTextures/Mug.png" id="1_6itqh"]
@@ -44,8 +44,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_amvpu")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_51xmo"]
-points = PackedVector3Array(0.974928, 1, 0.222396, 0.974928, -1, 0.222396, 0.974928, 1, -0.222592, 0.781673, 1, 0.623336, 0.974928, -1, -0.222592, 0.781673, -1, 0.623336, 0.781673, 1, -0.623532, 0.433816, 1, 0.900744, 0.781673, -1, -0.623532, 0.433816, -1, 0.900744, 0.433816, 1, -0.901135, -0.000115633, 1, 1, 0.433816, -1, -0.901135, -0.000115633, -1, 1, -0.000115633, 1, -1, -0.434047, 1, 0.900744, -0.000115633, -1, -1, -0.434047, -1, 0.900744, -0.434047, 1, -0.901135, -0.781905, 1, 0.623336, -1.80985, 0.137627, 0.0830071, -0.434047, -1, -0.901135, -1.80985, -0.137823, 0.0830071, -0.781905, -1, 0.623336, -1.80985, 0.137627, -0.0832028, -0.781905, 1, -0.623532, -0.975159, 1, 0.222396, -1.695, 0.395262, 0.0816367, -1.82548, 0.147024, -0.000195742, -0.781905, -1, -0.623532, -1.80985, -0.137823, -0.0832028, -1.82548, -0.14722, -0.000195742, -1.695, -0.395458, 0.0816367, -0.975159, -1, 0.222396, -1.695, 0.395262, -0.0818324, -0.975159, 1, -0.222592, -1.45816, 0.639977, -0.000195742, -1.7024, 0.422279, -0.000195742, -0.975159, -1, -0.222592, -1.695, -0.395458, -0.0818324, -1.7024, -0.422475, -0.000195742, -1.45816, -0.640172, -0.000195742)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4v460"]
+height = 0.116943
+radius = 0.0581055
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_51xmo"]
+height = 0.0133667
+radius = 0.0449219
 
 [node name="Mug" type="RigidBody3D"]
 collision_layer = 2
@@ -58,5 +63,9 @@ mesh = SubResource("ArrayMesh_4v460")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.0592576, 0, 0, 0, 0.0592576, 0, 0, 0, 0.0592576, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_51xmo")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000854492, 0)
+shape = SubResource("CylinderShape3D_4v460")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0639902, 0.000380496, 0.000640869)
+shape = SubResource("CylinderShape3D_51xmo")

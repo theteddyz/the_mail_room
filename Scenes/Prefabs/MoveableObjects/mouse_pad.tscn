@@ -44,7 +44,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ep2lg")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_am3ig"]
-size = Vector3(0.368652, 0.0155029, 0.356689)
+size = Vector3(0.354309, 0.00381469, 0.356689)
 
 [node name="Mouse_pad" type="RigidBody3D"]
 collision_layer = 2
@@ -56,5 +56,5 @@ mesh = SubResource("ArrayMesh_0ly83")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00268555, -0.00177002, -0.0020752)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000274616, 0.000350955, -0.0020752)
 shape = SubResource("BoxShape3D_am3ig")

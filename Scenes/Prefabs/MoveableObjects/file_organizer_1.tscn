@@ -87,5 +87,5 @@ mesh = SubResource("ArrayMesh_tos67")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0247803, 0.0440674, -0.0212708)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0247803, 0.0488169, -0.0212708)
 shape = SubResource("BoxShape3D_4rdia")

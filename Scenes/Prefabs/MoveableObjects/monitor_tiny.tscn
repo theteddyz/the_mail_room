@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://cwuka8meio81k"]
+[gd_scene load_steps=13 format=4 uid="uid://cwuka8meio81k"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_kwnyl"]
 [ext_resource type="Texture2D" uid="uid://dpv2po6w6ruap" path="res://Assets/Textures/BlenderTextures/ComputerTinyMonitorTiny.png" id="2_421jl"]
@@ -146,11 +146,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qph43")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bxcpu"]
-size = Vector3(0.603149, 0.168915, 0.444397)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_wojaa"]
-size = Vector3(0.603149, 0.458126, 0.444397)
+size = Vector3(0.600281, 0.630996, 0.441803)
 
 [node name="MonitorTiny" type="RigidBody3D"]
 collision_layer = 2
@@ -176,10 +173,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0126305, -0.316217, -0.007
 mesh = SubResource("ArrayMesh_ec44e")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0119019, -0.316971, -0.00430298)
-shape = SubResource("BoxShape3D_bxcpu")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0119019, -0.00865787, -0.00430298)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0133361, -0.0844876, -0.00559999)
 shape = SubResource("BoxShape3D_wojaa")
