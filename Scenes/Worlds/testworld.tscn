@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=37 format=3 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="21_fscik"]
 [ext_resource type="PackedScene" uid="uid://duh0mp4ga7irm" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover.tscn" id="22_cdvgx"]
 [ext_resource type="Script" uid="uid://cbvb1snf756vu" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="22_n7wpk"]
+[ext_resource type="PackedScene" uid="uid://boxpc83js5m7m" path="res://Scenes/Prefabs/Monsters/cutter_ai.tscn" id="23_dbw12"]
 [ext_resource type="Script" uid="uid://cyfh53j3y05m0" path="res://Scripts/Misc/zone_optimizer.gd" id="24_s3eqx"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
@@ -91,6 +92,9 @@ cutscene_camera = NodePath(".")
 [node name="Player" parent="." instance=ExtResource("2_n1cxu")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2092, 0.0844421, 8.67806)
+
+[node name="cutter_ai" parent="." instance=ExtResource("23_dbw12")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.82138, 0.00906658, 10.0455)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
