@@ -49,6 +49,7 @@ observed=""
 monster=""
 multimesh=""
 world="This is for the root world Node"
+worldEnviorment="for finding World Enviroment"
 
 [input]
 
@@ -166,6 +167,7 @@ look_behind={
 3d/run_on_separate_thread=true
 common/physics_ticks_per_second=45
 3d/physics_engine="Jolt Physics"
+jolt_physics_3d/simulation/areas_detect_static_bodies=true
 3d/solver/solver_iterations=10
 common/physics_interpolation=true
 jolt_3d/solver/velocity_iterations=5

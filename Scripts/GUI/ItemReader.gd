@@ -1,32 +1,39 @@
 extends Control
 @onready var display_text:RichTextLabel = $PanelContainer/MarginContainer/VBoxContainer/RichTextLabel
 @onready var panel_container:PanelContainer = $PanelContainer
-var fade_in_tween:Tween
-var fade_out_tween:Tween
+var tween: Tween
+var is_fading: bool = false
 func _ready():
 	visible = false
+	panel_container.modulate.a = 0
 func display_item(text):
-	if visible == false:
-		display_text.text = "[center]" + text + "[/center]"
+	if is_fading:
+		tween.stop() 
+		is_fading = false
+	display_text.text = "[center]" + text + "[/center]"
+	if not visible:
 		show()
-		_fade_in()
+	_fade_in()
 
 
 func hide_item():
+	if is_fading:
+		tween.stop()
+		is_fading = false
 	_fade_out()
 
 func _fade_in():
-	if fade_out_tween != null:
-		if fade_out_tween.is_running():
-			fade_out_tween.stop()
-	fade_in_tween = create_tween()
-	fade_in_tween.tween_property(panel_container, "modulate:a", 1, 1).set_ease(Tween.EASE_IN_OUT)
+	is_fading = true
+	tween = create_tween()
+	tween.tween_property(panel_container, "modulate:a", 1.0, 1.0).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
+	is_fading = false
+
 
 func _fade_out():
-	if fade_in_tween != null:
-		if fade_in_tween.is_running():
-			fade_in_tween.stop()
-	fade_out_tween = create_tween()
-	fade_out_tween.tween_property(panel_container, "modulate:a", 0, 1).set_ease(Tween.EASE_IN_OUT)
-	await fade_out_tween.finished
+	is_fading = true
+	tween = create_tween()
+	tween.tween_property(panel_container, "modulate:a", 0.0, 1.0).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
+	is_fading = false
 	hide()

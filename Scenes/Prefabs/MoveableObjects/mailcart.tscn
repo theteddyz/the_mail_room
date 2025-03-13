@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bpmaq4gl82cgl" path="res://Assets/Textures/BlenderTextures/Radio2.png" id="4_mlnkp"]
 [ext_resource type="Script" uid="uid://bnpju68ive8k8" path="res://Scripts/MailCart/clipboard.gd" id="6_5j3yk"]
 [ext_resource type="Texture2D" uid="uid://ccb6x7kk3ub7b" path="res://Assets/TemporaryAssets/Wood063_1K-JPG_Color.jpg" id="7_6r3jr"]
-[ext_resource type="Texture2D" uid="uid://785uc626og8a" path="res://Assets/Models/test_models/Desk_name_plate/desk_name_plate_Metal049B_1K-JPG_Roughness.jpg" id="8_giftv"]
+[ext_resource type="Texture2D" uid="uid://c4kl56p6lekwv" path="res://Assets/Models/test_models/Desk_name_plate/desk_name_plate_Metal049B_1K-JPG_Roughness.jpg" id="8_giftv"]
 [ext_resource type="Script" uid="uid://blodt01y3aacp" path="res://Scripts/MailCart/tape_manager.gd" id="9_438jo"]
 [ext_resource type="Script" uid="uid://cxht27f0vbpap" path="res://Scripts/MailCart/tape_interaction_detector.gd" id="10_ckeqo"]
 
@@ -121,12 +121,10 @@ size = Vector3(0.478546, 0.275742, 0.0707397)
 [node name="Mailcart" type="RigidBody3D" groups=["Persist"]]
 collision_layer = 8
 collision_mask = 4103
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
 mass = 25.0
 physics_material_override = ExtResource("1_sg5ll")
 center_of_mass_mode = 1
+freeze_mode = 1
 continuous_cd = true
 script = ExtResource("1_1hgo0")
 
@@ -268,7 +266,7 @@ collision_mask = 5
 mass = 0.021
 physics_material_override = SubResource("PhysicsMaterial_8jcur")
 sleeping = true
-freeze = true
+freeze_mode = 1
 script = ExtResource("3_t7kbh")
 
 [node name="Camera_Position" type="Node3D" parent="RadioPosition/Radio"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=4 uid="uid://bmsgiq8q384b5"]
+
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_0jn63"]
+[ext_resource type="Texture2D" uid="uid://bx7cda7e1rcmw" path="res://Assets/Textures/BlenderTextures/File.png" id="2_0jn63"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgnf7"]
+resource_name = "File"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("2_0jn63")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kngw3"]
+_surfaces = [{
+"aabb": AABB(-0.46073, -0.0301144, -0.68939, 0.921459, 0.0602288, 1.37878),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("BwAIAAkABAAJAAgACAAGAAQAAgAJAAQACAAFAAYACgAFAAgABwAKAAgAAAAGAAUAAAAFAAoACgAHAAAAAwAHAAkAAAALAAIAAAAHAAsABwADAAEABwABAAsADAADAAkAAgAMAAkADAABAAMAAgALAAwACwABAAwA"),
+"lods": [0.0279587, PackedByteArray("AAABAAIAAgABAAMAAAADAAEAAgADAAQAAAAFAAMABAADAAUAAAAGAAUABQAGAAQA")],
+"name": "File",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 13,
+"vertex_data": PackedByteArray("xTkyN/IQAAD//5Wn//8AAP//rJjyEAAAAAAaRv//AADFOZuP8hAAAAAAAAAAAAAAxTkAAAAAAAAAABpGeIgAAAAAm4/yEAAAAACEnniIAAAAADI38hAAAP//lad4iAAA/////3iIAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lumnx"]
+resource_name = "desk_Cube_183"
+_surfaces = [{
+"aabb": AABB(-0.46073, -0.0301144, -0.68939, 0.921459, 0.0602288, 1.37878),
+"attribute_data": PackedByteArray("f9gAV2R79v5gewVXn/Py/p/z+kp/2PlKCAFHSigcREopHPZWCAH2/jx541ZDee7+sfb/qvT5D1do+QersPX2/j33B1ew9RpLP/z9qgX8BVf2/vuqBfz2/k9566oUAfKqCgH5Vpzz+qphe/2qn/MBVw=="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("DAANAA4ADwAMAA4ADAAQAA0AEAARAA0AEgATABQAFQASABQAFgAJABcAFgALAAkACgAWABcACgAXAAgACAAXABgAGAAHAAgAGAAGAAcAGQABABoAGQADAAEAAAAZABoAAAAaAAIAGwAZAAAAAAAEABsAAAAFAAQA"),
+"lods": [0.0279587, PackedByteArray("AAABAAIAAAADAAEAAAAEAAMAAAAFAAQABgAHAAgACAAJAAYACgAJAAgACgALAAkA")],
+"material": SubResource("StandardMaterial3D_pgnf7"),
+"name": "File",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("xTkyN/IQqv///5Wn//9I////rJjyEDD/AAAaRv//SP8AAAAAAAD//8U5AAAAAP//AAAAAAAAcc7FOQAAAABxzsU5m4/yED7FAAAaRv//r77//6yY8hD7wP//laf//6++AAAaRniInNUAAJuP8hCc1QAAhJ54iJzVAAAaRv//nNUAADI38hCc1QAAAAAAAJzV//+Vp3iIRNX//5Wn//9E1f////94iETV//+smPIQRNX/////eIjVvwAAhJ54iMG/AACbj/IQVMcAABpGeIhQ////lad4iDv/AAAyN/IQ//9YgM5By4BlQOOAw0DLgGVA/3+tP/9/rT/w/wiA8P8IgJD/v4Bt/iiD//7ngW3+KIOr1SjVq9Uo1avVKNWr1SjVq9Uo1avVKNW+KqAqviqgKr4qoCq+KqAqtf6GgtD+V4Lv/weAwICFQNeAlED/f+k/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kngw3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4s5a0"]
+size = Vector3(0.27269, 0.0151062, 0.37751)
+
+[node name="Book" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_0jn63")
+
+[node name="File" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.295349, 0, 0, 0, 0.295349, 0, 0, 0, 0.295349, 0, 0, 0)
+mesh = SubResource("ArrayMesh_lumnx")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999627, -0.0272936, 0, 0.0272936, 0.999627, 0, 0, 0, 1, 0.000267025, -0.000289977, 0.0135916)
+shape = SubResource("BoxShape3D_4s5a0")

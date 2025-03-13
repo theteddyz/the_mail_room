@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://785uc626og8a"
+uid="uid://c4kl56p6lekwv"
 path.s3tc="res://.godot/imported/desk_name_plate_Metal049B_1K-JPG_Roughness.jpg-9e2df52efccea26be93f6ffca551c0bc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "47887e516e55f465fb25b614d81ffe3c"
 }
 
 [deps]

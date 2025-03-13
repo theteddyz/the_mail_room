@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=4 uid="uid://c88sba6h6nwvq"]
 
 [ext_resource type="Texture2D" uid="uid://735qypucag6c" path="res://Assets/Textures/BlenderTextures/Chute.png" id="1_pn477"]
-[ext_resource type="Script" path="res://Scripts/Misc/mail_chute.gd" id="1_r8fjp"]
+[ext_resource type="Script" uid="uid://dlcu5o1e0qo7x" path="res://Scripts/Misc/mail_chute.gd" id="1_r8fjp"]
 [ext_resource type="Texture2D" uid="uid://cg5f0ebefke62" path="res://Assets/Textures/BlenderTextures/ChuteHatch.png" id="2_1ymbx"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="2_ghinr"]
-[ext_resource type="Script" path="res://Scripts/Misc/chute_button.gd" id="2_wrsxc"]
+[ext_resource type="Script" uid="uid://daounldth8a0s" path="res://Scripts/Misc/chute_button.gd" id="2_wrsxc"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="4_v7i0f"]
 [ext_resource type="Material" uid="uid://b0yx07qq8bo8u" path="res://Assets/Materials/chute_green.tres" id="5_xwsom"]
 [ext_resource type="AudioStream" uid="uid://cf736082w06w6" path="res://Assets/Audio/SoundFX/package_drop_chute.mp3" id="7_m12ih"]
 
@@ -148,8 +148,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.173224, -0.815174)
 collision_layer = 2
 collision_mask = 15
 mass = 5.0
-script = ExtResource("2_ghinr")
-is_door = true
+script = ExtResource("4_v7i0f")
+grab_type = "drawer"
 
 [node name="ChuteHatch" type="MeshInstance3D" parent="Chute/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00885499)

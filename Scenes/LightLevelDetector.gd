@@ -5,7 +5,7 @@ extends Node3D
 @export var camera: Camera3D
 @export var timer: Timer
 @onready var closelight: SpotLight3D = $SpotLight3D
-@onready var we : WorldEnvironment = get_tree().root.get_node("world").find_child("WorldEnvironment")
+var we : WorldEnvironment
 @onready var groundlight: SpotLight3D = $"../../../../Groundlight"
 
 #Debugging
@@ -16,6 +16,8 @@ var starttimer: Timer
 # THIS SCRIPT IS KIND OF HEAVY, PROBABLY RELATED TO LUMINANCE CALCULATION, CURRENT REMEDY; ONLY RUNS ONCE EVER 0.75 (or whatver refresh-timer is set to)
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	for object in get_tree().get_nodes_in_group("worldEnviorment"):
+		we = object
 	player = GameManager.get_player()
 	camera = GameManager.camera_reference
 	timer = find_child("Refresh Timer")

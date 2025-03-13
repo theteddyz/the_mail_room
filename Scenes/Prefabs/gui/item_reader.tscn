@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2x4onytkpeym"]
 
-[ext_resource type="Script" path="res://Scripts/GUI/ItemReader.gd" id="1_psbv5"]
+[ext_resource type="Script" uid="uid://bw2kx51lgg4cj" path="res://Scripts/GUI/ItemReader.gd" id="1_psbv5"]
 [ext_resource type="StyleBox" uid="uid://c4h4u5oao04qq" path="res://Assets/label_theme_box.tres" id="2_lc21k"]
 
 [node name="ItemReader" type="Control"]
@@ -21,10 +21,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -266.0
-offset_top = -73.592
-offset_right = 265.0
-offset_bottom = 1.0
+offset_left = -263.0
+offset_top = -123.0
+offset_right = 268.0
+offset_bottom = -48.408
 grow_vertical = 0
 theme_override_styles/panel = ExtResource("2_lc21k")
 
@@ -33,6 +33,7 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
