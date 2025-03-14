@@ -176,17 +176,24 @@ func stop_chasing_player():
 		cooldown_timer.start(randi_range(15, 35))
 		nav_timer.stop()
 
-func on_player_in_vision():
-	if !disabled and player_in_vision_flag == false:
+func on_detect_player():
+	if !disabled and player_in_vision_flag == true and !chasing:
 		roaming_to_sound = false
 		player_in_vision_flag = true
 		chase_player()
 		aggro_timer.stop()
 
-func on_player_out_of_vision():
+func on_player_unseen():
 	if !disabled and player_in_vision_flag == true:
 		player_in_vision_flag = false
 		aggro_timer.start()
+
+func on_player_in_vision():
+	if !disabled:
+		player_in_vision_flag = true
+		if chasing:
+			aggro_timer.stop()
+
 		
 func on_hearing_sound(pos):
 	if !chasing and sound_heard_timer.time_left <= 0:

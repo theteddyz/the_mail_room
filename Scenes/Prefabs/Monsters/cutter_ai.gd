@@ -24,7 +24,8 @@ var aggrod: bool = false
 var charging: bool = false
 var player_in_vision_flag: bool = false
 var player: CharacterBody3D
-var monster_speed = 5.0
+#var monster_speed = 5.0
+var monster_speed = 0.0
 @onready var startposition = position.y
 var charge_position: Vector3 = Vector3.ZERO
 
@@ -137,21 +138,24 @@ func charge():
 
 
 # VISION FUNCTION
-func on_player_in_vision():
-	if enabled and !player_in_vision_flag and can_see_player:
-		de_aggro_timer.stop()
-		player_in_vision_flag = true
-		if !aggrod:
-			aggro()
-	
-	if enabled and charging:
-		charge_position = player.global_position
+func on_detect_player():
+	if enabled and can_see_player and !aggrod:
+		aggro()
 
-func on_player_out_of_vision():
+func on_player_unseen():
 	if enabled and player_in_vision_flag and !charging:
 		player_in_vision_flag = false
-		de_aggro_timer.start()
+		if aggrod:
+			de_aggro_timer.start()
 
+# Used by non-instant detectors whenever the player actually is "in_view" to reset de-aggro timers
+func on_player_in_vision():
+	if enabled:
+		player_in_vision_flag = true
+		if aggrod:
+			de_aggro_timer.stop()
+			if charging:
+				charge_position = player.global_position
 
 # AGGRO BEHAVIOUR
 func aggro():
@@ -167,7 +171,7 @@ func aggro():
 	
 	# Play an aggro animation, sounds or the like
 	await get_tree().create_timer(1.185).timeout
-	monster_speed = 6.5
+	monster_speed = 3.2
 	# Start the timer responsible for updating chase position
 	get_player_position_timer.start()
 
