@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://boxpc83js5m7m"]
 
 [ext_resource type="Script" uid="uid://dmeiup6i14oxj" path="res://Scenes/Prefabs/Monsters/cutter_ai.gd" id="1_p50mg"]
-[ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="2_g44v1"]
 [ext_resource type="Script" uid="uid://d4diumxjityck" path="res://Scripts/MonsterAI/Monster_Cone.gd" id="2_ma07s"]
+[ext_resource type="Script" uid="uid://ccccjic4b6h52" path="res://Scenes/Prefabs/Monsters/monster_vision_block.gd" id="3_cfj18"]
 [ext_resource type="AudioStream" uid="uid://dxw4xiok3yrmq" path="res://Assets/Audio/SoundFX/AmbientScares/cutter_metal_slashing_test.ogg" id="4_na2rc"]
 [ext_resource type="AudioStream" uid="uid://ccf1t642egx8c" path="res://Assets/Audio/SoundFX/AmbientScares/WindowScareInitial.ogg" id="5_ht3fj"]
 
@@ -56,28 +56,55 @@ avoidance_mask = 2
 debug_enabled = true
 debug_path_custom_color = Color(0.491815, 0, 0.251935, 1)
 
-[node name="VisionArea" type="Node3D" parent="."]
+[node name="VisionArea" type="Node3D" parent="." node_paths=PackedStringArray("parent", "timer", "vision_blocks")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25308, -0.159815)
+script = ExtResource("2_ma07s")
+parent = NodePath("..")
+timer = NodePath("VisionRefreshTimer")
+vision_blocks = [NodePath("player_lookup_raycast_thin"), NodePath("player_lookup_raycast_medium"), NodePath("player_lookup_raycast_wide")]
 
 [node name="VisionRefreshTimer" type="Timer" parent="VisionArea"]
-wait_time = 0.18
+wait_time = 0.08
 autostart = true
 
-[node name="VisionBlockerRaycast" type="RayCast3D" parent="VisionArea"]
-target_position = Vector3(0, 1, -25)
+[node name="player_lookup_raycast_wide" type="RayCast3D" parent="VisionArea" node_paths=PackedStringArray("parent", "timer")]
+target_position = Vector3(0, 1, 0)
 collision_mask = 13
-
-[node name="Area3D" type="Area3D" parent="VisionArea" node_paths=PackedStringArray("parent", "vision_blocker_raycast", "timer")]
-collision_layer = 0
-collision_mask = 12
-script = ExtResource("2_ma07s")
+debug_shape_custom_color = Color(0.734258, 0.469165, 5.77569e-07, 1)
+debug_shape_thickness = 5
+script = ExtResource("3_cfj18")
 parent = NodePath("../..")
-vision_blocker_raycast = NodePath("../VisionBlockerRaycast")
 timer = NodePath("../VisionRefreshTimer")
+time_to_detect = 1.3
+should_instant_detect = false
+max_range = 8.2
+max_angle = 81
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VisionArea/Area3D"]
-transform = Transform3D(249.84, 0, 0, 0, -1.09209e-05, 249.84, 0, -249.84, -1.09209e-05, 0, 0, 0.122923)
-shape = ExtResource("2_g44v1")
+[node name="player_lookup_raycast_medium" type="RayCast3D" parent="VisionArea" node_paths=PackedStringArray("parent", "timer")]
+target_position = Vector3(0, 1, 0)
+collision_mask = 13
+debug_shape_custom_color = Color(0.734258, 0.469165, 5.77569e-07, 1)
+debug_shape_thickness = 5
+script = ExtResource("3_cfj18")
+parent = NodePath("../..")
+timer = NodePath("../VisionRefreshTimer")
+time_to_detect = 0.85
+should_instant_detect = false
+max_range = 19.0
+max_angle = 68
+
+[node name="player_lookup_raycast_thin" type="RayCast3D" parent="VisionArea" node_paths=PackedStringArray("parent", "timer")]
+target_position = Vector3(0, 1, 0)
+collision_mask = 13
+debug_shape_custom_color = Color(0.734258, 0.469165, 5.77569e-07, 1)
+debug_shape_thickness = 5
+script = ExtResource("3_cfj18")
+parent = NodePath("../..")
+timer = NodePath("../VisionRefreshTimer")
+time_to_detect = 0.12
+should_instant_detect = false
+max_range = 28.0
+max_angle = 18
 
 [node name="CanChargeTimer" type="Timer" parent="."]
 wait_time = 7.5
@@ -112,7 +139,6 @@ pitch_scale = 1.49
 stream = ExtResource("5_ht3fj")
 
 [connection signal="link_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_link_reached"]
-[connection signal="timeout" from="VisionArea/VisionRefreshTimer" to="VisionArea/Area3D" method="_on_vision_refresh_timer_timeout"]
 [connection signal="timeout" from="DeAggroTimer" to="." method="_on_de_aggro_timer_timeout"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="GetPlayerPositionTimer" to="." method="_on_get_player_position_timer_timeout"]

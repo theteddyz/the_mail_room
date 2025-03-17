@@ -54,7 +54,6 @@ func grab():
 	for rb in child_objects:
 		if rb is RigidBody3D:
 			rb.freeze = false
-			print("unfreezing")
 	var neighbor_objects = object.get_colliding_bodies()
 	for object in neighbor_objects:
 		if object is RigidBody3D:
