@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=4 uid="uid://c7e4imgjbdx46"]
+[gd_scene load_steps=40 format=4 uid="uid://c7e4imgjbdx46"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_1xdp2"]
 [ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="3_5nqi4"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet.gd" id="4_rx22h"]
+[ext_resource type="Script" uid="uid://da8f0nlp61xaf" path="res://Scenes/Prefabs/StaticObjects/initial_offset.gd" id="4_fo7lw"]
+[ext_resource type="Script" uid="uid://t0gqci6jputc" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet.gd" id="4_rx22h"]
 [ext_resource type="ArrayMesh" uid="uid://cfgt0u4t6je4c" path="res://Assets/Materials/cabinet_drawer.tres" id="6_0wjlh"]
 [ext_resource type="AudioStream" uid="uid://dj4twnqnl5bav" path="res://Assets/Audio/SoundFX/Drawers/FileCabinetMovingFast.ogg" id="6_d2jk7"]
 [ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="6_pe8d1"]
@@ -15,7 +16,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xdp2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0h7m"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -47,7 +48,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_1xdp2"),
+"material": SubResource("StandardMaterial3D_h0h7m"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -185,7 +186,7 @@ shape = SubResource("BoxShape3D_n8wyb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10412e-05, -0.0144433, 0.343643)
 shape = SubResource("BoxShape3D_nykrr")
 
-[node name="Drawer" type="RigidBody3D" parent="."]
+[node name="Drawer" type="RigidBody3D" parent="." node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, 0.554, -0.241367)
 collision_layer = 2
 collision_mask = 15
@@ -194,6 +195,9 @@ physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
 script = ExtResource("1_1xdp2")
 grab_type = "drawer"
+open_sound = NodePath("DrawerAudioOpen")
+close_sound = NodePath("DrawerAudioClose")
+loop_sound = NodePath("DrawerAudioLoop")
 
 [node name="JoltSliderJoint3D" type="SliderJoint3D" parent="Drawer"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -201,6 +205,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.5
 linear_limit/lower_distance = 0.0
+script = ExtResource("4_fo7lw")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -239,7 +244,7 @@ stream = SubResource("AudioStreamRandomizer_qsn4c")
 [node name="DrawerScript" type="Node3D" parent="Drawer"]
 script = ExtResource("9_cofie")
 
-[node name="Drawer2" type="RigidBody3D" parent="."]
+[node name="Drawer2" type="RigidBody3D" parent="." node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, 0.181111, -0.241367)
 collision_layer = 2
 collision_mask = 15
@@ -248,6 +253,9 @@ physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
 script = ExtResource("1_1xdp2")
 grab_type = "drawer"
+open_sound = NodePath("DrawerAudioOpen")
+close_sound = NodePath("DrawerAudioClose")
+loop_sound = NodePath("DrawerAudioLoop")
 
 [node name="JoltSliderJoint3D" type="SliderJoint3D" parent="Drawer2"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -255,6 +263,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.5
 linear_limit/lower_distance = 0.0
+script = ExtResource("4_fo7lw")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -293,7 +302,7 @@ stream = SubResource("AudioStreamRandomizer_v7rky")
 [node name="DrawerScript" type="Node3D" parent="Drawer2"]
 script = ExtResource("9_cofie")
 
-[node name="Drawer3" type="RigidBody3D" parent="."]
+[node name="Drawer3" type="RigidBody3D" parent="." node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, -0.186194, -0.241367)
 collision_layer = 2
 collision_mask = 15
@@ -302,6 +311,9 @@ physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
 script = ExtResource("1_1xdp2")
 grab_type = "drawer"
+open_sound = NodePath("DrawerAudioOpen")
+close_sound = NodePath("DrawerAudioClose")
+loop_sound = NodePath("DrawerAudioLoop")
 
 [node name="JoltSliderJoint3D" type="SliderJoint3D" parent="Drawer3"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -309,6 +321,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.5
 linear_limit/lower_distance = 0.0
+script = ExtResource("4_fo7lw")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -347,7 +360,7 @@ stream = SubResource("AudioStreamRandomizer_5m073")
 [node name="DrawerScript" type="Node3D" parent="Drawer3"]
 script = ExtResource("9_cofie")
 
-[node name="Drawer4" type="RigidBody3D" parent="."]
+[node name="Drawer4" type="RigidBody3D" parent="." node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, -0.552292, -0.241367)
 collision_layer = 2
 collision_mask = 15
@@ -356,6 +369,9 @@ physics_material_override = SubResource("PhysicsMaterial_nclqc")
 linear_damp = 2.0
 script = ExtResource("1_1xdp2")
 grab_type = "drawer"
+open_sound = NodePath("DrawerAudioOpen")
+close_sound = NodePath("DrawerAudioClose")
+loop_sound = NodePath("DrawerAudioLoop")
 
 [node name="JoltSliderJoint3D" type="SliderJoint3D" parent="Drawer4"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.0943991)
@@ -363,6 +379,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.5
 linear_limit/lower_distance = 0.0
+script = ExtResource("4_fo7lw")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)

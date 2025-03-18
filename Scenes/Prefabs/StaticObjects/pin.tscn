@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=4 uid="uid://bjsp2jfxaeyng"]
+[gd_scene load_steps=5 format=4 uid="uid://bjsp2jfxaeyng"]
 
-[ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_xn3w6"]
 [ext_resource type="Texture2D" uid="uid://dp72tnnendtbl" path="res://Assets/Textures/BlenderTextures/Pin.png" id="2_xn3w6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28tpp"]
@@ -47,11 +46,7 @@ shadow_mesh = SubResource("ArrayMesh_82hy5")
 [node name="Pin" type="StaticBody3D"]
 collision_mask = 0
 
-[node name="MultimeshPointer" type="Node3D" parent="." groups=["multimesh"]]
-script = ExtResource("1_xn3w6")
-wall_typed = "shelf"
-
-[node name="Pin" type="MeshInstance3D" parent="MultimeshPointer"]
+[node name="Pin" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0174459, 0, 0, 0, 0.0174459, 0, 0, 0, 0.0174459, 0, 0, 0)
 mesh = SubResource("ArrayMesh_r2ljl")
 skeleton = NodePath("")

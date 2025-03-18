@@ -1,7 +1,8 @@
-[gd_scene load_steps=33 format=4 uid="uid://bvha2qolbtfko"]
+[gd_scene load_steps=34 format=4 uid="uid://bvha2qolbtfko"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_md8ep"]
 [ext_resource type="Texture2D" uid="uid://dgy6bdhr0juyx" path="res://Assets/Textures/BlenderTextures/Desk.png" id="2_amgvs"]
+[ext_resource type="Script" uid="uid://da8f0nlp61xaf" path="res://Scenes/Prefabs/StaticObjects/initial_offset.gd" id="3_1kjp7"]
 [ext_resource type="Texture2D" uid="uid://cehb1r025iuxj" path="res://Assets/Textures/BlenderTextures/Cabinet1.png" id="3_31tqi"]
 [ext_resource type="AudioStream" uid="uid://dpjw33ok63rwv" path="res://Assets/Audio/SoundFX/CabinetMovingFast.mp3" id="4_gmjvg"]
 [ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="5_k8fyy"]
@@ -226,6 +227,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.5
 linear_limit/lower_distance = 0.0
+script = ExtResource("3_1kjp7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/DrawerTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
@@ -282,6 +284,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.5
 linear_limit/lower_distance = 0.0
+script = ExtResource("3_1kjp7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)

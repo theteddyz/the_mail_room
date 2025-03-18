@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=4 uid="uid://b1oei8imbu5kr"]
+[gd_scene load_steps=6 format=4 uid="uid://b1oei8imbu5kr"]
 
-[ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_70wbc"]
 [ext_resource type="Texture2D" uid="uid://dv3h1v6p52vy1" path="res://Assets/Textures/BlenderTextures/EmployeeOfTheMonthJohn.png" id="2_70wbc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ai2pu"]
@@ -45,17 +44,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j15ng")
 
-[node name="Painting" type="StaticBody3D"]
+[node name="EmployeeOfTheMonthJohn" type="StaticBody3D"]
 collision_mask = 0
 
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.055e-05, 0.000411987, -0.0118907)
 shape = SubResource("BoxShape3D_ai2pu")
 
-[node name="MultimeshPointer" type="Node3D" parent="." groups=["multimesh"]]
-script = ExtResource("1_70wbc")
-wall_typed = "shelf"
-
-[node name="EmployeeOfTheMonth" type="MeshInstance3D" parent="MultimeshPointer"]
+[node name="EmployeeOfTheMonth" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_iirv3")
 skeleton = NodePath("")

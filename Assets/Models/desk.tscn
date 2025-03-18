@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=4 uid="uid://box8t8l24q1si"]
+[gd_scene load_steps=24 format=4 uid="uid://box8t8l24q1si"]
 
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="1_ijyv1"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="2_bppe2"]
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="2_pnlu4"]
+[ext_resource type="Script" uid="uid://da8f0nlp61xaf" path="res://Scenes/Prefabs/StaticObjects/initial_offset.gd" id="4_5y3f0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn1yr"]
 resource_name = "Desk2"
@@ -197,6 +198,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.7
 linear_limit/lower_distance = 0.0
+script = ExtResource("4_5y3f0")
 
 [node name="RigidBody3D5" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.354336, 0.535279)
@@ -223,3 +225,4 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.7
 linear_limit/lower_distance = 0.0
+script = ExtResource("4_5y3f0")
