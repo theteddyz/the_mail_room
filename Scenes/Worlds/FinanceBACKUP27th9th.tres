@@ -4,23 +4,25 @@
 
 [resource]
 background_mode = 2
+background_color = Color(1, 1, 1, 1)
 background_energy_multiplier = 1.09
 sky = ExtResource("1_71dp6")
 ambient_light_source = 1
-ambient_light_color = Color(0.980392, 0.964706, 0.886275, 1)
-reflected_light_source = 1
+ambient_light_color = Color(1, 1, 1, 1)
 tonemap_mode = 2
 tonemap_exposure = 0.42
 tonemap_white = 2.0
-ssao_radius = 1.95
+ssao_radius = 2.35
+ssao_intensity = 39.15
+ssao_power = 0.568393
+ssao_detail = 5.0
+ssao_light_affect = 1.0
 ssil_enabled = true
 ssil_intensity = 2.64
+sdfgi_enabled = true
 sdfgi_use_occlusion = true
 sdfgi_read_sky_light = false
-sdfgi_bounce_feedback = 1.23
-sdfgi_min_cell_size = 0.01
-sdfgi_cascade0_distance = 0.64
-sdfgi_max_distance = 10.24
+sdfgi_bounce_feedback = 1.5
 glow_enabled = true
 glow_levels/1 = 0.27
 glow_levels/2 = 0.4

@@ -41,11 +41,13 @@ script = ExtResource("2_7rar3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00311279, 0.0473366, -0.0372391)
+visible = false
 shape = SubResource("BoxShape3D_f4o15")
 
 [node name="Holder" parent="." instance=ExtResource("1_rchq5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0059649, 0.0446355, -0.0448763)
 material_override = SubResource("StandardMaterial3D_4lm23")
+gi_mode = 0
 
 [node name="Tag" parent="Holder" instance=ExtResource("3_tfkoi")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.00180545, 0.000379298, -0.0530979)

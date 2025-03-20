@@ -993,18 +993,6 @@ transform = Transform3D(4.88471e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, 4.88471e-
 transform = Transform3D(0.0383878, 0, 0.999263, 0, 1, 0, -0.999263, 0, 0.0383878, 0.931, 0, 0.786)
 script = null
 
-[node name="JoltHingeJoint3D" parent="Walls/StaticBody3D36/RigidBody3D" index="0"]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-script = null
-
 [node name="Door_001" parent="Walls/StaticBody3D36/RigidBody3D" index="1"]
 transform = Transform3D(1.7, 0, 1.42109e-14, 0, 1.7, 0, -1.42109e-14, 0, 1.7, 0.965912, 2.04469, 0)
 
