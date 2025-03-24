@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=4 uid="uid://cabdt3d8b0cm7"]
+[gd_scene load_steps=6 format=4 uid="uid://cabdt3d8b0cm7"]
 
-[ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_sq5kf"]
 [ext_resource type="Texture2D" uid="uid://bmr08xmhxqa05" path="res://Assets/Textures/BlenderTextures/Radiator.png" id="4_bx3fv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3vdtf"]
@@ -55,11 +54,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0695431, -0.155121, -0.00065615)
 shape = SubResource("BoxShape3D_3vdtf")
 
-[node name="MultimeshPointer" type="Node3D" parent="." groups=["multimesh"]]
-script = ExtResource("1_sq5kf")
-wall_typed = "shelf"
-
-[node name="Radiator" type="MeshInstance3D" parent="MultimeshPointer"]
+[node name="Radiator" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.770901, 0)
 mesh = SubResource("ArrayMesh_l6e64")
 skeleton = NodePath("")

@@ -258,8 +258,7 @@ stream_2/stream = ExtResource("8_rikp2")
 
 [node name="Wheel5" type="RigidBody3D" parent="."]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0.415045, -0.746083, 0)
-collision_layer = 2
-collision_mask = 15
+collision_layer = 0
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2rnrn")
 sleeping = true
@@ -276,8 +275,7 @@ skeleton = NodePath("")
 
 [node name="Wheel4" type="RigidBody3D" parent="."]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0.118864, -0.74901, -0.419296)
-collision_layer = 2
-collision_mask = 15
+collision_layer = 0
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2rnrn")
 sleeping = true
@@ -293,8 +291,7 @@ skeleton = NodePath("")
 
 [node name="Wheel3" type="RigidBody3D" parent="."]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, -0.412609, -0.752792, -0.257863)
-collision_layer = 2
-collision_mask = 15
+collision_layer = 0
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2rnrn")
 sleeping = true
@@ -310,8 +307,7 @@ skeleton = NodePath("")
 
 [node name="Wheel2" type="RigidBody3D" parent="."]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, -0.411558, -0.74366, 0.275661)
-collision_layer = 2
-collision_mask = 15
+collision_layer = 0
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2rnrn")
 sleeping = true
@@ -327,8 +323,7 @@ skeleton = NodePath("")
 
 [node name="Wheel1" type="RigidBody3D" parent="."]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0.104791, -0.749442, 0.45399)
-collision_layer = 2
-collision_mask = 15
+collision_layer = 0
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2rnrn")
 sleeping = true

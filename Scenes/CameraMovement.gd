@@ -109,7 +109,7 @@ func _process(delta: float):
 		# Apply the new rotation to the camera
 		global_transform.basis = Basis(cameraRotation)
 		#currentZRotation = lerpf(currentZRotation, angular_velocity.y*0.008, delta*50)
-		global_rotation.z += angular_velocity.y*0.008
+		global_rotation.z += angular_velocity.y*0.018
 		
 		
 		#var rotation_quaternion = Quaternion.from_euler(global_rotation)

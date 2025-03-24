@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=4 uid="uid://bdkwvecbhq6w8"]
+[gd_scene load_steps=29 format=4 uid="uid://bdkwvecbhq6w8"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_vni1t"]
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="2_qe4rl"]
+[ext_resource type="Script" uid="uid://da8f0nlp61xaf" path="res://Scenes/Prefabs/StaticObjects/initial_offset.gd" id="4_01cqu"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="4_ljxkc"]
 [ext_resource type="AudioStream" uid="uid://dpjw33ok63rwv" path="res://Assets/Audio/SoundFX/CabinetMovingFast.mp3" id="5_wvpu0"]
 [ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="6_w82n7"]
@@ -144,8 +145,6 @@ collision_mask = 15
 mass = 50.0
 freeze = true
 script = ExtResource("1_vni1t")
-object_name = "desk1"
-special_object = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.13829, 0.000576701)
@@ -173,7 +172,7 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.60024, 0)
 mesh = SubResource("ArrayMesh_1uyv0")
 skeleton = NodePath("")
 
-[node name="DrawerTop" type="RigidBody3D" parent="Desk"]
+[node name="DrawerTop" type="RigidBody3D" parent="Desk" node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.824136, 0.535279)
 collision_layer = 3
 mass = 5.0
@@ -184,6 +183,9 @@ freeze = true
 linear_damp = 6.0
 script = ExtResource("1_vni1t")
 grab_type = "drawer"
+open_sound = NodePath("../DrawerBottom/DrawerAudioOpen")
+close_sound = NodePath("../DrawerBottom/DrawerAudioClose")
+loop_sound = NodePath("../DrawerBottom/DrawerAudioLoop")
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="Desk/DrawerTop"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -200,6 +202,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.5
 linear_limit/lower_distance = 0.0
+script = ExtResource("4_01cqu")
 
 [node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Desk/DrawerTop"]
 stream = SubResource("AudioStreamRandomizer_mjf3r")
@@ -218,7 +221,7 @@ drawerLoopSound = NodePath("../DrawerAudioLoop")
 drawerSliderJoint = NodePath("../SliderJoint3D2")
 volume = -20.0
 
-[node name="DrawerBottom" type="RigidBody3D" parent="Desk"]
+[node name="DrawerBottom" type="RigidBody3D" parent="Desk" node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.354336, 0.535279)
 collision_layer = 3
 mass = 5.0
@@ -229,6 +232,9 @@ freeze = true
 linear_damp = 6.0
 script = ExtResource("1_vni1t")
 grab_type = "drawer"
+open_sound = NodePath("DrawerAudioOpen")
+close_sound = NodePath("DrawerAudioClose")
+loop_sound = NodePath("DrawerAudioLoop")
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="Desk/DrawerBottom"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -245,6 +251,7 @@ node_a = NodePath("../..")
 node_b = NodePath("..")
 linear_limit/upper_distance = 0.5
 linear_limit/lower_distance = 0.0
+script = ExtResource("4_01cqu")
 
 [node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="Desk/DrawerBottom"]
 stream = SubResource("AudioStreamRandomizer_qtvk3")

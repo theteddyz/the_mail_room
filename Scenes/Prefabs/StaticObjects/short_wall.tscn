@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bfqdq8nipbb58"]
 
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_7e30i"]
-[ext_resource type="Script" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_bb1hc"]
+[ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_bb1hc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oa46b"]
 size = Vector3(8.78134, 4.88074, 0.223267)

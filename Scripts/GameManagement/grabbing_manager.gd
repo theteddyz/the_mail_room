@@ -15,7 +15,7 @@ func grabbed_object(object:RigidBody3D):
 			door_type.grab()
 			grab_sound_manager.enable_sound(current_grabbed_object)
 		"drawer":
-			#grab_sound_manager.enable_sound(current_grabbed_object)
+			grab_sound_manager.enable_sound(current_grabbed_object)
 			drawer_type.grab()
 
 func _input(event):

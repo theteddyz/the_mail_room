@@ -53,7 +53,6 @@ albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
 roughness = 0.5
 emission_enabled = true
 emission = Color(0.983592, 1, 0.778301, 1)
-emission_energy_multiplier = 1074.9
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_u7lnc"]
 _surfaces = [{
@@ -159,6 +158,7 @@ skeleton = NodePath("")
 
 [node name="LampLibraryLight" type="MeshInstance3D" parent="LampLibraryTop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.058584, -0.917563, 0.446724)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_qmvvw")
 skeleton = NodePath("")
 
@@ -186,3 +186,10 @@ shape = SubResource("CylinderShape3D_qmvvw")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.154262, -0.98803, 0, 0.98803, -0.154262, -0.000532704, 0.463962, -0.0991534)
 shape = SubResource("BoxShape3D_hcnb4")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0.483251, -0.0891143)
+light_color = Color(0.984314, 1, 0.776471, 1)
+shadow_enabled = true
+spot_range = 2.158
+spot_angle = 75.299

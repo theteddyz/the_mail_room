@@ -128,8 +128,8 @@ light_color = Color(0.0510997, 0.196141, 0.829799, 1)
 spot_angle_attenuation = 1.86607
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
-target_position = Vector3(0, 0, -2)
-collision_mask = 9355
+target_position = Vector3(0, 0, -2.5)
+collision_mask = 533643
 collide_with_areas = true
 script = ExtResource("5_fh3d4")
 
