@@ -20,12 +20,14 @@ extends CharacterBody3D
 @onready var functional_timers = [de_aggro_timer, get_player_position_timer, navigation_timer]
 var is_venting: bool = false
 var _charge_kill_distance: float = 1.5
+var _fear_factor_max_range: float = 34.0
+
 var aggrod: bool = false
 var charging: bool = false
 var player_in_vision_flag: bool = false
 var player: CharacterBody3D
-#var monster_speed = 5.0
-var monster_speed = 0.0
+var monster_speed = 5.0
+#var monster_speed = 0.0
 @onready var startposition = position.y
 var charge_position: Vector3 = Vector3.ZERO
 
@@ -54,7 +56,8 @@ func set_enabled(flag: bool):
 		collision_shape_3d.disabled = true
 		stopTimers()
 
-
+func _process(delta: float) -> void:
+	ScareDirector.update_fear_factor(abs(player.global_position.distance_to(global_position)), delta, _fear_factor_max_range)
 
 # ACTUAL BEHAVIOUR BELOW; PUT DEBUG STUFF ABOVE THIS LINE
 func _physics_process(delta: float):
@@ -110,12 +113,21 @@ func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
 		var point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
 		navigation_agent_3d.set_target_position(point)
 		var count = 0
-		while !navigation_agent_3d.is_target_reachable() and count < 15:
-			point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
-			navigation_agent_3d.set_target_position(point)
-			count += 1
-			if count == 14:
-				print("wtf")
+		var fear_factor = ScareDirector.fear_factor
+		if fear_factor <= ScareDirector._max_fear * 0.75:
+			while !navigation_agent_3d.is_target_reachable() and count < 35 and abs(global_position.distance_to(player.global_position)) < _fear_factor_max_range * 0.82:
+				point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
+				navigation_agent_3d.set_target_position(point)
+				count += 1
+				if count == 34:
+					print("wtf")
+		else:
+			while !navigation_agent_3d.is_target_reachable() and count < 35 and abs(global_position.distance_to(player.global_position)) > _fear_factor_max_range * 2:
+				point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
+				navigation_agent_3d.set_target_position(point)
+				count += 1
+				if count == 34:
+					print("wtf")
 	else:
 		navigation_agent_3d.set_target_position(pos)
 
