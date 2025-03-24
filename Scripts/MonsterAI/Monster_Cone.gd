@@ -17,16 +17,13 @@ func _on_vision_refresh_timer_timeout() -> void:
 		for i in vision_blocks.size():
 			var block = vision_blocks[i]
 			if block.detect_player:
-				print("Player Detected!")
 				parent.on_detect_player()
 				block.detect_player = false
 				return
 			elif block.player_in_vision:
-				print("Player in vision...!")
 				#Softer version of on_player_seen, for removing aggrotimers
 				parent.on_player_in_vision()
 				return
-		print("NOT in vision...!")	
 		parent.on_player_unseen()
 
 

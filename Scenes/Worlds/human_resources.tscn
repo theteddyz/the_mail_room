@@ -2159,6 +2159,7 @@ transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979
 
 [node name="cutter_ai" parent="." instance=ExtResource("99_q8swy")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 58.897, 0.05, 3.67236)
+can_see_player = false
 
 [node name="cutter_carcass_ai" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8182, 2.06857, 28.3236)
