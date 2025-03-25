@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://bd8u4to0u0f7o" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_GlobalCorpIcon.png" id="26_6jdt3"]
 [ext_resource type="Texture2D" uid="uid://b8mdg5ogdpqnv" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_Color.jpg" id="27_u88n0"]
 [ext_resource type="Texture2D" uid="uid://cds7t3reqk5jw" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_Roughness.png" id="28_sw0ru"]
-[ext_resource type="Texture2D" uid="uid://dc3gt1rsfct0l" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_NormalGL.jpg" id="29_8r2k8"]
+[ext_resource type="Texture2D" uid="uid://bvfp0ix21nbi8" path="res://Assets/Models/test_models/Floor2/Objects/hospitalDoor_Porcelain003_1K-JPG_NormalGL.jpg" id="29_8r2k8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vv71w"]
 size = Vector3(1.50781, 7.758, 0.264832)

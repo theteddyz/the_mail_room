@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqweh5vqux5kb"]
+
+[ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="1_cipwe"]
+[ext_resource type="Material" uid="uid://d0nli67yooqv5" path="res://Scripts/Shaders/water.tres" id="2_4eyav"]
+[ext_resource type="Script" uid="uid://ccx5g8h5gdc6e" path="res://Scripts/Misc/floating_object.gd" id="3_06hhm"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_u88sk"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_uwo8i"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ekntn"]
+material = ExtResource("2_4eyav")
+size = Vector2(200, 200)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cipwe"]
+size = Vector3(2.5, 0.225, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4eyav"]
+points = PackedVector3Array(1.26934, 0.145437, 0.511905, -1.26934, -0.132341, -0.519841, -1.26934, 0.145437, -0.519841, 1.26934, -0.132341, -0.519841, -1.26934, -0.132341, 0.511905, -1.26934, 0.145437, 0.511905, 1.26934, 0.145437, -0.519841, 1.26934, -0.132341, 0.511905)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497501, 2.047)
+mesh = SubResource("PlaneMesh_u88sk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_uwo8i")
+
+[node name="Player" parent="." instance=ExtResource("1_cipwe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.908038, 2.14359)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ekntn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.268449, 0.963294, 0, -0.963294, 0.268449, 0, 14, 13.463)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.62755, 0, 1.84877)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Node3D"]
+collision_mask = 5
+script = ExtResource("3_06hhm")
+float_force = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/RigidBody3D"]
+mesh = SubResource("BoxMesh_cipwe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RigidBody3D"]
+shape = SubResource("ConvexPolygonShape3D_4eyav")
+
+[node name="ProbeContainer" type="Node3D" parent="Node3D/RigidBody3D"]
+
+[node name="Marker3D" type="Marker3D" parent="Node3D/RigidBody3D/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25121, 0, -0.500079)
+
+[node name="Marker3D2" type="Marker3D" parent="Node3D/RigidBody3D/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25121, 0, 0.499921)
+
+[node name="Marker3D3" type="Marker3D" parent="Node3D/RigidBody3D/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0163479, 0, -0.500079)
+
+[node name="Marker3D4" type="Marker3D" parent="Node3D/RigidBody3D/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0163476, 0, 0.499921)
+
+[node name="Marker3D5" type="Marker3D" parent="Node3D/RigidBody3D/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24582, 0, -0.500079)
+
+[node name="Marker3D6" type="Marker3D" parent="Node3D/RigidBody3D/ProbeContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24582, 0, 0.499921)
