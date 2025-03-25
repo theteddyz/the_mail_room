@@ -11,6 +11,7 @@ extends CharacterBody3D
 @onready var get_player_position_timer: Timer = $GetPlayerPositionTimer
 @onready var charge_slashing_soundplayer: AudioStreamPlayer3D = $charge_slashing_soundplayer
 @onready var hit_by_soundplayer: AudioStreamPlayer3D = $hit_by_soundplayer
+@onready var fear_factor_maxxed_timer: Timer = $fear_factor_maxxed_timer
 
 # Debug export
 @export var enabled: bool = true
@@ -57,7 +58,12 @@ func set_enabled(flag: bool):
 		stopTimers()
 
 func _process(delta: float) -> void:
-	ScareDirector.update_fear_factor(abs(player.global_position.distance_to(global_position)), delta, _fear_factor_max_range)
+	if visible:
+		ScareDirector.update_fear_factor(abs(player.global_position.distance_to(global_position)), delta, _fear_factor_max_range)
+	else:
+		# We just want to lower the fear factor naturally, so we let the distance-check do its thing
+		ScareDirector.update_fear_factor(100, delta, _fear_factor_max_range)
+
 
 # ACTUAL BEHAVIOUR BELOW; PUT DEBUG STUFF ABOVE THIS LINE
 func _physics_process(delta: float):
@@ -114,7 +120,7 @@ func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
 		navigation_agent_3d.set_target_position(point)
 		var count = 0
 		var fear_factor = ScareDirector.fear_factor
-		if fear_factor <= ScareDirector._max_fear * 0.75:
+		if fear_factor <= ScareDirector._max_fear * 0.75 and fear_factor_maxxed_timer.is_stopped():
 			while !navigation_agent_3d.is_target_reachable() and count < 35 and abs(global_position.distance_to(player.global_position)) < _fear_factor_max_range * 0.82:
 				point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
 				navigation_agent_3d.set_target_position(point)
@@ -128,6 +134,7 @@ func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
 				count += 1
 				if count == 34:
 					print("wtf")
+			fear_factor_maxxed_timer.start(randi_range(17, 28))
 	else:
 		navigation_agent_3d.set_target_position(pos)
 
