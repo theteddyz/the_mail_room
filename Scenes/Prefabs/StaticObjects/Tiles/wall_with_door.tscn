@@ -162,12 +162,13 @@ shape = SubResource("BoxShape3D_4h6yd")
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="." node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 collision_layer = 2
-collision_mask = 14
+collision_mask = 4111
 axis_lock_linear_y = true
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_kf7ap")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
+contact_monitor = true
 script = ExtResource("2_q2nmo")
 grab_type = "door"
 open_sound = NodePath("DrawerAudioOpen")

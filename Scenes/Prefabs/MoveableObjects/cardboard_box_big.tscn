@@ -15,7 +15,7 @@ cull_mode = 2
 albedo_texture = ExtResource("1_skhh8")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_n3jde"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_smo62"]
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2.00001),
 "format": 34896613377,
@@ -45,7 +45,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAP7//38AAAAA/v///wAAAAD+////AAD///7//38AAP///v9U1QAA///+////AAAAAAAA//8AAAAAAAD//wAAAAAAAP//AAD//wAA//8AAP//AABU1QAA//8AAP////8AAP7//3///wAA/v//////AAD+//+///////7//3///////v9U1f/////+//+///8AAAAA/////wAAAAD/////AAAAAP+//////wAA////////AABU1f////8AAP+//3////9//z//P/9//3///1TVqir/P/9/////f/9//z//P/9/////f1TVqir/P/9//3////9//z//fwAA/3///1TVqir/fwAA////f/9//z//fwAA////f1TVqir/fwAA")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_n3jde")
+shadow_mesh = SubResource("ArrayMesh_smo62")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcr3g"]
 size = Vector3(0.640778, 0.639435, 0.636597)

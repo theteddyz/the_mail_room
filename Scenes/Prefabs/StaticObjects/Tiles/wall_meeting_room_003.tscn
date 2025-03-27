@@ -122,7 +122,7 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0.117647)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gb2xf"]
-size = Vector3(5.58075, 7.65668, 0.252686)
+size = Vector3(5.71086, 7.7341, 0.252686)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_hvsur"]
 size = Vector3(5.76627, 4.54722, 0.221408)
@@ -151,7 +151,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_1n3yb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0177665, 3.91097, 0.00671387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00912688, 3.87226, 0.00671387)
 shape = SubResource("BoxShape3D_gb2xf")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]

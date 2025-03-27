@@ -19,6 +19,9 @@ func _ready():
 	#enabler = rb_controller.instantiate()
 	#add_child(enabler)
 	#enabler.setup()
+	var layers = [1, 2, 3, 4, 13]
+	for layer in layers:
+		set_collision_mask_value(layer, true)
 	physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_ON
 	connect("body_entered",Callable(self,"unfreeze_object"))
 	freeze = false

@@ -19,7 +19,7 @@ uniform sampler2D normalmap_b :hint_normal;
 uniform sampler2D screen_texture: hint_screen_texture,repeat_disable,filter_nearest;
 uniform sampler2D depth_texture: hint_depth_texture,repeat_disable,filter_nearest;
 void vertex() {
-	
+
 	// Called for every vertex the material is visible on.
 }
 
@@ -55,8 +55,8 @@ void fragment() {
 	float depth_blend = clamp((vertex_y - depth_texture_y)/ depth_distance,0.0,1.0);
 	depth_blend = exp(-depth_blend * beers_law);
 	float basic_fresnel = fresnel(3.0,NORMAL,VIEW);
-	
-	
+
+
 	vec3 depth_color = mix(secondary_color,primary_color,depth_blend).rgb;
 	vec3 refraction_texture = textureLod(screen_texture,ref_ofs,ROUGHNESS * 2.0).rgb;
 	vec3 final_color = mix(depth_color,refraction_texture,water_transparency * depth_blend);

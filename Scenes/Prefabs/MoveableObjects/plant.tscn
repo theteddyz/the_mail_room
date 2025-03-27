@@ -369,7 +369,7 @@ skeleton = NodePath("")
 
 [node name="Plant_leaf" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0203891, 0.139737, -0.0374942)
-collision_layer = 7
+collision_layer = 6
 collision_mask = 7
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
@@ -393,7 +393,7 @@ shape = SubResource("CapsuleShape3D_o0qmg")
 
 [node name="Plant_leaf_2" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185037, 0.133135, -0.00745511)
-collision_layer = 7
+collision_layer = 6
 collision_mask = 7
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
@@ -414,7 +414,7 @@ shape = SubResource("CapsuleShape3D_2064b")
 
 [node name="plant_leaf_3" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0191102, 0.133128, -0.0115433)
-collision_layer = 7
+collision_layer = 6
 collision_mask = 7
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
@@ -435,7 +435,7 @@ shape = SubResource("CapsuleShape3D_m5c4g")
 
 [node name="plant_leaf_4" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00145578, 0.134427, -0.0284832)
-collision_layer = 7
+collision_layer = 6
 collision_mask = 7
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
@@ -456,7 +456,7 @@ shape = SubResource("CapsuleShape3D_k748d")
 
 [node name="plant_leaf_5" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0227046, 0.136445, 0.00898886)
-collision_layer = 7
+collision_layer = 6
 collision_mask = 7
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
@@ -477,7 +477,7 @@ shape = SubResource("CapsuleShape3D_v4yv4")
 
 [node name="plant_leaf_6" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00495005, 0.138299, 0.0170307)
-collision_layer = 7
+collision_layer = 6
 collision_mask = 7
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
@@ -498,7 +498,7 @@ shape = SubResource("CapsuleShape3D_qgklf")
 
 [node name="plant_leaf_7" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0179777, 0.138135, 0.0149884)
-collision_layer = 7
+collision_layer = 6
 collision_mask = 7
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
@@ -519,7 +519,7 @@ shape = SubResource("CapsuleShape3D_e77cq")
 
 [node name="plant_leaf_8" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00344181, 0.135133, 0.0437412)
-collision_layer = 7
+collision_layer = 6
 collision_mask = 7
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
