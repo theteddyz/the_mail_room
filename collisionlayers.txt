@@ -64,6 +64,10 @@ vent_surface
 cl = 21
 cm = 0
 
+vent_surface (and player)
+cl = 22
+cm = 0
+
 cutter_carcass_ai_trigger 
 cl = 22
 cm = 0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://cd7xk7gq0lhyi"]
 
-[ext_resource type="Texture2D" uid="uid://datcyo3eitr2a" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_diff.png" id="1_plvfc"]
+[ext_resource type="Texture2D" uid="uid://e7e1x6c82c6v" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_diff.png" id="1_plvfc"]
 [ext_resource type="Texture2D" uid="uid://fapygil0o55s" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_metal.png-modular_airduct_rectangular_01_parts01_rough.png" id="2_ol3w3"]
 [ext_resource type="Texture2D" uid="uid://ctyvcvqr1nogm" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_nor_gl.png" id="3_id2xc"]
 
@@ -56,6 +56,8 @@ mesh = SubResource("ArrayMesh_0thfn")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2097152
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_o22v2")

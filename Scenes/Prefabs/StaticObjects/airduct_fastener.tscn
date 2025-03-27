@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://b4sp3canwqu3s"]
 
-[ext_resource type="Texture2D" uid="uid://datcyo3eitr2a" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_diff.png" id="1_8g2wx"]
+[ext_resource type="Texture2D" uid="uid://e7e1x6c82c6v" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_diff.png" id="1_8g2wx"]
 [ext_resource type="Texture2D" uid="uid://fapygil0o55s" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_metal.png-modular_airduct_rectangular_01_parts01_rough.png" id="2_eudhp"]
 [ext_resource type="Texture2D" uid="uid://ctyvcvqr1nogm" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_nor_gl.png" id="3_n1a8s"]
 

@@ -10,7 +10,7 @@ func _ready():
 	new_crouching_collider = player.find_child("crouching_collision_addition")
 	old_crouch_depth = (1.8 - 0.5)
 	new_crouch_depth = old_crouch_depth - 0.5
-func _on_body_entered(body):
+func _on_body_entered(body: Node3D):
 	if body.name == "Player":
 		body.state.crouching_depth = new_crouch_depth
 		body.state.crouch_assist = true
@@ -18,8 +18,10 @@ func _on_body_entered(body):
 		old_croching_collider.disabled = true
 
 
-func _on_body_exited(body):
+func _on_body_exited(body: Node3D):
 	if body.name == "Player":
+		var character = body as CharacterBody3D
+		# Add some way to tell if the player is in several of these or just one
 		body.state.crouching_depth = old_crouch_depth
 		body.state.crouch_assist = false
 		old_croching_collider.disabled = false

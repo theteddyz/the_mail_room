@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://3bbxkn5brr4h"]
 
-[ext_resource type="Script" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="1_qm43d"]
+[ext_resource type="Script" uid="uid://cbvb1snf756vu" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="1_qm43d"]
 
 [node name="Crouch_Assistant" type="Area3D"]
 collision_layer = 0
