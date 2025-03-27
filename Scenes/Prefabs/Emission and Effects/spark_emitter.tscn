@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://18o78l5do8xw"]
+
+[node name="spark_emitter" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
