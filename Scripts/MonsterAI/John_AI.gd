@@ -10,6 +10,8 @@ extends CharacterBody3D
 @export var aggro_timeout: float = 5.0
 @onready var aggro_timer: Timer = $Aggro_Timer
 @export var stop_threshold: float = 0.5
+@export var mass:float = 80.0
+@export var push_multiplier:float = 5.0
 @onready var monster_body = $godot_rig
 @onready var cooldown_timer: Timer = $Cooldown_Timer
 @export var chase_sound: Resource
@@ -100,13 +102,14 @@ func move_to_target(delta):
 	elif roaming_to_sound:
 		speed = 2.85
 	else:
-		speed = 5.5
+		speed =5.5
 	var current_location = global_transform.origin
 	var next_location = nav.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * speed
 	var distance_to_goal = abs(nav.get_final_position().distance_to(current_location))
 	new_velocity = Vector3(new_velocity.x, 0, new_velocity.z)
 	velocity = new_velocity
+	apply_pushes()
 	move_and_slide()
 	if velocity.length() > 0.01:
 		var target_rotation = Transform3D(Basis().looking_at(velocity.normalized(), Vector3.UP), global_position)
@@ -121,7 +124,6 @@ func move_to_target(delta):
 			roaming_timer.start(randi_range(10, 35))
 		monster_anim.play("Idle")
 		return
-	apply_pushes()
 	
 	for i in get_slide_collision_count():
 		var c = get_slide_collision(i)
@@ -137,14 +139,23 @@ func move_to_target(delta):
 			stop_chasing_player()
 
 func apply_pushes():
-	get_collision_exceptions()
 	for i in get_slide_collision_count():
-		var c = get_slide_collision(i)
+		var c := get_slide_collision(i)
 		if c.get_collider() is RigidBody3D:
-			if c.get_collider().freeze == true:
+			if c.get_collider().freeze:
 				c.get_collider().freeze = false
-			c.get_collider().set_linear_velocity(Vector3.ZERO)
-			c.get_collider().apply_central_force(-c.get_normal() * 1)
+			var push_dir = -c.get_normal()
+			var velocity_diff_in_push_dir = self.velocity.dot(push_dir) - c.get_collider().linear_velocity.dot(push_dir)
+			velocity_diff_in_push_dir = max(0., velocity_diff_in_push_dir)
+			var mass_ratio = min(1., mass / c.get_collider().mass)
+			if mass_ratio < 0.25:
+				continue
+			push_dir.y = 0
+			var push_force = mass_ratio * push_multiplier
+			if c.get_collider().grab_type == "door":
+				c.get_collider().apply_impulse((push_dir * velocity_diff_in_push_dir * push_force)*10, c.get_position() - c.get_collider().global_position)
+			else:
+				c.get_collider().apply_impulse(push_dir * velocity_diff_in_push_dir * push_force, c.get_position() - c.get_collider().global_position)
 
 func chase_player():
 	if !chasing:
