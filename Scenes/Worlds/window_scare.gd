@@ -34,9 +34,10 @@ func monster_seen_function(_boolean: bool):
 
 func _process(delta: float) -> void:
 	if(has_been_executed):
+		pass
 		#var target_vector = global_position.direction_to(player.position)
 		#var target_basis= Basis.looking_at(target_vector)
-		monster_body.rotate(Vector3(0, 1, 0), monster_body.angle_to(player.position))
+		#monster_body.rotate(Vector3(0, 1, 0), monster_body.look_at(player.position))
 
 func activate_scare(package_num):
 	if package_num == 4:

@@ -52,9 +52,9 @@ func monster_seen_event(_test):
 		ScareDirector.emit_signal("scare_activated", scare_index)
 		await get_tree().create_timer(0.68).timeout
 		print("DOOR LOCKING!")
-		flickeranimationplayer.pause()
-		flickeranimationplayer.play("RESET")
-		flickeranimationplayer.speed_scale = 100
+		#flickeranimationplayer.pause()
+		#flickeranimationplayer.play("RESET")
+		#flickeranimationplayer.speed_scale = 100
 		monster_anim.current_animation = ""
 		monster_anim.speed_scale = 1.25
 		monster_anim.seek(0.3)

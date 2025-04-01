@@ -31,9 +31,10 @@ func _on_vision_timer_timeout():
 					monsterPosition = overlap.get_node("raycast_look_position").global_transform.origin
 				raycaster.look_at(monsterPosition)
 				#Was getting an error here might not need to do it
-				#raycaster.force_raycast_update()
+				raycaster.force_raycast_update()
 				if (raycaster.is_colliding() and raycaster.get_collider().name == overlap.name) and !tracked_gameobjects.has(raycaster.get_collider()):
 					var _col = raycaster.get_collider()
 					if(_col.is_visible_in_tree()):
+						print("I SEE JOHN")
 						tracked_gameobjects.append(overlap)
 						ScareDirector.emit_signal("monster_seen", true)
