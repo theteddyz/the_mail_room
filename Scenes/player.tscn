@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=19 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" uid="uid://cp4jrj7a18avb" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" uid="uid://bqadv5daugpb2" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://brtrfcahmyjah" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
 [ext_resource type="Script" uid="uid://brru7emutcew5" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
 [ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
-[ext_resource type="PackedScene" uid="uid://c06x6sqmgfqve" path="res://Assets/TemporaryAssets/ViewFrustum.tscn" id="7_1o2es"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 [ext_resource type="Script" uid="uid://cq5fmqrcunrhp" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
 [ext_resource type="AudioStream" uid="uid://cin4ngwhr1g72" path="res://Scenes/Prefabs/AudioPlayers/carpet_footsteps.tres" id="9_pey34"]
@@ -95,7 +94,7 @@ transform = Transform3D(1454.15, 0, 0, 0, -6.35627e-05, 1454.15, 0, -1454.15, -6
 shape = SubResource("ConvexPolygonShape3D_fmr2d")
 
 [node name="MonsterDetector" type="Area3D" parent="Neck/Head/HeadbopRoot"]
-collision_layer = 4096
+collision_layer = 0
 collision_mask = 4096
 script = ExtResource("6_f3pv2")
 
@@ -104,17 +103,14 @@ transform = Transform3D(600.839, 0, 0, 0, -1.3899e-05, 600.839, 0, -317.973, -2.
 shape = ExtResource("6_u1lyf")
 
 [node name="Vision_Timer" type="Timer" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
-wait_time = 0.25
+wait_time = 0.18
 autostart = true
 
 [node name="VisionRayCast" type="RayCast3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
-target_position = Vector3(0, 7.08, -100)
+target_position = Vector3(0, 0, -100)
 collision_mask = 4097
 collide_with_areas = true
 debug_shape_thickness = 1
-
-[node name="ViewFrustum" parent="Neck/Head/HeadbopRoot/MonsterDetector" instance=ExtResource("7_1o2es")]
-visible = false
 
 [node name="LightLevelDetection" parent="Neck/Head/HeadbopRoot" instance=ExtResource("8_6f6ef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247054, -0.292751)

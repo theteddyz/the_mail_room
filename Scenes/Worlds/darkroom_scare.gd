@@ -3,7 +3,6 @@ var scare_index = 1
 var has_been_executed = false
 @onready var door_slam_anim: AnimationPlayer = $AnimationPlayer
 @onready var doorlock = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2/Door_Lock"
-@onready var flickeranimationplayer:AnimationPlayer = $"../../CeilingLights/CeilingLightOn52/AnimationPlayer"
 @onready var hallwayflickeranimationplayer:AnimationPlayer = $"../../CeilingLights/CeilingLightOn8/FlickeringLight"
 @onready var monster_run_soundplayer:AudioStreamPlayer3D = $MonsterRunSoundPlayer
 @onready var monsterCollisionShape:CollisionShape3D = $john_model/JohnCharacterBody/CollisionShape3D
@@ -19,6 +18,7 @@ var closed_ambiance
 @onready var ambience_ender: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender"
 @onready var ambience_ender_2: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender2"
 @onready var ambience_ender_3: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender3"
+@onready var flickeranimationplayer: AnimationPlayer = $"../../CeilingLights/CeilingLightOn5DARKROOM2/AnimationPlayer"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,7 +39,7 @@ func activate_scare(key_num:int):
 		monster_body.visible = true
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		door_slam_anim.play("door_open")
-		door_slam_anim.seek(0.3)
+		#door_slam_anim.seek(0.3)
 		scare_active = true
 		print("SCARE ACTIVATED!")
 		
@@ -52,15 +52,15 @@ func monster_seen_event(_test):
 		ScareDirector.emit_signal("scare_activated", scare_index)
 		await get_tree().create_timer(0.68).timeout
 		print("DOOR LOCKING!")
-		#flickeranimationplayer.pause()
-		#flickeranimationplayer.play("RESET")
-		#flickeranimationplayer.speed_scale = 100
+		flickeranimationplayer.pause()
+		flickeranimationplayer.play("RESET")
+		flickeranimationplayer.speed_scale = 100
 		monster_anim.current_animation = ""
 		monster_anim.speed_scale = 1.25
-		monster_anim.seek(0.3)
+		#monster_anim.seek(0.3)
 		door_slam_anim.play("door_lock")
 		door_slam_anim.speed_scale = 1.125
-		door_slam_anim.seek(0.3)
+		#door_slam_anim.seek(0.3)
 		hallwayflickeranimationplayer.play("flicker")
 		monster_run_soundplayer.playing = true
 		

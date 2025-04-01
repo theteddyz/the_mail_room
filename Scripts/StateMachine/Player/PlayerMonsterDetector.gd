@@ -6,6 +6,23 @@ var bit = 0
 signal visiontimer_signal(nodes)
 
 var tracked_gameobjects: Array = []
+var loopableBodies: Array[Node3D] = []
+
+func _physics_process(delta: float) -> void:
+	if loopableBodies.size() > 0:
+		for overlap in loopableBodies:
+			if overlap != null and overlap.is_in_group("monster"):
+				var monsterPosition = overlap.global_position
+				if overlap.find_child("raycast_look_position") != null:
+					monsterPosition = overlap.get_node("raycast_look_position").global_transform.origin
+				raycaster.look_at(monsterPosition)
+				raycaster.force_raycast_update()
+				if (raycaster.is_colliding() and raycaster.get_collider().name == overlap.name) and !tracked_gameobjects.has(raycaster.get_collider()):
+					var _col = raycaster.get_collider()
+					if(_col.is_visible_in_tree()):
+						print("I SEE SCARY STUFF")
+						tracked_gameobjects.append(overlap)
+						ScareDirector.emit_signal("monster_seen", true)
 
 func _on_vision_timer_timeout():	
 	var monster_overlaps = get_overlapping_bodies()
@@ -23,18 +40,4 @@ func _on_vision_timer_timeout():
 			tracked_gameobjects.pop_at(counter)
 			ScareDirector.emit_signal("monster_seen", false)
 		counter += 1
-	if monster_overlaps.size() > 0:
-		for overlap in monster_overlaps:
-			if overlap.is_in_group("monster"):
-				var monsterPosition = overlap.global_transform.origin
-				if overlap.find_child("raycast_look_position") != null:
-					monsterPosition = overlap.get_node("raycast_look_position").global_transform.origin
-				raycaster.look_at(monsterPosition)
-				#Was getting an error here might not need to do it
-				raycaster.force_raycast_update()
-				if (raycaster.is_colliding() and raycaster.get_collider().name == overlap.name) and !tracked_gameobjects.has(raycaster.get_collider()):
-					var _col = raycaster.get_collider()
-					if(_col.is_visible_in_tree()):
-						print("I SEE JOHN")
-						tracked_gameobjects.append(overlap)
-						ScareDirector.emit_signal("monster_seen", true)
+	loopableBodies = monster_overlaps

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://cauvpuh74hlme"]
 
-[ext_resource type="Script" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_sc88p"]
+[ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_sc88p"]
 [ext_resource type="Texture2D" uid="uid://b5au5omy6twav" path="res://Assets/Textures/BlenderTextures/Wall.png" id="1_yojct"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d7ywv"]
@@ -48,8 +48,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ap7us")
 
 [node name="wall_room_001" type="StaticBody3D"]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0311722, 3.87229, 0.0188904)

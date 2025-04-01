@@ -62,7 +62,6 @@ func _input(event):
 
 func door_opened(node):
 	if node == door1 or node == door2:
-		print("INSIDE")
 		parent_is_looked_at = true
 
 func not_looked_at(node):

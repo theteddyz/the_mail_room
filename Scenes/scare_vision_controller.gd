@@ -5,27 +5,33 @@ var raycaster: RayCast3D
 var current_sources: Array[Node] = []
 var tween: Tween
 var is_running_effect = false
+var allOverlaps: Array[Node3D] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	raycaster = monster_detector.raycaster
 	monster_detector.visiontimer_signal.connect(_search)
+	
+func _physics_process(delta: float) -> void:
+	if allOverlaps.size() > 0:
+		var tmp = allOverlaps
+		allOverlaps = []
+		for overlap in tmp:
+				# If the body is an active source...
+				if overlap.is_in_group("scarevision") and !overlap.is_in_group("observed") and overlap.is_visible_in_tree():
+					var pos = overlap.global_position
+					if overlap.find_child("raycast_look_position") != null:
+						pos = overlap.get_node("raycast_look_position").global_position
+					raycaster.look_at(pos)
+					raycaster.force_raycast_update()
+					if raycaster.is_colliding() and raycaster.get_collider().name == overlap.name:
+						if current_sources.has(overlap) and !is_running_effect:
+							tween.kill()
+						overlap.add_to_group("observed")
+						current_sources.append(overlap)
+						await _effect(overlap)
 
 func _search(overlaps: Array):
-	if overlaps.size() > 0:
-		for overlap in overlaps:
-			# If the body is an active source...
-			if overlap.is_in_group("scarevision") and !overlap.is_in_group("observed") and overlap.is_visible_in_tree():
-				var pos = overlap.global_transform.origin
-				if overlap.find_child("raycast_look_position") != null:
-					pos = overlap.get_node("raycast_look_position").global_transform.origin
-				raycaster.look_at(pos)
-				#raycaster.force_raycast_update()
-				if raycaster.is_colliding() and raycaster.get_collider().name == overlap.name:
-					if current_sources.has(overlap) and !is_running_effect:
-						tween.kill()
-					overlap.add_to_group("observed")
-					current_sources.append(overlap)
-					await _effect(overlap)
+	allOverlaps = overlaps
 
 func _effect(overlap):
 	var w = GameManager.we_reference as WorldEnvironment

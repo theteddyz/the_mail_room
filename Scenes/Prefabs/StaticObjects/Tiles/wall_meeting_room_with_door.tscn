@@ -154,8 +154,7 @@ size = Vector3(0.714172, 1.72184, 0.455663)
 
 [node name="meeting_room_wall_Door" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("1_s17gj")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]

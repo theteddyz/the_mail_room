@@ -44,6 +44,7 @@ shadow_mesh = SubResource("ArrayMesh_nimjm")
 size = Vector3(2.03662, 6.74091, 1.2149)
 
 [node name="Pillar" type="StaticBody3D"]
+collision_mask = 0
 
 [node name="PillarRectangular" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0, 0, 0)
