@@ -29,10 +29,8 @@ func play_resource(sound, modifiers = 0, callback = (func(): {}), db_offset = 0)
 		return
 	apply_effector(modifiers, p)
 	p.finished.connect(callback)
-	if db_offset != null:
+	if db_offset != null and db_offset != 0:
 		p.volume_db = db_offset
-	else:
-		p.volume_db = 0
 	p.playing = true
 	
 func play_spatial_resource(sound, pos: Vector3 = Vector3.ZERO, modifiers = 0, callback: Callable = (func(): {})):
@@ -56,7 +54,7 @@ func apply_effector(modifier, player: AudioStreamPlayer):
 				SoundModifiers.fade_in:
 					var tween = get_tree().create_tween()
 					player.volume_db = -35
-					tween.tween_property(player, "volume_db", set_db, 4.85).set_ease(Tween.EASE_OUT)
+					tween.tween_property(player, "volume_db", 0, 4.85).set_ease(Tween.EASE_OUT)
 				SoundModifiers.fade_out:
 					var tween = get_tree().create_tween()
 					tween.tween_property(player, "volume_db", -45, 4.85).set_ease(Tween.EASE_OUT)
