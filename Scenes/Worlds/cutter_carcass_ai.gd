@@ -88,6 +88,6 @@ func _on_behaviour_soundbark_timer_timeout() -> void:
 	# Maybe make this psuedo-random for better control
 	var chosen_player = audio_players.pick_random()
 	if !chosen_player.playing:
-		chosen_player.pitch_scale = randi_range(0.8, 1.2)
+		chosen_player.pitch_scale = randf_range(0.8, 1.2)
 		chosen_player.play()
-	behaviour_soundbark_timer.start(randi_range(1.88, 3.5))
+	behaviour_soundbark_timer.start(randf_range(1.88, 3.5))
