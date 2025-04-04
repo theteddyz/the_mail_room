@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://boxpc83js5m7m"]
+[gd_scene load_steps=13 format=3 uid="uid://boxpc83js5m7m"]
 
 [ext_resource type="Script" uid="uid://dmeiup6i14oxj" path="res://Scenes/Prefabs/Monsters/cutter_ai.gd" id="1_p50mg"]
 [ext_resource type="Script" uid="uid://d4diumxjityck" path="res://Scripts/MonsterAI/Monster_Cone.gd" id="2_ma07s"]
+[ext_resource type="AudioStream" uid="uid://3v6mk6kapph" path="res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundCutter.ogg" id="2_v0k8w"]
 [ext_resource type="Script" uid="uid://ccccjic4b6h52" path="res://Scenes/Prefabs/Monsters/monster_vision_block.gd" id="3_cfj18"]
+[ext_resource type="AudioStream" uid="uid://8mm4rvad6in3" path="res://Assets/Audio/SoundFX/ChaseLoops/ChaseLoopCutter.ogg" id="3_rn6fn"]
 [ext_resource type="AudioStream" uid="uid://dxw4xiok3yrmq" path="res://Assets/Audio/SoundFX/AmbientScares/cutter_metal_slashing_test.ogg" id="4_na2rc"]
 [ext_resource type="AudioStream" uid="uid://ccf1t642egx8c" path="res://Assets/Audio/SoundFX/AmbientScares/WindowScareInitial.ogg" id="5_ht3fj"]
 
@@ -30,6 +32,8 @@ height = 2.64187
 collision_layer = 4096
 collision_mask = 4100
 script = ExtResource("1_p50mg")
+initial_chase_sfx = ExtResource("2_v0k8w")
+chaseloop_sfx = ExtResource("3_rn6fn")
 effect_type = 1
 
 [node name="Model" type="MeshInstance3D" parent="."]

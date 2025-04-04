@@ -12,11 +12,12 @@ extends CharacterBody3D
 @onready var charge_slashing_soundplayer: AudioStreamPlayer3D = $charge_slashing_soundplayer
 @onready var hit_by_soundplayer: AudioStreamPlayer3D = $hit_by_soundplayer
 @onready var fear_factor_maxxed_timer: Timer = $fear_factor_maxxed_timer
+@export var initial_chase_sfx: Resource
+@export var chaseloop_sfx: Resource
 
 # Debug export
 @export var enabled: bool = true
 @export var can_see_player: bool = true
-
 
 @onready var functional_timers = [de_aggro_timer, get_player_position_timer, navigation_timer]
 var is_venting: bool = false
@@ -28,6 +29,7 @@ var charging: bool = false
 var player_in_vision_flag: bool = false
 var player: CharacterBody3D
 var monster_speed = 5.0
+
 #var monster_speed = 0.0
 @onready var startposition = position.y
 var charge_position: Vector3 = Vector3.ZERO
@@ -37,6 +39,8 @@ func stopTimers():
 		t.stop()
 
 func _ready():
+	#initial_chase_sfx = load(initial_chase_sfx_resource_path)
+	#chaseloop_sfx = load(chaseloop_sfx_resource_path)
 	player = GameManager.get_player()
 	set_enabled(enabled)
 	
@@ -190,12 +194,15 @@ func aggro():
 	
 	# Play an aggro animation, sounds or the like
 	await get_tree().create_timer(1.185).timeout
+	AudioController.play_resource(chaseloop_sfx, 0, func(): {}, 12)
+	AudioController.play_resource(initial_chase_sfx, 0, func(): {}, 17)
 	monster_speed = 3.2
 	# Start the timer responsible for updating chase position
 	get_player_position_timer.start()
 
 func deAggro():
 	aggrod = false
+	AudioController.stop_resource(chaseloop_sfx.resource_path, 2)
 	ScareDirector.disable_intensity_flag.emit()
 	visible = false
 	collision_shape_3d.disabled = true

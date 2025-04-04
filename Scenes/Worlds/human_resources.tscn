@@ -2803,14 +2803,13 @@ stream = ExtResource("16_v34ia")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.002, 0.418257, -4.41595)
 
 [node name="Player" parent="." instance=ExtResource("7_o0ubx")]
-transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.0832604, 48.3705, 0.479325, -6.12601)
+transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.0832604, 18.4162, 0.479325, -3.66999)
 
 [node name="Mailcart" parent="." instance=ExtResource("8_rl6tn")]
 transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979, 3.55372, 0.316447, 1.73329)
 
 [node name="cutter_ai" parent="." instance=ExtResource("99_q8swy")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 58.897, 0.05, 3.67236)
-can_see_player = false
 
 [node name="cutter_carcass_ai" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8182, 2.06857, 28.3236)
