@@ -14,6 +14,7 @@ extends CharacterBody3D
 @onready var fear_factor_maxxed_timer: Timer = $fear_factor_maxxed_timer
 @export var initial_chase_sfx: Resource
 @export var chaseloop_sfx: Resource
+@onready var aggro_sound_initial: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 # Debug export
 @export var enabled: bool = true
@@ -183,7 +184,7 @@ func on_player_in_vision():
 # AGGRO BEHAVIOUR
 func aggro():
 	ScareDirector.enable_intensity_flag.emit()
-
+	aggro_sound_initial.playing = true
 	aggrod = true
 	
 	# Stop all timers responsible for the idle behaviour
