@@ -6,6 +6,7 @@ var player: CharacterBody3D
 @onready var deescalate_timer: Timer = $deescalate_timer
 @onready var cutter_model_for_animation_player: Node3D = $cutter_model_for_animations
 @onready var behaviour_soundbark_timer: Timer = $behaviour_soundbark_timer
+@export var chaseloop_sfx: Resource
 
 @onready var audio_players = [
 	$AudioStreamPlayer3D,
@@ -39,6 +40,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		#	if we are not chasing, assume normal carcass behaviour
 			
 func deescalate():
+	AudioController.stop_resource(chaseloop_sfx.resource_path, 2)
 	deescalate_timer.start(2.33)
 	cutter_ai.aggrod = false
 	pass
