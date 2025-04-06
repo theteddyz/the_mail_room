@@ -65,8 +65,10 @@ shape = SubResource("CapsuleShape3D_p50mg")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.5
 target_desired_distance = 0.75
+path_height_offset = 0.2
+navigation_layers = 3
+avoidance_enabled = true
 avoidance_layers = 0
-avoidance_mask = 2
 debug_enabled = true
 debug_path_custom_color = Color(0.491815, 0, 0.251935, 1)
 

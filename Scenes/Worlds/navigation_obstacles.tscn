@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c47mvxyos5fju"]
+
+[node name="NavigationObstacles" type="NavigationObstacle3D"]
+vertices = PackedVector3Array(4.75487, 0, -0.488346, 4.73588, 0, 0.62046, -4.59305, 0, 0.560188, -4.55748, 0, -0.586162)
+affect_navigation_mesh = true
+carve_navigation_mesh = true
+avoidance_enabled = false

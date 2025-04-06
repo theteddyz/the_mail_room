@@ -7,6 +7,9 @@ var player: CharacterBody3D
 @onready var cutter_model_for_animation_player: Node3D = $cutter_model_for_animations
 @onready var behaviour_soundbark_timer: Timer = $behaviour_soundbark_timer
 @export var chaseloop_sfx: Resource
+@onready var carcass_and_butcher_nav_ability_timer: Timer = $carcass_and_butcher_nav_ability_timer
+@onready var nav_obstacle_for_carcass_and_butcher: NavigationObstacle3D = $"../NavigationRegion3D/NavObstacleForCarcassAndButcher"
+@onready var navigation_region_3d: NavigationRegion3D = $"../NavigationRegion3D"
 
 @onready var audio_players = [
 	$AudioStreamPlayer3D,
@@ -84,7 +87,10 @@ func _on_behaviour_duration_timer_timeout() -> void:
 	for key in audio_players:
 		if key.playing:
 			key.stop()
+	nav_obstacle_for_carcass_and_butcher.affect_navigation_mesh = true
+	navigation_region_3d.bake_navigation_mesh(true)
 	cutter_ai.respawn_timer.start(randi_range(4, 9))
+	carcass_and_butcher_nav_ability_timer.start(22)
 
 func _on_behaviour_soundbark_timer_timeout() -> void:
 	# Maybe make this psuedo-random for better control
@@ -93,3 +99,8 @@ func _on_behaviour_soundbark_timer_timeout() -> void:
 		chosen_player.pitch_scale = randf_range(0.8, 1.2)
 		chosen_player.play()
 	behaviour_soundbark_timer.start(randf_range(1.88, 3.5))
+
+
+func _on_carcass_and_butcher_nav_ability_timer_timeout() -> void:
+	nav_obstacle_for_carcass_and_butcher.affect_navigation_mesh = false
+	navigation_region_3d.bake_navigation_mesh(true)

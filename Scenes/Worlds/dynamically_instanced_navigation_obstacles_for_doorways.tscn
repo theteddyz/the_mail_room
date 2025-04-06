@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://hy1knrygywic"]
+
+[ext_resource type="Script" uid="uid://bm7snsf8inbcf" path="res://Scenes/Worlds/dynamically_instanced_navigation_obstacles_for_doorways.gd" id="1_4j8mu"]
+[ext_resource type="PackedScene" uid="uid://c47mvxyos5fju" path="res://Scenes/Worlds/navigation_obstacles.tscn" id="2_fpl45"]
+
+[node name="DynamicallyInstancedNavigationObstacle" type="Node3D"]
+script = ExtResource("1_4j8mu")
+
+[node name="NavigationObstacles" parent="." instance=ExtResource("2_fpl45")]

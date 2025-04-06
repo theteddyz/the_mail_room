@@ -1,18 +1,31 @@
-[gd_scene load_steps=16 format=3 uid="uid://dgcuo40hsxb4d"]
+[gd_scene load_steps=32 format=3 uid="uid://dgcuo40hsxb4d"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_c32a1"]
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_fu55l"]
+[ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="5_oisj6"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="5_xmmfr"]
+[ext_resource type="Script" uid="uid://dmeiup6i14oxj" path="res://Scenes/Prefabs/Monsters/cutter_ai.gd" id="10_dihjl"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="10_wfqjp"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="10_wyyub"]
+[ext_resource type="AudioStream" uid="uid://3v6mk6kapph" path="res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundCutter.ogg" id="11_47euk"]
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="11_cn52c"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="11_f05hf"]
+[ext_resource type="AudioStream" uid="uid://8mm4rvad6in3" path="res://Assets/Audio/SoundFX/ChaseLoops/ChaseLoopCutter.ogg" id="12_5plyp"]
+[ext_resource type="Script" uid="uid://d4diumxjityck" path="res://Scripts/MonsterAI/Monster_Cone.gd" id="13_isk1m"]
 [ext_resource type="PackedScene" uid="uid://5vwkanc2n0u0" path="res://Scenes/Prefabs/Monsters/test_monster.tscn" id="14_b87ve"]
-[ext_resource type="PackedScene" uid="uid://w2bhm4qyn11s" path="res://Scenes/Prefabs/MoveableObjects/package_template.tscn" id="15_jqvbs"]
+[ext_resource type="Script" uid="uid://ccccjic4b6h52" path="res://Scenes/Prefabs/Monsters/monster_vision_block.gd" id="14_smckf"]
+[ext_resource type="AudioStream" uid="uid://dxw4xiok3yrmq" path="res://Assets/Audio/SoundFX/AmbientScares/cutter_metal_slashing_test.ogg" id="15_dqkjq"]
+[ext_resource type="AudioStream" uid="uid://ccf1t642egx8c" path="res://Assets/Audio/SoundFX/AmbientScares/WindowScareInitial.ogg" id="16_qpjto"]
+[ext_resource type="AudioStream" uid="uid://do1gadqbhyq4l" path="res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundInitialCutter.ogg" id="17_ys1qr"]
+[ext_resource type="AudioStream" uid="uid://b7m7tb5do3l4m" path="res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundInitialCutter2.ogg" id="18_a0bcq"]
+[ext_resource type="AudioStream" uid="uid://bah1jhdcg6gl1" path="res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundInitialCutter3.ogg" id="19_1na3n"]
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_qridb"]
-vertices = PackedVector3Array(-9.5, 1, -9.5, -9.5, 1, 9.5, 9.5, 1, 9.5, 9.5, 1, -9.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+[sub_resource type="NavigationMesh" id="NavigationMesh_oisj6"]
+vertices = PackedVector3Array(-1.78042, 1, -8.75, -1.53042, 1, -8.25, -0.78042, 1, -8.75, -9.03042, 1, -3, -7.03042, 1, -3, -7.28042, 1, -8, -9.03042, 1, -9, -6.53042, 1, -8.75, 3.96958, 1, -9, 4.21958, 1, -8.5, 4.96958, 1, -8.75, 1.96958, 1, -5.5, 1.96958, 1, -4.5, 2.46958, 1, -4.75, 2.46958, 1, -5.5, 7.71958, 1, -5.25, 7.71958, 1, -4.5, 8.21958, 1, -4.75, 8.21958, 1, -5.25, -3.78042, 1, 3.5, -3.53042, 1, 4, -3.03042, 1, 3.5, 0.96958, 1, 3.5, 1.21958, 1, 4, 1.71958, 1, 3.5, 2.46958, 1, -2.75, 5.71958, 1, 3.75, 5.96958, 1, 4.25, 6.46958, 1, 3.75, 1.96958, 1, -3.25, 1.71958, 1, -2.75, -3.28042, 1, -2.5, -3.78042, 1, -3, -4.03042, 1, -2.5, -4.78042, 1, -0.75, -5.28042, 1, -0.25, -4.78042, 1, 0, 4.96958, 1, -2.75, 4.71958, 1, -3.25, 3.96958, 1, -2.75, -0.78042, 1, -2.75, -1.28042, 1, -3.25, -1.78042, 1, -2.5, -9.03042, 1, 3.25, -8.28042, 1, 4, -7.78042, 1, 3.5, -5.03042, 1, -2.5, 4.21958, 1, 3.5, -5.53042, 1, 3.25, -4.78042, 1, 2.5, 8.21958, 1, -2.5, 7.96958, 1, -3, 8.96958, 1, 3.75, 8.96958, 1, -2.5, -7.53042, 1, -0.75, -7.53042, 1, -0.25, -6.78042, 1, -0.25, -8.53042, 1, 5.5, -8.53042, 1, 6.25, -8.03042, 1, 6.25, -8.03042, 1, 5.25, -3.78042, 1, 5.5, -3.78042, 1, 6, -3.28042, 1, 6, -3.28042, 1, 5.25, 5.71958, 1, 5.75, 5.71958, 1, 6.25, 6.21958, 1, 6.25, 6.21958, 1, 5.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(0, 6, 2), PackedInt32Array(7, 5, 6), PackedInt32Array(0, 7, 6), PackedInt32Array(10, 9, 8), PackedInt32Array(14, 13, 11), PackedInt32Array(11, 13, 12), PackedInt32Array(18, 17, 15), PackedInt32Array(15, 17, 16), PackedInt32Array(21, 20, 19), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(28, 27, 26), PackedInt32Array(30, 29, 25), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 34), PackedInt32Array(36, 35, 34), PackedInt32Array(39, 38, 37), PackedInt32Array(40, 42, 41), PackedInt32Array(45, 44, 43), PackedInt32Array(34, 46, 33), PackedInt32Array(28, 26, 47), PackedInt32Array(43, 48, 45), PackedInt32Array(45, 48, 19), PackedInt32Array(47, 24, 25), PackedInt32Array(19, 48, 49), PackedInt32Array(19, 49, 21), PackedInt32Array(21, 49, 36), PackedInt32Array(30, 25, 42), PackedInt32Array(42, 25, 36), PackedInt32Array(36, 25, 21), PackedInt32Array(21, 25, 22), PackedInt32Array(34, 31, 36), PackedInt32Array(36, 31, 42), PackedInt32Array(37, 51, 50), PackedInt32Array(42, 40, 30), PackedInt32Array(50, 53, 52), PackedInt32Array(28, 47, 52), PackedInt32Array(52, 47, 50), PackedInt32Array(50, 47, 39), PackedInt32Array(39, 47, 25), PackedInt32Array(39, 37, 50), PackedInt32Array(56, 55, 54), PackedInt32Array(58, 57, 59), PackedInt32Array(59, 57, 60), PackedInt32Array(62, 61, 63), PackedInt32Array(63, 61, 64), PackedInt32Array(66, 65, 67), PackedInt32Array(67, 65, 68)]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 4291821567
+agent_radius = 0.8
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1330w"]
 albedo_texture = ExtResource("5_xmmfr")
@@ -36,19 +49,77 @@ sky = SubResource("Sky_11ekw")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g44v1"]
+albedo_color = Color(0.738209, 0.202919, 0.255873, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p50mg"]
+material = SubResource("StandardMaterial3D_g44v1")
+radius = 0.75
+height = 3.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p50mg"]
+albedo_color = Color(0.0647853, 0, 0.00470865, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_p50mg"]
+material = SubResource("StandardMaterial3D_p50mg")
+radius = 0.221
+height = 0.383
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p50mg"]
+radius = 0.755547
+height = 2.64187
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3de3p"]
+streams_count = 3
+stream_0/stream = ExtResource("17_ys1qr")
+stream_1/stream = ExtResource("18_a0bcq")
+stream_2/stream = ExtResource("19_1na3n")
+
 [node name="testworld2" type="Node3D" groups=["Persist"]]
 script = ExtResource("1_fu55l")
 
 [node name="ScareDirector" parent="." instance=ExtResource("1_c32a1")]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavRegionFirstHalf" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-navigation_mesh = SubResource("NavigationMesh_qridb")
+navigation_mesh = SubResource("NavigationMesh_oisj6")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NavRegionFirstHalf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1877, 0, 0)
+vertices = PackedVector3Array(2.58365, 0, 5.24516, 0.216732, 0, 5.33062, 0.321, 0, -3.15832, 9.90449, 0, -3.25846, 10.2164, 0, 5.53546)
+affect_navigation_mesh = true
+avoidance_enabled = false
+
+[node name="OfficeCubicle" parent="NavRegionFirstHalf" instance=ExtResource("11_cn52c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62517, 0.5, 6.80775)
+
+[node name="PackageDestination" parent="NavRegionFirstHalf/OfficeCubicle/MailboxStand" index="2"]
+accepts_package_named = "Package2"
+
+[node name="OfficeCubicle2" parent="NavRegionFirstHalf" instance=ExtResource("11_cn52c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75306, 0.5, 6.59513)
+
+[node name="OfficeCubicle3" parent="NavRegionFirstHalf" instance=ExtResource("11_cn52c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92934, 0.499999, 6.57282)
+
+[node name="OfficeCubicle4" parent="NavRegionFirstHalf" instance=ExtResource("11_cn52c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.69027, 0.500001, 6.59385)
+
+[node name="OfficeCubicle5" parent="NavRegionFirstHalf" instance=ExtResource("11_cn52c")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.02378, 0.500002, 0.156238)
+
+[node name="OfficeCubicle6" parent="NavRegionFirstHalf" instance=ExtResource("11_cn52c")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.28625, 0.500002, -5.74618)
+
+[node name="OfficeCubicle7" parent="NavRegionFirstHalf" instance=ExtResource("11_cn52c")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.59113, 0.500001, -5.85699)
+
+[node name="OfficeCubicle8" parent="NavRegionFirstHalf" instance=ExtResource("11_cn52c")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.09888, 0.500001, -5.64708)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavRegionFirstHalf"]
 material_override = SubResource("StandardMaterial3D_1330w")
 use_collision = true
-collision_layer = 5
 collision_mask = 5
 size = Vector3(20, 1, 20)
 material = SubResource("StandardMaterial3D_0h2ln")
@@ -59,8 +130,9 @@ material = SubResource("StandardMaterial3D_0h2ln")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="environment" groups=["worldEnviorment"]]
 environment = SubResource("Environment_13vtk")
+script = ExtResource("5_oisj6")
 
 [node name="TestMonster" parent="." instance=ExtResource("14_b87ve")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.746, 0, -6.619)
@@ -68,58 +140,11 @@ collision_layer = 5
 collision_mask = 5
 disable = true
 
-[node name="Package" parent="." instance=ExtResource("15_jqvbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.22661, 0.340293, 0)
-hand_rotation = Vector3(1.00531, -0.74002, 0)
-hand_position = Vector3(0.375, -0.48, 0)
-
-[node name="Package2" parent="." instance=ExtResource("15_jqvbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86244, 0.340293, 0)
-hand_rotation = Vector3(1.00531, -0.74002, 0)
-hand_position = Vector3(0.375, -0.48, 0)
-
-[node name="Package3" parent="." instance=ExtResource("15_jqvbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.49908, 0.340293, 0)
-hand_rotation = Vector3(1.00531, -0.74002, 0)
-hand_position = Vector3(0.375, -0.48, 0)
-
-[node name="Package4" parent="." instance=ExtResource("15_jqvbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.19017, 0.340293, 0)
-hand_rotation = Vector3(1.00531, -0.74002, 0)
-hand_position = Vector3(0.375, -0.48, 0)
-
 [node name="Player" parent="." instance=ExtResource("10_wfqjp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.315001, 0, 3.39669)
 
 [node name="Mailcart" parent="." instance=ExtResource("11_f05hf")]
 transform = Transform3D(-0.0505929, 0, 0.998719, 0, 1, 0, -0.998719, 0, -0.0505929, 3.28541, 0.244515, 0)
-
-[node name="OfficeCubicle" parent="." instance=ExtResource("11_cn52c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62517, 0, 6.80775)
-
-[node name="PackageDestination" parent="OfficeCubicle/MailboxStand" index="2"]
-accepts_package_named = "Package2"
-
-[node name="OfficeCubicle2" parent="." instance=ExtResource("11_cn52c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75306, 0, 6.59513)
-
-[node name="OfficeCubicle3" parent="." instance=ExtResource("11_cn52c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.92934, -9.53674e-07, 6.57282)
-
-[node name="OfficeCubicle4" parent="." instance=ExtResource("11_cn52c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.69027, 9.53674e-07, 6.59385)
-
-[node name="OfficeCubicle5" parent="." instance=ExtResource("11_cn52c")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.02378, 1.90735e-06, 0.156238)
-
-[node name="OfficeCubicle6" parent="." instance=ExtResource("11_cn52c")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 7.28625, 1.90735e-06, -5.74618)
-
-[node name="OfficeCubicle7" parent="." instance=ExtResource("11_cn52c")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.59113, 9.53674e-07, -5.85699)
-
-[node name="OfficeCubicle8" parent="." instance=ExtResource("11_cn52c")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.09888, 9.53674e-07, -5.64708)
 
 [node name="Package5" parent="." instance=ExtResource("10_wyyub")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.80739, 0.0944527, 2.10138)
@@ -152,8 +177,141 @@ cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 2
 
-[editable path="OfficeCubicle"]
-[editable path="OfficeCubicle/MailboxStand"]
-[editable path="OfficeCubicle3"]
-[editable path="OfficeCubicle5"]
-[editable path="OfficeCubicle7"]
+[node name="cutter_ai" type="CharacterBody3D" parent="." groups=["monster", "scarevision"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.35685, 0, 0)
+collision_layer = 4096
+collision_mask = 4100
+script = ExtResource("10_dihjl")
+initial_chase_sfx = ExtResource("11_47euk")
+chaseloop_sfx = ExtResource("12_5plyp")
+can_see_player = false
+effect_type = 1
+
+[node name="Model" type="MeshInstance3D" parent="cutter_ai"]
+transform = Transform3D(-0.79, 0, 6.9064e-08, 0, 0.79, 0, -6.9064e-08, 0, -0.79, 0, 1.38771, 0)
+mesh = SubResource("CapsuleMesh_p50mg")
+skeleton = NodePath("")
+
+[node name="Eye" type="MeshInstance3D" parent="cutter_ai/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.247143, 1.12051, 0.508049)
+mesh = SubResource("SphereMesh_p50mg")
+
+[node name="Eye2" type="MeshInstance3D" parent="cutter_ai/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.220376, 1.12051, 0.508049)
+mesh = SubResource("SphereMesh_p50mg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cutter_ai"]
+transform = Transform3D(-3.4532e-08, 0, 0.79, 0, 0.79, 0, -0.79, 0, -3.4532e-08, 0, 1.06674, 0)
+shape = SubResource("CapsuleShape3D_p50mg")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="cutter_ai"]
+path_desired_distance = 0.5
+target_desired_distance = 0.75
+path_height_offset = 0.2
+navigation_layers = 3
+avoidance_layers = 0
+debug_enabled = true
+debug_path_custom_color = Color(0.491815, 0, 0.251935, 1)
+
+[node name="VisionArea" type="Node3D" parent="cutter_ai" node_paths=PackedStringArray("parent", "timer", "vision_blocks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25308, -0.159815)
+script = ExtResource("13_isk1m")
+parent = NodePath("..")
+timer = NodePath("VisionRefreshTimer")
+vision_blocks = [NodePath("player_lookup_raycast_thin"), NodePath("player_lookup_raycast_medium"), NodePath("player_lookup_raycast_wide")]
+
+[node name="VisionRefreshTimer" type="Timer" parent="cutter_ai/VisionArea"]
+wait_time = 0.08
+autostart = true
+
+[node name="player_lookup_raycast_wide" type="RayCast3D" parent="cutter_ai/VisionArea" node_paths=PackedStringArray("parent", "timer")]
+target_position = Vector3(0, 1, 0)
+collision_mask = 13
+debug_shape_custom_color = Color(0.734258, 0.469165, 5.77569e-07, 1)
+debug_shape_thickness = 5
+script = ExtResource("14_smckf")
+parent = NodePath("../..")
+timer = NodePath("../VisionRefreshTimer")
+time_to_detect = 1.3
+should_instant_detect = false
+max_range = 8.2
+max_angle = 81
+
+[node name="player_lookup_raycast_medium" type="RayCast3D" parent="cutter_ai/VisionArea" node_paths=PackedStringArray("parent", "timer")]
+target_position = Vector3(0, 1, 0)
+collision_mask = 13
+debug_shape_custom_color = Color(0.734258, 0.469165, 5.77569e-07, 1)
+debug_shape_thickness = 5
+script = ExtResource("14_smckf")
+parent = NodePath("../..")
+timer = NodePath("../VisionRefreshTimer")
+time_to_detect = 0.85
+should_instant_detect = false
+max_range = 19.0
+max_angle = 68
+
+[node name="player_lookup_raycast_thin" type="RayCast3D" parent="cutter_ai/VisionArea" node_paths=PackedStringArray("parent", "timer")]
+target_position = Vector3(0, 1, 0)
+collision_mask = 13
+debug_shape_custom_color = Color(0.734258, 0.469165, 5.77569e-07, 1)
+debug_shape_thickness = 5
+script = ExtResource("14_smckf")
+parent = NodePath("../..")
+timer = NodePath("../VisionRefreshTimer")
+time_to_detect = 0.12
+should_instant_detect = false
+max_range = 28.0
+max_angle = 18
+
+[node name="CanChargeTimer" type="Timer" parent="cutter_ai"]
+wait_time = 7.5
+one_shot = true
+
+[node name="NavLinkCooldownTimer" type="Timer" parent="cutter_ai"]
+wait_time = 0.35
+one_shot = true
+
+[node name="DeAggroTimer" type="Timer" parent="cutter_ai"]
+wait_time = 3.5
+one_shot = true
+
+[node name="RespawnTimer" type="Timer" parent="cutter_ai"]
+wait_time = 19.0
+one_shot = true
+
+[node name="GetPlayerPositionTimer" type="Timer" parent="cutter_ai"]
+wait_time = 0.17
+
+[node name="IdleNavigationTimer" type="Timer" parent="cutter_ai"]
+wait_time = 12.0
+autostart = true
+
+[node name="charge_slashing_soundplayer" type="AudioStreamPlayer3D" parent="cutter_ai"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76354, 0)
+stream = ExtResource("15_dqkjq")
+volume_db = 18.139
+unit_size = 1.91
+pitch_scale = 1.49
+
+[node name="hit_by_soundplayer" type="AudioStreamPlayer3D" parent="cutter_ai"]
+stream = ExtResource("16_qpjto")
+
+[node name="fear_factor_maxxed_timer" type="Timer" parent="cutter_ai"]
+wait_time = 25.0
+one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="cutter_ai"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.94992, 0)
+stream = SubResource("AudioStreamRandomizer_3de3p")
+
+[connection signal="link_reached" from="cutter_ai/NavigationAgent3D" to="cutter_ai" method="_on_navigation_agent_3d_link_reached"]
+[connection signal="timeout" from="cutter_ai/DeAggroTimer" to="cutter_ai" method="_on_de_aggro_timer_timeout"]
+[connection signal="timeout" from="cutter_ai/RespawnTimer" to="cutter_ai" method="_on_respawn_timer_timeout"]
+[connection signal="timeout" from="cutter_ai/GetPlayerPositionTimer" to="cutter_ai" method="_on_get_player_position_timer_timeout"]
+[connection signal="timeout" from="cutter_ai/IdleNavigationTimer" to="cutter_ai" method="_on_navigation_timer_timeout"]
+
+[editable path="NavRegionFirstHalf/OfficeCubicle"]
+[editable path="NavRegionFirstHalf/OfficeCubicle/MailboxStand"]
+[editable path="NavRegionFirstHalf/OfficeCubicle3"]
+[editable path="NavRegionFirstHalf/OfficeCubicle5"]
+[editable path="NavRegionFirstHalf/OfficeCubicle7"]
