@@ -29,7 +29,9 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.get_groups().has("monster"):
 		cutter_ai.enable_carcass_behaviour()
 		if cutter_ai.aggrod:
-			if abs(cutter_ai.global_position.distance_to(player.global_position)) < 5:
+			cutter_ai.deAggro()
+			cutter_ai.stopTimers()
+			if abs(cutter_ai.global_position.distance_to(player.global_position)) < 6.5:
 				_instakill()
 			else:
 				deescalate()
@@ -45,7 +47,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func deescalate():
 	AudioController.stop_resource(chaseloop_sfx.resource_path, 2)
 	deescalate_timer.start(2.33)
-	cutter_ai.aggrod = false
+	#cutter_ai.deAggro()
+	#cutter_ai.stopTimers()
 	pass
 	# Play a deescalate sound and other similar things
 

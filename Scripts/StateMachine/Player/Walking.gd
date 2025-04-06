@@ -463,8 +463,6 @@ func apply_pushes():
 				else:
 					col.freeze = false
 			col.apply_central_force(-c.get_normal() * current_speed*5)
-			print("collider: " + col.name)
-			print("shape: " + c.get_collider_shape().name)
 			if col.has_method("collide_with_player"):
 				col.collider_with_player()
 			else:
