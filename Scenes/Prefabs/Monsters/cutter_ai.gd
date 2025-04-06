@@ -155,10 +155,11 @@ func charge():
 	charge_slashing_soundplayer.play()
 	tween.tween_property(self, "global_position", Vector3(charge_position.x, global_position.y, charge_position.z), time_to_travel);
 	await tween.finished
-	can_charge_timer.start()
-	set_new_nav_position(player.global_position)
-	get_player_position_timer.start()
-	charging = false
+	charging = false	
+	if aggrod:
+		can_charge_timer.start()
+		set_new_nav_position(player.global_position)
+		get_player_position_timer.start()
 
 
 # VISION FUNCTION
@@ -219,7 +220,6 @@ func enable_carcass_behaviour():
 	set_position(spawnpoint.global_position)
 	set_rotation(spawnpoint.rotation)
 	position.y = startposition
-	return
 
 
 # TIMERS
