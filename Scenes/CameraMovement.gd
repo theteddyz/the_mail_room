@@ -32,6 +32,9 @@ var velocityLerpTowards: Vector3 = Vector3.ZERO
 
 var initial_rotation_offset: Quaternion = Quaternion.IDENTITY  # To store the initial offset
 
+
+var shake_time := 0.0 #For extra camera shake
+
 func _ready() -> void:
 	top_level = false
 	head = get_parent()
@@ -42,6 +45,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	if shouldEnable:
+		
+
+		
+		
+		
+		
+		
+		
 		# Get the current and previous rotation of the head in quaternions
 		var current_head_quat = head.global_transform.basis.get_rotation_quaternion()
 
@@ -86,9 +97,37 @@ func _process(delta: float):
 		#angular_velocity *= pow(damping, delta)
 		#print(pow(damping, delta))
 		
-		var resultX : Dictionary = spring_damper_exact(current_cumulative_rotation.x,angular_velocity.x,target_cumulative_rotation.x,0,spring_strength,damping,delta)
-		var resultY : Dictionary = spring_damper_exact(current_cumulative_rotation.y,angular_velocity.y,target_cumulative_rotation.y,0,spring_strength,damping,delta)
-		var resultZ : Dictionary = spring_damper_exact(current_cumulative_rotation.z,angular_velocity.z,target_cumulative_rotation.z,0,spring_strength,damping,delta)
+		
+		
+				#This is for additional camera shake
+		var player = GameManager.get_player()
+		var walkingScript = player.state
+		
+		
+		var velocity = player.get_velocity()  # Or however you get player velocity
+		var speed = velocity.length()
+
+
+		# Shake parameters
+		var shake_amplitude = 0.015 + 0.004 * pow(player.state.persistent_state.velocity.length(),1.5 )   # Max radians (tweak this for more/less shake)
+		var shake_speed = 1.5 + 0.5 * pow(player.state.persistent_state.velocity.length(),1.3 )      # Frequency of sine wave oscillation
+		# Increase shake_phase_time based on speed (scaled movement-driven progression)
+		shake_time += shake_speed * delta
+		var shake_phase = Vector3(1.1, 0.9, 1.3) # Different speeds for each axis
+		var shake_rotation = Vector3(
+			(sin(shake_time * 1.1)+sin(shake_time * 2.2 + 9.8)+sin(shake_time * 1.57 + 3.6))*0.33 * shake_amplitude,
+			(sin(shake_time * 0.9 + 1.5)+sin(shake_time * 1.93 + 0.87)+sin(shake_time * 1.46 + 4.9))*0.33 * shake_amplitude,
+			(sin(shake_time * 1.3 + 3.3)+sin(shake_time * 2.44 + 2.84)+sin(shake_time * 1.63 + 1.54))*0.33 * shake_amplitude
+		)
+		# Apply shake to the target BEFORE spring smoothing
+		var shaken_target_rotation = target_cumulative_rotation + shake_rotation
+		
+		
+		
+		
+		var resultX : Dictionary = spring_damper_exact(current_cumulative_rotation.x,angular_velocity.x,shaken_target_rotation.x,0,spring_strength,damping,delta)
+		var resultY : Dictionary = spring_damper_exact(current_cumulative_rotation.y,angular_velocity.y,shaken_target_rotation.y,0,spring_strength,damping,delta)
+		var resultZ : Dictionary = spring_damper_exact(current_cumulative_rotation.z,angular_velocity.z,shaken_target_rotation.z,0,spring_strength,damping,delta)
 		#chasingVelArray[symbolIndexInTotal] *= Math.pow(0.3, updateLogicDeltaTime*50);
 		#chasingVelArray[symbolIndexInTotal] -= (chasingPosArray[symbolIndexInTotal]-componentDependencies.symbolDependency.getSymbol().getPositionY()) * 0.1 *updateLogicDeltaTime*200  // The force to pull it back to the resting point
 											
