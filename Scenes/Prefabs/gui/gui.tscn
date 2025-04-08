@@ -617,6 +617,7 @@ offset_right = 40.0
 offset_bottom = -568.0
 
 [node name="Pager" type="Control" parent="."]
+visible = false
 z_index = -1
 anchors_preset = 0
 offset_left = 241.0
