@@ -4,7 +4,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfo1u"]
 resource_name = "NewsPaper"
-transparency = 4
 albedo_texture = ExtResource("2_ocn8a")
 texture_filter = 2
 

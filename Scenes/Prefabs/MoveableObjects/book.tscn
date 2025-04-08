@@ -5,8 +5,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xeqtk"]
 resource_name = "Book"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("1_ab6hc")
 texture_filter = 2
 

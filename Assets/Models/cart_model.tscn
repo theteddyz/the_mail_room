@@ -129,8 +129,9 @@ shadow_mesh = SubResource("ArrayMesh_yd030")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s73lf"]
 resource_name = "MetalBasket"
-transparency = 4
-cull_mode = 2
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("5_sxb50")
 texture_filter = 2
 

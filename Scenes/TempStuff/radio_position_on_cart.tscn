@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://bniohifvk36yp"]
 
-[ext_resource type="Script" path="res://Scripts/MailCart/Radio.gd" id="1_d78xa"]
+[ext_resource type="Script" uid="uid://bodt1l40yhg4h" path="res://Scripts/MailCart/Radio.gd" id="1_d78xa"]
 [ext_resource type="Texture2D" uid="uid://bpmaq4gl82cgl" path="res://Assets/Textures/BlenderTextures/Radio2.png" id="2_qe2ry"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8jcur"]
@@ -8,7 +8,9 @@ friction = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxi58"]
 resource_name = "Radio.001"
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_qe2ry")
 texture_filter = 2
 

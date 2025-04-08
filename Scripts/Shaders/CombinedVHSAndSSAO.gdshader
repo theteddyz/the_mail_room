@@ -22,6 +22,10 @@ const vec3 kernel[16] = {
 
 uniform float radius: hint_range(0.0, 5.0) = 0.5;
 uniform float bias: hint_range(0.0, 1.0) = 0.025;
+uniform float multiplier: hint_range(0.0, 10.0) = 1.0;
+uniform bool light_resistent = false;
+uniform float light_threshold: hint_range(0.0, 10.0) = 1.0;
+uniform float light_multiplier: hint_range(0.0, 10.0) = 1.0;
 
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, source_color, repeat_disable;
 uniform sampler2D DEPTH_TEXTURE: hint_depth_texture, repeat_disable, filter_nearest;
@@ -84,7 +88,12 @@ void fragment() {
 		}
 	}
 	
-	
-	ALBEDO = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
-	ALBEDO *= 1.0 - vec3(occlusionSum / 16.0);
+	if(light_resistent == true){
+		vec3 screenColor = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
+		vec3 occlusionColor = vec3(occlusionSum / 16.0)*multiplier;
+		ALBEDO = max(screenColor - max(occlusionColor - max(screenColor-light_threshold,0)*light_multiplier, 0),0);
+	}else{
+		ALBEDO = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
+		ALBEDO *= max(1.0 - vec3(occlusionSum / 16.0)*multiplier,0);
+	}
 }

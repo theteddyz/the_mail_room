@@ -4,8 +4,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_266fa"]
 resource_name = "FileClutter"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("1_otg3t")
 texture_filter = 2
 

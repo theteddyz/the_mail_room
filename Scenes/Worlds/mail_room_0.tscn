@@ -220,6 +220,15 @@ dark_value = 0.025
 
 [node name="mailroom_prefab" parent="." instance=ExtResource("6_b44l8")]
 
+[node name="IndustrialTable" parent="mailroom_prefab/Objects" index="1"]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -9.85651, 0.556907, -5.46991)
+
+[node name="IndustrialTable2" parent="mailroom_prefab/Objects" index="2"]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -13.3394, 0.556907, -5.46991)
+
+[node name="IndustrialTable3" parent="mailroom_prefab/Objects" index="3"]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -17.2193, 0.556907, -5.46991)
+
 [node name="StaticBody3D" parent="mailroom_prefab/Objects" index="6" node_paths=PackedStringArray("game_objects")]
 game_objects = [NodePath("../../../Package7")]
 
@@ -231,6 +240,51 @@ script = null
 
 [node name="PackageDestination" parent="mailroom_prefab/Objects/Desk2/MailboxStand" index="2"]
 accepted_num = 7
+
+[node name="Cardboard_box_big3" parent="mailroom_prefab/Objects" index="19"]
+transform = Transform3D(0.535989, 0, 0.844225, 0, 1, 0, -0.844225, 0, 0.535989, -13.385, 1.13567, -5.86118)
+
+[node name="Cardboard_box_big28" parent="mailroom_prefab/Objects" index="25"]
+transform = Transform3D(0.691349, 0, 0.722521, 0, 1, 0, -0.722521, 0, 0.691349, -17.7689, 1.17053, -5.42643)
+
+[node name="Cardboard_box_long2" parent="mailroom_prefab/Objects" index="56"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2901, 1.11442, -5.74297)
+
+[node name="Cardboard_box_long70" parent="mailroom_prefab/Objects" index="57"]
+transform = Transform3D(0.659333, 0.751851, 0, -0.751851, 0.659333, 0, 0, 0, 1, -17.2286, 1.73886, -5.62127)
+
+[node name="Cardboard_box_medium" parent="mailroom_prefab/Objects" index="59"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8812, 1.10875, -5.07936)
+
+[node name="Cardboard_box_medium3" parent="mailroom_prefab/Objects" index="76"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.351, 1.10875, -5.29377)
+
+[node name="cardboard_box_mini" parent="mailroom_prefab/Objects" index="87"]
+transform = Transform3D(0.0216054, 0, 0.999767, 0, 1, 0, -0.999767, 0, 0.0216054, -12.4836, 1.10977, -5.68108)
+
+[node name="cardboard_box_small" parent="mailroom_prefab/Objects" index="93"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3772, 1.12013, -5.18759)
+
+[node name="Cardboard_box_medium34" parent="mailroom_prefab/Objects" index="115"]
+transform = Transform3D(-0.998671, 0, -0.0515342, 0, 1, 0, 0.0515342, 0, -0.998671, -18.1847, 1.12787, -5.8784)
+
+[node name="Cardboard_box_medium35" parent="mailroom_prefab/Objects" index="116"]
+transform = Transform3D(-0.892932, 0, -0.450192, 0, 1, 0, 0.450192, 0, -0.892932, -18.2963, 1.63973, -5.71127)
+
+[node name="Cardboard_box_medium36" parent="mailroom_prefab/Objects" index="117"]
+transform = Transform3D(-0.976243, 0, 0.216678, 0, 1, 0, -0.216678, 0, -0.976243, -17.8471, 1.784, -5.29746)
+
+[node name="Cardboard_box_big29" parent="mailroom_prefab/Objects" index="137"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3224, 1.17871, -5.3565)
+
+[node name="cardboard_box_small40" parent="mailroom_prefab/Objects" index="187"]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -9.67655, 1.12013, -5.48502)
+
+[node name="cardboard_box_small41" parent="mailroom_prefab/Objects" index="188"]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -9.31345, 1.12013, -5.13387)
+
+[node name="cardboard_box_small42" parent="mailroom_prefab/Objects" index="189"]
+transform = Transform3D(0.853023, 0, 0.521873, 0.00212225, 0.999992, -0.00346891, -0.521869, 0.00406661, 0.853016, -9.33325, 1.49157, -5.02671)
 
 [node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn3" index="1"]
 visible = true
@@ -463,7 +517,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5928, 6.12578, -7.48261)
 mesh = SubResource("BoxMesh_xx5t2")
 
 [node name="Crttv" parent="." instance=ExtResource("13_pdcxx")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.14041, 0, -4.91843)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.14041, 0, -5.45538)
 
 [node name="Area3D" parent="Crttv" index="10" node_paths=PackedStringArray("video_player", "audio_player")]
 video_player = NodePath("../CRTTVScreen/SubViewport/VideoStreamPlayer")

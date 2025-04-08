@@ -10,8 +10,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sg1co"]
 resource_name = "ComputerTower"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("1_60mpf")
 texture_filter = 2
 
@@ -78,8 +76,6 @@ shadow_mesh = SubResource("ArrayMesh_irkr6")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8y6ij"]
 resource_name = "ComputerFan"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("4_opta8")
 texture_filter = 2
 
@@ -153,8 +149,6 @@ shadow_mesh = SubResource("ArrayMesh_c5lbg")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jirvm"]
 resource_name = "ComputerCables"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("5_tchyb")
 texture_filter = 2
 
@@ -194,8 +188,6 @@ shadow_mesh = SubResource("ArrayMesh_pca80")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hif6"]
 resource_name = "ComputerCables.001"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("6_x7f80")
 texture_filter = 2
 

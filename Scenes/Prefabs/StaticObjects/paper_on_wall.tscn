@@ -4,7 +4,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktsvs"]
 resource_name = "Papers"
-transparency = 4
 albedo_texture = ExtResource("2_1gkix")
 texture_filter = 2
 

@@ -77,7 +77,9 @@ friction = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxi58"]
 resource_name = "Radio.001"
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("4_mlnkp")
 texture_filter = 2
 

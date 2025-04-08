@@ -86,8 +86,6 @@ shadow_mesh = SubResource("ArrayMesh_01m82")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcecl"]
 resource_name = "CartWheelFront"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("3_y0b1x")
 texture_filter = 2
 
@@ -269,8 +267,6 @@ shadow_mesh = SubResource("ArrayMesh_ju4ah")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xebvl"]
 resource_name = "DarkCables"
-transparency = 4
-cull_mode = 2
 albedo_color = Color(0.287499, 0.287499, 0.287499, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_r2ljl"]

@@ -4,8 +4,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tax4s"]
 resource_name = "MousePad"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("1_t0w7m")
 texture_filter = 2
 

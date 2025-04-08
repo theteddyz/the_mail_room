@@ -4,8 +4,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6g7fs"]
 resource_name = "FileOrganizer"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("1_kwqnp")
 texture_filter = 2
 
