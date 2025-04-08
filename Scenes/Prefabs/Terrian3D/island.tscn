@@ -1,0 +1,114 @@
+[gd_scene load_steps=18 format=3 uid="uid://daboi1jlu17kv"]
+
+[ext_resource type="Texture2D" uid="uid://yltjplktlwif" path="res://Assets/Textures/Terrian/groundChannelpack.dds" id="1_tovk2"]
+[ext_resource type="Texture2D" uid="uid://dtt4covjt55l" path="res://Assets/Textures/Terrian/groundNMChannelpack.dds" id="2_1fbo2"]
+[ext_resource type="Texture2D" uid="uid://ddkg5ekkqls1k" path="res://Assets/Textures/Terrian/grassChannelPack.dds" id="3_81a5s"]
+[ext_resource type="Texture2D" uid="uid://dap1w7n88prk" path="res://Assets/Textures/Terrian/grassNMChannelPack.dds" id="4_ofyio"]
+[ext_resource type="Texture2D" uid="uid://gwmftebchbe2" path="res://Assets/Textures/Terrian/rockChannelPack.dds" id="5_su5jx"]
+[ext_resource type="Texture2D" uid="uid://drnvkn4smbfde" path="res://Assets/Textures/Terrian/rockNMChannelPack.dds" id="6_gpul6"]
+[ext_resource type="PackedScene" uid="uid://blmtegf3uucdb" path="res://Scenes/Prefabs/StaticObjects/water.tscn" id="7_1fbo2"]
+
+[sub_resource type="Gradient" id="Gradient_6quqy"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2x4oq"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ip3i7"]
+seamless = true
+color_ramp = SubResource("Gradient_6quqy")
+noise = SubResource("FastNoiseLite_2x4oq")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_mcx4n"]
+_shader_parameters = {
+&"auto_base_texture": 2,
+&"auto_height_reduction": 0.1,
+&"auto_overlay_texture": 0,
+&"auto_slope": 1.0,
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.87,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"height_blending": true,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise3_scale": 0.225,
+&"noise_texture": SubResource("NoiseTexture2D_ip3i7"),
+&"projection_angular_division": 2.0,
+&"projection_threshold": 0.8,
+&"world_space_normal_blend": true
+}
+world_background = 0
+auto_shader = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tovk2"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_1fbo2"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_tovk2")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_bi1u7"]
+name = "groundChannelpack"
+albedo_texture = ExtResource("1_tovk2")
+normal_texture = ExtResource("2_1fbo2")
+roughness = 0.018
+uv_scale = 0.208
+detiling_rotation = 0.937
+detiling_shift = 0.594
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_15jib"]
+name = "grassChannelPack"
+id = 1
+albedo_texture = ExtResource("3_81a5s")
+normal_texture = ExtResource("4_ofyio")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_xibtk"]
+name = "rockChannelPack"
+id = 2
+albedo_texture = ExtResource("5_su5jx")
+normal_texture = ExtResource("6_gpul6")
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_5goeu"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_1fbo2")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_bi1u7"), SubResource("Terrain3DTextureAsset_15jib"), SubResource("Terrain3DTextureAsset_xibtk")])
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://Scenes/Prefabs/Terrian3D"
+material = SubResource("Terrain3DMaterial_mcx4n")
+assets = SubResource("Terrain3DAssets_5goeu")
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Water" parent="." instance=ExtResource("7_1fbo2")]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 300, 126.474, 3.92262, 396.545)

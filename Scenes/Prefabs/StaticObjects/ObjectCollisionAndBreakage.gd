@@ -4,8 +4,10 @@ extends Node3D
 #The object which the model will switch on (need to exist as invisible on the node)
 @export var broken_models: Array[MeshInstance3D] = []
 #Any objects which will break apart from this origin object
-@export var seperation_breakage_models: Array[RigidBody3D] = []
+@export var broken_scene_prefabs: Array[PackedScene] = []
 
+@export var extra_scatter_force: float = 5.0
+@export var random_spawn_offset_range: float = 0.2
 @export var breakable_hinges: Array[HingeJoint3D] = []
 #Basic model, the default state, not required if broken_models is empty
 @export var normal_model: Node
@@ -136,42 +138,49 @@ func _on_body_entered(_body):
 		
 		
 func break_object():
-	spawn_sound_event(true)
+	if broken:
+		return
 
 	broken = true
-	#spawn_sound_event()
-	#if(impact_audios != null):
-	#	impact_audios.play()
-	#if(destruction_audios != null):
-	#	destruction_audios.play()
-	
-	if broken_models != null:
-		for item in broken_models:
-			item.visible = true
-	
-	if(normal_model != null):
-		normal_model.visible = false
-	
-	for particle in breakage_particles:
-		particle.emitting = true
+	spawn_sound_event(true)
+
+	if destruction_audios:
+		destruction_audios.play()
+
+	var origin_transform = rigidbody.global_transform
+	var origin_velocity = rigidbody.linear_velocity
+	var origin_angular = rigidbody.angular_velocity
+
+	for prefab in broken_scene_prefabs:
+		if prefab:
+			var broken_instance = prefab.instantiate() as RigidBody3D
+			get_tree().current_scene.add_child(broken_instance)
+
+			# Random slight offset and rotation for realism
+			var random_offset = Vector3(
+				randf_range(-random_spawn_offset_range, random_spawn_offset_range),
+				randf_range(-random_spawn_offset_range, random_spawn_offset_range),
+				randf_range(-random_spawn_offset_range, random_spawn_offset_range)
+			)
+			var new_transform = origin_transform
+			new_transform.origin += random_offset
+			new_transform.basis = new_transform.basis.rotated(Vector3(randf(), randf(), randf()).normalized(), randf() * TAU)
+
+			broken_instance.global_transform = new_transform
+
+			broken_instance.linear_velocity = origin_velocity + Vector3(randf() - 0.5, randf(), randf() - 0.5) * extra_scatter_force
+			broken_instance.angular_velocity = origin_angular + Vector3(randf(), randf(), randf()) * extra_scatter_force
+
+	# Remove original object
+	if broken_models.size() == 0:
+		rigidbody.visible = false
+		rigidbody.freeze = true
 		
-	for hinge in breakable_hinges:
-		hinge.set_flag(hinge.FLAG_ENABLE_MOTOR, false)
-	for model in seperation_breakage_models:
-		model.reparent(get_tree().root.find_child("world"),true)
-		model.gravity_scale = 1
-		model.set_collision_layer_value(2,true)
-		model.set_collision_layer_value(5,true)
-		model.set_collision_mask_value(1,false)
-		model.set_collision_mask_value(2,false)
-		model.set_collision_mask_value(3,false)
-		model.set_collision_mask_value(4,false)
-		model.set_collision_mask_value(5,false)
-		model.set_script(grabbable_script)
-		#model.call("_ready")
-		model.visible = true
-		model.freeze = false
-	
+	else:
+		normal_model.visible = false
+		for model in broken_models:
+			model.visible = true
+
 func spawn_sound_event(breakage: bool):
 	var mult = 1
 	if breakage:
