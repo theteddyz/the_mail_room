@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=23 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" uid="uid://cp4jrj7a18avb" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" uid="uid://bqadv5daugpb2" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8uuomvgrmu1b" path="res://Assets/Shaders/outline_shader.tscn" id="4_ao0s0"]
 [ext_resource type="Script" uid="uid://crfmg2pyfu8gc" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" uid="uid://brtrfcahmyjah" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
+[ext_resource type="Shader" uid="uid://g18d7ggq4bq6" path="res://Scripts/Shaders/CombinedVHSAndSSAO.gdshader" id="6_7dp3o"]
 [ext_resource type="Script" uid="uid://brru7emutcew5" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
 [ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
@@ -24,6 +25,18 @@ height = 1.2
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_157n3"]
 radius = 0.294544
 height = 0.589089
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7dp3o"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h4iuc"]
+noise = SubResource("FastNoiseLite_7dp3o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h4iuc"]
+render_priority = 0
+shader = ExtResource("6_7dp3o")
+shader_parameter/radius = 3.0
+shader_parameter/bias = 0.306
+shader_parameter/SSAO_NOISE = SubResource("NoiseTexture2D_h4iuc")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0heh4"]
 radius = 50.9001
@@ -73,12 +86,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011888, -0.530672, -0.344
 [node name="PackageHolder" type="Marker3D" parent="Neck/Head/HeadbopRoot/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319181, -0.331, -0.969561)
 
-[node name="ColorRect" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("3_6orpg")]
-
 [node name="MeshInstance3D" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("4_ao0s0")]
 layers = 1048575
+material_override = SubResource("ShaderMaterial_h4iuc")
 transparency = 1.0
 cast_shadow = 0
+
+[node name="ColorRect" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("3_6orpg")]
 
 [node name="LightOptimizerDetector" type="Area3D" parent="Neck/Head/HeadbopRoot"]
 transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0.0297186, -0.312485)
