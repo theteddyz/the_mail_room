@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://blmtegf3uucdb"]
+
+[ext_resource type="Shader" uid="uid://bbsjl8ntid7d3" path="res://Scripts/Shaders/water.gdshader" id="1_buj4o"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_pwd2d"]
+subdivide_width = 200
+subdivide_depth = 200
+orientation = 1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_buj4o"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ugptm"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_buj4o")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ugptm"]
+noise_type = 3
+seed = 2
+frequency = 0.011
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f2loa"]
+seamless = true
+as_normal_map = true
+bump_strength = 6.0
+noise = SubResource("FastNoiseLite_ugptm")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f2loa"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qmojg"]
+seamless = true
+noise = SubResource("FastNoiseLite_f2loa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugptm"]
+render_priority = -1
+shader = ExtResource("1_buj4o")
+shader_parameter/albedo = Color(1.68458e-07, 0.233291, 0.329343, 1)
+shader_parameter/albedo2 = Color(0, 0.231373, 0.321569, 1)
+shader_parameter/color_deep = Color(0.105882, 0.294118, 0.329412, 1)
+shader_parameter/color_shallow = Color(0, 0.552941, 0.65098, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.02
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_ugptm")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_f2loa")
+shader_parameter/wave = SubResource("NoiseTexture2D_qmojg")
+shader_parameter/wave_time = 0.0
+shader_parameter/wave_direction = Vector2(0, 1)
+shader_parameter/wave_2_direction = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/wave_speed = 2.0
+shader_parameter/noise_scale = 10.0
+shader_parameter/height_scale = 0.15
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+
+[node name="Water" type="MeshInstance3D"]
+cast_shadow = 0
+mesh = SubResource("QuadMesh_pwd2d")
+surface_material_override/0 = SubResource("ShaderMaterial_ugptm")
