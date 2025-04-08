@@ -65,6 +65,17 @@ func _ready():
 	initVolume = impact_audios.volume_db
 	if instabreak:
 		break_object()
+		
+	#for model in seperation_breakage_models:
+		#model.freeze = true
+		#model.visible = false
+		#model.set_collision_layer_value(2,false)
+		#model.set_collision_layer_value(5,false)
+		#model.set_collision_mask_value(1,false)
+		#model.set_collision_mask_value(2,false)
+		#model.set_collision_mask_value(3,false)
+		#model.set_collision_mask_value(4,false)
+		#model.set_collision_mask_value(5,false)
 
 func _physics_process(_delta: float):
 	#if rigidbody.freeze:
@@ -133,9 +144,10 @@ func break_object():
 	#	impact_audios.play()
 	#if(destruction_audios != null):
 	#	destruction_audios.play()
-		
-	for item in broken_models:
-		item.visible = true
+	
+	if broken_models != null:
+		for item in broken_models:
+			item.visible = true
 	
 	if(normal_model != null):
 		normal_model.visible = false
@@ -145,12 +157,20 @@ func break_object():
 		
 	for hinge in breakable_hinges:
 		hinge.set_flag(hinge.FLAG_ENABLE_MOTOR, false)
-	#for model in seperation_breakage_models:
-	#	model.reparent(get_tree().root.get_child(3))
-	#	model.gravity_scale = 1
-	#	model.set_collision_layer_value(2,true)
-	#	model.set_script(grabbable_script)
-	#	model.call("_ready")
+	for model in seperation_breakage_models:
+		model.reparent(get_tree().root.find_child("world"),true)
+		model.gravity_scale = 1
+		model.set_collision_layer_value(2,true)
+		model.set_collision_layer_value(5,true)
+		model.set_collision_mask_value(1,false)
+		model.set_collision_mask_value(2,false)
+		model.set_collision_mask_value(3,false)
+		model.set_collision_mask_value(4,false)
+		model.set_collision_mask_value(5,false)
+		model.set_script(grabbable_script)
+		#model.call("_ready")
+		model.visible = true
+		model.freeze = false
 	
 func spawn_sound_event(breakage: bool):
 	var mult = 1
