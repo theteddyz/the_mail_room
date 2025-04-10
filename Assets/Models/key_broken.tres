@@ -1,9 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://bhutryyktfuw5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7k4b"]
-resource_name = "KeyboardBrokenLowPoly"
-cull_mode = 2
-metallic = 1.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejvv0"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_floxm"]
 _surfaces = [{
@@ -27,7 +24,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("EQAFAAIAEQAOAAUADAAJAAMADAASAAkAFAAIAAsAFAAXAAgAFQAAAAYAFQAPAAAACgABAAQACgAHAAEAFgANABAAFgATAA0A"),
-"material": SubResource("StandardMaterial3D_l7k4b"),
+"material": SubResource("StandardMaterial3D_ejvv0"),
 "name": "KeyboardBrokenLowPoly",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

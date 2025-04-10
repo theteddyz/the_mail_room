@@ -5,6 +5,7 @@ extends Node3D
 @export var broken_models: Array[MeshInstance3D] = []
 #Any objects which will break apart from this origin object
 @export var broken_scene_prefabs: Array[PackedScene] = []
+@export var broken_decals: Array[PackedScene] = []
 
 @export var extra_scatter_force: float = 5.0
 @export var random_spawn_offset_range: float = 0.2
@@ -31,6 +32,7 @@ var grabbable_script = preload("res://Scripts/Grabbing_Types/Grab_Type.gd")
 var broken:bool
 
 var previousVelocity:Vector3 = Vector3.ZERO
+var previousVelocity2:Vector3 = Vector3.ZERO
 var previousRotation:Vector3 = Vector3.ZERO
 var previousIsPickedUp:bool = false
 var previousIsPickedUp2:bool = false
@@ -107,6 +109,7 @@ func _physics_process(_delta: float):
 			
 			
 		previousVelocity = rigidbody.linear_velocity
+		previousVelocity2 = previousVelocity
 		previousRotation = rigidbody.angular_velocity
 		
 		previousIsPickedUp3 = previousIsPickedUp2
@@ -151,6 +154,47 @@ func break_object():
 	var origin_velocity = rigidbody.linear_velocity
 	var origin_angular = rigidbody.angular_velocity
 
+	for particle in breakage_particles:
+		particle.emitting = true
+
+	for hinge in breakable_hinges:
+		hinge.set_flag(hinge.FLAG_ENABLE_MOTOR, false)
+
+
+	for prefab in broken_decals:
+		if prefab:
+			var broken_instance = prefab.instantiate() as Decal
+			get_tree().current_scene.add_child(broken_instance)
+			broken_instance.global_position = rigidbody.global_position
+
+			var velocity = previousVelocity2
+			if velocity.length() > 0.001:
+				var direction = -velocity.normalized()
+
+				# Assume +Z is the decal's forward direction
+				var forward = Vector3.UP
+
+				# Get rotation axis and angle
+				var axis = forward.cross(direction)
+				var dot = forward.dot(direction)
+
+				var rotation_quat := Quaternion()
+				if axis.length() < 0.0001:
+					if dot < 0.0:
+						# Vectors are nearly opposite
+						axis = forward.orthogonal().normalized()
+						rotation_quat = Quaternion(axis, PI)
+					else:
+						# Vectors are the same direction, no rotation needed
+						rotation_quat = Quaternion()
+				else:
+					var angle = acos(clamp(dot, -1.0, 1.0)) # Clamp for safety
+					rotation_quat = Quaternion(axis.normalized(), angle)
+
+				broken_instance.global_transform.basis = Basis(rotation_quat)
+				#broken_instance.scale = Vector3(0.1,0.1,0.1)
+			
+
 	for prefab in broken_scene_prefabs:
 		if prefab:
 			var broken_instance = prefab.instantiate() as RigidBody3D
@@ -173,8 +217,14 @@ func break_object():
 
 	# Remove original object
 	if broken_models.size() == 0:
-		rigidbody.visible = false
+		normal_model.visible = false
 		rigidbody.freeze = true
+		rigidbody.set_collision_layer_value(2,false)
+		rigidbody.set_collision_layer_value(5,false)
+		rigidbody.set_collision_mask_value(1,false)
+		rigidbody.set_collision_mask_value(2,false)
+		rigidbody.set_collision_mask_value(3,false)
+		rigidbody.set_collision_mask_value(4,false)
 		
 	else:
 		normal_model.visible = false

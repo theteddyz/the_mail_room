@@ -121,7 +121,7 @@ func pick_up_object():
 	holding_object = true
 
 func enable_collision_detection():
-	await get_tree().create_timer(1).timeout
+	#await get_tree().create_timer(1).timeout
 	object.set_contact_monitor(true)
 	object.set_max_contacts_reported(10)
 

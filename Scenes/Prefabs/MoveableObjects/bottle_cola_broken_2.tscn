@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://d3gxweo066x0x"]
+[gd_scene load_steps=7 format=4 uid="uid://bdxh2y7jjtnjv"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_wei07"]
 [ext_resource type="Texture2D" uid="uid://cuuf02vh7wvi4" path="res://Assets/Textures/BlenderTextures/BottleColaEmpty.png" id="2_3hryx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shth3"]
 resource_name = "BottleColaEmpty"
-cull_mode = 2
+transparency = 4
 albedo_texture = ExtResource("2_3hryx")
 roughness = 0.05
 texture_filter = 2
@@ -49,8 +49,8 @@ height = 0.15864
 radius = 0.0390625
 
 [node name="BottleColaBroken2" type="RigidBody3D"]
-collision_layer = 2
-collision_mask = 15
+collision_layer = 524288
+collision_mask = 3
 script = ExtResource("1_wei07")
 
 [node name="BottleColaBroken2" type="MeshInstance3D" parent="."]

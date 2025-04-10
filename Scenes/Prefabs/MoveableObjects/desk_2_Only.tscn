@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://3bbxkn5brr4h" path="res://Scenes/Prefabs/crouch_assistant.tscn" id="9_u28al"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
-size = Vector3(2.45619, 0.0628052, 1.15861)
+size = Vector3(2.48758, 0.118485, 1.17257)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ixxc"]
 size = Vector3(0.0406456, 1.07336, 1.12402)
@@ -148,7 +148,7 @@ streams_count = 1
 stream_0/stream = ExtResource("6_8vp8r")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1kjp7"]
-size = Vector3(1.67114, 1, 1.16528)
+size = Vector3(1.67114, 0.927246, 1.16528)
 
 [node name="Desk" type="Node3D"]
 
@@ -162,7 +162,7 @@ script = ExtResource("1_md8ep")
 should_freeze = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038018, 1.11285, 0.0113189)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000417221, 1.07851, 0.00434057)
 shape = SubResource("BoxShape3D_c71w3")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Desk"]
@@ -331,8 +331,7 @@ transform = Transform3D(-0.0103461, 0, -9.04485e-10, 0, 0.0103461, 0, 9.04485e-1
 
 [node name="Crouch_Assistant" parent="Desk" instance=ExtResource("9_u28al")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00288588, 0.419168, 0.00491192)
-collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Desk/Crouch_Assistant"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.312378, 0.207126, 0.0826428)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.312378, 0.170749, 0.0826428)
 shape = SubResource("BoxShape3D_1kjp7")

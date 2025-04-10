@@ -1,25 +1,23 @@
-[gd_scene load_steps=24 format=4 uid="uid://lguytgydib6h"]
+[gd_scene load_steps=33 format=4 uid="uid://dfkutgejqdtep"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_dvhb3"]
 [ext_resource type="Texture2D" uid="uid://dw4ssh18dnqpg" path="res://Assets/Textures/BlenderTextures/BottleCola.png" id="2_dvhb3"]
 [ext_resource type="Texture2D" uid="uid://cuuf02vh7wvi4" path="res://Assets/Textures/BlenderTextures/BottleColaEmpty.png" id="3_shth3"]
 [ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="4_wbr7g"]
-[ext_resource type="PackedScene" uid="uid://cfmsdnujvesvq" path="res://Scenes/Prefabs/MoveableObjects/bottle_cola_broken.tscn" id="5_6dfbj"]
-[ext_resource type="AudioStream" uid="uid://5f5atatab1fl" path="res://Assets/Audio/SoundFX/DestructionComputer2.mp3" id="5_falwb"]
-[ext_resource type="AudioStream" uid="uid://bm3nm1l6pmfn7" path="res://Assets/Audio/SoundFX/DestructionComputer.mp3" id="6_tbi8c"]
-[ext_resource type="PackedScene" uid="uid://d3gxweo066x0x" path="res://Scenes/Prefabs/MoveableObjects/bottle_cola_broken_2.tscn" id="6_wbr7g"]
-[ext_resource type="AudioStream" uid="uid://batn5vnkweh7n" path="res://Assets/Audio/SoundFX/ImpactComputer.mp3" id="7_xtcta"]
-[ext_resource type="AudioStream" uid="uid://dc7uvwggouwhj" path="res://Assets/Audio/SoundFX/ImpactComputer2.mp3" id="8_50ldl"]
-[ext_resource type="AudioStream" uid="uid://hhkh5wwplqt5" path="res://Assets/Audio/SoundFX/ImpactComputer3.mp3" id="9_yalt3"]
-[ext_resource type="AudioStream" uid="uid://c3o1w0k2nmxql" path="res://Assets/Audio/SoundFX/ImpactComputer4.mp3" id="10_db7sv"]
-[ext_resource type="AudioStream" uid="uid://bxtc04ia8pi8" path="res://Assets/Audio/SoundFX/ImpactComputer5.mp3" id="11_vrnyy"]
-[ext_resource type="AudioStream" uid="uid://hhwvwau3w4b1" path="res://Assets/Audio/SoundFX/ImpactComputer6.mp3" id="12_jmrx3"]
+[ext_resource type="PackedScene" uid="uid://chwskqy1r303h" path="res://Scenes/Prefabs/MoveableObjects/bottle_cola_broken.tscn" id="5_6dfbj"]
+[ext_resource type="PackedScene" uid="uid://bdxh2y7jjtnjv" path="res://Scenes/Prefabs/MoveableObjects/bottle_cola_broken_2.tscn" id="6_wbr7g"]
+[ext_resource type="PackedScene" uid="uid://jj8ye2pdjfcr" path="res://Scenes/Prefabs/MoveableObjects/ColaDecal.tscn" id="7_6dfbj"]
+[ext_resource type="AudioStream" uid="uid://xdsqfc7qegn6" path="res://Assets/Audio/SoundFX/DestructionLamp.mp3" id="8_shth3"]
+[ext_resource type="AudioStream" uid="uid://cl57ajtnfgakg" path="res://Assets/Audio/SoundFX/Impacts/BottleImpact.ogg" id="9_dvhb3"]
+[ext_resource type="AudioStream" uid="uid://muc0cxv2gobj" path="res://Assets/Audio/SoundFX/Impacts/BottleImpact3.ogg" id="10_shth3"]
+[ext_resource type="AudioStream" uid="uid://cgg0i0pe7wrid" path="res://Assets/Audio/SoundFX/Impacts/BottleImpact2.ogg" id="11_6dfbj"]
+[ext_resource type="AudioStream" uid="uid://xveyn6a6glv6" path="res://Assets/Audio/SoundFX/Impacts/BottleImpact4.ogg" id="11_shth3"]
+[ext_resource type="AudioStream" uid="uid://cfuvg542lrv2m" path="res://Assets/Audio/SoundFX/Impacts/BottleImpact5.ogg" id="12_6dfbj"]
+[ext_resource type="ArrayMesh" uid="uid://bhutryyktfuw5" path="res://Assets/Models/key_broken.tres" id="15_wbr7g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dfbj"]
 resource_name = "BottleCola"
-transparency = 3
-alpha_hash_scale = 0.82
-alpha_antialiasing_mode = 0
+transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("2_dvhb3")
 roughness = 0.05
@@ -100,28 +98,88 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_knorf")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_falwb"]
-height = 0.326324
-radius = 0.0390625
+[sub_resource type="BoxShape3D" id="BoxShape3D_3muv4"]
+size = Vector3(0.0825195, 0.325562, 0.0820313)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hp4ao"]
-streams_count = 2
-stream_0/stream = ExtResource("5_falwb")
-stream_1/stream = ExtResource("6_tbi8c")
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_shth3")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v3hii"]
 playback_mode = 2
-streams_count = 6
-stream_0/stream = ExtResource("7_xtcta")
-stream_1/stream = ExtResource("8_50ldl")
-stream_2/stream = ExtResource("9_yalt3")
-stream_3/stream = ExtResource("10_db7sv")
-stream_4/stream = ExtResource("11_vrnyy")
-stream_5/stream = ExtResource("12_jmrx3")
+streams_count = 5
+stream_0/stream = ExtResource("9_dvhb3")
+stream_1/stream = ExtResource("10_shth3")
+stream_2/stream = ExtResource("11_6dfbj")
+stream_3/stream = ExtResource("11_shth3")
+stream_4/stream = ExtResource("12_6dfbj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3muv4"]
+albedo_color = Color(0.363408, 0.515058, 0.649616, 1)
+
+[sub_resource type="Curve" id="Curve_dvhb3"]
+_data = [Vector2(0, 0.824176), 0.0, 0.0, 0, 0, Vector2(0.823788, 0.824176), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.07875, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_cdijq"]
+curve = SubResource("Curve_dvhb3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_shth3"]
+emission_shape = 1
+emission_sphere_radius = 0.01
+angle_min = -124.7
+angle_max = 113.4
+inherit_velocity_ratio = 0.811
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+attractor_interaction_enabled = false
+scale_min = 0.01
+scale_max = 0.02
+scale_curve = SubResource("CurveTexture_cdijq")
+collision_mode = 1
+collision_friction = 0.29
+collision_bounce = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_falwb"]
+albedo_color = Color(0.212564, 0.0205732, 0.0448709, 1)
+
+[sub_resource type="Curve" id="Curve_tbi8c"]
+_data = [Vector2(0, 0.824176), 0.0, 0.0, 0, 0, Vector2(0.823788, 0.824176), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.07875, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_q7bvd"]
+curve = SubResource("Curve_tbi8c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xtcta"]
+emission_shape = 1
+emission_sphere_radius = 0.01
+inherit_velocity_ratio = 0.811
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+attractor_interaction_enabled = false
+scale_min = 0.01
+scale_max = 0.02
+scale_curve = SubResource("CurveTexture_q7bvd")
+collision_mode = 1
+collision_friction = 0.09
+collision_bounce = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_wbr7g"]
+radius = 2.0
+height = 2.0
+radial_segments = 4
+rings = 4
 
 [node name="BottleCola" type="RigidBody3D"]
-collision_layer = 2
-collision_mask = 15
+collision_layer = 524288
+collision_mask = 3
+sleeping = true
+freeze = true
 script = ExtResource("1_dvhb3")
 
 [node name="BottleCola" type="MeshInstance3D" parent="."]
@@ -134,21 +192,54 @@ mesh = SubResource("ArrayMesh_s27bd")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32357e-05, 0.0258331, -0.00034602)
-shape = SubResource("CylinderShape3D_falwb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000612378, 0.0256195, 0.00041692)
+shape = SubResource("BoxShape3D_3muv4")
 
-[node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("normal_model", "impact_audios", "destruction_audios")]
+[node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("normal_model", "impact_audios", "destruction_audios", "breakage_particles")]
 script = ExtResource("4_wbr7g")
 breakable = true
 broken_scene_prefabs = Array[PackedScene]([ExtResource("5_6dfbj"), ExtResource("6_wbr7g")])
+broken_decals = Array[PackedScene]([ExtResource("7_6dfbj")])
+extra_scatter_force = 1.0
+random_spawn_offset_range = 0.0
 normal_model = NodePath("../BottleCola")
+destruction_threshold = 25.0
+impact_threshold = 4
 impact_audios = NodePath("../ImpactAudioPlayer")
 destruction_audios = NodePath("../BreakageAudioPlayer")
+breakage_particles = [NodePath("../GPUParticles3D3"), NodePath("../GPUParticles3D2")]
 
 [node name="BreakageAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_hp4ao")
+pitch_scale = 1.2
 bus = &"RigidBodies"
 
 [node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_v3hii")
 bus = &"RigidBodies"
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_3muv4")
+transparency = 0.33
+cast_shadow = 0
+emitting = false
+amount = 38
+lifetime = 10000.0
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.02
+process_material = SubResource("ParticleProcessMaterial_shth3")
+draw_pass_1 = ExtResource("15_wbr7g")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_falwb")
+transparency = 0.33
+cast_shadow = 0
+emitting = false
+amount = 200
+lifetime = 20000.0
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.02
+process_material = SubResource("ParticleProcessMaterial_xtcta")
+draw_pass_1 = SubResource("SphereMesh_wbr7g")
