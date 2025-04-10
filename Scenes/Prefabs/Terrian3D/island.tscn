@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://daboi1jlu17kv"]
+[gd_scene load_steps=14 format=3 uid="uid://daboi1jlu17kv"]
 
+[ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="3_ixfdx"]
 [ext_resource type="PackedScene" uid="uid://cii43urslfueo" path="res://Scenes/Prefabs/MoveableObjects/boat.tscn" id="7_81a5s"]
 [ext_resource type="PackedScene" uid="uid://blmtegf3uucdb" path="res://Scenes/Prefabs/StaticObjects/water.tscn" id="8_ofyio"]
 
@@ -21,6 +22,72 @@ fog_mode = 1
 fog_density = 1.0
 fog_depth_curve = 0.466518
 
+[sub_resource type="Gradient" id="Gradient_fc8pc"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ixfdx"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ceh45"]
+seamless = true
+color_ramp = SubResource("Gradient_fc8pc")
+noise = SubResource("FastNoiseLite_ixfdx")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_0bgc3"]
+_shader_parameters = {
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.87,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"height_blending": true,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise3_scale": 0.225,
+&"noise_texture": SubResource("NoiseTexture2D_ceh45"),
+&"projection_angular_division": 2.0,
+&"projection_threshold": 0.8,
+&"world_space_normal_blend": true
+}
+show_checkered = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tovk2"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_1fbo2"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_tovk2")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_81a5s"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_1fbo2")])
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Boat" parent="." instance=ExtResource("7_81a5s")]
@@ -34,3 +101,14 @@ environment = SubResource("Environment_ofyio")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.788011, -0.123796, 0.603087, 0, 0.979575, 0.201078, -0.615661, 0.158452, -0.771916, 0, 58.4472, 0)
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://Assets/Textures/Terrian"
+material = SubResource("Terrain3DMaterial_0bgc3")
+assets = SubResource("Terrain3DAssets_81a5s")
+show_checkered = true
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_ixfdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.333, 4.18995, 282.699)
