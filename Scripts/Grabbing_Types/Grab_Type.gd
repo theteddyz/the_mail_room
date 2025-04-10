@@ -35,7 +35,8 @@ func start_freeze_timer():
 		freeze_timer_started = true
 		freeze_timer_ref = get_tree().create_timer(10.0)
 		await freeze_timer_ref.timeout
-		if linear_velocity.length() < 0.001 and angular_velocity.length() < 0.001:
+		if linear_velocity.length() < 0.001 and angular_velocity.length() < 0.001 and get_contact_count() > 0:
+			
 			freeze = true
 			frozen = true
 		freeze_timer_started = false
@@ -47,9 +48,8 @@ func unfreeze():
 	start_freeze_timer()
 
 func stop_freeze_timer():
-	if freeze_timer_ref and freeze_timer_ref.time_left > 0:
-		freeze_timer_ref = null
-		freeze_timer_started = false
+	freeze_timer_ref = null
+	freeze_timer_started = false
 
 func _physics_process(delta: float) -> void:
 	if should_freeze and not frozen:
