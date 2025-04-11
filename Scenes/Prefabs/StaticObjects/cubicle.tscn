@@ -26,3 +26,10 @@ wall_typed = "cubicle"
 [node name="Cubicle" type="MeshInstance3D" parent="MultimeshPointer"]
 mesh = ExtResource("5_wcexe")
 skeleton = NodePath("")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04633, 0)
+height = 2.0
+vertices = PackedVector3Array(1.93355, 0, 2.03942, 1.96343, 0, -1.62342, 0.704053, 0, -1.69221, 0.868367, 0, 0.230635, 0.263862, 0, 0.750654, -2.03271, 0, 0.716548, -2.04818, 0, 1.95324)
+affect_navigation_mesh = true
+avoidance_enabled = false

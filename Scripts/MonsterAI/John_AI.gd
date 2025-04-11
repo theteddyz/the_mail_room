@@ -152,10 +152,11 @@ func apply_pushes():
 				continue
 			push_dir.y = 0
 			var push_force = mass_ratio * push_multiplier
-			if c.get_collider().grab_type == "door":
-				c.get_collider().apply_impulse((push_dir * velocity_diff_in_push_dir * push_force)*10, c.get_position() - c.get_collider().global_position)
-			else:
-				c.get_collider().apply_impulse(push_dir * velocity_diff_in_push_dir * push_force, c.get_position() - c.get_collider().global_position)
+			if c.get_collider().has_meta("grab_type"):
+				if c.get_collider().grab_type == "door":
+					c.get_collider().apply_impulse((push_dir * velocity_diff_in_push_dir * push_force)*10, c.get_position() - c.get_collider().global_position)
+				else:
+					c.get_collider().apply_impulse(push_dir * velocity_diff_in_push_dir * push_force, c.get_position() - c.get_collider().global_position)
 
 func chase_player():
 	if !chasing:
@@ -294,10 +295,10 @@ func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
 	else:
 		nav.set_target_position(pos)
 		var count = 0
-		while !nav.is_target_reachable() and count < 15:
-			var point = pos + Vector3(randf_range(-3.5, 3.5), 0, randf_range(-3.5, 3.5))
-			nav.set_target_position(point)
-			count += 1
+		#while !nav.is_target_reachable() and count < 15:
+			#var point = pos + Vector3(randf_range(-3.5, 3.5), 0, randf_range(-3.5, 3.5))
+			#nav.set_target_position(point)
+			#count += 1
 
 
 func _on_navigation_agent_3d_link_reached(_details: Dictionary) -> void:

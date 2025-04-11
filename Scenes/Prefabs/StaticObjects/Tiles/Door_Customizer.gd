@@ -10,8 +10,10 @@ const OPEN_ROTATION = Vector3(0.0, -90.0, 0.0)
 
 func _ready():
 	for child in get_children():
-		if child is RigidBody3D:
-			door = child
+		if child is StaticBody3D:
+			for children in child.get_children():
+				if children is RigidBody3D:
+					door = children
 	remove_script()
 
 func _process(delta: float) -> void:
@@ -22,12 +24,13 @@ func _process(delta: float) -> void:
 
 
 func move_door_to_percentage(delta):
-	var new_position = CLOSE_POSITION.lerp(OPEN_POSITION, open_percentage)
-	var new_rotation = CLOSE_ROTATION.lerp(OPEN_ROTATION, open_percentage)
-	door.transform.origin = new_position
-	door.transform.basis = Basis().rotated(Vector3(1, 0, 0), deg_to_rad(new_rotation.x))
-	door.transform.basis = door.transform.basis.rotated(Vector3(0, 1, 0), deg_to_rad(new_rotation.y))
-	door.transform.basis = door.transform.basis.rotated(Vector3(0, 0, 1), deg_to_rad(new_rotation.z))
+	pass
+	#var new_position = CLOSE_POSITION.lerp(OPEN_POSITION, open_percentage)
+	#var new_rotation = CLOSE_ROTATION.lerp(OPEN_ROTATION, open_percentage)
+	#door.transform.origin = new_position
+	#door.transform.basis = Basis().rotated(Vector3(1, 0, 0), deg_to_rad(new_rotation.x))
+	#door.transform.basis = door.transform.basis.rotated(Vector3(0, 1, 0), deg_to_rad(new_rotation.y))
+	#door.transform.basis = door.transform.basis.rotated(Vector3(0, 0, 1), deg_to_rad(new_rotation.z))
 
 
 func remove_script() -> void:
