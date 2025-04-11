@@ -1,6 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://daboi1jlu17kv"]
+[gd_scene load_steps=20 format=3 uid="uid://daboi1jlu17kv"]
 
+[ext_resource type="Texture2D" uid="uid://gwmftebchbe2" path="res://Assets/Textures/Terrian/rockChannelPack.dds" id="3_1fbo2"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="3_ixfdx"]
+[ext_resource type="Texture2D" uid="uid://drnvkn4smbfde" path="res://Assets/Textures/Terrian/rockNMChannelPack.dds" id="4_81a5s"]
+[ext_resource type="Texture2D" uid="uid://c3lj8f8mueaef" path="res://Assets/Textures/Terrian/brown_mud_alb.dds" id="5_ofyio"]
+[ext_resource type="Texture2D" uid="uid://cyrgusgi6mtf7" path="res://Assets/Textures/Terrian/brown_mud_ro.dds" id="6_su5jx"]
 [ext_resource type="PackedScene" uid="uid://cii43urslfueo" path="res://Scenes/Prefabs/MoveableObjects/boat.tscn" id="7_81a5s"]
 [ext_resource type="PackedScene" uid="uid://blmtegf3uucdb" path="res://Scenes/Prefabs/StaticObjects/water.tscn" id="8_ofyio"]
 
@@ -45,8 +49,12 @@ noise = SubResource("FastNoiseLite_ixfdx")
 
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_0bgc3"]
 _shader_parameters = {
+&"auto_base_texture": 0,
+&"auto_height_reduction": 0.1,
+&"auto_overlay_texture": 1,
+&"auto_slope": 2.683,
 &"bias_distance": 512.0,
-&"blend_sharpness": 0.87,
+&"blend_sharpness": 0.405,
 &"depth_blur": 0.0,
 &"enable_macro_variation": true,
 &"enable_projection": true,
@@ -65,7 +73,9 @@ _shader_parameters = {
 &"projection_threshold": 0.8,
 &"world_space_normal_blend": true
 }
-show_checkered = true
+world_background = 0
+texture_filtering = 1
+auto_shader = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tovk2"]
 transparency = 4
@@ -85,8 +95,20 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_gpul6"]
+name = "sparse_grass_AB"
+albedo_texture = ExtResource("3_1fbo2")
+normal_texture = ExtResource("4_81a5s")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_6quqy"]
+name = "brown_mud_alb"
+id = 1
+albedo_texture = ExtResource("5_ofyio")
+normal_texture = ExtResource("6_su5jx")
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_81a5s"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_1fbo2")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_gpul6"), SubResource("Terrain3DTextureAsset_6quqy")])
 
 [node name="Node3D" type="Node3D"]
 
@@ -106,7 +128,6 @@ transform = Transform3D(-0.788011, -0.123796, 0.603087, 0, 0.979575, 0.201078, -
 data_directory = "res://Assets/Textures/Terrian"
 material = SubResource("Terrain3DMaterial_0bgc3")
 assets = SubResource("Terrain3DAssets_81a5s")
-show_checkered = true
 top_level = true
 metadata/_edit_lock_ = true
 
