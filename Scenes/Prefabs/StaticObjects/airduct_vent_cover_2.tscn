@@ -8,13 +8,15 @@
 resource_name = "modular_airduct_rectangular_01_parts01"
 cull_mode = 2
 albedo_texture = ExtResource("1_plvfc")
-metallic = 1.0
+metallic = 0.5
+metallic_specular = 0.25
 metallic_texture = ExtResource("2_ol3w3")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("2_ol3w3")
 roughness_texture_channel = 1
 normal_enabled = true
 normal_texture = ExtResource("3_id2xc")
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_pnkye"]
 _surfaces = [{
