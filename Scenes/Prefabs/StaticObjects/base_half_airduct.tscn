@@ -17,6 +17,7 @@ roughness_texture = ExtResource("2_s2w15")
 roughness_texture_channel = 1
 normal_enabled = true
 normal_texture = ExtResource("3_xmsnj")
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_y6pxh"]
 _surfaces = [{

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyubn1mlgncfh"]
 
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="1_kuvoy"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_ae83b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d8lda"]
 radius = 0.00575651
@@ -8,7 +8,7 @@ radius = 0.00575651
 [node name="RigidBody3D" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 15
-script = ExtResource("1_kuvoy")
+script = ExtResource("1_ae83b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
