@@ -5,7 +5,7 @@ var grab_paddle:bool = false
 @onready var camera_position = $"../../CameraPosition"
 var player_camera
 var mouse_sense = 0.25
-
+@onready var boating_script = $"../.."
 func interact():
 	
 	start_interaction()
@@ -41,6 +41,7 @@ func start_interaction():
 		camera_tween_rotation.set_parallel(true)
 		await camera_tween_position.finished
 		grab_paddle = true
+		boating_script.boating = true
 		
 
 

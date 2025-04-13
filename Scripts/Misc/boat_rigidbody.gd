@@ -27,7 +27,7 @@ var current_cumulative_rotation := Vector3.ZERO
 var target_cumulative_rotation := Vector3.ZERO
 
 @onready var water = $"../Water"
-
+var boating:bool = false
 func _ready():
 	# Initialize the current rotation to match the target
 	current_cumulative_rotation = Vector3.ZERO
@@ -38,42 +38,43 @@ func _ready():
 
 func _process(delta: float) -> void:
 	#if event is InputEventKey:
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	if input_dir.length() != 0:
-		if can_row:
-			var angle = self.rotation
-			self.apply_torque_impulse(Vector3(0,-input_dir.x,0)*basis*mass*0.5)
-			self.apply_impulse(-self.basis.z*100 * -input_dir.y,self.basis*Vector3(0,0,0.5))
-			self.apply_impulse(-Vector3.UP*20 * -input_dir.y,self.basis*Vector3(0,0,0.5))
-			forward = true
-			can_row = false
-			await get_tree().create_timer(row_cooldown).timeout
-			can_row = true
-			forward = false
-		#if event.pressed:
-			#print("pressed")
-			#match event.keycode:
-				#KEY_UP:
-					#print("Key Up")
-					#if can_row:
-						#var angle = self.rotation
-						#print("Can Row")
-						#self.apply_central_impulse(self.basis.z*2000)
-						#forward = true
-						#can_row = false
-						#await get_tree().create_timer(row_cooldown).timeout
-						#can_row = true
-						#forward = false
-				#KEY_LEFT:
-					#left = true
-				#KEY_RIGHT:
-					#right = true
-		#else:
-			#match event.keycode:
-				#KEY_LEFT:
-					#left = false
-				#KEY_RIGHT:
-					#right = false
+	if boating:
+		var input_dir = Input.get_vector("left", "right", "forward", "backward")
+		if input_dir.length() != 0:
+			if can_row:
+				var angle = self.rotation
+				self.apply_torque_impulse(Vector3(0,-input_dir.x,0)*basis*mass*0.5)
+				self.apply_impulse(-self.basis.z*100 * -input_dir.y,self.basis*Vector3(0,0,0.5))
+				self.apply_impulse(-Vector3.UP*20 * -input_dir.y,self.basis*Vector3(0,0,0.5))
+				forward = true
+				can_row = false
+				await get_tree().create_timer(row_cooldown).timeout
+				can_row = true
+				forward = false
+			#if event.pressed:
+				#print("pressed")
+				#match event.keycode:
+					#KEY_UP:
+						#print("Key Up")
+						#if can_row:
+							#var angle = self.rotation
+							#print("Can Row")
+							#self.apply_central_impulse(self.basis.z*2000)
+							#forward = true
+							#can_row = false
+							#await get_tree().create_timer(row_cooldown).timeout
+							#can_row = true
+							#forward = false
+					#KEY_LEFT:
+						#left = true
+					#KEY_RIGHT:
+						#right = true
+			#else:
+				#match event.keycode:
+					#KEY_LEFT:
+						#left = false
+					#KEY_RIGHT:
+						#right = false
 
 func _physics_process(delta: float) -> void:
 	var global_rot = basis*Vector3.UP
@@ -112,7 +113,7 @@ func _physics_process(delta: float) -> void:
 		angular_velocity.z = result.x
 		
 		
-		linear_damp = (Vector3.UP.angle_to(global_rot)-global_position.y)*0.25 + pow(linear_velocity.length(),1.1)*0.15
+		linear_damp = max(0.0, (Vector3.UP.angle_to(global_rot) - global_position.y) * 0.25 + pow(linear_velocity.length(), 1.1) * 0.15)
 		#angular_damp = angle_between*1
 	else:
 		linear_damp = 0

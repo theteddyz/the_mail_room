@@ -1,14 +1,69 @@
-[gd_scene load_steps=23 format=3 uid="uid://daboi1jlu17kv"]
+[gd_scene load_steps=31 format=3 uid="uid://daboi1jlu17kv"]
 
+[ext_resource type="Shader" uid="uid://bbsjl8ntid7d3" path="res://Scripts/Shaders/water.gdshader" id="2_su5jx"]
 [ext_resource type="Texture2D" uid="uid://gwmftebchbe2" path="res://Assets/Textures/Terrian/rockChannelPack.dds" id="3_1fbo2"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="3_ixfdx"]
 [ext_resource type="Texture2D" uid="uid://drnvkn4smbfde" path="res://Assets/Textures/Terrian/rockNMChannelPack.dds" id="4_81a5s"]
 [ext_resource type="Texture2D" uid="uid://c3lj8f8mueaef" path="res://Assets/Textures/Terrian/brown_mud_alb.dds" id="5_ofyio"]
 [ext_resource type="Texture2D" uid="uid://cyrgusgi6mtf7" path="res://Assets/Textures/Terrian/brown_mud_ro.dds" id="6_su5jx"]
-[ext_resource type="PackedScene" uid="uid://cii43urslfueo" path="res://Scenes/Prefabs/MoveableObjects/boat.tscn" id="7_81a5s"]
 [ext_resource type="Texture2D" uid="uid://de5f6fg30eanj" path="res://Assets/Textures/Terrian/white_rocky_path_alb.dds" id="7_ofyio"]
 [ext_resource type="PackedScene" uid="uid://blmtegf3uucdb" path="res://Scenes/Prefabs/StaticObjects/water.tscn" id="8_ofyio"]
 [ext_resource type="Texture2D" uid="uid://kkw7tj0wmfcg" path="res://Assets/Textures/Terrian/white_rocky_path_ro.dds" id="8_su5jx"]
+[ext_resource type="PackedScene" uid="uid://u0uxftghqh6o" path="res://Scenes/Prefabs/MoveableObjects/boat_rigidbody.tscn" id="9_ofyio"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_buj4o"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ugptm"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_buj4o")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ugptm"]
+noise_type = 3
+seed = 2
+frequency = 0.011
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f2loa"]
+seamless = true
+as_normal_map = true
+bump_strength = 6.0
+noise = SubResource("FastNoiseLite_ugptm")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f2loa"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qmojg"]
+seamless = true
+noise = SubResource("FastNoiseLite_f2loa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpul6"]
+render_priority = -1
+shader = ExtResource("2_su5jx")
+shader_parameter/albedo = Color(1.68458e-07, 0.233291, 0.329343, 1)
+shader_parameter/albedo2 = Color(0, 0.231373, 0.321569, 1)
+shader_parameter/color_deep = Color(0.105882, 0.294118, 0.329412, 1)
+shader_parameter/color_shallow = Color(0, 0.552941, 0.65098, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.055
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_ugptm")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_f2loa")
+shader_parameter/wave = SubResource("NoiseTexture2D_qmojg")
+shader_parameter/wave_time = 0.0
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_2_direction = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/wave_speed = 2.0
+shader_parameter/noise_scale = 5.0
+shader_parameter/height_scale = 0.15
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_1fbo2"]
 rayleigh_coefficient = 33.6
@@ -20,12 +75,13 @@ sky_material = SubResource("PhysicalSkyMaterial_1fbo2")
 [sub_resource type="Environment" id="Environment_ofyio"]
 background_mode = 2
 sky = SubResource("Sky_4eyav")
-tonemap_mode = 2
+tonemap_mode = 4
 sdfgi_enabled = true
 fog_mode = 1
 fog_light_energy = 0.33
 fog_density = 0.4105
 fog_depth_curve = 0.466518
+volumetric_fog_length = 20.88
 
 [sub_resource type="Gradient" id="Gradient_fc8pc"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -121,11 +177,9 @@ texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Boat" parent="." instance=ExtResource("7_81a5s")]
-transform = Transform3D(0.999831, 0, 0, 0, 0.999834, 0, 0, 0, 0.999831, 110.545, 0, 253.415)
-
 [node name="Water" parent="." instance=ExtResource("8_ofyio")]
-transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 111.893, 0, 255.382)
+transform = Transform3D(600, 0, 0, 0, 1, 0, 0, 0, 600, 111.893, 0, 255.382)
+surface_material_override/0 = SubResource("ShaderMaterial_gpul6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ofyio")
@@ -141,4 +195,7 @@ top_level = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("3_ixfdx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.333, 4.18995, 282.699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.277, 4.18995, 269.572)
+
+[node name="Boat" parent="." instance=ExtResource("9_ofyio")]
+transform = Transform3D(0.999831, 0, 0, 0, 0.999834, 0, 0, 0, 0.999831, 110.107, 0, 255.86)
