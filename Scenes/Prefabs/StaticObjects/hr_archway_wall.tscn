@@ -42,8 +42,8 @@ size = Vector3(2.6445, 0.0520355, 0.313889)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_87lbr"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_60kf4"]
-size = Vector3(1.27593, 2.5379, 0.223328)
+[sub_resource type="BoxShape3D" id="BoxShape3D_8l1s5"]
+size = Vector3(1.21802, 2.23875, 0.223328)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5ch2d"]
 streams_count = 4
@@ -52,8 +52,8 @@ stream_1/stream = ExtResource("18_os4sb")
 stream_2/stream = ExtResource("19_c257p")
 stream_3/stream = ExtResource("20_hy75y")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ydc4h"]
-size = Vector3(2.06232, 2.33894, 0.888916)
+[sub_resource type="BoxShape3D" id="BoxShape3D_bex0t"]
+size = Vector3(2.06232, 2.38063, 0.888916)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xpm01"]
 resource_name = "MiddleDoor"
@@ -380,62 +380,11 @@ shape = SubResource("BoxShape3D_uhg2l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0197489, 2.53029, -0.0187198)
 shape = SubResource("BoxShape3D_03vr2")
 
-[node name="Door_Lock" type="Node" parent="." node_paths=PackedStringArray("door1", "door2", "audio_player")]
+[node name="Door_Lock" type="Node" parent="." node_paths=PackedStringArray("door2")]
 script = ExtResource("16_j4tbd")
-door1 = NodePath("../RigidBody3D2")
 door2 = NodePath("../RigidBody3D3")
-audio_player = NodePath("../RigidBody3D2/AudioStreamPlayer3D")
-
-[node name="RigidBody3D2" type="RigidBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.24042, 0, 0.0376517)
-collision_layer = 2
-collision_mask = 4110
-axis_lock_linear_y = true
-mass = 3.0
-physics_material_override = SubResource("PhysicsMaterial_87lbr")
-center_of_mass_mode = 1
-center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
-script = ExtResource("1_8l1s5")
-grab_type = "door"
-
-[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="RigidBody3D2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00332236, 1.03994, -0.0183402)
-node_a = NodePath("../..")
-node_b = NodePath("..")
-angular_limit/enable = true
-angular_limit/lower = 0.0
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.645213, 1.27219, -0.0614319)
-shape = SubResource("BoxShape3D_60kf4")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RigidBody3D2"]
-transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.50384, 0)
-stream = SubResource("AudioStreamRandomizer_5ch2d")
-max_distance = 25.0
-script = ExtResource("21_rulya")
-
-[node name="Monster_Detector" type="Area3D" parent="RigidBody3D2"]
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("22_itqju")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2/Monster_Detector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0941466, 1.27354, 0.419556)
-shape = SubResource("BoxShape3D_ydc4h")
-
-[node name="HospitalDoor2" type="MeshInstance3D" parent="RigidBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0174038, 0, -3.72529e-09)
-mesh = SubResource("ArrayMesh_vpr0s")
-skeleton = NodePath("")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2/HospitalDoor2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634822, 1.72682, 0.0252205)
-mesh = SubResource("BoxMesh_dxs71")
-surface_material_override/0 = SubResource("ShaderMaterial_hj2yo")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34258, 0, 0.0376517)
 collision_layer = 2
 collision_mask = 4110
 axis_lock_linear_y = true
@@ -444,11 +393,10 @@ physics_material_override = SubResource("PhysicsMaterial_87lbr")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 script = ExtResource("1_8l1s5")
-grab_type = "door"
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.645213, 1.27219, -0.0614319)
-shape = SubResource("BoxShape3D_60kf4")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.616261, 1.27369, -0.0614319)
+shape = SubResource("BoxShape3D_8l1s5")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RigidBody3D3"]
 transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.50384, 0)
@@ -462,10 +410,11 @@ collision_mask = 0
 script = ExtResource("22_itqju")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3/Monster_Detector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0941466, 1.27354, 0.419556)
-shape = SubResource("BoxShape3D_ydc4h")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0941466, 1.25269, 0.419556)
+shape = SubResource("BoxShape3D_bex0t")
 
 [node name="HospitalDoor2" type="MeshInstance3D" parent="RigidBody3D3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.22919, 0, 0)
 mesh = SubResource("ArrayMesh_vpr0s")
 skeleton = NodePath("")
 
@@ -475,16 +424,63 @@ mesh = SubResource("BoxMesh_dxs71")
 surface_material_override/0 = SubResource("ShaderMaterial_hj2yo")
 
 [node name="JoltHingeJoint3D3" type="HingeJoint3D" parent="RigidBody3D3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0018518, 1.01394, -0.0516862)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.22842, 1.01394, 0.047476)
 node_a = NodePath("../..")
 node_b = NodePath("..")
 angular_limit/enable = true
-angular_limit/lower = 0.0
+angular_limit/upper = 0.0
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31689, 0, 0)
+collision_layer = 2
+collision_mask = 4110
+axis_lock_linear_y = true
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_87lbr")
+center_of_mass_mode = 1
+center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
+script = ExtResource("1_8l1s5")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="RigidBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.616261, 1.27369, -0.0614319)
+shape = SubResource("BoxShape3D_8l1s5")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RigidBody3D4"]
+transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.50384, 0)
+stream = SubResource("AudioStreamRandomizer_5ch2d")
+max_distance = 25.0
+script = ExtResource("21_rulya")
+
+[node name="Monster_Detector" type="Area3D" parent="RigidBody3D4"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("22_itqju")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4/Monster_Detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0941466, 1.25269, 0.419556)
+shape = SubResource("BoxShape3D_bex0t")
+
+[node name="HospitalDoor2" type="MeshInstance3D" parent="RigidBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0498614, 0, 0)
+mesh = SubResource("ArrayMesh_vpr0s")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D4/HospitalDoor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634822, 1.72682, 0.0252205)
+mesh = SubResource("BoxMesh_dxs71")
+surface_material_override/0 = SubResource("ShaderMaterial_hj2yo")
+
+[node name="JoltHingeJoint3D3" type="HingeJoint3D" parent="RigidBody3D4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0365535, 1.01394, -0.0097509)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+angular_limit/enable = true
+angular_limit/upper = 0.0
 
 [node name="ArchwayWall" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("ArrayMesh_kjfck")
 skeleton = NodePath("")
 
-[connection signal="body_entered" from="RigidBody3D2/Monster_Detector" to="RigidBody3D2/Monster_Detector" method="_on_body_entered"]
 [connection signal="body_entered" from="RigidBody3D3/Monster_Detector" to="RigidBody3D3/Monster_Detector" method="_on_body_entered"]
+[connection signal="body_entered" from="RigidBody3D4/Monster_Detector" to="RigidBody3D4/Monster_Detector" method="_on_body_entered"]
