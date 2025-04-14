@@ -65,7 +65,6 @@ path_height_offset = 0.2
 navigation_layers = 3
 avoidance_enabled = true
 avoidance_layers = 0
-debug_enabled = true
 debug_path_custom_color = Color(0.491815, 0, 0.251935, 1)
 debug_path_custom_point_size = 11.05
 
