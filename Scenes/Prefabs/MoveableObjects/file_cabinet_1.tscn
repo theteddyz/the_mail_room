@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://c7e4imgjbdx46"]
+[gd_scene load_steps=39 format=4 uid="uid://c7e4imgjbdx46"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_1xdp2"]
 [ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="3_5nqi4"]
@@ -16,7 +16,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0t41"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0h7m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fo7lw"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -48,7 +48,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_h0h7m"),
+"material": SubResource("StandardMaterial3D_fo7lw"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -65,9 +65,6 @@ size = Vector3(0.506714, 0.0909729, 0.610962)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n8wyb"]
 size = Vector3(0.506714, 0.0525284, 0.624023)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nykrr"]
-size = Vector3(0.506714, 1.62348, 0.0101318)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nclqc"]
 
@@ -181,10 +178,6 @@ shape = SubResource("BoxShape3D_i4j71")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10412e-05, 0.771034, 0.0298617)
 shape = SubResource("BoxShape3D_n8wyb")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.10412e-05, -0.0144433, 0.343643)
-shape = SubResource("BoxShape3D_nykrr")
 
 [node name="Drawer" type="RigidBody3D" parent="." node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05993e-09, 0.554, -0.241367)

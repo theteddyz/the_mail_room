@@ -5,15 +5,11 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_birfm"]
 resource_name = "FileClutter.003"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("1_rq7iu")
 texture_filter = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0v2cw"]
 resource_name = "FileClutter.002"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("2_vs68u")
 texture_filter = 2
 

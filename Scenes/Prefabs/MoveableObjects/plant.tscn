@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=4 uid="uid://bwnbou1pjcf8l"]
 
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_26r2r"]
 [ext_resource type="Texture2D" uid="uid://b571rjlxpyhvt" path="res://Assets/Textures/BlenderTextures/Plant.png" id="1_y0vx6"]
-[ext_resource type="Script" uid="uid://yfdslqiugp0s" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_3uksl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6wq47"]
 
@@ -361,6 +361,7 @@ collision_layer = 2
 collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_6wq47")
+script = ExtResource("1_26r2r")
 
 [node name="Plant" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.147098, 0)
@@ -369,32 +370,27 @@ skeleton = NodePath("")
 
 [node name="Plant_leaf" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0203891, 0.139737, -0.0374942)
-collision_layer = 6
-collision_mask = 7
+collision_layer = 0
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
 angular_damp = 2.0
 
-[node name="Interpolator" type="Node3D" parent="Plant/Plant_leaf"]
-script = ExtResource("2_3uksl")
-
-[node name="PlantLeaves" type="MeshInstance3D" parent="Plant/Plant_leaf/Interpolator"]
+[node name="PlantLeaves" type="MeshInstance3D" parent="Plant/Plant_leaf"]
 mesh = SubResource("ArrayMesh_brjpg")
 skeleton = NodePath("")
-
-[node name="JoltPinJoint3D" type="PinJoint3D" parent="Plant/Plant_leaf"]
-node_a = NodePath("../../..")
-node_b = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plant/Plant_leaf"]
 transform = Transform3D(0.896185, 0.266859, 0.354456, -0.0128528, -0.782948, 0.621954, 0.443495, -0.561942, -0.698236, 0.11816, 0.140645, -0.352595)
 shape = SubResource("CapsuleShape3D_o0qmg")
 
+[node name="JoltGeneric6DOFJoint3D" type="Generic6DOFJoint3D" parent="Plant/Plant_leaf"]
+node_a = NodePath("..")
+node_b = NodePath("../../..")
+
 [node name="Plant_leaf_2" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0185037, 0.133135, -0.00745511)
-collision_layer = 6
-collision_mask = 7
+collision_layer = 0
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
@@ -414,8 +410,7 @@ shape = SubResource("CapsuleShape3D_2064b")
 
 [node name="plant_leaf_3" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0191102, 0.133128, -0.0115433)
-collision_layer = 6
-collision_mask = 7
+collision_layer = 0
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
@@ -435,8 +430,7 @@ shape = SubResource("CapsuleShape3D_m5c4g")
 
 [node name="plant_leaf_4" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00145578, 0.134427, -0.0284832)
-collision_layer = 6
-collision_mask = 7
+collision_layer = 0
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
@@ -456,8 +450,7 @@ shape = SubResource("CapsuleShape3D_k748d")
 
 [node name="plant_leaf_5" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0227046, 0.136445, 0.00898886)
-collision_layer = 6
-collision_mask = 7
+collision_layer = 0
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
@@ -477,8 +470,7 @@ shape = SubResource("CapsuleShape3D_v4yv4")
 
 [node name="plant_leaf_6" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00495005, 0.138299, 0.0170307)
-collision_layer = 6
-collision_mask = 7
+collision_layer = 0
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
@@ -498,8 +490,7 @@ shape = SubResource("CapsuleShape3D_qgklf")
 
 [node name="plant_leaf_7" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0179777, 0.138135, 0.0149884)
-collision_layer = 6
-collision_mask = 7
+collision_layer = 0
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5
@@ -519,8 +510,7 @@ shape = SubResource("CapsuleShape3D_e77cq")
 
 [node name="plant_leaf_8" type="RigidBody3D" parent="Plant"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00344181, 0.135133, 0.0437412)
-collision_layer = 6
-collision_mask = 7
+collision_layer = 0
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_wbj67")
 gravity_scale = 0.5

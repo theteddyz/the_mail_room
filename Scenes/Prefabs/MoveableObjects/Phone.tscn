@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=4 uid="uid://bbrt2vrul43u7"]
 
-[ext_resource type="Script" path="res://Scripts/Misc/rope.gd" id="1_t8h8n"]
+[ext_resource type="Script" uid="uid://bf2i36r1n4ov1" path="res://Scripts/Misc/rope.gd" id="1_t8h8n"]
 [ext_resource type="PackedScene" uid="uid://cyubn1mlgncfh" path="res://Assets/Models/Rope/RopeBody.tscn" id="2_5n5pp"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/GrabbableObject.gd" id="3_ruqdl"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="3_wyy1j"]
 [ext_resource type="Texture2D" uid="uid://2f301eomwrmh" path="res://Assets/Textures/BlenderTextures/PhoneReciever.png" id="5_hxlhv"]
 [ext_resource type="Texture2D" uid="uid://dnxfsc1rrdlsq" path="res://Assets/Textures/BlenderTextures/Phone.png" id="6_sdxew"]
 
@@ -163,7 +163,7 @@ impulse_clamp = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146072, -0.297619, -0.00608948)
 collision_layer = 2
 collision_mask = 15
-script = ExtResource("3_ruqdl")
+script = ExtResource("3_wyy1j")
 
 [node name="PhoneReciever2" type="MeshInstance3D" parent="PhoneReciever"]
 mesh = SubResource("ArrayMesh_5lkld")
@@ -177,7 +177,7 @@ shape = SubResource("BoxShape3D_tflar")
 transform = Transform3D(1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 1, -0.086094, 0.312072, -0.0504298)
 collision_layer = 2
 collision_mask = 15
-script = ExtResource("3_ruqdl")
+script = ExtResource("3_wyy1j")
 
 [node name="PhoneBody" type="MeshInstance3D" parent="PhoneBody"]
 mesh = SubResource("ArrayMesh_miiua")

@@ -7,8 +7,6 @@ size = Vector3(0.905457, 1.2464, 0.288361)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3uk0r"]
 resource_name = "Radiator"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("4_bx3fv")
 texture_filter = 2
 

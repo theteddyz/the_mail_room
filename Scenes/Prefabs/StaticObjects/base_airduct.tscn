@@ -20,6 +20,7 @@ roughness_texture = ExtResource("2_eka3b")
 roughness_texture_channel = 1
 normal_enabled = true
 normal_texture = ExtResource("3_4vcnp")
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvamv"]
 resource_name = "modular_airduct_rectangular_01_parts01"
@@ -34,6 +35,7 @@ roughness_texture = ExtResource("5_qp6j6")
 roughness_texture_channel = 1
 normal_enabled = true
 normal_texture = ExtResource("6_7s133")
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5t0w4"]
 _surfaces = [{

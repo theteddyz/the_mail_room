@@ -1,53 +1,97 @@
 shader_type spatial;
+render_mode depth_prepass_alpha;
 
-uniform vec4 primary_color : source_color;
-uniform vec4 secondary_color : source_color;
-uniform float roughness = 0.2;
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D DEPTH_TEXTURE: hint_depth_texture, filter_linear_mipmap;
 
-uniform float normalmap_a_strength : hint_range(0.0, 1.0, 0.01) = 0.5;
-uniform float normalmap_b_strength : hint_range(0.0, 1.0, 0.01) = 0.25;
-uniform vec2 movement_direction = vec2(0.2, 0.1);
-uniform float movement_strength = 0.12;
-uniform float uv_scale = 1.0;
+uniform vec3 albedo : source_color;
+uniform vec3 albedo2 : source_color;
+uniform vec4 color_deep : source_color;
+uniform vec4 color_shallow : source_color;
 
-uniform float depth_distance : hint_range(0.0, 20.0, 0.1) = 4.0;
-uniform float beers_law : hint_range(0.0, 20.0, 0.1) = 12.0;
-uniform float water_transparency : hint_range(0.0, 1.0, 0.01) = 0.0;
-uniform float refraction_strength : hint_range(0.0, 8.0, 0.001) = 5.0;
+uniform float metallic : hint_range(0.0, 1.0) = 0;
+uniform float roughness : hint_range(0.0, 1.0) = 0.02;
 
-uniform float water_surface_y = 0.0; // Set this from script at runtime
-uniform sampler2D normalmap_a : hint_normal;
-uniform sampler2D normalmap_b : hint_normal;
-uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+uniform sampler2D texture_normal;
+uniform sampler2D texture_normal2;
+uniform sampler2D wave;
 
-float fresnel(float amount, vec3 normal, vec3 view) {
-	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.1, 1.0)), amount);
+uniform float wave_time = 0;
+uniform vec2 wave_direction = vec2(2.0,0.0);
+uniform vec2 wave_2_direction = vec2(0.0,1.0);
+uniform float time_scale : hint_range(0.0, 0.2, 0.005) = 0.025;
+uniform float wave_speed = 2.0;
+uniform float noise_scale = 10.0;
+uniform float height_scale = 0.15;
+uniform float beers_law = 2.0;
+uniform float depth_offset = -0.75;
+
+varying float height;
+varying vec3 world_pos;
+
+uniform float edge_scale = 0.1;
+uniform float near = 0.5;
+uniform float far = 100.0;
+uniform vec3 edge_color : source_color;
+
+float fresnel(float amount, vec3 normal, vec3 view)
+{
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
+float edge(float depth){
+
+	depth = 1.0 - 2.0 * depth;
+
+	return near * far / (far + depth * (near - far));
+
+}
+
+void vertex() {
+	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	height = texture(wave, world_pos.xz / noise_scale + time_scale).r;
+	VERTEX.y += height * height_scale;
 }
 
 void fragment() {
-	vec2 uv_movement = movement_direction * TIME * movement_strength;
-	vec2 uv = UV * uv_scale;
+	float depth_texture = texture(DEPTH_TEXTURE, SCREEN_UV).r;
+	float depth = PROJECTION_MATRIX[3][2] / (depth_texture + PROJECTION_MATRIX[2][2]);
+	depth = depth + VERTEX.z;
+	float depth_blend = exp((depth + depth_offset) * -beers_law);
+	depth_blend = clamp(1.0 - depth_blend, 0.0, 1.0);
+	
+	vec3 screen_color = textureLod(SCREEN_TEXTURE, SCREEN_UV, depth_blend * 2.5).rgb;
+	vec3 depth_color = mix(color_shallow.rgb, color_deep.rgb, depth_blend);
+	vec3 color = mix(screen_color * depth_color, depth_color * 0.25, depth_blend * 0.5);
+	
+	float z_depth = edge(texture(DEPTH_TEXTURE, SCREEN_UV).x);
+	float z_pos = edge(FRAGCOORD.z);
+	float z_dif = z_depth - z_pos;
+	if (z_pos > z_depth - 0.01) {
+ 	   discard;
+}
+	vec2 time = (TIME * wave_direction) * time_scale;
+	vec2 time2 = (TIME * wave_2_direction) * time_scale;
 
-	// Combine the normal maps
-	vec3 normalmap = texture(normalmap_a, uv + uv_movement).rgb * normalmap_a_strength;
-	normalmap += texture(normalmap_b, uv - uv_movement).rgb * normalmap_b_strength;
-	vec3 ref_normal_map = normalmap * 2.0 - (normalmap_a_strength + normalmap_b_strength);
-	vec3 ref_normal = mix(NORMAL, TANGENT * ref_normal_map + BINORMAL * ref_normal_map + NORMAL * ref_normal_map, 1.0);
+	vec3 normal_blend = mix(texture(texture_normal, world_pos.xz / noise_scale + time).rgb, texture(texture_normal2, world_pos.xz / noise_scale + time2).rgb, 0.5);
+	
+	float fresnel = fresnel(5.0, NORMAL, VIEW);
+	vec3 surface_color = mix(albedo, albedo2, fresnel);
+	vec3 depth_color_adj = mix(edge_color, color, step(edge_scale, z_dif));
+	
+	ALBEDO = clamp(surface_color + depth_color_adj,vec3(0),vec3(1.0));
+	ALPHA = 1.0;
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	NORMAL_MAP = normal_blend;
 
-	// Simple refraction offset (optional)
-	vec2 ref_ofs = SCREEN_UV - ref_normal.xy * refraction_strength;
-	vec3 refraction_texture = textureLod(screen_texture, ref_ofs, ROUGHNESS * 2.0).rgb;
+	// Calculate water surface depth
+	float water_depth = edge(FRAGCOORD.z);
+	// Calculate scene depth
+	float scene_depth = edge(depth_texture);
 
-	// World-space depth calculation
-	float depth = clamp(water_surface_y - 0.0, 0.0, depth_distance);
-	float depth_blend = exp(-depth * beers_law);
-	float basic_fresnel = fresnel(3.0, NORMAL, VIEW);
-
-	// Color blending
-	vec3 depth_color = mix(secondary_color.rgb, primary_color.rgb, depth_blend);
-	vec3 final_color = mix(depth_color, refraction_texture, water_transparency * depth_blend);
-
-	ALBEDO = final_color;
-	ROUGHNESS = roughness * (1.0 - basic_fresnel);
-	NORMAL_MAP = normalmap;
+	// Only render if water is in front of scene objects
+	if (water_depth > scene_depth) {
+	    discard;
+	}
 }

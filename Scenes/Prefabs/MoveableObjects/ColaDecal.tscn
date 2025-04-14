@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://jj8ye2pdjfcr"]
+
+[ext_resource type="Texture2D" uid="uid://dg2blrobt7cyy" path="res://Assets/Textures/Decals/ColaSplatter.png" id="1_3mwt2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3mwt2"]
+
+[node name="BottleColaBroken2" type="Decal"]
+size = Vector3(1, 1, 1)
+texture_albedo = ExtResource("1_3mwt2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.17, 0, 0, 0, -9.48537e-08, 2.17, 0, -2.17, -9.48537e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_3mwt2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.17, 0, 0, 0, 2.84561e-07, -2.17, 0, 2.17, 2.84561e-07, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_3mwt2")

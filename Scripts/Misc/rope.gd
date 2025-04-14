@@ -62,7 +62,7 @@ func _add_pin_joint(node_A, node_B)->void:
 	if node_A == null:
 		return 
 	
-	var pin = JoltGeneric6DOFJoint3D.new()
+	var pin = Generic6DOFJoint3D.new()
 	#pin.set("params/bias",bias)
 	#pin.set("params/damping",damping)
 	#pin.set("params/impulse_clamp",impulse_clamp)

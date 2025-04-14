@@ -7,8 +7,6 @@ size = Vector3(0.734606, 0.907929, 0.0233231)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4y3x0"]
 resource_name = "EmployeeOfTheMonth"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("2_ai2pu")
 texture_filter = 2
 

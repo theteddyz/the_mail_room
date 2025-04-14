@@ -1,167 +1,177 @@
-@tool
-extends RigidBody3D
+extends Node3D
 
-# Physics constants
-@onready var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-const WATER_HEIGHT := 0.0
-
-# Buoyancy settings
-@export var float_force := 1.0
-@export var water_drag := 0.005
-@export var water_angular_drag := 0.015
-
-# Movement settings
-@export var thrust_force := 200
-@export var turn_force := 30
-@export var max_speed := 10.0
+@export var float_offset := 0.2  # Height above water
+@export var rock_speed := 1.0  # Speed of the rocking motion
+@export var rock_amount := 0.1  # Amount of rocking (in radians)
+@export var forward_speed := 5.0  # Speed when rowing forward
+@export var turn_speed := 2.0  # Speed of turning
 @export var row_cooldown := 0.6
-@export var impulse_duration := 2.5
-@export var impulse_curve := Curve.new()
 
-# Wave settings
-@export var wave_direction: Vector2 = Vector2(0.2, 0.1)
-@export var wave_speed: float = 0.12
-@export var wave_amplitude: float = 2.0
-@export var wave_frequency: float = 1.0
-@export var rock_strength: float = 5.0
-@export var bob_strength: float = 0.2
+# Spring-damper parameters
+@export var spring_strength := 15.0  # Controls how fast it accelerates towards target
+@export var damping := 5.0  # Controls how fast it slows down after overshooting
 
-# Node references
-@onready var probes = $ProbeContainer.get_children()
-@onready var water_mesh = $"../MeshInstance3D2"
-
-# State variables
-var submerged := false
 var can_row := true
-var base_rotation: Vector3
-var base_height: float
-
-# Movement state
-var forward := false
 var left := false
 var right := false
+var time := 0.0
+var forward := false
 
-func _ready() -> void:
-	base_rotation = rotation
-	base_height = global_position.y
+# Spring-damper state variables
+var angular_velocity := Vector3.ZERO
+var current_cumulative_rotation := Vector3.ZERO
+var target_cumulative_rotation := Vector3.ZERO
+
+@onready var water = $"../Water"
+
+func _ready():
+	# Initialize the current rotation to match the target
+	current_cumulative_rotation = Vector3.ZERO
+	target_cumulative_rotation = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		_handle_key_input(event)
+		if event.pressed:
+			match event.keycode:
+				KEY_UP:
+					if can_row:
+						forward = true
+						can_row = false
+						await get_tree().create_timer(row_cooldown).timeout
+						can_row = true
+						forward = false
+				KEY_LEFT:
+					left = true
+				KEY_RIGHT:
+					right = true
+		else:
+			match event.keycode:
+				KEY_LEFT:
+					left = false
+				KEY_RIGHT:
+					right = false
 
 func _process(delta: float) -> void:
-	if Engine.is_editor_hint():
-		update_probes()
-
-func _physics_process(delta: float) -> void:
-	_handle_turning(delta)
-	apply_buoyancy()
-
-func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
-	if submerged:
-		_apply_water_resistance(state)
-
-# Input handling
-func _handle_key_input(event: InputEventKey) -> void:
-	if event.pressed:
-		match event.keycode:
-			KEY_UP:
-				apply_row_impulse()
-			KEY_LEFT:
-				left = true
-			KEY_RIGHT:
-				right = true
-	elif not event.pressed:
-		match event.keycode:
-			KEY_LEFT:
-				left = false
-			KEY_RIGHT:
-				right = false
-
-func _handle_turning(delta: float) -> void:
+	time += delta
+	
+	# Calculate target rocking motion with reduced amplitude for testing
+	var target_x = sin(time * rock_speed) * rock_amount
+	var target_z = cos(time * rock_speed * 0.7) * rock_amount * 0.5
+	
+	# Update target rotation
+	target_cumulative_rotation.x = target_x
+	target_cumulative_rotation.z = target_z
+	
+	# Apply spring-damper physics to each axis with adjusted parameters
+	var result_x = spring_damper_exact(
+		current_cumulative_rotation.x,
+		angular_velocity.x,
+		target_cumulative_rotation.x,
+		0,
+		spring_strength,
+		damping,
+		delta
+	)
+	
+	var result_z = spring_damper_exact(
+		current_cumulative_rotation.z,
+		angular_velocity.z,
+		target_cumulative_rotation.z,
+		0,
+		spring_strength,
+		damping,
+		delta
+	)
+	
+	# Update angular velocity and current rotation
+	angular_velocity.x = result_x.v
+	angular_velocity.z = result_z.v
+	current_cumulative_rotation.x = result_x.x
+	current_cumulative_rotation.z = result_z.x
+	
+	# Apply the rotation with direct mapping
+	rotation.x = current_cumulative_rotation.x
+	rotation.z = current_cumulative_rotation.z
+	
+	# Handle turning
 	if left:
-		turn_left(delta)
+		rotation.y += turn_speed * delta
 	elif right:
-		turn_right(delta)
+		rotation.y -= turn_speed * delta
+	
+	# Handle forward movement
+	if forward:
+		var forward_vec = -global_transform.basis.z
+		position += forward_vec * forward_speed * delta
+	
+	position.y = 0.23
 
-# Movement methods
-func apply_row_impulse() -> void:
-	if !can_row:
-		_apply_random_drift()
-		return
+# Spring-damper helper functions from camera movement script
+func spring_damper_exact(
+	x: float, 
+	v: float, 
+	x_goal: float, 
+	v_goal: float, 
+	stiffness: float, 
+	_damping: float, 
+	dt: float, 
+	eps: float = 1e-5
+) -> Dictionary:
+	var g = x_goal
+	var q = v_goal
+	var s = stiffness
+	var d = _damping
+	var c = g + (d * q) / (s + eps)
+	var y = d / 2.0
+
+	if abs(s - (d * d) / 4.0) < eps:  # Critically Damped
+		var j0 = x - c
+		var j1 = v + j0 * y
 		
-	can_row = false
-	var forward_vec = -global_transform.basis.z.normalized()
+		var eydt = fast_negexp(y * dt)
+		
+		x = j0 * eydt + dt * j1 * eydt + c
+		v = -y * j0 * eydt - y * dt * j1 * eydt + j1 * eydt
+
+	elif s - (d * d) / 4.0 > 0.0:  # Under Damped
+		var w = sqrt(s - (d * d) / 4.0)
+		var j = sqrt(squaref(v + y * (x - c)) / (w * w + eps) + squaref(x - c))
+		var p = fast_atan((v + (x - c) * y) / (-(x - c) * w + eps))
+		
+		j = j if (x - c) > 0.0 else -j
+		
+		var eydt = fast_negexp(y * dt)
+		
+		x = j * eydt * cos(w * dt + p) + c
+		v = -y * j * eydt * cos(w * dt + p) - w * j * eydt * sin(w * dt + p)
+
+	elif s - (d * d) / 4.0 < 0.0:  # Over Damped
+		var y0 = (d + sqrt(d * d - 4 * s)) / 2.0
+		var y1 = (d - sqrt(d * d - 4 * s)) / 2.0
+		var j1 = (c * y0 - x * y0 - v) / (y1 - y0)
+		var j0 = x - j1 - c
+		
+		var ey0dt = fast_negexp(y0 * dt)
+		var ey1dt = fast_negexp(y1 * dt)
+
+		x = j0 * ey0dt + j1 * ey1dt + c
+		v = -y0 * j0 * ey0dt - y1 * j1 * ey1dt
 	
-	var tween := create_tween()
-	tween.tween_method(
-		func(weight: float) -> void:
-			var force = forward_vec * thrust_force * impulse_curve.sample(weight) * get_physics_process_delta_time()
-			apply_impulse(force, Vector3.ZERO),
-		0.0, 1.0, impulse_duration
-	).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	
-	await get_tree().create_timer(row_cooldown).timeout
-	can_row = true
+	return {"x": x, "v": v}
 
-func _apply_random_drift() -> void:
-	var random_drift = Vector3(randf() * 0.02 - 0.01, 0, randf() * 0.02 - 0.01)
-	apply_central_force(random_drift)
+func squaref(x: float) -> float:
+	return x * x
 
-func turn_left(delta: float) -> void:
-	var turn_impulse = -global_transform.basis.x * turn_force * delta
-	apply_impulse(turn_impulse, Vector3.ZERO)
-	apply_torque_impulse(Vector3.UP * turn_force * delta)
+func fast_atan(x: float) -> float:
+	var z = abs(x)
+	var w: float
+	if z > 1.0:
+		w = 1.0 / z
+	else:
+		w = z
+	var y = (PI / 4.0) * w - w * (w - 1.0) * (0.2447 + 0.0663 * w)
+	return sign(x) * (PI / 2.0 - y if z > 1.0 else y)
 
-func turn_right(delta: float) -> void:
-	var turn_impulse = global_transform.basis.x * turn_force * delta
-	apply_impulse(turn_impulse, Vector3.ZERO)
-	apply_torque_impulse(Vector3.UP * -turn_force * delta)
-
-# Buoyancy and water physics
-func apply_buoyancy() -> void:
-	submerged = false
-	for probe in probes:
-		_apply_probe_buoyancy(probe)
-
-func _apply_probe_buoyancy(probe: Node3D) -> void:
-	var world_position = probe.global_transform.origin
-	var depth = clamp(WATER_HEIGHT - world_position.y, 0.0, 1.0)
-	
-	if depth > 0:
-		submerged = true
-		var probe_velocity = linear_velocity + angular_velocity.cross(world_position - global_transform.origin)
-		var vertical_velocity = probe_velocity.y
-		var spring_strength = float_force * gravity * depth * mass / probes.size()
-		var damping = vertical_velocity * 0.8
-		var force = Vector3.UP * (spring_strength - damping)
-		apply_force(force, world_position - global_transform.origin)
-
-func _apply_water_resistance(state: PhysicsDirectBodyState3D) -> void:
-	var lv = state.linear_velocity
-	var horizontal = Vector3(lv.x, 0, lv.z)
-	var vertical = Vector3(0, lv.y, 0)
-	
-	horizontal = horizontal.lerp(Vector3.ZERO, water_drag * 0.25)
-	if horizontal.length() > max_speed:
-		horizontal = horizontal.normalized() * max_speed
-
-	state.linear_velocity = horizontal + vertical
-	state.angular_velocity *= 1.0 - water_angular_drag
-
-# Debug visualization
-func update_probes() -> void:
-	for probe in probes:
-		_clear_debug_spheres(probe)
-		_create_debug_sphere(probe)
-
-func _clear_debug_spheres(probe: Node3D) -> void:
-	for child in probe.get_children():
-		if child is MeshInstance3D:
-			child.queue_free()
-
-func _create_debug_sphere(probe: Node3D) -> void:
-	var debug_sphere = MeshInstance3D.new()
-	debug_sphere.mesh = SphereMesh.new()
-	debug_sphere.scale = Vector3(0.1, 0.1, 0.1)
-	probe.add_child(debug_sphere)
+func fast_negexp(value: float) -> float:
+	return exp(-value)

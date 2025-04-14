@@ -9,7 +9,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvgnn"]
 resource_name = "TrashCan"
-transparency = 4
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("1_h8v2l")
 texture_filter = 2
 

@@ -1,0 +1,116 @@
+[gd_scene load_steps=23 format=4 uid="uid://cqdbyja3pf57k"]
+
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_m874j"]
+[ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="2_23n8a"]
+[ext_resource type="AudioStream" uid="uid://xdsqfc7qegn6" path="res://Assets/Audio/SoundFX/DestructionLamp.mp3" id="3_qlj4p"]
+[ext_resource type="AudioStream" uid="uid://dbt6frurw0gih" path="res://Assets/Audio/SoundFX/Impacts/CanImpact.ogg" id="4_6jkoi"]
+[ext_resource type="AudioStream" uid="uid://db1bcwvkoo52" path="res://Assets/Audio/SoundFX/Impacts/CanImpact2.ogg" id="5_rspcd"]
+[ext_resource type="AudioStream" uid="uid://bafm4u2n86rj0" path="res://Assets/Audio/SoundFX/Impacts/CanImpact11.ogg" id="6_grqjx"]
+[ext_resource type="AudioStream" uid="uid://dk7w2ttc2queo" path="res://Assets/Audio/SoundFX/Impacts/CanImpact3.ogg" id="7_8uwmq"]
+[ext_resource type="AudioStream" uid="uid://due7movbv0or2" path="res://Assets/Audio/SoundFX/Impacts/CanImpact4.ogg" id="8_gmgiw"]
+[ext_resource type="AudioStream" uid="uid://dk6cym5e5pl6p" path="res://Assets/Audio/SoundFX/Impacts/CanImpact5.ogg" id="9_4n58p"]
+[ext_resource type="AudioStream" uid="uid://dc7fuq6wqfwr" path="res://Assets/Audio/SoundFX/Impacts/CanImpact6.ogg" id="10_ktavj"]
+[ext_resource type="AudioStream" uid="uid://daliqnavemyx2" path="res://Assets/Audio/SoundFX/Impacts/CanImpact7.ogg" id="11_se4aq"]
+[ext_resource type="AudioStream" uid="uid://baylwcyu5hajb" path="res://Assets/Audio/SoundFX/Impacts/CanImpact8.ogg" id="12_5n4e6"]
+[ext_resource type="AudioStream" uid="uid://cf7hnux6scxj6" path="res://Assets/Audio/SoundFX/Impacts/CanImpact9.ogg" id="13_aan0n"]
+[ext_resource type="AudioStream" uid="uid://cbsdg4fp74jvi" path="res://Assets/Audio/SoundFX/Impacts/CanImpact10.ogg" id="14_jm7jd"]
+[ext_resource type="Texture2D" uid="uid://rfyqmyw5yhok" path="res://Assets/Textures/BlenderTextures/EnergyCan4.png" id="15_m874j"]
+[ext_resource type="Script" uid="uid://b2hcdthxbi08f" path="res://Scenes/Prefabs/MoveableObjects/energy_can.gd" id="16_wa7ld"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3muv4"]
+size = Vector3(0.0864563, 0.139305, 0.0869141)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hp4ao"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_qlj4p")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v3hii"]
+playback_mode = 2
+streams_count = 11
+stream_0/stream = ExtResource("4_6jkoi")
+stream_1/stream = ExtResource("5_rspcd")
+stream_2/stream = ExtResource("7_8uwmq")
+stream_3/stream = ExtResource("8_gmgiw")
+stream_4/stream = ExtResource("9_4n58p")
+stream_5/stream = ExtResource("10_ktavj")
+stream_6/stream = ExtResource("11_se4aq")
+stream_7/stream = ExtResource("12_5n4e6")
+stream_8/stream = ExtResource("13_aan0n")
+stream_9/stream = ExtResource("14_jm7jd")
+stream_10/stream = ExtResource("6_grqjx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23n8a"]
+resource_local_to_scene = true
+resource_name = "EnergyCan"
+cull_mode = 2
+albedo_texture = ExtResource("15_m874j")
+roughness = 0.454545
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_gx63g"]
+_surfaces = [{
+"aabb": AABB(-0.0432871, -0.069606, -0.0434612, 0.0869224, 0.138974, 0.0869224),
+"format": 34896613377,
+"index_count": 444,
+"index_data": PackedByteArray("AAAiACMAIwAiAAIAJAACACIAIwACACUAJAAmAAIAAwAkACIAAwAmACQAAwAiAAEAAAABACIAJwADAAEAJwAoAAMAKAAmAAMAJwABACkAKAAnACkAKgABAAAAKgApAAEAKAApAAYAKwApACoAKwAGACkABQAoAAYAKwAqACwALQAoAAUAJgAoAC0ABQAGAC4ALQAFAC4AJgAtAAQALwAuAAYALwAGACsALQAuAAcABAAtAAcAJgAEADAABAAHADAAJgAwAAIAJQACADAAMQAuAC8AMQAHAC4AMgAwAAcAMgAHADEAJQAwADIALwArADMAMQAvADQALwAzADQAKwAsADMAMQA0ADUAMgAxADUAJQAyADYAMgA1ADYAJQA2ADcAIwAlADcANgA1ADgAIwA3ADkAAAAjADkANwA2ADoANgA4ADoAOQA3ADsANwA6ADsAAAA5ADwAKgAAADwAKgA8ACwAPAA5AD0AOQA7AD0ALAA8AAgAPAA9AAgALAAIAD4AMwAsAD4ACwAIAD0AMwA+AD8ANAAzAD8AQAA+AAgAQAAIAAsADAA/AD4ADAA+AEAANAA/AEEANQA0AEEANQBBADgAQgBBAD8AQgA/AAwACgA4AEEACgBBAEIAQwA4AAoAQwA6ADgACgBCAEQACQA6AEMACQA7ADoAQwAKAA0ACgBEAA0ACQBDAEUAQwANAEUARgA7AAkARgA9ADsACwA9AEYARgAJAA4ACQBFAA4ACwBGAEcARgAOAEcACwBHAA8AQAALAA8ADgBIAEcAQAAPABAADABAABAARwAUAA8ARwBIABQADwATABAADwAUABMADAAQABEAQgAMABEAQgARAEQAEAASABEAEAATABIAEQBJAEQAEQASAEkARABJABYARAAWAA0AEgBKAEkAEwAYABIAEgAYAEoAEwAZABgAFAAZABMAGAAdAEoAGAAcAB0AGQAcABgASgAdAB8AGQAeABwASQBKABcASgAfABcASQAXABYAFwAfACEAGwAeABkAFAAbABkAGwAgAB4ASAAbABQASwAgABsASABLABsASwAhACAAFQBLAEgADgAVAEgARQAVAA4AFQAaAEsAGgAhAEsARQBMABUATAAaABUADQBMAEUADQAWAEwATABNABoATQAhABoAFgBNAEwAFwAhAE0AFgAXAE0A"),
+"lods": [0.0679188, PackedByteArray("AAABAAIAAwACAAEAAwAEAAIABQADAAEABQAEAAMABQABAAYAAAAGAAEABAAFAAcABAAHAAIABQAGAAcAAAACAAcAAAAHAAYAAAAAAAgAAAAIAAgACQAIAAoACwAIAAkACgAIAAwADAAIAAsACgAMAA0ACQAKAA4ACgANAA4ACwAJAA8ACQAOAA8ADAALABAACwAPABAADAAQABEADAARAA0AEAASABEAEQASAA0ADwATABAAEAATABIADgAUAA8ADwAUABMADQAVAA4ADgAVABQADQASABYADQAWABUAEgAXABYAFgAXABUAEwAYABIAEgAYABcAFAAZABMAEwAZABgAFQAaABQAFQAXABoAFAAbABkAFAAaABsAGQAcABgAGAAcAB0AGAAdABcAGQAeABwAGwAeABkAFwAdAB8AGwAgAB4AGgAgABsAFwAfACEAGgAhACAAFwAhABoA")],
+"name": "EnergyCan",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 78,
+"vertex_data": PackedByteArray("/39+C8H8AAD/f34L//8AAAAAfgv/fwAA/38AAP//AAB9JQAAfSUAAIHaAAB9JQAA//9+C/9/AAD/f34LAAAAAP9/oPW98wAAPQOg9f9/AAD/f6D1PQMAAP9/oPXB/AAAwfyg9f9/AAD/f///PQMAAD0D////fwAA/3///8H8AAA32P//N9gAAMH8////fwAA7fj///9/AACB1f//gdUAAP9////t+AAAEQf///9/AAD/f///EQcAAP9/YPa8EAAAQu9g9v9/AACrzmD2q84AALwQYPb/fwAA/39g9kLvAADW42D2/38AAEnWYPaLZwAASdZg9nOYAABPxWD22V4AAE/FYPYloQAAPH9g9v9/AAB9JX4LgdoAAMcnfgs32AAAfSUAAIHaAAA9A34L/38AAAAAAAD/fwAAgdoAAIHaAAD//wAA/38AAIHafguB2gAAN9h+CzfYAADB/H4L/38AADfYNeM32AAA/38AAAAAAACB2n4LfSUAADfYfgvHJwAAfSV+C30lAAD/f34LPQMAAMcnfgvHJwAAwfw14/9/AAA32DXjxycAAP9/NeM9AwAAxyc148cnAAA9AzXj/38AAP9/oPVBDAAAxyc14zfYAAAnLqD1Jy4AAEEMoPX/fwAA/38148H8AAAnLqD119EAANfRoPXX0QAAvfOg9f9/AAA32KD1N9gAANfRoPUnLgAAN9ig9ccnAADHJ6D1xycAADfY///HJwAAxyf//8cnAADHJ6D1N9gAAMcn//832AAAfSr//4HVAACB1f//fSoAAKvOYPZTMQAAUzFg9qvOAAB9Kv//fSoAAFMxYPZTMQAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_s5jr3"]
+resource_name = "desk_Cube_197"
+_surfaces = [{
+"aabb": AABB(-0.0432871, -0.069606, -0.0434612, 0.0869224, 0.138974, 0.0869224),
+"attribute_data": PackedByteArray("FImjbk2IUG7Ks01cUZrNmc7Fyoe4AaMjNi2fETYtIE8YgWYJhc0tDpKaLQ6FzWYJn2ctDiVOZgmsNC0OuAFmCbgBLQ6l/Eb+OQJG/rgBP51G/j+dWEMYZ3ExL5mTPidp8C6UlOMWNFg8F+WUahSaU7gBhoWDBl2DnX69JK1sNE6xfR4lm1QZFA5tIE86VC4TOlQgT5dDMD2bVDROq0KRPXKsLhODlPVMD4K9JJ6TIE8BvpE9iXLNmXtwp5TGf2RvVVgPmduET22vWk6UtVhbWjVH4oXDWmxfDEwZhOn2dz8/3VhIQdw2NHjZj0tA56oZG9EgT1HNv0E+0mFMc8FTKXPBdz+4zbFGUZpNXKOaFF14sxRdFIl3h87FUG5NiMqHBsWjbqOaBpkGxXeHeLMGmcqzzZk5P6MjvBOfEbgBHD05Pxw9vBMgT5KaZgkMtC0ODLRmCRiBLQ6fZ2YJJU4tDqw0ZgkyG2YJMhstDqOfRv4vf0Sl3J5EpS6ARv4Bv0b+3V9EpbhgRv4ifz+dS18/nWafP52zPz+dNb5EpUDeRv5Gvz+dgd1EpbbeP53i/USltkBEpX4gP51CQUb+sCFEpcchRv4KAkSlZj4QglhDm4NPMJJShy55V3MVzZm8AeRotAaGap1+kT2tbBkUsX0wPQ5tLhOXQx4lq0K9JIOUWBWeky4TOYSiJYyrWBUBvr0kOYSrPNa7oiUPgpE91rurPHKsIE+Nq/VMI4BehduEUIedcHVfoHLHWspGn2xsS3xu6fZTKRvRqhlA5yBP"),
+"format": 34896613399,
+"index_count": 444,
+"index_data": PackedByteArray("AABCAEMAQwBCAAIAAAABAEIAQwACAEQARQABAAAARAACAEYARQBHAAEARABGAEgASQBHAEUASABGAAQASQADAEcASAAEAEoASwADAEkASgAEAEwASwBMAAMASgBMAEsATQBOAAYATQBPAE4ATgBPAAUATwBNAAcABwBNAFAAUQBPAAcAUgBTAAoAUgBUAFMAVAAJAFMAVAALAAkACABSAAoACAAKAFUAVgAIAFUAVgBVAAwADQBWAAwADQAMAFcAWAANAFcAWABXAA4AWQBYAA4AWQAOAFoADwBZAFoADwBaABAAWwBcAF0AWwBeAFwAXwBbAF0AXgBgAFwAXgBhAGAAXQBcAGIAXABjAGIAXABgAGMAXQBiAGQAYABlAGMAXwBdAGYAZgBdAGQAZwBfAGYAZgBkAGgAZwBmAGkAaQBmAGgAEQBnAGkAaQBoAGoAEQBpAGsAawBpAGoAawBqABQAYABsAGUAYQBsAGAAbABtAGUAYQBuAGwAbABvAG0AbgBvAGwAbwATAG0AbgBwAG8AbwBxABMAcABxAG8AcAASAHEAFQByABcAFQBzAHIAdAAVABcAcwAYAHIAdAAXAHUAcwAWABgAGwB0AHUAFgAaABgAGwB1ABkAFgB2ABoAdwAbABkAdgAdABoAdwAZAHgAdgAcAB0AHAB3AHgAHAB4AB0AeQAgAB4AHgAgAHoAeQB7ACAAHgB6AHwAIgB7AHkAfAB6ACEAIgAfAHsAfAAhACMAJAAfACIAIwAhAH0AJAAmAB8AIwB9AH4AJwAmACQAfgB9ACUAJwAlACYAfgAlACcAKAB/AIAAgAB/AIEAKACCAH8AgACBACoAgwCCACgAKgCBAIQAgwCFAIIAKgCEAIYALACFAIMAhgCEACkALACHAIUAhgApACsAiACHACwAKwApAIkAiACJAIcAKwCJAIgALQCKAIsAiwCKAC8ALQAuAIoAiwAvADEAMAAuAC0AMQAvAIwAMAAyAC4AMQCMAI0ANAAyADAAjQCMADUANAA2ADIAjQA1ADMAjgA2ADQAMwA1AI8AjgCPADYAMwCPAI4ANwA5AJAAkAA5ADsAOwA5AJEANwA4ADkAkQA5AD0AkgA4ADcAkQA9AD8AkgA6ADgAPwA9AEEAPAA6AJIAPwBBAEAAPAA+ADoAQABBAD4AQAA+ADwA"),
+"lods": [0.0679188, PackedByteArray("AAABAAIAAAADAAEAAAACAAQAAAAEAAMABQAGAAcACAAJAAoACAALAAkACAAKAAwADQAIAAwADQAMAA4ADwANAA4ADwAOABAAEQASABMAEQATABQAFQAWABcAFgAYABcAFQAXABkAFgAaABgAGwAVABkAFgAcABoAGwAZAB0AHAAdABoAHAAbAB0AHgAfACAAHgAgACEAIgAfAB4AHgAhACMAJAAfACIAIwAhACUAJAAmAB8AIwAlACcAJwAmACQAJwAlACYAKAApACoAKgApACsALAApACgAKwApACwALQAuAC8AMAAuAC0ALQAvADEAMAAyAC4AMQAvADMANAAyADAAMwAvADUAMwA1ADQANAA2ADIANAA1ADYANwA4ADkANwA6ADgANwA5ADsAPAA6ADcAOwA5AD0APAA+ADoAOwA9AD8AQAA+ADwAPwA9AEEAQABBAD4APwBBAEAA")],
+"material": SubResource("StandardMaterial3D_23n8a"),
+"name": "EnergyCan",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 147,
+"vertex_data": PackedByteArray("/39+C8H8Gd//f34L//8Z3wAAfgv/fxnf//9+C/9/Gd//f34LAAAZ34HaAAB9Jbj0fSUAAH0luPT/fwAA//+49IHaAAB9Jf///39+C////////34L/3////9/AAD//////39+CwAA//99JQAAfSX//wAAfgv/f////38AAP//////f34L//////9/fgvB/ACA/39+C8H8AID/f6D1vfMNjf9/oPW98w2N/3+g9T0D///B/KD1/39Xwf9///89A///wfz///9/IsE9A////38u9jfY//832MKiPQOg9f9/WfX/f6D1wfygq/9////B/PSt/3///z0DyMzt+P///3/IzP9///8RB8jMEQf///9/yMzB/P///3/IzD0D////f8jMN9j//zfYyMz/f///7fjIzIHV//+B1cjM/3///8H8yMz/f6D1PQO49P9/oPW987j0wfyg9f9/uPT/f6D1wfy49D0DoPX/f7j07fj///9/ROZC72D2/3/m5f9/YPa8ECC0gdX//4HVkvH/f///EQe8s6vOYParzr7xEQf///9/c8D/f///7fgp7bwQYPb/f2TA/39g9kLvFu3/f2D2vBAZ30/FYPbZXhnfPH9g9v9/Gd9J1mD2i2cZ37wQYPb/fxnfQu9g9v9/Gd9PxWD2JaEZ39bjYPb/fxnf/39g9kLvGd+rzmD2q84Z30nWYPZzmBnffSV+C4HaGd/HJ34LN9gZ3z0Dfgv/fxnfN9h+CzfYGd99JX4LfSUZ34HafguB2hnfxyd+C8cnGd/B/H4L/38Z3/9/fgs9AxnfN9h+C8cnGd+B2n4LfSUZ3wAAAAD/f7j0/38AAAAAuPT//wAA/3+49H0lAACB2rj0gdoAAIHauPT//wAA/3///4HafguB2v//gdoAAIHa//+B2n4LfSX///9/AAAAAP//fSV+C30l//8AAAAA/3///30lAACB2v//fSV+C4Ha///HJ34Lxyf/3/9/NeM9A///xyc148cnFeD/f34LPQP//z0Dfgv/f/+/N9g148cnFeA32H4Lxyf/3/9/oPVBDP//19Gg9ScuXuAnLqD1Jy5e4L3zoPX/f+PAPQM14/9/NMDHJ34LN9j/n0EMoPX/f+PAxyc14zfYf6AnLqD119EZov9/NePB/FKGwfw14/9/NMDX0aD119EZosH8fgv/f/+/N9g14zfYf6A32H4LN9j/n/9/NePB/FKGN9j//8cnzOU32KD1xyd05scnoPXHJwz7xyf//8cnvfo32KD1N9h4oscnoPU32IbRxyf//zfYDtQ32P//xyfIzH0q//99KsjMgdX//30qyMzHJ///xyfIzH0q//+B1cjMxyf//zfYyMzX0aD1Jy649DfYoPXHJ7j0vfOg9f9/uPT/f6D1QQy49McnoPXHJ7j019Gg9dfRuPQnLqD1Jy649DfYoPU32Lj0QQyg9f9/uPTHJ6D1N9i49CcuoPXX0bj0q85g9lMxmM6B1f//fSodzlMxYPZTMaesfSr//30qAq19Kv//gdUr2lMxYParzifaUzFg9lMxGd9TMWD2q84Z36vOYPZTMRnfBtANIAbQDSAG0A0gBtANIAbQDSA1Omr0NTpq9DU6avSB2v9//3//f/+//3//f/9/////f///fKX/P/9//3//f/9//3//f////3///7j6bVds10aFsM+xT0ORiCLGzcZNMZBjINb1E8V+UOkNBvV7xf//////////Y9vINmPbyTZj28g2Y9vJNmPbyTZj28k2Y9vJNmPbyTZj28k2Y9vJNmt0yUVrdMlFa3TJRWt0yUVrdMlFMfmrP5f5AECd6m0gfOhTRq7qtiAw6AlGWrACJ6LRRkRrsKQn8dGsRAbQDSAG0A0gBtANIAbQDSAG0A0gBtANIAbQDSAG0A0gBtANIAbQDSAG0A0gBtANIAbQDSAG0A0gBtANIAbQDSAG0A0gBtANIAbQDSAG0A0gBtANIAbQDSA1Omr0NTpq9DU6avQ1Omr0NTpq9P+//398pf9/fKX/f4Ha/3////9///98pf8//3+CWv9/glr/f/9/////f2n3dYMv9P9/////f///zot1A/9/AAD/f1bvWpaMBouGo+l6nb0OCojo7/9///+9joPi1JHG5pqet9TN2KOCFZALCEermh7/fwAAN5nVEf9/AABa/c5YeKzkPiCuPEG3LgyNPi/LjThSaA2z6QnhCeul4GPbyTZj28k2Y9vJNmPbyTZj28k2Y9vJNmt0yUVrdMlFa3TJRWt0yUVrdMlFa3TJRWt0yUVrdMlFa3TJRWt0yUVrdMlFOP62MZH+CDImw34bS8PQGvS6gzmnuwI7BtANIAbQDSAG0A0g")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_gx63g")
+
+[node name="EnergyCan" type="RigidBody3D"]
+collision_layer = 524288
+collision_mask = 3
+sleeping = true
+freeze = true
+script = ExtResource("1_m874j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000440486, -0.000232749, -7.13649e-05)
+shape = SubResource("BoxShape3D_3muv4")
+
+[node name="Collision_Handler" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
+script = ExtResource("2_23n8a")
+destruction_threshold = 25.0
+impact_threshold = 4
+impact_audios = NodePath("../ImpactAudioPlayer")
+
+[node name="BreakageAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_hp4ao")
+pitch_scale = 1.2
+bus = &"RigidBodies"
+
+[node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_v3hii")
+volume_db = -7.0
+bus = &"RigidBodies"
+
+[node name="EnergyCan" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_s5jr3")
+skeleton = NodePath("")
+script = ExtResource("16_wa7ld")
+texturePreset = "Life"

@@ -5,8 +5,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4knac"]
 resource_name = "ComputerTowerSmall"
-transparency = 4
-cull_mode = 2
 albedo_texture = ExtResource("2_3r1o1")
 texture_filter = 2
 

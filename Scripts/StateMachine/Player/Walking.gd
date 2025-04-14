@@ -338,6 +338,7 @@ func regular_move(delta):
 
 
 func handle_movement_input(delta):
+	
 	if Input.is_action_pressed("crouch"):
 		audio_timer.wait_time = 0.8
 		crouch(delta)
@@ -360,6 +361,7 @@ func handle_movement_input(delta):
 	else:
 		persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
 		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
+	vertical_velocity_last_frame = persistent_state.velocity.y
 
 func crouch(delta):
 	if !crouch_assist:
