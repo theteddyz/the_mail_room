@@ -114,7 +114,7 @@ func _on_behaviour_soundbark_timer_timeout() -> void:
 		chosen_player.pitch_scale = randf_range(0.8, 1.2)
 		chosen_player.play()
 	behaviour_soundbark_timer.start(randf_range(1.88, 3.5))
-	if randi_range(0, 100) > 20:
+	if randi_range(0, 100) > 75:
 		var count = 0
 		var chosen_corpse = corpses.get_children().pick_random() as Node3D
 		while count < 35 and (abs(chosen_corpse.global_position.distance_to(player.global_position)) < 4.2 or abs(chosen_corpse.global_position.distance_to(player.global_position)) > 5.8):
