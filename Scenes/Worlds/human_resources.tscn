@@ -120,7 +120,7 @@
 [ext_resource type="PackedScene" uid="uid://cd7xk7gq0lhyi" path="res://Scenes/Prefabs/StaticObjects/airduct_vent_cover_2.tscn" id="107_677g4"]
 [ext_resource type="Texture2D" uid="uid://e7e1x6c82c6v" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_diff.png" id="107_dpat2"]
 [ext_resource type="PackedScene" uid="uid://cun8jxk2tnn8j" path="res://Scenes/Prefabs/StaticObjects/name_tag_template.tscn" id="108_1kkg0"]
-[ext_resource type="Script" uid="uid://whrhj37gwij5" path="res://Scenes/Worlds/spinning_fan.gd" id="108_fwynk"]
+[ext_resource type="Script" path="res://Scenes/Worlds/spinning_fan.gd" id="108_fwynk"]
 [ext_resource type="PackedScene" uid="uid://d3hn5glhsxdca" path="res://Assets/Models/computer.tscn" id="108_g6uex"]
 [ext_resource type="Texture2D" uid="uid://fapygil0o55s" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_metal.png-modular_airduct_rectangular_01_parts01_rough.png" id="108_v7dgj"]
 [ext_resource type="Texture2D" uid="uid://ctyvcvqr1nogm" path="res://Assets/Models/test_models/Floor2/AirDucts/modular_airduct_rectangular_01_1k_modular_airduct_rectangular_01_parts01_nor_gl.png" id="109_aox3e"]
@@ -152,7 +152,7 @@
 [ext_resource type="AudioStream" uid="uid://d3js2i6k3nk6d" path="res://Assets/Audio/SoundFX/ImpactLamp2.mp3" id="129_o1uid"]
 [ext_resource type="PackedScene" uid="uid://cq3vkf11swts2" path="res://Scenes/Prefabs/StaticObjects/cables.tscn" id="137_3vtry"]
 [ext_resource type="PackedScene" uid="uid://bxl6cnj04eefh" path="res://Scenes/Prefabs/StaticObjects/cables_001.tscn" id="138_gllwa"]
-[ext_resource type="Script" uid="uid://b3ymbdis8yq07" path="res://Scenes/Worlds/player_hurt_box.gd" id="139_njow8"]
+[ext_resource type="Script" path="res://Scenes/Worlds/player_hurt_box.gd" id="139_njow8"]
 [ext_resource type="AudioStream" uid="uid://cpm0jf72njux3" path="res://Assets/Audio/SoundFX/DestructionKeyboard3.mp3" id="140_sgj45"]
 [ext_resource type="PackedScene" uid="uid://ccaqjm1sg3mgx" path="res://Assets/Models/keyboard_broken_low_poly.tscn" id="143_aox3e"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="149_wf0j3"]
@@ -3914,7 +3914,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
 
 [node name="ceiling_block_mesh2" type="MeshInstance3D" parent="NavigationRegion3D/HumanResourcesLobbyRoom/CEILING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.075, 53.878, 6.11439, 26.4238)
-visible = false
 mesh = SubResource("BoxMesh_g3l24")
 surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
 
@@ -4448,7 +4447,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.82, 
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 2.82, 0, 50.76)
 
 [node name="HR_baseWall23" parent="NavigationRegion3D/human_resources_primary_wing/WALLS" instance=ExtResource("12_o3inh")]
-transform = Transform3D(-1, 0, -2.8213e-07, 0, 1, 0, 2.8213e-07, 0, -1, 1.43051e-06, 0, 50.71)
+transform = Transform3D(-1, 0, -2.8213e-07, 0, 1, 0, 2.8213e-07, 0, -1, 0, 0, 50.723)
 
 [node name="HR_baseWall11" parent="NavigationRegion3D/human_resources_primary_wing/WALLS" instance=ExtResource("12_o3inh")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -2.82, 0, 2.82)
@@ -4523,16 +4522,16 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.59
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.5916, 0, 87.37)
 
 [node name="HR_baseWall28" parent="NavigationRegion3D/human_resources_primary_wing/WALLS" instance=ExtResource("12_o3inh")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -11.309, 0, 50.71)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -11.309, 0, 50.716)
 
 [node name="HR_baseWall30" parent="NavigationRegion3D/human_resources_primary_wing/WALLS" instance=ExtResource("12_o3inh")]
-transform = Transform3D(-1, 0, -8.74232e-08, 0, 1, 0, 8.74232e-08, 0, -1, -16.9167, 0, 50.71)
+transform = Transform3D(-1, 0, -8.74232e-08, 0, 1, 0, 8.74232e-08, 0, -1, -16.917, 0, 50.721)
 
 [node name="HR_baseWall41" parent="NavigationRegion3D/human_resources_primary_wing/WALLS" instance=ExtResource("12_o3inh")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -28.1731, 0, 50.704)
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -28.173, 0, 50.719)
 
 [node name="HR_baseWall29" parent="NavigationRegion3D/human_resources_primary_wing/WALLS" instance=ExtResource("12_o3inh")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -33.84, 0, 50.71)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -33.84, 0, 50.726)
 
 [node name="HR_baseWall33" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS"]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -36.717, 0, 47.747)
@@ -5908,6 +5907,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65216, 0, 14.6299)
 [node name="HR_ArchwayWall3" parent="NavigationRegion3D/human_resources_surgery/WALLS" instance=ExtResource("11_fe0j1")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6.971, 0, 0.298)
 
+[node name="ArchwayWall" parent="NavigationRegion3D/human_resources_surgery/WALLS/HR_ArchwayWall3" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.011)
+
 [node name="Name_Plate" parent="NavigationRegion3D/human_resources_surgery/WALLS/HR_ArchwayWall3" instance=ExtResource("108_1kkg0")]
 transform = Transform3D(1, 0, 1.31134e-07, 0, 1, 0, -1.31134e-07, 0, 1, 1.62195, 1.54621, -0.0865173)
 name_text = "Surgery"
@@ -7198,7 +7200,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.6386, 0, 8.33676)
 [node name="WALLS" type="Node3D" parent="NavigationRegion3D/human_resources_lagulas_room"]
 
 [node name="HR_ArchwayWall3" parent="NavigationRegion3D/human_resources_lagulas_room/WALLS" instance=ExtResource("11_fe0j1")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.76187, 0, 0.1275)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.758, 0, 0.127)
 
 [node name="HR_baseWall28" parent="NavigationRegion3D/human_resources_lagulas_room/WALLS" instance=ExtResource("12_o3inh")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0.207291, 0, 2.95073)
