@@ -1,18 +1,93 @@
-[gd_scene load_steps=18 format=3 uid="uid://daboi1jlu17kv"]
+[gd_scene load_steps=31 format=3 uid="uid://daboi1jlu17kv"]
 
-[ext_resource type="PackedScene" uid="uid://bqweh5vqux5kb" path="res://Scenes/Worlds/water_test_scene.tscn" id="1_1fbo2"]
-[ext_resource type="Texture2D" uid="uid://yltjplktlwif" path="res://Assets/Textures/Terrian/groundChannelpack.dds" id="1_tovk2"]
-[ext_resource type="Texture2D" uid="uid://dtt4covjt55l" path="res://Assets/Textures/Terrian/groundNMChannelpack.dds" id="2_1fbo2"]
-[ext_resource type="Texture2D" uid="uid://ddkg5ekkqls1k" path="res://Assets/Textures/Terrian/grassChannelPack.dds" id="3_81a5s"]
-[ext_resource type="Texture2D" uid="uid://dap1w7n88prk" path="res://Assets/Textures/Terrian/grassNMChannelPack.dds" id="4_ofyio"]
-[ext_resource type="Texture2D" uid="uid://gwmftebchbe2" path="res://Assets/Textures/Terrian/rockChannelPack.dds" id="5_su5jx"]
-[ext_resource type="Texture2D" uid="uid://drnvkn4smbfde" path="res://Assets/Textures/Terrian/rockNMChannelPack.dds" id="6_gpul6"]
+[ext_resource type="Shader" uid="uid://bbsjl8ntid7d3" path="res://Scripts/Shaders/water.gdshader" id="2_su5jx"]
+[ext_resource type="Texture2D" uid="uid://gwmftebchbe2" path="res://Assets/Textures/Terrian/rockChannelPack.dds" id="3_1fbo2"]
+[ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="3_ixfdx"]
+[ext_resource type="Texture2D" uid="uid://drnvkn4smbfde" path="res://Assets/Textures/Terrian/rockNMChannelPack.dds" id="4_81a5s"]
+[ext_resource type="Texture2D" uid="uid://c3lj8f8mueaef" path="res://Assets/Textures/Terrian/brown_mud_alb.dds" id="5_ofyio"]
+[ext_resource type="Texture2D" uid="uid://cyrgusgi6mtf7" path="res://Assets/Textures/Terrian/brown_mud_ro.dds" id="6_su5jx"]
+[ext_resource type="Texture2D" uid="uid://de5f6fg30eanj" path="res://Assets/Textures/Terrian/white_rocky_path_alb.dds" id="7_ofyio"]
+[ext_resource type="PackedScene" uid="uid://blmtegf3uucdb" path="res://Scenes/Prefabs/StaticObjects/water.tscn" id="8_ofyio"]
+[ext_resource type="Texture2D" uid="uid://kkw7tj0wmfcg" path="res://Assets/Textures/Terrian/white_rocky_path_ro.dds" id="8_su5jx"]
+[ext_resource type="PackedScene" uid="uid://u0uxftghqh6o" path="res://Scenes/Prefabs/MoveableObjects/boat_rigidbody.tscn" id="9_ofyio"]
 
-[sub_resource type="Gradient" id="Gradient_6quqy"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_buj4o"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ugptm"]
+seamless = true
+as_normal_map = true
+bump_strength = 1.5
+noise = SubResource("FastNoiseLite_buj4o")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ugptm"]
+noise_type = 3
+seed = 2
+frequency = 0.011
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f2loa"]
+seamless = true
+as_normal_map = true
+bump_strength = 6.0
+noise = SubResource("FastNoiseLite_ugptm")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f2loa"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qmojg"]
+seamless = true
+noise = SubResource("FastNoiseLite_f2loa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpul6"]
+render_priority = -1
+shader = ExtResource("2_su5jx")
+shader_parameter/albedo = Color(1.68458e-07, 0.233291, 0.329343, 1)
+shader_parameter/albedo2 = Color(0, 0.231373, 0.321569, 1)
+shader_parameter/color_deep = Color(0.105882, 0.294118, 0.329412, 1)
+shader_parameter/color_shallow = Color(0, 0.552941, 0.65098, 1)
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.055
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_ugptm")
+shader_parameter/texture_normal2 = SubResource("NoiseTexture2D_f2loa")
+shader_parameter/wave = SubResource("NoiseTexture2D_qmojg")
+shader_parameter/wave_time = 0.0
+shader_parameter/wave_direction = Vector2(2, 0)
+shader_parameter/wave_2_direction = Vector2(0, 1)
+shader_parameter/time_scale = 0.025
+shader_parameter/wave_speed = 2.0
+shader_parameter/noise_scale = 5.0
+shader_parameter/height_scale = 0.15
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -0.75
+shader_parameter/edge_scale = 0.1
+shader_parameter/near = 1.0
+shader_parameter/far = 100.0
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_1fbo2"]
+rayleigh_coefficient = 33.6
+mie_eccentricity = 0.92
+
+[sub_resource type="Sky" id="Sky_4eyav"]
+sky_material = SubResource("PhysicalSkyMaterial_1fbo2")
+
+[sub_resource type="Environment" id="Environment_ofyio"]
+background_mode = 2
+sky = SubResource("Sky_4eyav")
+tonemap_mode = 4
+sdfgi_enabled = true
+fog_mode = 1
+fog_light_energy = 0.33
+fog_density = 0.4105
+fog_depth_curve = 0.466518
+volumetric_fog_length = 20.88
+
+[sub_resource type="Gradient" id="Gradient_fc8pc"]
 offsets = PackedFloat32Array(0.2, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2x4oq"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ixfdx"]
 noise_type = 2
 frequency = 0.03
 cellular_jitter = 3.0
@@ -24,22 +99,22 @@ domain_warp_fractal_type = 2
 domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ip3i7"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ceh45"]
 seamless = true
-color_ramp = SubResource("Gradient_6quqy")
-noise = SubResource("FastNoiseLite_2x4oq")
+color_ramp = SubResource("Gradient_fc8pc")
+noise = SubResource("FastNoiseLite_ixfdx")
 
-[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_mcx4n"]
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_0bgc3"]
 _shader_parameters = {
-&"auto_base_texture": 2,
+&"auto_base_texture": 0,
 &"auto_height_reduction": 0.1,
-&"auto_overlay_texture": 0,
-&"auto_slope": 1.0,
+&"auto_overlay_texture": 1,
+&"auto_slope": 2.683,
 &"bias_distance": 512.0,
-&"blend_sharpness": 0.87,
+&"blend_sharpness": 0.405,
 &"depth_blur": 0.0,
 &"enable_macro_variation": true,
-&"enable_projection": false,
+&"enable_projection": true,
 &"height_blending": true,
 &"macro_variation1": Color(1, 1, 1, 1),
 &"macro_variation2": Color(1, 1, 1, 1),
@@ -50,12 +125,13 @@ _shader_parameters = {
 &"noise1_scale": 0.04,
 &"noise2_scale": 0.076,
 &"noise3_scale": 0.225,
-&"noise_texture": SubResource("NoiseTexture2D_ip3i7"),
+&"noise_texture": SubResource("NoiseTexture2D_ceh45"),
 &"projection_angular_division": 2.0,
 &"projection_threshold": 0.8,
 &"world_space_normal_blend": true
 }
 world_background = 0
+texture_filtering = 1
 auto_shader = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tovk2"]
@@ -76,42 +152,50 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_bi1u7"]
-name = "groundChannelpack"
-albedo_texture = ExtResource("1_tovk2")
-normal_texture = ExtResource("2_1fbo2")
-uv_scale = 0.766
-detiling_rotation = 0.937
-detiling_shift = 0.594
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_gpul6"]
+name = "sparse_grass_AB"
+albedo_texture = ExtResource("3_1fbo2")
+normal_texture = ExtResource("4_81a5s")
+uv_scale = 0.4
 
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_15jib"]
-name = "grassChannelPack"
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_6quqy"]
+name = "brown_mud_alb"
 id = 1
-albedo_texture = ExtResource("3_81a5s")
-normal_texture = ExtResource("4_ofyio")
-uv_scale = 0.892
+albedo_texture = ExtResource("5_ofyio")
+normal_texture = ExtResource("6_su5jx")
+uv_scale = 0.4
 
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_xibtk"]
-name = "rockChannelPack"
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_2x4oq"]
+name = "white_rocky_path_alb"
 id = 2
-albedo_texture = ExtResource("5_su5jx")
-normal_texture = ExtResource("6_gpul6")
-normal_depth = 0.842
-roughness = 0.715
-uv_scale = 0.325
+albedo_texture = ExtResource("7_ofyio")
+normal_texture = ExtResource("8_su5jx")
 
-[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_5goeu"]
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_81a5s"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_1fbo2")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_bi1u7"), SubResource("Terrain3DTextureAsset_15jib"), SubResource("Terrain3DTextureAsset_xibtk")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_gpul6"), SubResource("Terrain3DTextureAsset_6quqy"), SubResource("Terrain3DTextureAsset_2x4oq")])
 
 [node name="Node3D" type="Node3D"]
 
-[node name="world" parent="." instance=ExtResource("1_1fbo2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.655, 0, 253.279)
+[node name="Water" parent="." instance=ExtResource("8_ofyio")]
+transform = Transform3D(600, 0, 0, 0, 1, 0, 0, 0, 600, 111.893, 0, 255.382)
+surface_material_override/0 = SubResource("ShaderMaterial_gpul6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ofyio")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.788011, -0.123796, 0.603087, 0, 0.979575, 0.201078, -0.615661, 0.158452, -0.771916, 0, 58.4472, 0)
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
-data_directory = "res://Scenes/Prefabs/Terrian3D"
-material = SubResource("Terrain3DMaterial_mcx4n")
-assets = SubResource("Terrain3DAssets_5goeu")
+data_directory = "res://Assets/Textures/Terrian"
+material = SubResource("Terrain3DMaterial_0bgc3")
+assets = SubResource("Terrain3DAssets_81a5s")
 top_level = true
 metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_ixfdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.277, 4.18995, 269.572)
+
+[node name="Boat" parent="." instance=ExtResource("9_ofyio")]
+transform = Transform3D(0.999831, 0, 0, 0, 0.999834, 0, 0, 0, 0.999831, 110.107, 0, 255.86)

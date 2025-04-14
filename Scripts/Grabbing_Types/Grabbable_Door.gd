@@ -38,7 +38,7 @@ func grab():
 	object = get_parent().current_grabbed_object
 	object.freeze = false
 	object.sleeping = false
-	object.set_collision_layer_value(2,false)
+	#object.set_collision_layer_value(2,false)
 	door_forward_position = object.global_transform.basis.z.normalized()
 	door_global_position = object.global_transform.origin
 	_mass = object.mass
@@ -86,7 +86,7 @@ func apply_door_torque(_mouse_velocity: Vector2):
 	if player_inside:
 		torque = _mouse_velocity.y * DOOR_TORQUE_MULTIPLIER * torque_direction
 	else: torque =  _mouse_velocity.y * DOOR_TORQUE_MULTIPLIER
-	var torque_force = Vector3(0, torque * _mass, 0) 
+	var torque_force = Vector3(0, torque * _mass *0.3, 0) 
 	object.apply_torque_impulse(torque_force)
 	object.apply_torque_impulse(-object.angular_velocity * 0.05) 
 

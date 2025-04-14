@@ -34,7 +34,7 @@ var _is_visible = false
 @onready var navlink_cooldown_timer: Timer = $NavlinkCooldownTimer
 @onready var window_scare: Node3D = $"../1ST FLOOR SCARES/WINDOW SCARE"
 @onready var darkroom_scare: Node3D = $"../1ST FLOOR SCARES/DARKROOM SCARE"
-
+@onready var rb_enabler:PackedScene = preload("res://Scenes/Prefabs/MoveableObjects/rb_enabler.tscn")
 var roaming_to_sound = false
 var locations: Array[Vector3] = []
 var monster_anim:AnimationPlayer
@@ -148,14 +148,19 @@ func apply_pushes():
 			var velocity_diff_in_push_dir = self.velocity.dot(push_dir) - c.get_collider().linear_velocity.dot(push_dir)
 			velocity_diff_in_push_dir = max(0., velocity_diff_in_push_dir)
 			var mass_ratio = min(1., mass / c.get_collider().mass)
+			print(mass_ratio)
 			if mass_ratio < 0.25:
 				continue
 			push_dir.y = 0
 			var push_force = mass_ratio * push_multiplier
-			if c.get_collider().grab_type == "door":
-				c.get_collider().apply_impulse((push_dir * velocity_diff_in_push_dir * push_force)*10, c.get_position() - c.get_collider().global_position)
-			else:
-				c.get_collider().apply_impulse(push_dir * velocity_diff_in_push_dir * push_force, c.get_position() - c.get_collider().global_position)
+			if "grab_type" in c.get_collider():
+				var rb = rb_enabler.instantiate()
+				var object = c.get_collider()
+				object.add_child(rb)
+				if c.get_collider().grab_type == "door":
+					c.get_collider().apply_impulse((push_dir * velocity_diff_in_push_dir * push_force)*10, c.get_position() - c.get_collider().global_position)
+				else:
+					c.get_collider().apply_impulse(push_dir * velocity_diff_in_push_dir * push_force, c.get_position() - c.get_collider().global_position)
 
 func chase_player():
 	if !chasing:
@@ -294,10 +299,10 @@ func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
 	else:
 		nav.set_target_position(pos)
 		var count = 0
-		while !nav.is_target_reachable() and count < 15:
-			var point = pos + Vector3(randf_range(-3.5, 3.5), 0, randf_range(-3.5, 3.5))
-			nav.set_target_position(point)
-			count += 1
+		#while !nav.is_target_reachable() and count < 15:
+			#var point = pos + Vector3(randf_range(-3.5, 3.5), 0, randf_range(-3.5, 3.5))
+			#nav.set_target_position(point)
+			#count += 1
 
 
 func _on_navigation_agent_3d_link_reached(_details: Dictionary) -> void:

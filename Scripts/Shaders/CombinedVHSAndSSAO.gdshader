@@ -55,30 +55,30 @@ vec3 get_normal(vec2 uv) {
 void fragment() {
 	const vec2 noiseScale = VIEWPORT_SIZE/4.0;
 	float occlusionSum = 0.0;
-	
+
 	for (int x=-2; x<2; x++) {
 		for (int y=-2; y<2; y++) {
 			vec2 uv = SCREEN_UV + vec2(float(x),float(y)) / VIEWPORT_SIZE;
 			vec3 fragPos = get_position(uv, INV_PROJECTION_MATRIX);
 			vec3 normal = texture(NORMAL_ROUGHNESS_TEXTURE, uv).rgb;
 			vec3 randomVec = texture(SSAO_NOISE, uv * noiseScale).xyz;
-			
+
 			vec3 tangent = normalize(randomVec - normal * dot(randomVec, normal));
 			vec3 bitangent = cross(normal, tangent);
 			mat3 TBN = mat3(tangent, bitangent, normal);
-			
+
 			float occlusion = 0.0;
-			
+
 			for(int i=0; i < kernelSize; i++) {
 				// get sample position
 				vec3 sample = TBN * kernel[i];
 				sample = fragPos + sample * radius;
-				
+
 				vec4 offset = vec4(sample, 1.0);
 				offset = PROJECTION_MATRIX * offset;
 				offset.xyz /= offset.w;
 				offset.xyz = offset.xyz * 0.5 + 0.5;
-				
+
 				float sampleDepth = get_position(offset.xy, INV_PROJECTION_MATRIX).z;
 				float rangeCheck = smoothstep(0.0, 1.0, radius / abs(fragPos.z - sampleDepth));
 				occlusion += (sampleDepth >= sample.z + bias ? 1.0 : 0.0) * rangeCheck;
@@ -87,7 +87,7 @@ void fragment() {
 			occlusionSum += occlusion;
 		}
 	}
-	
+
 	if(light_resistent == true){
 		vec3 screenColor = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
 		vec3 occlusionColor = vec3(occlusionSum / 16.0)*multiplier;
