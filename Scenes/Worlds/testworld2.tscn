@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_fu55l"]
 [ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="5_oisj6"]
 [ext_resource type="Texture2D" uid="uid://b361fegucp3jv" path="res://Assets/Textures/texture_07.png" id="5_xmmfr"]
-[ext_resource type="Script" uid="uid://dmeiup6i14oxj" path="res://Scenes/Prefabs/Monsters/cutter_ai.gd" id="10_dihjl"]
+[ext_resource type="Script" uid="uid://dmeiup6i14oxj" path="res://Scripts/StateMachine/Cutter/CutterStateMachine.gd" id="10_dihjl"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="10_wfqjp"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="10_wyyub"]
 [ext_resource type="AudioStream" uid="uid://3v6mk6kapph" path="res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundCutter.ogg" id="11_47euk"]

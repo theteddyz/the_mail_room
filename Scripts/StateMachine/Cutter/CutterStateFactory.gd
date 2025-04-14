@@ -1,12 +1,14 @@
-class_name PlayerStateFactory
+class_name CutterStateFactory
 
 var states
 
 func _init():
 	states = {
-		"walking": WalkingState,
-		"carting": CartingState,
-		"grabcart": GrabCartState
+		"roaming": CutterRoamingState,
+		"aggro": CutterAggroState,
+		"respawning": CutterRespawningState,
+		"carcass": CutterCarcassState,
+		#"aggroState: AggroState
 	}
 
 func get_state(state_name):

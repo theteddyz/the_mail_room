@@ -5,7 +5,7 @@ var pause_menu
 
 # Privates
 var state: State
-var state_factory: StateFactory
+var state_factory: PlayerStateFactory
 var extra_life = 1
 @onready var hit_timer: Timer = $hit_timer
 const DAMAGE_GRADIENT_TEXTURE = preload("res://Scenes/Worlds/FinanceDamaged.tres")
@@ -14,7 +14,7 @@ const REGULAR_WE = preload("res://Scenes/Worlds/Finance.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	state_factory = StateFactory.new()
+	state_factory = PlayerStateFactory.new()
 	GameManager.register_player(self)
 	change_state("walking")
 

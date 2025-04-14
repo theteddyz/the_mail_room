@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_06hhm"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="1_cipwe"]
 [ext_resource type="Material" uid="uid://d0nli67yooqv5" path="res://Scripts/Shaders/water.tres" id="2_4eyav"]
-[ext_resource type="Script" uid="uid://ccx5g8h5gdc6e" path="res://Scripts/Misc/floating_object.gd" id="3_06hhm"]
-[ext_resource type="Script" uid="uid://docotnrmf00e6" path="res://Scripts/Misc/drive_boat.gd" id="4_4eyav"]
+[ext_resource type="Script" path="res://Scripts/Misc/floating_object.gd" id="3_06hhm"]
+[ext_resource type="Script" path="res://Scripts/Misc/drive_boat.gd" id="4_4eyav"]
 [ext_resource type="Texture2D" uid="uid://crotrerochie1" path="res://Assets/Textures/BlenderTextures/RowBoat.png" id="6_u88sk"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_cipwe"]

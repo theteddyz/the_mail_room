@@ -13,9 +13,6 @@ var player_in_vision: bool = false
 var detect_player: bool = false
 var _time_spent_seen: float = 0
 
-# TODO:
-# The script works. Make several copies of the lookup_raycast on the cutter and make sure they all signal correctly and in the right order!
-
 func _ready() -> void:
 	timer.timeout.connect(_on_vision_refresh_timer_timeout)
 	player = GameManager.get_player()
