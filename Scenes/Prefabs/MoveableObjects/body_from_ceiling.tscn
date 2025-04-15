@@ -29,8 +29,8 @@ shape = SubResource("BoxShape3D_hkf63")
 [node name="PinJoint3D" type="PinJoint3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.15994, 0)
 node_a = NodePath("../RigidBody3D")
-node_b = NodePath("../RigidBody3D2")
+node_b = NodePath("../Bodybag")
 
-[node name="RigidBody3D2" parent="." instance=ExtResource("2_jn6ch")]
+[node name="Bodybag" parent="." instance=ExtResource("2_jn6ch")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81694, 0)
 mass = 5.0

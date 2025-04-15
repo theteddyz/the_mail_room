@@ -127,14 +127,14 @@ func set_new_nav_position(pos: Vector3 = Vector3.ZERO):
 		var count = 0
 		var fear_factor = ScareDirector.fear_factor
 		if fear_factor <= ScareDirector._max_fear * 0.75 and fear_factor_maxxed_timer.is_stopped():
-			while !navigation_agent_3d.is_target_reachable() and count < 35 and abs(persistent_state.global_position.distance_to(player.global_position)) < _fear_factor_max_range * 0.82:
+			while !navigation_agent_3d.is_target_reachable() and count < 35 and abs(persistent_state.global_position.distance_to(player.global_position)) > _fear_factor_max_range * 0.82:
 				point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
 				navigation_agent_3d.set_target_position(point)
 				count += 1
 				if count == 34:
 					print("wtf")
 		else:
-			while !navigation_agent_3d.is_target_reachable() and count < 35 and abs(persistent_state.global_position.distance_to(player.global_position)) > _fear_factor_max_range * 2:
+			while !navigation_agent_3d.is_target_reachable() and count < 35 and abs(persistent_state.global_position.distance_to(player.global_position)) < _fear_factor_max_range * 2:
 				point = NavigationServer3D.map_get_random_point(navigation_region_3d.get_navigation_map(), navigation_region_3d.get_navigation_layers(), false)
 				navigation_agent_3d.set_target_position(point)
 				count += 1

@@ -16,7 +16,7 @@ var monster_speed = 0
 @onready var navigation_region_3d: NavigationRegion3D = get_parent().get_parent().find_child("NavigationRegion3D")
 @onready var nav_obstacle_for_carcass_and_butcher: NavigationObstacle3D = navigation_region_3d.find_child("NavObstacleForCarcassAndButcher")
 @onready var spawnpoints: Node = get_parent().get_parent().find_child("MonsterSpawnPositions")
-
+@onready var corpses: Node3D = get_parent().get_parent().find_child("NavigationRegion3D").find_child("human_resources_carcass_and_butcher").find_child("OBJECTS").find_child("Corpses")
 # Timer stuffzzzzzzzzzzzzzzzzzzzzzzz
 @onready var de_aggro_timer: Timer = get_parent().find_child("DeAggroTimer")
 @onready var navigation_timer: Timer = get_parent().find_child("IdleNavigationTimer")
@@ -24,13 +24,13 @@ var monster_speed = 0
 @onready var functional_timers = [de_aggro_timer, get_player_position_timer, navigation_timer]
 
 @onready var audio_players = [
-	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D"),
-	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D2"),
-	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D3"),
-	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D4"),
-	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D5"),
-	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D6"),
-	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D7"),
+	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D", false),
+	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D2", false),
+	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D3", false),
+	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D4", false),
+	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D5", false),
+	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D6", false),
+	cutter_carcass_ai_root.find_child("AudioStreamPlayer3D7", false),
 ]
 var tween: Tween
 
@@ -65,8 +65,9 @@ func deescalate():
 	# Play a deescalate sound and other similar things
 
 func start_carcass_behaviour():
-	behaviour_duration_timer.start(randi_range(16, 28))
-	behaviour_soundbark_timer.start(randi_range(1.88, 3.5))
+	behaviour_duration_timer.start(randi_range(21, 32))
+
+	behaviour_soundbark_timer.start(randi_range(1.5, 3.5))
 	pass
 	# start a random timer before monster leaves the area
 	# play "random" ambiance sounds a bit all over the room, generally behind the player
@@ -113,6 +114,17 @@ func _on_behaviour_soundbark_timer_timeout() -> void:
 		chosen_player.pitch_scale = randf_range(0.8, 1.2)
 		chosen_player.play()
 	behaviour_soundbark_timer.start(randf_range(1.88, 3.5))
+	if randi_range(0, 100) > 75:
+		var count = 0
+		var chosen_corpse = corpses.get_children().pick_random() as Node3D
+		while count < 35 and (abs(chosen_corpse.global_position.distance_to(player.global_position)) < 4.2 or abs(chosen_corpse.global_position.distance_to(player.global_position)) > 5.8):
+			chosen_corpse = corpses.get_children().pick_random() as Node3D
+			print(abs(chosen_corpse.global_position.distance_to(player.global_position)))
+			count += 1
+		var rb = chosen_corpse.find_child("Bodybag") as RigidBody3D
+		rb.apply_impulse(Vector3(randf_range(3.5, 4.5), 0, randf_range(4.0, 4.8)))
+		rb.find_child("AudioStreamPlayer3D").playing = true
+
 
 
 func _on_carcass_and_butcher_nav_ability_timer_timeout() -> void:

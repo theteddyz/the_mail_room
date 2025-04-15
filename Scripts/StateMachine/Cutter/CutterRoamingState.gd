@@ -185,8 +185,8 @@ func leave_vent():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("DEBUG"):
-		#set_new_nav_position(player.global_position)
-		change_state.call("respawning")
+		set_new_nav_position(player.global_position)
+		#change_state.call("respawning")
 
 func stopTimers():
 	for t in functional_timers:

@@ -46,6 +46,14 @@ func grab():
 	object = get_parent().current_grabbed_object
 	object.set_process(true)
 	object.set_physics_process(true)
+	object.set_collision_mask_value(3, false)
+	object.set_collision_mask_value(2, false)
+	#object.set_collision_mask_value(1, false)
+	object.set_collision_mask_value(4, false)
+	object.set_collision_mask_value(13, false)
+	object.set_collision_layer_value(2,false)
+	object.set_collision_layer_value(20,false)
+	object.set_collision_layer_value(15,true)
 	object.freeze = false
 	object.sleeping = false
 	var enabler = rb_enabler.instantiate()
@@ -138,6 +146,14 @@ func stop_rotating():
 
 func drop_object():
 	holding_object = false
+	object.set_collision_mask_value(3, true)
+	object.set_collision_mask_value(2, true)
+	object.set_collision_mask_value(1, true)
+	object.set_collision_mask_value(4, true)
+	object.set_collision_mask_value(13, true)
+	object.set_collision_layer_value(2,true)
+	object.set_collision_layer_value(20,true)
+	object.set_collision_layer_value(15,false)
 	EventBus.emitCustomSignal("dropped_object", [object.mass,self])
 	EventBus.emitCustomSignal("hide_icon",["grabClosed"])
 	#object.angular_damp = 1

@@ -176,6 +176,7 @@ look_behind={
 3d_physics/layer_8="SpatialAudio"
 3d_physics/layer_11="Readable Interactables"
 3d_physics/layer_13="A monster!!!! Spoooky!!!"
+3d_physics/layer_15="grabbed objects detecting objects and not player"
 3d_physics/layer_16="Footstep Collisionbox"
 3d_physics/layer_20="A light (ceiling or otherwise)"
 3d_physics/layer_22="Player Blocking terrain, nave-able to agents"
