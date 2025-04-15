@@ -2955,7 +2955,7 @@ stream = ExtResource("16_v34ia")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.002, 0.418257, -4.41595)
 
 [node name="Player" parent="." instance=ExtResource("7_o0ubx")]
-transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.0832604, 39.0876, 0.479325, 46.2944)
+transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.0832604, 21.0758, 0.479325, -1.52193)
 
 [node name="Mailcart" parent="." instance=ExtResource("8_rl6tn")]
 transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979, 3.55372, 0.316447, 1.73329)
@@ -3069,8 +3069,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.927, 0.437213, -4.13969)
 end_position = Vector3(4.35, 0, 0)
 
 [node name="NavigationLink3D2" type="NavigationLink3D" parent="NavigationRegion3D/Navlinks" groups=["NavigationLinkVent"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.8784, 0.437213, -4.13969)
-end_position = Vector3(4.35, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.9084, 0.547253, -4.20895)
+end_position = Vector3(2.962, 0.00892037, -0.0216413)
 
 [node name="NavigationLink3D3" type="NavigationLink3D" parent="NavigationRegion3D/Navlinks" groups=["NavigationLinkVent"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.557, 0.437213, -4.28506)
@@ -3982,7 +3982,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
 
 [node name="ceiling_block_mesh2" type="MeshInstance3D" parent="NavigationRegion3D/HumanResourcesLobbyRoom/CEILING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.075, 53.878, 6.11439, 26.4238)
-visible = false
 mesh = SubResource("BoxMesh_g3l24")
 surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
 

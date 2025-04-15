@@ -39,6 +39,8 @@ func _ready() -> void:
 	carcass_area_detector.body_entered.connect(_on_area_3d_body_entered)
 	player = GameManager.get_player()
 	navigation_timer.timeout.connect(_on_navigation_timer_timeout)
+	navigation_agent_3d.link_reached.connect(_on_navigation_agent_3d_link_reached)
+
 	set_enabled(persistent_state.enabled)
 
 func set_enabled(flag: bool):
@@ -166,12 +168,13 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 # VENTING AND THE LIKE
 func _on_navigation_agent_3d_link_reached(details: Dictionary) -> void:
-	nav_link_cooldown_timer.start()
+	nav_link_cooldown_timer.start(0.85)
 	var ow = details.owner as Node
 	if ow.is_in_group("NavigationLinkVent"):
 		await leave_vent() if is_venting else enter_vent()
 
 func enter_vent():
+	roaming_speed = roaming_speed * 0.58
 	is_venting = true
 	collision_shape_3d.set_disabled(true)
 	persistent_state.motion_mode = persistent_state.MOTION_MODE_FLOATING
@@ -182,6 +185,7 @@ func leave_vent():
 	is_venting = false
 	collision_shape_3d.set_disabled(false)
 	persistent_state.motion_mode = persistent_state.MOTION_MODE_GROUNDED
+	roaming_speed = 5.0
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("DEBUG"):

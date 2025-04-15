@@ -65,6 +65,7 @@ path_height_offset = 0.2
 navigation_layers = 3
 avoidance_enabled = true
 avoidance_layers = 0
+debug_enabled = true
 debug_path_custom_color = Color(0.491815, 0, 0.251935, 1)
 debug_path_custom_point_size = 11.05
 
@@ -123,11 +124,11 @@ wait_time = 7.5
 one_shot = true
 
 [node name="NavLinkCooldownTimer" type="Timer" parent="."]
-wait_time = 0.35
+wait_time = 0.85
 one_shot = true
 
 [node name="DeAggroTimer" type="Timer" parent="."]
-wait_time = 3.5
+wait_time = 6.35
 one_shot = true
 
 [node name="RespawnTimer" type="Timer" parent="."]
@@ -135,7 +136,6 @@ wait_time = 19.0
 one_shot = true
 
 [node name="GetPlayerPositionTimer" type="Timer" parent="."]
-wait_time = 0.17
 
 [node name="IdleNavigationTimer" type="Timer" parent="."]
 wait_time = 12.0
