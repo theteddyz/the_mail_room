@@ -10,6 +10,7 @@ var charge_position := Vector3.ZERO
 var _fear_factor_max_range := 34.0
 var _charge_kill_distance: float = 1.5
 var initial_chase_sfx: Resource
+var static_sfx: Resource
 var chaseloop_sfx: Resource
 var _OBSERVATION_HAKI_DISTANCE = 0.27
 @onready var charge_tween: Tween
@@ -35,10 +36,14 @@ var _OBSERVATION_HAKI_DISTANCE = 0.27
 @onready var aggro_sound_initial: AudioStreamPlayer3D = get_parent().find_child("AudioStreamPlayer3D")
 @onready var collision_shape_3d: CollisionShape3D = get_parent().find_child("CollisionShape3D")
 @onready var carcass_area_detector: Area3D = get_parent().get_parent().find_child("cutter_carcass_ai").find_child("Area3D")
+@onready var overlay_cutter_eyes: TextureRect = Gui.find_child("CutterEyes")
+@onready var overlay_static_effect: TextureRect = Gui.find_child("StaticOverlay")
+
 
 
 func _ready() -> void:
 	initial_chase_sfx = load("res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundCutter.ogg")
+	static_sfx = load("res://Assets/Audio/SoundFX/ChaseLoops/CutterAggroStatic.ogg")
 	chaseloop_sfx = load("res://Assets/Audio/SoundFX/ChaseLoops/ChaseLoopCutter.ogg")
 	player = GameManager.get_player()
 	get_player_position_timer.timeout.connect(_on_get_player_position_timer_timeout)
@@ -61,12 +66,61 @@ func aggro():
 	aggro_speed = 0
 	
 	# Play an aggro animation, sounds or the like
-	await get_tree().create_timer(1.185).timeout
+	await get_random_aggro_effect()
 	AudioController.play_resource(chaseloop_sfx, 0, func(): {}, 12)
 	AudioController.play_resource(initial_chase_sfx, 0, func(): {}, 17)
 	aggro_speed = 6.35
 	# Start the timer responsible for updating chase position
 	get_player_position_timer.start(0.17)
+
+func get_random_aggro_effect():
+	# Try to keep total time to roughly 1.2 seconds, max
+	var i = randi_range(0, 3)
+	match i:
+		0:
+			await get_tree().create_timer(1.185).timeout
+		1: 
+			await get_tree().create_timer(0.86).timeout
+		2: 
+			await get_tree().create_timer(0.48).timeout
+			AudioController.play_resource(static_sfx, 0, func(): {}, 10)
+			overlay_cutter_eyes.visible = true
+			overlay_static_effect.visible = true
+			await get_tree().create_timer(0.08).timeout
+			overlay_cutter_eyes.visible = false
+			await get_tree().create_timer(0.38).timeout
+			AudioController.stop_resource(static_sfx.resource_path)
+			overlay_static_effect.visible = false
+			await get_tree().create_timer(0.08).timeout
+		3: 
+			await get_tree().create_timer(0.68).timeout
+			overlay_cutter_eyes.visible = true
+			await get_tree().create_timer(0.03).timeout
+			overlay_cutter_eyes.visible = false
+			
+			await get_tree().create_timer(0.33).timeout
+			overlay_cutter_eyes.visible = true
+			await get_tree().create_timer(0.045).timeout
+			overlay_cutter_eyes.visible = false
+			
+			await get_tree().create_timer(0.14).timeout
+			AudioController.play_resource(static_sfx, 0, func(): {}, 10)
+			overlay_static_effect.visible = true
+			overlay_cutter_eyes.visible = true
+			await get_tree().create_timer(0.06).timeout
+			overlay_cutter_eyes.visible = false
+			
+			await get_tree().create_timer(0.095).timeout
+			overlay_cutter_eyes.visible = true
+			await get_tree().create_timer(0.10).timeout
+			overlay_cutter_eyes.visible = false
+			
+			await get_tree().create_timer(0.045).timeout
+			overlay_cutter_eyes.visible = true
+			await get_tree().create_timer(0.13).timeout
+			overlay_cutter_eyes.visible = false
+			AudioController.stop_resource(static_sfx.resource_path)
+			overlay_static_effect.visible = false
 
 func _physics_process(delta: float) -> void:
 	if !charging:

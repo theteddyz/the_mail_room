@@ -39,7 +39,6 @@ func _ready() -> void:
 	carcass_area_detector.body_entered.connect(_on_area_3d_body_entered)
 	player = GameManager.get_player()
 	navigation_timer.timeout.connect(_on_navigation_timer_timeout)
-	navigation_agent_3d.link_reached.connect(_on_navigation_agent_3d_link_reached)
 
 	set_enabled(persistent_state.enabled)
 
