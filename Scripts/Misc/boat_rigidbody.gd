@@ -78,7 +78,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	var global_rot = basis*Vector3.UP
-	print("GLOBAL ROT ", global_rotation)
 	var angle_between = max(2-Vector3.UP.angle_to(global_rot),0)
 	var push_dir = Vector3.UP#Vector3(-global_rot.x*0.2,1,-global_rot.z*0.2)
 	var strength = 3500*delta*mass
