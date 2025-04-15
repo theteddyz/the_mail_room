@@ -70,7 +70,6 @@ func aggro():
 
 func _physics_process(delta: float) -> void:
 	if !charging:
-		print(player.velocity)
 		update_velocity(aggro_speed)
 		update_rotation(delta)
 		persistent_state.move_and_slide()
