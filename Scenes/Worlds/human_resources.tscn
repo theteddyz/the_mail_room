@@ -3982,6 +3982,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
 
 [node name="ceiling_block_mesh2" type="MeshInstance3D" parent="NavigationRegion3D/HumanResourcesLobbyRoom/CEILING"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.075, 53.878, 6.11439, 26.4238)
+visible = false
 mesh = SubResource("BoxMesh_g3l24")
 surface_material_override/0 = SubResource("StandardMaterial3D_n80ug")
 
@@ -4787,8 +4788,7 @@ transform = Transform3D(0.999998, 0, 1.10134e-13, 0, 1.00008, 0, 7.10543e-15, 0,
 shape = SubResource("BoxShape3D_ypr7i")
 
 [node name="LeftCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -4800,8 +4800,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02815, 3.97421, 0)
 shape = SubResource("BoxShape3D_0rqq1")
 
 [node name="RightCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -4813,8 +4812,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49685, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_cg3ht")
 
 [node name="TopCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -4826,8 +4824,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65112, -0.005)
 shape = SubResource("BoxShape3D_t708c")
 
 [node name="BottomCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -4938,8 +4935,7 @@ transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -0.0277901, -0.0045
 layers = 2
 
 [node name="LeftCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable2" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -4951,8 +4947,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03533, 3.97421, 0)
 shape = SubResource("BoxShape3D_a4q4o")
 
 [node name="RightCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable2" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -4964,8 +4959,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48967, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_tberc")
 
 [node name="TopCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable2" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -4977,8 +4971,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61435, -0.005)
 shape = SubResource("BoxShape3D_o1uid")
 
 [node name="BottomCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_primary_wing/WALLS/hr_base_wall_cuttable2" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5195,8 +5188,7 @@ size = Vector3(1.25, 1.25, 1)
 transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -0.0277901, -0.00451994, -2.49999)
 
 [node name="LeftCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5208,8 +5200,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38277, 3.97421, 0)
 shape = SubResource("BoxShape3D_0ai0k")
 
 [node name="RightCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5221,8 +5212,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14224, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_pgsbb")
 
 [node name="TopCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5234,8 +5224,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.63665, -0.005)
 shape = SubResource("BoxShape3D_666ox")
 
 [node name="BottomCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5346,8 +5335,7 @@ transform = Transform3D(-4.37113e-08, 0, 1.00001, 0, 1.00008, 0, -1, 0, -4.37113
 shape = SubResource("BoxShape3D_ux4tk")
 
 [node name="LeftCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable2" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5359,8 +5347,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.987545, 3.97421, 0)
 shape = SubResource("BoxShape3D_qqfne")
 
 [node name="RightCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable2" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5372,8 +5359,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.53746, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_2gqns")
 
 [node name="TopCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable2" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5385,8 +5371,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62175, -0.005)
 shape = SubResource("BoxShape3D_xfmua")
 
 [node name="BottomCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_storage_1/WALLS/hr_base_wall_cuttable2" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5615,8 +5600,7 @@ transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -0.0277901, -0.0045
 layers = 2
 
 [node name="LeftCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_incinerator/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5628,8 +5612,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66398, 3.97421, 0)
 shape = SubResource("BoxShape3D_xw088")
 
 [node name="RightCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_incinerator/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5641,8 +5624,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86102, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_lxf45")
 
 [node name="TopCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_incinerator/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -5654,8 +5636,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62034, -0.005)
 shape = SubResource("BoxShape3D_8fx2g")
 
 [node name="BottomCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_incinerator/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -6094,8 +6075,7 @@ transform = Transform3D(0.999998, 0, -1.95399e-13, 0, 1.00008, 0, 7.10543e-15, 0
 shape = SubResource("BoxShape3D_238pe")
 
 [node name="LeftCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_surgery/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -6107,8 +6087,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09936, 3.97421, 0)
 shape = SubResource("BoxShape3D_uof0v")
 
 [node name="RightCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_surgery/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -6120,8 +6099,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42564, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_ckatu")
 
 [node name="TopCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_surgery/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -6133,8 +6111,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62218, -0.005)
 shape = SubResource("BoxShape3D_pvorj")
 
 [node name="BottomCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_surgery/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -7430,8 +7407,7 @@ transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -0.0277901, -0.0045
 layers = 2
 
 [node name="LeftCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_lagulas_room/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -7443,8 +7419,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22662, 3.97421, 0)
 shape = SubResource("BoxShape3D_3ayyn")
 
 [node name="RightCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_lagulas_room/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -7456,8 +7431,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29838, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_q55p3")
 
 [node name="TopCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_lagulas_room/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")
@@ -7469,8 +7443,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61251, -0.005)
 shape = SubResource("BoxShape3D_a2g3c")
 
 [node name="BottomCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_lagulas_room/WALLS/hr_base_wall_cuttable" node_paths=PackedStringArray("collision_area", "cutout")]
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("34_jugg3")
 collision_area = NodePath("CollisionShape3D")
 cutout = NodePath("../CSGCombiner3D/Cutout")

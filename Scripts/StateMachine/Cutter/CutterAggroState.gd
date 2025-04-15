@@ -192,14 +192,12 @@ func _on_navigation_agent_3d_link_reached(details: Dictionary) -> void:
 func enter_vent():
 	aggro_speed = aggro_speed * 0.58
 	is_venting = true
-	collision_shape_3d.set_disabled(true)
 	persistent_state.motion_mode = persistent_state.MOTION_MODE_FLOATING
 
 func leave_vent():
 	# Play an Animation here of the monster getting out of the vent.
 	await get_tree().create_timer(1.5).timeout
 	is_venting = false
-	collision_shape_3d.set_disabled(false)
 	persistent_state.motion_mode = persistent_state.MOTION_MODE_GROUNDED
 	aggro_speed = 6.35
 

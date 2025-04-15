@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=51 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" uid="uid://cggbaeh823mtn" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://drfn1olnt3pk2" path="res://Assets/Audio/SoundFX/ImpactKey2.mp3" id="30_jjmc6"]
 [ext_resource type="AudioStream" uid="uid://nofos1dpjyv" path="res://Assets/Audio/SoundFX/ImpactKey3.mp3" id="31_s4pnh"]
 [ext_resource type="AudioStream" uid="uid://c2ogg8vuga7y0" path="res://Assets/Audio/SoundFX/ImpactKey.mp3" id="32_1ly6y"]
+[ext_resource type="Script" uid="uid://cxopweubebv50" path="res://Scenes/Prefabs/gui/debug_pause.gd" id="34_4l5s3"]
 
 [sub_resource type="Gradient" id="Gradient_10so2"]
 
@@ -169,6 +170,9 @@ stream_1/stream = ExtResource("29_hs3p6")
 stream_2/stream = ExtResource("30_jjmc6")
 stream_3/stream = ExtResource("31_s4pnh")
 stream_4/stream = ExtResource("32_1ly6y")
+
+[sub_resource type="LabelSettings" id="LabelSettings_3op3p"]
+font_size = 71
 
 [node name="GUI" type="Control"]
 layout_mode = 3
@@ -738,5 +742,21 @@ autowrap_mode = 2
 [node name="TypewriteSFX" type="AudioStreamPlayer" parent="Hint_Container"]
 stream = SubResource("AudioStreamRandomizer_h63ra")
 volume_db = -19.0
+
+[node name="DebugPauseText" type="Label" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 297.0
+grow_horizontal = 2
+text = "GAME IS PAUSED
+(shift + down arrow to unpause)"
+label_settings = SubResource("LabelSettings_3op3p")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("34_4l5s3")
 
 [connection signal="timeout" from="Adress_Displayer/Timer" to="Adress_Displayer" method="_on_timer_timeout"]
