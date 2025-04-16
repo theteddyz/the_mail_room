@@ -2,7 +2,7 @@ extends State
 class_name CutterAggroState
 
 var player: CharacterBody3D
-var aggro_speed := 3
+var aggro_speed := 6.35
 var player_in_vision_flag := false
 var charging := false
 var is_venting := false
@@ -10,7 +10,9 @@ var charge_position := Vector3.ZERO
 var _fear_factor_max_range := 34.0
 var _charge_kill_distance: float = 1.5
 var initial_chase_sfx: Resource
+var static_sfx: Resource
 var chaseloop_sfx: Resource
+var _OBSERVATION_HAKI_DISTANCE = 0.27
 @onready var charge_tween: Tween
 
 # Navigation References
@@ -34,16 +36,21 @@ var chaseloop_sfx: Resource
 @onready var aggro_sound_initial: AudioStreamPlayer3D = get_parent().find_child("AudioStreamPlayer3D")
 @onready var collision_shape_3d: CollisionShape3D = get_parent().find_child("CollisionShape3D")
 @onready var carcass_area_detector: Area3D = get_parent().get_parent().find_child("cutter_carcass_ai").find_child("Area3D")
+@onready var overlay_cutter_eyes: TextureRect = Gui.find_child("CutterEyes")
+@onready var overlay_static_effect: TextureRect = Gui.find_child("StaticOverlay")
+
 
 
 func _ready() -> void:
 	initial_chase_sfx = load("res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundCutter.ogg")
+	static_sfx = load("res://Assets/Audio/SoundFX/ChaseLoops/CutterAggroStatic.ogg")
 	chaseloop_sfx = load("res://Assets/Audio/SoundFX/ChaseLoops/ChaseLoopCutter.ogg")
 	player = GameManager.get_player()
 	get_player_position_timer.timeout.connect(_on_get_player_position_timer_timeout)
 	de_aggro_timer.timeout.connect(deAggro)
 	carcass_area_detector.body_entered.connect(_on_area_3d_body_entered)
 	can_charge_timer.start(1.25)
+	navigation_agent_3d.link_reached.connect(_on_navigation_agent_3d_link_reached)
 	aggro()
 
 func get_class_custom(): return "CutterAggroState"
@@ -59,12 +66,61 @@ func aggro():
 	aggro_speed = 0
 	
 	# Play an aggro animation, sounds or the like
-	await get_tree().create_timer(1.185).timeout
+	await get_random_aggro_effect()
 	AudioController.play_resource(chaseloop_sfx, 0, func(): {}, 12)
 	AudioController.play_resource(initial_chase_sfx, 0, func(): {}, 17)
-	aggro_speed = 3
+	aggro_speed = 6.35
 	# Start the timer responsible for updating chase position
 	get_player_position_timer.start(0.17)
+
+func get_random_aggro_effect():
+	# Try to keep total time to roughly 1.2 seconds, max
+	var i = randi_range(0, 3)
+	match i:
+		0:
+			await get_tree().create_timer(1.185).timeout
+		1: 
+			await get_tree().create_timer(0.86).timeout
+		2: 
+			await get_tree().create_timer(0.48).timeout
+			AudioController.play_resource(static_sfx, 0, func(): {}, 10)
+			overlay_cutter_eyes.visible = true
+			overlay_static_effect.visible = true
+			await get_tree().create_timer(0.08).timeout
+			overlay_cutter_eyes.visible = false
+			await get_tree().create_timer(0.38).timeout
+			AudioController.stop_resource(static_sfx.resource_path)
+			overlay_static_effect.visible = false
+			await get_tree().create_timer(0.08).timeout
+		3: 
+			await get_tree().create_timer(0.68).timeout
+			overlay_cutter_eyes.visible = true
+			await get_tree().create_timer(0.03).timeout
+			overlay_cutter_eyes.visible = false
+			
+			await get_tree().create_timer(0.33).timeout
+			overlay_cutter_eyes.visible = true
+			await get_tree().create_timer(0.045).timeout
+			overlay_cutter_eyes.visible = false
+			
+			await get_tree().create_timer(0.14).timeout
+			AudioController.play_resource(static_sfx, 0, func(): {}, 10)
+			overlay_static_effect.visible = true
+			overlay_cutter_eyes.visible = true
+			await get_tree().create_timer(0.06).timeout
+			overlay_cutter_eyes.visible = false
+			
+			await get_tree().create_timer(0.095).timeout
+			overlay_cutter_eyes.visible = true
+			await get_tree().create_timer(0.10).timeout
+			overlay_cutter_eyes.visible = false
+			
+			await get_tree().create_timer(0.045).timeout
+			overlay_cutter_eyes.visible = true
+			await get_tree().create_timer(0.13).timeout
+			overlay_cutter_eyes.visible = false
+			AudioController.stop_resource(static_sfx.resource_path)
+			overlay_static_effect.visible = false
 
 func _physics_process(delta: float) -> void:
 	if !charging:
@@ -73,7 +129,9 @@ func _physics_process(delta: float) -> void:
 		persistent_state.move_and_slide()
 		check_if_slideto_player()
 		if can_charge_timer.is_stopped() and player_in_vision_flag and !is_venting:
-			charge()
+			var distance_to_player := persistent_state.global_position.distance_to(player.global_position)
+			if distance_to_player > 8.5:
+				charge()
 	else:
 		check_player_distance_for_kill()
 
@@ -114,7 +172,7 @@ func charge():
 	charge_tween = create_tween()
 	charge_tween.tween_property(persistent_state, "global_position", Vector3(charge_position.x, persistent_state.global_position.y, charge_position.z), time_to_travel);
 	await charge_tween.finished
-	aggro_speed = 3
+	aggro_speed = 6.35
 	charging = false	
 	can_charge_timer.start(7.5)
 	set_new_nav_position(player.global_position)
@@ -153,7 +211,7 @@ func check_player_distance_for_kill():
 
 func _on_get_player_position_timer_timeout() -> void:
 	if persistent_state.enabled and nav_link_cooldown_timer.is_stopped():
-		set_new_nav_position(player.global_position)
+		set_new_nav_position(player.global_position + (player.velocity * _OBSERVATION_HAKI_DISTANCE))
 
 func deAggro():
 	change_state.call("respawning")
@@ -161,7 +219,7 @@ func deAggro():
 func on_player_unseen():
 	if persistent_state.enabled and player_in_vision_flag and !charging:
 		player_in_vision_flag = false
-		de_aggro_timer.start(3.5)
+		de_aggro_timer.start(6.35)
 
 # Used by non-instant detectors whenever the player actually is "in_view" to reset de-aggro timers
 func on_player_in_vision():
@@ -180,22 +238,22 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 # VENTING AND THE LIKE
 func _on_navigation_agent_3d_link_reached(details: Dictionary) -> void:
-	nav_link_cooldown_timer.start(0.35)
+	nav_link_cooldown_timer.start(0.85)
 	var ow = details.owner as Node
 	if ow.is_in_group("NavigationLinkVent"):
 		await leave_vent() if is_venting else enter_vent()
 
 func enter_vent():
+	aggro_speed = aggro_speed * 0.58
 	is_venting = true
-	collision_shape_3d.set_disabled(true)
 	persistent_state.motion_mode = persistent_state.MOTION_MODE_FLOATING
 
 func leave_vent():
 	# Play an Animation here of the monster getting out of the vent.
 	await get_tree().create_timer(1.5).timeout
 	is_venting = false
-	collision_shape_3d.set_disabled(false)
 	persistent_state.motion_mode = persistent_state.MOTION_MODE_GROUNDED
+	aggro_speed = 6.35
 
 func stopTimers():
 	for t in functional_timers:

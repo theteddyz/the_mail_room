@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=55 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" uid="uid://cggbaeh823mtn" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -33,6 +33,9 @@
 [ext_resource type="AudioStream" uid="uid://drfn1olnt3pk2" path="res://Assets/Audio/SoundFX/ImpactKey2.mp3" id="30_jjmc6"]
 [ext_resource type="AudioStream" uid="uid://nofos1dpjyv" path="res://Assets/Audio/SoundFX/ImpactKey3.mp3" id="31_s4pnh"]
 [ext_resource type="AudioStream" uid="uid://c2ogg8vuga7y0" path="res://Assets/Audio/SoundFX/ImpactKey.mp3" id="32_1ly6y"]
+[ext_resource type="Script" uid="uid://cxopweubebv50" path="res://Scenes/Prefabs/gui/debug_pause.gd" id="34_4l5s3"]
+[ext_resource type="Texture2D" uid="uid://b3gsaqrfeo7w2" path="res://Assets/Textures/cutter_test_eyes.png" id="35_ydec6"]
+[ext_resource type="Shader" uid="uid://cgcm286gkjm20" path="res://Scripts/Shaders/crtShaderTest2.gdshader" id="36_1ts2g"]
 
 [sub_resource type="Gradient" id="Gradient_10so2"]
 
@@ -170,7 +173,30 @@ stream_2/stream = ExtResource("30_jjmc6")
 stream_3/stream = ExtResource("31_s4pnh")
 stream_4/stream = ExtResource("32_1ly6y")
 
+[sub_resource type="LabelSettings" id="LabelSettings_3op3p"]
+font_size = 71
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w1eh6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rg64"]
+shader = ExtResource("36_1ts2g")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 0.0
+shader_parameter/warp_amount = 0.062
+shader_parameter/noise_amount = 0.124
+shader_parameter/interference_amount = 0.295
+shader_parameter/grille_amount = 0.302
+shader_parameter/grille_size = 1.431
+shader_parameter/vignette_amount = 0.392
+shader_parameter/vignette_intensity = 0.475
+shader_parameter/aberation_amount = 0.51
+shader_parameter/roll_line_amount = 0.151
+shader_parameter/roll_speed = 8.0
+shader_parameter/scan_line_strength = -9.81
+shader_parameter/pixel_strength = -1.715
+
 [node name="GUI" type="Control"]
+top_level = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -738,5 +764,47 @@ autowrap_mode = 2
 [node name="TypewriteSFX" type="AudioStreamPlayer" parent="Hint_Container"]
 stream = SubResource("AudioStreamRandomizer_h63ra")
 volume_db = -19.0
+
+[node name="DebugPauseText" type="Label" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 297.0
+grow_horizontal = 2
+text = "GAME IS PAUSED
+(shift + down arrow to unpause)"
+label_settings = SubResource("LabelSettings_3op3p")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("34_4l5s3")
+
+[node name="CutterEyes" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.0666667)
+top_level = true
+light_mask = 0
+material = SubResource("CanvasItemMaterial_w1eh6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("35_ydec6")
+
+[node name="StaticOverlay" type="TextureRect" parent="."]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_0rg64")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("35_ydec6")
 
 [connection signal="timeout" from="Adress_Displayer/Timer" to="Adress_Displayer" method="_on_timer_timeout"]
