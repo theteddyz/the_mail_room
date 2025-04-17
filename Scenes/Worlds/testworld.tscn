@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://cis7so1fqoyyd" path="res://Scenes/Prefabs/MoveableObjects/file_folder.tscn" id="25_ckfhg"]
 [ext_resource type="PackedScene" uid="uid://cjnqu05bvamsg" path="res://Scenes/Prefabs/MoveableObjects/new_mailcart.tscn" id="26_w0ib7"]
 [ext_resource type="Material" uid="uid://d0nli67yooqv5" path="res://Scripts/Shaders/water.tres" id="27_d732s"]
-[ext_resource type="PackedScene" uid="uid://lguytgydib6h" path="res://Scenes/Prefabs/MoveableObjects/BottleCola.tscn" id="28_wneu6"]
+[ext_resource type="PackedScene" uid="uid://dfkutgejqdtep" path="res://Scenes/Prefabs/MoveableObjects/BottleCola.tscn" id="28_wneu6"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
 [ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="44_epuy0"]

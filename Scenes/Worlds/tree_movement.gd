@@ -15,8 +15,8 @@ var animation_speed: float = 1.0
 ## 0 is no animation, 2 will exaggerate the animation movements by double.
 var animation_strength: float = 1.0
 
-var visibility_range_1: int = 30
-var visibility_range_2: int = 50
+var visibility_range_1: int = 200
+var visibility_range_2: int = 300
 
 var vegetationController: Node3D
 var vegetationScript = "res://Scenes/Worlds/vegetation_controller.gd"
