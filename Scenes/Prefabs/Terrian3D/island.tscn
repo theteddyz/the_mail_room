@@ -100,99 +100,6 @@ volumetric_fog_density = 0.0471
 volumetric_fog_anisotropy = 0.01
 volumetric_fog_length = 20.88
 
-[sub_resource type="Gradient" id="Gradient_fc8pc"]
-offsets = PackedFloat32Array(0.2, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ixfdx"]
-noise_type = 2
-frequency = 0.03
-cellular_jitter = 3.0
-cellular_return_type = 0
-domain_warp_enabled = true
-domain_warp_type = 1
-domain_warp_amplitude = 50.0
-domain_warp_fractal_type = 2
-domain_warp_fractal_lacunarity = 1.5
-domain_warp_fractal_gain = 1.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ceh45"]
-seamless = true
-color_ramp = SubResource("Gradient_fc8pc")
-noise = SubResource("FastNoiseLite_ixfdx")
-
-[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_0bgc3"]
-_shader_parameters = {
-&"auto_base_texture": 0,
-&"auto_height_reduction": 0.1,
-&"auto_overlay_texture": 1,
-&"auto_slope": 2.683,
-&"bias_distance": 512.0,
-&"blend_sharpness": 0.405,
-&"depth_blur": 0.0,
-&"enable_macro_variation": true,
-&"enable_projection": true,
-&"height_blending": true,
-&"macro_variation1": Color(1, 1, 1, 1),
-&"macro_variation2": Color(1, 1, 1, 1),
-&"macro_variation_slope": 0.333,
-&"mipmap_bias": 1.0,
-&"noise1_angle": 0.0,
-&"noise1_offset": Vector2(0.5, 0.5),
-&"noise1_scale": 0.04,
-&"noise2_scale": 0.076,
-&"noise3_scale": 0.225,
-&"noise_texture": SubResource("NoiseTexture2D_ceh45"),
-&"projection_angular_division": 2.0,
-&"projection_threshold": 0.8,
-&"world_space_normal_blend": true
-}
-world_background = 0
-texture_filtering = 1
-auto_shader = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5goeu"]
-transparency = 4
-cull_mode = 2
-vertex_color_use_as_albedo = true
-backlight_enabled = true
-backlight = Color(0.5, 0.5, 0.5, 1)
-distance_fade_mode = 1
-distance_fade_min_distance = 128.0
-distance_fade_max_distance = 96.0
-
-[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_1fbo2"]
-name = "PineTree1"
-generated_type = 1
-height_offset = 0.5
-material_override = SubResource("StandardMaterial3D_5goeu")
-last_lod = 0
-last_shadow_lod = 0
-lod0_range = 128.0
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_gpul6"]
-name = "sparse_grass_AB"
-albedo_texture = ExtResource("3_1fbo2")
-normal_texture = ExtResource("4_81a5s")
-uv_scale = 0.4
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_6quqy"]
-name = "brown_mud_alb"
-id = 1
-albedo_texture = ExtResource("6_5goeu")
-normal_texture = ExtResource("6_su5jx")
-uv_scale = 0.4
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_2x4oq"]
-name = "white_rocky_path_alb"
-id = 2
-albedo_texture = ExtResource("7_ofyio")
-normal_texture = ExtResource("8_su5jx")
-
-[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_81a5s"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_1fbo2")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_gpul6"), SubResource("Terrain3DTextureAsset_6quqy"), SubResource("Terrain3DTextureAsset_2x4oq")])
-
 [sub_resource type="Resource" id="Resource_qdxfb"]
 script = ExtResource("6_qdxfb")
 amount = 175
@@ -474,6 +381,99 @@ stack = Array[ExtResource("5_2pxrh")]([SubResource("Resource_wuihy"), SubResourc
 script = ExtResource("21_5goeu")
 size = Vector3(29.2245, 82.7295, 97.4817)
 
+[sub_resource type="Gradient" id="Gradient_fc8pc"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ixfdx"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ceh45"]
+seamless = true
+color_ramp = SubResource("Gradient_fc8pc")
+noise = SubResource("FastNoiseLite_ixfdx")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_0bgc3"]
+_shader_parameters = {
+&"auto_base_texture": 0,
+&"auto_height_reduction": 0.1,
+&"auto_overlay_texture": 1,
+&"auto_slope": 2.683,
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.405,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"height_blending": true,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise3_scale": 0.225,
+&"noise_texture": SubResource("NoiseTexture2D_ceh45"),
+&"projection_angular_division": 2.0,
+&"projection_threshold": 0.8,
+&"world_space_normal_blend": true
+}
+world_background = 0
+texture_filtering = 1
+auto_shader = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5goeu"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_1fbo2"]
+name = "PineTree1"
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_5goeu")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_gpul6"]
+name = "sparse_grass_AB"
+albedo_texture = ExtResource("3_1fbo2")
+normal_texture = ExtResource("4_81a5s")
+uv_scale = 0.4
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_6quqy"]
+name = "brown_mud_alb"
+id = 1
+albedo_texture = ExtResource("6_5goeu")
+normal_texture = ExtResource("6_su5jx")
+uv_scale = 0.4
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_2x4oq"]
+name = "white_rocky_path_alb"
+id = 2
+albedo_texture = ExtResource("7_ofyio")
+normal_texture = ExtResource("8_su5jx")
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_81a5s"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_1fbo2")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_gpul6"), SubResource("Terrain3DTextureAsset_6quqy"), SubResource("Terrain3DTextureAsset_2x4oq")])
+
 [node name="Node3D" type="Node3D"]
 
 [node name="VegetationController" type="Node3D" parent="."]
@@ -490,20 +490,6 @@ environment = SubResource("Environment_ofyio")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.788011, -0.123796, 0.603087, 0, 0.979575, 0.201078, -0.615661, 0.158452, -0.771916, 0, 58.4472, 0)
 shadow_enabled = true
-
-[node name="Terrain3D" type="Terrain3D" parent="."]
-data_directory = "res://Assets/Textures/Terrian"
-material = SubResource("Terrain3DMaterial_0bgc3")
-assets = SubResource("Terrain3DAssets_81a5s")
-collision_mode = 4
-top_level = true
-metadata/_edit_lock_ = true
-
-[node name="Player" parent="." instance=ExtResource("3_ixfdx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.277, 4.18995, 269.572)
-
-[node name="Boat" parent="." instance=ExtResource("9_ofyio")]
-transform = Transform3D(0.999831, 0, 0, 0, 0.999834, 0, 0, 0, 0.999831, 110.107, 0, 255.86)
 
 [node name="Trees" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4877, 8.2483, 198.294)
@@ -727,6 +713,20 @@ path = "uid://baanvyatadwkh"
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -9.0035, -1.12247, 23.0662)
 script = ExtResource("11_bs2qi")
 shape = SubResource("Resource_pk54t")
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://Assets/Textures/Terrian"
+material = SubResource("Terrain3DMaterial_0bgc3")
+assets = SubResource("Terrain3DAssets_81a5s")
+collision_mode = 4
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_ixfdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.277, 4.18995, 269.572)
+
+[node name="Boat" parent="." instance=ExtResource("9_ofyio")]
+transform = Transform3D(0.999831, 0, 0, 0, 0.999834, 0, 0, 0, 0.999831, 110.107, 0, 255.86)
 
 [node name="Tree1Dead" parent="." instance=ExtResource("22_2pxrh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.814, 0.784949, 261.664)
