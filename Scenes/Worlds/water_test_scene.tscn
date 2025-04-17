@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bqweh5vqux5kb"]
+[gd_scene load_steps=39 format=3 uid="uid://bqweh5vqux5kb"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_06hhm"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="1_cipwe"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://b1x4eqpbsp5t" path="res://Scenes/Prefabs/Vegetation/Grass.tscn" id="19_ml8a0"]
 [ext_resource type="PackedScene" uid="uid://ydaaplfdio8w" path="res://Scenes/Prefabs/Vegetation/Tree1Dead.tscn" id="21_ockhp"]
 [ext_resource type="PackedScene" uid="uid://cd68ouifornac" path="res://Scenes/Prefabs/Vegetation/Tree2Dead.tscn" id="23_da2ym"]
+[ext_resource type="PackedScene" uid="uid://c6b3bgieghsn7" path="res://Scenes/Prefabs/Vegetation/TreeSmallDead.tscn" id="25_rp1tv"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_cipwe"]
 rayleigh_coefficient = 5.16
@@ -164,46 +165,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40898, 0.870717, 2.82927)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.606586, 0.870717, 1.62788)
 
 [node name="ElmTree1" parent="." instance=ExtResource("13_7ivt2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26208, -4.76837e-07, -5.00895)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15475, 0, 1.73483)
 
 [node name="ElmTree1Dead" parent="." instance=ExtResource("11_dehbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.10029, 0, -5.11137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.19763, 0, 6.92245)
 
 [node name="ElmTree2" parent="." instance=ExtResource("14_57lu7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.36852, 0, -1.28932)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8368, 0, 8.60939)
 
 [node name="ElmTree2Dead" parent="." instance=ExtResource("13_rp1tv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.66503, 0, 4.74697)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.770922, 0, 11.7039)
 
 [node name="Grass" parent="." instance=ExtResource("19_ml8a0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.65786, -4.76837e-07, 7.32403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65462, 4.76837e-07, 10.6968)
 
 [node name="GrassCluster" parent="." instance=ExtResource("15_5gu0d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82859, 0, 7.54771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.39873, 0, 8.13725)
+
+[node name="GrassCluster2" parent="." instance=ExtResource("15_5gu0d")]
+transform = Transform3D(0.549358, 0, -0.835587, 0, 1, 0, 0.835587, 0, 0.549358, -1.02379, 0, 8.13725)
 
 [node name="PineTree1" parent="." instance=ExtResource("15_yufed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6474, 0, 7.99441)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79836, 0, 2.74984)
 
 [node name="PineTree2" parent="." instance=ExtResource("16_yufed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.04415, 0, 6.78145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.62863, 0, -2.46834)
 
 [node name="PineTree3" parent="." instance=ExtResource("17_rjdhf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.208, 0, 4.57938)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.560475, 0, -8.10236)
 
 [node name="PineTreeDead" parent="." instance=ExtResource("18_4fuy4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3991, 0, -0.479027)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51131, 0, -4.40316)
 
 [node name="Tree1" parent="." instance=ExtResource("14_yufed")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7136, 0, -3.75592)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.43569, 0, 5.61335)
 
 [node name="Tree1Dead" parent="." instance=ExtResource("21_ockhp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2787, 0, -8.99663)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1932, 0, 1.40342)
 
 [node name="Tree2" parent="." instance=ExtResource("11_wf87e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.35248, 0, -12.602)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5993, 0, 11.7451)
 
 [node name="Tree2Dead" parent="." instance=ExtResource("23_da2ym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.49398, 0, -11.2326)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5202, 0, -6.83115)
 
 [node name="TreeSmall" parent="." instance=ExtResource("12_whpom")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.53097, 0, -7.75743)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.07, 0, 4.70075)
+
+[node name="TreeSmall2" parent="." instance=ExtResource("25_rp1tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.14522, 0, 9.19273)

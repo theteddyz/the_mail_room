@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://0socit8j32n3"]
+[gd_scene load_steps=11 format=4 uid="uid://0socit8j32n3"]
 
 [ext_resource type="Script" uid="uid://bg3wbmvkgba5h" path="res://Scenes/Worlds/tree_movement.gd" id="1_y2tti"]
 [ext_resource type="Texture2D" uid="uid://2dkcwunix80a" path="res://Assets/Textures/BlenderTextures/T_PineBranch_Diffuse.png" id="2_r44uo"]
@@ -76,6 +76,10 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_ye8xl"]
 material = SubResource("ORMMaterial3D_r44uo")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y2tti"]
+height = 4.0293
+radius = 0.214844
+
 [node name="PineTreeDead" type="Node3D" node_paths=PackedStringArray("trunk", "low_quality_trunk", "super_low_quality")]
 script = ExtResource("1_y2tti")
 trunk = NodePath("PineTreeDead")
@@ -105,3 +109,9 @@ metadata/extras = {
 [node name="SuperLowQuality" type="MeshInstance3D" parent="."]
 transform = Transform3D(7.83216, 0, 0, 0, 13.6398, 0, 0, 0, 1, 0.317171, 6.1821, -0.00030154)
 mesh = SubResource("QuadMesh_ye8xl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0370865, 1.96681, -0.0142577)
+shape = SubResource("CylinderShape3D_y2tti")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://cmvq85doiab7"]
+[gd_scene load_steps=32 format=4 uid="uid://cmvq85doiab7"]
 
 [ext_resource type="Script" uid="uid://bg3wbmvkgba5h" path="res://Scenes/Worlds/tree_movement.gd" id="1_tbrgt"]
 [ext_resource type="Texture2D" uid="uid://blh7kg2g80rrc" path="res://Assets/Textures/BlenderTextures/T_ElmTree_Diffuse.png" id="2_unibe"]
@@ -7416,6 +7416,9 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_dnbcx"]
 material = SubResource("ORMMaterial3D_unibe")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tbrgt"]
+radius = 0.18457
+
 [node name="ElmTree2" type="Node3D" node_paths=PackedStringArray("trunk", "leaves", "low_quality_trunk", "low_quality_leaves", "super_low_quality")]
 script = ExtResource("1_tbrgt")
 trunk = NodePath("ElmTree2")
@@ -7581,3 +7584,9 @@ metadata/extras = {
 [node name="SuperLowQuality" type="MeshInstance3D" parent="."]
 transform = Transform3D(7.88259, 0, 0, 0, 9.99197, 0, 0, 0, 1, -0.32637, 4.0708, -0.62313)
 mesh = SubResource("QuadMesh_dnbcx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.99496, 0.0981982, 0.0203019, -0.100275, 0.974354, 0.201442, 1.14346e-09, -0.202463, 0.97929, 0.0388694, 0.986314, -0.310956)
+shape = SubResource("CylinderShape3D_tbrgt")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cvjrfbteqjtf5"]
+[gd_scene load_steps=11 format=4 uid="uid://cvjrfbteqjtf5"]
 
 [ext_resource type="Script" uid="uid://bg3wbmvkgba5h" path="res://Scenes/Worlds/tree_movement.gd" id="1_xa0s2"]
 [ext_resource type="Texture2D" uid="uid://blh7kg2g80rrc" path="res://Assets/Textures/BlenderTextures/T_ElmTree_Diffuse.png" id="2_m35u5"]
@@ -78,12 +78,13 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_5qruo"]
 material = SubResource("ORMMaterial3D_m35u5")
 
-[node name="ElmTree1Dead" type="Node3D" node_paths=PackedStringArray("trunk", "leaves", "low_quality_trunk", "low_quality_leaves", "super_low_quality")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xa0s2"]
+radius = 0.102051
+
+[node name="ElmTree1Dead" type="Node3D" node_paths=PackedStringArray("trunk", "low_quality_trunk", "super_low_quality")]
 script = ExtResource("1_xa0s2")
 trunk = NodePath("ElmTree1")
-leaves = NodePath("")
 low_quality_trunk = NodePath("LowElmTree1")
-low_quality_leaves = NodePath("")
 super_low_quality = NodePath("SuperLowQuality")
 
 [node name="ElmTree1" type="MeshInstance3D" parent="."]
@@ -109,3 +110,9 @@ metadata/extras = {
 [node name="SuperLowQuality" type="MeshInstance3D" parent="."]
 transform = Transform3D(6.08372, 0, 0, 0, 6.45446, 0, 0, 0, 1, 0.287125, 3.34357, -0.197692)
 mesh = SubResource("QuadMesh_5qruo")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0825977, 0.986314, 0)
+shape = SubResource("CylinderShape3D_xa0s2")
