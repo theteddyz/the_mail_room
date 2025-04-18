@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=4 uid="uid://baanvyatadwkh"]
+
+[ext_resource type="Script" uid="uid://bg3wbmvkgba5h" path="res://Scenes/Worlds/tree_movement.gd" id="1_n1glq"]
+[ext_resource type="ArrayMesh" uid="uid://by4tj5r7orf12" path="res://Scenes/Prefabs/Vegetation/GrassCluster.tres" id="2_hqrlh"]
+[ext_resource type="Texture2D" uid="uid://b58d0n85naee5" path="res://Assets/Textures/BlenderTextures/Grass.png" id="2_wf7x5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqrlh"]
+resource_name = "Grass"
+transparency = 1
+cull_mode = 2
+diffuse_mode = 2
+albedo_texture = ExtResource("2_wf7x5")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_d24h2"]
+_surfaces = [{
+"aabb": AABB(-1.95486, -0.010157, -1.95675, 3.67459, 1.40025, 3.61536),
+"format": 34896613377,
+"index_count": 336,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZABlAGYAZABnAGUAaABpAGoAaABrAGkAbABtAG4AbABvAG0AcABxAHIAcABzAHEAdAB1AHYAdAB3AHUAeAB5AHoAeAB7AHkAfAB9AH4AfAB/AH0AgACBAIIAgACDAIEAhACFAIYAhACHAIUAiACJAIoAiACLAIkAjACNAI4AjACPAI0AkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkArACtAK4ArACvAK0AsACxALIAsACzALEAtAC1ALYAtAC3ALUAuAC5ALoAuAC7ALkAvAC9AL4AvAC/AL0AwADBAMIAwADDAMEAxADFAMYAxADHAMUAyADJAMoAyADLAMkAzADNAM4AzADPAM0A0ADRANIA0ADTANEA1ADVANYA1ADXANUA2ADZANoA2ADbANkA3ADdAN4A3ADfAN0A"),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 224,
+"vertex_data": PackedByteArray("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")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xovl2"]
+resource_name = "Trees_Plane_006"
+_surfaces = [{
+"aabb": AABB(-1.95486, -0.010157, -1.95675, 3.67459, 1.40025, 3.61536),
+"attribute_data": PackedByteArray("/3/qf4m/////f///ib/qf4m/6n//f///ib////9/6n91wOp//////3XA/////+p////qf3XA////////dcDqf3XA6n//////dcD/////6n///+p/dcD///////91wOp//3/qf4m/////f///ib/qf4m/6n//f///ib////9/6n//f+p/ib////9///+Jv+p/ib/qf/9///+Jv////3/qf/9/6n+Jv////3///4m/6n+Jv+p//3///4m/////f+p/dcDqf/////91wP/////qf///6n91wP///////3XA6n91wOp//////3XA/////+p////qf3XA////////dcDqf/9/6n+Jv////3///4m/6n+Jv+p//3///4m/////f+p//3/qf4m/////f///ib/qf4m/6n//f///ib////9/6n//f+p/ib////9///+Jv+p/ib/qf/9///+Jv////3/qf/9/6n+Jv////3///4m/6n+Jv+p//3///4m/////f+p/dcDqf/////91wP/////qf///6n91wP///////3XA6n//f+p/ib////9///+Jv+p/ib/qf/9///+Jv////3/qf3XA6n//////dcD/////6n///+p/dcD///////91wOp/dcDqf/////91wP/////qf///6n91wP///////3XA6n91wOp//////3XA/////+p////qf3XA////////dcDqf3XA6n//////dcD/////6n///+p/dcD///////91wOp/dcDqf/////91wP/////qf///6n91wP///////3XA6n//f+p/ib////9///+Jv+p/ib/qf/9///+Jv////3/qf3XA6n//////dcD/////6n///+p/dcD///////91wOp/dcDqf/////91wP/////qf///6n91wP///////3XA6n91wOp//////3XA/////+p////qf3XA////////dcDqf3XA6n//////dcD/////6n///+p/dcD///////91wOp//3/qf4m/////f///ib/qf4m/6n//f///ib////9/6n91wOp//////3XA/////+p////qf3XA////////dcDqf3XA6n//////dcD/////6n///+p/dcD///////91wOp//3/qf4m/////f///ib/qf4m/6n//f///ib////9/6n8="),
+"format": 34896613399,
+"index_count": 336,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZABlAGYAZABnAGUAaABpAGoAaABrAGkAbABtAG4AbABvAG0AcABxAHIAcABzAHEAdAB1AHYAdAB3AHUAeAB5AHoAeAB7AHkAfAB9AH4AfAB/AH0AgACBAIIAgACDAIEAhACFAIYAhACHAIUAiACJAIoAiACLAIkAjACNAI4AjACPAI0AkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkArACtAK4ArACvAK0AsACxALIAsACzALEAtAC1ALYAtAC3ALUAuAC5ALoAuAC7ALkAvAC9AL4AvAC/AL0AwADBAMIAwADDAMEAxADFAMYAxADHAMUAyADJAMoAyADLAMkAzADNAM4AzADPAM0A0ADRANIA0ADTANEA1ADVANYA1ADXANUA2ADZANoA2ADbANkA3ADdAN4A3ADfAN0A"),
+"material": SubResource("StandardMaterial3D_hqrlh"),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(1.40261, 2, 0, 0),
+"vertex_count": 224,
+"vertex_data": PackedByteArray("MIgj/nWn/78wiNsBpm3/vzCI2wF1p/+/MIgj/qZt/7+gpCP+jYoAAL9r2wGNigAAoKTbAY2KAAC/ayP+jYoAAJeXI/6zmP+fz7/bAdNv/5+Xl9sBs5j/n8+/I/7Tb/+fz78j/rOYAACXl9sB028AAM+/2wGzmAAAl5cj/tNvAAAirSP+147g0raT2wGNwuDSIq3bAdeO4NK2kyP+jcLg0vuGI/7GmwAA3LnbAZ21AAD7htsBxpsAANy5I/6dtQAAuqYj/vR55dDOj9sBDEXl0Lqm2wH0eeXQzo8j/gxF5dBLtSP+2lMAAD2B2wEmawAAS7XbAdpTAAA9gSP+JmsAAPaII/5bb+j+G1DbAdBt6P72iNsBW2/o/htQI/7Qbej+Sm0j/rFRAADGa9sBe4sAAEpt2wGxUQAAxmsj/nuLAAA5YyP+0rDewjdf2wEnd97COWPbAdKw3sI3XyP+J3fewpZ9I/7zkQAA2kTbAQaWAACWfdsB85EAANpEI/4GlgAAvXEj/nnOHrBYh9sB/5gesL1x2wF5zh6wWIcj/v+YHrDZliP+t74AADxi2wHBqAAA2ZbbAbe+AAA8YiP+wagAAPS2///Pul+p+NMAAJ6OX6n4teQDsb9fqfPUGvy8iV+pHd7E/oOx+wHPrDoB6pf7ASHdqgJmtvsByq1U/QiT+wHfqSP+YBHi8V902wEAJeLx36nbAWAR4vFfdCP+ACXi8XiFI/4AAAAAx5jbAWA2AAB4hdsBAAAAAMeYI/5gNgAAuVsj/mJy4vE5JtsBAobi8blb2wFicuLxOSYj/gKG4vFRNyP+AmEAAKBK2wFjlwAAUTfbAQJhAACgSiP+Y5cAADxMI/6UMTqb33jbAcANOps8TNsBlDE6m994I/7ADTqbLXQj/lk2AADtUNsB+wgAAC102wFZNgAA7VAj/vsIAACeaSP+jTj84G9A2wFtYPzgnmnbAY04/OBvQCP+bWD84GlBI/6QNwAApGjbAWthAABpQdsBkDcAAKRoI/5rYQAAZosj/ksl+NLccdsB8lj40maL2wFLJfjS3HEj/vJY+NI4ZSP+JDIAAAqY2wEZTAAAOGXbASQyAAAKmCP+GUwAABa/I/6JMQPvFIvbAfFIA+8Wv9sBiTED7xSLI/7xSAPvkpkj/s8iAACZsNsBq1cAAJKZ2wHPIgAAmbAj/qtXAACkmCP+muM7/tFf2wEa4Tv+pJjbAZrjO/7RXyP+GuE7/nZ9I/55xQAA/3rbATv/AAB2fdsBecUAAP96I/47/wAADXP///LEePdOQAAANrh49+d35AM6xHj3dDsa/O64ePcoXcT+qqJGATRWOgF+2kYBAmKqAvKhRgFZUVT9NttGAZm3I/5ESSuuss/bAaF9K66Zt9sBREkrrrLPI/6hfSuu46kj/rJvAABo3dsBM1cAAOOp2wGybwAAaN0j/jNXAAC4tSP+08F66A6G2wFe4XrouLXbAdPBeugOhiP+XuF66F6OI/5guQAAaK3bAdHpAABejtsBYLkAAGitI/7R6QAAZssj/hhttKLb8NsBmZi0ombL2wEYbbSi2/Aj/pmYtKK6yCP+4pUAAIfz2wHQbwAAusjbAeKVAACH8yP+0G8AAGq6I/5NSd+aXOfbAeAl35pqutsBTUnfmlznI/7gJd+aUOIj/m5OAAB1v9sBvyAAAFDi2wFuTgAAdb8j/r8gAABSOSP+pDnf0uYf2wFbbd/SUjnbAaQ539LmHyP+W23f0iwTI/6URgAADUbbAWtgAAAsE9sBlEYAAA1GI/5rYAAAIUMj/mCM39K1KdsBF8Df0iFD2wFgjN/StSkj/hfA39L6HCP+UZkAANxP2wEnswAA+hzbAVGZAADcTyP+J7MAAN02I/6d6C+H227bAXfeL4fdNtsBnegvh9tuI/533i+H2lcj/v//AADeTdsBFccAANpX2wH//wAA3k0j/hXHAAC8yCP+du/tyqi52wG4t+3KvMjbAXbv7cqouSP+uLftyp7cI/7tywAAxqXbAUDbAACe3NsB7csAAMalI/5A2wAA0Egj/m63gOAaINsBzd+A4NBI2wFut4DgGiAj/s3fgOCZICP+7bYAAFFI2wFO4AAAmSDbAe22AABRSCP+TuAAAB8dI/68ovzAvBvbAfFo/MAfHdsBvKL8wLwbI/7xaPzA3Dgj/iKFAAAAANsBioYAANw42wEihQAAAAAj/oqGAAAXzyP+cGyxmNb92wGBS7GYF8/bAXBssZjW/SP+gUuxmKr2I/66cwAAQ9bbATdEAACq9tsBunMAAEPWI/43RAAA8d4j/inIsbgU6dsBRo+xuPHe2wEpyLG4FOkj/kaPsbj//yP+3rAAAAfI2wGQpgAA///bAd6wAAAHyCP+kKYAAP9/AAD/fwAA/38AAP9/AAD///9/////f////3////9//38AAP9/AAD/fwAA/38AAIHa/3+B2v9/gdr/f4Ha/3//f////3////9/////f///j2f/f49n/3+PZ/9/j2f/f/9/AAD/fwAA/38AAP9/AAD//z+W//8/lv//P5b//z+W/38AAP9/AAD/fwAA/38AAP//JL///yS///8kv///JL//fwAA/38AAP9/AAD/fwAA//9bhP//W4T//1uE//9bhP9/AAD/fwAA/38AAP9/AADm6v9/5ur/f+bq/3/m6v9/jYNYBY2DWAWNg1gFjYNYBTIAjpwyAI6cMgCOnDIAjpz/f////3////9/////f///Mkv/fzJL/38yS/9/Mkv/f/9/////f////3////9///8yS/9/Mkv/fzJL/38yS/9//38AAP9/AAD/fwAA/38AADfW/3831v9/N9b/fzfW/3//f////3////9/////f///mVn/f5lZ/3+ZWf9/mVn/f/9/////f////3////9///92Z/9/dmf/f3Zn/392Z/9//3////9/////f////3///4hN/3+ITf9/iE3/f4hN/3//fwAA/38AAP9/AAD/fwAA//+cvv//nL7//5y+//+cvrCCwAGwgsABsILAAbCCwAE0OlB+NDpQfjQ6UH40OlB+/3////9/////f////3///0eX/39Hl/9/R5f/f0eX/3//f////3////9/////f///AFP/fwBT/38AU/9/AFP/f/9/////f////3////9////2ov9/9qL/f/ai/3/2ov9//38AAP9/AAD/fwAA/38AAOfV/3/n1f9/59X/f+fV/3//f////3////9/////f///kWf/f5Fn/3+RZ/9/kWf/f/9/////f////3////9///+RZ/9/kWf/f5Fn/3+RZ/9//38AAP9/AAD/fwAA/38AAKjF/3+oxf9/qMX/f6jF/3//fwAA/38AAP9/AAD/fwAA//84j///OI///ziP//84j/9/////f////3////9///8LWv9/C1r/fwta/38LWv9//38AAP9/AAD/fwAA/38AAP//iIH//4iB//+Igf//iIH/fwAA/38AAP9/AAD/fwAAAtT/fwLU/38C1P9/AtT/f/9/AAD/fwAA/38AAP9/AABx9f9/cfX/f3H1/39x9f9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_d24h2")
+
+[node name="GrassCluster" type="Node3D" node_paths=PackedStringArray("leaves", "low_quality_leaves")]
+script = ExtResource("1_n1glq")
+leaves = NodePath("GrassCluster")
+low_quality_leaves = NodePath("LowQualityGrassCluster")
+
+[node name="GrassCluster" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_hqrlh")
+skeleton = NodePath("")
+blend_shapes/X = 0.0
+blend_shapes/Y = 0.0
+"blend_shapes/Variable Lengths" = 1.0
+blend_shapes/frame_0000 = 0.0
+blend_shapes/frame_0001 = 0.0
+blend_shapes/frame_0002 = 0.0
+blend_shapes/frame_0003 = 0.0
+blend_shapes/frame_0004 = 0.0
+blend_shapes/frame_0005 = 0.0
+blend_shapes/frame_0006 = 0.0
+blend_shapes/frame_0007 = 0.0
+blend_shapes/frame_0008 = 0.0
+blend_shapes/frame_0009 = 0.0
+blend_shapes/frame_0010 = 0.0
+blend_shapes/frame_0011 = 0.0
+blend_shapes/frame_0012 = 0.0
+blend_shapes/frame_0013 = 0.0
+blend_shapes/frame_0014 = 0.0
+blend_shapes/frame_0015 = 0.0
+blend_shapes/frame_0016 = 0.0
+blend_shapes/frame_0017 = 0.0
+blend_shapes/frame_0018 = 0.0
+blend_shapes/frame_0019 = 0.0
+blend_shapes/frame_0020 = 0.0
+blend_shapes/frame_0021 = 0.0
+blend_shapes/frame_0022 = 0.0
+blend_shapes/frame_0023 = 0.0
+blend_shapes/frame_0024 = 0.0
+blend_shapes/frame_0025 = 0.0
+blend_shapes/frame_0026 = 0.0
+blend_shapes/frame_0027 = 0.0
+blend_shapes/frame_0028 = 0.0
+blend_shapes/frame_0029 = 0.0
+blend_shapes/frame_0030 = 0.0
+blend_shapes/frame_0031 = 0.0
+blend_shapes/frame_0032 = 0.0
+blend_shapes/frame_0033 = 0.0
+blend_shapes/frame_0034 = 0.0
+blend_shapes/frame_0035 = 0.0
+blend_shapes/frame_0036 = 0.0
+blend_shapes/frame_0037 = 0.0
+blend_shapes/frame_0038 = 0.0
+blend_shapes/frame_0039 = 0.0
+blend_shapes/frame_0040 = 0.0
+blend_shapes/frame_0041 = 0.0
+blend_shapes/frame_0042 = 0.0
+blend_shapes/frame_0043 = 0.0
+blend_shapes/frame_0044 = 0.0
+blend_shapes/frame_0045 = 0.0
+blend_shapes/frame_0046 = 0.0
+blend_shapes/frame_0047 = 0.0
+blend_shapes/frame_0048 = 1.0
+
+[node name="LowQualityGrassCluster" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("ArrayMesh_xovl2")
+skeleton = NodePath("")

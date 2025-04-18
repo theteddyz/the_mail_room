@@ -11,8 +11,8 @@ extends RigidBody3D
 @export var spring_strength := 555.0  # Controls how fast it accelerates towards target
 @export var linear_damping := 25.0  # Controls how fast it slows down after overshooting
 
-@export var angular_spring_strength := 255.0  # Controls how fast it accelerates towards target
-@export var angular_damping := 15.0  # Controls how fast it slows down after overshooting
+@export var angular_spring_strength := 155.0  # Controls how fast it accelerates towards target
+@export var angular_damping := 1.0  # Controls how fast it slows down after overshooting
 
 var can_row := true
 var can_turn := true
@@ -43,7 +43,10 @@ func _process(delta: float) -> void:
 		if input_dir.length() != 0:
 			if can_row:
 				var angle = self.rotation
-				self.apply_torque_impulse(Vector3(0,-input_dir.x,0)*basis*mass*0.5)
+				var dir = 1
+				if(input_dir.y > 0):
+					dir = -1
+				self.apply_torque_impulse(Vector3(0,-input_dir.x*dir,0)*basis*mass*0.5)
 				self.apply_impulse(-self.basis.z*100 * -input_dir.y,self.basis*Vector3(0,0,0.5))
 				self.apply_impulse(-Vector3.UP*20 * -input_dir.y,self.basis*Vector3(0,0,0.5))
 				forward = true
@@ -80,7 +83,7 @@ func _physics_process(delta: float) -> void:
 	var global_rot = basis*Vector3.UP
 	var angle_between = max(2-Vector3.UP.angle_to(global_rot),0)
 	var push_dir = Vector3.UP#Vector3(-global_rot.x*0.2,1,-global_rot.z*0.2)
-	var strength = 3500*delta*mass
+	var strength = 8500*delta*mass
 	
 	
 	# 1. Get local right vector in global space
@@ -104,13 +107,25 @@ func _physics_process(delta: float) -> void:
 		
 		result = spring_damper_exact(angular_velocity.y,angular_velocity.y,0,0,angular_spring_strength,angular_damping,delta)
 		angular_velocity.y = result.x
+		current_cumulative_rotation.y = result.x
 		
 		result = spring_damper_exact(angular_velocity.x,angular_velocity.x,0,0,angular_spring_strength,angular_damping,delta)
 		angular_velocity.x = result.x
+		current_cumulative_rotation.x = result.x
 		
 		result = spring_damper_exact(angular_velocity.z,angular_velocity.z,0,0,angular_spring_strength,angular_damping,delta)
 		angular_velocity.z = result.x
+		current_cumulative_rotation.y = result.x
 		
+		#var resultX : Dictionary = spring_damper_exact(current_cumulative_rotation.x,angular_velocity.x,shaken_target_rotation.x,0,spring_strength,damping,delta)
+		#var resultY : Dictionary = spring_damper_exact(current_cumulative_rotation.y,angular_velocity.y,shaken_target_rotation.y,0,spring_strength,damping,delta)
+		#var resultZ : Dictionary = spring_damper_exact(current_cumulative_rotation.z,angular_velocity.z,shaken_target_rotation.z,0,spring_strength,damping,delta)
+		#angular_velocity.x = resultX.v
+		#angular_velocity.y = resultY.v
+		#angular_velocity.z = resultZ.v
+		#current_cumulative_rotation.x = resultX.x
+		#current_cumulative_rotation.y = resultY.x
+		#current_cumulative_rotation.z = resultZ.x
 		
 		linear_damp = max(0.0, (Vector3.UP.angle_to(global_rot) - global_position.y) * 0.25 + pow(linear_velocity.length(), 1.1) * 0.15)
 		#angular_damp = angle_between*1
