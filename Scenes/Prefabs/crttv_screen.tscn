@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://b3tdwehc6j730"]
+[gd_scene load_steps=5 format=4 uid="uid://b3tdwehc6j730"]
 
-[ext_resource type="Texture2D" uid="uid://cewsovmotus3" path="res://Assets/Models/BlenderModels/desk_CRTTV.png" id="1_d0ncf"]
-[ext_resource type="VideoStream" path="res://Assets/CRT Video Final Master Peter 3.ogv" id="2_xillq"]
+[ext_resource type="VideoStream" uid="uid://detwsdyk4xs5n" path="res://Assets/CRT Video Final Master Peter 3.ogv" id="2_xillq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_bf1bd"]
 viewport_path = NodePath("SubViewport")
@@ -12,27 +11,6 @@ albedo_texture = SubResource("ViewportTexture_bf1bd")
 uv1_scale = Vector3(8.225, 8.225, 8.225)
 uv1_offset = Vector3(0, 0.105, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sadm6"]
-resource_name = "CRTTV"
-cull_mode = 2
-albedo_texture = ExtResource("1_d0ncf")
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_sxr0h"]
-_surfaces = [{
-"aabb": AABB(-0.39236, -0.344154, -0.517475, 0.784719, 0.81461, 0.0743194),
-"format": 34896613377,
-"index_count": 150,
-"index_data": PackedByteArray("FAACAAAAFAABAAIAHQAUAAAAHQAAAAYAHgABABQAHgADAAEAHwAUAB0AHwAeABQAFQAdAAYAFQAGAAwAGwAfAB0AGwAdABUAIAADAB4AIAAEAAMAFwAeAB8AFwAgAB4AGQAfABsAGQAXAB8AFgAEACAAFgAJAAQACAAJABYACAAKAAkABwAIABYAGAAWACAABwAWABgAGAAgABcABQAHABgAIQAYABcABQAYACEAIQAXABkADQAFACEADQAhABoAGgAhABkAEwANABoAEwAaABIAGgAZACIAEgAaACIAIgAZABsAEgAiABEAIgAbACMAEQAiACMAIwAbABUAEQAjAAsAIwAVABwACwAjABwAHAAVAAwACwAcAA8AHAAMAA4ADwAcAA4ADwAOABAA"),
-"lods": [0.00688285, PackedByteArray("FAACAAAAFAABAAIAFAADAAEAFQAUAAAAFQAAAAYAFgADABQAFgAEAAMAFQAGAAwAFgAJAAQAFwAUABUAFwAWABQACAAJABYACAAKAAkABwAIABYABwAWABgAGAAWABcABQAHABgADQAFABgAGAAXABkADQAYABoAGgAYABkAEwANABoAEwAaABIAEgAaABEAGQAXABsAGgAZABsAGwAXABUAEQAaABwAGgAbABwAHAAbABUAEQAcAAsAHAAVAAwACwAcAA8AHAAMAA4ADwAcAA4ADwAOABAA"), 0.0425732, PackedByteArray("AAABAAIAAAADAAEABAADAAAABQAEAAAABQAAAAYABwAEAAUABwAIAAQACAAJAAQACAAKAAkACwAFAAYACwAGAAwADQAFAAsACwAMAA4ADwALAA4ADwAOABAAEQANAAsAEgANABEAEwANABIA")],
-"name": "CRTTV",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("//8yM+qfAADMzAAAhqcAAP//AAD+/wAAmZkAAKWDAABmZgAApYMAAAAAmZnIewAA//9lZsh7AAAAAGVmyHsAAAAAMzPqnwAAMzMAAIanAAAAAAAA/v8AAJmZ//+lgwAA//+Ymch7AAAAAMvM6p8AAP//y8zqnwAAzMz//4anAAD///////8AAGZm//+lgwAAMzP//4anAAAAAP////8AAMzMMjOUOgAAzMyYmcQZAAAzMzIzlDoAAGZmZWYAAAAAMzNlZsQZAABmZpmZAAAAADMzy8yUOgAAmZmYmQAAAADMzMvMlDoAAMzMZWbEGQAAmZkyM+sbAACZmWVmAAAAAGZmMjPrGwAAMzOZmcQZAABmZsvM6xsAAJmZy8zrGwAA")
-}]
-blend_shape_mode = 0
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_bf1bd"]
 resource_name = "desk_Cube_178"
 _surfaces = [{
@@ -42,15 +20,12 @@ _surfaces = [{
 "index_count": 150,
 "index_data": PackedByteArray("FAACAAAAFAABAAIAHQAUAAAAHQAAAAYAHgABABQAHgADAAEAHwAUAB0AHwAeABQAFQAdAAYAFQAGAAwAGwAfAB0AGwAdABUAIAADAB4AIAAEAAMAFwAeAB8AFwAgAB4AGQAfABsAGQAXAB8AFgAEACAAFgAJAAQACAAJABYACAAKAAkABwAIABYAGAAWACAABwAWABgAGAAgABcABQAHABgAIQAYABcABQAYACEAIQAXABkADQAFACEADQAhABoAGgAhABkAEwANABoAEwAaABIAGgAZACIAEgAaACIAIgAZABsAEgAiABEAIgAbACMAEQAiACMAIwAbABUAEQAjAAsAIwAVABwACwAjABwAHAAVAAwACwAcAA8AHAAMAA4ADwAcAA4ADwAOABAA"),
 "lods": [0.00688285, PackedByteArray("FAACAAAAFAABAAIAFAADAAEAFQAUAAAAFQAAAAYAFgADABQAFgAEAAMAFQAGAAwAFgAJAAQAFwAUABUAFwAWABQACAAJABYACAAKAAkABwAIABYABwAWABgAGAAWABcABQAHABgADQAFABgAGAAXABkADQAYABoAGgAYABkAEwANABoAEwAaABIAEgAaABEAGQAXABsAGgAZABsAGwAXABUAEQAaABwAGgAbABwAHAAbABUAEQAcAAsAHAAVAAwACwAcAA8AHAAMAA4ADwAcAA4ADwAOABAA"), 0.0425732, PackedByteArray("AAABAAIAAAADAAEABAADAAAABQAEAAAABQAAAAYABwAEAAUABwAIAAQACAAJAAQACAAKAAkACwAFAAYACwAGAAwADQAFAAsACwAMAA4ADwALAA4ADwAOABAAEQANAAsAEgANABEAEwANABIA")],
-"material": SubResource("StandardMaterial3D_sadm6"),
 "name": "CRTTV",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 36,
 "vertex_data": PackedByteArray("//8yM+qfE/vMzAAAhqeM+P//AAD+/7b4mZkAAKWDdvhmZgAApYN1+AAAmZnIe77+//9lZsh7u/4AAGVmyHu7/gAAMzPqnxP7MzMAAIani/gAAAAA/v+2+JmZ//+lg3X4//+Ymch7vv4AAMvM6p8T+///y8zqnxP7zMz//4ani/j///////+2+GZm//+lg3b4MzP//4anjPgAAP////+2+MzMMjOUOhv7zMyYmcQZ1P4zMzIzlDob+2ZmZWYAAPD+MzNlZsQZ1P5mZpmZAADw/jMzy8yUOhv7mZmYmQAA8P7MzMvMlDob+8zMZWbEGdT+mZkyM+sbLfuZmWVmAADw/mZmMjPrGy37MzOZmcQZ1P5mZsvM6xst+5mZy8zrGy37MgBgdTMAUIcHAMp1KwAcggAC7X/L/9GKYwACdf0KY4CfCjKASAfUfzsKD4D+/RGALPXLf8z/nopf9cx/tvgqgMP173/T/+J9y/+uePf/NIoAAO54BPn/fxIH/3+TAf5/+gb+f/7/a37+/xCHa/4AgOz4/38AAPqGDQDVgQAAk4HWAfF//v8EefH/KX4o/g2A")
 }]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_sxr0h")
 
 [node name="CRTTVScreen" type="MeshInstance3D"]
 transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 0, 0, 0)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://blmtegf3uucdb"]
 
-[ext_resource type="Shader" uid="uid://bbsjl8ntid7d3" path="res://Scripts/Shaders/water.gdshader" id="1_buj4o"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/water.gdshader" id="1_buj4o"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_pwd2d"]
 subdivide_width = 200
