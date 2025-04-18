@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bg3wbmvkgba5h" path="res://Scenes/Worlds/tree_movement.gd" id="1_n1glq"]
 [ext_resource type="ArrayMesh" uid="uid://by4tj5r7orf12" path="res://Scenes/Prefabs/Vegetation/GrassCluster.tres" id="2_hqrlh"]
-[ext_resource type="Texture2D" uid="uid://b58d0n85naee5" path="res://Assets/Textures/BlenderTextures/Grass.png" id="2_wf7x5"]
+[ext_resource type="Texture2D" uid="uid://krbep0r0ftof" path="res://Assets/Textures/BlenderTextures/GrassLow.png" id="3_wf7x5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hqrlh"]
 resource_name = "Grass"
 transparency = 1
 cull_mode = 2
 diffuse_mode = 2
-albedo_texture = ExtResource("2_wf7x5")
+albedo_texture = ExtResource("3_wf7x5")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_d24h2"]
@@ -26,7 +26,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_xovl2"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_m1a1u"]
 resource_name = "Trees_Plane_006"
 _surfaces = [{
 "aabb": AABB(-1.95486, -0.010157, -1.95675, 3.67459, 1.40025, 3.61536),
@@ -46,6 +46,7 @@ shadow_mesh = SubResource("ArrayMesh_d24h2")
 
 [node name="GrassCluster" type="Node3D" node_paths=PackedStringArray("leaves", "low_quality_leaves")]
 script = ExtResource("1_n1glq")
+amount = 2.0
 leaves = NodePath("GrassCluster")
 low_quality_leaves = NodePath("LowQualityGrassCluster")
 
@@ -106,6 +107,6 @@ blend_shapes/frame_0047 = 0.0
 blend_shapes/frame_0048 = 1.0
 
 [node name="LowQualityGrassCluster" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("ArrayMesh_xovl2")
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_m1a1u")
 skeleton = NodePath("")

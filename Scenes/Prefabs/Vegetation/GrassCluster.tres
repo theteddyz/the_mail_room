@@ -1,12 +1,12 @@
 [gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://by4tj5r7orf12"]
 
 [ext_resource type="Shader" uid="uid://folar6cvd0e1" path="res://Scenes/Prefabs/Vegetation/Leaf_movement.gdshader" id="1_e8day"]
-[ext_resource type="Texture2D" uid="uid://b58d0n85naee5" path="res://Assets/Textures/BlenderTextures/Grass.png" id="2_o8a8b"]
+[ext_resource type="Texture2D" uid="uid://krbep0r0ftof" path="res://Assets/Textures/BlenderTextures/GrassLow.png" id="2_e8day"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xovl2"]
 render_priority = 0
 shader = ExtResource("1_e8day")
-shader_parameter/albedo_texture = ExtResource("2_o8a8b")
+shader_parameter/albedo_texture = ExtResource("2_e8day")
 shader_parameter/sway_strength = 0.05
 shader_parameter/sway_speed = 2.0
 

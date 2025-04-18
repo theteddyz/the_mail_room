@@ -77,12 +77,11 @@ material = SubResource("ORMMaterial3D_4msrk")
 [sub_resource type="SphereShape3D" id="SphereShape3D_v8dpa"]
 radius = 1.76913
 
-[node name="TreeSmall" type="Node3D" node_paths=PackedStringArray("trunk", "leaves", "low_quality_trunk", "low_quality_leaves", "super_low_quality")]
+[node name="TreeSmall" type="Node3D" node_paths=PackedStringArray("trunk", "low_quality_trunk", "super_low_quality")]
 script = ExtResource("1_4msrk")
+amount = 0.2
 trunk = NodePath("TreeSmall")
-leaves = NodePath("")
 low_quality_trunk = NodePath("LowTreeSmall")
-low_quality_leaves = NodePath("")
 super_low_quality = NodePath("SuperLowQuality")
 
 [node name="TreeSmall" type="MeshInstance3D" parent="."]

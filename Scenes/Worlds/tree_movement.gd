@@ -3,20 +3,26 @@ extends Node3D
 var time: float = 0.0
 
 ## The amount of sway the trees should do.
-var amount: float = 1.0
+@export var amount: float = 1.0
 ## The speed of the swaying motion.
-var speed: float = 1.0
+@export var speed: float = 1.0
 ## Position Influence affects how much rotational difference the trees should have depending on their position.
 ## 0 means that they all move at the same time.
-var position_influence: float = 1.0
+@export var position_influence: float = 1.0
 ## Speed of the animation.
-var animation_speed: float = 1.0
+@export var animation_speed: float = 1.0
 ## Controls the exaggeration of the animation keyframes.
 ## 0 is no animation, 2 will exaggerate the animation movements by double.
-var animation_strength: float = 1.0
+@export var animation_strength: float = 1.0
 
-var visibility_range_1: int = 200
-var visibility_range_2: int = 300
+var amount2: float = 1.0
+var speed2: float = 1.0
+var position_influence2: float = 1.0
+var animation_speed2: float = 1.0
+var animation_strength2: float = 1.0
+
+var visibility_range_1: int = 50
+var visibility_range_2: int = 100
 
 var vegetationController: Node3D
 var vegetationScript = "res://Scenes/Worlds/vegetation_controller.gd"
@@ -37,11 +43,11 @@ func _ready():
 	var specific_script = load(vegetationScript)
 	find_node_with_script(root, specific_script)
 	
-	amount = vegetationController.amount
-	speed = vegetationController.speed
-	position_influence = vegetationController.position_influence
-	animation_speed = vegetationController.animation_speed
-	animation_strength = vegetationController.animation_strength
+	amount2 = amount * vegetationController.amount
+	speed2 = speed * vegetationController.speed
+	position_influence2 = position_influence * vegetationController.position_influence
+	animation_speed2 = animation_speed * vegetationController.animation_speed
+	animation_strength2 = animation_strength * vegetationController.animation_strength
 	
 	
 	if leaves:
@@ -80,20 +86,20 @@ func _process(delta: float) -> void:
 	
 	
 	#Remove when releasing the game
-	amount = vegetationController.amount
-	speed = vegetationController.speed
-	position_influence = vegetationController.position_influence
-	animation_speed = vegetationController.animation_speed
-	animation_strength = vegetationController.animation_strength
+	amount2 = amount * vegetationController.amount
+	speed2 = speed * vegetationController.speed
+	position_influence2 = position_influence * vegetationController.position_influence
+	animation_speed2 = animation_speed * vegetationController.animation_speed
+	animation_strength2 = animation_strength * vegetationController.animation_strength
 	
 	if animationTree:
-		animationTree["parameters/Blend/blend_amount"] = animation_strength
-		animationTree["parameters/TimeScale/scale"] = animation_speed
+		animationTree["parameters/Blend/blend_amount"] = animation_strength2
+		animationTree["parameters/TimeScale/scale"] = animation_speed2
 		
-	time += delta*speed
-	var amound = sin((global_position.x + global_position.z)*0.05*position_influence + time)*amount
+	time += delta*speed2
+	var amound = sin((global_position.x + global_position.z)*0.05*position_influence2 + time)*amount2
 	
-	#rotation.y += 0.2*delta
+	
 	
 	var yaw = rotation.y
 	var x_val = sin(yaw)
@@ -105,6 +111,16 @@ func _process(delta: float) -> void:
 	if leaves: 
 		leaves.set("blend_shapes/X", -x_val*amound)
 		leaves.set("blend_shapes/Y", y_val*amound)
+		
+	#yaw = global_rotation.y
+	#x_val = sin(yaw)
+	#y_val = cos(yaw)
+	#if low_quality_trunk:
+		#low_quality_trunk.global_rotation.x = x_val*amound*0.2
+		#low_quality_trunk.global_rotation.z =  -y_val*amound*0.2
+	#if low_quality_leaves:
+		#low_quality_leaves.global_rotation.x = x_val*amound*0.2
+		#low_quality_leaves.global_rotation.z =  -y_val*amound*0.2
 
 func find_node_with_script(node, script):
 	# Check if the current node has the specific script

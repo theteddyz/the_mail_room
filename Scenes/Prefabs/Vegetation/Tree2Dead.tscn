@@ -127,6 +127,7 @@ radius = 0.363281
 
 [node name="Tree2Dead" type="Node3D" node_paths=PackedStringArray("trunk", "low_quality_trunk", "super_low_quality")]
 script = ExtResource("1_iudxv")
+amount = 0.5
 trunk = NodePath("Tree2")
 low_quality_trunk = NodePath("LowTree2")
 super_low_quality = NodePath("SuperLowQuality")

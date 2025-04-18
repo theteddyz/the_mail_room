@@ -83,6 +83,7 @@ radius = 0.102051
 
 [node name="ElmTree1Dead" type="Node3D" node_paths=PackedStringArray("trunk", "low_quality_trunk", "super_low_quality")]
 script = ExtResource("1_xa0s2")
+amount = 0.5
 trunk = NodePath("ElmTree1")
 low_quality_trunk = NodePath("LowElmTree1")
 super_low_quality = NodePath("SuperLowQuality")
