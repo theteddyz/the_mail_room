@@ -459,7 +459,6 @@ texture = ExtResource("8_tht5l")
 expand_mode = 1
 
 [node name="FPSMeter" type="Label" parent="."]
-visible = false
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0

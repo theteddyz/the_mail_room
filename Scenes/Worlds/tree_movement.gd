@@ -79,7 +79,6 @@ func _process(delta: float) -> void:
 	
 	
 	
-	
 	#Remove when releasing the game
 	amount = vegetationController.amount
 	speed = vegetationController.speed
