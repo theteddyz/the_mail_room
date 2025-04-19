@@ -66,7 +66,7 @@ func _ready():
 		impact_audios.max_polyphony = 50
 	broken = false
 	rigidbody = get_parent()
-	initVolume = impact_audios.volume_db
+	initVolume = impact_audios.volume_db if impact_audios != null else 0
 	if instabreak:
 		break_object()
 		
