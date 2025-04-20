@@ -253,6 +253,10 @@ vec4 vignetteColor(vec2 uv) {
 	return vec4(finalColor,finalColor,finalColor, 1);
 }
 
+vec4 lighten(vec4 base, vec4 blend){
+	return max(base, blend);
+}
+
 void fragment()
 {
 
@@ -264,11 +268,11 @@ void fragment()
 
 	vec4 mixColor = lensflare(uvs);
 
-	mixColor += overlay(chromaticColor, sharpenColor);
+	mixColor += (chromaticColor*0.5 + sharpenColor*0.5); //overlay(chromaticColor, sharpenColor);
 
-	vec4 vhsColor = vhsShader(uvs);
+	//vec4 vhsColor = vhsShader(uvs);
 
-	vec4 vhsMixColor = screen(mixColor,vhsColor);
+	vec4 vhsMixColor = mixColor; //screen(mixColor,vhsColor);
 
 	vec4 vinetteColor = vignetteColor(uvs);
 
@@ -276,3 +280,4 @@ void fragment()
 
 	COLOR = finalColor;
 }
+
