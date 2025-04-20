@@ -677,18 +677,8 @@ transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.614708, 0, -9.
 [node name="StaticBody3D127" parent="Walls" instance=ExtResource("39_uti0h")]
 transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, -7.689, 0, 16.258)
 
-[node name="AudioStreamPlayer3D" parent="Walls/StaticBody3D127/RigidBody3D2" index="6"]
-volume_db = -25.0
-
-[node name="Door_001" parent="Walls/StaticBody3D127/RigidBody3D2" index="7"]
-transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.96591, 2.04469, 1.90735e-06)
-
 [node name="StaticBody3D63" parent="Walls" instance=ExtResource("39_uti0h")]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 7.16003, 0, -9.494)
-
-[node name="Door_Lock" parent="Walls/StaticBody3D63/RigidBody3D2" index="1"]
-locked = true
-unlock_number = 1
 
 [node name="StaticBody3D91" parent="Walls" instance=ExtResource("39_uti0h")]
 transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -12.7878, 0, -20.0171)
@@ -860,15 +850,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.502
 
 [node name="StaticBody3D42" parent="Walls" instance=ExtResource("39_uti0h")]
 transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, 32.7956, 1.90735e-06, 25.6455)
-
-[node name="RigidBody3D2" parent="Walls/StaticBody3D42" index="3"]
-script = null
-
-[node name="AudioStreamPlayer3D" parent="Walls/StaticBody3D42/RigidBody3D2" index="6"]
-script = null
-
-[node name="Monster_Detector" parent="Walls/StaticBody3D42/RigidBody3D2" index="8"]
-script = null
 
 [node name="StaticBody3D10" parent="Walls" instance=ExtResource("40_im554")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.66489, -4.76837e-07, 6.95955)
