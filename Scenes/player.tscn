@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=24 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" uid="uid://cp4jrj7a18avb" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" uid="uid://bqadv5daugpb2" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bysjwuveoh6c0" path="res://Scripts/Shaders/ssaoNoise.png" id="6_h4iuc"]
 [ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
+[ext_resource type="PackedScene" uid="uid://bcq43p4q358bx" path="res://Assets/Shaders/vhs_layer.tscn" id="8_fd4e3"]
 [ext_resource type="Script" uid="uid://cq5fmqrcunrhp" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
 [ext_resource type="AudioStream" uid="uid://cin4ngwhr1g72" path="res://Scenes/Prefabs/AudioPlayers/carpet_footsteps.tres" id="9_pey34"]
 [ext_resource type="Script" uid="uid://cvbypy47gfal3" path="res://Scenes/scare_vision_controller.gd" id="14_jppxj"]
@@ -97,6 +98,8 @@ cast_shadow = 0
 mesh = SubResource("QuadMesh_h4iuc")
 
 [node name="ColorRect" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("3_6orpg")]
+
+[node name="ColorRect2" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("8_fd4e3")]
 
 [node name="LightOptimizerDetector" type="Area3D" parent="Neck/Head/HeadbopRoot"]
 transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0.0297186, -0.312485)
