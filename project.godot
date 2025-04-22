@@ -62,6 +62,13 @@ multimesh=""
 world="This is for the root world Node"
 worldEnviorment="for finding World Enviroment"
 
+[importer_defaults]
+
+animation_library={
+&"blender/nodes/cameras": false,
+&"blender/nodes/punctual_lights": false
+}
+
 [input]
 
 forward={

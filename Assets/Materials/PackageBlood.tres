@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dt46ucamiuw8"]
+
+[ext_resource type="Shader" uid="uid://lb4h84lv8u1" path="res://Assets/Materials/PackageBloodVisualShader.tres" id="1_ebqxl"]
+[ext_resource type="Texture2D" uid="uid://cmy54yj2fi61t" path="res://Assets/Textures/BlenderTextures/PackageHeart.png" id="2_f173o"]
+[ext_resource type="Texture2D" uid="uid://dvd3c01mj1v8p" path="res://Assets/Textures/perlin-noise.jpg" id="3_f173o"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ebqxl")
+shader_parameter/Texture2DParameter = ExtResource("2_f173o")
+shader_parameter/Texture2DParameter2 = ExtResource("3_f173o")
+shader_parameter/bloodValue = 0.285
