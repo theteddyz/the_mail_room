@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=23 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" uid="uid://cp4jrj7a18avb" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" uid="uid://bqadv5daugpb2" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://brtrfcahmyjah" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
 [ext_resource type="Shader" uid="uid://g18d7ggq4bq6" path="res://Scripts/Shaders/CombinedVHSAndSSAO.gdshader" id="6_7dp3o"]
 [ext_resource type="Script" uid="uid://brru7emutcew5" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
-[ext_resource type="Texture2D" uid="uid://bysjwuveoh6c0" path="res://Scripts/Shaders/ssaoNoise.png" id="6_h4iuc"]
 [ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 [ext_resource type="PackedScene" uid="uid://bcq43p4q358bx" path="res://Assets/Shaders/vhs_layer.tscn" id="8_fd4e3"]
@@ -32,12 +31,11 @@ height = 0.589089
 render_priority = 0
 shader = ExtResource("6_7dp3o")
 shader_parameter/radius = 0.5
-shader_parameter/bias = 0.613
-shader_parameter/multiplier = 0.178
-shader_parameter/light_resistent = true
-shader_parameter/light_threshold = 0.06
-shader_parameter/light_multiplier = 4.699
-shader_parameter/SSAO_NOISE = ExtResource("6_h4iuc")
+shader_parameter/bias = 0.025
+shader_parameter/multiplier = 1.0
+shader_parameter/light_resistent = false
+shader_parameter/light_threshold = 1.0
+shader_parameter/light_multiplier = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_h4iuc"]
 
