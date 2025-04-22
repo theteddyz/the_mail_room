@@ -125,7 +125,6 @@ script = ExtResource("1_wrt3k")
 
 [node name="ComputerOn" parent="." instance=ExtResource("3_gdndj")]
 transform = Transform3D(0.403, 0, 0, 0, 0.403, 0, 0, 0, 0.403, 0, 0, 0)
-gi_mode = 1
 mesh = SubResource("ArrayMesh_wrt3k")
 
 [node name="ScreenLight" type="SpotLight3D" parent="ComputerOn"]
@@ -146,7 +145,6 @@ spot_angle = 102.6
 [node name="ComputerOff" parent="." instance=ExtResource("3_gdndj")]
 transform = Transform3D(0.403, 0, 0, 0, 0.403, 0, 0, 0, 0.403, 0, 0, 0)
 visible = false
-gi_mode = 1
 mesh = SubResource("ArrayMesh_v38qx")
 
 [node name="Screen2" parent="ComputerOff" index="0"]

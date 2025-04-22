@@ -665,6 +665,7 @@ expand_mode = 1
 
 [node name="Screen" type="MeshInstance3D" parent="Monitor/ComputerOn"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.292754, -0.64632)
+gi_mode = 2
 mesh = SubResource("QuadMesh_ulg4a")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_jf2tv")
@@ -696,7 +697,6 @@ spot_angle = 102.6
 [node name="ComputerOff" parent="Monitor" instance=ExtResource("3_urhub")]
 transform = Transform3D(0.403, 0, 0, 0, 0.403, 0, 0, 0, 0.403, 0, 0, 0)
 visible = false
-gi_mode = 1
 mesh = SubResource("ArrayMesh_ghg7e")
 
 [node name="Screen2" parent="Monitor/ComputerOff" index="0"]

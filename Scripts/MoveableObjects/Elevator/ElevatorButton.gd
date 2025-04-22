@@ -10,10 +10,8 @@ func _ready():
 	text_displayer = Gui.get_address_displayer()
 func interact():
 	print("GOING TO NEW SCENE ",target_scene_path)
-	mail_room_button.target_scene_path = mail_room_version_after
 	EventBus.emitCustomSignal("moved_to_floor", [target_scene_path,floor_num])
-
-
+	mail_room_button.target_scene_path = mail_room_version_after
 
 func on_seen(node):
 	if node == self:

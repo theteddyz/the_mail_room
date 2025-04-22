@@ -291,13 +291,13 @@ size = Vector3(1.96356, 7.73528, 0.225098)
 size = Vector3(1.66351, 4.89081, 0.24353)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_obo21"]
-size = Vector3(2.03412, 7.78201, 1)
+size = Vector3(1.9495, 7.78201, 0.208965)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_iiw7v"]
-size = Vector3(2.03412, 7.78201, 1)
+size = Vector3(1.92094, 7.78201, 0.208076)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_pehdm"]
-size = Vector3(1.81622, 5.05227, 1)
+size = Vector3(1.81622, 4.57305, 0.150583)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eaq7a"]
 resource_name = "Elevator"

@@ -188,7 +188,7 @@ transform = Transform3D(1, 0, 0, 0, -0.154262, -0.98803, 0, 0.98803, -0.154262, 
 shape = SubResource("BoxShape3D_hcnb4")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0.483251, -0.0891143)
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0.446998, -0.129688)
 light_color = Color(0.984314, 1, 0.776471, 1)
 shadow_enabled = true
 spot_range = 2.158

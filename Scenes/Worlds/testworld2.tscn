@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="10_wfqjp"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="10_wyyub"]
 [ext_resource type="AudioStream" uid="uid://3v6mk6kapph" path="res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundCutter.ogg" id="11_47euk"]
-[ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle.tscn" id="11_cn52c"]
+[ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle_variant_0.tscn" id="11_cn52c"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="11_f05hf"]
 [ext_resource type="AudioStream" uid="uid://8mm4rvad6in3" path="res://Assets/Audio/SoundFX/ChaseLoops/ChaseLoopCutter.ogg" id="12_5plyp"]
 [ext_resource type="Script" uid="uid://d4diumxjityck" path="res://Scripts/MonsterAI/Monster_Cone.gd" id="13_isk1m"]
