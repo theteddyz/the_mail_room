@@ -94,8 +94,8 @@ mesh = SubResource("ArrayMesh_rksdk")
 skeleton = NodePath("")
 
 [node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
-transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -23.0924, 0)
-aabb = AABB(-10.0748, -5.94489, -9.70125, 20.1497, 11.8898, 19.4025)
+transform = Transform3D(4.61975, 0, 1.42109e-14, 0, 4.61975, 0, -1.42109e-14, 0, 4.61975, 0, -20.3063, 0)
+aabb = AABB(-6.30385, -4.7142, -6.74895, 12.6078, 9.42842, 13.4979)
 enable_node_path = NodePath("../OmniLight3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -106,6 +106,10 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.015
 light_specular = 1.358
 shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 35.0
+distance_fade_shadow = 20.0
+distance_fade_length = 9.0
 omni_range = 14.455
 omni_attenuation = 0.892
 script = ExtResource("2_4ehg2")

@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bysjwuveoh6c0" path="res://Scripts/Shaders/ssaoNoise.png" id="6_h4iuc"]
 [ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
-[ext_resource type="PackedScene" uid="uid://bcq43p4q358bx" path="res://Assets/Shaders/vhs_layer.tscn" id="8_fd4e3"]
+[ext_resource type="PackedScene" path="res://Assets/Shaders/vhs_layer.tscn" id="8_fd4e3"]
 [ext_resource type="Script" uid="uid://cq5fmqrcunrhp" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
 [ext_resource type="AudioStream" uid="uid://cin4ngwhr1g72" path="res://Scenes/Prefabs/AudioPlayers/carpet_footsteps.tres" id="9_pey34"]
 [ext_resource type="Script" uid="uid://cvbypy47gfal3" path="res://Scenes/scare_vision_controller.gd" id="14_jppxj"]
