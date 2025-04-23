@@ -7,7 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxhbw"]
 shader = ExtResource("1_0mrfu")
-shader_parameter/SHARPENING = 1.5
+shader_parameter/SHARPENING = 1.2
 shader_parameter/SHARPEN_DISTANCE = 0.0025
 shader_parameter/CHROMATIC_DISTANCE = 3.0
 shader_parameter/FISHEYE_AMOUNT = 1.2
