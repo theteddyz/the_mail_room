@@ -9,7 +9,7 @@ func _on_area_entered(area):
 		var l = light as Light3D
 		l.distance_fade_enabled = true
 		counter += 1
-		#print(counter)
+		print(counter)
 		# Apply Shadow Properties
 		if l.shadow_property != null:
 			l.shadow_bias = l.shadow_property["bias"]
@@ -41,4 +41,4 @@ func _on_area_exited(area):
 		if(!light.is_in_group("alwaysshadow")):
 			light.shadow_enabled = false
 			counter -= 1
-			#print(counter)
+			print(counter)

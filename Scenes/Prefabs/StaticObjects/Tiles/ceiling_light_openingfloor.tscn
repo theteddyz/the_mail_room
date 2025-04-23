@@ -101,7 +101,7 @@ enable_node_path = NodePath("../OmniLight3D")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 3.07611e-15, 0, 1, 0, -3.07611e-15, 0, 1, 0, -2.52895, 0)
 light_color = Color(0.99689, 0.858288, 0.736056, 1)
-light_energy = 0.527
+light_energy = 0.636
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.015
 light_specular = 1.358
@@ -111,7 +111,7 @@ distance_fade_begin = 35.0
 distance_fade_shadow = 20.0
 distance_fade_length = 9.0
 omni_range = 14.455
-omni_attenuation = 0.892
+omni_attenuation = 0.657
 script = ExtResource("2_4ehg2")
 
 [node name="LightDetectionArea" type="Area3D" parent="OmniLight3D"]

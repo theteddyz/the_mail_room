@@ -13,6 +13,7 @@ uniform int samples = 2;
 uniform float crease_noise: hint_range(0.0, 2.0, 0.1) = 1.0;
 uniform float crease_opacity: hint_range(0.0, 1.0, 0.1) = 0.5;
 uniform float filter_intensity: hint_range(0.0, 1.0, 0.1) = 0.1;
+uniform float color_correction_factor: hint_range(0.0, 2.0, 0.01) = 1.0;
 
 group_uniforms tape_crease;
 uniform float tape_crease_smear: hint_range(0.0, 2.0, 0.1) = 0.2;
@@ -100,7 +101,7 @@ void fragment() {
 
 	// yiq
 	col = rgb2yiq(col);
-	col = vec3(0.9, 1.1, 1.5) * col + vec3(0.1, -0.1, 0.0) * filter_intensity;
+	col = (vec3(1.0 - (0.1 * color_correction_factor), 1.0 + (0.1 * color_correction_factor), 1.0 + (0.5 * color_correction_factor))) * col + vec3(0.1, -0.1, 0.0) * filter_intensity;
 	col = yiq2rgb(col);
 
 	COLOR = vec4(col, 1.0);

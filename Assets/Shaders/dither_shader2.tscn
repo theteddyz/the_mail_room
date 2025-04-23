@@ -7,19 +7,19 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxhbw"]
 shader = ExtResource("1_0mrfu")
-shader_parameter/SHARPENING = 1.2
-shader_parameter/SHARPEN_DISTANCE = 0.0025
-shader_parameter/CHROMATIC_DISTANCE = 3.0
-shader_parameter/FISHEYE_AMOUNT = 1.2
+shader_parameter/SHARPENING = 0.508
+shader_parameter/SHARPEN_DISTANCE = 0.002
+shader_parameter/CHROMATIC_DISTANCE = 1.5
+shader_parameter/FISHEYE_AMOUNT = 0.91
 shader_parameter/FlareMult = ExtResource("2_vwafg")
 shader_parameter/FlareMult2 = ExtResource("3_ldyos")
-shader_parameter/Blur = 5.0
+shader_parameter/Blur = 6.525
 shader_parameter/FlareThreshold = 0.6
-shader_parameter/Flares = 4
+shader_parameter/Flares = 3
 shader_parameter/FlareSpacing = 0.5
-shader_parameter/Intensity = 8.0
-shader_parameter/FALLOFF_STARTING_POINT = 0.05
-shader_parameter/Saturation_ = 0.48
+shader_parameter/Intensity = 6.518
+shader_parameter/FALLOFF_STARTING_POINT = 0.051
+shader_parameter/Saturation_ = 0.447
 shader_parameter/vhs_resolution = Vector2(1024, 1024)
 shader_parameter/samples = 2
 shader_parameter/crease_noise = 1.1
@@ -34,9 +34,9 @@ shader_parameter/bottom_border_thickness = 32.0
 shader_parameter/bottom_border_jitter = 24.0
 shader_parameter/noise_intensity = 0.1
 shader_parameter/noise_texture = ExtResource("4_w27tc")
-shader_parameter/inner_radius = 0.1
-shader_parameter/outer_radius = 1.0
-shader_parameter/vignette_strength = 1.0
+shader_parameter/inner_radius = 0.293
+shader_parameter/outer_radius = 0.916
+shader_parameter/vignette_strength = 0.968
 shader_parameter/dither_strength = 0.03
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
