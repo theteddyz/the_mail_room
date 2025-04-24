@@ -1,14 +1,15 @@
 [gd_resource type="Environment" load_steps=2 format=3 uid="uid://e3ii7pom0tgr"]
 
-[ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="1_71dp6"]
+[ext_resource type="Sky" uid="uid://c5itov1kq7a3p" path="res://Scenes/SkyFinance.tres" id="1_qi17x"]
 
 [resource]
 background_mode = 2
 background_color = Color(1, 1, 1, 1)
 background_energy_multiplier = 1.09
-sky = ExtResource("1_71dp6")
+sky = ExtResource("1_qi17x")
 ambient_light_source = 1
 ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1
 tonemap_mode = 2
 tonemap_exposure = 0.42
 tonemap_white = 2.0
@@ -20,8 +21,8 @@ ssao_light_affect = 1.0
 ssil_enabled = true
 ssil_intensity = 2.64
 sdfgi_enabled = true
+sdfgi_use_occlusion = true
 sdfgi_read_sky_light = false
-sdfgi_min_cell_size = 5.35
 glow_enabled = true
 glow_levels/1 = 0.27
 glow_levels/2 = 0.4
