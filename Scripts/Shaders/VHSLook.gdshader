@@ -278,7 +278,7 @@ void fragment()
 
 	vec4 vhsColor = vhsShader(uvs);
 
-	vec4 vhsMixColor = mixColor; 
+	vec4 vhsMixColor = mixColor;
 
 	vec4 vinetteColor = vignetteColor(uvs);
 

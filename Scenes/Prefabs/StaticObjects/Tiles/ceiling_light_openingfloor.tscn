@@ -41,7 +41,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_13fsw")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbf2t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6nwh"]
 resource_name = "CeilingLight.002"
 cull_mode = 2
 albedo_texture = ExtResource("1_i6nwh")
@@ -63,7 +63,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rksdk"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_4ehg2"]
 resource_name = "desk_Cube_051"
 lightmap_size_hint = Vector2i(34, 38)
 _surfaces = [{
@@ -72,7 +72,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 72,
 "index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABgAHAAgABgAJAAcACQAKAAcACQALAAoADAANAA4ADAAPAA0ADwAQAA0ADwARABAAEgATABQAEgAVABMAFQAWABMAFQAXABYAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAaACUAJAAYABoA"),
-"material": SubResource("StandardMaterial3D_rbf2t"),
+"material": SubResource("StandardMaterial3D_i6nwh"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 38,
@@ -90,28 +90,28 @@ mesh = SubResource("ArrayMesh_2vnly")
 skeleton = NodePath("")
 
 [node name="CeilingLightOnLight" type="MeshInstance3D" parent="."]
-mesh = SubResource("ArrayMesh_rksdk")
+mesh = SubResource("ArrayMesh_4ehg2")
 skeleton = NodePath("")
 
 [node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
-transform = Transform3D(4.61975, 0, 1.42109e-14, 0, 4.61975, 0, -1.42109e-14, 0, 4.61975, 0, -20.3063, 0)
-aabb = AABB(-6.30385, -4.7142, -6.74895, 12.6078, 9.42842, 13.4979)
+transform = Transform3D(4.61975, 0, 4.26326e-14, 0, 4.61975, 0, -4.26326e-14, 0, 4.61975, 0, -16.0561, 0)
+aabb = AABB(-9.90564, -7.43786, -10.7422, 19.8114, 13.0703, 21.4843)
 enable_node_path = NodePath("../OmniLight3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 3.07611e-15, 0, 1, 0, -3.07611e-15, 0, 1, 0, -2.52895, 0)
+transform = Transform3D(4.61975, 0, 1.27898e-13, 0, 4.61975, 0, -1.27898e-13, 0, 4.61975, 0, -2.17983, 0)
 light_color = Color(0.99689, 0.858288, 0.736056, 1)
 light_energy = 0.636
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.015
-light_specular = 1.358
+light_specular = 1.037
 shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 35.0
 distance_fade_shadow = 20.0
 distance_fade_length = 9.0
-omni_range = 14.455
-omni_attenuation = 0.657
+omni_range = 17.12
+omni_attenuation = 0.187
 script = ExtResource("2_4ehg2")
 
 [node name="LightDetectionArea" type="Area3D" parent="OmniLight3D"]

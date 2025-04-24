@@ -29,6 +29,8 @@ func _ready():
 	freeze = true
 	contact_monitor = true
 	set_max_contacts_reported(1)
+	set_physics_process(false)
+	set_process(false)
 
 func start_freeze_timer():
 	if !freeze_timer_started:

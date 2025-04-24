@@ -29,6 +29,7 @@ Gui="*res://Scenes/Prefabs/gui/gui.tscn"
 ScareDirector="*res://Scenes/Managers/scareDirector.tscn"
 AudioController="*res://Scenes/Managers/audio_controller.tscn"
 GrabbingManager="*res://Scenes/Managers/Grabbing_Manager.tscn"
+SettingsLoader="*res://Scripts/GameManagement/Settings_Loader.gd"
 
 [display]
 
@@ -61,6 +62,7 @@ monster=""
 multimesh=""
 world="This is for the root world Node"
 worldEnviorment="for finding World Enviroment"
+lights="for settings to disable shadows on lights"
 
 [importer_defaults]
 
@@ -201,13 +203,14 @@ DEBUG_DOWN={
 [physics]
 
 3d/run_on_separate_thread=true
-common/physics_ticks_per_second=45
+common/physics_ticks_per_second=40
+common/max_physics_steps_per_frame=6
 3d/physics_engine="Jolt Physics"
+jolt_physics_3d/simulation/velocity_steps=8
 jolt_physics_3d/simulation/areas_detect_static_bodies=true
-3d/solver/solver_iterations=10
+jolt_physics_3d/limits/temporary_memory_buffer_size=46
+3d/solver/solver_iterations=8
 common/physics_interpolation=true
-jolt_3d/solver/velocity_iterations=5
-jolt_3d/solver/position_iterations=1
 
 [rendering]
 
@@ -222,5 +225,4 @@ textures/light_projectors/filter=0
 global_illumination/sdfgi/frames_to_converge=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/screen_space_aa=1
-anti_aliasing/quality/use_taa=true
 occlusion_culling/use_occlusion_culling=true
