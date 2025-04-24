@@ -12,6 +12,7 @@ var previous_mouse_position = Vector2.ZERO
 var mouse_velocity:Vector2 = Vector2.ZERO
 var initial_basis = Basis()
 const DOOR_TORQUE_MULTIPLIER: float = 0.02
+const MAX_IMPULSE: float = 5.0  # Adjust as needed based on how strong you want the pull to be
 func _physics_process(delta):
 	if holding_drawer:
 		update_position(delta)
@@ -66,6 +67,7 @@ func update_position(delta):
 
 func apply_drawer_impluse(_mouse_velocity:Vector2):
 	var impulse_amount = _mouse_velocity.y * DOOR_TORQUE_MULTIPLIER
+	impulse_amount = clamp(impulse_amount, -MAX_IMPULSE, MAX_IMPULSE)
 	var local_motion_axis = Vector3(0, 0, 1)
 	var global_motion_axis = (object.global_transform.basis * local_motion_axis).normalized()
 	var linear_impulse = global_motion_axis * impulse_amount * _mass
