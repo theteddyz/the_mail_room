@@ -5,12 +5,12 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_57gvc"]
 shader = ExtResource("1_trijw")
-shader_parameter/vhs_resolution = Vector2(320, 320)
+shader_parameter/vhs_resolution = Vector2(240, 320)
 shader_parameter/samples = 2
 shader_parameter/crease_noise = 1.0
 shader_parameter/crease_opacity = 0.5
 shader_parameter/filter_intensity = 0.1
-shader_parameter/color_correction_factor = 0.5
+shader_parameter/color_correction_factor = 0.44
 shader_parameter/tape_crease_smear = 2.0
 shader_parameter/tape_crease_intensity = 0.0
 shader_parameter/tape_crease_jitter = 0.2

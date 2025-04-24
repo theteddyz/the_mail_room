@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_1xdp2"]
 [ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="3_5nqi4"]
-[ext_resource type="Script" uid="uid://da8f0nlp61xaf" path="res://Scenes/Prefabs/StaticObjects/initial_offset.gd" id="4_fo7lw"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/StaticObjects/initial_offset.gd" id="4_fo7lw"]
 [ext_resource type="Script" uid="uid://t0gqci6jputc" path="res://Scenes/Prefabs/MoveableObjects/file_cabinet.gd" id="4_rx22h"]
 [ext_resource type="ArrayMesh" uid="uid://cfgt0u4t6je4c" path="res://Assets/Materials/cabinet_drawer.tres" id="6_0wjlh"]
 [ext_resource type="AudioStream" uid="uid://dj4twnqnl5bav" path="res://Assets/Audio/SoundFX/Drawers/FileCabinetMovingFast.ogg" id="6_d2jk7"]
