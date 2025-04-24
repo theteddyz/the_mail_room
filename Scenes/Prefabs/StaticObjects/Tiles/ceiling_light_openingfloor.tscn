@@ -98,7 +98,7 @@ transform = Transform3D(4.61975, 0, 1.42109e-14, 0, 4.61975, 0, -1.42109e-14, 0,
 aabb = AABB(-6.30385, -4.7142, -6.74895, 12.6078, 9.42842, 13.4979)
 enable_node_path = NodePath("../OmniLight3D")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." groups=["lights"]]
 transform = Transform3D(1, 0, 3.07611e-15, 0, 1, 0, -3.07611e-15, 0, 1, 0, -2.52895, 0)
 light_color = Color(0.99689, 0.858288, 0.736056, 1)
 light_energy = 0.636

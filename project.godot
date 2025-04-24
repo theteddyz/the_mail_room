@@ -29,6 +29,7 @@ Gui="*res://Scenes/Prefabs/gui/gui.tscn"
 ScareDirector="*res://Scenes/Managers/scareDirector.tscn"
 AudioController="*res://Scenes/Managers/audio_controller.tscn"
 GrabbingManager="*res://Scenes/Managers/Grabbing_Manager.tscn"
+SettingsLoader="*res://Scripts/GameManagement/Settings_Loader.gd"
 
 [display]
 
@@ -61,6 +62,7 @@ monster=""
 multimesh=""
 world="This is for the root world Node"
 worldEnviorment="for finding World Enviroment"
+lights="for settings to disable shadows on lights"
 
 [importer_defaults]
 
