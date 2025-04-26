@@ -81,6 +81,11 @@ var vertical_velocity_last_frame = 0
 var right_stick_smoothing: Vector2 = Vector2.ZERO
 var smoothing_factor: float = 0.1  # Adjust this value for desired responsiveness
 var dead_zone: float = 0.1 
+
+##max pitch in degrees.
+@export var max_pitch : float = 89
+##min pitch in degrees.
+@export var min_pitch : float = -89
 func _ready():
 	package_holder = persistent_state.find_child("PackageHolder")
 	mailcart = GameManager.get_mail_cart()
@@ -90,6 +95,7 @@ func _ready():
 	original_neck_rotation = neck.rotation
 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_use_accumulated_input(false)
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
 	EventBus.connect("disable_player_movement",disable_movement_event)
@@ -101,14 +107,35 @@ func _ready():
 
 
 func _input(event: InputEvent):
-	if event is InputEventMouseMotion and !is_reading:
-		handle_mouse_motion(event)
-	elif event is InputEventJoypadMotion:
+
+	if event is InputEventJoypadMotion:
 		handle_joypad_motion(event)
 	elif event is InputEventMouseButton:
 		handle_mouse_button(event)
 	elif event is InputEventKey:
 		handle_keyboard_press(event)
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventKey:
+			if event.is_action_pressed("ui_cancel"):
+				get_tree().quit()
+		 
+		if event is InputEventMouseButton:
+			if event.button_index == 1:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
+		return
+	
+	if event is InputEventKey:
+		if event.is_action_pressed("ui_cancel"):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			
+		return
+	
+	if event is InputEventMouseMotion and !is_reading and !disable_look_movement:
+		mouse_aim_look(event)
+		
+func _unhandled_input(event)->void:		
+	pass
 
 func handle_mouse_motion(event: InputEvent):
 	if !is_reading and !disable_look_movement:
@@ -116,6 +143,45 @@ func handle_mouse_motion(event: InputEvent):
 			persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 			head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+
+#Handles aim look with the mouse.
+func mouse_aim_look(event: InputEventMouseMotion)-> void:
+	var viewport_transform: Transform2D = get_tree().root.get_final_transform()
+	var motion: Vector2 = event.xformed_by(viewport_transform).relative
+	var degrees_per_unit: float = 0.001
+	
+	motion *= mouse_sense*350
+	motion *= degrees_per_unit
+	
+	add_yaw(motion.x)
+	add_pitch(motion.y)
+	clamp_pitch()
+
+#Rotates the character around the local Y axis by a given amount (In degrees) to achieve yaw.
+func add_yaw(amount)->void:
+	if is_zero_approx(amount):
+		return
+	
+	persistent_state.rotate_object_local(Vector3.DOWN, deg_to_rad(amount))
+	persistent_state.orthonormalize()
+
+
+#Rotates the head around the local x axis by a given amount (In degrees) to achieve pitch.
+func add_pitch(amount)->void:
+	if is_zero_approx(amount):
+		return
+	
+	head.rotate_object_local(Vector3.LEFT, deg_to_rad(amount))
+	head.orthonormalize()
+
+
+#Clamps the pitch between min_pitch and max_pitch.
+func clamp_pitch()->void:
+	if head.rotation.x > deg_to_rad(min_pitch) and head.rotation.x < deg_to_rad(max_pitch):
+		return
+	
+	head.rotation.x = clamp(head.rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
+	head.orthonormalize()
 
 func handle_joypad_motion(event: InputEvent):
 	if !is_reading and !disable_look_movement:
@@ -312,11 +378,11 @@ func _process(delta):
 	apply_movement(delta)
 
 #func _process(delta):
-	if !is_reading and !disable_look_movement:
-		persistent_state.rotate_y(deg_to_rad(-right_stick_smoothing.x * 2.0))  # Adjust sensitivity as needed
-		head.rotate_x(deg_to_rad(-right_stick_smoothing.y * 2.0))
-		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-	
+	#if !is_reading and !disable_look_movement:
+		#persistent_state.rotate_y(deg_to_rad(-right_stick_smoothing.x * 2.0))  # Adjust sensitivity as needed
+		#head.rotate_x(deg_to_rad(-right_stick_smoothing.y * 2.0))
+		#head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+	#
 	if !crouch_assist:
 		apply_leaning(delta)
 		apply_lookbehind(delta)
@@ -362,6 +428,7 @@ func handle_movement_input(delta):
 		persistent_state.velocity.x = move_toward(persistent_state.velocity.x, 0, current_speed)
 		persistent_state.velocity.z = move_toward(persistent_state.velocity.z, 0, current_speed)
 	vertical_velocity_last_frame = persistent_state.velocity.y
+	
 
 func crouch(delta):
 	if !crouch_assist:
