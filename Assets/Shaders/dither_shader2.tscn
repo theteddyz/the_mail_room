@@ -26,8 +26,9 @@ shader_parameter/dither_strength = 0.03
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
 [node name="everything_layer" type="CanvasLayer"]
+layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="everything" type="ColorRect" parent="." groups=["Player_shader"]]
 material = SubResource("ShaderMaterial_rxhbw")
 anchors_preset = 15
 anchor_right = 1.0

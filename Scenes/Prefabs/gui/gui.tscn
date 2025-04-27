@@ -1,7 +1,8 @@
-[gd_scene load_steps=55 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=56 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" uid="uid://cggbaeh823mtn" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
+[ext_resource type="PackedScene" uid="uid://diefpogffw68t" path="res://Scenes/GUI/options.tscn" id="2_1ts2g"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/Prefabs/gui/pauseMenu.tscn" id="2_j1350"]
 [ext_resource type="PackedScene" uid="uid://dlxusgmvl8f47" path="res://Scenes/Prefabs/gui/load_screen.tscn" id="2_wjt07"]
 [ext_resource type="Script" uid="uid://bwivfyhesnmls" path="res://Scripts/GUI/FPSMeter.gd" id="3_bccgp"]
@@ -203,7 +204,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 script = ExtResource("1_udi3s")
 
 [node name="Panel" type="Panel" parent="."]
@@ -215,6 +215,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_de5p4")
+
+[node name="Options" parent="." instance=ExtResource("2_1ts2g")]
+layout_mode = 1
 
 [node name="loading_screen" parent="." instance=ExtResource("2_wjt07")]
 layout_mode = 1
@@ -229,7 +232,6 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="look_icon" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -437,6 +439,7 @@ texture = ExtResource("6_rp1kh")
 expand_mode = 1
 
 [node name="ItemIcon" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -466,6 +469,7 @@ label_settings = SubResource("LabelSettings_yqyhe")
 script = ExtResource("3_bccgp")
 
 [node name="Adress_Displayer" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -501,6 +505,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Controls" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -577,6 +582,7 @@ libraries = {
 }
 
 [node name="Monster_Debugger_Item" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -725,6 +731,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Hint_Container" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchor_right = 1.0
 anchor_bottom = 0.155864
