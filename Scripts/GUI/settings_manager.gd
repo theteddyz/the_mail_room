@@ -17,7 +17,8 @@ var settings := {
 		"disable_shader":false,
 		"gi": true,
 		"fisheye": 0.0,
-		"sharpening": 0.0
+		"sharpening": 0.0,
+		"mouse_sensitivity":0.25
 	}
 }
 

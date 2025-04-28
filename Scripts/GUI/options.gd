@@ -24,6 +24,9 @@ extends Control
 @onready var gameplay_sharpening_slider = $Panel/TabContainer/GamePlay/Sharpening/Sharpening2
 @onready var gameplay_gi_toggle = $Panel/TabContainer/GamePlay/Global_Illumination/Global_Illumination
 @onready var gameplay_disable_shader = $Panel/TabContainer/GamePlay/Disable_Shader_Effect/Disable_Shader_Effect
+@onready var gameplay_mouse_sensitivity_slider = $Panel/TabContainer/GamePlay/Mouse_sensativtiy/Mouse_sensativity
+@onready var gameplay_mouse_sensitivity_label = $Panel/TabContainer/GamePlay/Mouse_sensativtiy/Label
+
 
 # BOTTOM BUTTONS
 @onready var apply_button = $Panel/VBoxContainer/Apply
@@ -48,7 +51,6 @@ func _ready():
 
 	graphics_fisheye_label.text = str(shader.get_shader_parameter("FISHEYE_AMOUNT"))
 	graphics_sharpening_label.text = str(shader.get_shader_parameter("SHARPENING"))
-
 	hide()
 	working_settings = SettingsManager.settings.duplicate(true)
 	_init_resolution_ui()
@@ -69,7 +71,7 @@ func _init_resolution_ui():
 func apply_working_settings_to_ui():
 	fullscreen_checkbox.button_pressed = working_settings["video"]["fullscreen"]
 	borderless_toggle.button_pressed = working_settings["video"]["borderless"]
-
+	
 	for key in toggles.keys():
 		var section = key.get_slice("/", 0)
 		var name = key.get_slice("/", 1)
@@ -93,6 +95,9 @@ func connect_signals():
 	var real_settings = SettingsManager.get_saved_file_settings()
 
 	# --- Apply real settings to GUI ---
+	var internal_sense = real_settings["gameplay"]["mouse_sensitivity"]
+	gameplay_mouse_sensitivity_slider.value = internal_sense
+	gameplay_mouse_sensitivity_label.text = str(internal_sense * 4.0) # Multiply for display
 	fullscreen_checkbox.button_pressed = real_settings["video"]["fullscreen"]
 	borderless_toggle.button_pressed = real_settings["video"]["borderless"]
 	vsync_toggle.button_pressed = real_settings["graphics"]["vsync"]
@@ -141,7 +146,7 @@ func _on_apply_pressed():
 		var name = key.get_slice("/", 1)
 		var value = toggles[key].button_pressed
 		working_settings[section][name] = value
-
+		
 	# Special case for borderless
 	if fullscreen_checkbox.button_pressed:
 		working_settings["video"]["borderless"] = borderless_toggle.button_pressed
@@ -219,3 +224,17 @@ func _on_vsync_pressed():
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	else:
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+
+
+func _on_mouse_sensativity_value_changed(value):
+	var display_value = value * 4.0
+	gameplay_mouse_sensitivity_label.text = str(display_value)
+	EventBus.emit_signal("mouse_sense_change", value)
+	working_settings["gameplay"]["mouse_sensitivity"] = value
+
+
+func _on_mouse_sense_text_submitted(value):
+	var display_value = value.to_float() * 4.0
+	gameplay_mouse_sensitivity_label.text = str(display_value)
+	EventBus.emit_signal("mouse_sense_change", value)
+	working_settings["gameplay"]["mouse_sensitivity"] = value

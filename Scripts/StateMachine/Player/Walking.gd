@@ -81,7 +81,7 @@ var vertical_velocity_last_frame = 0
 var right_stick_smoothing: Vector2 = Vector2.ZERO
 var smoothing_factor: float = 0.1  # Adjust this value for desired responsiveness
 var dead_zone: float = 0.1 
-
+var sensativity:float
 ##max pitch in degrees.
 @export var max_pitch : float = 89
 ##min pitch in degrees.
@@ -93,18 +93,23 @@ func _ready():
 	crouching_depth = starting_height - 0.5
 	original_neck_position = neck.position
 	original_neck_rotation = neck.rotation
-
+	sensativity = SettingsManager.settings["gameplay"]["mouse_sensitivity"]
+	print("sensativity: ",sensativity)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Input.set_use_accumulated_input(false)
 	EventBus.connect("object_held",held_object)
 	EventBus.connect("dropped_object",droppped_object)
 	EventBus.connect("disable_player_movement",disable_movement_event)
+	EventBus.connect("mouse_sense_change",Callable(self,"mouse_sense_changeing"))
 	gui_anim = Gui.get_control_displayer()
 	stamina_bar = Gui.get_stamina_bar()
 	walking_audio_player = persistent_state.find_child("AudioStreamPlayer3D")
 	audio_timer = walking_audio_player.find_child("sound_reset")
 	audio_timer.connect("timeout", sound_timeout)
 
+
+func mouse_sense_changeing(num):
+	sensativity = num
 
 func _input(event: InputEvent):
 
@@ -140,8 +145,8 @@ func _unhandled_input(event)->void:
 func handle_mouse_motion(event: InputEvent):
 	if !is_reading and !disable_look_movement:
 		if event is InputEventMouseMotion:
-			persistent_state.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
-			head.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
+			persistent_state.rotate_y(deg_to_rad(-event.relative.x * sensativity))
+			head.rotate_x(deg_to_rad(-event.relative.y * sensativity))
 			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 #Handles aim look with the mouse.
@@ -150,7 +155,7 @@ func mouse_aim_look(event: InputEventMouseMotion)-> void:
 	var motion: Vector2 = event.xformed_by(viewport_transform).relative
 	var degrees_per_unit: float = 0.001
 	
-	motion *= mouse_sense*350
+	motion *= sensativity*350
 	motion *= degrees_per_unit
 	
 	add_yaw(motion.x)

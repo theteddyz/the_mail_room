@@ -100,6 +100,11 @@ size_flags_vertical = 3
 focus_mode = 0
 text = "Quit"
 
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+
 [connection signal="pressed" from="PauseMenu/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
