@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl2b1xrqay44w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sry6g"]
+bg_color = Color(0.383275, 2.04556e-07, 0.208416, 0.5)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Options2" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_sry6g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Fullscreen" type="CheckBox" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fullscreen"
+
+[node name="Vsync" type="CheckBox" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Vsync"
+
+[node name="Shadows" type="CheckBox" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shadows"
+
+[node name="FishEye" type="HSlider" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -2.5
+max_value = 2.5
+step = 0.01
+
+[node name="Apply" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
