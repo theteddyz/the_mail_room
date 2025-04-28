@@ -1,8 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo8gwo72vdffr"]
+[gd_scene load_steps=8 format=3 uid="uid://bo8gwo72vdffr"]
 
 [ext_resource type="Script" uid="uid://bhtka0boq1qgc" path="res://Scripts/GUI/PauseMenu.gd" id="1_cmt41"]
 [ext_resource type="FontFile" uid="uid://s8snq2lwjjdn" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="2_prjj8"]
+[ext_resource type="Shader" uid="uid://c4gmhmfrrping" path="res://Scenes/Prefabs/gui/pauseMenu.gdshader" id="2_wtldp"]
 [ext_resource type="StyleBox" uid="uid://w8xxjerwwbx3" path="res://Scenes/Prefabs/gui/pauseMenu.tres" id="3_exk8j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bemb"]
+shader = ExtResource("2_wtldp")
+shader_parameter/blur_size = 4.0
+shader_parameter/blur_steps = 8
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5hbfg"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="Theme" id="Theme_exk8j"]
 default_font = ExtResource("2_prjj8")
@@ -18,6 +27,17 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cmt41")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_2bemb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("ViewportTexture_5hbfg")
 
 [node name="PauseMenu" type="Panel" parent="."]
 layout_mode = 1

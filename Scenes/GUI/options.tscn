@@ -32,9 +32,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 226.0
-offset_top = -250.0
-offset_right = 726.0
-offset_bottom = 250.0
+offset_top = -450.0
+offset_right = 933.0
+offset_bottom = 457.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_y1x6x")
@@ -46,38 +46,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 24
 theme_override_styles/panel = SubResource("StyleBoxFlat_y1x6x")
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
 
 [node name="Video" type="VBoxContainer" parent="Panel/TabContainer"]
 visible = false
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 24
 metadata/_tab_index = 0
 
 [node name="Resolutions" type="HBoxContainer" parent="Panel/TabContainer/Video"]
 layout_mode = 2
 
 [node name="Resolutions" type="OptionButton" parent="Panel/TabContainer/Video/Resolutions"]
+custom_minimum_size = Vector2(300, 30)
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 alignment = 1
 
 [node name="Fullscreen_toggle" type="HBoxContainer" parent="Panel/TabContainer/Video"]
 layout_mode = 2
 
 [node name="Fullscreen_Toggle" type="CheckBox" parent="Panel/TabContainer/Video/Fullscreen_toggle"]
+custom_minimum_size = Vector2(300, 30)
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "FullScreen"
 
 [node name="Borderless_Toggle" type="HBoxContainer" parent="Panel/TabContainer/Video"]
 layout_mode = 2
 
 [node name="Borderless_Toggle" type="CheckBox" parent="Panel/TabContainer/Video/Borderless_Toggle"]
+custom_minimum_size = Vector2(300, 30)
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Borderless"
 
 [node name="Graphics" type="VBoxContainer" parent="Panel/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 12
 metadata/_tab_index = 1
@@ -87,6 +95,7 @@ layout_mode = 2
 
 [node name="Vsync" type="CheckBox" parent="Panel/TabContainer/Graphics/Vsync"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Vsync
 "
 
@@ -95,6 +104,7 @@ layout_mode = 2
 
 [node name="SSR" type="CheckBox" parent="Panel/TabContainer/Graphics/SSR"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "SSR"
 
 [node name="Shadows" type="HBoxContainer" parent="Panel/TabContainer/Graphics"]
@@ -102,11 +112,11 @@ layout_mode = 2
 
 [node name="Shadows" type="CheckBox" parent="Panel/TabContainer/Graphics/Shadows"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 button_pressed = true
 text = "Shadows"
 
 [node name="GamePlay" type="VBoxContainer" parent="Panel/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 12
 metadata/_tab_index = 2
@@ -116,6 +126,7 @@ layout_mode = 2
 
 [node name="Disable_Shader_Effect" type="CheckBox" parent="Panel/TabContainer/GamePlay/Disable_Shader_Effect"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Disable Shader Effect
 "
 
@@ -124,6 +135,7 @@ layout_mode = 2
 
 [node name="FishEye" type="Label" parent="Panel/TabContainer/GamePlay/FishEye"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "FishEye"
 
 [node name="Fish_Eye" type="HSlider" parent="Panel/TabContainer/GamePlay/FishEye"]
@@ -137,12 +149,14 @@ value = 0.5
 
 [node name="Label" type="LineEdit" parent="Panel/TabContainer/GamePlay/FishEye"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 
 [node name="Sharpening" type="HBoxContainer" parent="Panel/TabContainer/GamePlay"]
 layout_mode = 2
 
 [node name="Sharpening" type="Label" parent="Panel/TabContainer/GamePlay/Sharpening"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Sharpening"
 
 [node name="Sharpening2" type="HSlider" parent="Panel/TabContainer/GamePlay/Sharpening"]
@@ -155,12 +169,14 @@ value = 0.5
 
 [node name="Label" type="LineEdit" parent="Panel/TabContainer/GamePlay/Sharpening"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 
 [node name="Global_Illumination" type="HBoxContainer" parent="Panel/TabContainer/GamePlay"]
 layout_mode = 2
 
 [node name="Global_Illumination" type="CheckBox" parent="Panel/TabContainer/GamePlay/Global_Illumination"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 button_pressed = true
 text = "Global Illumination"
 
@@ -181,11 +197,13 @@ theme_override_constants/separation = 100
 [node name="Apply" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
 text = "Apply"
 
 [node name="Exit" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
 text = "Close"
 
 [connection signal="pressed" from="Panel/TabContainer/Graphics/Vsync/Vsync" to="." method="_on_vsync_pressed"]
