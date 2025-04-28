@@ -199,6 +199,7 @@ DEBUG_DOWN={
 3d_physics/layer_16="Footstep Collisionbox"
 3d_physics/layer_20="A light (ceiling or otherwise)"
 3d_physics/layer_22="Player Blocking terrain, nave-able to agents"
+3d_physics/layer_23="Fake Global Illumination"
 
 [physics]
 

@@ -71,3 +71,6 @@ cm = 0
 cutter_carcass_ai_trigger 
 cl = 22
 cm = 0
+
+fake_global_illumination
+cl = 23
