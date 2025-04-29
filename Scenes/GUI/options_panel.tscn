@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://b7vxbx5vjfvux"]
+
+[node name="OptionsPanel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Resolutions" type="HBoxContainer" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="Resolutions" type="OptionButton" parent="VBoxContainer3/Resolutions"]
+layout_mode = 2
+
+[node name="Fullscreen_toggle" type="HBoxContainer" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="Fullscreen_Toggle" type="CheckBox" parent="VBoxContainer3/Fullscreen_toggle"]
+layout_mode = 2
+text = "FullScreen"
+
+[node name="Anti-Aliasing" type="HBoxContainer" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="Anti-Aliasing" type="CheckBox" parent="VBoxContainer3/Anti-Aliasing"]
+layout_mode = 2
+text = "Anti-Aliasing"
+
+[node name="Vsync" type="HBoxContainer" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="Vsync" type="CheckBox" parent="VBoxContainer3/Vsync"]
+layout_mode = 2
+text = "Vsync
+"
+
+[node name="SSR" type="HBoxContainer" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="SSR" type="CheckBox" parent="VBoxContainer3/SSR"]
+layout_mode = 2
+text = "SSR"
+
+[node name="Shadows" type="HBoxContainer" parent="VBoxContainer3"]
+layout_mode = 2
+
+[node name="Shadows" type="CheckBox" parent="VBoxContainer3/Shadows"]
+layout_mode = 2
+text = "Shadows"
+
+[node name="Apply" type="Button" parent="VBoxContainer3"]
+layout_mode = 2
+text = "Apply"

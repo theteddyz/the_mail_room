@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cw1l5cdclwdew"]
+
+[node name="FakeGlLight" type="Node3D"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_specular = 0.0
+distance_fade_enabled = true
+distance_fade_begin = 10.0

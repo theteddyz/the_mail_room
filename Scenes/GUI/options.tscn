@@ -1,0 +1,241 @@
+[gd_scene load_steps=4 format=3 uid="uid://diefpogffw68t"]
+
+[ext_resource type="Script" uid="uid://cpm4lgbg02fvd" path="res://Scripts/GUI/options.gd" id="1_4mv6r"]
+[ext_resource type="StyleBox" uid="uid://w8xxjerwwbx3" path="res://Scenes/Prefabs/gui/pauseMenu.tres" id="2_y1x6x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1x6x"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0.0475577, 0.0475577, 0.0475576, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing_size = 6.0
+
+[node name="Options" type="Control"]
+process_mode = 2
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4mv6r")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 226.0
+offset_top = -450.0
+offset_right = 933.0
+offset_bottom = 457.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_y1x6x")
+
+[node name="TabContainer" type="TabContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/panel = SubResource("StyleBoxFlat_y1x6x")
+tab_alignment = 1
+current_tab = 2
+
+[node name="Video" type="VBoxContainer" parent="Panel/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 24
+metadata/_tab_index = 0
+
+[node name="Resolutions" type="HBoxContainer" parent="Panel/TabContainer/Video"]
+layout_mode = 2
+
+[node name="Resolutions" type="OptionButton" parent="Panel/TabContainer/Video/Resolutions"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+alignment = 1
+
+[node name="Fullscreen_toggle" type="HBoxContainer" parent="Panel/TabContainer/Video"]
+layout_mode = 2
+
+[node name="Fullscreen_Toggle" type="CheckBox" parent="Panel/TabContainer/Video/Fullscreen_toggle"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "FullScreen"
+
+[node name="Borderless_Toggle" type="HBoxContainer" parent="Panel/TabContainer/Video"]
+layout_mode = 2
+
+[node name="Borderless_Toggle" type="CheckBox" parent="Panel/TabContainer/Video/Borderless_Toggle"]
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Borderless"
+
+[node name="Graphics" type="VBoxContainer" parent="Panel/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 12
+metadata/_tab_index = 1
+
+[node name="Vsync" type="HBoxContainer" parent="Panel/TabContainer/Graphics"]
+layout_mode = 2
+
+[node name="Vsync" type="CheckBox" parent="Panel/TabContainer/Graphics/Vsync"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Vsync
+"
+
+[node name="SSR" type="HBoxContainer" parent="Panel/TabContainer/Graphics"]
+layout_mode = 2
+
+[node name="SSR" type="CheckBox" parent="Panel/TabContainer/Graphics/SSR"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "SSR"
+
+[node name="Shadows" type="HBoxContainer" parent="Panel/TabContainer/Graphics"]
+layout_mode = 2
+
+[node name="Shadows" type="CheckBox" parent="Panel/TabContainer/Graphics/Shadows"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "Shadows"
+
+[node name="GamePlay" type="VBoxContainer" parent="Panel/TabContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+metadata/_tab_index = 2
+
+[node name="Disable_Shader_Effect" type="HBoxContainer" parent="Panel/TabContainer/GamePlay"]
+layout_mode = 2
+
+[node name="Disable_Shader_Effect" type="CheckBox" parent="Panel/TabContainer/GamePlay/Disable_Shader_Effect"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Disable Shader Effect
+"
+
+[node name="FishEye" type="HBoxContainer" parent="Panel/TabContainer/GamePlay"]
+layout_mode = 2
+
+[node name="FishEye" type="Label" parent="Panel/TabContainer/GamePlay/FishEye"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "FishEye"
+
+[node name="Fish_Eye" type="HSlider" parent="Panel/TabContainer/GamePlay/FishEye"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = -2.5
+max_value = 2.5
+step = 0.01
+page = 0.05
+value = 0.5
+
+[node name="Label" type="LineEdit" parent="Panel/TabContainer/GamePlay/FishEye"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="Sharpening" type="HBoxContainer" parent="Panel/TabContainer/GamePlay"]
+layout_mode = 2
+
+[node name="Sharpening" type="Label" parent="Panel/TabContainer/GamePlay/Sharpening"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Sharpening"
+
+[node name="Sharpening2" type="HSlider" parent="Panel/TabContainer/GamePlay/Sharpening"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 32.0
+step = 0.01
+page = 0.05
+value = 0.5
+
+[node name="Label" type="LineEdit" parent="Panel/TabContainer/GamePlay/Sharpening"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="Mouse_sensativtiy" type="HBoxContainer" parent="Panel/TabContainer/GamePlay"]
+layout_mode = 2
+
+[node name="Mouse_sensativity1" type="Label" parent="Panel/TabContainer/GamePlay/Mouse_sensativtiy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Mouse Sensativity"
+
+[node name="Mouse_sensativity" type="HSlider" parent="Panel/TabContainer/GamePlay/Mouse_sensativtiy"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 5.0
+step = 0.01
+page = 0.05
+value = 0.5
+
+[node name="Label" type="LineEdit" parent="Panel/TabContainer/GamePlay/Mouse_sensativtiy"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="Global_Illumination" type="HBoxContainer" parent="Panel/TabContainer/GamePlay"]
+layout_mode = 2
+
+[node name="Global_Illumination" type="CheckBox" parent="Panel/TabContainer/GamePlay/Global_Illumination"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+button_pressed = true
+text = "Global Illumination"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -101.0
+offset_top = -31.0
+offset_right = 101.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 100
+
+[node name="Apply" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Apply"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Close"
+
+[connection signal="pressed" from="Panel/TabContainer/Graphics/Vsync/Vsync" to="." method="_on_vsync_pressed"]
+[connection signal="pressed" from="Panel/TabContainer/Graphics/Shadows/Shadows" to="." method="_on_shadows_pressed"]
+[connection signal="pressed" from="Panel/TabContainer/GamePlay/Disable_Shader_Effect/Disable_Shader_Effect" to="." method="_on_disable_shader_effect_pressed"]
+[connection signal="value_changed" from="Panel/TabContainer/GamePlay/FishEye/Fish_Eye" to="." method="_on_fish_eye_value_changed"]
+[connection signal="text_submitted" from="Panel/TabContainer/GamePlay/FishEye/Label" to="." method="_on_Fisheye_Text_Submitted"]
+[connection signal="value_changed" from="Panel/TabContainer/GamePlay/Sharpening/Sharpening2" to="." method="_on_sharpening_2_value_changed"]
+[connection signal="text_submitted" from="Panel/TabContainer/GamePlay/Sharpening/Label" to="." method="_on_sharpening_text_submitted"]
+[connection signal="value_changed" from="Panel/TabContainer/GamePlay/Mouse_sensativtiy/Mouse_sensativity" to="." method="_on_mouse_sensativity_value_changed"]
+[connection signal="text_submitted" from="Panel/TabContainer/GamePlay/Mouse_sensativtiy/Label" to="." method="_on_mouse_sense_text_submitted"]
+[connection signal="pressed" from="Panel/TabContainer/GamePlay/Global_Illumination/Global_Illumination" to="." method="_on_global_illumination_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

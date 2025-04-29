@@ -7,6 +7,7 @@ var camera
 var player_head
 var is_rotating = false
 var is_door:bool = false
+var fixed_distance = 2.5
 var is_drawer:bool = false
 var grab_offset: Vector3 = Vector3.ZERO
 var grab_offset_tether: Vector3 = Vector3.ZERO
@@ -49,6 +50,7 @@ func grab():
 
 	object.freeze = false
 	object.sleeping = false
+	
 	var enabler = rb_enabler.instantiate()
 	object.add_child(enabler)
 	var child_objects = object.get_children()
@@ -147,9 +149,12 @@ func drop_object():
 
 func update_line_position(delta):
 	var rotation_offset = rotate_vector_global(grab_offset)
+
 	var forward = -camera.global_transform.basis.z
 	var targetPosition: Vector3 = Vector3.ZERO
 	var grab_range = grab_distance
+	if is_door:
+		grab_range = fixed_distance
 	targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
 	var currentPosition:Vector3 = object.global_transform.origin
 	_update_mouse_line((targetPosition + rotation_offset),currentPosition + rotation_offset)
@@ -159,12 +164,15 @@ func update_position(delta):
 	var forward = -camera.global_transform.basis.z
 	var targetPosition: Vector3 = Vector3.ZERO
 	var grab_range = grab_distance
+	if object.is_door:
+		grab_range = fixed_distance
 	targetPosition = (camera.global_transform.origin + forward.normalized()*grab_range) + -rotation_offset
 	var currentPosition:Vector3 = object.global_transform.origin
 	var directionTo:Vector3 = targetPosition - currentPosition
 	var distance:float = currentPosition.distance_to(targetPosition)
-	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
-	force = force.limit_length(max_force + (_mass * 15) + player.velocity.length())
+	
+	force = directionTo.normalized()*(pow(distance * 600,1) + (_mass * 15))#/max(1,(parent.mass*0.15)))
+	force = force.normalized()*pow(force.length(),0.85)*2#.limit_length(max_force + (_mass * 15) + player.velocity.length())
 	object.apply_force(force, rotation_offset)
 	if is_tether_max_range:
 		force = (camera.global_transform.origin - currentPosition).normalized() * _mass * 15

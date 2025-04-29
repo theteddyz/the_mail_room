@@ -29,7 +29,7 @@ Gui="*res://Scenes/Prefabs/gui/gui.tscn"
 ScareDirector="*res://Scenes/Managers/scareDirector.tscn"
 AudioController="*res://Scenes/Managers/audio_controller.tscn"
 GrabbingManager="*res://Scenes/Managers/Grabbing_Manager.tscn"
-SettingsLoader="*res://Scripts/GameManagement/Settings_Loader.gd"
+SettingsManager="*res://Scripts/GUI/settings_manager.gd"
 
 [display]
 
@@ -61,8 +61,10 @@ observed=""
 monster=""
 multimesh=""
 world="This is for the root world Node"
-worldEnviorment="for finding World Enviroment"
 lights="for settings to disable shadows on lights"
+worldEnvironment="for finding World Enviroment"
+Player_shader=""
+worldEnviorment="for finding World Enviroment"
 
 [importer_defaults]
 
@@ -199,6 +201,7 @@ DEBUG_DOWN={
 3d_physics/layer_16="Footstep Collisionbox"
 3d_physics/layer_20="A light (ceiling or otherwise)"
 3d_physics/layer_22="Player Blocking terrain, nave-able to agents"
+3d_physics/layer_23="Fake Global Illumination"
 
 [physics]
 
@@ -211,6 +214,8 @@ jolt_physics_3d/simulation/areas_detect_static_bodies=true
 jolt_physics_3d/limits/temporary_memory_buffer_size=46
 3d/solver/solver_iterations=8
 common/physics_interpolation=true
+jolt_3d/solver/velocity_iterations=5
+jolt_3d/solver/position_iterations=1
 
 [rendering]
 
@@ -225,4 +230,3 @@ textures/light_projectors/filter=0
 global_illumination/sdfgi/frames_to_converge=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/screen_space_aa=1
-occlusion_culling/use_occlusion_culling=true

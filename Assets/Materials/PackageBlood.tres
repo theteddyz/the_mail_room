@@ -9,4 +9,4 @@ render_priority = 0
 shader = ExtResource("1_ebqxl")
 shader_parameter/Texture2DParameter = ExtResource("2_f173o")
 shader_parameter/Texture2DParameter2 = ExtResource("3_f173o")
-shader_parameter/bloodValue = 0.285
+shader_parameter/blood = 0.351

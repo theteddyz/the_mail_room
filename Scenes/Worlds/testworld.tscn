@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=81 format=4 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
@@ -27,6 +27,9 @@
 [ext_resource type="PackedScene" uid="uid://dfkutgejqdtep" path="res://Scenes/Prefabs/MoveableObjects/BottleCola.tscn" id="28_wneu6"]
 [ext_resource type="Texture2D" uid="uid://b6rsqkhx432tb" path="res://Assets/Models/BlenderModels/textures/LowPolyHeart.png" id="29_3r3kc"]
 [ext_resource type="Material" uid="uid://dt46ucamiuw8" path="res://Assets/Materials/PackageBlood.tres" id="30_021rd"]
+[ext_resource type="Script" uid="uid://duxun5cn3y3a4" path="res://Scenes/Worlds/fake_global_illumination.gd" id="32_pcx2a"]
+[ext_resource type="PackedScene" uid="uid://cw1l5cdclwdew" path="res://Scenes/Prefabs/fake_gl_light/fake_gl_light.tscn" id="33_yag50"]
+[ext_resource type="PackedScene" uid="uid://0twm7ocl2mi5" path="res://Scenes/Prefabs/MoveableObjects/PackageHeart.tscn" id="34_vhm0n"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
 [ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="44_epuy0"]
@@ -583,8 +586,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="NavigationRegion3D/environment" groups=["lights"]]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(0.999391, -0.0138603, 0.0320292, 0.00277947, 0.94645, 0.322839, -0.0347886, -0.322553, 0.945912, 9.93663, 15.3615, 14.4565)
 shadow_enabled = true
+script = ExtResource("32_pcx2a")
+enable = null
+update = null
+light = ExtResource("33_yag50")
+light_intensity = 1.85
+light_attenuation = 0.415
+light_distance = 3.74
+spacingWidth = 0.945
+spacingHeight = 2.43
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="NavigationRegion3D/environment"]
 environment = SubResource("Environment_13vtk")
@@ -821,6 +833,9 @@ skeleton = NodePath("")
 libraries = {
 &"": SubResource("AnimationLibrary_v4rir")
 }
+
+[node name="Package" parent="." instance=ExtResource("34_vhm0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.693941, 0.157749, -1.52114)
 
 [connection signal="body_entered" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_exited"]

@@ -6,6 +6,7 @@ extends RigidBody3D
 #@export_enum("monitor","desk1","desk2","mouse","chair","lamp","mailbox","bin","keyboard") var object_name:String
 @export var modified:bool = false
 @export var on_screen:bool = false
+@export var is_door:bool = false
 ####only needed if this is a door or drawer
 @export var open_sound: AudioStreamPlayer3D
 @export var close_sound: AudioStreamPlayer3D
@@ -24,6 +25,7 @@ func _ready():
 		set_collision_mask_value(layer, true)
 	physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_ON
 	connect("body_entered",Callable(self,"unfreeze_object"))
+	EventBus.connect("toggle_shadow_on_dynamic_objects",Callable(self,"toggle_shadows"))
 	freeze = false
 	await get_tree().create_timer(3.0).timeout
 	freeze = true
@@ -32,12 +34,23 @@ func _ready():
 	set_physics_process(false)
 	set_process(false)
 
+
+func toggle_shadows(b: bool):
+	for child in get_children():
+		if child is MeshInstance3D:
+			child.set_cast_shadows_setting(b) 
+			for child2 in child.get_children():
+				if child2 is MeshInstance3D:
+					child2.set_cast_shadows_setting(b) 
+
+
+
 func start_freeze_timer():
-	if !freeze_timer_started:
+	if !freeze_timer_started and GrabbingManager.current_grabbed_object != self:
 		freeze_timer_started = true
-		freeze_timer_ref = get_tree().create_timer(10.0)
+		freeze_timer_ref = get_tree().create_timer(100.0)
 		await freeze_timer_ref.timeout
-		if linear_velocity.length() < 0.001 and angular_velocity.length() < 0.001 and get_contact_count() > 0:
+		if linear_velocity.length() < 0.00001 and angular_velocity.length() < 0.00001 and get_contact_count() > 0:
 			
 			freeze = true
 			frozen = true

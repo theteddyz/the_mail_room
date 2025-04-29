@@ -23,7 +23,7 @@ shader_parameter/noise_texture = ExtResource("2_yapwg")
 
 [node name="vhs_layer" type="CanvasLayer"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="vhs" type="ColorRect" parent="." groups=["Player_shader"]]
 material = SubResource("ShaderMaterial_57gvc")
 anchors_preset = 15
 anchor_right = 1.0
