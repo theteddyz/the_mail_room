@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://b85fvq8nn7wpm"]
+[gd_scene load_steps=48 format=4 uid="uid://b85fvq8nn7wpm"]
 
 [ext_resource type="Script" uid="uid://c5gd3r3nrlcm2" path="res://Scripts/GUI/MonitorGui/MonitorVariables.gd" id="1_messh"]
 [ext_resource type="PackedScene" uid="uid://d3hn5glhsxdca" path="res://Assets/Models/computer.tscn" id="3_urhub"]
@@ -24,6 +24,9 @@
 [ext_resource type="AudioStream" uid="uid://hhwvwau3w4b1" path="res://Assets/Audio/SoundFX/ImpactComputer6.mp3" id="13_qgltr"]
 [ext_resource type="Texture2D" uid="uid://cv8m3vn5h46oi" path="res://Assets/TemporaryAssets/Pong/ball.png" id="14_q1m36"]
 [ext_resource type="Texture2D" uid="uid://2r4lkdfb36wd" path="res://Assets/TemporaryAssets/png-transparent-white-cursor-computer-mouse-pointer-mouse-cursor-miscellaneous-angle-white-removebg-preview.png" id="15_0x4wk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ghg7e"]
+size = Vector3(0.69751, 0.827362, 0.609497)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_inu7q"]
 resource_name = "Material.001"
@@ -209,6 +212,10 @@ center_of_mass_mode = 1
 sleeping = true
 freeze = true
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Monitor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000366211, -0.00114441, -0.00579834)
+shape = SubResource("BoxShape3D_ghg7e")
+
 [node name="ComputerOn" type="MeshInstance3D" parent="Monitor"]
 transform = Transform3D(0.402973, 0, 0, 0, 0.402973, 0, 0, 0, 0.402973, 0, 0, 0)
 gi_mode = 2
@@ -222,7 +229,7 @@ input_ray_pickable = false
 script = ExtResource("4_pdath")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Monitor/ComputerOn/Area3D"]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.0077133, 0.304565, -0.346802)
+transform = Transform3D(0.999997, 0, 0, 0, 0.999997, 0, 0, 0, 0.999997, 0.0077133, 0.304565, -0.346802)
 shape = SubResource("BoxShape3D_jeibh")
 
 [node name="MonitorHandler" type="Node3D" parent="Monitor/ComputerOn"]

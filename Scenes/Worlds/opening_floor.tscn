@@ -38,7 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://cis7so1fqoyyd" path="res://Scenes/Prefabs/MoveableObjects/file_folder.tscn" id="18_hs5jh"]
 [ext_resource type="PackedScene" uid="uid://c78p6r50btnlq" path="res://Scenes/Prefabs/MoveableObjects/pencil.tscn" id="18_u60hx"]
 [ext_resource type="PackedScene" uid="uid://jd8h5f776fn6" path="res://Scenes/Prefabs/MoveableObjects/EnergyCan_3.tscn" id="20_806ow"]
-[ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="20_ukshy"]
+[ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_variant_0.tscn" id="20_ukshy"]
 [ext_resource type="PackedScene" uid="uid://bxhxtu4iyidhe" path="res://Scenes/Prefabs/MoveableObjects/note_book.tscn" id="21_do1ay"]
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="21_hcilt"]
 [ext_resource type="PackedScene" uid="uid://bmsgiq8q384b5" path="res://Scenes/Prefabs/MoveableObjects/file.tscn" id="22_efawg"]

@@ -39,7 +39,7 @@ var roaming_to_sound = false
 var locations: Array[Vector3] = []
 var monster_anim:AnimationPlayer
 var chasing:bool
-var player
+var player: CharacterBody3D
 var player_in_vision_flag
 var curPath
 var drawnObjects: Array[Node] = []
@@ -71,26 +71,25 @@ func _ready():
 	monster_anim = find_child("AnimationPlayer")
 	player = GameManager.get_player()
 	aggro_timer.wait_time = aggro_timeout
-	ScareDirector.connect("package_delivered", enable_john)
-	
-func enable_john(package_num):
-	if package_num == 5 and window_scare == null and darkroom_scare == null:
-		cooldown_timer.start(randi_range(9, 25))
+
+func enable_john():
+	#cooldown_timer.start(randi_range(9, 25))
+	if !visible:
+		#set_new_nav_position(player.global_position)
+		roaming_soundloop.playing = true
+		#roaming_timer.start(25)
+		#turn_timer.start(12)
+		#monster_anim.play("WalkScary")
+		roaming = true
+		visible = true
+		disabled = false
+		col.disabled = false
+	else:
+		set_new_nav_position()
 
 func _input(event):
 	if event.is_action_pressed("p"):
-		if !visible:
-			set_new_nav_position()
-			roaming_soundloop.playing = true
-			roaming_timer.start(25)
-			turn_timer.start(12)
-			monster_anim.play("WalkScary")
-			roaming = true
-			visible = true
-			disabled = false
-			col.disabled = false
-		else:
-			set_new_nav_position()
+		enable_john()
 
 func _physics_process(delta: float):
 	if !disabled:

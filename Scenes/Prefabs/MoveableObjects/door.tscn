@@ -110,7 +110,7 @@ close_sound = NodePath("DrawerAudioClose")
 loop_sound = NodePath("DrawerAudioLoop")
 
 [node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="RigidBody3D2"]
-transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
+transform = Transform3D(-1, -1.50996e-07, 6.60024e-15, 0, -4.37114e-08, -1, 1.50996e-07, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
 node_a = NodePath("..")
 node_b = NodePath("../..")
 angular_limit/enable = true

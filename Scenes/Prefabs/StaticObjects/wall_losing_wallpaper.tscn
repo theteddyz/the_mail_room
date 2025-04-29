@@ -4,7 +4,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fkxlr"]
 resource_name = "Wall"
-transparency = 4
 cull_mode = 2
 albedo_texture = ExtResource("1_gghkl")
 texture_filter = 2
@@ -85,7 +84,6 @@ mesh = SubResource("ArrayMesh_cpc42")
 skeleton = NodePath("")
 
 [node name="FallingWallpaper" type="MeshInstance3D" parent="WallWithoutWallPaper"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_8oymh")
 skeleton = NodePath("")
 

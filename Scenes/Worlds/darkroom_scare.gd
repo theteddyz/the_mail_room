@@ -2,7 +2,7 @@ extends Node3D
 var scare_index = 1
 var has_been_executed = false
 @onready var door_slam_anim: AnimationPlayer = $AnimationPlayer
-@onready var doorlock = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2/Door_Lock"
+@onready var doorlock: Node = $"../../NavigationRegion3D/Walls/StaticBody3D127/RigidBody3D2/RigidBody3D2/Door_Lock"
 @onready var hallwayflickeranimationplayer:AnimationPlayer = $"../../CeilingLights/CeilingLightOn8/FlickeringLight"
 @onready var monster_run_soundplayer:AudioStreamPlayer3D = $MonsterRunSoundPlayer
 @onready var monsterCollisionShape:CollisionShape3D = $john_model/JohnCharacterBody/CollisionShape3D
@@ -35,16 +35,16 @@ func activate_scare(key_num:int):
 		monsterCollisionShape.disabled = false
 		monster_anim.play("DoorSlam")
 		monster_anim.speed_scale = 0
-		monster_anim.seek(0.3)
+		#monster_anim.seek(0.3)
 		monster_body.visible = true
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		door_slam_anim.play("door_open")
-		#door_slam_anim.seek(0.3)
+		door_slam_anim.speed_scale = 0
 		scare_active = true
 		print("SCARE ACTIVATED!")
 		
 func monster_seen_event(_test):
-	if(scare_active):
+	if(scare_active and _test):
 		scare_active = false
 		if wall_to_nuke != null:
 			wall_to_nuke.queue_free()
@@ -52,17 +52,13 @@ func monster_seen_event(_test):
 		ScareDirector.emit_signal("scare_activated", scare_index)
 		await get_tree().create_timer(0.68).timeout
 		print("DOOR LOCKING!")
-		flickeranimationplayer.pause()
-		flickeranimationplayer.play("RESET")
-		flickeranimationplayer.speed_scale = 100
-		monster_anim.current_animation = ""
+		
+		#monster_anim.current_animation = ""
 		monster_anim.speed_scale = 1.25
 		#monster_anim.seek(0.3)
 		door_slam_anim.play("door_lock")
 		door_slam_anim.speed_scale = 1.125
 		#door_slam_anim.seek(0.3)
-		hallwayflickeranimationplayer.play("flicker")
-		monster_run_soundplayer.playing = true
 		
 		ambience_starter.monitoring = true
 		ambience_starter_2.monitoring = true
@@ -70,7 +66,7 @@ func monster_seen_event(_test):
 		ambience_ender_2.monitoring = true
 		ambience_ender_3.monitoring = true
 
-		var kill_monster_timer = get_tree().create_timer(1)
+		var kill_monster_timer = get_tree().create_timer(1.85)
 		kill_monster_timer.timeout.connect(_hide_monster)
 		
 		var timer = get_tree().create_timer(10.0)
@@ -80,6 +76,7 @@ func _on_slam():
 	AudioController.play_resource(closed_ambiance)
 
 func _hide_monster():
+	monster_run_soundplayer.playing = true	
 	monster_body.queue_free()
 	
 func _door_opened(grabbable:String):

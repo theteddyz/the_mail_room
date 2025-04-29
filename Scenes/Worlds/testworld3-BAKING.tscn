@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d1pv5poqi0p1s" path="res://Scenes/Prefabs/StaticObjects/office_cubicle_variant_0.tscn" id="8_go2od"]
 [ext_resource type="PackedScene" uid="uid://dui3j31sc1l58" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_011.tscn" id="9_mwayy"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling.tscn" id="10_dwtfo"]
-[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2_LEVEL1.tscn" id="11_i0y4t"]
+[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_finance.tscn" id="11_i0y4t"]
 [ext_resource type="PackedScene" uid="uid://caiwom5hlt84f" path="res://Scenes/Prefabs/StaticObjects/floor.tscn" id="12_0cnag"]
 [ext_resource type="LightmapGIData" uid="uid://y13hxjfq1ij5" path="res://Scenes/Worlds/testworld3-BAKING.lmbake" id="12_bpe60"]
 

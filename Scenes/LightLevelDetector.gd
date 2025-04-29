@@ -22,6 +22,8 @@ func _ready():
 	camera = GameManager.camera_reference
 	timer = find_child("Refresh Timer")
 	lightvalue = 1
+	closelight.light_energy = 0
+	groundlight.light_energy = 0
 	if we == null:
 		push_warning("NO WORLD ENVIRONMENT DETECTED LIGHT LEVEL DETECTOR NOT ACTIVE")
 func timerdown():

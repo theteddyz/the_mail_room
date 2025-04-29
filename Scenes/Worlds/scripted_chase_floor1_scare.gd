@@ -8,6 +8,8 @@ var player
 @onready var monster_position: Node3D = $MonsterPosition
 @onready var monster_collider: CollisionShape3D = $"../../monster/CollisionShape3D"
 @onready var elevator = $"../../Elevator"
+@onready var window_scare: Node3D = $"../WINDOW SCARE"
+@onready var darkroom_scare: Node3D = $"../DARKROOM SCARE"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,7 +20,7 @@ func _ready():
 	ScareDirector.connect("package_delivered", activate_scare)
 	
 func activate_scare(package_num:int):
-	if package_num == 6:
+	if package_num == 6 and (window_scare == null or darkroom_scare == null):
 		#Variable necessary for all scares, tells other scares which ones have been executed
 		has_been_executed = true
 		monster_body.enable_john()

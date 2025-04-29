@@ -26,9 +26,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_vision_timer_timeout():	
 	var monster_overlaps = get_overlapping_bodies()
-	var allbodies = monster_overlaps.filter(func(body): return body.is_in_group("scarevision"))
-	allbodies.append_array(get_overlapping_areas().filter(func(body): return body.is_in_group("scarevision")))
-	visiontimer_signal.emit(allbodies)
+	var scarevisionbodies = monster_overlaps.filter(func(body): return body.is_in_group("scarevision"))
+	#scarevisionbodies.append_array(get_overlapping_areas().filter(func(body): return body.is_in_group("scarevision")))
+	visiontimer_signal.emit(scarevisionbodies)
 	
 	var counter = 0
 	for gameobject in tracked_gameobjects:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=22 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" uid="uid://cp4jrj7a18avb" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" uid="uid://bqadv5daugpb2" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://brtrfcahmyjah" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
 [ext_resource type="Shader" uid="uid://g18d7ggq4bq6" path="res://Scripts/Shaders/CombinedVHSAndSSAO.gdshader" id="6_7dp3o"]
 [ext_resource type="Script" uid="uid://brru7emutcew5" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
-[ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 [ext_resource type="PackedScene" uid="uid://bcq43p4q358bx" path="res://Assets/Shaders/vhs_layer.tscn" id="8_fd4e3"]
 [ext_resource type="Script" uid="uid://cq5fmqrcunrhp" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
@@ -118,8 +117,8 @@ collision_mask = 4096
 script = ExtResource("6_f3pv2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
-transform = Transform3D(600.839, 0, 0, 0, -1.3899e-05, 600.839, 0, -317.973, -2.62635e-05, 0, 0, 0)
-shape = ExtResource("6_u1lyf")
+transform = Transform3D(312.585, 0, 0, 0, -1.36635e-05, 312.585, 0, -312.585, -1.36635e-05, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_fmr2d")
 
 [node name="Vision_Timer" type="Timer" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 wait_time = 0.18

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="12_dbw12"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="15_87p0u"]
 [ext_resource type="PackedScene" uid="uid://ceasmrd6qawc5" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_with_door.tscn" id="15_koth6"]
-[ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_2.tscn" id="16_olrcr"]
+[ext_resource type="PackedScene" uid="uid://b2c5c47wnbu3f" path="res://Scenes/Prefabs/MoveableObjects/desk_variant_0.tscn" id="16_olrcr"]
 [ext_resource type="PackedScene" uid="uid://bvha2qolbtfko" path="res://Scenes/Prefabs/MoveableObjects/desk_2_Only.tscn" id="17_mpvvd"]
 [ext_resource type="PackedScene" uid="uid://b85fvq8nn7wpm" path="res://Scenes/Prefabs/MoveableObjects/Monitor_interactable.tscn" id="18_87p0u"]
 [ext_resource type="PackedScene" uid="uid://b3tdwehc6j730" path="res://Scenes/Prefabs/crttv_screen.tscn" id="19_87p0u"]

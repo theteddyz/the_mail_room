@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cjj72g8puxxjh" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_007.tscn" id="46_jsb32"]
 [ext_resource type="PackedScene" uid="uid://dfunafpk8efeo" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall_meeting_room_012.tscn" id="47_8wvck"]
 [ext_resource type="PackedScene" uid="uid://c8uw4jij34csj" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling_tile_nolight.tscn" id="72_j5r6j"]
-[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on2_LEVEL1.tscn" id="73_1pk3j"]
+[ext_resource type="PackedScene" uid="uid://fupc50qetuxi" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_finance.tscn" id="73_1pk3j"]
 [ext_resource type="Texture2D" uid="uid://b4lvvd23ey3q4" path="res://Assets/Textures/BlenderTextures/CeilingLight.png" id="74_p8jws"]
 [ext_resource type="Script" uid="uid://d11l0hmtjuo22" path="res://Scripts/Misc/FlickeringLight.gd" id="75_negkv"]
 [ext_resource type="Script" uid="uid://c8838fg8k4eli" path="res://Scenes/light_turn_off_shadows_on_start.gd" id="76_5lt7j"]
