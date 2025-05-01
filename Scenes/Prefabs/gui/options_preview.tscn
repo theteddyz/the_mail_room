@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://dngu4fl1jgenk"]
+
+[ext_resource type="Texture2D" uid="uid://byp086pac7m6k" path="res://Scenes/Prefabs/StaticObjects/floor_tiles_06_diff_1k.jpg" id="1_3b67f"]
+[ext_resource type="PackedScene" uid="uid://bxd0eechinn1m" path="res://Scenes/Prefabs/StaticObjects/Tiles/wall.tscn" id="2_vkuf8"]
+[ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="3_05dg5"]
+[ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="4_evukw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjafl"]
+albedo_texture = ExtResource("1_3b67f")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hsmq7"]
+size = Vector2(20, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3b67f"]
+data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+
+[node name="Options_Preview" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(0.825271, 0.160706, -0.541388, -1.17031e-08, 0.958656, 0.284568, 0.564737, -0.234845, 0.791151, 200, 2.24349, -0.439196)
+fov = 101.25
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.66117)
+material_override = SubResource("StandardMaterial3D_xjafl")
+mesh = SubResource("PlaneMesh_hsmq7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3b67f")
+
+[node name="wall" parent="." instance=ExtResource("2_vkuf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.209937, 0, -2.88245)
+
+[node name="wall2" parent="." instance=ExtResource("2_vkuf8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.47169, 0, -2.31791)
+
+[node name="wall4" parent="." instance=ExtResource("2_vkuf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.337952, 0, 0.352611)
+
+[node name="wall5" parent="." instance=ExtResource("2_vkuf8")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.337952, 6.4555, -5.83281)
+
+[node name="wall3" parent="." instance=ExtResource("2_vkuf8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.97211, 0, -2.31791)
+
+[node name="Cardboard_box_big" parent="." instance=ExtResource("3_05dg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29033, 0.305338, -1.96598)
+
+[node name="Chair" parent="." instance=ExtResource("4_evukw")]
+transform = Transform3D(0.784885, 0, -0.619642, 0, 1, 0, 0.619642, 0, 0.784885, 2.1048, 0.900132, -1.1352)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98976, 2.79894, -1.34635)
+shadow_enabled = true
+omni_range = 6.212
+
+[editable path="Chair"]

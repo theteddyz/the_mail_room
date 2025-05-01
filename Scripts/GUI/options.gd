@@ -32,6 +32,8 @@ extends Control
 @onready var apply_button = $Panel/VBoxContainer/Apply
 @onready var exit_button = $Panel/VBoxContainer/Exit
 
+@onready var preview_viewport = $Options_Preview/SubViewport
+@onready var preview_scene = $Options_Preview
 var shader
 var working_settings := {}
 
@@ -57,6 +59,7 @@ func _ready():
 	apply_working_settings_to_ui()
 	connect_signals()
 	_update_borderless_visibility()
+	hide_preview_scene()
 
 func _init_resolution_ui():
 	for res in SettingsManager.resolutions:
@@ -168,9 +171,13 @@ func _on_apply_pressed():
 	SettingsManager.save_settings()
 	print("Settings applied and saved.")
 	hide()
+	hide_preview_scene()
 	pause_menu._reset_button_alpha()
 
-
+func show_preview_scene():
+	preview_scene.show()
+func hide_preview_scene():
+	preview_scene.hide()
 
 func _on_exit_pressed():
 	# Revert working settings to the last saved file, not memory
@@ -180,6 +187,7 @@ func _on_exit_pressed():
 	SettingsManager.apply_settings()
 	hide()
 	pause_menu._reset_button_alpha()
+	hide_preview_scene()
 
 
 func _update_borderless_visibility():

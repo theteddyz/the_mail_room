@@ -44,6 +44,7 @@ func _on_options_pressed():
 		await animate_button_press(options_button)
 		#hide()
 		options.show()
+		options.show_preview_scene()
 
 
 func _on_restart_pressed():
