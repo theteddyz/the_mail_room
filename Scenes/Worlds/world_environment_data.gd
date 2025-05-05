@@ -10,7 +10,7 @@ var properties: Dictionary
 
 func _ready():
 	properties = resource_to_dict(get_environment())
-	GameManager.player_reference.get_node("Neck").get_node("Head").get_node("HeadbopRoot").get_node("LightLevelDetection").we = self
+	#GameManager.player_reference.get_node("Neck").get_node("Head").get_node("HeadbopRoot").get_node("LightLevelDetection").we = self
 	GameManager.register_world_environment(self)
 
 func resource_to_dict(resource: Resource) -> Dictionary:

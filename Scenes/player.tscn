@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=30 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" uid="uid://cp4jrj7a18avb" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" uid="uid://bqadv5daugpb2" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
@@ -9,11 +9,17 @@
 [ext_resource type="Script" uid="uid://brtrfcahmyjah" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
 [ext_resource type="Shader" uid="uid://g18d7ggq4bq6" path="res://Scripts/Shaders/CombinedVHSAndSSAO.gdshader" id="6_7dp3o"]
 [ext_resource type="Script" uid="uid://brru7emutcew5" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
+[ext_resource type="PackedScene" uid="uid://43iceqac2doa" path="res://Assets/Shaders/blur.tscn" id="6_qqcod"]
+[ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
 [ext_resource type="PackedScene" uid="uid://bcq43p4q358bx" path="res://Assets/Shaders/vhs_layer.tscn" id="8_fd4e3"]
 [ext_resource type="Script" uid="uid://cq5fmqrcunrhp" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
 [ext_resource type="AudioStream" uid="uid://cin4ngwhr1g72" path="res://Scenes/Prefabs/AudioPlayers/carpet_footsteps.tres" id="9_pey34"]
+[ext_resource type="PackedScene" uid="uid://befosmwf02tgk" path="res://Assets/Shaders/shader_toy.tscn" id="10_igrcy"]
 [ext_resource type="Script" uid="uid://cvbypy47gfal3" path="res://Scenes/scare_vision_controller.gd" id="14_jppxj"]
+[ext_resource type="Script" uid="uid://lq4kj7kaukgu" path="res://Scenes/FlashLight.gd" id="15_fs7ks"]
+[ext_resource type="Texture2D" uid="uid://du8w5bllunwpp" path="res://Assets/Textures/flashlight.png" id="15_igrcy"]
+[ext_resource type="AudioStream" uid="uid://bdx8qlgb45o3p" path="res://Assets/Audio/SoundFX/LampButton2.mp3" id="17_l6n3p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 radius = 0.3
@@ -26,8 +32,12 @@ height = 1.2
 radius = 0.294544
 height = 0.589089
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qqcod"]
+dof_blur_far_enabled = true
+dof_blur_near_enabled = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4iuc"]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("6_7dp3o")
 shader_parameter/radius = 0.5
 shader_parameter/bias = 0.025
@@ -43,6 +53,10 @@ radius = 50.9001
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fmr2d"]
 points = PackedVector3Array(1.905, 0.316, 0.64, 2.02, 0.411, -0.355, -1.905, 0.321, 0.615, 0, 0, 0, -1.905, 0.371, -0.43)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olqyp"]
+streams_count = 1
+stream_0/stream = ExtResource("17_l6n3p")
 
 [node name="Player" type="CharacterBody3D" groups=["Persist"]]
 collision_layer = 65540
@@ -75,6 +89,7 @@ script = ExtResource("2_eyvdn")
 [node name="Camera" type="Camera3D" parent="Neck/Head/HeadbopRoot"]
 physics_interpolation_mode = 1
 cull_mask = 524287
+attributes = SubResource("CameraAttributesPractical_qqcod")
 doppler_tracking = 2
 current = true
 fov = 60.0
@@ -86,7 +101,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0011888, -0.530672, -0.344
 [node name="PackageHolder" type="Marker3D" parent="Neck/Head/HeadbopRoot/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319181, -0.331, -0.969561)
 
-[node name="MeshInstance3D" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("4_ao0s0")]
+[node name="AmbientOcclusion" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("4_ao0s0")]
 transform = Transform3D(1.51652, 0, 0, 0, 1, -1.06581e-14, 0, 1.06581e-14, 1, 0.0295252, 0, -0.275596)
 visible = false
 layers = 1048575
@@ -94,9 +109,17 @@ material_override = SubResource("ShaderMaterial_h4iuc")
 cast_shadow = 0
 mesh = SubResource("QuadMesh_h4iuc")
 
+[node name="blur_shader" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("6_qqcod")]
+
 [node name="ColorRect" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("3_6orpg")]
+layer = 1
 
 [node name="ColorRect2" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("8_fd4e3")]
+
+[node name="everything_layer" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("10_igrcy")]
+
+[node name="BlurRange" type="RayCast3D" parent="Neck/Head/HeadbopRoot/Camera"]
+target_position = Vector3(0, 0, -400)
 
 [node name="LightOptimizerDetector" type="Area3D" parent="Neck/Head/HeadbopRoot"]
 transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0.0297186, -0.312485)
@@ -117,8 +140,8 @@ collision_mask = 4096
 script = ExtResource("6_f3pv2")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
-transform = Transform3D(312.585, 0, 0, 0, -1.36635e-05, 312.585, 0, -312.585, -1.36635e-05, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_fmr2d")
+transform = Transform3D(600.839, 0, 0, 0, -1.3899e-05, 600.839, 0, -317.973, -2.62635e-05, 0, 0, 0)
+shape = ExtResource("6_u1lyf")
 
 [node name="Vision_Timer" type="Timer" parent="Neck/Head/HeadbopRoot/MonsterDetector"]
 wait_time = 0.18
@@ -137,7 +160,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.247054, -0.292751)
 wait_time = 0.22
 
 [node name="SpotLight3D" parent="Neck/Head/HeadbopRoot/LightLevelDetection" index="1"]
-light_color = Color(0.0510997, 0.196141, 0.829799, 1)
+light_color = Color(0.102779, 0.111994, 0.158284, 1)
+light_energy = 0.02
 spot_angle_attenuation = 1.86607
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
@@ -164,6 +188,30 @@ target_position = Vector3(0, 1.095, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00484732, -0.797134, -0.444105)
 target_position = Vector3(0, 1.095, 0)
 
+[node name="FlashLight" type="Node3D" parent="Neck/Head" node_paths=PackedStringArray("spot_light", "raycast", "omni_light", "audio")]
+script = ExtResource("15_fs7ks")
+spot_light = NodePath("SpotLight3D")
+raycast = NodePath("RayCast3D")
+omni_light = NodePath("OmniLight3D")
+audio = NodePath("AudioStreamPlayer")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Neck/Head/FlashLight"]
+light_energy = 3.7
+light_projector = ExtResource("15_igrcy")
+shadow_enabled = true
+spot_range = 9.84133
+spot_angle = 26.7
+
+[node name="RayCast3D" type="RayCast3D" parent="Neck/Head/FlashLight"]
+target_position = Vector3(0, 0, -100)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Neck/Head/FlashLight"]
+light_energy = 0.5
+omni_range = 2.80466
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Neck/Head/FlashLight"]
+stream = SubResource("AudioStreamRandomizer_olqyp")
+
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72236, 0)
 
@@ -187,8 +235,8 @@ one_shot = true
 
 [node name="Groundlight" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.408113, -1.3265)
-light_color = Color(0.0510997, 0.196141, 0.829799, 1)
-light_energy = 0.401
+light_color = Color(0.160963, 0.184791, 0.255845, 1)
+light_energy = 0.02
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
@@ -196,7 +244,6 @@ light_cull_mask = 4294967294
 spot_range = 3.97
 spot_attenuation = -0.36
 spot_angle = 89.0
-spot_angle_attenuation = 0.341513
 
 [node name="ScareVisionController" type="Node" parent="."]
 script = ExtResource("14_jppxj")
