@@ -6,10 +6,16 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ntlj"]
 shader = ExtResource("1_3ntlj")
+shader_parameter/stretch_noise = 0.05
+shader_parameter/crease_noise = 0.0
+shader_parameter/crease_speed = 0.3
+shader_parameter/switching_noise = 1.0
+shader_parameter/switching_height = 30.0
+shader_parameter/switching_offset = 0.03
 shader_parameter/SHARPENING = 0.508
 shader_parameter/SHARPEN_DISTANCE = 0.002
 shader_parameter/CHROMATIC_DISTANCE = 1.5
-shader_parameter/FISHEYE_AMOUNT = 0.91
+shader_parameter/CHROMATIC_RGB_DISTANCE = 0.1
 shader_parameter/FlareMult = ExtResource("2_sgyyt")
 shader_parameter/FlareMult2 = ExtResource("3_xrcpx")
 shader_parameter/Blur = 5.0
@@ -19,11 +25,17 @@ shader_parameter/FlareSpacing = 0.5
 shader_parameter/Intensity = 8.0
 shader_parameter/FALLOFF_STARTING_POINT = 0.05
 shader_parameter/Saturation_ = 0.48
-shader_parameter/inner_radius = 0.293
-shader_parameter/outer_radius = 0.916
-shader_parameter/vignette_strength = 0.968
-shader_parameter/dither_strength = 0.03
-shader_parameter/vignette_color = Color(0, 0, 0, 1)
+shader_parameter/color_bleed_seperation = 0.02
+shader_parameter/color_bleed_intensity = 0.2
+shader_parameter/anti_bleed_intensity = 1.8
+shader_parameter/color_bleed_blur_strength = 1.0
+shader_parameter/color_bleed_quality = 5
+shader_parameter/dust_multiplier = 1.0
+shader_parameter/dust_threshold = 0.6
+shader_parameter/dust_distance = 0.05
+shader_parameter/dust_blur = 5.0
+shader_parameter/dust_falloff = 0.05
+shader_parameter/dust_strength = 4
 
 [node name="everything_layer" type="CanvasLayer"]
 

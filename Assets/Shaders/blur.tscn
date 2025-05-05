@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://43iceqac2doa"]
 
-[ext_resource type="Shader" uid="uid://ds47bggf6v8nt" path="res://Scripts/Shaders/initial_shader.gdshader" id="1_d4vn8"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/initial_shader.gdshader" id="1_d4vn8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wum37"]
 shader = ExtResource("1_d4vn8")
-shader_parameter/blur_amount = 1.116
+shader_parameter/blur_amount = 1.3
 shader_parameter/mix_amount = 0.0
 shader_parameter/color_over = Color(0, 0, 0, 1)
 shader_parameter/blur_radius = 1.0

@@ -6,13 +6,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxhbw"]
 shader = ExtResource("1_ddsee")
-shader_parameter/stretch_noise = 0.05
-shader_parameter/crease_noise = 0.0
+shader_parameter/stretch_noise = 0.201
+shader_parameter/crease_noise = 0.034
 shader_parameter/crease_speed = 0.3
-shader_parameter/switching_noise = 2.0
+shader_parameter/switching_noise = 3.698
 shader_parameter/switching_height = 56.0
 shader_parameter/switching_offset = 0.056
-shader_parameter/SHARPENING = 1.432
+shader_parameter/SHARPENING = 1.5
 shader_parameter/SHARPEN_DISTANCE = 0.002
 shader_parameter/CHROMATIC_DISTANCE = 0.0
 shader_parameter/CHROMATIC_RGB_DISTANCE = 0.2
