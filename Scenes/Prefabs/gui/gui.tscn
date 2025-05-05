@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=58 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" uid="uid://cggbaeh823mtn" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
@@ -37,6 +37,7 @@
 [ext_resource type="Script" uid="uid://cxopweubebv50" path="res://Scenes/Prefabs/gui/debug_pause.gd" id="34_4l5s3"]
 [ext_resource type="Texture2D" uid="uid://b3gsaqrfeo7w2" path="res://Assets/Textures/cutter_test_eyes.png" id="35_ydec6"]
 [ext_resource type="Shader" uid="uid://cgcm286gkjm20" path="res://Scripts/Shaders/crtShaderTest2.gdshader" id="36_1ts2g"]
+[ext_resource type="FontFile" uid="uid://bpc2ny4278for" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="38_w1eh6"]
 
 [sub_resource type="Gradient" id="Gradient_10so2"]
 
@@ -195,6 +196,10 @@ shader_parameter/roll_line_amount = 0.151
 shader_parameter/roll_speed = 8.0
 shader_parameter/scan_line_strength = -9.81
 shader_parameter/pixel_strength = -1.715
+
+[sub_resource type="LabelSettings" id="LabelSettings_0rg64"]
+font = ExtResource("38_w1eh6")
+font_size = 26
 
 [node name="GUI" type="Control"]
 top_level = true
@@ -812,5 +817,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("35_ydec6")
+
+[node name="VHS Text" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1923.0
+offset_bottom = 1072.0
+
+[node name="Label" type="Label" parent="VHS Text"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 42.0
+offset_right = 396.0
+offset_bottom = 113.0
+scale = Vector2(2.5, 2.5)
+text = "PLAY ▶"
+label_settings = SubResource("LabelSettings_0rg64")
+
+[node name="Label2" type="Label" parent="VHS Text"]
+layout_mode = 0
+offset_left = 208.0
+offset_top = 841.0
+offset_right = 410.0
+offset_bottom = 912.0
+scale = Vector2(2.5, 2.5)
+text = "PM 22:18
+NOV, 16 1989"
+label_settings = SubResource("LabelSettings_0rg64")
 
 [connection signal="timeout" from="Adress_Displayer/Timer" to="Adress_Displayer" method="_on_timer_timeout"]

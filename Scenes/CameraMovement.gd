@@ -35,6 +35,17 @@ var initial_rotation_offset: Quaternion = Quaternion.IDENTITY  # To store the in
 
 var shake_time := 0.0 #For extra camera shake
 
+
+@export var blur_far_max := 100
+@export var blur_far_min := 3
+
+@export var blur_near_max := 2
+@export var blur_near_min := 0
+
+@export var blur_range := -400
+
+var lerp_speed := 10
+
 func _ready() -> void:
 	top_level = false
 	head = get_parent()
@@ -173,6 +184,21 @@ func _process(delta: float):
 		pass
 		#This was causing me some problems dont know if its needed seems to work fine?
 		#global_transform = head.global_transform
+
+func _physics_process(delta: float) -> void:
+	$BlurRange.target_position.z = blur_range
+	
+	if $BlurRange.is_colliding():
+		var origin = $BlurRange.global_transform.origin
+		var collision_point = $BlurRange.get_collision_point()
+		var distance = origin.distance_to(collision_point)
+		self.attributes.dof_blur_far_distance = lerpf(self.attributes.dof_blur_far_distance,distance+distance*0.1,delta*lerp_speed);
+		self.attributes.dof_blur_far_transition = lerpf(self.attributes.dof_blur_far_transition,distance*0.5,delta*lerp_speed);
+		self.attributes.dof_blur_near_distance = lerpf(self.attributes.dof_blur_near_distance,distance*0.5,delta*lerp_speed);
+		self.attributes.dof_blur_near_transition = lerpf(self.attributes.dof_blur_near_transition,distance*0.5,delta*lerp_speed);
+	#else:
+	#	self.attributes.dof_blur_far_distance = blur_far_max
+	#	self.attributes.dof_blur_near_distance = blur_near_max
 
 func calculatePosition(delta: float):
 	

@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://43iceqac2doa"]
+
+[ext_resource type="Shader" uid="uid://ds47bggf6v8nt" path="res://Scripts/Shaders/initial_shader.gdshader" id="1_d4vn8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wum37"]
+shader = ExtResource("1_d4vn8")
+shader_parameter/blur_amount = 1.116
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
+shader_parameter/blur_radius = 1.0
+shader_parameter/blur_direction = Vector2(1, 1)
+shader_parameter/FISHEYE_AMOUNT = 1.5
+shader_parameter/inner_radius = 0.2
+shader_parameter/outer_radius = 1.0
+shader_parameter/vignette_strength = 2.0
+shader_parameter/dither_strength = 0.0
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[node name="blur_shader" type="CanvasLayer"]
+layer = -1
+
+[node name="everything" type="ColorRect" parent="." groups=["Player_shader"]]
+material = SubResource("ShaderMaterial_wum37")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
