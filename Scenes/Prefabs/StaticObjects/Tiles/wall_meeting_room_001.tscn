@@ -40,19 +40,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kjivn")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7wxg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqeb0"]
 resource_name = "Glass"
-render_priority = 1
-transparency = 1
-albedo_color = Color(0.85098, 0.937255, 1, 0.117647)
-metallic = 0.1
-metallic_specular = 0.0
+transparency = 4
+albedo_color = Color(0.850882, 0.937818, 1, 0.227273)
 roughness = 0.0
-anisotropy = 1.0
-ao_light_affect = 0.2
-subsurf_scatter_strength = 0.14
-texture_filter = 0
-disable_receive_shadows = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jqt4q"]
 resource_name = "desk_Cube_042"
@@ -63,7 +55,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_f7wxg"),
+"material": SubResource("StandardMaterial3D_eqeb0"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
