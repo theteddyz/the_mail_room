@@ -17,72 +17,20 @@ func _on_vision_refresh_timer_timeout() -> void:
 		for i in vision_blocks.size():
 			var block = vision_blocks[i]
 			if block.detect_player:
-				parent.state.on_detect_player() if parent.has_meta("state") else parent.on_detect_player()
+				if parent.get("state") != null:
+					parent.state.on_detect_player() if parent.state.has_method("on_detect_player") else null
+				else:
+					parent.on_detect_player()
 				block.detect_player = false
 				return
 			elif block.player_in_vision:
 				#Softer version of on_player_seen, for removing aggrotimers
-				parent.state.on_player_in_vision() if parent.has_meta("state") else parent.on_player_in_vision()
+				if parent.get("state") != null:
+					parent.state.on_player_in_vision() if parent.state.has_method("on_player_in_vision") else null
+				else:
+					parent.on_player_in_vision()
 				return
-		if parent.has_meta("state") and parent.state.has_method("on_player_unseen"):
+		if parent.get("state") != null and parent.state.has_method("on_player_unseen"):
 			parent.state.on_player_unseen()
 		elif parent.has_method("on_player_unseen"):
 			parent.on_player_unseen()
-
-
-#func _process(delta: float) -> void:
-	#if !should_instant_detect:
-		#if seeing_player:
-			#_time_spent_seen += delta
-			#if _time_spent_seen > time_to_detect:
-				##if _get_priority_is_clean():
-					##parent.on_player_in_vision()
-				#_time_spent_seen = 0
-		#else:
-			#_time_spent_seen = 0
-
-#func _on_vision_timer_timeout() -> void:
-	#if parent.visible:
-		#var overlaps = get_overlapping_bodies()
-		#if overlaps.size() > 0:
-			#for overlap in overlaps:
-				#if overlap.name == "Player" or (overlap.name == "Mailcart" and GameManager.player_reference.state is CartingState):
-					#var playerPosition = overlap.global_transform.origin
-					#vision_blocker_raycast.look_at(playerPosition)
-					#if vision_blocker_raycast.is_colliding():
-						#var col = vision_blocker_raycast.get_collider()
-						#if col.name == "Player" or col.name == "Mailcart":
-							#seeing_player = true
-							##if _get_priority_is_clean():
-							#_check_for_instant_detection(col)
-							#return
-						#else:
-							#seeing_player = false
-							##if _get_priority_is_clean():
-							#parent.on_player_out_of_vision()
-							#return
-				#else:
-					#seeing_player = false
-					##if _get_priority_is_clean():
-					#parent.on_player_out_of_vision()
-		#else:
-			#seeing_player = false
-			##if _get_priority_is_clean():
-			#parent.on_player_out_of_vision()
-#
-#func _check_for_instant_detection(col: Object):
-	#if should_instant_detect:
-		#parent.on_player_in_vision()
-	#else:
-		#pass
-		##do nothing, setting the seeing_player flag is enough
-		
-#func _get_priority_is_clean() -> bool:
-	#for i in priority_array.size():
-		#var object = priority_array[i]
-		#if !object.seeing_player:
-			#if object.name == self.name:
-				#return true
-		#else:
-			#return false
-	#return true

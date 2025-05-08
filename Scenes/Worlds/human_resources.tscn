@@ -3040,7 +3040,7 @@ stream = ExtResource("16_v34ia")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.002, 0.418257, -4.41595)
 
 [node name="Player" parent="." instance=ExtResource("7_o0ubx")]
-transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.0832604, 103.748, 0.479325, 37.6819)
+transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.0832604, 37.8603, 0.479325, 11.7388)
 
 [node name="Mailcart" parent="." instance=ExtResource("8_rl6tn")]
 transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979, 3.55372, 0.316447, 1.73329)

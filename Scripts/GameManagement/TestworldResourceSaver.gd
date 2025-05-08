@@ -14,7 +14,7 @@ func save():
 func _ready():
 	GameManager.register_world(self)
 	await get_tree().create_timer(2.5).timeout
-	var RIGID_BODIES = find_children("", "RigidBody3D", true, true)
+	#var RIGID_BODIES = find_children("", "RigidBody3D", true, true)
 	#for rb in RIGID_BODIES:
 		#rb.visible = false
 		#rb.process_mode = Node.PROCESS_MODE_DISABLED

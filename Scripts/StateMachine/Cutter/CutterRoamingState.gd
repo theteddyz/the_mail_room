@@ -138,17 +138,6 @@ func on_detect_player():
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.get_groups().has("monster"):
 		change_state.call("carcass")
-		#persistent_state.enable_carcass_behaviour()
-		#if cutter_ai.aggrod:
-			#cutter_ai.deAggro()
-			#cutter_ai.stopTimers()
-			#if abs(cutter_ai.global_position.distance_to(player.global_position)) < 6.5:
-				#_instakill()
-			#else:
-				#deescalate()
-				#start_carcass_behaviour()
-		#else:
-			#start_carcass_behaviour()
 
 #func on_player_unseen():
 	#if persistent_state.enabled and player_in_vision_flag and !charging:
