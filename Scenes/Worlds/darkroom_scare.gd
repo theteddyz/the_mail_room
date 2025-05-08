@@ -50,7 +50,7 @@ func monster_seen_event(_test):
 			wall_to_nuke.queue_free()
 		doorlock.lock_door()
 		ScareDirector.emit_signal("scare_activated", scare_index)
-		await get_tree().create_timer(0.68).timeout
+		await get_tree().create_timer(0.48).timeout
 		print("DOOR LOCKING!")
 		
 		#monster_anim.current_animation = ""
@@ -71,9 +71,6 @@ func monster_seen_event(_test):
 		
 		var timer = get_tree().create_timer(10.0)
 		timer.timeout.connect(_end_scare)
-
-func _on_slam():
-	AudioController.play_resource(closed_ambiance)
 
 func _hide_monster():
 	monster_run_soundplayer.playing = true	

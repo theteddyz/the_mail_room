@@ -6,7 +6,7 @@ var ready_to_start = false
 @onready var monster_body: Node3D = $godot_rig
 @onready var door_lock = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/RigidBody3D3/Door_Lock"
 @onready var light_flicker_firstroom = $"../../CeilingLights/CeilingLightOn23/LightFlickering"
-@onready var door_close = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/DoorClose"
+#@onready var door_close = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/DoorClose"
 @onready var window_scare_toner: AnimationPlayer = $"../../CeilingLights/CeilingLightOn32/WINDOW_SCARE_TONER"
 
 @onready var scare_anim: AnimationPlayer = $jumpscare
@@ -48,18 +48,17 @@ func activate_scare(package_num):
 		monster_body.visible = true
 		monster_anim.play("Idle")
 		door_lock.locked = true	
-		door_close.play("close")
+		#door_close.play("close")
 		if monster_seen == true:
 			ready_to_start = false
 			start_scare()
 
 func start_scare():
 	ScareDirector.emit_signal("scare_activated", scare_index)
-	AudioController.play_resource(window_scare_initial_sound, 0, func():, 8.5)
+	var timer = get_tree().create_timer(1)
+	AudioController.play_resource(window_scare_initial_sound, 0, func(): _jumpscare(), 8.5)
 	window_scare_toner.play("tone")
 	light_flicker_firstroom.play("flicker")
-	var timer = get_tree().create_timer(60.0)
-	timer.timeout.connect(_jumpscare)
 
 func _jumpscare():
 	light_flicker_firstroom.stop()
@@ -68,4 +67,6 @@ func _jumpscare():
 	scare_anim.animation_finished.connect(_delete_scare)
 
 func _delete_scare(anim):
+	var timer = get_tree().create_timer(1.5)
+	await timer.timeout
 	queue_free()

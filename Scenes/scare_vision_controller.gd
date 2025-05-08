@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 		allOverlaps = []
 		for overlap in tmp:
 				# If the body is an active source...
-				if overlap.is_in_group("scarevision") and !overlap.is_in_group("observed") and overlap.is_visible_in_tree():
+				if overlap.is_visible_in_tree() and overlap.is_in_group("scarevision") and !overlap.is_in_group("observed"):
 					var pos = overlap.global_position
 					if overlap.find_child("raycast_look_position") != null:
 						pos = overlap.get_node("raycast_look_position").global_position

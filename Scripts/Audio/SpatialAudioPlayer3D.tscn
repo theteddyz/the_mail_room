@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnlpieavml0xn"]
 
-[ext_resource type="Script" path="res://Scripts/Audio/SpatialAudioPlayer3D.gd" id="1_2mn1j"]
+[ext_resource type="Script" uid="uid://cuykwdvde4hjn" path="res://Scripts/Audio/SpatialAudioPlayer3D.gd" id="1_2mn1j"]
 
 [node name="SpatialAudioPlayer3d" type="AudioStreamPlayer3D"]
 script = ExtResource("1_2mn1j")
