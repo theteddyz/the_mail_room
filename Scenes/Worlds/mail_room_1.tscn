@@ -138,7 +138,9 @@ size = Vector3(1.47, 1, 32.53)
 [node name="world" type="Node3D" groups=["world"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_k4xxo")
-floor_num = -1
+target_scene_path = "res://Scenes/Worlds/human_resources.tscn"
+move_direction = 1
+target_destination = 2
 
 [node name="Player" parent="." instance=ExtResource("2_dtci6")]
 transform = Transform3D(0.536564, 0, 0.84386, 0, 1, 0, -0.84386, 0, 0.536564, 14.4209, 2.38419e-07, -1.6153)

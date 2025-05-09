@@ -15,7 +15,7 @@ corner_radius_bottom_left = 3
 anti_aliasing_size = 6.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_o3j5s"]
-viewport_path = NodePath("Options_Preview/SubViewport")
+viewport_path = NodePath("SubViewport")
 
 [node name="Options" type="Control"]
 process_mode = 2

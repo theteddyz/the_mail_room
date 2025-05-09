@@ -45,7 +45,7 @@ func set_map():
 	var root = get_tree().root
 	var world = root.get_child(root.get_child_count() - 1)
 	var floor_number
-	floor_number = world.floor_num
+	#floor_number = world.floor_num
 	print(floor_number)
 	if floor_number:
 		match floor_number:

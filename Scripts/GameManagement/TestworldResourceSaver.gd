@@ -1,5 +1,13 @@
 extends Node3D
-@export var floor_num:int
+@export var target_scene_path := ""
+@export_enum("Down", "Up")
+var move_direction: int = 0
+@export_enum("Mail Room", "Finance","Human Resources","Opening Floor")
+var floor: int
+@export_enum("Mail Room", "Finance","Human Resources","Opening Floor")
+var target_destination: int
+
+
 func save():
 	var save_dict = {
 		#"filename" : get_scene_file_path(),ww

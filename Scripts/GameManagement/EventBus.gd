@@ -21,6 +21,7 @@ signal toggle_shadow_on_dynamic_objects(b:bool)
 signal mouse_sense_change(num:float)
 #Signal for when game is paused
 signal game_paused()
+signal turn_off_elevator_buttons()
 ##First Floor Signals## 
 
 #Signal for when a package is delivered

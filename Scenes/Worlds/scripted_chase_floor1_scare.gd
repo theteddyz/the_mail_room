@@ -22,6 +22,8 @@ func _ready():
 func activate_scare(package_num:int):
 	if package_num == 6 and (window_scare == null or darkroom_scare == null):
 		#Variable necessary for all scares, tells other scares which ones have been executed
+		var elevator = GameManager.get_elevator()
+		elevator.light_active_button()
 		has_been_executed = true
 		monster_body.enable_john()
 		monster_body.global_position = monster_position.global_position

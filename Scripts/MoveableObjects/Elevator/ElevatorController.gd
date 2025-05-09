@@ -17,50 +17,52 @@ var elevator_entrance_open = preload("res://Assets/Audio/SoundFX/ElevatorEntranc
 var elevator_entrance_close = preload("res://Assets/Audio/SoundFX/ElevatorEntranceDoorClose.mp3")
 var elevator_moving = preload("res://Assets/Audio/SoundFX/ElevatorSound.mp3")
 var elevator_ding = preload("res://Assets/Audio/SoundFX/ElevatorDing.mp3")
-var current_floor:int = 4
-var previous_floor:int
-var floors:Dictionary = {-2: 81.5, -1: 64, 0: 49, 1: 30.5, 2: 10.5, 3: -7, 4: -27, 5: -46, 6: -64, 7: -84}
 var is_called:bool = false
 var cart:bool = false
 var floor_mesh
-var current_scene
 var mail_room:bool = false
+var next_floor
 @export var locked = false
+@onready var call_center_floor = $Elevator/Elevator/Elevator_body/ElevatorFloors/CallCenter
+@onready var finance_floor = $Elevator/Elevator/Elevator_body/ElevatorFloors/Finance
+@onready var Marketing_floor = $Elevator/Elevator/Elevator_body/ElevatorFloors/Marketing
+@onready var Research_floor = $"Elevator/Elevator/Elevator_body/ElevatorFloors/R&D"
+@onready var human_resources_floor = $Elevator/Elevator/Elevator_body/ElevatorFloors/HumanResources
+@onready var it_floor = $Elevator/Elevator/Elevator_body/ElevatorFloors/InternalOperations
+@onready var server_floor = $Elevator/Elevator/Elevator_body/ElevatorFloors/ServerRoom
+@onready var mail_room_floor = $Elevator/Elevator/Elevator_body/ElevatorFloors/MailRoom
 # Called when the node enters the scene tree for the first time.
-
+##Elevator Positions
+@onready var top_pos = $Top_Position
+@onready var bottom_pos = $Bottom_Position
+@onready var stop_pos = $Stop_Position
 
 func _ready():
 	GameManager.register_elevator(self)
 	EventBus.connect("moved_to_floor",set_floor)
-	if mail_room:
-		for i in elevator_shafts:
-			i.visible= false
-	else:
-		for i in elevator_shafts:
-			i.visible= true
+	var world = GameManager.current_scene
+	next_floor = world.target_scene_path
+	light_active_button()
+	show_or_hide_door()
+	
 
 
 func call_elevator():
-	var world = get_tree().get_first_node_in_group("world")
+	var world = GameManager.current_scene
 	if !world:
 		assert(true,"NO WORLD WAS FOUND MAKE SURE ROOT NODE IS IN GROUP WORLD" )
-	var player_floor = world.floor_num
+	#var player_floor = world.floor_num
 	if !is_called:
 		is_called = true
-		if current_floor != player_floor:
-			if current_floor > player_floor:
-				await call_elevator_down()
-				await open_doors()
-				current_floor = player_floor
-			else:
-				await call_elevator_up()
-				current_floor = player_floor
-		else:
-			open_doors()
+		await call_elevator_down()
+		await open_doors()
+	else:
+		open_doors()
 
 func move_floors()->void:
 	swap_floor_collider(false)
-	if previous_floor > current_floor:
+	var world =  GameManager.current_scene
+	if world.move_direction == 0:
 		await close_doors()
 		#var player = GameManager.get_player()
 		#player.reparent(Elevator,true)
@@ -83,8 +85,6 @@ func move_floors()->void:
 
 func set_floor(path,new_floor:int):
 	music_player.play()
-	previous_floor = current_floor
-	current_floor = new_floor
 	
 	await move_floors()
 	#var loading_screen = Gui.get_loading_screen()
@@ -93,13 +93,15 @@ func set_floor(path,new_floor:int):
 		#loading_screen.show()
 		#loading_screen.load_screen(path)
 	#await get_tree().create_timer(5.0).timeout
-	GameManager.goto_scene(path,new_floor)
-	
+	await GameManager.goto_scene(path,next_floor)
+	_ready()
+	EventBus.emitCustomSignal("turn_off_elevator_buttons")
 
 func load_floor():
 	swap_floor_collider(false)
 	#var player = GameManager.get_player()
 	var mail_cart = GameManager.get_mail_cart()
+	var world = GameManager.current_scene
 	if mail_cart:
 		var map_instance = mail_cart.get_node("Map_Position").get_child(0)
 		map_instance.set_map()
@@ -107,11 +109,9 @@ func load_floor():
 	if detector.mailcart_exists_in_elevator == true:
 		pass
 		#mail_cart.reparent(Elevator,true)
-	if previous_floor > current_floor:
-		
+	if world.floor == 0:
 		await call_elevator_down()
 		var root = get_tree().root
-		current_scene = root.get_child(root.get_child_count() - 1)
 		#player.reparent(current_scene)
 		#mail_cart.reparent(current_scene)
 		swap_floor_collider(true)
@@ -120,7 +120,6 @@ func load_floor():
 		
 		await call_elevator_up()
 		var root = get_tree().root
-		current_scene = root.get_child(root.get_child_count() - 1)
 		#player.reparent(current_scene)
 		#mail_cart.reparent(current_scene)
 		swap_floor_collider(true)
@@ -157,9 +156,9 @@ func close_doors(_reparent = true)-> void:
 			mailcart.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, true)
 	if !mail_room:
 		var close_door_tween = create_tween()
-		close_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-0.867,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+		close_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-0.867,0,0), 3).set_ease(Tween.EaseType.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		close_door_tween.set_parallel(true)
-		close_door_tween.tween_property(Right_Wall_Door, "position", Vector3(0,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+		close_door_tween.tween_property(Right_Wall_Door, "position", Vector3(0,0,0), 3).set_ease(Tween.EaseType.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		close_door_tween.set_parallel(true)
 		close_door_tween.tween_property(Elevator_Door,"blend_shapes/ElevatorDoor",1,3)
 		wall_door_audio.play()
@@ -178,9 +177,9 @@ func open_doors()->void:
 		mailcart.calculate_spacing()
 	if !mail_room:
 		var open_door_tween = create_tween()
-		open_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-1.705,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+		open_door_tween.tween_property(Left_Wall_Door, "position", Vector3(-1.705,0,0), 3).set_ease(Tween.EaseType.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		open_door_tween.set_parallel(true)
-		open_door_tween.tween_property(Right_Wall_Door, "position", Vector3(0.832,0,0), 3).set_ease(Tween.EASE_IN_OUT)
+		open_door_tween.tween_property(Right_Wall_Door, "position", Vector3(0.832,0,0), 3).set_ease(Tween.EaseType.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		open_door_tween.set_parallel(true)
 		open_door_tween.tween_property(Elevator_Door,"blend_shapes/ElevatorDoor",0,3)
 		elevator_audio.stream = elevator_entrance_open
@@ -192,11 +191,13 @@ func open_doors()->void:
 		return 
 	
 func call_elevator_down()->void:
-	Elevator.position = Vector3(1.987,8.82,0.696)
+	
+	Elevator.position = top_pos.position
 	var elevator_called_down_tween = create_tween()
-	elevator_called_down_tween.tween_property(Elevator, "position", Vector3(1.987,0.8,0.696), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_called_down_tween.tween_property(Elevator, "position", stop_pos.position, 5).set_ease(Tween.EaseType.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
+	show_or_hide_door()
 	await elevator_called_down_tween.finished
 	elevator_audio.stream = elevator_ding
 	elevator_audio.play()
@@ -204,11 +205,12 @@ func call_elevator_down()->void:
 	await elevator_audio.finished
 	return 
 func call_elevator_up()->void:
-	Elevator.position = Vector3(1.987,-6.90,0.696)
+	Elevator.position = bottom_pos.position
 	var elevator_called_up_tween = create_tween()
-	elevator_called_up_tween.tween_property(Elevator, "position", Vector3(1.987,0.8,0.696), 5).set_ease(Tween.EASE_IN_OUT)
+	elevator_called_up_tween.tween_property(Elevator, "position", stop_pos.position, 5).set_ease(Tween.EaseType.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
+	show_or_hide_door()
 	await elevator_called_up_tween.finished
 	elevator_audio.stream = elevator_ding
 	elevator_audio.play()
@@ -217,23 +219,25 @@ func call_elevator_up()->void:
 	await open_doors()
 	return 
 func move_elevator_down()-> void:
-	
+	show_or_hide_door()
 	var move_elevator_down_tween = create_tween()
-	move_elevator_down_tween.tween_property(Elevator, "position", Vector3(1.987,-6.944,0.696), 5).set_ease(Tween.EASE_IN_OUT)
+	move_elevator_down_tween.tween_property(Elevator, "position", bottom_pos.position, 5).set_ease(Tween.EaseType.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await move_elevator_down_tween.finished
 	return 
 func move_elevator_up()-> void:
+	show_or_hide_door()
 	var move_elevator_up_tween = create_tween()
-	move_elevator_up_tween.tween_property(Elevator, "position", Vector3(1.987,9.304,0.696), 5).set_ease(Tween.EASE_IN_OUT)
+	move_elevator_up_tween.tween_property(Elevator, "position", top_pos.position, 5).set_ease(Tween.EaseType.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	elevator_audio.stream = elevator_moving
 	elevator_audio.play()
 	await move_elevator_up_tween.finished
 	return 
 
 func show_or_hide_door():
-	if current_floor == -1:
+	var world = GameManager.current_scene
+	if world.floor == 0:
 		Elevator_Wall.visible = false
 		for i in elevator_shafts:
 				i.visible= false
@@ -241,3 +245,25 @@ func show_or_hide_door():
 		Elevator_Wall.visible = true
 		for i in elevator_shafts:
 			i.visible= true
+
+
+func light_active_button():
+	EventBus.emitCustomSignal("turn_off_elevator_buttons")
+	var world = GameManager.current_scene
+	var floor = world.target_destination
+	locked = false
+	match floor:
+		0:
+			var area:Area3D = mail_room_floor.get_child(0)
+			area.monitorable = true
+			mail_room_floor.active = true
+			mail_room_floor.update_glow()
+		1:
+			var area:Area3D = finance_floor.get_child(0)
+			area.monitorable = true
+			finance_floor.active = true
+			finance_floor.update_glow()
+		2:
+			pass
+		_:
+			pass

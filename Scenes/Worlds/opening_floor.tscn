@@ -105,7 +105,7 @@
 [ext_resource type="PackedScene" uid="uid://dfkutgejqdtep" path="res://Scenes/Prefabs/MoveableObjects/BottleCola.tscn" id="84_u413y"]
 [ext_resource type="PackedScene" uid="uid://cwc2c6vi5o20n" path="res://Scenes/Prefabs/MoveableObjects/large_printer.tscn" id="85_f4e3w"]
 [ext_resource type="PackedScene" uid="uid://jv1tdx28kr7s" path="res://Scenes/Prefabs/StaticObjects/newspaper.tscn" id="86_uqu8v"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/StaticObjects/garbage_pile.tscn" id="87_pg0mv"]
+[ext_resource type="PackedScene" uid="uid://dgyk3ee7gauie" path="res://Scenes/Prefabs/StaticObjects/garbage_pile.tscn" id="87_pg0mv"]
 [ext_resource type="PackedScene" uid="uid://cabdt3d8b0cm7" path="res://Scenes/Prefabs/StaticObjects/radiator.tscn" id="89_pcwtw"]
 
 [sub_resource type="MultiMesh" id="MultiMesh_ugi1t"]
@@ -994,6 +994,8 @@ shadow_mesh = SubResource("ArrayMesh_1purs")
 
 [node name="world" type="Node3D" groups=["Persist", "world"]]
 script = ExtResource("1_gv15l")
+target_scene_path = "res://Scenes/Worlds/mail_room_0.tscn"
+floor = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.1122, 0.0408645, 0.992845, 0.952912, 0.287701, 0.0958458, -0.281726, 0.956848, -0.0712204, 196.62, 38.853, 37.669)
@@ -2154,7 +2156,6 @@ transform = Transform3D(0.0212138, 0, -5.05777e-09, 0, 0.0212138, 0, 5.05777e-09
 
 [node name="Desk4" parent="." instance=ExtResource("50_s0qts")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.26079, 0.560047, 20.8822)
-script = ExtResource("21_hcilt")
 
 [node name="Plant" parent="." instance=ExtResource("51_oinx4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23641, 1.73499, 21.0107)

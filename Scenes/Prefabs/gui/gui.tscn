@@ -34,7 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://drfn1olnt3pk2" path="res://Assets/Audio/SoundFX/ImpactKey2.mp3" id="30_jjmc6"]
 [ext_resource type="AudioStream" uid="uid://nofos1dpjyv" path="res://Assets/Audio/SoundFX/ImpactKey3.mp3" id="31_s4pnh"]
 [ext_resource type="AudioStream" uid="uid://c2ogg8vuga7y0" path="res://Assets/Audio/SoundFX/ImpactKey.mp3" id="32_1ly6y"]
-[ext_resource type="Script" path="res://Scenes/Prefabs/gui/debug_pause.gd" id="34_4l5s3"]
+[ext_resource type="Script" uid="uid://cxopweubebv50" path="res://Scenes/Prefabs/gui/debug_pause.gd" id="34_4l5s3"]
 [ext_resource type="Texture2D" uid="uid://b3gsaqrfeo7w2" path="res://Assets/Textures/cutter_test_eyes.png" id="35_ydec6"]
 [ext_resource type="Shader" uid="uid://cgcm286gkjm20" path="res://Scripts/Shaders/crtShaderTest2.gdshader" id="36_1ts2g"]
 [ext_resource type="FontFile" uid="uid://bpc2ny4278for" path="res://Assets/Fonts/VCR_OSD_MONO_1.001.ttf" id="38_w1eh6"]
@@ -736,7 +736,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Hint_Container" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchor_right = 1.0
 anchor_bottom = 0.155864

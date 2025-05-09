@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://wd85mtseuke1"]
+[gd_scene load_steps=85 format=4 uid="uid://wd85mtseuke1"]
 
 [ext_resource type="Script" uid="uid://dlbsokwqhx25t" path="res://Scripts/MoveableObjects/Elevator/ElevatorController.gd" id="1_mn1y7"]
 [ext_resource type="Script" uid="uid://dobmxeg1053tb" path="res://Scripts/Misc/elevator_wall.gd" id="2_qjipe"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d24ont78p0umt" path="res://Assets/Textures/BlenderTextures/Elevator.png" id="8_0mkvx"]
 [ext_resource type="Texture2D" uid="uid://6c28m22muuhm" path="res://Assets/Textures/BlenderTextures/ElevatorButtons.png" id="9_6m6q4"]
 [ext_resource type="Script" uid="uid://bqdjula85riil" path="res://Scripts/MoveableObjects/Elevator/ElevatorButton.gd" id="10_vk1p5"]
+[ext_resource type="Script" uid="uid://cydck56i75w36" path="res://Scripts/Misc/highlight_button.gd" id="11_oyegd"]
 [ext_resource type="Texture2D" uid="uid://cwo0wqxreionr" path="res://Assets/Textures/BlenderTextures/ElevatorDoor.png" id="11_ukciq"]
 [ext_resource type="Script" uid="uid://kg3votra7mob" path="res://Assets/Models/ElevatorObjectDetector.gd" id="12_j5k40"]
 [ext_resource type="AudioStream" uid="uid://dj3krh5og4b6g" path="res://Assets/Audio/On the hills of manchuria Elevator my version.ogg" id="13_45d0r"]
@@ -409,6 +410,7 @@ shadow_mesh = SubResource("ArrayMesh_qewjx")
 resource_name = "ElevatorButtons"
 cull_mode = 2
 albedo_texture = ExtResource("9_6m6q4")
+emission = Color(0.423651, 0.423651, 0.423651, 1)
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_mit1q"]
@@ -446,6 +448,13 @@ shadow_mesh = SubResource("ArrayMesh_mit1q")
 [sub_resource type="SphereShape3D" id="SphereShape3D_jsaqy"]
 radius = 0.0502312
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yparm"]
+resource_name = "ElevatorButtons"
+cull_mode = 2
+albedo_texture = ExtResource("9_6m6q4")
+emission = Color(0.423651, 0.423651, 0.423651, 1)
+texture_filter = 2
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_rf7pa"]
 _surfaces = [{
 "aabb": AABB(0.0762879, 0.336661, 0.0220982, 0.0592005, 0.0592105, 1.00005e-05),
@@ -468,7 +477,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AgAAAAEAAAAGAAcABgAEAAUABAACAAMAAgAGAAAABgACAAQA"),
-"material": SubResource("StandardMaterial3D_htvby"),
+"material": SubResource("StandardMaterial3D_yparm"),
 "name": "ElevatorButtons",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -937,10 +946,14 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 mesh = SubResource("ArrayMesh_x4bpd")
 skeleton = NodePath("")
+script = ExtResource("11_oyegd")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/CallCenter"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.470198, 0)
-collision_layer = 18
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 7
@@ -953,11 +966,14 @@ shape = SubResource("SphereShape3D_jsaqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 mesh = SubResource("ArrayMesh_undoy")
 skeleton = NodePath("")
+script = ExtResource("11_oyegd")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/Finance"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.373051, 0)
-collision_layer = 2
-collision_mask = 16
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/Finance.tscn"
 floor_num = 6
@@ -970,10 +986,14 @@ shape = SubResource("SphereShape3D_jsaqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 mesh = SubResource("ArrayMesh_vuodc")
 skeleton = NodePath("")
+script = ExtResource("11_oyegd")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/Marketing"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.268753, 0)
-collision_layer = 3
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 5
@@ -986,10 +1006,12 @@ shape = SubResource("SphereShape3D_jsaqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 mesh = SubResource("ArrayMesh_n3x74")
 skeleton = NodePath("")
+script = ExtResource("11_oyegd")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/R&D"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.164444, 0)
-collision_layer = 3
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 4
@@ -1002,10 +1024,14 @@ shape = SubResource("SphereShape3D_jsaqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 mesh = SubResource("ArrayMesh_gpdvp")
 skeleton = NodePath("")
+script = ExtResource("11_oyegd")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/HumanResources"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, 0.0542774, 0)
-collision_layer = 3
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 3
@@ -1018,10 +1044,14 @@ shape = SubResource("SphereShape3D_jsaqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 mesh = SubResource("ArrayMesh_gjul0")
 skeleton = NodePath("")
+script = ExtResource("11_oyegd")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/InternalOperations"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, -0.0467892, 0)
-collision_layer = 3
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 2
@@ -1034,10 +1064,14 @@ shape = SubResource("SphereShape3D_jsaqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 mesh = SubResource("ArrayMesh_f8nye")
 skeleton = NodePath("")
+script = ExtResource("11_oyegd")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/ServerRoom"]
 transform = Transform3D(1, 0, -4.83169e-13, 0, 1, 0, 4.83169e-13, 0, 1, 0.107107, -0.150919, 0)
-collision_layer = 3
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = 1
@@ -1050,10 +1084,14 @@ shape = SubResource("SphereShape3D_jsaqy")
 transform = Transform3D(1, 0, -5.68434e-14, 0, 1, 0, 5.68434e-14, 0, 1, 0, 0, -2.38419e-07)
 mesh = SubResource("ArrayMesh_vl4f5")
 skeleton = NodePath("")
+script = ExtResource("11_oyegd")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/Entrance"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, -0.252405, 0)
-collision_layer = 3
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 
@@ -1065,10 +1103,14 @@ shape = SubResource("SphereShape3D_jsaqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 mesh = SubResource("ArrayMesh_mj3uk")
 skeleton = NodePath("")
+script = ExtResource("11_oyegd")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/MailRoom"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 0, 4.54747e-13, 0, 1, 0.107107, -0.368675, 0)
-collision_layer = 3
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/mail_room_0.tscn"
 floor_num = -1
@@ -1081,10 +1123,14 @@ shape = SubResource("SphereShape3D_jsaqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.76837e-07)
 mesh = SubResource("ArrayMesh_v0yj3")
 skeleton = NodePath("")
+script = ExtResource("11_oyegd")
 
 [node name="Area3D" type="Area3D" parent="Elevator/Elevator/Elevator_body/ElevatorFloors/Storage"]
 transform = Transform3D(1, 0, -4.83169e-13, 0, 1, 0, 4.83169e-13, 0, 1, 0.106377, -0.471357, 0)
-collision_layer = 3
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
 script = ExtResource("10_vk1p5")
 target_scene_path = "res://Scenes/Worlds/out_of_bound_level.tscn"
 floor_num = -2
@@ -1281,6 +1327,15 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.465
 
 [node name="Node3D6" parent="FakeRoom2" instance=ExtResource("18_qdrax")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.19459, 4.35501, 8.60338)
+
+[node name="Top_Position" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.987, 8.82, 0.696)
+
+[node name="Stop_Position" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.987, 0.8, 0.696)
+
+[node name="Bottom_Position" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.987, -10.6237, 0.696)
 
 [connection signal="body_entered" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_entered"]
 [connection signal="body_exited" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_exited"]
