@@ -19,6 +19,8 @@ var closed_ambiance
 @onready var ambience_ender_2: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender2"
 @onready var ambience_ender_3: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender3"
 @onready var flickeranimationplayer: AnimationPlayer = $"../../CeilingLights/CeilingLightOn5DARKROOM2/AnimationPlayer"
+@onready var ambience_ender_4: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender4"
+@onready var ambience_ender_5: Area3D = $"../../AmbienceTriggers/darkroom_ambiences_triggers/ambience_ender5"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,6 +67,8 @@ func monster_seen_event(_test):
 		ambience_ender.monitoring = true
 		ambience_ender_2.monitoring = true
 		ambience_ender_3.monitoring = true
+		ambience_ender_4.monitoring = true
+		ambience_ender_5.monitoring = true
 
 		var kill_monster_timer = get_tree().create_timer(1.85)
 		kill_monster_timer.timeout.connect(_hide_monster)

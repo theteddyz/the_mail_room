@@ -8,6 +8,8 @@ extends Area3D
 
 @export var modifiers = 0
 
+@export var db_adjustment := 0.0
+
 var sound: Resource
 
 func _ready():
@@ -15,7 +17,7 @@ func _ready():
 
 func _on_body_entered(_body: Node3D) -> void:
 	if starter:
-		AudioController.play_resource(sound, modifiers)
+		AudioController.play_resource(sound, modifiers, func(): {}, db_adjustment)
 	else:
 		AudioController.stop_resource(sound_resource_path, modifiers)
 	for object in cluster:
