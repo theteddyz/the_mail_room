@@ -18,7 +18,7 @@ func activate_scare():
 	timer.timeout.connect(_end_scare)
 
 func _end_scare():
-	monitor_flicker.active = false
+	monitor_flicker.active =  false
 	screen_light_2.visible = false
 	monitor.get_node("Monitor_Collision_Handler").break_object()
 	monitor.get_node("Monitor_Collision_Handler").destruction_audios.play()
@@ -27,3 +27,4 @@ func _end_scare():
 
 func _on_quiet_scare_starter_body_entered(_body: Node3D) -> void:
 	activate_scare()
+ 

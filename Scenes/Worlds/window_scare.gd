@@ -5,26 +5,36 @@ var has_been_executed = false
 var ready_to_start = false
 @onready var monster_body: Node3D = $godot_rig
 @onready var door_lock = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/RigidBody3D3/Door_Lock"
-@onready var light_flicker_firstroom = $"../../CeilingLights/CeilingLightOn23/LightFlickering"
+#@onready var light_flicker_firstroom = $"../../CeilingLights/CeilingLightOn23/LightFlickering"
 #@onready var door_close = $"../../NavigationRegion3D/Walls/meeting_room_wall_Door13/DoorClose"
 @onready var window_scare_toner: AnimationPlayer = $"../../CeilingLights/CeilingLightOn32/WINDOW_SCARE_TONER"
+@onready var john_laughing: AudioStreamPlayer3D = $JohnLaughing
+@onready var ambience_vent_sound: AudioStreamPlayer3D = $AmbienceVentSound
 
 @onready var scare_anim: AnimationPlayer = $jumpscare
-@onready var sighting_sound = $SightingSound
-@onready var sighting_ambience = $SightingAmbiance
+#@onready var sighting_sound = $SightingSound
+#@onready var sighting_ambience = $SightingAmbiance
 var monster_anim
 var monster_seen = false
 @onready var john_typing_sound: AudioStreamPlayer3D = $"../CUBICLE SCARE/JohnTypingSoundPlayer"
-var window_scare_initial_sound
+@onready var wall_to_nuke: StaticBody3D = $"../../Cubicle_Door"
+@onready var overlay_static_effect: TextureRect = Gui.find_child("StaticOverlay")
+var static_sfx: Resource
+var scare_ambience_sound: Resource
+
+#var window_scare_initial_sound
 var player: Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	monster_body.visible = false
-	window_scare_initial_sound = preload("res://Assets/Audio/SoundFX/AmbientScares/WindowScareInitial.ogg")
+	#window_scare_initial_sound = preload("res://Assets/Audio/SoundFX/AmbientScares/WindowScareInitial.ogg")
 	monster_anim = monster_body.find_child("AnimationPlayer")
 	ScareDirector.connect("package_delivered", activate_scare)
 	ScareDirector.connect("monster_seen", monster_seen_function)
 	player = GameManager.player_reference
+	static_sfx = load("res://Assets/Audio/SoundFX/ChaseLoops/CutterAggroStatic.ogg")
+	scare_ambience_sound = load("res://Assets/Audio/SoundFX/MailRoomAmbience.mp3")
+
 
 func monster_seen_function(_boolean: bool):
 	monster_seen = _boolean
@@ -43,6 +53,8 @@ func activate_scare(package_num):
 	if package_num == 4:
 		if john_typing_sound != null:
 			john_typing_sound.playing = false
+		if wall_to_nuke != null:
+			wall_to_nuke.queue_free()
 		ready_to_start = true
 		has_been_executed = true	# Variable necessary for all scares, tells other scares which ones have been executed
 		monster_body.visible = true
@@ -55,18 +67,30 @@ func activate_scare(package_num):
 
 func start_scare():
 	ScareDirector.emit_signal("scare_activated", scare_index)
-	var timer = get_tree().create_timer(1)
-	AudioController.play_resource(window_scare_initial_sound, 0, func(): _jumpscare(), 8.5)
+	ambience_vent_sound.playing = false
+	var timer := get_tree().create_timer(1.68)
+	await timer.timeout
+	john_laughing.playing = true
+	
+	timer = get_tree().create_timer(0.95)
+	await timer.timeout
+	AudioController.play_resource(static_sfx, 0, func(): {}, 10)
+	overlay_static_effect.visible = true
 	window_scare_toner.play("tone")
-	light_flicker_firstroom.play("flicker")
+	
+	await window_scare_toner.animation_finished
+	overlay_static_effect.visible = false
+	AudioController.stop_resource(static_sfx.resource_path)
+	_jumpscare()
 
 func _jumpscare():
-	light_flicker_firstroom.stop()
-	sighting_ambience.stop()
+	#sighting_ambience.stop()
 	scare_anim.play("scare")
+	AudioController.play_resource(scare_ambience_sound, 1, func(): {}, -27)
 	scare_anim.animation_finished.connect(_delete_scare)
 
 func _delete_scare(anim):
-	var timer = get_tree().create_timer(1.5)
+	var timer = get_tree().create_timer(3.22)
 	await timer.timeout
+	AudioController.stop_resource(scare_ambience_sound.resource_path, 2)
 	queue_free()

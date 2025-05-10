@@ -146,7 +146,6 @@ axis_lock_linear_y = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 script = ExtResource("2_pnlu4")
-grab_type = "drawer"
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D6"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -174,7 +173,6 @@ axis_lock_linear_y = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8mkc3")
 script = ExtResource("2_pnlu4")
-grab_type = "drawer"
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="RigidBody3D5"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
