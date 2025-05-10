@@ -222,6 +222,12 @@ dark_value = 0.025
 
 [node name="mailroom_prefab" parent="." instance=ExtResource("6_b44l8")]
 
+[node name="DrawerTop" parent="mailroom_prefab/Objects/Desk3/Desk" index="7"]
+grab_type = 0
+
+[node name="DrawerBottom" parent="mailroom_prefab/Objects/Desk3/Desk" index="8"]
+grab_type = 0
+
 [node name="IndustrialTable" parent="mailroom_prefab/Objects" index="1"]
 transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -9.85651, 0.556907, -5.46991)
 
@@ -242,6 +248,12 @@ script = null
 
 [node name="PackageDestination" parent="mailroom_prefab/Objects/Desk2/MailboxStand" index="2"]
 accepted_num = 7
+
+[node name="DrawerTop" parent="mailroom_prefab/Objects/Desk2/Desk" index="6"]
+grab_type = 0
+
+[node name="DrawerBottom" parent="mailroom_prefab/Objects/Desk2/Desk" index="7"]
+grab_type = 0
 
 [node name="Cardboard_box_big3" parent="mailroom_prefab/Objects" index="19"]
 transform = Transform3D(0.535989, 0, 0.844225, 0, 1, 0, -0.844225, 0, 0.535989, -13.385, 1.13567, -5.86118)
@@ -287,6 +299,12 @@ transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, 
 
 [node name="cardboard_box_small42" parent="mailroom_prefab/Objects" index="189"]
 transform = Transform3D(0.853023, 0, 0.521873, 0.00212225, 0.999992, -0.00346891, -0.521869, 0.00406661, 0.853016, -9.33325, 1.49157, -5.02671)
+
+[node name="RigidBody3D3" parent="mailroom_prefab/Walls/StaticBody3D14" index="0"]
+grab_type = 0
+
+[node name="RigidBody3D3" parent="mailroom_prefab/Walls/StaticBody3D17" index="0"]
+grab_type = 0
 
 [node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn3" index="1"]
 visible = true
@@ -351,6 +369,7 @@ Wendell Hanson"
 cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 1
+icon_type = 0
 
 [node name="Package2" parent="." instance=ExtResource("30_xol48")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.1246, 2.49173, 1.67145)
@@ -367,6 +386,7 @@ Lori Hughes"
 cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 2
+icon_type = 0
 
 [node name="Package3" parent="." instance=ExtResource("30_xol48")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.287, 2.67684, 1.99393)
@@ -383,6 +403,7 @@ Bill Ding"
 cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 3
+icon_type = 0
 
 [node name="Package4" parent="." instance=ExtResource("30_xol48")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.287, 3.02079, 1.99393)
@@ -400,6 +421,7 @@ Seth Bradley"
 cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 4
+icon_type = 0
 
 [node name="Package5" parent="." instance=ExtResource("30_xol48")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.287, 3.21096, 1.99393)
@@ -416,6 +438,7 @@ Mack Hampton"
 cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 5
+icon_type = 0
 
 [node name="Package6" parent="." instance=ExtResource("30_xol48")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.287, 2.85979, 1.99393)
@@ -432,6 +455,7 @@ John Bogart"
 cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 6
+icon_type = 0
 
 [node name="Package7" parent="." instance=ExtResource("30_xol48")]
 transform = Transform3D(1, 0, 0, 0, 0.819693, -0.572804, 0, 0.572804, 0.819693, -11.4546, 2.23437, -11.8425)
@@ -447,6 +471,7 @@ Justin Davis"
 cart_rotation = Vector3(0, 90, -90)
 cart_position = Vector3(0, 0.65, 0)
 package_num = 7
+icon_type = 0
 
 [node name="Mailcart" parent="." instance=ExtResource("31_3qdax")]
 transform = Transform3D(0.0671446, 0, 0.997743, 0, 1, 0, -0.997743, 0, 0.0671446, -0.184902, 0.291614, -5.19861)

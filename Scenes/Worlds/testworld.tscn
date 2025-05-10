@@ -562,7 +562,6 @@ _data = {
 [node name="world" type="Node3D" groups=["Persist"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00758815)
 script = ExtResource("1_y5q3h")
-floor_num = -1
 
 [node name="ScareDirector" parent="." instance=ExtResource("1_faoyl")]
 
@@ -589,6 +588,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 transform = Transform3D(0.999391, -0.0138603, 0.0320292, 0.00277947, 0.94645, 0.322839, -0.0347886, -0.322553, 0.945912, 9.93663, 15.3615, 14.4565)
 shadow_enabled = true
 script = ExtResource("32_pcx2a")
+enable = false
 light = ExtResource("33_yag50")
 light_intensity = 1.85
 light_attenuation = 0.415
@@ -834,6 +834,7 @@ libraries = {
 
 [node name="Package" parent="." instance=ExtResource("34_vhm0n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.693941, 0.157749, -1.52114)
+icon_type = 0
 
 [connection signal="body_entered" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_exited"]

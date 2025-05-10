@@ -114,7 +114,7 @@ func _physics_process(_delta: float):
 		
 		previousIsPickedUp3 = previousIsPickedUp2
 		previousIsPickedUp2 = previousIsPickedUp
-		if GrabbingManager.current_grabbed_object and GrabbingManager.current_grabbed_object.grab_type == "dynamic" and GrabbingManager.current_grabbed_object == rigidbody:
+		if GrabbingManager.current_grabbed_object and GrabbingManager.current_grabbed_object.grab_type == 0 and GrabbingManager.current_grabbed_object == rigidbody:
 			previousIsPickedUp = GrabbingManager.holding_object
 		else:
 			previousIsPickedUp = false

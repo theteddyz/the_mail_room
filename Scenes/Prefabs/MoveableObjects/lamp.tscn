@@ -244,7 +244,7 @@ script = ExtResource("4_ra0ww")
 light = NodePath("../../LampArm/LampUpper/SpotLight3D")
 lightMesh = NodePath("../../LampArm/LampUpper/LampLight")
 lampMesh = NodePath("../Lamp")
-icon_type = "light"
+icon_type = 1
 
 [node name="Button" type="CollisionShape3D" parent="LampBase/ButtonRB2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00129512, -0.00520507, 0.00664414)

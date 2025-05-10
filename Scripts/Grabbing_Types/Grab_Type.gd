@@ -1,8 +1,8 @@
 extends RigidBody3D
 #This holds data to refrence
 @export var should_freeze:bool = false
-@export_enum("grab", "light", "package") var icon_type: String = "grab"
-@export_enum("dynamic","door","drawer") var grab_type:String = "dynamic"
+@export_enum("grab", "light", "package") var icon_type: int
+@export_enum("dynamic","door","drawer") var grab_type:int
 #@export_enum("monitor","desk1","desk2","mouse","chair","lamp","mailbox","bin","keyboard") var object_name:String
 @export var modified:bool = false
 @export var on_screen:bool = false
@@ -77,8 +77,7 @@ func _physics_process(delta: float) -> void:
 func unfreeze_object(col):
 	if col is RigidBody3D:
 		if "grab_type" in col:
-			if grab_type == "door":
-				print("DOOR")
+			if grab_type == 1:
 				var current_parent = col.get_parent()
 				col.freeze = false
 				for body in get_colliding_bodies():
