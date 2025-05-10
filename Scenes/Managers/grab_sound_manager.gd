@@ -34,13 +34,13 @@ func enable_sound(main_body:RigidBody3D):
 	open_sound = main_body.open_sound
 	close_sound = main_body.close_sound
 	loop_sound = main_body.loop_sound
-	if body_a.grab_type == "drawer":
+	if body_a.grab_type == 2:
 		for child in body_a.get_children():
 			if child is SliderJoint3D:
 				joint = child
 				min_distance = joint.PARAM_LINEAR_LIMIT_UPPER
 				max_distance = joint.PARAM_LINEAR_LIMIT_LOWER*0.5
-	elif body_a.grab_type == "door":
+	elif body_a.grab_type == 1:
 		for child in body_a.get_children():
 			if child is HingeJoint3D:
 				hingeJoint = child
@@ -62,7 +62,7 @@ func enable_sound(main_body:RigidBody3D):
 
 func _physics_process(delta: float) -> void:
 	if body_a:
-		if body_a.grab_type == "drawer":
+		if body_a.grab_type == 2:
 			_drawer_sound(delta)
 		else:
 			_door_sound(delta)
