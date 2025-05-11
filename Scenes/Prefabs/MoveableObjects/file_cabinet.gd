@@ -1,79 +1,79 @@
 @tool
-extends MeshInstance3D
+extends Node3D
 
 @export_enum("Grey", "Dark Green", "Light Green", "Beige", "Black")
-var colorPreset: String = "Grey"
-var current_color = null
-# Define a mapping from string values to integer enums
+var colorPreset: String = "Grey" : set = _on_color_preset_changed
+
+@export_color_no_alpha var color: Color : set = _on_manual_color_changed
+
+@export var main_mesh: MeshInstance3D
+@export var cabinet: MeshInstance3D
+@export var drawer_1: MeshInstance3D
+@export var drawer_2: MeshInstance3D
+@export var drawer_3: MeshInstance3D
+@export var drawer_4: MeshInstance3D
+
 const COLOR_MAPPING = {
-	"Grey": 1,
-	"Dark Green": 2,
-	"Light Green": 3,
-	"Beige": 4,
-	"Black": 5
+	"Grey": Color("#808080"),
+	"Dark Green": Color("#31541e"),
+	"Light Green": Color("#f4ffde"),
+	"Beige": Color("#fffac4"),
+	"Black": Color("#000016")
 }
 
-var colorPrefabs: String
-@export_color_no_alpha var color: Color
-@onready var cabinet_1:MeshInstance3D = $"../Drawer/FileCabinetDrawer_001"
+var main_material: StandardMaterial3D
+var cabinet_material: StandardMaterial3D
+var drawer_materials: Array[StandardMaterial3D] = []
 
-
-var main_material: Material
-var cabinet_material: Material
 func _ready():
-	if cabinet_1:
-		main_material = mesh.surface_get_material(0)
+	# Main mesh
+	if main_mesh and main_mesh.mesh:
+		main_material = main_mesh.mesh.surface_get_material(0)
 		if main_material:
 			main_material = main_material.duplicate()
-		else:
-			main_material = StandardMaterial3D.new()
-		
-		main_material.resource_local_to_scene = true
-		mesh.surface_set_material(0, main_material)
-		cabinet_material = cabinet_1.mesh.surface_get_material(0)
-		cabinet_material.resource_local_to_scene = true
-		cabinet_1.mesh.surface_set_material(0, cabinet_material)
-		update_colors()
-func _process(delta):
+			main_material.resource_local_to_scene = true
+			main_mesh.mesh.surface_set_material(0, main_material)
+
+	# Cabinet mesh
+	if cabinet and cabinet.mesh:
+		cabinet_material = cabinet.mesh.surface_get_material(0)
+		if cabinet_material:
+			cabinet_material = cabinet_material.duplicate()
+			cabinet_material.resource_local_to_scene = true
+			cabinet.mesh.surface_set_material(0, cabinet_material)
+
+	# Drawers
+	for drawer in [drawer_1, drawer_2, drawer_3, drawer_4]:
+		if drawer and drawer.mesh:
+			var mat = drawer.mesh.surface_get_material(0)
+			if mat:
+				mat = mat.duplicate()
+				mat.resource_local_to_scene = true
+				drawer.mesh.surface_set_material(0, mat)
+				drawer_materials.append(mat)
+
+	update_colors()
+
+func _process(_delta):
 	if Engine.is_editor_hint():
 		update_colors()
 
+func _on_color_preset_changed(value):
+	colorPreset = value
+	update_colors()
+
+func _on_manual_color_changed(value):
+	color = value
+	update_colors()
 
 func update_colors():
-	if main_material:
-		current_color = main_material.albedo_color
-	elif cabinet_material:
-		current_color = cabinet_material.albedo_color
-	var finalColor = null
-	
-	# Debugging output to check what colorPrefab holds
+	var final_color: Color = color
+	if color == Color(0, 0, 0) and COLOR_MAPPING.has(colorPreset):
+		final_color = COLOR_MAPPING[colorPreset]
 
-	# Check if the colorPrefab is valid and mapped correctly
-	if COLOR_MAPPING.has(colorPreset):
-		var color_int = COLOR_MAPPING[colorPreset]
-		# Use the integer value in a match statement
-		match color_int:
-			1:
-				colorPrefabs = "#808080"  # Grey
-			2:
-				colorPrefabs = "#31541e"  # Dark Green
-			3:
-				colorPrefabs = "#f4ffde"  # Light Green
-			4:
-				colorPrefabs = "#fffac4"  # Beige
-			5:
-				colorPrefabs = "#000016"  # Black
-			_:
-				colorPrefabs = "Unknown color"
-
-	if color != Color(0,0,0):
-		finalColor = color
-	else:
-		finalColor = colorPrefabs
-	
 	if main_material:
-		main_material.albedo_color = finalColor
-		mesh.surface_set_material(0, main_material)
+		main_material.albedo_color = final_color
 	if cabinet_material:
-		cabinet_material.albedo_color = finalColor
-		cabinet_1.mesh.surface_set_material(0, cabinet_material)
+		cabinet_material.albedo_color = final_color
+	for mat in drawer_materials:
+		mat.albedo_color = final_color

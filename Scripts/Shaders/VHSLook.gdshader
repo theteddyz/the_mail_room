@@ -302,4 +302,3 @@ void fragment()
 	
 	COLOR = finalColor;
 }
-

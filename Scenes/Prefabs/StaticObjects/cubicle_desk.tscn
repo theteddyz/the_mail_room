@@ -191,6 +191,38 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CubicleDesk/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0l8nu")
 
+[node name="Joint1" type="SliderJoint3D" parent="."]
+transform = Transform3D(1.16824e-07, 0, 0.6, 0, 0.6, 0, -0.6, 0, 1.16824e-07, -1.36565, 0.84708, 1.48915)
+node_a = NodePath("../CubicleDesk/StaticBody3D")
+node_b = NodePath("../Drawer1")
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
+script = ExtResource("3_8asem")
+
+[node name="Joint2" type="SliderJoint3D" parent="."]
+transform = Transform3D(1.16824e-07, 0, 0.6, 0, 0.6, 0, -0.6, 0, 1.16824e-07, -1.41547, 0.401441, 1.48117)
+node_a = NodePath("../CubicleDesk/StaticBody3D")
+node_b = NodePath("../Drawer2")
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
+script = ExtResource("3_8asem")
+
+[node name="Joint3" type="SliderJoint3D" parent="."]
+transform = Transform3D(-0.6, 0, 9.05973e-08, 0, 0.6, 0, -9.05973e-08, 0, -0.6, 1.50707, 0.833376, -1.49455)
+node_a = NodePath("../CubicleDesk/StaticBody3D")
+node_b = NodePath("../Drawer3")
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
+script = ExtResource("3_8asem")
+
+[node name="Joint4" type="SliderJoint3D" parent="."]
+transform = Transform3D(-0.6, 0, 9.05973e-08, 0, 0.6, 0, -9.05973e-08, 0, -0.6, 1.49801, 0.401441, -1.45567)
+node_a = NodePath("../CubicleDesk/StaticBody3D")
+node_b = NodePath("../Drawer4")
+linear_limit/upper_distance = 0.5
+linear_limit/lower_distance = 0.0
+script = ExtResource("3_8asem")
+
 [node name="Drawer1" type="RigidBody3D" parent="." node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -1.42645, 0.90036, 0.698922)
 collision_layer = 2
@@ -201,18 +233,10 @@ axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8asem")
 script = ExtResource("2_2ugap")
-grab_type = "drawer"
+grab_type = 2
 open_sound = NodePath("../DrawerAudioOpen2")
 close_sound = NodePath("../DrawerAudioClose2")
 loop_sound = NodePath("../DrawerAudioLoop2")
-
-[node name="Joint1" type="SliderJoint3D" parent="Drawer1"]
-transform = Transform3D(-2.62264e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62264e-08, -0.0608001, -0.05328, -0.790228)
-node_a = NodePath("../../CubicleDesk/StaticBody3D")
-node_b = NodePath("..")
-linear_limit/upper_distance = 0.5
-linear_limit/lower_distance = 0.0
-script = ExtResource("3_8asem")
 
 [node name="CabinetCubicle_001" type="MeshInstance3D" parent="Drawer1"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -249,18 +273,10 @@ axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8asem")
 script = ExtResource("2_2ugap")
-grab_type = "drawer"
+grab_type = 2
 open_sound = NodePath("../DrawerAudioOpen2")
 close_sound = NodePath("../DrawerAudioClose2")
 loop_sound = NodePath("../DrawerAudioLoop2")
-
-[node name="Joint2" type="SliderJoint3D" parent="Drawer2"]
-transform = Transform3D(-2.62264e-08, 0, -0.6, 0, 0.6, 0, 0.6, 0, -2.62264e-08, -0.0136001, -0.013305, -0.776092)
-node_a = NodePath("../../CubicleDesk/StaticBody3D")
-node_b = NodePath("..")
-linear_limit/upper_distance = 0.5
-linear_limit/lower_distance = 0.0
-script = ExtResource("3_8asem")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
@@ -297,18 +313,10 @@ axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8asem")
 script = ExtResource("2_2ugap")
-grab_type = "drawer"
+grab_type = 2
 open_sound = NodePath("../DrawerAudioOpen2")
 close_sound = NodePath("../DrawerAudioClose2")
 loop_sound = NodePath("../DrawerAudioLoop2")
-
-[node name="Joint3" type="SliderJoint3D" parent="Drawer3"]
-transform = Transform3D(7.15531e-09, 0, -0.6, 0, 0.6, 0, 0.6, 0, 7.15531e-09, -0.0608001, -0.053286, -0.80924)
-node_a = NodePath("../../CubicleDesk/StaticBody3D")
-node_b = NodePath("..")
-linear_limit/upper_distance = 0.5
-linear_limit/lower_distance = 0.0
-script = ExtResource("3_8asem")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
@@ -345,18 +353,10 @@ axis_lock_angular_z = true
 mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_8asem")
 script = ExtResource("2_2ugap")
-grab_type = "drawer"
+grab_type = 2
 open_sound = NodePath("../DrawerAudioOpen2")
 close_sound = NodePath("../DrawerAudioClose2")
 loop_sound = NodePath("../DrawerAudioLoop2")
-
-[node name="Joint4" type="SliderJoint3D" parent="Drawer4"]
-transform = Transform3D(7.15531e-09, 0, -0.6, 0, 0.6, 0, 0.6, 0, 7.15531e-09, -0.0136001, -0.013305, -0.785522)
-node_a = NodePath("../../CubicleDesk/StaticBody3D")
-node_b = NodePath("..")
-linear_limit/upper_distance = 0.5
-linear_limit/lower_distance = 0.0
-script = ExtResource("3_8asem")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)

@@ -86,10 +86,7 @@ func _drawer_sound(delta):
 
 		relative_position = -relative_position
 		# Normalize the relative position based on the min and max distances
-		print("relative_position ", relative_position)
 		#relative_position = clamp(relative_position, min_distance, max_distance)
-		print("min_distance ", min_distance)
-		print("max_distance ", max_distance)
 		
 		if open_sound == null or close_sound == null or loop_sound == null:
 			return
