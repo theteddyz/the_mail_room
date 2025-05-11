@@ -45,15 +45,6 @@ var curPath
 var drawnObjects: Array[Node] = []
 @onready var col = $CollisionShape3D
 
-#TODO:
-# JOHN NEEDS TO BE SCARIER, 
-#	MORE INTENSE LUNGE AT INITIAL AGGRO
-#	MORE INTENSE CHASE SOUNDS 
-#	MORE DYNAMIC AUDIOS AND STATES (ANIMS AND AUDIO)
-#	LESS REPEATING ROAMING SOUNDS, MORE ETHEREAL?? TALK TO THE TEAM
-#	BETTER PATHFINDING BEHAVIOUR, CHECK WHY HE GETS STUCK SOMETIMES
-#	OBSTRUCTION REMOVAL ANIMATION (OBSTRUCTION_THROW ANIMATION KIND OF)
-
 func _ready():
 	var meshInstance = MeshInstance3D.new()
 	meshInstance.transform.origin = global_position
@@ -88,7 +79,7 @@ func enable_john():
 		set_new_nav_position()
 
 func _input(event):
-	if event.is_action_pressed("p"):
+	if event.is_action_pressed("DEBUG"):
 		enable_john()
 
 func _physics_process(delta: float):
@@ -156,7 +147,7 @@ func apply_pushes():
 				var rb = rb_enabler.instantiate()
 				var object = c.get_collider()
 				object.add_child(rb)
-				if c.get_collider().grab_type == "door":
+				if c.get_collider().grab_type == 1:
 					c.get_collider().apply_impulse((push_dir * velocity_diff_in_push_dir * push_force)*10, c.get_position() - c.get_collider().global_position)
 				else:
 					c.get_collider().apply_impulse(push_dir * velocity_diff_in_push_dir * push_force, c.get_position() - c.get_collider().global_position)
