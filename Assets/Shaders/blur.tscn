@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://43iceqac2doa"]
+[gd_scene load_steps=5 format=3 uid="uid://43iceqac2doa"]
 
 [ext_resource type="Shader" uid="uid://ds47bggf6v8nt" path="res://Scripts/Shaders/initial_shader.gdshader" id="1_d4vn8"]
+[ext_resource type="Texture2D" uid="uid://cnhb30phxkdaa" path="res://Assets/Textures/LensDirt.jpeg" id="2_stnum"]
+[ext_resource type="Texture2D" uid="uid://d2gyjb88idvmu" path="res://Assets/Textures/LensFlare2.png" id="3_h6mbn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wum37"]
 shader = ExtResource("1_d4vn8")
@@ -10,13 +12,28 @@ shader_parameter/color_over = Color(0, 0, 0, 1)
 shader_parameter/blur_radius = 1.0
 shader_parameter/blur_direction = Vector2(1, 1)
 shader_parameter/FISHEYE_AMOUNT = 1.5
+shader_parameter/FlareMult = ExtResource("2_stnum")
+shader_parameter/FlareMult2 = ExtResource("3_h6mbn")
+shader_parameter/Blur = 5.0
+shader_parameter/FlareThreshold = 0.6
+shader_parameter/Flares = 4
+shader_parameter/FlareSpacing = 0.5
+shader_parameter/Intensity = 8.0
+shader_parameter/FALLOFF_STARTING_POINT = 0.05
+shader_parameter/Saturation_ = 0.48
+shader_parameter/dust_multiplier = 0.555
+shader_parameter/dust_threshold = 0.365
+shader_parameter/dust_distance = 0.05
+shader_parameter/dust_blur = 5.062
+shader_parameter/dust_falloff = 0.05
 shader_parameter/inner_radius = 0.2
 shader_parameter/outer_radius = 1.0
 shader_parameter/vignette_strength = 2.0
 shader_parameter/dither_strength = 0.0
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
+shader_parameter/dust_strength = 4
 
-[node name="blur_shader" type="CanvasLayer"]
+[node name="initial_shader" type="CanvasLayer"]
 layer = -1
 
 [node name="everything" type="ColorRect" parent="." groups=["Player_shader"]]

@@ -109,14 +109,14 @@ material_override = SubResource("ShaderMaterial_h4iuc")
 cast_shadow = 0
 mesh = SubResource("QuadMesh_h4iuc")
 
-[node name="blur_shader" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("6_qqcod")]
+[node name="initial_shader" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("6_qqcod")]
 
-[node name="ColorRect" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("3_6orpg")]
+[node name="Smear" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("10_igrcy")]
+
+[node name="VHS_Look" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("3_6orpg")]
 layer = 1
 
-[node name="ColorRect2" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("8_fd4e3")]
-
-[node name="everything_layer" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("10_igrcy")]
+[node name="VHS_Shader" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("8_fd4e3")]
 
 [node name="BlurRange" type="RayCast3D" parent="Neck/Head/HeadbopRoot/Camera"]
 target_position = Vector3(0, 0, -400)

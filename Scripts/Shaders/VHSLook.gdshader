@@ -20,6 +20,7 @@ uniform float switching_offset : hint_range(0., 0.1) = 0.03;
 group_uniforms sharpening;
 uniform float SHARPENING : hint_range(0., 32.) = 1.5;
 uniform float SHARPEN_DISTANCE : hint_range(0., 0.01) = 0.0025;
+uniform float Blur = 5.0;
 
 //CHROMATIC ABERRATION
 group_uniforms chromatic_aberration;
@@ -28,24 +29,6 @@ uniform float CHROMATIC_DISTANCE : hint_range(0., 32.) = 3;
 //CHROMATIC ABERRATION RBG
 group_uniforms chromatic_aberration_rbg;
 uniform float CHROMATIC_RGB_DISTANCE : hint_range(0., 1.) = 0.1;
-
-
-
-//LENS FLARE
-group_uniforms lens_flare;
-uniform lowp sampler2D FlareMult;
-uniform lowp sampler2D FlareMult2;
-
-uniform float Blur = 5.0;
-uniform float FlareThreshold = 0.6;
-uniform int Flares = 4;
-uniform float FlareSpacing = 0.5;
-
-uniform float Intensity = 8.0;
-uniform float FALLOFF_STARTING_POINT : hint_range(0, 0.1) = 0.05;
-uniform float Saturation_ = 0.48;
-
-
 
 //COLOR BLEED
 group_uniforms color_bleed;
@@ -102,57 +85,8 @@ vec4 cromaticColorRGB(vec2 uvn, vec2 screen_pixel_size)
 }
 
 
-//LENS DUST
-group_uniforms lens_dust;
-uniform float dust_multiplier : hint_range(0, 2.0) = 1.0;
-uniform float dust_threshold : hint_range(0, 2.0) = 0.6;
-uniform float dust_distance : hint_range(0, 1.0) = 0.05;
-uniform float dust_blur : hint_range(0, 10.0) = 5.0;
-uniform float dust_falloff : hint_range(0, 0.1) = 0.05;
-vec4 lensflare(vec2 screen_uv){
-	vec2 FlippedUV = vec2(1.0) - screen_uv;
-	vec2 FlareVector = (vec2(0.5) - screen_uv) * FlareSpacing;
-	vec3 FinalFlare = vec3(0.0);
 
-	//vec2 SUV = screen_uv;
-	//vec3 BlurredScreen = texture(SCREEN_TEXTURE, SUV, dust_blur).rgb;
-//
-	//float max_channel = max(max(BlurredScreen.r, BlurredScreen.g), BlurredScreen.b);
-//
-	//// Only include if luminance exceeds threshold
-	//if (max_channel > dust_threshold) {
-	    //FinalFlare += BlurredScreen * dust_multiplier;
-	//}
-	vec3 FinalDust = vec3(0.0);
-	for (int i = -2; i < 2; ++i){
-		for (int j = -2; j < 2; ++j){
-			vec2 SUV =  fract(screen_uv + vec2(float(i),float(j))*dust_distance);
-			float Dist = distance(SUV, vec2(dust_falloff));
-			float Weight = 1.0;//- smoothstep(0.0, 0.75, Dist);
-			vec3 BlurredScreen = texture(SCREEN_TEXTURE, SUV, dust_blur).rgb;
-			BlurredScreen = ApplyThreshold(BlurredScreen, FlareThreshold);
-			FinalDust += BlurredScreen * Weight*2.0;
-		}
-	}
-	FinalDust *= texture(FlareMult, screen_uv).rgb;
-	
-	for (int i = 0; i < Flares; ++i){
-		vec2 SUV = fract(screen_uv + FlareVector * vec2(float(i)));
-		float Dist = distance(SUV, vec2(FALLOFF_STARTING_POINT));
-		float Weight = 1.0 - smoothstep(0.0, 0.75, Dist);
-		vec3 BlurredScreen = texture(SCREEN_TEXTURE, SUV, Blur).rgb;
-		BlurredScreen = ApplyThreshold(BlurredScreen, FlareThreshold);
-		FinalFlare += BlurredScreen * Weight;
-	}
-	FinalFlare *= texture(FlareMult, screen_uv).rgb;
-	FinalFlare *= texture(FlareMult2, screen_uv).rgb;
-	vec3 finalColor = FinalFlare * Intensity + FinalDust * dust_multiplier;
-	finalColor = Saturation(finalColor, Saturation_).rbg;
-	
 
-	
-	return vec4(finalColor,1);
-}
 
 
 
@@ -187,35 +121,11 @@ float noise(vec2 v) {
     }
     return sum;
 }
-uniform int dust_strength : hint_range(1, 64) = 4;
 
-vec4 get_brightness_mask(sampler2D tex, vec2 uv) {
-    vec4 color = texture(tex, uv);
-    float brightness = dot(color.rgb, vec3(0.299, 0.587, 0.114));
-    if (brightness > dust_threshold) {
-        return color;
-    } else {
-        return vec4(0.0, 0.0, 0.0, 0.0); // Make it fully transparent black
-    }
-}
 
-vec4 blur_brightness_mask(sampler2D tex, vec2 fragCoord, vec2 pixelSize) {
-    vec4 sum = vec4(0.0);
-    float total = 0.0;
-    float radius = float(dust_strength);
 
-    for (int x = -dust_strength; x <= dust_strength; x++) {
-        for (int y = -dust_strength; y <= dust_strength; y++) {
-            vec2 offset = vec2(float(x), float(y)) * pixelSize;
-            vec4 col = get_brightness_mask(tex, fragCoord + offset);
-            float weight = 1.0; // You can use a Gaussian weight here for better quality
-            sum += col * weight;
-            total += weight;
-        }
-    }
 
-    return sum / total;
-}
+
 void fragment()
 {
 
@@ -254,7 +164,7 @@ void fragment()
 	
 	vec4 cromaticColorRGB = cromaticColorRGB(uvs, SCREEN_PIXEL_SIZE);
 
-	vec4 mixColor = lensflare(uvs);
+	vec4 mixColor = vec4(0.0);
 	
 	//COLOR BLEED
 	//float strength = color_bleed_seperation;
