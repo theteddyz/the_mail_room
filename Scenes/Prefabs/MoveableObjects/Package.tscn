@@ -67,7 +67,7 @@ hand_position = Vector3(0.04, -0.088, 0.195)
 delivered_position = Vector3(0, -0.25, 0)
 inspect_position = Vector3(-0.25, 0.25, 0)
 inspect_rotation = Vector3(-1.7, 1.5, 1.3)
-icon_type = "deliverable"
+icon_type = 3
 
 [node name="Package" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.8371e-08, 0, 1.33537, 0, 1.33537, 0, -1.33537, 0, -5.8371e-08, 0, 0, 0)

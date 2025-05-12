@@ -91,6 +91,7 @@ func grab():
 	EventBus.emitCustomSignal("show_icon",[object])
 
 
+
 func _process(delta):
 	if holding_object:
 		update_line_position(delta)
@@ -172,7 +173,7 @@ func update_position(delta):
 	var distance:float = currentPosition.distance_to(targetPosition)
 	
 	force = directionTo.normalized()*(pow(distance * 600,1) + (_mass * 15))#/max(1,(parent.mass*0.15)))
-	force = force.normalized()*pow(force.length(),0.85)*2#.limit_length(max_force + (_mass * 15) + player.velocity.length())
+	force = force.limit_length(max_force + (_mass * 15) + player.velocity.length()) #force.normalized()*pow(force.length(),0.95)*2
 	object.apply_force(force, rotation_offset)
 	if is_tether_max_range:
 		force = (camera.global_transform.origin - currentPosition).normalized() * _mass * 15
