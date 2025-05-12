@@ -264,6 +264,9 @@ func light_active_button():
 			finance_floor.active = true
 			finance_floor.update_glow()
 		2:
-			pass
+			var area:Area3D = human_resources_floor.get_child(0)
+			area.monitorable = true
+			human_resources_floor.active = true
+			human_resources_floor.update_glow()
 		_:
 			pass
