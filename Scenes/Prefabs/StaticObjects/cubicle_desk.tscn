@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=4 uid="uid://mon3f6hxtidd"]
+[gd_scene load_steps=30 format=4 uid="uid://mon3f6hxtidd"]
 
 [ext_resource type="Texture2D" uid="uid://bkvlvm2p6x0ad" path="res://Assets/Textures/BlenderTextures/CubicleDesk.png" id="1_1mppl"]
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="2_2ugap"]
 [ext_resource type="Script" uid="uid://da8f0nlp61xaf" path="res://Scenes/Prefabs/StaticObjects/initial_offset.gd" id="3_8asem"]
 [ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="3_x7q1c"]
+[ext_resource type="Script" uid="uid://c2bhb72ytvio" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="4_5dkjc"]
 [ext_resource type="PackedScene" uid="uid://3bbxkn5brr4h" path="res://Scenes/Prefabs/crouch_assistant.tscn" id="4_x7q1c"]
 [ext_resource type="AudioStream" uid="uid://dpjw33ok63rwv" path="res://Assets/Audio/SoundFX/CabinetMovingFast.mp3" id="6_6q4gn"]
 [ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="7_5dkjc"]
@@ -238,6 +239,14 @@ open_sound = NodePath("../DrawerAudioOpen2")
 close_sound = NodePath("../DrawerAudioClose2")
 loop_sound = NodePath("../DrawerAudioLoop2")
 
+[node name="DrawerScript" type="Node3D" parent="Drawer1" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+script = ExtResource("4_5dkjc")
+drawerOpenedSound = NodePath("")
+drawerClosedSound = NodePath("")
+drawerLoopSound = NodePath("")
+drawerSliderJoint = NodePath("../../Joint1")
+volume = -20.0
+
 [node name="CabinetCubicle_001" type="MeshInstance3D" parent="Drawer1"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = SubResource("ArrayMesh_mian4")
@@ -277,6 +286,14 @@ grab_type = 2
 open_sound = NodePath("../DrawerAudioOpen2")
 close_sound = NodePath("../DrawerAudioClose2")
 loop_sound = NodePath("../DrawerAudioLoop2")
+
+[node name="DrawerScript" type="Node3D" parent="Drawer2" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+script = ExtResource("4_5dkjc")
+drawerOpenedSound = NodePath("")
+drawerClosedSound = NodePath("")
+drawerLoopSound = NodePath("")
+drawerSliderJoint = NodePath("../../Joint2")
+volume = -20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
@@ -318,6 +335,14 @@ open_sound = NodePath("../DrawerAudioOpen2")
 close_sound = NodePath("../DrawerAudioClose2")
 loop_sound = NodePath("../DrawerAudioLoop2")
 
+[node name="DrawerScript" type="Node3D" parent="Drawer3" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+script = ExtResource("4_5dkjc")
+drawerOpenedSound = NodePath("")
+drawerClosedSound = NodePath("")
+drawerLoopSound = NodePath("")
+drawerSliderJoint = NodePath("../../Joint3")
+volume = -20.0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)
 shape = SubResource("BoxShape3D_uq4i4")
@@ -357,6 +382,14 @@ grab_type = 2
 open_sound = NodePath("../DrawerAudioOpen2")
 close_sound = NodePath("../DrawerAudioClose2")
 loop_sound = NodePath("../DrawerAudioLoop2")
+
+[node name="DrawerScript" type="Node3D" parent="Drawer4" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+script = ExtResource("4_5dkjc")
+drawerOpenedSound = NodePath("")
+drawerClosedSound = NodePath("")
+drawerLoopSound = NodePath("")
+drawerSliderJoint = NodePath("../../Joint4")
+volume = -20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Drawer4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000854492, -0.00135803, -0.0157166)

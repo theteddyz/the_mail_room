@@ -1678,22 +1678,22 @@ transform = Transform3D(4.13048e-09, 0, 0.0212138, 0, 0.0212138, 0, -0.0212138, 
 transform = Transform3D(-9.27285e-10, 0, 0.0212138, 0, 0.0212138, 0, -0.0212138, 0, -9.27285e-10, -5.50307, 2.07125, 15.9511)
 
 [node name="File_Cabinet" parent="stage/Cubicles2" instance=ExtResource("25_jswfw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.8788, 0.803745, 30.9171)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.866, -0.0198572, 30.3684)
 
 [node name="File_Cabinet2" parent="stage/Cubicles2" instance=ExtResource("25_jswfw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.8788, 0.803745, 30.3681)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.8916, -0.0198572, 30.9168)
 
 [node name="File_Cabinet3" parent="stage/Cubicles2" instance=ExtResource("25_jswfw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.0926, 0.803745, 16.2048)
+transform = Transform3D(-0.00485191, 0, -0.999988, 0, 1, 0, 0.999988, 0, -0.00485191, -21.0912, -0.0198572, 15.6331)
 
 [node name="File_Cabinet5" parent="stage/Cubicles2" instance=ExtResource("25_jswfw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9697, 0.803745, 16.2485)
+transform = Transform3D(-0.999544, 0, 0.0301896, 0, 1, 0, -0.0301896, 0, -0.999544, -14.8486, -0.0198572, 16.2654)
 
 [node name="File_Cabinet6" parent="stage/Cubicles2" instance=ExtResource("25_jswfw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4166, 0.803745, 16.2485)
+transform = Transform3D(-0.999544, 0, 0.0301896, 0, 1, 0, -0.0301896, 0, -0.999544, -15.4014, -0.0198572, 16.2487)
 
 [node name="File_Cabinet7" parent="stage/Cubicles2" instance=ExtResource("25_jswfw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8407, 0.803745, 16.2485)
+transform = Transform3D(-0.999544, 0, 0.0301896, 0, 1, 0, -0.0301896, 0, -0.999544, -15.977, -0.0198572, 16.2313)
 
 [node name="File_Cabinet9" parent="stage/Cubicles2" instance=ExtResource("25_jswfw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.28622, 0.803745, 16.2299)
@@ -1705,7 +1705,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.74654, 0.803745, 16.2299)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19822, 0.803745, 16.2299)
 
 [node name="File_Cabinet4" parent="stage/Cubicles2" instance=ExtResource("25_jswfw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -21.0926, 0.803745, 15.6331)
+transform = Transform3D(-0.00485191, 0, -0.999988, 0, 1, 0, 0.999988, 0, -0.00485191, -21.094, -0.0198572, 16.2048)
 
 [node name="short_cubicle" parent="stage/Cubicles2" instance=ExtResource("26_atrib")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3547, -0.0555762, -3.83623)
@@ -2091,13 +2091,13 @@ autoplay = true
 max_distance = 100.0
 
 [node name="File_cabinet" parent="." instance=ExtResource("18_2mpgu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.39112, 1.38082, 2.86786)
+transform = Transform3D(0.021117, 0, -0.999777, 0, 1, 0, 0.999777, 0, 0.021117, -2.39825, 0.565142, 2.19259)
 
 [node name="File_cabinet3" parent="." instance=ExtResource("18_2mpgu")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.76292, 1.37315, 7.2024)
+transform = Transform3D(0.99883, 0, 0.0483617, 0, 1, 0, -0.0483617, 0, 0.99883, 2.32159, 0.565143, 7.18888)
 
 [node name="File_cabinet4" parent="." instance=ExtResource("18_2mpgu")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.32192, 1.37315, 7.2024)
+transform = Transform3D(0.99883, 0, 0.0483617, 0, 1, 0, -0.0483617, 0, 0.99883, 1.76325, 0.565143, 7.21592)
 
 [node name="File_cabinet7" parent="." instance=ExtResource("18_2mpgu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2223, 1.36762, 2.59029)
@@ -2112,7 +2112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.428, 1.36762, 2.59029)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0225, 1.36762, 2.59029)
 
 [node name="File_cabinet2" parent="." instance=ExtResource("18_2mpgu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.39112, 1.38082, 2.19251)
+transform = Transform3D(0.021117, 0, -0.999777, 0, 1, 0, 0.999777, 0, 0.021117, -2.38399, 0.565142, 2.86778)
 
 [node name="Desk" parent="." instance=ExtResource("20_ukshy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35681, 0.560047, 2.97071)
@@ -2155,7 +2155,7 @@ transform = Transform3D(0.0212138, 0, -5.05777e-09, 0, 0.0212138, 0, 5.05777e-09
 transform = Transform3D(0.0212138, 0, -5.05777e-09, 0, 0.0212138, 0, 5.05777e-09, 0, 0.0212138, 5.26636, 2.33022, 0.70501)
 
 [node name="Desk4" parent="." instance=ExtResource("50_s0qts")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.26079, 0.560047, 20.8822)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 3.26079, 0.560047, 20.7455)
 
 [node name="Plant" parent="." instance=ExtResource("51_oinx4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23641, 1.73499, 21.0107)
@@ -2178,7 +2178,7 @@ mesh = SubResource("ArrayMesh_d5vkp")
 mesh = SubResource("ArrayMesh_wufj6")
 
 [node name="Chair" parent="." instance=ExtResource("26_2vxtn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53918, 1.3902, 20.2213)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53918, 1.3902, 20.1046)
 
 [node name="Keyboard" parent="." instance=ExtResource("27_i8w5y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49492, 1.73498, 20.4538)
@@ -2258,10 +2258,10 @@ process_material = SubResource("ParticleProcessMaterial_1c4hu")
 draw_pass_1 = ExtResource("68_u1y6c")
 
 [node name="File_cabinet5" parent="." instance=ExtResource("18_2mpgu")]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -14.6714, 1.38405, 25.8098)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -15.2462, 0.565143, 25.8217)
 
 [node name="File_cabinet6" parent="." instance=ExtResource("18_2mpgu")]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, -15.2465, 1.38405, 25.8072)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.6717, 0.565143, 25.7953)
 
 [node name="Plant2" parent="." instance=ExtResource("51_oinx4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3232, 0.560047, 28.224)
@@ -2386,10 +2386,10 @@ mesh = SubResource("ArrayMesh_amcv0")
 mesh = SubResource("ArrayMesh_ximhu")
 
 [node name="File_Cabinet" parent="." instance=ExtResource("25_jswfw")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5.49767, 1.38915, -6.70401)
+transform = Transform3D(-0.10944, 0, 0.993993, 0, 1, 0, -0.993993, 0, -0.10944, 5.46706, 0.565143, -7.26167)
 
 [node name="File_Cabinet2" parent="." instance=ExtResource("25_jswfw")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5.49767, 1.38915, -7.26335)
+transform = Transform3D(-0.10944, 0, 0.993993, 0, 1, 0, -0.993993, 0, -0.10944, 5.52828, 0.565143, -6.70569)
 
 [node name="sofa" parent="." instance=ExtResource("65_8m0us")]
 transform = Transform3D(-4.83011e-08, 0, 1.105, 0, 1.105, 0, -1.105, 0, -4.83011e-08, -4.47289, 1.4455, -7.61875)
