@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=4 uid="uid://0hwxvod2i3hn"]
+[gd_scene load_steps=119 format=4 uid="uid://0hwxvod2i3hn"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_k4xxo"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_dtci6"]
@@ -60,6 +60,8 @@
 [ext_resource type="Texture2D" uid="uid://y2pmwstysa37" path="res://Assets/Textures/BlenderTextures/WallMailRoom.png" id="57_1upqy"]
 [ext_resource type="Script" uid="uid://dukwbapxl8v66" path="res://Scripts/CutoutCollisionShaper.gd" id="58_fc8q6"]
 [ext_resource type="Script" uid="uid://dkimokrgwhcry" path="res://Scenes/Worlds/mailroom_secret_ambiancetrigger.gd" id="61_fc8q6"]
+[ext_resource type="AudioStream" uid="uid://dephvjlxfo3d1" path="res://Assets/Audio/SoundFX/MailRoomAmbience.mp3" id="61_wu18t"]
+[ext_resource type="AudioStream" uid="uid://bled33c0654ky" path="res://Assets/Audio/SoundFX/FirstFloorAmbience1.mp3" id="62_wu18t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ce6ua"]
 albedo_texture = ExtResource("5_3rxvh")
@@ -767,7 +769,7 @@ transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586
 [node name="StaticBody3D" parent="mailroom_prefab/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("25_ng6jo")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.4464, 2.72705, -11.9021)
 active = true
-game_objects = [NodePath("../../../Package"), NodePath("../../../Package2"), NodePath("../../../Package3"), null]
+game_objects = [NodePath("../../../Package"), NodePath("../../../Package2"), NodePath("../../../Package3"), NodePath("../../../Package4")]
 
 [node name="StaticBody3D6" parent="mailroom_prefab/Objects" instance=ExtResource("25_ng6jo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2355, 2.72705, 1.8957)
@@ -2185,6 +2187,22 @@ script = ExtResource("61_fc8q6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031311, -0.748047, 0)
 shape = SubResource("BoxShape3D_1upqy")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.693, 5.02327, -5.01763)
+stream = ExtResource("61_wu18t")
+attenuation_model = 1
+volume_db = -22.635
+unit_size = 9.05
+autoplay = true
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4329, 5.44494, -14.0599)
+stream = ExtResource("62_wu18t")
+volume_db = -32.962
+unit_size = 10.46
+pitch_scale = 0.72
+autoplay = true
 
 [connection signal="body_entered" from="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_exited"]
