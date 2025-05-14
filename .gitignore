@@ -24,3 +24,4 @@ mono_crash.*.json
 *.tmp
 addons/godot-jolt/windows/~godot-jolt_windows-x64_editor.dll
 Assets/Materials/cabinet_drawer.tres
+addons/terrain_3d/bin/~libterrain.windows.debug.x86_64.dll

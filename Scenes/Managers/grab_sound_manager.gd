@@ -29,17 +29,21 @@ func _ready() -> void:
 	pass
 
 func enable_sound(main_body:RigidBody3D):
-	body_a = main_body
-	body_b = body_a.get_parent()
+	var drawer_script = main_body.get_child(0)
+	var slider_joint:SliderJoint3D = drawer_script.drawerSliderJoint
+	if drawer_script.body_a == main_body:
+		body_a = main_body
+		body_b = drawer_script.body_b
+	else :
+		body_a = drawer_script.body_b
+		body_b = drawer_script.body_a
 	open_sound = main_body.open_sound
 	close_sound = main_body.close_sound
 	loop_sound = main_body.loop_sound
 	if body_a.grab_type == 2:
-		for child in body_a.get_children():
-			if child is SliderJoint3D:
-				joint = child
-				min_distance = joint.PARAM_LINEAR_LIMIT_UPPER
-				max_distance = joint.PARAM_LINEAR_LIMIT_LOWER*0.5
+		joint = slider_joint
+		min_distance = joint.PARAM_LINEAR_LIMIT_UPPER
+		max_distance = joint.PARAM_LINEAR_LIMIT_LOWER*0.5
 	elif body_a.grab_type == 1:
 		for child in body_a.get_children():
 			if child is HingeJoint3D:

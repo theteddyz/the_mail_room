@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=4 uid="uid://csn6vamjgfjbr"]
+[gd_scene load_steps=92 format=4 uid="uid://csn6vamjgfjbr"]
 
 [ext_resource type="PackedScene" uid="uid://co8tc5q81xn68" path="res://Scenes/Managers/scareDirector.tscn" id="1_faoyl"]
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_y5q3h"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://f21t4ualvxjr" path="res://Assets/Textures/BlenderTextures/FileCabinetDrawer.png" id="35_jhwrq"]
 [ext_resource type="Texture2D" uid="uid://btunaa76srkrk" path="res://Assets/Textures/BlenderTextures/FileCabinet.png" id="36_2qdf3"]
 [ext_resource type="PackedScene" uid="uid://box8t8l24q1si" path="res://Assets/Models/desk.tscn" id="36_jhwrq"]
+[ext_resource type="PackedScene" uid="uid://mon3f6hxtidd" path="res://Scenes/Prefabs/StaticObjects/cubicle_desk.tscn" id="38_2qdf3"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="41_n2l23"]
 [ext_resource type="Texture2D" uid="uid://1kgm36rh1fdo" path="res://Assets/Textures/Carpet.png" id="42_w5g3l"]
 [ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="44_epuy0"]
@@ -563,7 +564,7 @@ _data = {
 &"HeartBeat_001": SubResource("Animation_nikdh")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhwrq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qdf3"]
 resource_local_to_scene = true
 resource_name = "FileCabinetDrawer.001"
 cull_mode = 2
@@ -596,7 +597,7 @@ _surfaces = [{
 "index_count": 954,
 "index_data": PackedByteArray("CQAAAAYACQADAAAAFQAbAA8AFQAhABsABwAWAAoABwATABYAAgAUAAgAAgAOABQACwARAAUACwAXABEABAANAAEABAAQAA0AegEuAHgBegErAC4ADwAYAAwADwAbABgAEgAhABUAEgAeACEADAAeABIADAAYAB4ALQAkACcALQAqACQAfwEsAHsBfwEmACwAeQEpAIMBeQEvACkAiAE6ADcAiAGUAToAjAGVAYUBNwCRAXwBNwA6AJEBgQE0ABwAgQGJATQAHAAxABkAHAA0ADEAjwGVAYwBjwE7AJUBMwA8ADAAMwA/ADwAigFBADUAigFHAEEANgBFAIcBNgBCAEUASwBVAFIASwBPAFUAUABhAF4AUABTAGEAYABdAFkAYABjAF0ATQBlAGkATQBJAGUAUQBYAEoAUQBfAFgAYgBOAFwAYgBUAE4AZgB6AHQAZgByAHoASABwAGQASABWAHAAWgBoAGwAWgBMAGgAVwBtAHEAVwBbAG0AawB1AHcAawBnAHUAbgB2AHgAbgBqAHYAcwB5AHsAcwBvAHkAhwCAAIsAhwB+AIAAjAB+AIcAjACDAH4AhQCDAIwAhQB8AIMAiQB8AIUAiQCBAHwAhgCCAIoAhgB9AIIAjQB9AIYAjQCEAH0AiACEAI0AiAB/AIQAiwB/AIgAiwCAAH8AnQCRAJcAnQCSAJEAlACaAI8AlACcAJoAnwCOAJUAnwCZAI4AmACSAJ0AmACQAJIAlgCaAJ4AlgCPAJoAjgCbAJMAjgCZAJsAmACVAJAAmACfAJUAkQCeAJcAkQCWAJ4ApgCpAKMApgCvAKkArgChAKwArgClAKEAsAChAKgAsACsAKEAqwCkAK0AqwCgAKQApwCrALEApwCgAKsAogCvAKYAogCqAK8AqQCoAKMAqQCwAKgAogCxAKoAogCnALEAsQC5AKoAsQC6ALkAqgC4AK8AqgC5ALgArwC3AKkArwC4ALcAqQC2ALAAqQC3ALYAsAC1AKwAsAC2ALUArAC0AK4ArAC1ALQArQCyAKsArQCzALIAqwC6ALEAqwCyALoAswCFALIAswCJAIUAtQCKALQAtQCGAIoAtgCGALUAtgCNAIYAtwCNALYAtwCIAI0AuACIALcAuACLAIgAuQCLALgAuQCHAIsAugCHALkAugCMAIcAsgCMALoAsgCFAIwAmAC8AJ8AmAC7ALwAnwC9AJkAnwC8AL0AmQC+AJsAmQC9AL4AnADAAJoAnAC/AMAAmgDBAJ4AmgDAAMEAngDCAJcAngDBAMIAlwDDAJ0AlwDCAMMAnQC7AJgAnQDDALsAuwCDALwAuwB+AIMAvAB8AL0AvACDAHwAvQCBAL4AvQB8AIEAvwB9AMAAvwCCAH0AwACEAMEAwAB9AIQAwQB/AMIAwQCEAH8AwgCAAMMAwgB/AIAAwwB+ALsAwwCAAH4A9wDQAMsA9wD6ANAAAgEhAdYAAgEqASEBzADSANUAzADGANIA1wDKAM8A1wDUAMoA6ABWAVoB6AA9AVYB4QBGAe8A4QBEAUYB2gDsAOAA2gDkAOwA5wDiAPAA5wDdAOIAQAFdAWUBQAHeAF0BNgHlADkBNgHtAOUA0QAKAQcB0QDEAAoBzQAaAf4AzQAeARoB/wAtAfoA/wAbAS0BxwD9APQAxwDOAP0A9gATAfkA9gAQARMBDAEUAREBDAEXARQB+AAVAfsA+AASARUB/AALAfMA/AAWAQsBDQEGAQgBDQEEAQYByQAFAQ8ByQDTAAUByAAOAfUACQHFAPIALAElASIBLAEuASUBHAEpARkBHAEfASkBGAEuASwBGAEoAS4B2AAvAQAB2AAnAS8B1QAdAcwA1QAgAR0B+gAkAdAA+gAtASQBAQErAQMBAQEwASsBzwAmAdcAzwAjASYBPgFnAVcBPgE5AWcB8QA8AekA8QAzATwBNQFQAU0BNQE4AVABSQFRAVQBSQFOAVEBNwFSAU8BNwE6AVIBOwFIAVMBOwEyAUgBSgFDAUEBSgFHAUMB6gBCAd8A6gBMAUIB6wA0AUsBRQExAe4AZgFhAWgBZgFeAWEBWAFkAVsBWAFVAWQBVQFoAWQBVQFmAWgB2wBpAWMB2wA/AWkB3ABZAVwB3ADmAFkBOQFgAWcBOQHlAGABPwFlAWkBPwFAAWUB4wBiAV8B4wDZAGIBagFvAWwBagFuAW8BbgFxAW8BbgFwAXEBcAFzAXEBcAFyAXMBcgF1AXMBcgF0AXUBdAF3AXUBdAF2AXcBdgFtAXcBdgFrAW0BkgE7AI8BQABDAD0AQABGAEMAfgGQASUAfgGTAZABMgBEADkAMgA+AEQAGQA4AH0BGQAxADgAIwCDAR0AIwB5AYMBGgB7ASAAGgB/AXsBHwB4ASIAHwB6AXgBJACLAScAJACOAYsBKACGAYIBKACNAYYBgAGUAYgBgAGEAZQBlgGbAZgBlgGaAZsBmgGdAZsBmgGcAZ0BnAGfAZ0BnAGeAZ8BngGhAZ8BngGgAaEBoAGjAaEBoAGiAaMBogGZAaMBogGXAZkB"),
 "lods": [0.0465414, PackedByteArray("CQAAAAYACQADAAAAFQAbAA8ADwAbABgAFQAhABsADwAYAAwAEgAhABUADAAYAB4AEgAeACEADAAeABIABwAWAAoABwATABYAAgAUAAgAAgAOABQACwARAAUACwAXABEABAANAAEABAAQAA0AegEuAHgBegErAC4AHwB6AXgBHwB4ASIALQAkACcALQAqACQAJACLAScAJACOAYsBfwEsAHsBfwEmACwAGgB/AXsBGgB7ASAAeQEpAIMBeQEvACkAIwB5AYMBIwCDAR0AiAGUATcAgAGUAYgBgAGEAZQBNwCUAZEBNwCRAXwBjAGVAYUBjwGVAYwBkgGVAY8BgQE0ABwAgQGJATQAHAA0ADEAHAAxABkAGQAxADgAGQA4AH0BMwA8ADAAMwA/ADwAigFBADUAigFHAEEANgBFAIcBNgBCAEUASwBVAFIASwBPAFUAUABhAF4AUABTAGEAYABdAFkAYABjAF0ATQBlAGkATQBJAGUAUQBYAEoAUQBfAFgAYgBOAFwAYgBUAE4AZgB6AHQAZgByAHoASABwAGQASABWAHAAWgBoAGwAWgBMAGgAVwBtAHEAVwBbAG0AawB1AHcAawBnAHUAbgB2AHgAbgBqAHYAcwB5AHsAcwBvAHkAlACKAI8AlgCPAIoAkQCWAKUBkQCKAJIApQGQAJIAqgGlAa0BpQGnAaYBigChAKgAigClAKEAigCOAJUAjgCKAIkAiQCKAKMAjgCJAJMApwCgAIkAiQCgAKQAqwGkAakBqAGkAasBqAGsAaQB9wDQAMsA9wD6ANAA+gAkAdAA+gAaASQB/QAaAfoAzQAaAf0AzQAeARoBxwDNAP0AxwD9APQAAgEhAdYAAgEqASEBAAEqAQIBAAEvASoB2AAvAQAB2AAnAS8BzADSANUAzADGANIA1QAdAcwA1QAgAR0B1wDKAM8A1wDUAMoAzwAmAdcAzwAjASYB6ABWAVoB6AA8AVYB8QA8AegA8QAzATwBPAE5AVYBOQFgAVYBOQHlAGABNgHlADkBNgHtAOUA4QBFAe4ARQExAe4A4QBDAUUBSgFFAUMBSgFDAUEB6gBKAUEB6gA0AUoB6gBBAd8A2QDsAOAA2QDjAOwA4wDZAGIB4wBiAV8B5gDiAPAA5gDcAOIA3ADmAFkB3ABZAVwBQAFdAWkBQAHeAF0BPwFAAWkB2wA/AWkB2wBpAWMB0QAIAQYB0QDEAAgBCAHEAPIADQEGAQgBDQEEAQYByAAEAQ0ByADTAAQByAANAfUA9gATAfkA9gAQARMBDAEUAREBDAEXARQB+AAVAfsA+AASARUB/AALAfMA/AAWAQsBGAElASIBGAEuASUBGAEoAS4BHAEoARgBHAEfASgBNQFQAU0BNQE4AVABSQFRAVQBSQFOAVEBNwFSAU8BNwE6AVIBOwFIAVMBOwEyAUgBVQFhAWgBVQFeAWEBWAFVAWgBWAFoAVsBagFvAWwBagFuAW8BbgFxAW8BbgFwAXEBcAFzAXEBcAFyAXMBcgF1AXMBcgF0AXUBdAF3AXUBdAF2AXcBdgFtAXcBdgFrAW0BQABDAD0AQABGAEMAfgGQASUAfgGTAZABMgBEADkAMgA+AEQAKACGAYIBKACNAYYBlgGbAZgBlgGaAZsBmgGdAZsBmgGcAZ0BnAGfAZ0BnAGeAZ8BngGhAZ8BngGgAaEBoAGjAaEBoAGiAaMBogGZAaMBogGXAZkB")],
-"material": SubResource("StandardMaterial3D_jhwrq"),
+"material": SubResource("StandardMaterial3D_2qdf3"),
 "name": "FileCabinetDrawer.001",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -606,7 +607,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tn8je")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qdf3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mckr3"]
 resource_local_to_scene = true
 resource_name = "FileCabinet"
 cull_mode = 2
@@ -638,7 +639,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 354,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAHAAQACAAJAAcACgALAAwACgANAAsADgALAA0ADwAQABEADwASABAAEwAUABUAEwAWABQAFwAYABkAFwAaABgAGwAcAB0AGwAeABwAHwAgACEAHwAiACAAIwAkACUAIwAmACQAJwAoACkAJwAqACgAKwAsAC0AKwAuACwALwAwADEALwAyADAAMwA0ADUAMwA2ADQANwA4ADkANwA6ADgAOwADAAAAOwA8AAMAPQA+AD8APQBAAD4AQQBCAEMAQQBEAEIABwBFAEYABwAJAEUAAwBHAAEASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZAA3AGUAZAA6ADcAAgBmAAAAZwBoAGkAZwBqAGgAawBsAG0AawBuAGwAbgBvAGwAbgBwAG8AcQByAHMAcQB0AHIAdAB1AHIAdAB2AHUAdwB4AHkAdwB6AHgAegB7AHgAegB8AHsAfQB+AH8AfgCAAIEAgACCAIMAggB9AIQAfQCAAH4AgAB9AIIAhQCGAIcAhQCIAIYAiACJAIYAiACKAIkAiwCMAI0AiwCOAIwAjwAKAAwAkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkAZQCsAGQAZQCtAKwArgCNAK8ArgCLAI0ABACwAAgABACxALAAjQCMALIAswC0ALUAswC2ALQAtwC4ALkAtwC6ALgAuwC8AL0AuwC+ALwAvwDAAMEAvwDCAMAAwwDEAMUAwwDGAMQAxwDIAMkAxwDKAMgAjgCLAMsA"),
-"material": SubResource("StandardMaterial3D_2qdf3"),
+"material": SubResource("StandardMaterial3D_mckr3"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 204,
@@ -927,23 +928,26 @@ icon_type = 0
 [node name="Node3D" parent="." instance=ExtResource("34_qt4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41303, 0.0137595, 14.7924)
 
-[node name="FileCabinetDrawer_001" parent="Node3D/Drawer" index="5"]
+[node name="FileCabinetDrawer_001" parent="Node3D/Drawer" index="6"]
 mesh = SubResource("ArrayMesh_sv7fo")
 
-[node name="FileCabinetDrawer_001" parent="Node3D/Drawer2" index="5"]
+[node name="FileCabinetDrawer_001" parent="Node3D/Drawer2" index="6"]
 mesh = SubResource("ArrayMesh_sv7fo")
 
 [node name="Node3D" parent="Node3D/Drawer2" index="10" instance=ExtResource("36_jhwrq")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.04212, -1.00981, 4.72413)
 
-[node name="FileCabinetDrawer_001" parent="Node3D/Drawer3" index="5"]
+[node name="FileCabinetDrawer_001" parent="Node3D/Drawer3" index="6"]
 mesh = SubResource("ArrayMesh_sv7fo")
 
-[node name="FileCabinetDrawer_001" parent="Node3D/Drawer4" index="5"]
+[node name="FileCabinetDrawer_001" parent="Node3D/Drawer4" index="6"]
 mesh = SubResource("ArrayMesh_sv7fo")
 
 [node name="FileCabinet" parent="Node3D/File_Cabinet" index="0"]
 mesh = SubResource("ArrayMesh_emij4")
+
+[node name="CubicleDesk" parent="." instance=ExtResource("38_2qdf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.76599, 0.00906754, 20.2896)
 
 [connection signal="body_entered" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="airduct_longer/Area3D" to="airduct_longer/Area3D" method="_on_body_exited"]
