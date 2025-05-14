@@ -115,12 +115,11 @@ shadow_mesh = SubResource("ArrayMesh_gsqk3")
 
 [node name="Door" type="StaticBody3D"]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("1_slcyk")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 14
 axis_lock_linear_y = true
 mass = 3.0
@@ -128,7 +127,6 @@ physics_material_override = SubResource("PhysicsMaterial_rfwb3")
 center_of_mass_mode = 1
 center_of_mass = Vector3(-0.849285, 2.0413, 0.098477)
 script = ExtResource("2_ygk78")
-grab_type = "door"
 
 [node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="RigidBody3D3"]
 transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)

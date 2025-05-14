@@ -35,7 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://dgcud5rlm72p6" path="res://Scenes/Prefabs/StaticObjects/airduct_upper.tscn" id="19_yyduo"]
 [ext_resource type="PackedScene" uid="uid://b85fvq8nn7wpm" path="res://Scenes/Prefabs/MoveableObjects/Monitor_interactable.tscn" id="20_csg54"]
 [ext_resource type="PackedScene" uid="uid://ca5vnaw64qen0" path="res://Scenes/Prefabs/StaticObjects/airduct_l_piece.tscn" id="20_jmcj7"]
-[ext_resource type="PackedScene" uid="uid://doveq38wiuloa" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_on_without_light.tscn" id="21_gga1c"]
+[ext_resource type="PackedScene" uid="uid://doveq38wiuloa" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_mailroom.tscn" id="21_gga1c"]
 [ext_resource type="PackedScene" uid="uid://bhyepbfxwhdat" path="res://Scenes/light_with_optimizercollider_MAILROOM_ONLY.tscn" id="22_aruuo"]
 [ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling.tscn" id="23_q058e"]
 

@@ -1,17 +1,309 @@
-[gd_scene load_steps=23 format=4 uid="uid://0hwxvod2i3hn"]
+[gd_scene load_steps=117 format=4 uid="uid://0hwxvod2i3hn"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_k4xxo"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_dtci6"]
 [ext_resource type="Environment" uid="uid://bhc42hyiv0lac" path="res://Scenes/Worlds/mail_room.tres" id="3_jh2lx"]
 [ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="4_ol4n4"]
-[ext_resource type="PackedScene" uid="uid://bb75w210dxt14" path="res://Scenes/Prefabs/Rooms/mailroom.tscn" id="5_4oqjk"]
+[ext_resource type="Texture2D" uid="uid://n3a6s3w3vg03" path="res://Assets/Textures/Concrete042A_1K-JPG_Color.jpg" id="5_3rxvh"]
+[ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="6_17bx0"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="6_mxo3x"]
+[ext_resource type="PackedScene" uid="uid://cyamc4lfjib8r" path="res://Scenes/Prefabs/StaticObjects/4_way_airduct.tscn" id="7_hycs1"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="7_jjsy5"]
+[ext_resource type="PackedScene" uid="uid://b2vyyytppayk3" path="res://Scenes/Prefabs/StaticObjects/airduct_lid.tscn" id="8_4a1w8"]
 [ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="8_i23t7"]
+[ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="9_o2qy4"]
 [ext_resource type="Texture2D" uid="uid://b01421mbq0uvp" path="res://Assets/Textures/BlenderTextures/ElevatorShaft.png" id="10_5bd8b"]
+[ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="10_oj80k"]
 [ext_resource type="PackedScene" uid="uid://c5gsbgt4sbxui" path="res://Scenes/Prefabs/StaticObjects/MailRoomFloorLayout.tscn" id="11_7pkkb"]
+[ext_resource type="PackedScene" uid="uid://dq6b3ab1wyhca" path="res://Assets/Models/mailbox_stand.tscn" id="11_mhiq1"]
 [ext_resource type="Texture2D" uid="uid://c6ajcb8q4d2y7" path="res://Assets/Textures/BlenderTextures/CartLight.png" id="12_1q60m"]
-[ext_resource type="PackedScene" uid="uid://clgw1aqyoiqcq" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall_cuttable.tscn" id="13_v0vi6"]
+[ext_resource type="Texture2D" uid="uid://b6vsgmmle1foq" path="res://Assets/Textures/BlenderTextures/Cabinet.png" id="12_mhaf6"]
+[ext_resource type="AudioStream" uid="uid://dpjw33ok63rwv" path="res://Assets/Audio/SoundFX/CabinetMovingFast.mp3" id="13_pgqyl"]
+[ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="14_stjxj"]
+[ext_resource type="AudioStream" uid="uid://bh7pseacjj5se" path="res://Assets/Audio/SoundFX/CabinetClosed.mp3" id="15_63b8w"]
+[ext_resource type="Script" uid="uid://c2bhb72ytvio" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="16_0thx4"]
+[ext_resource type="Script" uid="uid://yfdslqiugp0s" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="17_1upqy"]
+[ext_resource type="PackedScene" uid="uid://xy4w3c35frqw" path="res://Scenes/Prefabs/MoveableObjects/lamp.tscn" id="18_fc8q6"]
+[ext_resource type="PackedScene" uid="uid://vuyggo5xvbr3" path="res://Scenes/Prefabs/MoveableObjects/office_Chair.tscn" id="19_wu18t"]
+[ext_resource type="PackedScene" uid="uid://b8iui7iq0t8y6" path="res://Scenes/Prefabs/MoveableObjects/garbage_can.tscn" id="20_5vv7w"]
+[ext_resource type="PackedScene" uid="uid://bupcu04fap7xp" path="res://Scenes/Prefabs/MoveableObjects/keyboard_low_poly_2.tscn" id="21_ned67"]
+[ext_resource type="PackedScene" uid="uid://3bbxkn5brr4h" path="res://Scenes/Prefabs/crouch_assistant.tscn" id="22_5avso"]
+[ext_resource type="PackedScene" uid="uid://b85fvq8nn7wpm" path="res://Scenes/Prefabs/MoveableObjects/Monitor_interactable.tscn" id="23_ld0um"]
+[ext_resource type="PackedScene" uid="uid://b65csccqsl1l1" path="res://Scenes/Prefabs/StaticObjects/industrial_table.tscn" id="24_yhfj6"]
+[ext_resource type="PackedScene" uid="uid://c88sba6h6nwvq" path="res://Scenes/Prefabs/StaticObjects/chute.tscn" id="25_ng6jo"]
+[ext_resource type="PackedScene" uid="uid://ce71rwirfiafw" path="res://Scenes/Prefabs/MoveableObjects/desk_1.tscn" id="26_dxolc"]
+[ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="27_34djc"]
+[ext_resource type="PackedScene" uid="uid://ugwqaphpkcxp" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_long.tscn" id="28_4ul10"]
+[ext_resource type="PackedScene" uid="uid://c148bm0rukaqe" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_medium.tscn" id="29_st0d1"]
+[ext_resource type="PackedScene" uid="uid://dfbuid76trvb0" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_mini.tscn" id="30_tibm4"]
+[ext_resource type="PackedScene" uid="uid://bwkdr1hhs71ee" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="31_hu0xx"]
+[ext_resource type="PackedScene" uid="uid://cwc2c6vi5o20n" path="res://Scenes/Prefabs/MoveableObjects/large_printer.tscn" id="32_4a1w8"]
+[ext_resource type="PackedScene" uid="uid://duwevejxlw37b" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall_door.tscn" id="32_8xjiq"]
+[ext_resource type="PackedScene" uid="uid://uuhrokgnd64l" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall.tscn" id="33_kqx4f"]
+[ext_resource type="PackedScene" uid="uid://box8t8l24q1si" path="res://Assets/Models/desk.tscn" id="33_o2qy4"]
+[ext_resource type="PackedScene" uid="uid://8qbaxg8k1nrt" path="res://Scenes/Prefabs/Readables/readable_template.tscn" id="34_oj80k"]
+[ext_resource type="PackedScene" uid="uid://bbp38gl3c7dir" path="res://Scenes/Prefabs/StaticObjects/mail_room_shelf.tscn" id="34_qc1xv"]
+[ext_resource type="PackedScene" uid="uid://dw7ahxmjrcoci" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall_door_window.tscn" id="35_k4kl4"]
+[ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="36_hxoqh"]
+[ext_resource type="PackedScene" uid="uid://br1uwkkcvlmla" path="res://Scenes/Prefabs/StaticObjects/Bookshelf.tscn" id="36_mhaf6"]
+[ext_resource type="PackedScene" uid="uid://dgcud5rlm72p6" path="res://Scenes/Prefabs/StaticObjects/airduct_upper.tscn" id="37_oxq8s"]
+[ext_resource type="PackedScene" uid="uid://eibau86lcgdu" path="res://Scenes/Prefabs/StaticObjects/pinboard.tscn" id="37_pgqyl"]
+[ext_resource type="PackedScene" uid="uid://ca5vnaw64qen0" path="res://Scenes/Prefabs/StaticObjects/airduct_l_piece.tscn" id="38_emnph"]
+[ext_resource type="PackedScene" uid="uid://d0sbrgg1ha1iq" path="res://Scenes/Prefabs/StaticObjects/paper_on_wall.tscn" id="38_stjxj"]
+[ext_resource type="PackedScene" uid="uid://doveq38wiuloa" path="res://Scenes/Prefabs/StaticObjects/ceiling_light_mailroom.tscn" id="39_ekxs1"]
+[ext_resource type="PackedScene" uid="uid://bhyepbfxwhdat" path="res://Scenes/light_with_optimizercollider_MAILROOM_ONLY.tscn" id="40_rpikg"]
+[ext_resource type="PackedScene" uid="uid://bf2twmuaaf8yg" path="res://Scenes/Prefabs/StaticObjects/Tiles/ceiling.tscn" id="41_80qsf"]
+[ext_resource type="Texture2D" uid="uid://b5g2iueg5ougy" path="res://Assets/Textures/Decals/Cracks1Large2.png" id="42_hycs1"]
+[ext_resource type="Texture2D" uid="uid://b48uvxkvl3820" path="res://Assets/Textures/Decals/Scratches.png" id="46_63b8w"]
+[ext_resource type="PackedScene" uid="uid://0twm7ocl2mi5" path="res://Scenes/Prefabs/MoveableObjects/PackageHeart.tscn" id="49_17bx0"]
+[ext_resource type="Script" uid="uid://cbvb1snf756vu" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="56_1upqy"]
+[ext_resource type="Texture2D" uid="uid://y2pmwstysa37" path="res://Assets/Textures/BlenderTextures/WallMailRoom.png" id="57_1upqy"]
+[ext_resource type="Script" uid="uid://dukwbapxl8v66" path="res://Scripts/CutoutCollisionShaper.gd" id="58_fc8q6"]
+[ext_resource type="Script" uid="uid://dkimokrgwhcry" path="res://Scenes/Worlds/mailroom_secret_ambiancetrigger.gd" id="61_fc8q6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ce6ua"]
+albedo_texture = ExtResource("5_3rxvh")
+uv1_scale = Vector3(19.735, 9.65, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ytt0c"]
+lightmap_size_hint = Vector2i(733, 495)
+add_uv2 = true
+size = Vector3(95.985, 1, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1dbhk"]
+data = PackedVector3Array(-40.3225, 0.5, 25, 40.3225, 0.5, 25, -40.3225, -0.5, 25, 40.3225, 0.5, 25, 40.3225, -0.5, 25, -40.3225, -0.5, 25, 40.3225, 0.5, -25, -40.3225, 0.5, -25, 40.3225, -0.5, -25, -40.3225, 0.5, -25, -40.3225, -0.5, -25, 40.3225, -0.5, -25, 40.3225, 0.5, 25, 40.3225, 0.5, -25, 40.3225, -0.5, 25, 40.3225, 0.5, -25, 40.3225, -0.5, -25, 40.3225, -0.5, 25, -40.3225, 0.5, -25, -40.3225, 0.5, 25, -40.3225, -0.5, -25, -40.3225, 0.5, 25, -40.3225, -0.5, 25, -40.3225, -0.5, -25, 40.3225, 0.5, 25, -40.3225, 0.5, 25, 40.3225, 0.5, -25, -40.3225, 0.5, 25, -40.3225, 0.5, -25, 40.3225, 0.5, -25, -40.3225, -0.5, 25, 40.3225, -0.5, 25, -40.3225, -0.5, -25, 40.3225, -0.5, 25, 40.3225, -0.5, -25, -40.3225, -0.5, -25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u7rba"]
+size = Vector3(79.5578, 1, 48.0129)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c71w3"]
+size = Vector3(2.69171, 0.0540848, 1.33634)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ixxc"]
+size = Vector3(0.0406456, 1.0762, 1.10547)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_40acm"]
+size = Vector3(2.41611, 1.0732, 0.0537634)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xtl34"]
+size = Vector3(0.679825, 0.98907, 1.09197)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1ft7"]
+resource_name = "Desk2"
+cull_mode = 2
+albedo_texture = ExtResource("10_oj80k")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_eqkyc"]
+_surfaces = [{
+"aabb": AABB(-2.24306, -0.9522, -1.11668, 4.48611, 1.9044, 2.23337),
+"format": 34896613377,
+"index_count": 384,
+"index_data": PackedByteArray("DwBBABUADwA5AEEADAA2ABMADAAuADYADQA0ABEADQA1ADQAAgAGAAcAAgALAAYALQAHACsABgArAAcABgApACsAEQA+ABIAEQA0AD4ABQAKAAAABQAJAAoAOgAzADcADgBAABQADgA4AEAAMwA6ADwAMAA9AD8ACQABAAoACQAEAAEAFAA1AA0AFABAADUACwAIAAYACwADAAgABAAOAAEABAAQAA4AAwATAAgAAwAMABMACAAWAAYACAATABYACwAMAAMACwAVAAwAAQAUAAoAAQAOABQAEQAAAA0AEQAFAAAADQAKABQADQAAAAoABwAPAAIABwASAA8AFQACAA8AFQALAAIAGQAhAB0AGQAeACEAHAAbAB0AHAAaABsAGAAaABwAGAAXABoAJgAWACcAGwATAB0AGwAWABMAHQAQABkAHQATABAAGQAEABgAGQAQAAQAGAAJABcAGAAEAAkACQAaABcAGgAoACcAGgAJACgAIQAkACAAIQAlACQAGAAeABkAGAAfAB4AHQAgABwAHQAhACAAHAAfABgAHAAgAB8AIwAlACIAIwAkACUAIAAjAB8AIAAkACMAHgAlACEAHgAiACUAHwAiAB4AHwAjACIAKQAGACYAKAAFACoAKAAJAAUAKwAmAC0AKwApACYALAAoACoALAAnACgALQAnACwALQAmACcABwAtABIAEgAsABEALQAsABIAEQAsAAUABQAsACoAJwAbABoAGwAnABYAFgAmAAYANgAvAD8ANgAuAC8AQQAxADAAQQA5ADEANAAyADwANAA1ADIAOAA6ADcAOAA7ADoAOQA9ADEAOQA+AD0APgA8AD0APgA0ADwANQAzADIANQBAADMAPwA7ADYAPwA6ADsAQAA3ADMAQAA4ADcAMAAuAEEAMAAvAC4AEgA5AA8AEgA+ADkAEwA7ABAAEwA2ADsAPwA9ADwAEAA4AA4AEAA7ADgALwAwAD8APAA6AD8AMwA8ADIAFQAuAAwAFQBBAC4AMQA9ADAA"),
+"name": "Desk2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 66,
+"vertex_data": PackedByteArray("vvIAAGoZAAC+8gAAd/AAAEANAABqGQAAQA0AAHfwAAD67gAAd/AAAPruAABqGQAABBEAACkiAAAEEQAAahkAAAQRAAB38AAA+u4AACkiAAC+8gAAeSEAAEANAAB5IQAAQA3z8XfwAAC+8vPxahkAAL7y8/F38AAAQA3z8WoZAAD67vPxd/AAAPru8/FqGQAABBHz8WoZAAAEEfPxd/AAAL7y8/F5IQAAQA3z8XkhAAAEEfPxKSIAABXvaxZKIgAAFe9rFtPqAAAV7xPy0+oAAHWuaxZKIgAAda4T8koiAAB1rmsW0+oAAHWuE/LT6gAAeeyN7NPqAAB57PEb0+oAABCx8RvT6gAAELGN7NPqAAB57I3sskUAAHns8RuyRQAAELHxG7JFAAAQsY3sskUAAPYyYBYwIgAARU5gFjYiAABFTgAAKSIAAPYyAAApIgAARU4AAGoZAAD2MgAAahkAAEVOYBZqGQAA9jJgFmoZAAAAAPPx/v8AAAAA///+/wAAAAD//9oYAAAAAP//AAAAAP////8AAAAA/////9oYAAB+9fPxAAAAAP//8/EAAAAAgArz8f7/AAD//////v8AAP//8/H+/wAAAADz8QAAAAB+9f///v8AAH718/H+/wAAfvX//wAAAACACv//AAAAAIAK8/EAAAAAgAr///7/AAD///Px2hgAAAAA8/HaGAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1uyv0"]
+resource_name = "desk_Cube_011"
+_surfaces = [{
+"aabb": AABB(-2.24306, -0.9522, -1.11668, 4.48611, 1.9044, 2.23337),
+"attribute_data": PackedByteArray("7wGyYPjRYEX6MdkzgfXvX+6jYEUEYNkz7wFhwyZs7wGSrg/+gmXZMyZs+S+b3A/+IPfvX+6j/0YaLtBcGi7QXO8BUGL40f9GK15hw4dqzwO92tqhK15hw+8BwsGHau8B5GPZM4dq+S+92gTOGdD/Rite72PvAdJcPtBgRbQz2TMmbKkDS7AP/oJlBGBSarv6m9zk0RousmCiB7LM+jEEYIH1GoyiB7v6BGAEYBouYcNSarLMkq7k0SD3GowPoA6MQQm7+houpTAaLlBiQQmyzBouwsGzaLLM5GMEYA+gnSyzaLv6D6CdLJKuBM6iB2zOtDMEYFJqbM5LsOTR5HOdLJKu2qEAMmHD2NUrYRNa5GP2AbpYZvoEztjVGozkLLhY5Cy4WGb666XanhqM5CyfMKLxK2ETWq1/E1qtf+6jkhbrc1Bw+jGtfwfMkhac3gTOovEajO6jgEGc3uul2p5QcNqeUHAHzIBBR/ntpnvgD/4PWPkvR/kCzT6XMQ/6Mfkvu98CzT6XvSjnz4BBu9/tpgf6D/7nz2sb7wEzE3vgtdoPWJ8MBCgzE+RzMQ/6MZ8MBCi/LORzvShB84BB7wG/LAf6tdpB82sbFVrJtGa+iJdmvoiXFVrJtKeyipcVWgqpFVoKqaeyipcZ0BqMK14KqZKuh5crXsm071vPA3zCh5fvAWun+NEajJKuqJXvASqz71vvAXzCqJUFBmunp7KolaeyqJUFBiqzZr6olWa+qJX54cEIBHAP/l/l+p354VELsqoP/l/laZs2eQ/+5LNpmwRwYcPkcw/+kq5pmwRwTFXkc/qPC2KTjDZ5+o8LYuaRdG3RWXMGQcd0bUxV7wFBx5tkk4x13cEIgGsP/uRzUQuyqvqPC2Jhw+RzwQjvAQ/+m2Rhw3RtYcMEcEHHkq76nWh4UQuyqn6UaHjBCHMGD/4EcNFZ5HN+lARw3b7kc4v5dG3dvoBrQcd13VELsqqL+e8Bk8ybZOaRBHCTzOSz+p0="),
+"format": 34896613399,
+"index_count": 384,
+"index_data": PackedByteArray("LAC6AD0ALACqALoAIwCiADgAIwCNAKIAJgCdADMAJgCfAJ0ABwATABcABwAgABMAiQAWAIMAEwCEABcAEwB+AIQAMwC1ADUAMwCdALUAEQAeAAEAEQAbAB4ArQCaAKQAKQC4ADsAKQCnALgAmgCtALEAkgCzALcAGwAEAB4AGwANAAQAOwCfACYAOwC4AJ8AIAAZABMAIAAKABkADAAoAAMADAAuACgACQA2ABgACQAiADYAGgBAABQAGgA6AEAAIQAkAAsAIQA+ACQABQA8AB8ABQAqADwAMgAAACUAMgAQAAAAJwAfADwAJwACAB8AFgArAAYAFgA0ACsAPgAIAC0APgAhAAgASQBjAFYASQBaAGMAVQBSAFkAVQBPAFIARgBMAFQARgBCAEwAdQBBAHgAUAA5AFgAUAA/ADkAVwAvAEoAVwA3AC8ASwAOAEcASwAxAA4ASAAdAEQASAAPAB0AHABNAEMATQB7AHcATQAcAHsAZQBuAGIAZQBxAG4ARQBaAEkARQBdAFoAVgBgAFMAVgBjAGAAUwBdAEUAUwBgAF0AaQBvAGYAaQBsAG8AYQBqAF4AYQBtAGoAWwBwAGQAWwBnAHAAXwBoAFwAXwBrAGgAfQASAHIAegARAIEAegAbABEAhQB0AIsAhQB/AHQAiAB8AIIAiAB5AHwAigB2AIcAigBzAHYAFgCJADQANACGADIAiQCGADQAMgCGABAAEACGAIAAeABRAE4AUQB4AEEAQQB1ABUAoQCPALYAoQCMAI8AuwCWAJMAuwCrAJYAnACXALAAnACeAJcApgCsAKMApgCuAKwAqQCyAJQAqQC0ALIAtACwALIAtACcALAAoACbAJkAoAC5AJsAtgCuAKEAtgCsAK4AuQClAJsAuQCoAKUAkwCOALsAkwCRAI4ANQCqACwANQC1AKoAOACvADAAOACiAK8AtwCzALEAMACnACkAMACvAKcAkACSALcAsQCtALcAmgCxAJgAPQCNACMAPQC6AI0AlQCzAJIA"),
+"material": SubResource("StandardMaterial3D_d1ft7"),
+"name": "Desk2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 188,
+"vertex_data": PackedByteArray("vvIAAGoZ//++8gAAahlU1b7yAABqGf//vvIAAHfw//++8gAAd/BU1b7yAAB38P//QA0AAGoZ//9ADQAAahn//0ANAABqGf+/QA0AAHfw//9ADQAAd/D//0ANAAB38P+/+u4AAHfw///67gAAd/BU1fruAAB38IXB+u4AAHfw/7/67gAAahn///ruAABqGVTVBBEAACki/78EEQAAKSL//wQRAAApIlTVBBEAACki/78EEQAAahn//wQRAABqGf//BBEAAHfw//8EEQAAd/D//wQRAAB38FTV+u4AACkiVNX67gAAKSL/v/ruAAApIv+/vvIAAHkhVNW+8gAAeSH//0ANAAB5If//QA0AAHkh/79ADfPxd/D//0AN8/F38P//QA3z8Xfw/7++8vPxahn//77y8/FqGf//vvLz8WoZ//++8vPxd/D//77y8/F38P//vvLz8Xfw//9ADfPxahn//0AN8/FqGf//QA3z8WoZ/7/67vPxd/D///ru8/F38MXV+u7z8Xfw///67vPxd/CFwfru8/FqGf//+u7z8WoZ//8EEfPxahn//wQR8/FqGf//BBHz8Xfw//8EEfPxd/C+1QQR8/F38P//BBHz8XfwVtUEEfPxd/BU1b7y8/F5If//vvLz8Xkh//9ADfPxeSH//0AN8/F5If+/BBHz8SkiVtUEEfPxKSJU1QQR8/EpIv+/Fe9rFkoi//8V72sWSiL/vxXvaxZKIv+/Fe9rFtPq/38V72sW0+r//xXvaxbT6oXBFe9rFtPq/78V7xPy0+r/fxXvE/LT6sbVFe8T8tPqhcF1rmsWSiL//3WuaxZKIv+/da5rFkoi/791rmsWSiJU1XWuE/JKIlbVda4T8koi/791rhPySiJU1XWuaxbT6v9/da5rFtPq//91rmsW0+pU1XWuE/LT6v9/da4T8tPqvtV1rhPy0+pW1XWuE/LT6lTVeeyN7NPq/3957I3s0+r//3nsjezT6lTVeezxG9Pq/3957PEb0+pU1Xns8RvT6lTVELHxG9Pq/38QsfEb0+pU1RCx8RvT6v+/ELGN7NPq/38QsY3s0+r//xCxjezT6v+/eeyN7LJF/7957I3sskX//3nsjeyyRVTVeezxG7JF/7957PEbskVU1Xns8RuyRVTVELHxG7JF/78QsfEbskVU1RCx8RuyRf+/ELGN7LJF/78QsY3sskX//xCxjeyyRf+/9jJgFjAi/7/2MmAWMCL///YyYBYwIlTV9jJgFjAi/79FTmAWNiL//0VOYBY2Iv+/RU5gFjYi/79FTmAWNiJU1UVOAAApIlTVRU4AACki/79FTgAAKSJU1fYyAAApIv+/9jIAACki///2MgAAKSJU1UVOAABqGf//RU4AAGoZVNVFTgAAahlU1fYyAABqGf//9jIAAGoZ///2MgAAahlU1UVOYBZqGf//RU5gFmoZ//9FTmAWahlU1fYyYBZqGf//9jJgFmoZ///2MmAWahlU1QAA8/H+////AADz8f7///8AAPPx/v//vwAA///+////AAD///7/VNUAAP///v//vwAA///aGFTVAAD//9oY/78AAP//AAD//wAA//8AAFTVAAD//wAA/7//////AAD///////8AAFTV/////wAAVNX/////2hhU1f/////aGFTVfvXz8QAA//9+9fPxAAD/////8/EAAP/////z8QAA//////PxAABU1YAK8/H+////gArz8f7//////////v/////////+/1TV//////7/VNX///Px/v//////8/H+///////z8f7/VNUAAPPxAAD//wAA8/EAAP//AADz8QAA/79+9f///v///371///+/1TVfvXz8f7///9+9fPx/v///371//8AAP//fvX//wAAVNWACv//AAD//4AK//8AAFTVgArz8QAA//+ACvPxAAD//4AK///+////gAr///7/VNX///Px2hj/////8/HaGFTVAADz8doY//8AAPPx2hj/v/+//79UVVRV/7//f/9//39UVVRV/7//f/+//7//f/8//3////9//3//f/8//3/+//9//39UVVRV/3/+/66Amv7/v/+/VFVUVeZ/5n//f/8/qqpUVfh/BoD/v/+//3//P/9//3//f/8/qqpUVVRVVFWkf6d/roCa/lRVVFX/v/9//3//P/9/////f/9//3//P/9/////v/+//3//P/+//3//f/9//3//P/+//3//v/+//3//P/9/////f/9/7ioP1f9//z//f/7//7//v/9//z//v/+//3//P/9//3/pKgbV/3//P6gqU9WqqlRV/3//P/+//3//f/8//3///6gqU9WqqlRV+H8GgP9//z+kf6d/roCa/v//////f/8//3/+/66Amv7/f///7ioQ1f9//v//f/8/pH+nf/h/BoBU1VTVqCpT1fh/BoBU1VTV/3////9//z9U1VTV/////+kqBtWoKlPVVNVU1f9/////f/8/VNVU1f////+qqqqqVNVU1f9///+qqqqq/38AAP//////f/8//38AAP9//3//f/8/VNVU1f9//3+qqqqqVNVU1f9//3+qqqqq/38AAP9//3//f/8//38AAOZ/5n//f/8/qqpVVfh/BoD/f/8/pH+nf/h/BoBU1VTVVFVUVaR/p39U1VTV5n/mf/9//z+qqlVV/7//v1RVVFVU1VTV/7//v/9//z+qqlVV/7//v/9//z9U1VTV/7//v/9//z+qqlRV//////9//z//f////3//f6qqqar/f///qqqpqv9/////v/+/qqqpqv9/////v/+/qqqqqqqqVFWqqqqqqqpUVf+//7//f/8//7//v/9//z+qqlRV/3//f/9//z//f/9/qqqqqqqqVFX/f/9//3//P6qqVFX/v/+//3//P/9/////f/9/qqqqqv9//3//f/8//7//v6qqqqr/v/+/qqqpqv+//7//f/8//3//f6qqqqr/f/8/qqpUVf9//z//f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_eqkyc")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_78s4l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8mkc3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7job2"]
+resource_name = "Cabinet"
+cull_mode = 2
+albedo_texture = ExtResource("12_mhaf6")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3s30w"]
+_surfaces = [{
+"aabb": AABB(-0.520559, -0.387969, -1.37594, 1.04113, 0.775938, 1.50216),
+"format": 34896613377,
+"index_count": 372,
+"index_data": PackedByteArray("AAAHAAMAAAAGAAcAAgALAAUAAgAKAAsABQAGAAIABQAHAAYAAgAAAAEAAgAGAAAABAAHAAUABAADAAcAAQADAAQAAQAAAAMACwAQAAgACwARABAAAQAKAAIAAQAJAAoABQAIAAQABQALAAgABAAJAAEABAAIAAkADQAPAA4ADQAMAA8ACQAOAAoACQANAA4ACgAPAAsACgAOAA8ACAANAAkACAAMAA0AEAAWABIAEAAUABYACAASAAwACAAQABIADwARAAsADwATABEADAATAA8ADAASABMAFQAWABQAFQAXABYAEQAUABAAEQAVABQAEwAVABEAEwAXABUAEgAXABMAEgAWABcAGAAbABoAKgAfAEEAGQAdAEAAGQAeAB0APwAbABgAPwAcABsAQQAeABkAQQAfAB4AQAAcAD8AQAAdABwAKgAkAB8AHgAiAB0AHgAjACIAHAAgABsAHAAhACAAHwAjAB4AHwAkACMAHQAhABwAHQAiACEAGwAgABoAIwAnACIAIwAoACcAIQAlACAAIQAmACUAJAAoACMAJAApACgAIgAmACEAIgAnACYAIAAlABoAKgApACQAJgArACUAJgAsACsAKQAuACgAKQAvAC4AJwAsACYAJwAtACwAJQArABoAKgAvACkAKAAtACcAKAAuAC0ALwAzAC4ALwA0ADMALQAxACwALQAyADEAKwAwABoAKgA0AC8ALgAyAC0ALgAzADIALAAwACsALAAxADAANAA4ADMANAA5ADgAMgA2ADEAMgA3ADYAMAA1ABoAKgA5ADQAMwA3ADIAMwA4ADcAMQA1ADAAMQA2ADUAOQA9ADgAOQA+AD0ANwA7ADYANwA8ADsANQA6ABoAKgA+ADkAOAA8ADcAOAA9ADwANgA6ADUANgA7ADoAPgAZAD0APgBBABkAPAA/ADsAPABAAD8AOgAYABoAKgBBAD4APQBAADwAPQAZAEAAOwAYADoAOwA/ABgA"),
+"lods": [0.0111974, PackedByteArray("AAAHAAMAAAAGAAcAAgALAAUAAgAKAAsABQAGAAIABQAHAAYAAgAAAAEAAgAGAAAABAAHAAUABAADAAcAAQADAAQAAQAAAAMACwAQAAgACwARABAAAQAKAAIAAQAJAAoABQAIAAQABQALAAgABAAJAAEABAAIAAkADQAPAA4ADQAMAA8ACQAOAAoACQANAA4ACgAPAAsACgAOAA8ACAANAAkACAAMAA0AEAAWABIAEAAUABYACAASAAwACAAQABIADwARAAsADwATABEADAATAA8ADAASABMAFQAWABQAFQAXABYAEQAUABAAEQAVABQAEwAVABEAEwAXABUAEgAXABMAEgAWABcAPwAdABgAQAAdAD8APABAAD8APAA/ABgAHQAgABgAGAAgABoAPAAYADUANQAYABoANgA8ADUANwA8ADYAMgA3ADYAMgA2ADUAKwA1ABoAMgA1ACsAIAArABoALQAyACsAJgArACAAJgAtACsAJwAtACYAIgAnACYAIgAmACAAHQAiACAAHwAdAEAAHwAiAB0AHwApACIAKQAnACIAPgAfAEAAKQAuACcAJwAuAC0ALgAyAC0ALgAzADIAMwA3ADIANAAzAC4ANAA3ADMAKQA0AC4ANAA+ADcAKgA0ACkAKgA+ADQAKgApAB8AKgAfAD4APgA9ADcANwA9ADwAPgBAAD0APQBAADwA"), 0.0674261, PackedByteArray("AAAHAAMAAAAGAAcAAgALAAUAAgAKAAsABQAGAAIABQAHAAYAAgAAAAEAAgAGAAAABAAHAAUABAADAAcAAQADAAQAAQAAAAMACwAQAAgACwARABAAAQAKAAIAAQAJAAoABQAIAAQABQALAAgABAAJAAEABAAIAAkADQAPAA4ADQAMAA8ACQAOAAoACQANAA4ACgAPAAsACgAOAA8ACAANAAkACAAMAA0AEAAWABIAEAAUABYACAASAAwACAAQABIADwARAAsADwATABEADAATAA8ADAASABMAFQAWABQAFQAXABYAEQAUABAAEQAVABQAEwAVABEAEwAXABUAEgAXABMAEgAWABcA")],
+"name": "Cabinet",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 66,
+"vertex_data": PackedByteArray("/v8AAHzqAAD+/wAA1+EAAAAAAADX4QAA/v///3zqAAD+////1+EAAAAA///X4QAAAAAAAHzqAAAAAP//fOoAABn7LsrX4QAAGfv5B9fhAADkBPkH1+EAAOQELsrX4QAAGfsuygAAAAAZ+/kHAAAAAOQE+QcAAAAA5AQuygAAAACg9S7KgN0AAF4KLsqA3QAAoPUuylcEAABeCi7KVwQAAKD1EQ+A3QAAXgoRD4DdAACg9REPVwQAAF4KEQ9XBAAA/39nzRLrAAD/f1nVY/oAAP9/jMKR6QAARno5yhLrAAAWdtfPLe8AAI505tHI9AAAFnbXz2P6AABGejnKfv4AAOh3jMIS6wAA/HGMwi3vAADRb4zCyPQAAPxxjMJj+gAA6HeMwn7+AABGet+6EusAABZ2QbUt7wAAjnQzs8j0AAAWdkG1Y/oAAEZ637p+/gAA/3+Mwv//AAD/f7K3EusAAP9/v68t7wAA/3/XrMj0AAD/f7+vY/oAAP9/srd+/gAAt4XfuhLrAADniUG1Le8AAG+LM7PI9AAA54lBtWP6AAC3hd+6fv4AABaIjMIS6wAAAo6Mwi3vAAAskIzCyPQAAAKOjMJj+gAAFoiMwn7+AAC3hTnKEusAAOeJ188t7wAAb4vm0cj0AADnidfPY/oAALeFOcp+/gAA/39Z1S3vAAD/f0HYyPQAAP9/Z81+/gAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qr8se"]
+resource_name = "desk_Cube_040"
+_surfaces = [{
+"aabb": AABB(-0.520559, -0.387969, -1.37594, 1.04113, 0.775938, 1.50216),
+"attribute_data": PackedByteArray("36K3Xd+it13forddLV+8ZRSXtxy5prdd36LdWS1frxZQmbccuabErN+inrD0Z7dd9Ge3XfRnt10Ul6FXReSRYRpkt130Z91ZUJmhV0XknrAaZMSs9GeesN+ixKzfosSs36LErPRnxKz0Z8Ss9GfErJGVPkvi1xRjVZOaCyfsnrD1qJ6wWF05ZJGVjB4dAdqyp9WesFddMhjTmo0eHQHh/h0BvGXTmj5L4tcbr1WToVc26OxM0C28ZfWoER0n7OxMUvCesPWo/0v1qMNJvGXasqfV/0v89MNJvGXh/h0BHQH89BEdNuiesFLwl2TQLR0BGmShV2aRSw1y6qqu+Gfh/hpk+w5mkfBVgebWThxb/AT1yju2curWTmLu7a65yOH+9crh/oHmqq5i7khmHFu8ZSqPoVcdAZ6w+GfQ0yqP+w4dAfhnCzD8BAX2O7beYZ6wucjQ0wX24f7eYfhnCzC8ZQBuPcklcjq9j27+ymdvXMk0cGjHSXFnxCV12rhCcjW6UHAGu1Bwb8pCcp/JSXH+tCV1Q8g0cP+3Z2/yuTFw1sslcqPM1Gv+tCV1uc0vbeK3AG7UuY9ulbsdb7/M7m+xzvhn2rhJcZTR+WrvuexsvLq2baDM6WyUzvhnT77Ua5TR3Gr0vM5sI7zObI3L3GpdzPhnuc3UayvC6Wwrv7ZtN73sbCXK+WpZyfhnQ8hJcSvC7m9Ivx1vVr0vbUvH1GtnxCV1T74xcG28AG49yY9u/spJcWfESXFnxCV12rhQcAa7UHAGu1BwBrtQcG/KUHBvyklx/rQldUPIJXKjzNRr/rQldbnNAG7UuR1vv8z4Z9q4SXGU0UlxlNH5au+5+GdPvtRrlNHUa5TR3Gr0vM5sI7zObI3L3GpdzPhnuc3UayvC+GdDyPhnQ8hJcSvC7m9Ivx1vVr0vbUvH1GtnxCV1T74ldU++"),
+"format": 34896613399,
+"index_count": 372,
+"index_data": PackedByteArray("AAAZAAsAAAAWABkACAApABIACAAmACkAFQAYAAoAFQAbABgACQABAAUACQAXAAEAEAAaABQAEAAMABoABgANABEABgACAA0AKwA9AB4AKwBBAD0AAwAlAAcAAwAhACUAEwAdAA8AEwAqAB0ADgAiAAQADgAcACIAMgA4ADUAMgAuADgAIwA2ACcAIwAzADYAKAA7AC0AKAA3ADsAIAA0ACQAIAAxADQAPwBUAEcAPwBOAFQAHwBFAC8AHwA+AEUAOQBCACwAOQBJAEIAMABKADoAMABGAEoAUABTAE0AUABWAFMAQABMADwAQABPAEwASwBRAEMASwBXAFEARABVAEgARABSAFUAWABbAFoAbQBgAIkAWQBeAIgAWQBfAF4AhgBbAFgAhgBcAFsAiQBfAFkAiQBgAF8AhwBcAIYAhwBdAFwAbQBmAGAAXwBjAF4AXwBlAGMAXABhAFsAXABiAGEAYABlAF8AYABmAGUAXQBiAFwAXQBkAGIAWwBhAFoAZQBpAGMAZQBrAGkAYgBnAGEAYgBoAGcAZgBrAGUAZgBsAGsAZABoAGIAZABqAGgAYQBnAFoAbQBsAGYAaABuAGcAaABvAG4AbAByAGsAbABzAHIAagBvAGgAagBxAG8AZwBuAFoAbQBzAGwAawBwAGkAawByAHAAcwB4AHIAcwB5AHgAcQB1AG8AcQB3AHUAbgB0AFoAbQB5AHMAcgB2AHAAcgB4AHYAbwB0AG4AbwB1AHQAeQB+AHgAeQB/AH4AdwB7AHUAdwB8AHsAdAB6AFoAbQB/AHkAeAB9AHYAeAB+AH0AdQB6AHQAdQB7AHoAfwCEAH4AfwCFAIQAfACBAHsAfACCAIEAegCAAFoAbQCFAH8AfgCDAH0AfgCEAIMAewCAAHoAewCBAIAAhQBZAIQAhQCJAFkAggCGAIEAggCHAIYAgABYAFoAbQCJAIUAhACIAIMAhABZAIgAgQBYAIAAgQCGAFgA"),
+"lods": [0.0111974, PackedByteArray("AAAZAAsAAAAWABkACAApABIACAAmACkAFQAYAAoAFQAbABgACQABAAUACQAXAAEAEAAaABQAEAAMABoABgANABEABgACAA0AKwA9AB4AKwBBAD0AAwAlAAcAAwAhACUAEwAdAA8AEwAqAB0ADgAiAAQADgAcACIAMgA4ADUAMgAuADgAIwA2ACcAIwAzADYAKAA7AC0AKAA3ADsAIAA0ACQAIAAxADQAPwBUAEcAPwBOAFQAHwBFAC8AHwA+AEUAOQBCACwAOQBJAEIAMABKADoAMABGAEoAUABTAE0AUABWAFMAQABMADwAQABPAEwASwBRAEMASwBXAFEARABVAEgARABSAFUArQCMAIoArgCMAK0AqQCuAK0AqACtAIoAjACSAIoAigCTAFoAqACKAKQApACKAIsApQCoAKQApgCoAKUAoQCmAKUAoAClAKQAmgCkAFoAoACkAJoAkgCaAIsAnQCgAJoAlgCaAJIAlgCcAJoAmACcAJYAlQCYAJYAlQCWAJIAjQCVAJIAjwCOAK8AjwCUAI4AjwCZAJQAmQCXAJQArACRAK8AmQCeAJcAlwCeAJsAngCfAJsAngCiAJ8AogCnAJ8AowCiAJ4AowCnAKIAmQCjAJ4AowCsAKcAbQCjAJkAbQCsAKMAbQCZAJAAbQCQAKwArACrAKcApwCrAKoArACwAKsAqwCwAKoA"), 0.0674261, PackedByteArray("AAAZAAsAAAAWABkACAApABIACAAmACkAFQAYAAoAFQAbABgACQABAAUACQAXAAEAEAAaABQAEAAMABoABgANABEABgACAA0AKwA9AB4AKwBBAD0AAwAlAAcAAwAhACUAEwAdAA8AEwAqAB0ADgAiAAQADgAcACIAMgA4ADUAMgAuADgAIwA2ACcAIwAzADYAKAA7AC0AKAA3ADsAIAA0ACQAIAAxADQAPwBUAEcAPwBOAFQAHwBFAC8AHwA+AEUAOQBCACwAOQBJAEIAMABKADoAMABGAEoAUABTAE0AUABWAFMAQABMADwAQABPAEwASwBRAEMASwBXAFEARABVAEgARABSAFUA")],
+"material": SubResource("StandardMaterial3D_7job2"),
+"name": "Cabinet",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 177,
+"vertex_data": PackedByteArray("/v8AAHzq/7/+/wAAfOpU1f7/AAB86lTV/v8AANfh///+/wAA1+H///7/AADX4VTV/v8AANfhVNUAAAAA1+H//wAAAADX4f//AAAAANfhVNUAAAAA1+FU1f7///986v+//v///3zqVNX+////fOpU1f7////X4f///v///9fh///+////1+FU1f7////X4VTVAAD//9fh//8AAP//1+H//wAA///X4VTVAAD//9fhVNUAAAAAfOr/vwAAAAB86lTVAAAAAHzqVNUAAP//fOr/vwAA//986lTVAAD//3zqVNUZ+y7K1+H//xn7LsrX4f//GfsuytfhVNUZ+y7K1+EAwBn7LsrX4VTVGfv5B9fh//8Z+/kH1+H//xn7+QfX4VTVGfv5B9fhVNXkBPkH1+H//+QE+QfX4f//5AT5B9fhVNXkBPkH1+FU1eQELsrX4f//5AQuytfh///kBC7K1+FT1eQELsrX4fn/5AQuytfhVNUZ+y7KAAD//xn7LsoAAP+/GfsuygAAVdUZ+y7KAABU1Rn7+QcAAP//Gfv5BwAAVNUZ+/kHAABU1eQE+QcAAP//5AT5BwAAVNXkBPkHAABU1eQELsoAAP//5AQuygAAXv/kBC7KAABU1eQELsoAAFTVoPUuyoDd//+g9S7KgN1U1aD1LsqA3QDAoPUuyoDd//9eCi7KgN3//14KLsqA3VPVXgouyoDd//9eCi7KgN1U1aD1LspXBP+/oPUuylcE/7+g9S7KVwRV1aD1LspXBP//XgouylcE/79eCi7KVwRf/14KLspXBFTVXgouylcEVNWg9REPgN3//6D1EQ+A3VTVoPURD4Dd//9eChEPgN3//14KEQ+A3VTVXgoRD4DdVNWg9REPVwT/v6D1EQ9XBFTVoPURD1cE//9eChEPVwT/v14KEQ9XBFTVXgoRD1cEVNX/f2fNEuuQ/P9/WdVj+rbY/3+MwpHp//9GejnKEutL8hZ2188t75jnjnTm0cj0fd+OdObRyPQL3BZ2189j+uXXRno5yn7+s9Tod4zCEuvT6PxxjMIt7wHV0W+Mwsj0tN7Rb4zCyPSawvxxjMJj+hLZ6HeMwn7+UdVGet+6EusR7RZ2QbUt75ncjnQzs8j0u9+OdDOzyPSByhZ2QbVj+h7aRnrfun7+5tX/f4zC//910/9/srcS65D8/3+/ry3vefn/f9esyPQI3P9/16zI9Gn1/3+/r2P6ttj/f7K3fv4r1beF37oS60vy54lBtS3vmOdvizOzyPQL3G+LM7PI9H3f54lBtWP65de3hd+6fv6z1BaIjMIS69PoAo6Mwi3vAdUskIzCyPSawiyQjMLI9LTeAo6MwmP6EtkWiIzCfv5R1beFOcoS6xHt54nXzy3vmdxvi+bRyPSBym+L5tHI9Lvf54nXz2P6Htq3hTnKfv7m1f9/WdUt73n5/39B2Mj0afX/f0HYyPQI3P9/Z81+/ivV/39nzRLrkvv/f4zCkenr/4505tHI9InkjnTm0cj0Pd6OdObRyPSQ0UZ6Ocp+/mbdRno5yn7+itBGejnKfv6V0+h3jMIS6zbl6HeMwhLree3Rb4zCyPSv09FvjMLI9FjHFnZBtS3vZduOdDOzyPRH3o50M7PI9FPMRnrfun7+Cdb/f7K3Euut/v9/16zI9DjZ/3/XrMj0E+7/f9esyPT///9/v69j+uLYb4szs8j0B9FvizOzyPSk5G+LM7PI9Bze54lBtWP6W9e3hd+6fv6B1BaIjMIS63TnAo6Mwi3vZNIskIzCyPQpxSyQjMLI9HzUb4vm0cj0cM9vi+bRyPSc02+L5tHI9FTe54nXz2P6ydq3hTnKfv761f9/WdUt78n4/39B2Mj02fX/f0HYyPQS2f9/QdjI9AjN/3//f1RVVFWqqlRVAMAAQP///39UVVRVqqpUVf8//7////9/VFVUVVRVqqr/f/9/qqqqqqqqVFX6//p//7//v6qqqqqqqlRV+v8EgP+//7+qqqqqVFWqqv9//39UVVRVVFWqqv9//3+qqqqqVFWqqvr/+n//v/+/qqqqqqH+RH2qqlRVAMAAQP///39UVVRVqqpUVf8//7/9//1/VFVUVVTVVNX6/wSA/7//v6qqqaoEgPy/VNVU1f9////x/+V/VNWpKqqqVFX/f///VFVUVaqqVFX/f///VFVUVVTVVNX/f///sYCmv1TVqipU1VTV/z//v6qqqqqk/kp9/z//f/8//7+qqqmq/3//v6oqqir/f/9/+v/1f1TVqSr/P/9//3//f6+Ap79U1aoqqiqqKv8//79U1aoq/z//f/8//79U1aoqqiqqKv9//39U1aoq/z//f/9//39U1aoqqiqqKn2nPg1m2cIYz27P7p1xbduocqjMJnMhvun25UEB9pww2/iuHo1uX+kqbevhjN840AZqDdR550/ZSvBP5tRfuPDhU+7wHMLm8sJHN+3D0KH0t+F0+P////+BWMDy8Eh69Ggu0NyLOhb1mCY856sZO/BijpIkVo1WMxUJGb7YjN1B/QlizyMHUOFxkZ8W1JITHviV8StyIMYvhRivJrQPrxkqoEYPHawQDz24xxLiPRgNOy9dC0ceigcOt4QLc8XoCpbRLiNT5sMPIKc7D7lYm9hveeO/I2Ozwnz1AD009/PUE+xXDd/ptRizbHfmtnvD493mlNY3ZLrW2FWY8ZfJiPnaSIDtqN8p9npSrPU5L1/dQ1XP+7UXZ/+CJdLm7Q5FxIOOgDn6mXE+lAr1z3EH8uEIkvwXlpPkH2mWMiofGkYp47A7D/DHbhukO5INUzGeDIQf4QiztvgLR8SeChbVgyKxw/8a")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3s30w")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cvogw"]
+points = PackedVector3Array(0.520555, 0.387969, -8.73804e-05, -1.96695e-06, 0.234543, 0.117251, 0.0232335, 0.224973, 0.117251, -1.96695e-06, 0.201656, 0.12622, 0.520555, -0.387969, -8.73804e-05, 0.520555, 0.387969, -0.0508162, -0.520559, 0.387969, -8.73804e-05, -0.0233394, 0.224973, 0.117251, -0.520559, -0.387969, -8.73804e-05, 0.520555, -0.387969, -0.0508162, 0.500581, 0.224821, -1.37594, -0.520559, 0.387969, -0.0508162, -0.520559, -0.387969, -0.0508162, 0.500581, -0.363816, -1.37594, -0.500687, 0.224821, -1.37594, -0.500687, -0.363816, -1.37594)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mjf3r"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("13_pgqyl")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_uflfa"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("14_stjxj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_32lyv"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("15_63b8w")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qtvk3"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("13_pgqyl")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o45tc"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("14_stjxj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1dong"]
+playback_mode = 1
+streams_count = 1
+stream_0/stream = ExtResource("15_63b8w")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vlwi"]
+size = Vector3(1.42514, 1.04016, 1.22727)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hycs1"]
+resource_name = "CeilingLight.002"
+cull_mode = 2
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ndwpg"]
+_surfaces = [{
+"aabb": AABB(-0.637016, -1.85819, -2.61833, 1.27401, 0.224885, 5.23668),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAFAAMAAgAEAAUABgAJAAcABgAIAAkACAABAAkACAAAAAEACgANAAsACgAMAA0ADAAPAA0ADAAOAA8AEAATABEAEAASABMAEgALABMAEgAKAAsAFAAXABUAFAAWABcAFgAZABcAFgAYABkAGgAdABsAGgAcAB0AHAAVAB0AHAAUABUA"),
+"name": "CeilingLight.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("/38AAP7/AAD/fwAAAAAAAOWc107+/wAA5ZzXTgAAAAAIpP7//v8AAAik//8AAAAA9lv+//7/AAD2W///AAAAABlj107+/wAAGWPXTgAAAAAJJAAA/v8AAAkkAAAAAAAA70DXTv7/AADvQNdOAAAAABJI/v/+/wAAEkj//wAAAAAAAP7//v8AAAAA//8AAAAAIwfXTv7/AAAjB9dOAAAAAPXbAAD+/wAA9dsAAAAAAADb+NdO/v8AANv4104AAAAA///+//7/AAD+////AAAAAOy3/v/+/wAA7Lf//wAAAAAPv9dO/v8AAA+/104AAAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4a1w8"]
+resource_name = "desk_Cube_051"
+_surfaces = [{
+"aabb": AABB(-0.637016, -1.85819, -2.61833, 1.27401, 0.224885, 5.23668),
+"attribute_data": PackedByteArray("Ie09kSHtwzl36j2Rd+rDOcznPZHM58M5d/I9kXfywznM7z2RzO/DOevfwznr3z2RluLDOZbiPZFA5cM5QOU9kZbawzmW2j2RQN3DOUDdPZGU6bn+lOk+p+rmuf7q5j6nP+S5/j/kPqfp7rn+6e4+pz/suf4/7D6n"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAFAAMAAgAEAAUABgAJAAcABgAIAAkACAABAAkACAAAAAEACgANAAsACgAMAA0ADAAPAA0ADAAOAA8AEAATABEAEAASABMAEgALABMAEgAKAAsAFAAXABUAFAAWABcAFgAZABcAFgAYABkAGgAdABsAGgAcAB0AHAAVAB0AHAAUABUA"),
+"material": SubResource("StandardMaterial3D_hycs1"),
+"name": "CeilingLight.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 30,
+"vertex_data": PackedByteArray("/38AAP7/////fwAAAAD//+Wc107+/5bm5ZzXTgAAluYIpP7//v/K2gik//8AAMra9lv+//7/ytr2W///AADK2hlj107+/5bmGWPXTgAAluYJJAAA/v//vwkkAAAAAP+/70DXTv7/tsfvQNdOAAC2xxJI/v/+/0PQEkj//wAAQ9AAAP7//v9D0AAA//8AAEPQIwfXTv7/tscjB9dOAAC2x/XbAAD+////9dsAAAAA///b+NdO/v+W5tv4104AAJbm///+//7/ytr+////AADK2uy3/v/+/8ra7Lf//wAAytoPv9dO/v+W5g+/104AAJbm/3//P/9//z/WmGtM1phrTHykPlJ8pD5SPdKB2z3SgdtqzCjnaswo5wAA/38AAP9/ZR8zQWUfM0FWJ1MxVidTMaxOVaesTlWnyz5ln8s+ZZ//f/8//3//P9aYa0zWmGtMfKQ+UnykPlI90oHbPdKB22rMKOdqzCjn")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ndwpg")
+
+[sub_resource type="Animation" id="Animation_hycs1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D2/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CeilingLightOnLight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_17bx0"]
+resource_name = "new_animation"
+length = 8.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D2/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.59, 0.64, 0.707753, 0.745571, 2.22051, 2.27051, 2.33826, 2.37608, 2.63651, 2.68651, 2.75427, 2.79209, 3.8143, 3.8643, 3.93205, 3.96987, 4.34917, 7.2288, 7.25282, 7.30931, 7.33333, 8.46367, 8.51367, 8.58142, 8.61924),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 0.5, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0, 0.5, 0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.5, 0.0, 0.5, 0.5, 0.0, 0.0, 0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CeilingLightOnLight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.59, 0.64, 0.707753, 0.745571, 2.22051, 2.27051, 2.33826, 2.37608, 2.63651, 2.68651, 2.75427, 2.79209, 3.8143, 3.8643, 3.93205, 3.96987, 4.34917, 7.2288, 7.25282, 7.30931, 7.33333, 8.46367, 8.51367, 8.58142, 8.61924),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false, true, true, false, false, true, true, false, false, true, true, false, false, true, false, false, true, false, true, true, false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hycs1"]
+_data = {
+&"RESET": SubResource("Animation_hycs1"),
+&"flicker": SubResource("Animation_17bx0")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01aq2"]
 resource_name = "ElevatorShaft"
@@ -135,8 +427,85 @@ shadow_mesh = SubResource("ArrayMesh_yd030")
 [sub_resource type="BoxMesh" id="BoxMesh_xx5t2"]
 size = Vector3(1.47, 1, 32.53)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i46u3"]
+resource_name = "WallMailRoom"
+cull_mode = 2
+albedo_texture = ExtResource("57_1upqy")
+uv1_scale = Vector3(0.193, 0.193, 0.193)
+uv1_offset = Vector3(0.53, 1.43, 0)
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o5vw3"]
+resource_name = "WallMailRoom"
+cull_mode = 2
+albedo_texture = ExtResource("57_1upqy")
+uv1_scale = Vector3(0.203, 0.203, 0.203)
+uv1_offset = Vector3(0.768, 0.331, 0)
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_652il"]
+resource_name = "WallMailRoom"
+cull_mode = 2
+albedo_texture = ExtResource("57_1upqy")
+uv1_scale = Vector3(0.154, 0.154, 0.154)
+uv1_offset = Vector3(2.014, -0.265, 0)
+texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1m18l"]
+size = Vector3(0.644165, 0.463867, 4.13635)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kp38p"]
+size = Vector3(2.14255, 7.893, 0.26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_084io"]
+size = Vector3(2.40745, 7.70207, 0.349243)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vbd3s"]
+size = Vector3(5.80928, 6.49624, 0.349243)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25jim"]
+size = Vector3(5.72033, 0.016755, 0.349243)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fc8q6"]
+resource_name = "WallMailRoom"
+cull_mode = 2
+albedo_texture = ExtResource("57_1upqy")
+uv1_scale = Vector3(0.193, 0.193, 0.193)
+uv1_offset = Vector3(0.53, 1.43, 0)
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wu18t"]
+resource_name = "WallMailRoom"
+cull_mode = 2
+albedo_texture = ExtResource("57_1upqy")
+uv1_scale = Vector3(0.203, 0.203, 0.203)
+uv1_offset = Vector3(0.768, 0.331, 0)
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5vv7w"]
+resource_name = "WallMailRoom"
+cull_mode = 2
+albedo_texture = ExtResource("57_1upqy")
+uv1_scale = Vector3(0.154, 0.154, 0.154)
+uv1_offset = Vector3(2.014, -0.265, 0)
+texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ned67"]
+size = Vector3(2.35925, 7.893, 0.26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5avso"]
+size = Vector3(2.19075, 7.70207, 0.349243)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ld0um"]
+size = Vector3(5.80928, 6.49624, 0.349243)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yhfj6"]
+size = Vector3(5.72033, 0.016755, 0.349243)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1upqy"]
+size = Vector3(5.2655, 2.49609, 1)
+
 [node name="world" type="Node3D" groups=["world"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("1_k4xxo")
 target_scene_path = "res://Scenes/Worlds/human_resources.tscn"
 move_direction = 1
@@ -155,188 +524,1388 @@ dark_properties = {
 light_value = 0.1
 dark_value = 0.025
 
-[node name="mailroom_prefab" parent="." instance=ExtResource("5_4oqjk")]
+[node name="mailroom_prefab" type="Node3D" parent="."]
 
-[node name="Desk" parent="mailroom_prefab/Objects/Desk3" index="0"]
-script = null
+[node name="floor" type="Node3D" parent="mailroom_prefab"]
 
-[node name="DrawerTop" parent="mailroom_prefab/Objects/Desk3/Desk" index="7"]
-script = null
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mailroom_prefab/floor"]
+transform = Transform3D(0.785, 0, 0, 0, 0.91, 0, 0, 0, 0.785, -9.11333, -0.506603, -14.0214)
+material_override = SubResource("StandardMaterial3D_ce6ua")
+mesh = SubResource("BoxMesh_ytt0c")
 
-[node name="DrawerBottom" parent="mailroom_prefab/Objects/Desk3/Desk" index="8"]
-script = null
+[node name="Area3D" type="Area3D" parent="mailroom_prefab/floor/MeshInstance3D"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("6_17bx0")
+floor_type = "mail_room"
 
-[node name="StaticBody3D14" parent="mailroom_prefab/Walls" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mailroom_prefab/floor/MeshInstance3D/Area3D"]
+shape = SubResource("ConcavePolygonShape3D_1dbhk")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="mailroom_prefab/floor/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mailroom_prefab/floor/MeshInstance3D/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1474, 0, 0.520291)
+shape = SubResource("BoxShape3D_u7rba")
+
+[node name="4way_airduct" parent="mailroom_prefab/floor" instance=ExtResource("7_hycs1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1604, 5.51081, -6.58851)
+
+[node name="airduct_lid" parent="mailroom_prefab/floor/4way_airduct" instance=ExtResource("8_4a1w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0287447, 0.0246992, -0.088223)
+
+[node name="airduct_lid2" parent="mailroom_prefab/floor/4way_airduct" instance=ExtResource("8_4a1w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0118141, 0.0246992, 0.738214)
+
+[node name="airduct_lid3" parent="mailroom_prefab/floor/4way_airduct" instance=ExtResource("8_4a1w8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.338779, 0.0246992, 0.395819)
+
+[node name="base_airduct" parent="mailroom_prefab/floor/4way_airduct" instance=ExtResource("9_o2qy4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.991635, 0.00480413, 0.396888)
+
+[node name="4way_airduct2" parent="mailroom_prefab/floor" instance=ExtResource("7_hycs1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7219, 4.91071, -6.53854)
+
+[node name="airduct_lid2" parent="mailroom_prefab/floor/4way_airduct2" instance=ExtResource("8_4a1w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0118141, 0.0246992, 0.738214)
+
+[node name="4way_airduct4" parent="mailroom_prefab/floor" instance=ExtResource("7_hycs1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.95155, 4.91071, -6.53854)
+
+[node name="airduct_lid2" parent="mailroom_prefab/floor/4way_airduct4" instance=ExtResource("8_4a1w8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.497315, 0.0246992, 0.389666)
+
+[node name="airduct_lid4" parent="mailroom_prefab/floor/4way_airduct4" instance=ExtResource("8_4a1w8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.538975, 0.0246992, -4.00922)
+
+[node name="airduct_lid3" parent="mailroom_prefab/floor/4way_airduct4" instance=ExtResource("8_4a1w8")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.530963, 0.0246992, 4.82898)
+
+[node name="4way_airduct3" parent="mailroom_prefab/floor" instance=ExtResource("7_hycs1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0635, 4.91071, -6.53854)
+
+[node name="airduct_lid2" parent="mailroom_prefab/floor/4way_airduct3" instance=ExtResource("8_4a1w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0118141, 0.0246992, 0.738214)
+
+[node name="airduct_lid3" parent="mailroom_prefab/floor/4way_airduct3" instance=ExtResource("8_4a1w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0118141, 0.0246992, -0.0853496)
+
+[node name="Objects" type="Node3D" parent="mailroom_prefab"]
+
+[node name="Desk3" type="Node3D" parent="mailroom_prefab/Objects"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.8306, -0.0774132, -9.63198)
+
+[node name="Desk" type="RigidBody3D" parent="mailroom_prefab/Objects/Desk3"]
+collision_layer = 2
+collision_mask = 15
+mass = 50.0
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15527e-05, 1.13829, 0.000576701)
+shape = SubResource("BoxShape3D_c71w3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1865, 0.57074, 0.0251927)
+shape = SubResource("BoxShape3D_1ixxc")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18609, 0.57079, 0.0120089)
+shape = SubResource("BoxShape3D_1ixxc")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00372458, 0.570121, -0.515287)
+visible = false
+shape = SubResource("BoxShape3D_40acm")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829035, 0.622409, 0.0158424)
+shape = SubResource("BoxShape3D_xtl34")
+
+[node name="Desk2" type="MeshInstance3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.60024, 0)
+mesh = SubResource("ArrayMesh_1uyv0")
+skeleton = NodePath("")
+
+[node name="MailboxStand" parent="mailroom_prefab/Objects/Desk3/Desk" instance=ExtResource("11_mhiq1")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.90258, 1.16724, -0.248536)
+physics_material_override = SubResource("PhysicsMaterial_78s4l")
+sleeping = true
+freeze = true
+
+[node name="DrawerTop" type="RigidBody3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.824136, 0.535279)
+collision_layer = 3
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_8mkc3")
+gravity_scale = 0.0
+sleeping = true
+freeze = true
+linear_damp = 6.0
+
+[node name="CabinetDesk2" type="MeshInstance3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerTop"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+mesh = SubResource("ArrayMesh_qr8se")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerTop"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_cvogw")
+
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerTop"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0246593, -0.000298202, -0.529209)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+
+[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerTop"]
+stream = SubResource("AudioStreamRandomizer_mjf3r")
+
+[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerTop"]
+stream = SubResource("AudioStreamRandomizer_uflfa")
+
+[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerTop"]
+stream = SubResource("AudioStreamRandomizer_32lyv")
+
+[node name="DrawerScript" type="Node3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerTop"]
+script = ExtResource("16_0thx4")
+
+[node name="DrawerBottom" type="RigidBody3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.832544, 0.354336, 0.535279)
+collision_layer = 3
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_8mkc3")
+gravity_scale = 0.0
+sleeping = true
+freeze = true
+linear_damp = 6.0
+
+[node name="Interpolator" type="Node3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerBottom"]
+script = ExtResource("17_1upqy")
+
+[node name="CabinetDesk2" type="MeshInstance3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerBottom/Interpolator"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+mesh = SubResource("ArrayMesh_qr8se")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerBottom"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_cvogw")
+
+[node name="SliderJoint3D2" type="SliderJoint3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerBottom"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0226642, -0.0221735, -0.574206)
+node_a = NodePath("../..")
+node_b = NodePath("..")
+
+[node name="DrawerAudioLoop" type="AudioStreamPlayer3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerBottom"]
+stream = SubResource("AudioStreamRandomizer_qtvk3")
+
+[node name="DrawerAudioOpen" type="AudioStreamPlayer3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerBottom"]
+stream = SubResource("AudioStreamRandomizer_o45tc")
+
+[node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerBottom"]
+stream = SubResource("AudioStreamRandomizer_1dong")
+
+[node name="DrawerScript" type="Node3D" parent="mailroom_prefab/Objects/Desk3/Desk/DrawerBottom"]
+script = ExtResource("16_0thx4")
+
+[node name="Lamp" parent="mailroom_prefab/Objects/Desk3/Desk" instance=ExtResource("18_fc8q6")]
+transform = Transform3D(-0.809448, 0, 0.587192, 0, 1, 0, -0.587192, 0, -0.809448, 1.05325, 1.37807, -0.335846)
+
+[node name="Chair" parent="mailroom_prefab/Objects/Desk3/Desk" instance=ExtResource("19_wu18t")]
+transform = Transform3D(-0.999968, 0, -0.00808077, 0, 1, 0, 0.00808077, 0, -0.999968, -0.403, 0.886213, 1.054)
+
+[node name="GarbageCan" parent="mailroom_prefab/Objects/Desk3/Desk" instance=ExtResource("20_5vv7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78488, 0.334743, 0.0209348)
+
+[node name="Keyboard" parent="mailroom_prefab/Objects/Desk3/Desk" instance=ExtResource("21_ned67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15408, 1.16596, 0.442178)
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015564, 1.1401, -0.00088501)
+size = Vector3(2.68463, 0.0565338, 1.33014)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18616, 0.568491, 0.0245132)
+size = Vector3(0.0446777, 1.08237, 1.11525)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.849979, 0.568491, 0.0245132)
+size = Vector3(0.720642, 1.08237, 1.11525)
+
+[node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="mailroom_prefab/Objects/Desk3/Desk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000239968, 0.568491, -0.518002)
+size = Vector3(2.41283, 1.08237, 0.0366831)
+
+[node name="Crouch_Assistant" parent="mailroom_prefab/Objects/Desk3" instance=ExtResource("22_5avso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419168, 0)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mailroom_prefab/Objects/Desk3/Crouch_Assistant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.219313, 0.227207, 0.0836834)
+shape = SubResource("BoxShape3D_5vlwi")
+
+[node name="Monitor" parent="mailroom_prefab/Objects/Desk3" instance=ExtResource("23_ld0um")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.57256, -0.227464)
+usernames = Array[String](["mailman"])
+passwords = Array[String](["globalcorprulez"])
+
+[node name="IndustrialTable" parent="mailroom_prefab/Objects" instance=ExtResource("24_yhfj6")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -9.85651, 0.556907, -5.24834)
+
+[node name="IndustrialTable2" parent="mailroom_prefab/Objects" instance=ExtResource("24_yhfj6")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -13.3394, 0.556907, -5.24834)
+
+[node name="IndustrialTable3" parent="mailroom_prefab/Objects" instance=ExtResource("24_yhfj6")]
+transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -17.2193, 0.556907, -5.24834)
+
+[node name="IndustrialTable5" parent="mailroom_prefab/Objects" instance=ExtResource("24_yhfj6")]
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -9.62116, 0.556907, 0.860429)
+
+[node name="IndustrialTable6" parent="mailroom_prefab/Objects" instance=ExtResource("24_yhfj6")]
+transform = Transform3D(-2.56586e-08, 0, 0.587, 0, 0.587, 0, -0.587, 0, -2.56586e-08, -9.3903, 0.556907, -10.8702)
+
+[node name="StaticBody3D" parent="mailroom_prefab/Objects" node_paths=PackedStringArray("game_objects") instance=ExtResource("25_ng6jo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.4464, 2.72705, -11.9021)
+active = true
+game_objects = [NodePath("../../../Package"), NodePath("../../../Package2"), NodePath("../../../Package3"), null]
+
+[node name="StaticBody3D6" parent="mailroom_prefab/Objects" instance=ExtResource("25_ng6jo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2355, 2.72705, 1.8957)
+
+[node name="StaticBody3D2" parent="mailroom_prefab/Objects" instance=ExtResource("25_ng6jo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -15.9743, 2.72705, -11.904)
+
+[node name="StaticBody3D5" parent="mailroom_prefab/Objects" instance=ExtResource("25_ng6jo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3609, 2.72705, 1.87034)
+
+[node name="StaticBody3D3" parent="mailroom_prefab/Objects" instance=ExtResource("25_ng6jo")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -19.8292, 2.72705, -11.9021)
+
+[node name="StaticBody3D4" parent="mailroom_prefab/Objects" instance=ExtResource("25_ng6jo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9425, 2.72705, 1.83474)
+
+[node name="Desk2" parent="mailroom_prefab/Objects" instance=ExtResource("26_dxolc")]
+transform = Transform3D(-0.00181511, 0, 0.999998, 0, 1, 0, -0.999998, 0, -0.00181511, -1.65728, 0, -0.469987)
+
+[node name="Keyboard" parent="mailroom_prefab/Objects/Desk2" index="4"]
+visible = false
+
+[node name="Monitor" parent="mailroom_prefab/Objects/Desk2" index="5"]
+visible = false
+
+[node name="Cardboard_box_big" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2543, 3.2618, 1.67041)
+
+[node name="Cardboard_box_big2" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2543, 3.2618, 0.553038)
+
+[node name="Cardboard_box_big5" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2543, 2.26014, 0.640711)
+
+[node name="Cardboard_box_big4" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2543, 3.2618, -1.30792)
+
+[node name="Cardboard_box_big7" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.81303, 0, -0.582222, 0, 1, 0, 0.582222, 0, 0.81303, -14.2543, 4.33196, -1.15579)
+
+[node name="Cardboard_box_big6" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2543, 2.24859, -0.477663)
+
+[node name="Cardboard_box_big3" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.535989, 0, 0.844225, 0, 1, 0, -0.844225, 0, 0.535989, -13.385, 1.62945, -5.32423)
+
+[node name="Cardboard_box_big25" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6058, 1.26047, -8.54166)
+
+[node name="Cardboard_box_big26" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5381, 2.86614, -11.1214)
+
+[node name="Cardboard_box_big8" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -14.0259, 1.27157, -1.48921)
+
+[node name="Cardboard_box_big12" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1589, -0.0688259, -1.48921)
+
+[node name="Cardboard_box_big27" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.6115, 0.108085, -8.64634)
+
+[node name="Cardboard_box_big28" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.691349, 0, 0.722521, 0, 1, 0, -0.722521, 0, 0.691349, -17.7689, 1.55078, -5.14948)
+
+[node name="Cardboard_box_big13" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1589, 0.356793, 1.53725)
+
+[node name="Cardboard_box_big9" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9936, 1.35917, -0.679732)
+
+[node name="Cardboard_box_long" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.0680661, 0.207511, -0.975862, 0.90435, 0.425906, 0.0274882, 0.421329, -0.88065, -0.216653, -14.2901, 3.3023, 1.16884)
+
+[node name="Cardboard_box_long3" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2901, 1.97248, 1.98554)
+
+[node name="Cardboard_box_long4" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2901, 2.1164, 1.98554)
+
+[node name="Cardboard_box_long5" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2901, 2.21747, 1.98554)
+
+[node name="Cardboard_box_long6" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2901, 2.401, 1.98554)
+
+[node name="Cardboard_box_long16" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2901, 0.954747, 1.98554)
+
+[node name="Cardboard_box_long17" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2901, 1.09866, 1.98554)
+
+[node name="Cardboard_box_long18" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2901, 1.19973, 1.98554)
+
+[node name="Cardboard_box_long19" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2901, 1.38327, 1.98554)
+
+[node name="Cardboard_box_long20" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.0194068, 0, -0.999812, 0, 1, 0, 0.999812, 0, 0.0194068, -14.2901, 1.46004, 0.985756)
+
+[node name="Cardboard_box_long12" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -14.2901, 4.02802, 1.76468)
+
+[node name="Cardboard_box_long13" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -14.2901, 4.17194, 1.76468)
+
+[node name="Cardboard_box_long14" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -14.2901, 4.27301, 1.76468)
+
+[node name="Cardboard_box_long15" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -14.2901, 4.45654, 1.76468)
+
+[node name="Cardboard_box_long8" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -14.2901, 1.97248, -1.30469)
+
+[node name="Cardboard_box_long9" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -14.2901, 2.1164, -1.30469)
+
+[node name="Cardboard_box_long10" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -14.2901, 2.21747, -1.30469)
+
+[node name="Cardboard_box_long11" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -14.2901, 2.401, -1.30469)
+
+[node name="Cardboard_box_long22" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -13.8322, 1.8382, -11.6109)
+
+[node name="Cardboard_box_long23" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -13.8322, 1.98212, -11.6109)
+
+[node name="Cardboard_box_long24" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -13.8322, 2.08318, -11.6109)
+
+[node name="Cardboard_box_long25" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -13.8322, 2.26672, -11.6109)
+
+[node name="Cardboard_box_long7" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-4.37114e-08, 0, 1, -0.76482, 0.644244, -3.34314e-08, -0.644244, -0.76482, -2.81608e-08, -14.2901, 2.28075, 1.4539)
+
+[node name="Cardboard_box_long60" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.257877, -0.0220669, -0.965926, -0.0852601, 0.996359, -3.72688e-09, 0.962409, 0.0823549, -0.258819, 4.58126, 1.12144, -11.673)
+
+[node name="Cardboard_box_long26" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8322, 0.823338, -9.93532)
+
+[node name="Cardboard_box_long27" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8322, 0.967255, -9.93532)
+
+[node name="Cardboard_box_long28" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8322, 1.25186, -9.93532)
+
+[node name="Cardboard_box_long30" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.33058, 0, -0.943778, 0, 1, 0, 0.943778, 0, 0.33058, -13.5865, -0.0379156, -10.0108)
+
+[node name="Cardboard_box_long29" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-4.37114e-08, 0, 1, -0.76482, 0.644244, -3.34314e-08, -0.644244, -0.76482, -2.81608e-08, -13.8322, 1.13161, -10.7326)
+
+[node name="Cardboard_box_long2" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2901, 1.11442, -5.65423)
+
+[node name="Cardboard_box_long70" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.659333, 0.751851, 0, -0.751851, 0.659333, 0, 0, 0, 1, -17.2286, 1.73886, -5.52741)
+
+[node name="Cardboard_box_long69" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.543673, 0, 0.839297, 0, 1, 0, -0.839298, 0, 0.543673, -17.8244, 1.03669, -10.0476)
+
+[node name="Cardboard_box_medium" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8812, 1.10875, -4.74455)
+
+[node name="Cardboard_box_medium9" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6236, 2.0312, -10.4123)
+
+[node name="Cardboard_box_long65" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -22.9139, 0.830381, -1.48885)
+
+[node name="Cardboard_box_long66" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -22.9139, 0.974292, -1.48885)
+
+[node name="Cardboard_box_long67" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -22.9139, 1.07536, -1.48885)
+
+[node name="Cardboard_box_long68" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.877381, 0, -0.479795, 0, 1, 0, 0.479795, 0, 0.877381, -22.9139, 1.2589, -1.48885)
+
+[node name="Cardboard_box_medium33" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7052, 1.02338, -0.290214)
+
+[node name="Cardboard_box_medium11" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6236, 0.141735, -8.74735)
+
+[node name="Cardboard_box_medium12" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6236, 0.141735, -11.5548)
+
+[node name="Cardboard_box_medium4" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9919, 0.794429, 0.113589)
+
+[node name="Cardboard_box_medium5" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9919, 1.14096, 1.20653)
+
+[node name="Cardboard_box_big10" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -13.568, 3.22491, -11.2939)
+
+[node name="Cardboard_box_big11" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5357, 3.22491, -10.4844)
+
+[node name="Cardboard_box_big30" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.931831, 0, -0.362893, 0, 1, 0, 0.362893, 0, 0.931831, 3.91041, 0.269198, -11.1791)
+
+[node name="Cardboard_box_big31" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(-0.155417, 0, -0.987849, 0, 1, 0, 0.987849, 0, -0.155417, 5.29777, 1.41344, -11.8438)
+
+[node name="Cardboard_box_long21" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.335238, 0, -0.942133, 0, 1, 0, 0.942134, 0, 0.335238, -13.7907, 3.36975, -8.73598)
+
+[node name="Cardboard_box_medium6" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.534, 3.07893, -9.69106)
+
+[node name="Cardboard_box_medium7" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.534, 3.07893, -8.36841)
+
+[node name="Cardboard_box_medium2" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.351, 3.19353, -0.0386032)
+
+[node name="Cardboard_box_medium3" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.351, 1.10875, -5.05327)
+
+[node name="Cardboard_box_medium8" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7641, 3.09529, -9.06547)
+
+[node name="Cardboard_box_big19" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -22.4554, 4.23986, -11.2939)
+
+[node name="Cardboard_box_big20" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4231, 4.23986, -10.4844)
+
+[node name="Cardboard_box_long50" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.335238, 0, -0.942133, 0, 1, 0, 0.942134, 0, 0.335238, -22.1488, 4.23458, -8.73598)
+
+[node name="Cardboard_box_long51" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.335238, 0, -0.942133, 0, 1, 0, 0.942134, 0, 0.335238, -22.3766, 4.3752, -7.83439)
+
+[node name="Cardboard_box_medium17" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 0.780823, 0.624752, 0, -0.624752, 0.780823, -22.4214, 4.2047, -9.69106)
+
+[node name="Cardboard_box_medium18" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4214, 3.8755, -8.36841)
+
+[node name="Cardboard_box_medium20" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4214, 3.89314, -7.79863)
+
+[node name="Cardboard_box_medium23" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2505, 3.05412, -7.79863)
+
+[node name="Cardboard_box_medium19" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.6515, 3.86239, -9.06547)
+
+[node name="cardboard_box_mini" parent="mailroom_prefab/Objects" instance=ExtResource("30_tibm4")]
+transform = Transform3D(0.0216054, 0, 0.999767, 0, 1, 0, -0.999767, 0, 0.0216054, -12.4836, 1.10977, -5.32699)
+
+[node name="cardboard_box_mini6" parent="mailroom_prefab/Objects" instance=ExtResource("30_tibm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9959, 1.83447, -8.71613)
+
+[node name="cardboard_box_mini2" parent="mailroom_prefab/Objects" instance=ExtResource("30_tibm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3398, 3.5736, 0.0265787)
+
+[node name="cardboard_box_mini3" parent="mailroom_prefab/Objects" instance=ExtResource("30_tibm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5126, 3.5736, -0.21848)
+
+[node name="cardboard_box_mini4" parent="mailroom_prefab/Objects" instance=ExtResource("30_tibm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3324, 3.10739, -0.430835)
+
+[node name="cardboard_box_mini5" parent="mailroom_prefab/Objects" instance=ExtResource("30_tibm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5874, 3.10739, -0.430835)
+
+[node name="cardboard_box_small" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3772, 1.12013, -4.85278)
+
+[node name="cardboard_box_small43" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.76155, -0.051679, -10.9772)
+
+[node name="Cardboard_box_medium10" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -13.6513, 1.11163, -8.62597)
+
+[node name="cardboard_box_small17" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -13.902, 1.24591, -9.09803)
+
+[node name="cardboard_box_small18" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -13.6012, 0.210301, -9.94146)
+
+[node name="Cardboard_box_long52" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.33058, 0, -0.943778, 0, 1, 0, 0.943778, 0, 0.33058, -21.8027, 2.92073, -9.61755)
+
+[node name="Cardboard_box_medium21" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4535, 3.10038, -8.35411)
+
+[node name="Cardboard_box_medium22" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4535, 3.10038, -11.1616)
+
+[node name="Cardboard_box_medium24" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3731, 3.10038, -10.5104)
+
+[node name="cardboard_box_small33" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -22.4311, 3.16894, -9.54822)
+
+[node name="cardboard_box_small34" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -22.3305, 2.85336, -8.90171)
+
+[node name="cardboard_box_small35" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -22.3305, 3.26178, -8.90171)
+
+[node name="Cardboard_box_long40" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.33058, 0, -0.943778, 0, 1, 0, 0.943778, 0, 0.33058, -19.0111, 1.55863, 0.136219)
+
+[node name="Cardboard_box_medium15" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0481, 1.87027, 1.39966)
+
+[node name="Cardboard_box_medium16" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0036, 2.16646, -1.4078)
+
+[node name="cardboard_box_small30" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -18.9665, 1.90267, 0.205544)
+
+[node name="Cardboard_box_long58" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.33058, 0, -0.943778, 0, 1, 0, 0.943778, 0, 0.33058, -22.3335, 0.0536435, -9.31987)
+
+[node name="Cardboard_box_medium27" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3705, 0.233294, -8.05643)
+
+[node name="Cardboard_box_medium28" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.3705, 0.233294, -10.8639)
+
+[node name="cardboard_box_small37" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.585099, 0, 0.810962, 0, 1, 0, -0.810962, 0, 0.585099, -22.3482, 0.301859, -9.25055)
+
+[node name="Cardboard_box_long59" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.378778, 0, 0.925488, 0, 1, 0, -0.925488, 0, -0.378778, -22.9696, 1.82406, -0.80278)
+
+[node name="Cardboard_box_medium29" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(-0.998671, 0, -0.0515342, 0, 1, 0, 0.0515342, 0, -0.998671, -22.9977, 2.00371, -2.06645)
+
+[node name="Cardboard_box_medium30" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(-0.998671, 0, -0.0515342, 0, 1, 0, 0.0515342, 0, -0.998671, -22.9679, 1.87597, 0.740483)
+
+[node name="Cardboard_box_medium34" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(-0.998671, 0, -0.0515342, 0, 1, 0, 0.0515342, 0, -0.998671, -18.1847, 1.12787, -5.71986)
+
+[node name="Cardboard_box_medium35" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(-0.892932, 0, -0.450192, 0, 1, 0, 0.450192, 0, -0.892932, -18.2963, 1.63973, -5.63857)
+
+[node name="Cardboard_box_medium36" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(-0.976243, 0, 0.216678, 0, 1, 0, -0.216678, 0, -0.976243, -17.8471, 1.85796, -4.99501)
+
+[node name="cardboard_box_small38" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(-0.54253, 0, -0.840037, 0, 1, 0, 0.840037, 0, -0.54253, -22.9585, 2.07228, -0.872769)
+
+[node name="cardboard_box_small16" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0662, 0.83629, 0.639812)
+
+[node name="Cardboard_box_big21" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -22.1624, 1.14476, -11.1417)
+
+[node name="Cardboard_box_big22" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1301, 1.14476, -10.3323)
+
+[node name="Cardboard_box_long53" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4267, 0.812582, -7.6671)
+
+[node name="Cardboard_box_long54" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4267, 0.956496, -7.6671)
+
+[node name="Cardboard_box_long55" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4267, 1.05757, -7.6671)
+
+[node name="Cardboard_box_long56" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.4267, 1.24111, -7.6671)
+
+[node name="Cardboard_box_long57" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.0194068, 0, -0.999812, 0, 1, 0, 0.999812, 0, 0.0194068, -22.4267, 1.31788, -8.66688)
+
+[node name="Cardboard_box_medium25" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1284, 0.998796, -9.53905)
+
+[node name="Cardboard_box_medium26" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1284, 0.998796, -8.44611)
+
+[node name="cardboard_box_small36" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2028, 0.946596, -9.01283)
+
+[node name="Cardboard_box_big23" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -22.9083, 3.13085, -1.99274)
+
+[node name="Cardboard_box_big24" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8759, 3.13085, -1.18326)
+
+[node name="Cardboard_box_long64" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.0194068, 0, -0.999812, 0, 1, 0, 0.999812, 0, 0.0194068, -23.1725, 3.30397, 0.482107)
+
+[node name="Cardboard_box_medium31" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8743, 2.98489, -0.390059)
+
+[node name="Cardboard_box_medium32" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.8743, 2.98489, 0.702879)
+
+[node name="cardboard_box_small39" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9486, 2.93269, 0.136164)
+
+[node name="Cardboard_box_big15" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.850416, 0, 0.52611, 0, 1, 0, -0.52611, 0, 0.850416, -18.7052, 2.86734, -1.48921)
+
+[node name="Cardboard_box_big29" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3224, 1.44101, -4.98741)
+
+[node name="Cardboard_box_big16" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6729, 2.86734, -0.679732)
+
+[node name="Cardboard_box_long35" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9694, 2.53517, 1.98554)
+
+[node name="Cardboard_box_long36" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9694, 2.67908, 1.98554)
+
+[node name="Cardboard_box_long37" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9694, 2.78015, 1.98554)
+
+[node name="Cardboard_box_long38" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9694, 2.96368, 1.98554)
+
+[node name="Cardboard_box_long39" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.0194068, 0, -0.999812, 0, 1, 0, 0.999812, 0, 0.0194068, -18.9694, 3.04046, 0.985756)
+
+[node name="Cardboard_box_medium13" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6712, 2.72137, 0.113589)
+
+[node name="Cardboard_box_medium14" parent="mailroom_prefab/Objects" instance=ExtResource("29_st0d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.6712, 2.72137, 1.20653)
+
+[node name="cardboard_box_small29" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.7455, 2.66918, 0.639812)
+
+[node name="cardboard_box_small2" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.3441, 3.12425, -0.713652)
+
+[node name="cardboard_box_small15" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.3441, 4.28418, 0.910103)
+
+[node name="cardboard_box_small3" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.0367, 2.13291, 0.0919603)
+
+[node name="cardboard_box_small4" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.5626, 2.13291, 0.0919603)
+
+[node name="cardboard_box_small5" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.5626, 2.54291, 0.0919603)
+
+[node name="Cardboard_box_big17" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(-0.999521, 0, -0.0309396, 0, 1, 0, 0.0309396, 0, -0.999521, -22.5417, 2.11798, -9.73926)
+
+[node name="Cardboard_box_big18" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(-0.999521, 0, -0.0309396, 0, 1, 0, 0.0309396, 0, -0.999521, -22.5071, 2.10643, -8.62142)
+
+[node name="Cardboard_box_long41" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.999521, 0, -0.0309397, 0, 1, 0, 0.0309397, 0, -0.999521, -22.5476, 1.83032, -11.0846)
+
+[node name="Cardboard_box_long42" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.999521, 0, -0.0309397, 0, 1, 0, 0.0309397, 0, -0.999521, -22.5476, 1.97424, -11.0846)
+
+[node name="Cardboard_box_long43" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.999521, 0, -0.0309397, 0, 1, 0, 0.0309397, 0, -0.999521, -22.5476, 2.07531, -11.0846)
+
+[node name="Cardboard_box_long44" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.999521, 0, -0.0309397, 0, 1, 0, 0.0309397, 0, -0.999521, -22.5476, 2.25884, -11.0846)
+
+[node name="Cardboard_box_long45" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.891806, 0, 0.452419, 0, 1, 0, -0.452419, 0, -0.891805, -22.4458, 1.83032, -7.7959)
+
+[node name="Cardboard_box_long46" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.891806, 0, 0.452419, 0, 1, 0, -0.452419, 0, -0.891805, -22.4458, 1.97424, -7.7959)
+
+[node name="Cardboard_box_long47" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.891806, 0, 0.452419, 0, 1, 0, -0.452419, 0, -0.891805, -22.4458, 2.07531, -7.7959)
+
+[node name="Cardboard_box_long48" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(-0.891806, 0, 0.452419, 0, 1, 0, -0.452419, 0, -0.891805, -22.4458, 2.25884, -7.7959)
+
+[node name="Cardboard_box_long49" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.0199328, 0.0236634, -0.999521, -0.76482, 0.644244, -2.88103e-08, 0.643936, 0.764454, 0.0309399, -22.5311, 2.13859, -10.5532)
+
+[node name="cardboard_box_small31" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(-0.998028, 0, 0.0627732, 0, 1, 0, -0.0627732, 0, -0.998028, -22.3012, 1.84063, -9.20031)
+
+[node name="cardboard_box_small32" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(-0.998028, 0, 0.0627732, 0, 1, 0, -0.0627732, 0, -0.998028, -22.2166, 2.40075, -9.20031)
+
+[node name="cardboard_box_small7" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.5626, 4.16023, 0.0919603)
+
+[node name="cardboard_box_small8" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.5626, 4.57023, 0.0919603)
+
+[node name="cardboard_box_small9" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.5626, 4.16023, -0.416215)
+
+[node name="cardboard_box_small10" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.5626, 4.57023, -0.416215)
+
+[node name="cardboard_box_small11" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.1519, 4.16023, -0.416215)
+
+[node name="cardboard_box_small12" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.1519, 4.57023, -0.416215)
+
+[node name="Cardboard_box_big14" parent="mailroom_prefab/Objects" instance=ExtResource("27_34djc")]
+transform = Transform3D(0.810512, 0, -0.585721, 0, 1, 0, 0.585721, 0, 0.810512, -18.8793, 1.32901, -1.15512)
+
+[node name="Cardboard_box_long31" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -18.9671, 0.493868, 1.76468)
+
+[node name="Cardboard_box_long32" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -18.9671, 0.637778, 1.76468)
+
+[node name="Cardboard_box_long33" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -18.9671, 0.738848, 1.76468)
+
+[node name="Cardboard_box_long34" parent="mailroom_prefab/Objects" instance=ExtResource("28_4ul10")]
+transform = Transform3D(0.882431, 0, 0.470442, 0, 1, 0, -0.470442, 0, 0.882431, -18.9671, 0.922388, 1.76468)
+
+[node name="cardboard_box_small22" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -19.021, 0.750028, 0.910103)
+
+[node name="cardboard_box_small23" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -19.1255, 0.910449, 0.0919603)
+
+[node name="cardboard_box_small24" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -19.1255, 1.32045, 0.0919603)
+
+[node name="cardboard_box_small25" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -19.2396, 0.910449, -0.416215)
+
+[node name="cardboard_box_small26" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.0979129, 0, 0.995195, 0, 1, 0, -0.995195, 0, 0.0979129, -18.2644, 1.03608, 0.612306)
+
+[node name="cardboard_box_small27" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -19.2201, 1.33863, -0.416215)
+
+[node name="cardboard_box_small28" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -18.5816, 1.03608, -0.416215)
+
+[node name="cardboard_box_small13" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.1519, 4.16023, 0.156381)
+
+[node name="cardboard_box_small19" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -14.2663, 0.243326, -0.378123)
+
+[node name="cardboard_box_small20" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.942098, 0, -0.335337, 0, 1, 0, 0.335337, 0, 0.942098, -13.6696, 0.133593, -0.369837)
+
+[node name="cardboard_box_small21" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -13.9231, 0.243326, 0.0801928)
+
+[node name="cardboard_box_small40" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -9.84002, 1.12013, -5.26752)
+
+[node name="cardboard_box_small41" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, -9.47692, 1.12013, -4.91637)
+
+[node name="cardboard_box_small42" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.853023, 0, 0.521873, 0.00212225, 0.999992, -0.00346891, -0.521869, 0.00406661, 0.853016, -9.49672, 1.49157, -4.80921)
+
+[node name="cardboard_box_small14" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.1519, 4.57023, 0.156381)
+
+[node name="cardboard_box_small6" parent="mailroom_prefab/Objects" instance=ExtResource("31_hu0xx")]
+transform = Transform3D(0.995608, 0, -0.0936218, 0, 1, 0, 0.0936218, 0, 0.995608, -14.1082, 2.54291, 0.0919603)
+
+[node name="Large_Printer" parent="mailroom_prefab/Objects" instance=ExtResource("32_4a1w8")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.26979, 0.903205, -11.9032)
+
+[node name="Node3D" parent="mailroom_prefab/Objects" instance=ExtResource("33_o2qy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46621, -0.0511171, -11.7163)
+
+[node name="Area3D" parent="mailroom_prefab/Objects/Node3D" instance=ExtResource("34_oj80k")]
+transform = Transform3D(-0.995799, 0, -0.0915711, 0, 1, 0, 0.0915711, 0, -0.995799, -0.893152, 1.14735, 0.23732)
+object_text = "Just started this job and now they're having me move around the floors delivering their mail. Very late hours, but honestly really well paying - even though it's not what I signed up for.
+"
+
+[node name="Bookshelf" parent="mailroom_prefab/Objects" instance=ExtResource("36_mhaf6")]
+transform = Transform3D(1.49012e-07, 0, -1, 0, 1, 0, 1, 0, 1.49012e-07, 1.40451, 1.56351, -8.09202)
+
+[node name="Pinboard" parent="mailroom_prefab/Objects" instance=ExtResource("37_pgqyl")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.143384, 1.92304, -10.209)
+
+[node name="PaperOnWall" parent="mailroom_prefab/Objects/Pinboard" instance=ExtResource("38_stjxj")]
+transform = Transform3D(0.996455, 0.08413, 1.54962e-10, -0.08413, 0.996455, 3.67744e-09, 1.54969e-10, -3.67744e-09, 1, 0.263124, 0, -1.49012e-08)
+
+[node name="PaperOnWall2" parent="mailroom_prefab/Objects/Pinboard" instance=ExtResource("38_stjxj")]
+transform = Transform3D(0.999487, -0.0320388, 2.24354e-11, 0.0320388, 0.999487, -1.40046e-09, 2.24496e-11, 1.40046e-09, 1, -0.355859, 0.00954747, 1.49012e-08)
+
+[node name="Area3D" parent="mailroom_prefab/Objects" instance=ExtResource("34_oj80k")]
+transform = Transform3D(-0.959746, 1.22771e-08, 0.280868, 0.280868, 4.19518e-08, 0.959746, 0, 1, -4.37114e-08, 6.76992, 1.7457, -28.3083)
+object_text = "I HAVE BARRED THE DOOR FROM THE INSIDE
+DO NOT COME IN"
+
+[node name="Walls" type="Node3D" parent="mailroom_prefab"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0771315, 0)
+
+[node name="StaticBody3D14" parent="mailroom_prefab/Walls" instance=ExtResource("32_8xjiq")]
 transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, 3.60145, 0, -7.72659)
 
-[node name="Door_Lock" parent="mailroom_prefab/Walls/StaticBody3D14/RigidBody3D3" index="1"]
-locked = false
+[node name="WallMailRoomWithDoor" parent="mailroom_prefab/Walls/StaticBody3D14" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036377, 0, 0)
 
-[node name="StaticBody3D34" parent="mailroom_prefab/Walls" index="19"]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -2.052, 0, -7.72)
+[node name="StaticBody3D23" parent="mailroom_prefab/Walls" instance=ExtResource("32_8xjiq")]
+transform = Transform3D(-0.647, 0, 5.65625e-08, 0, 0.647, 0, -5.65625e-08, 0, -0.647, 5.67369, 0, -28.4351)
 
-[node name="StaticBody3D49" parent="mailroom_prefab/Walls" index="22"]
+[node name="Door_Lock" parent="mailroom_prefab/Walls/StaticBody3D23/RigidBody3D3" index="1"]
+locked = true
+
+[node name="WallMailRoomWithDoor" parent="mailroom_prefab/Walls/StaticBody3D23" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036377, 0, 0)
+
+[node name="StaticBody3D16" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 3.60202, 0, -3.23782)
+
+[node name="StaticBody3D18" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 6.49709, 0, -0.511883)
+
+[node name="StaticBody3D63" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 13.3363, 5.25813, -0.511883)
+
+[node name="StaticBody3D64" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 13.3363, 5.25813, -6.21186)
+
+[node name="StaticBody3D65" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 13.3363, 5.25813, -11.8452)
+
+[node name="StaticBody3D66" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 13.3363, 5.44101, -17.5638)
+
+[node name="StaticBody3D19" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 14.9899, 0, 2.24258)
+
+[node name="StaticBody3D22" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 9.3047, 0, 2.24258)
+
+[node name="StaticBody3D20" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 20.587, 0, 2.241)
+
+[node name="StaticBody3D21" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 25.5871, 0, 2.24258)
+
+[node name="StaticBody3D28" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 28.2828, 0, -1.71967)
+
+[node name="StaticBody3D60" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 28.2828, 0, 3.97695)
+
+[node name="StaticBody3D29" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 28.2828, 0, -7.39578)
+
+[node name="StaticBody3D30" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 28.2828, 0, -12.8282)
+
+[node name="StaticBody3D25" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 14.9899, 0, -15.649)
+
+[node name="StaticBody3D26" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 20.5871, 0, -15.649)
+
+[node name="StaticBody3D27" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 25.587, 0, -15.646)
+
+[node name="StaticBody3D33" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -2.07856, 0, -3.23295)
+
+[node name="StaticBody3D34" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-0.647, 0, -5.65625e-08, 0, 0.647, 0, 5.65625e-08, 0, -0.647, -2.099, 0, -7.727)
+
+[node name="StaticBody3D37" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -2.07106, 0, 2.57381)
+
+[node name="StaticBody3D48" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 0.68188, 0, -0.355387)
+
+[node name="StaticBody3D49" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
 transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 6.36547, 0, -10.469)
 
-[node name="StaticBody3D54" parent="mailroom_prefab/Walls" index="26"]
-transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -8.09625, 3.97045, -12.5865)
+[node name="StaticBody3D61" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 11.9693, 0, -15.3684)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn3" index="1"]
-visible = true
+[node name="StaticBody3D50" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 9.24237, 0, -12.5865)
 
-[node name="CeilingLightOn5" parent="mailroom_prefab/Lights" index="1"]
-visible = true
+[node name="StaticBody3D51" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0.171427, 0, -12.58)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn5" index="1"]
-visible = true
+[node name="StaticBody3D67" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 3.34632, 0, -20.4802)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn25" index="1"]
-visible = true
+[node name="StaticBody3D70" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82812e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82812e-08, 3.347, 0, -26.151)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn14" index="1"]
-visible = true
+[node name="StaticBody3D68" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 7.9443, 0, -20.5281)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn8" index="1"]
-visible = true
+[node name="StaticBody3D69" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, -2.82813e-08, 7.944, 0, -26.212)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn17" index="1"]
-visible = true
+[node name="StaticBody3D71" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-0.647, 0, -5.65626e-08, 0, 0.647, 0, 5.65626e-08, 0, -0.647, 5.59176, 0.0120257, -29.2393)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn16" index="1"]
-visible = true
+[node name="StaticBody3D36" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -0.255869, 0, -10.4879)
 
-[node name="CeilingLightOn10" parent="mailroom_prefab/Lights" index="7"]
-visible = true
+[node name="StaticBody3D47" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -4.83022, 0, -10.4879)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn24" index="1"]
-visible = true
+[node name="StaticBody3D17" parent="mailroom_prefab/Walls" instance=ExtResource("32_8xjiq")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -23.5068, 0, -5.06916)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn26" index="1"]
-visible = true
+[node name="RigidBody3D3" parent="mailroom_prefab/Walls/StaticBody3D17" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.249969)
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn27" index="1"]
-visible = true
+[node name="Door_Lock" parent="mailroom_prefab/Walls/StaticBody3D17/RigidBody3D3" index="1"]
+locked = true
 
-[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn28" index="1"]
-visible = true
+[node name="WallMailRoomWithDoor" parent="mailroom_prefab/Walls/StaticBody3D17" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.294369)
+
+[node name="StaticBody3D46" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -23.6847, 0, -10.7437)
+
+[node name="StaticBody3D52" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -23.7052, 0, 0.0422597)
+
+[node name="StaticBody3D55" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -33.3048, 0, -10.7437)
+
+[node name="StaticBody3D56" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -33.3049, 0, 0.610999)
+
+[node name="StaticBody3D59" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -33.3049, 0, -5.08584)
+
+[node name="StaticBody3D38" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -5.01842, -0.0121131, -12.6702)
+
+[node name="StaticBody3D42" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -7.72445, 0, 2.66712)
+
+[node name="StaticBody3D39" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -10.6779, -0.0121131, -12.6706)
+
+[node name="StaticBody3D40" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -16.2709, -0.0121131, -12.6706)
+
+[node name="StaticBody3D41" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -21.8949, -0.0121131, -12.6706)
+
+[node name="StaticBody3D53" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -27.5781, -0.0121131, -12.6706)
+
+[node name="StaticBody3D43" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -13.4052, 0, 2.66712)
+
+[node name="StaticBody3D44" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -19.0882, 0, 2.66712)
+
+[node name="StaticBody3D45" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -24.7722, 0, 2.66759)
+
+[node name="StaticBody3D57" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -30.6947, 0, -12.6807)
+
+[node name="StaticBody3D58" parent="mailroom_prefab/Walls" instance=ExtResource("33_kqx4f")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -30.587, 0, 3.27224)
+
+[node name="StaticBody3D" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.578, 0, -9.46604)
+
+[node name="StaticBody3D2" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.7752, 0, -0.445995)
+
+[node name="StaticBody3D3" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.7544, 0, 0.225973)
+
+[node name="StaticBody3D4" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.6959, 0, -10.2622)
+
+[node name="StaticBody3D5" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.5789, 0, -10.2622)
+
+[node name="StaticBody3D7" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9445, 0, -14.8175)
+
+[node name="StaticBody3D8" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2117, 0, -14.8175)
+
+[node name="StaticBody3D11" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9406, 0, -14.8175)
+
+[node name="StaticBody3D13" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.4923, 0, -12.162)
+
+[node name="StaticBody3D62" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.4923, 0, -7.39877)
+
+[node name="StaticBody3D15" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 27.4923, 0, -1.01069)
+
+[node name="StaticBody3D9" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9445, 0, 1.50251)
+
+[node name="StaticBody3D10" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8272, 0, 1.50251)
+
+[node name="StaticBody3D12" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5521, 0, 1.50251)
+
+[node name="StaticBody3D6" parent="mailroom_prefab/Walls" instance=ExtResource("34_qc1xv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.1964, 0, 0.327649)
+
+[node name="Door" parent="mailroom_prefab/Walls" instance=ExtResource("35_k4kl4")]
+transform = Transform3D(8.48438e-08, 0, 0.647, 0, 0.647, 0, -0.647, 0, 8.48438e-08, -4.82048, -0.00211859, -0.367179)
+
+[node name="Door_Lock" parent="mailroom_prefab/Walls/Door/RigidBody3D3" index="1"]
+locked = true
+
+[node name="airduct_longer" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.12551, 5.00835, -6.14291)
+
+[node name="airduct_longer8" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.552269, 5.00835, -6.14291)
+
+[node name="airduct_longer9" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.2354, 5.00835, -6.14291)
+
+[node name="airduct_longer10" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.03015, 5.00835, -6.14291)
+
+[node name="airduct_longer11" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.82049, 5.00835, -6.14291)
+
+[node name="airduct_longer12" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.58923, 5.00835, -6.14291)
+
+[node name="airduct_longer13" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9404, 5.00835, -5.79716)
+
+[node name="airduct_longer14" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9404, 5.00835, -4.00651)
+
+[node name="airduct_longer15" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9404, 5.00835, -10.1198)
+
+[node name="airduct_longer16" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9404, 5.00835, -8.32914)
+
+[node name="airduct_longer7" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.64797, 5.00835, -8.22902)
+
+[node name="airduct_longer2" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.9385, 5.00835, -6.14291)
+
+[node name="airduct_longer3" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.7383, 5.00835, -6.14291)
+
+[node name="airduct_longer4" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.54672, 5.00835, -6.14291)
+
+[node name="airduct_longer5" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.3609, 5.00835, -6.14291)
+
+[node name="airduct_longer6" parent="mailroom_prefab/Walls" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.1825, 5.00835, -6.14291)
+
+[node name="airduct_upper" parent="mailroom_prefab/Walls" instance=ExtResource("37_oxq8s")]
+transform = Transform3D(-4.37114e-08, 0.0296662, 0.99956, 0, 0.99956, -0.0296662, -1, -1.29675e-09, -4.36921e-08, 13.9716, 5.00835, -6.14291)
+
+[node name="airduct_L_Piece" parent="mailroom_prefab/Walls" instance=ExtResource("38_emnph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9404, 5.00835, -2.22832)
+
+[node name="airduct_L_Piece2" parent="mailroom_prefab/Walls" instance=ExtResource("38_emnph")]
+transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0, -8.74228e-08, 7.64274e-15, -1, -6.9404, 5.00835, -10.0495)
+
+[node name="WallScratches2" type="Decal" parent="mailroom_prefab/Walls"]
+transform = Transform3D(1.95672, 0, 0, 0, -6.86267e-08, -2.12132, 0, 1.57, -9.27258e-08, 3.67394, 1.65387, -28.3818)
+size = Vector3(1.86169, 0.0930407, 1.48901)
+texture_albedo = ExtResource("46_63b8w")
+modulate = Color(0.707992, 0.555906, 0, 1)
+albedo_mix = 0.75
+
+[node name="WallScratches3" type="Decal" parent="mailroom_prefab/Walls"]
+transform = Transform3D(-1.95672, 5.99954e-15, 1.85452e-07, 1.71062e-07, 6.86267e-08, 2.12132, 0, 1.57, -9.27258e-08, 7.88607, 2.56498, -28.3874)
+size = Vector3(1.86169, 0.0930407, 1.48901)
+texture_albedo = ExtResource("46_63b8w")
+modulate = Color(0.707992, 0.555906, 0, 1)
+albedo_mix = 0.75
+
+[node name="WallScratches4" type="Decal" parent="mailroom_prefab/Walls"]
+transform = Transform3D(-1.95661, 7.05475e-10, 0.0218069, 0.0201148, 6.86231e-08, 2.12121, 6.07733e-22, 1.57, -9.27258e-08, 6.60034, 1.04236, -28.3979)
+size = Vector3(1.86169, 0.0930407, 1.48901)
+texture_albedo = ExtResource("46_63b8w")
+modulate = Color(0.707992, 0.555906, 0, 1)
+albedo_mix = 0.75
+
+[node name="Rooms" type="Node3D" parent="mailroom_prefab"]
+
+[node name="Lights" type="Node3D" parent="mailroom_prefab"]
+
+[node name="CeilingLightOn25" parent="mailroom_prefab/Lights" instance=ExtResource("39_ekxs1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -17.8642, 4.63467, -4.98716)
+
+[node name="CeilingLightOnLight" parent="mailroom_prefab/Lights/CeilingLightOn25" index="0"]
+mesh = SubResource("ArrayMesh_4a1w8")
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn25" instance=ExtResource("40_rpikg")]
+transform = Transform3D(1, 0, -1.84566e-14, 0, 1, 0, 1.84566e-14, 0, 1, 0, -2.8731, -0.981712)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="mailroom_prefab/Lights/CeilingLightOn25"]
+libraries = {
+&"": SubResource("AnimationLibrary_hycs1")
+}
+autoplay = "flicker"
+
+[node name="CeilingLightOn8" parent="mailroom_prefab/Lights" instance=ExtResource("39_ekxs1")]
+transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -10.1759, 4.6609, 0.704039)
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn8" instance=ExtResource("40_rpikg")]
+transform = Transform3D(4.61975, 0, 0, 0, 4.61975, 0, 0, 0, 4.61975, 0, -2.8731, 0)
+
+[node name="CeilingLightOn17" parent="mailroom_prefab/Lights" instance=ExtResource("39_ekxs1")]
+transform = Transform3D(-9.46185e-09, 0, -0.216462, 0, 0.216462, 0, 0.216462, 0, -9.46185e-09, 2.63937, 4.59624, -10.6593)
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn17" instance=ExtResource("40_rpikg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+
+[node name="OmniLight3D" parent="mailroom_prefab/Lights/CeilingLightOn17/OmniLight3D2" index="1"]
+omni_range = 5.866
+omni_attenuation = 0.163
+
+[node name="CeilingLightOn16" parent="mailroom_prefab/Lights" instance=ExtResource("39_ekxs1")]
+transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -10.3679, 4.58639, -10.6657)
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn16" instance=ExtResource("40_rpikg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.237259, -2.8731, 0)
+
+[node name="CeilingLightOn10" parent="mailroom_prefab/Lights" instance=ExtResource("39_ekxs1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -0.776337, 4.59801, -5.04403)
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn10" instance=ExtResource("40_rpikg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+
+[node name="CeilingLightOn11" parent="mailroom_prefab/Lights" instance=ExtResource("39_ekxs1")]
+transform = Transform3D(-9.46185e-09, 0, -0.216462, 0, 0.216462, 0, 0.216462, 0, -9.46185e-09, 5.67901, 4.55716, -26.2094)
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn11" instance=ExtResource("40_rpikg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+
+[node name="OmniLight3D" parent="mailroom_prefab/Lights/CeilingLightOn11/OmniLight3D2" index="1"]
+light_energy = 0.414
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 2.738
+omni_range = 7.17
+omni_attenuation = 0.186
+
+[node name="CeilingLightOn24" parent="mailroom_prefab/Lights" instance=ExtResource("39_ekxs1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 7.76402, 4.65248, -5.04403)
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn24" instance=ExtResource("40_rpikg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+
+[node name="CeilingLightOn26" parent="mailroom_prefab/Lights" instance=ExtResource("39_ekxs1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 13.4043, 4.65248, -5.04403)
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn26" instance=ExtResource("40_rpikg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+
+[node name="CeilingLightOn27" parent="mailroom_prefab/Lights" instance=ExtResource("39_ekxs1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 20.3587, 6.367, -10.3117)
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn27" instance=ExtResource("40_rpikg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+
+[node name="CeilingLightOn28" parent="mailroom_prefab/Lights" instance=ExtResource("39_ekxs1")]
+transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, 21.8864, 6.35831, -0.278646)
+
+[node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn28" instance=ExtResource("40_rpikg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8731, 0)
+
+[node name="Roof" type="Node3D" parent="mailroom_prefab"]
+
+[node name="Ceiling16" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -12.1685, 4.541, -4.9745)
+
+[node name="Ceiling33" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.663, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -13.4512, 4.55662, 0.711371)
+
+[node name="Ceiling57" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.663, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -7.9, 4.55, 0.711)
+
+[node name="Ceiling42" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -2.37011, 4.541, 0.711371)
+
+[node name="Ceiling21" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -17.8647, 4.541, -4.9745)
+
+[node name="Ceiling22" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -19.2593, 4.541, -10.6527)
+
+[node name="Ceiling23" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.664, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -19.2518, 4.54765, 0.697172)
+
+[node name="Ceiling24" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.657, 0, 0, 0, 0.657, 0, 0, 0, 0.657, -23.5222, 4.541, -4.9745)
+
+[node name="Ceiling25" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -24.9478, 4.541, -10.65)
+
+[node name="Ceiling26" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -24.9479, 4.541, 0.697)
+
+[node name="Ceiling27" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -29.2476, 4.541, -4.9745)
+
+[node name="Ceiling28" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.653, 0, 0, 0, 0.653, 0, 0, 0, 0.653, -30.6632, 4.541, -10.6514)
+
+[node name="Ceiling29" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -30.6499, 4.541, 0.697)
+
+[node name="Ceiling30" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -34.9512, 4.541, -4.974)
+
+[node name="Ceiling31" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.656, 0, 0, 0, 0.656, 0, 0, 0, 0.656, -36.3879, 4.541, -10.682)
+
+[node name="Ceiling32" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, -36.3014, 4.55317, 0.676888)
+
+[node name="Ceiling39" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -40.6443, 4.541, -4.974)
+
+[node name="Ceiling40" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -42.0538, 4.541, -10.682)
+
+[node name="Ceiling41" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -41.8501, 4.541, 0.697)
+
+[node name="Ceiling17" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -6.47654, 4.541, -4.9745)
+
+[node name="Ceiling18" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -0.787261, 4.541, -4.9745)
+
+[node name="Ceiling19" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 4.87951, 4.541, -4.9745)
+
+[node name="Ceiling20" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.491, 4.52, -4.975)
+
+[node name="Ceiling55" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.491, 4.54, -10.602)
+
+[node name="Ceiling56" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.4909, 4.541, -16.1563)
+
+[node name="Ceiling54" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 13.5472, 6.31338, -4.975)
+
+[node name="Ceiling43" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 10.5649, 4.541, 0.708138)
+
+[node name="Ceiling58" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 4.93435, 4.541, 0.708138)
+
+[node name="Ceiling44" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 16.284, 6.31, 0.007)
+
+[node name="Ceiling45" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 21.8928, 6.31438, -0.165226)
+
+[node name="Ceiling46" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 27.5705, 6.31438, 0.45824)
+
+[node name="Ceiling47" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 25.9011, 6.31338, -5.22)
+
+[node name="Ceiling48" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 26.164, 6.31438, -10.8884)
+
+[node name="Ceiling49" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 26.164, 6.31438, -16.5607)
+
+[node name="Ceiling50" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 20.471, 6.31, -10.284)
+
+[node name="Ceiling51" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 20.4712, 6.31438, -16.005)
+
+[node name="Ceiling52" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 14.9518, 6.31438, -10.3327)
+
+[node name="Ceiling53" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 14.8175, 6.31438, -16.005)
+
+[node name="Ceiling34" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.666, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -13.5129, 4.56344, -10.6626)
+
+[node name="Ceiling35" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -7.77154, 4.541, -10.6646)
+
+[node name="Ceiling36" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, -2.0703, 4.541, -10.6646)
+
+[node name="Ceiling37" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 3.63174, 4.541, -10.6646)
+
+[node name="Ceiling59" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5.67896, 4.4176, -20.535)
+
+[node name="Ceiling60" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 5.67896, 4.418, -26.215)
+
+[node name="Ceiling38" parent="mailroom_prefab/Roof" instance=ExtResource("41_80qsf")]
+transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 9.3371, 4.541, -10.6646)
+
+[node name="WallCracksDecal" type="Decal" parent="mailroom_prefab"]
+transform = Transform3D(1.95671, -1.42109e-14, -9.27259e-08, -8.55304e-08, 2.99978e-15, -2.12132, -1.13687e-13, 1.57, -1.85561e-14, -0.809408, 3.0306, -3.30546)
+size = Vector3(2.42431, 0.0830995, 1.48724)
+texture_albedo = ExtResource("42_hycs1")
+modulate = Color(0.707992, 0.555906, 0, 1)
+albedo_mix = 0.75
 
 [node name="Elevator" parent="." instance=ExtResource("6_mxo3x")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.7281, 0.411036, -7.179)
 
 [node name="Elevator_Wall" parent="Elevator" index="0"]
 visible = false
-
-[node name="Package" parent="." instance=ExtResource("7_jjsy5")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -19.9377, 2.37412, 1.83842)
-visible = false
-collision_mask = 3
-freeze = true
-package_full_address = "Package 1
-Wendell Hanson
-Finance Department
-Cubicle Area
-Cubicle Row 1 Number 4"
-package_partial_address = "Package 1
-Wendell Hanson"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 1
-
-[node name="Package2" parent="." instance=ExtResource("7_jjsy5")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -19.9377, 2.49173, 1.67145)
-visible = false
-collision_mask = 3
-freeze = true
-package_full_address = "Package 2
-Lori Hughes
-Finance Department
-Office Area
-Office 3"
-package_partial_address = "Package 2
-Lori Hughes"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 2
-
-[node name="Package3" parent="." instance=ExtResource("7_jjsy5")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 2.67684, 1.99393)
-visible = false
-collision_mask = 3
-freeze = true
-package_full_address = "Package 3
-Bill Ding
-Finance Department
-Group Office
-Room 2"
-package_partial_address = "Package 3
-Bill Ding"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 3
-
-[node name="Package4" parent="." instance=ExtResource("7_jjsy5")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 3.02079, 1.99393)
-visible = false
-collision_mask = 3
-freeze = true
-package_full_address = "Package 4
-Seth Bradley
-Finance Department
-Meeting Rooms
-[b]Special Instuctions[/b]
-Deliver to Confrence room 3"
-package_partial_address = "Package 4
-Seth Bradley"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 4
-
-[node name="Package5" parent="." instance=ExtResource("7_jjsy5")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 3.21096, 1.99393)
-visible = false
-collision_mask = 3
-freeze = true
-package_full_address = "Package 5
-Mack Hampton
-Finance Department
-Accounting
-Desk Row 2 Number 4"
-package_partial_address = "Package 5
-Mack Hampton"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 5
-
-[node name="Package6" parent="." instance=ExtResource("7_jjsy5")]
-transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -20.1001, 2.85979, 1.99393)
-visible = false
-collision_mask = 3
-freeze = true
-package_full_address = "Package 6
-John Bogart
-Finance Department
-Cubicle Area
-Cubicle Row 2 Number 5"
-package_partial_address = "Package 6
-John Bogart"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 6
-
-[node name="Package7" parent="." instance=ExtResource("7_jjsy5")]
-transform = Transform3D(1, 0, 0, 0, 0.819693, -0.572804, 0, 0.572804, 0.819693, -19.4692, 2.23437, -11.8425)
-visible = false
-freeze = true
-package_full_address = "Package 1
-Justin Davis
-Mail Room Supervisor
-Control Room
-Desk"
-package_partial_address = "Package 1
-Justin Davis"
-cart_rotation = Vector3(0, 90, -90)
-cart_position = Vector3(0, 0.65, 0)
-package_num = 7
 
 [node name="Mailcart" parent="." instance=ExtResource("8_i23t7")]
 transform = Transform3D(0.938559, 0, 0.345118, 0, 1, 0, -0.345118, 0, 0.938559, 8.51151, 0.291614, -3.08491)
@@ -388,30 +1957,249 @@ spot_angle_attenuation = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5928, 6.12578, -7.48261)
 mesh = SubResource("BoxMesh_xx5t2")
 
-[node name="root" parent="." instance=ExtResource("13_v0vi6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.082, -12.583)
+[node name="cuttable_wall" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44333, -0.082, -12.583)
 
-[node name="Cutout" parent="root/CSGCombiner3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.570479, 1.79267, 0)
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="cuttable_wall"]
 
-[node name="CollisionShape3D" parent="root/LeftCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47726, 3.97421, 0)
+[node name="TopSection" type="CSGBox3D" parent="cuttable_wall/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.13975, 0)
+size = Vector3(5.671, 3.236, 0.152)
+material = SubResource("StandardMaterial3D_i46u3")
 
-[node name="CollisionShape3D" parent="root/RightCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04774, 3.859, -0.00457764)
+[node name="MiddleSection" type="CSGBox3D" parent="cuttable_wall/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.99515, 0)
+size = Vector3(5.704, 3.039, 0.224)
+material = SubResource("StandardMaterial3D_o5vw3")
 
-[node name="CollisionShape3D" parent="root/TopCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09033, -0.005)
+[node name="BottomSection" type="CSGBox3D" parent="cuttable_wall/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.743577, 0)
+size = Vector3(5.73, 1.495, 0.265)
+material = SubResource("StandardMaterial3D_652il")
 
-[node name="CollisionShape3D" parent="root/BottomCollision" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.583835, -0.00457764)
+[node name="Cutout" type="CSGBox3D" parent="cuttable_wall/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132454, 0.641755, 0)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.25, 1.25, 1)
 
-[editable path="mailroom_prefab"]
+[node name="airduct_longer" parent="cuttable_wall/CSGCombiner3D/Cutout" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -0.0277901, -0.00451994, -2.49999)
+
+[node name="Area3D" type="Area3D" parent="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.260137)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("56_1upqy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00421262, 0.00830396, -0.233733)
+shape = SubResource("BoxShape3D_1m18l")
+
+[node name="LeftCollision" type="StaticBody3D" parent="cuttable_wall" node_paths=PackedStringArray("collision_area", "cutout")]
+collision_mask = 0
+script = ExtResource("58_fc8q6")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(1, 0, 0)
+sign = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cuttable_wall/LeftCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82873, 3.97421, 0)
+shape = SubResource("BoxShape3D_kp38p")
+
+[node name="RightCollision" type="StaticBody3D" parent="cuttable_wall" node_paths=PackedStringArray("collision_area", "cutout")]
+collision_mask = 0
+script = ExtResource("58_fc8q6")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(1, 0, 0)
+sign = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cuttable_wall/RightCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69627, 3.859, -0.00457764)
+shape = SubResource("BoxShape3D_084io")
+
+[node name="TopCollision" type="StaticBody3D" parent="cuttable_wall" node_paths=PackedStringArray("collision_area", "cutout")]
+collision_mask = 0
+script = ExtResource("58_fc8q6")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(0, 1, 0)
+sign = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cuttable_wall/TopCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51488, -0.005)
+shape = SubResource("BoxShape3D_vbd3s")
+
+[node name="BottomCollision" type="StaticBody3D" parent="cuttable_wall" node_paths=PackedStringArray("collision_area", "cutout")]
+collision_mask = 0
+script = ExtResource("58_fc8q6")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(0, 1, 0)
+sign = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cuttable_wall/BottomCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.00837749, -0.00457764)
+shape = SubResource("BoxShape3D_25jim")
+
+[node name="cuttable_wall2" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.44333, -0.082, -17.5782)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="cuttable_wall2"]
+
+[node name="TopSection" type="CSGBox3D" parent="cuttable_wall2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.13975, 0)
+size = Vector3(5.671, 3.236, 0.152)
+material = SubResource("StandardMaterial3D_fc8q6")
+
+[node name="MiddleSection" type="CSGBox3D" parent="cuttable_wall2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.99515, 0)
+size = Vector3(5.704, 3.039, 0.224)
+material = SubResource("StandardMaterial3D_wu18t")
+
+[node name="BottomSection" type="CSGBox3D" parent="cuttable_wall2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.743577, 0)
+size = Vector3(5.73, 1.495, 0.265)
+material = SubResource("StandardMaterial3D_5vv7w")
+
+[node name="Cutout" type="CSGBox3D" parent="cuttable_wall2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0842481, 0.641755, 0)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.25, 1.25, 1)
+
+[node name="airduct_longer" parent="cuttable_wall2/CSGCombiner3D/Cutout" instance=ExtResource("36_hxoqh")]
+transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -0.0277901, -0.00451994, -2.49999)
+
+[node name="LeftCollision" type="StaticBody3D" parent="cuttable_wall2" node_paths=PackedStringArray("collision_area", "cutout")]
+collision_mask = 0
+script = ExtResource("58_fc8q6")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(1, 0, 0)
+sign = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cuttable_wall2/LeftCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72038, 3.97421, 0)
+shape = SubResource("BoxShape3D_ned67")
+
+[node name="RightCollision" type="StaticBody3D" parent="cuttable_wall2" node_paths=PackedStringArray("collision_area", "cutout")]
+collision_mask = 0
+script = ExtResource("58_fc8q6")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(1, 0, 0)
+sign = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cuttable_wall2/RightCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80462, 3.859, -0.00457764)
+shape = SubResource("BoxShape3D_5avso")
+
+[node name="TopCollision" type="StaticBody3D" parent="cuttable_wall2" node_paths=PackedStringArray("collision_area", "cutout")]
+collision_mask = 0
+script = ExtResource("58_fc8q6")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(0, 1, 0)
+sign = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cuttable_wall2/TopCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.51488, -0.005)
+shape = SubResource("BoxShape3D_ld0um")
+
+[node name="BottomCollision" type="StaticBody3D" parent="cuttable_wall2" node_paths=PackedStringArray("collision_area", "cutout")]
+collision_mask = 0
+script = ExtResource("58_fc8q6")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(0, 1, 0)
+sign = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cuttable_wall2/BottomCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.00837749, -0.00457764)
+shape = SubResource("BoxShape3D_yhfj6")
+
+[node name="Package" parent="." instance=ExtResource("7_jjsy5")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.1874, 2.37412, -12.1876)
+visible = false
+collision_mask = 3
+freeze = true
+package_full_address = "Package 1
+Front Desk
+Human Resources"
+package_partial_address = "Package 1
+Front Desk"
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+package_num = 1
+icon_type = 0
+
+[node name="Package2" parent="." instance=ExtResource("7_jjsy5")]
+transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.5449, 2.37412, -12.1876)
+visible = false
+collision_mask = 3
+freeze = true
+package_full_address = "Package 2
+Storage B
+Human Resources"
+package_partial_address = "Package 2
+Storage B"
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+package_num = 1
+icon_type = 0
+
+[node name="Package3" parent="." instance=ExtResource("7_jjsy5")]
+transform = Transform3D(1, 0, 0, 0, 0.677711, -0.735329, 0, 0.735329, 0.677711, -11.5449, 2.98754, -12.1876)
+visible = false
+collision_mask = 3
+freeze = true
+package_full_address = "Package 3
+Resource Management
+Human Resources"
+package_partial_address = "Package 3
+Resource Management"
+cart_rotation = Vector3(0, 90, -90)
+cart_position = Vector3(0, 0.65, 0)
+package_num = 1
+icon_type = 0
+
+[node name="Package4" parent="." instance=ExtResource("49_17bx0")]
+transform = Transform3D(1, 0, 0, 0, 0.749141, -0.662411, 0, 0.662411, 0.749141, -11.3557, 3.09754, -12.2511)
+visible = false
+package_full_address = "Package 4
+Resources Disposal
+Human Resources
+"
+package_partial_address = "Package 4
+Resource Disposal"
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.57868, 1.79803, -16.4496)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("61_fc8q6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.031311, -0.748047, 0)
+shape = SubResource("BoxShape3D_1upqy")
+
+[connection signal="body_entered" from="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_exited"]
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+
 [editable path="mailroom_prefab/Objects/Desk2"]
 [editable path="mailroom_prefab/Walls/StaticBody3D14"]
+[editable path="mailroom_prefab/Walls/StaticBody3D23"]
 [editable path="mailroom_prefab/Walls/StaticBody3D17"]
+[editable path="mailroom_prefab/Walls/Door"]
+[editable path="mailroom_prefab/Lights/CeilingLightOn25"]
+[editable path="mailroom_prefab/Lights/CeilingLightOn25/OmniLight3D2"]
+[editable path="mailroom_prefab/Lights/CeilingLightOn17/OmniLight3D2"]
+[editable path="mailroom_prefab/Lights/CeilingLightOn11/OmniLight3D2"]
 [editable path="Elevator"]
 [editable path="Elevator/ElevatorShaft"]
 [editable path="Elevator/ElevatorShaft3"]
 [editable path="Elevator/ElevatorShaft4"]
-[editable path="root"]
