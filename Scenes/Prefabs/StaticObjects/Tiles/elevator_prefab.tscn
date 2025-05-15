@@ -841,8 +841,7 @@ script = ExtResource("1_mn1y7")
 
 [node name="Elevator_Wall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00142, -0.424872, 4.41206)
-collision_layer = 133
-collision_mask = 133
+collision_mask = 0
 script = ExtResource("2_qjipe")
 
 [node name="Elevator_Wall" type="Node3D" parent="Elevator_Wall"]
@@ -918,17 +917,22 @@ occluder = SubResource("BoxOccluder3D_pehdm")
 
 [node name="ElevatorShaft" parent="." instance=ExtResource("7_5pilt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.154511, 0.789673)
+collision_layer = 1
+collision_mask = 0
 
 [node name="ElevatorShaft3" parent="." instance=ExtResource("7_5pilt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8.61348, 0.789673)
+collision_layer = 1
+collision_mask = 0
 
 [node name="ElevatorShaft4" parent="." instance=ExtResource("7_5pilt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -8.95996, 0.789673)
+collision_layer = 1
+collision_mask = 0
 
 [node name="Elevator" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9865, -6.75496, 0.695824)
-collision_layer = 29
-collision_mask = 29
+collision_mask = 0
 
 [node name="Elevator" type="Node3D" parent="Elevator"]
 
@@ -1245,6 +1249,7 @@ transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -7.15806, -0.60
 
 [node name="StaticBody3D" parent="FakeRoom" instance=ExtResource("16_4btxm")]
 transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -10.11, -0.605, 2.727)
+collision_layer = 1
 
 [node name="Floor" type="Node3D" parent="FakeRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.172698, 0)
@@ -1301,6 +1306,7 @@ transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -7.15806, -0.60
 
 [node name="StaticBody3D" parent="FakeRoom2" instance=ExtResource("16_4btxm")]
 transform = Transform3D(-2.82813e-08, 0, -0.647, 0, 0.647, 0, 0.647, 0, -2.82813e-08, -10.11, -0.605, 2.727)
+collision_layer = 1
 
 [node name="Floor" type="Node3D" parent="FakeRoom2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.172698, 0)

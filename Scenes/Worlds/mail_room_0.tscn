@@ -249,12 +249,6 @@ script = null
 [node name="PackageDestination" parent="mailroom_prefab/Objects/Desk2/MailboxStand" index="2"]
 accepted_num = 7
 
-[node name="DrawerTop" parent="mailroom_prefab/Objects/Desk2/Desk" index="6"]
-grab_type = 0
-
-[node name="DrawerBottom" parent="mailroom_prefab/Objects/Desk2/Desk" index="7"]
-grab_type = 0
-
 [node name="Cardboard_box_big3" parent="mailroom_prefab/Objects" index="19"]
 transform = Transform3D(0.535989, 0, 0.844225, 0, 1, 0, -0.844225, 0, 0.535989, -13.385, 1.13567, -5.86118)
 
@@ -300,12 +294,6 @@ transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, 
 [node name="cardboard_box_small42" parent="mailroom_prefab/Objects" index="189"]
 transform = Transform3D(0.853023, 0, 0.521873, 0.00212225, 0.999992, -0.00346891, -0.521869, 0.00406661, 0.853016, -9.33325, 1.49157, -5.02671)
 
-[node name="RigidBody3D3" parent="mailroom_prefab/Walls/StaticBody3D14" index="0"]
-grab_type = 0
-
-[node name="RigidBody3D3" parent="mailroom_prefab/Walls/StaticBody3D17" index="0"]
-grab_type = 0
-
 [node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn3" index="1"]
 visible = true
 
@@ -322,13 +310,16 @@ visible = true
 visible = true
 
 [node name="CeilingLightOn8" parent="mailroom_prefab/Lights" index="4"]
-transform = Transform3D(0.216462, 0, 0, 0, 0.216462, 0, 0, 0, 0.216462, -9.33502, 4.6609, -1.74609)
+transform = Transform3D(-9.46185e-09, 0, -0.216462, 0, 0.216462, 0, 0.216462, 0, -9.46185e-09, -10.0464, 4.6609, 0.691657)
 
 [node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn8" index="1"]
 visible = true
 
 [node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn17" index="1"]
 visible = true
+
+[node name="CeilingLightOn16" parent="mailroom_prefab/Lights" index="6"]
+transform = Transform3D(-9.46185e-09, 0, 0.216462, 0, 0.216462, 0, -0.216462, 0, -9.46185e-09, -10.2217, 4.58639, -10.678)
 
 [node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn16" index="1"]
 visible = true
@@ -363,7 +354,8 @@ package_full_address = "Package 1
 Wendell Hanson
 Finance Department
 Cubicle Area
-Cubicle Row 1 Number 4"
+
+Cubicle Area"
 package_partial_address = "Package 1
 Wendell Hanson"
 cart_rotation = Vector3(0, 90, -90)
@@ -379,8 +371,7 @@ freeze = true
 package_full_address = "Package 2
 Lori Hughes
 Finance Department
-Office Area
-Office 3"
+Office Area"
 package_partial_address = "Package 2
 Lori Hughes"
 cart_rotation = Vector3(0, 90, -90)
@@ -396,8 +387,7 @@ freeze = true
 package_full_address = "Package 3
 Bill Ding
 Finance Department
-Group Office
-Room 2"
+Group Offices"
 package_partial_address = "Package 3
 Bill Ding"
 cart_rotation = Vector3(0, 90, -90)
@@ -413,9 +403,7 @@ freeze = true
 package_full_address = "Package 4
 Seth Bradley
 Finance Department
-Meeting Rooms
-[b]Special Instuctions[/b]
-Deliver to Confrence room 3"
+Meeting Rooms, [b]Conference room 3[/b]"
 package_partial_address = "Package 4
 Seth Bradley"
 cart_rotation = Vector3(0, 90, -90)
@@ -431,8 +419,7 @@ freeze = true
 package_full_address = "Package 5
 Mack Hampton
 Finance Department
-Accounting
-Desk Row 2 Number 4"
+Accounting Area"
 package_partial_address = "Package 5
 Mack Hampton"
 cart_rotation = Vector3(0, 90, -90)
@@ -448,8 +435,7 @@ freeze = true
 package_full_address = "Package 6
 John Bogart
 Finance Department
-Cubicle Area
-Cubicle Row 2 Number 5"
+Cubicle Area"
 package_partial_address = "Package 6
 John Bogart"
 cart_rotation = Vector3(0, 90, -90)
@@ -464,8 +450,7 @@ freeze = true
 package_full_address = "Package 1
 Justin Davis
 Mail Room Supervisor
-Control Room
-Desk"
+Control Room"
 package_partial_address = "Package 1
 Justin Davis"
 cart_rotation = Vector3(0, 90, -90)
