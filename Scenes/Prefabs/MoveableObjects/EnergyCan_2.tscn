@@ -46,6 +46,7 @@ shadow_mesh = SubResource("ArrayMesh_gx63g")
 [node name="EnergyCan" type="Node3D"]
 
 [node name="EnergyCan2" parent="." instance=ExtResource("2_hxpw6")]
+collision_layer = 8388608
 
 [node name="EnergyCan" parent="EnergyCan2" index="4"]
 mesh = SubResource("ArrayMesh_sfsl1")

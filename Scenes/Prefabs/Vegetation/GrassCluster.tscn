@@ -45,6 +45,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_d24h2")
 
 [node name="GrassCluster" type="Node3D" node_paths=PackedStringArray("leaves", "low_quality_leaves")]
+transform = Transform3D(0.7, 0, 0, 0, 0.442545, 0, 0, 0, 0.7, 0, 0, 0)
 script = ExtResource("1_n1glq")
 amount = 2.0
 leaves = NodePath("GrassCluster")

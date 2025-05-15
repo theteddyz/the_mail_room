@@ -47,7 +47,7 @@ height = 0.137806
 radius = 0.0126953
 
 [node name="Pencil" type="RigidBody3D"]
-collision_layer = 524288
+collision_layer = 8388608
 collision_mask = 3
 script = ExtResource("1_a88ae")
 

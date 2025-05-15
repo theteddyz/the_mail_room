@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wum37"]
 shader = ExtResource("1_d4vn8")
-shader_parameter/blur_amount = 0.5
+shader_parameter/blur_amount = 1.0
 shader_parameter/mix_amount = 0.0
 shader_parameter/color_over = Color(0, 0, 0, 1)
 shader_parameter/blur_radius = 1.0
@@ -28,7 +28,7 @@ shader_parameter/dust_blur = 5.062
 shader_parameter/dust_falloff = 0.05
 shader_parameter/inner_radius = 0.2
 shader_parameter/outer_radius = 1.0
-shader_parameter/vignette_strength = 2.0
+shader_parameter/vignette_strength = 1.0
 shader_parameter/dither_strength = 0.0
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 shader_parameter/dust_strength = 4

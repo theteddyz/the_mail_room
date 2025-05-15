@@ -33,7 +33,7 @@ uniform float CHROMATIC_RGB_DISTANCE : hint_range(0., 1.) = 0.1;
 //COLOR BLEED
 group_uniforms color_bleed;
 uniform float color_bleed_seperation : hint_range(0.0, 0.1, 0.001) = 0.02;
-uniform float color_bleed_intensity : hint_range(0.0, 1.0, 0.01) = 0.2;
+uniform float color_bleed_intensity : hint_range(0.0, 2.0, 0.01) = 0.2;
 uniform float anti_bleed_intensity : hint_range(0.0, 3.0, 0.01) = 1.8;
 uniform float color_bleed_blur_strength : hint_range(0.0, 4.0, 1.0) = 1.0;
 uniform int color_bleed_quality : hint_range(1, 16, 1) = 5;
@@ -166,30 +166,33 @@ void fragment()
 
 	vec4 mixColor = vec4(0.0);
 	
-	//COLOR BLEED
-	//float strength = color_bleed_seperation;
-	//float intensity = color_bleed_intensity;
-	//vec4 bloom = vec4(0.0);
-	//int amount = color_bleed_quality;
-	//for (int i = 0; i < amount; i++){
-		//float mul = float(i + 1)/float(amount);
-		//float blurShift = float(i*2)/float(amount);
-//
-		//vec2 UVLeftShift = vec2(SCREEN_UV.x - mul * strength, SCREEN_UV.y);
-		//vec2 UVRightShift = vec2(SCREEN_UV.x + mul * strength, SCREEN_UV.y);
-		//vec4 leftBleedCol1 = textureLod(SCREEN_TEXTURE, UVLeftShift, color_bleed_blur_strength + blurShift)/float(amount * 2);
-		//vec4 rightBleedCol1 = textureLod(SCREEN_TEXTURE, UVRightShift, color_bleed_blur_strength + blurShift)/float(amount * 2);
-		//bloom += leftBleedCol1 + rightBleedCol1;
-	//}
-	//bloom -= texture(SCREEN_TEXTURE, SCREEN_UV) * (anti_bleed_intensity);
-	//bloom = clamp(bloom, vec4(0.0), vec4(1.0));
-	//mixColor += bloom * intensity;
+	
 
 	vec4 originalColor = texture(SCREEN_TEXTURE, uvs, 0.0);
 
 	mixColor += sharpenColor + BlendMode_Difference(originalColor,chromaticColor); //overlay(chromaticColor, sharpenColor);
 
 	mixColor +=  BlendMode_Difference(originalColor,cromaticColorRGB);
+
+	//COLOR BLEED
+	float strength = color_bleed_seperation;
+	float intensity = color_bleed_intensity;
+	vec4 bloom = vec4(0.0);
+	int amount = color_bleed_quality;
+	for (int i = 0; i < amount; i++){
+		float mul = float(i + 1)/float(amount);
+		float blurShift = float(i*2)/float(amount);
+
+		vec2 UVLeftShift = vec2(SCREEN_UV.x - mul * strength, SCREEN_UV.y);
+		vec2 UVRightShift = vec2(SCREEN_UV.x + mul * strength, SCREEN_UV.y);
+		vec4 leftBleedCol1 = textureLod(SCREEN_TEXTURE, UVLeftShift, color_bleed_blur_strength + blurShift)/float(amount * 2);
+		vec4 rightBleedCol1 = textureLod(SCREEN_TEXTURE, UVRightShift, color_bleed_blur_strength + blurShift)/float(amount * 2);
+		bloom += leftBleedCol1 + rightBleedCol1;
+	}
+	bloom -= texture(SCREEN_TEXTURE, SCREEN_UV) * (anti_bleed_intensity);
+	bloom = clamp(bloom, vec4(0.0), vec4(1.0));
+	mixColor += bloom * intensity;
+
 
 	vec4 vhsMixColor = mixColor;
 

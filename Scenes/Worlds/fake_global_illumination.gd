@@ -22,8 +22,9 @@ var lastHeight = 0
 var lastEnable = true
 
 func _ready():
-	create_lights()
-	var root = get_tree().root
+	if update:
+		create_lights()
+		var root = get_tree().root
 	
 func create_lights():
 	for n in range(-width, width):  # from -4 to 3 (8 steps)
@@ -34,12 +35,13 @@ func create_lights():
 			lights.push_back(actualLight)
 
 func _process(delta: float) -> void:
-	if width != lastWidth or height != lastHeight or (lastEnable != enable):
-		for light in lights:
-			light.queue_free()
-		lights.clear()
-		if (!lastEnable and enable) or ((width != lastWidth or height != lastHeight) and enable):
-			create_lights()
+	if update: 
+		if width != lastWidth or height != lastHeight or (lastEnable != enable):
+			for light in lights:
+				light.queue_free()
+			lights.clear()
+			if (!lastEnable and enable) or ((width != lastWidth or height != lastHeight) and enable):
+				create_lights()
 	
 	if enable and update:#directionalLight.rotation != previousRotation:
 		if space_state:
@@ -58,8 +60,8 @@ func _process(delta: float) -> void:
 				var light = lights[current_light]
 
 				# Calculate grid position
-				var row = current_light / (width+height)  # integer division
-				var column = current_light % (width+height)
+				var row = current_light / (width)  # integer division
+				var column = current_light % (height)
 
 				var n = row - width
 				var s = column - height

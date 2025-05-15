@@ -23,6 +23,8 @@ var settings := {
 }
 
 var resolutions := [
+	Vector2i(256, 144),
+	Vector2i(640, 480),
 	Vector2i(1280, 720),
 	Vector2i(1600, 900),
 	Vector2i(1920, 1080),

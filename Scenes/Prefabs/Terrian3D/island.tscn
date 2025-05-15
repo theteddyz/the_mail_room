@@ -72,12 +72,10 @@ shader_parameter/cut_out_z = 0.0
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_1fbo2"]
 rayleigh_coefficient = 14.88
-rayleigh_color = Color(0.559808, 0.351922, 0.147865, 1)
+rayleigh_color = Color(0.725671, 0.719355, 0.713947, 1)
 mie_eccentricity = 0.92
 mie_color = Color(0.439519, 0.763743, 1, 1)
-turbidity = 90.77
-sun_disk_scale = 2.27
-energy_multiplier = 1.29
+ground_color = Color(0.840518, 0.898196, 0.876618, 1)
 
 [sub_resource type="Sky" id="Sky_4eyav"]
 sky_material = SubResource("PhysicalSkyMaterial_1fbo2")
@@ -86,31 +84,14 @@ sky_material = SubResource("PhysicalSkyMaterial_1fbo2")
 background_mode = 2
 background_energy_multiplier = 1.14
 sky = SubResource("Sky_4eyav")
-ambient_light_source = 3
-ambient_light_color = Color(0.269875, 0.527413, 0.907123, 1)
-ambient_light_energy = 1.78
+ambient_light_sky_contribution = 0.0
 tonemap_mode = 2
-tonemap_exposure = 0.32
-tonemap_white = 3.63
-ssr_enabled = true
+tonemap_white = 6.92
 ssil_enabled = true
 fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.298039, 0.533333, 0.666667, 1)
-fog_light_energy = 1.64
-fog_sun_scatter = 0.48
-fog_density = 0.0893
-fog_sky_affect = 0.849
-fog_depth_curve = 0.500002
+fog_depth_curve = 0.48297
 volumetric_fog_enabled = true
-volumetric_fog_albedo = Color(0.298039, 0.533333, 0.666667, 1)
-volumetric_fog_emission = Color(0.298039, 0.533333, 0.666667, 1)
-volumetric_fog_emission_energy = 1.2
-volumetric_fog_anisotropy = 0.9
-volumetric_fog_length = 182.5
-volumetric_fog_detail_spread = 1.78381
-volumetric_fog_ambient_inject = 1.17
-volumetric_fog_sky_affect = 0.58
+volumetric_fog_density = 0.02
 volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pxrh"]
@@ -632,6 +613,7 @@ mesh = SubResource("SphereMesh_qdxfb")
 
 [node name="Lighthouse test" type="SpotLight3D" parent="."]
 transform = Transform3D(-0.726575, 0, -0.687087, 0, 1, 0, 0.687087, 0, -0.726575, -46.697, 80.4424, -120.427)
+visible = false
 light_color = Color(0.751976, 0.4016, 0.197852, 1)
 light_energy = 1.417
 light_indirect_energy = 0.0
@@ -644,7 +626,7 @@ script = ExtResource("4_qdxfb")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.788011, -0.123796, 0.603087, 0, 0.979575, 0.201078, -0.615661, 0.158452, -0.771916, 0, 58.4472, 0)
-light_color = Color(0.298039, 0.533333, 0.666667, 1)
+light_color = Color(0.837515, 0.772523, 0.750749, 1)
 light_energy = 3.217
 light_indirect_energy = 1.374
 light_specular = 2.296

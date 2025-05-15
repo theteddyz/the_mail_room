@@ -4,22 +4,22 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxhbw"]
 shader = ExtResource("1_ddsee")
-shader_parameter/stretch_noise = 0.152
+shader_parameter/stretch_noise = 0.193
 shader_parameter/crease_noise = 0.035
 shader_parameter/crease_speed = 0.275
 shader_parameter/switching_noise = 3.173
 shader_parameter/switching_height = 40.0
 shader_parameter/switching_offset = 0.047
-shader_parameter/SHARPENING = 1.5
-shader_parameter/SHARPEN_DISTANCE = 0.0025
+shader_parameter/SHARPENING = 6.0
+shader_parameter/SHARPEN_DISTANCE = 0.003
 shader_parameter/Blur = 5.0
 shader_parameter/CHROMATIC_DISTANCE = 0.0
 shader_parameter/CHROMATIC_RGB_DISTANCE = 0.3
-shader_parameter/color_bleed_seperation = 0.0
-shader_parameter/color_bleed_intensity = 0.0
-shader_parameter/anti_bleed_intensity = 3.0
-shader_parameter/color_bleed_blur_strength = 3.0
-shader_parameter/color_bleed_quality = 3
+shader_parameter/color_bleed_seperation = 0.032
+shader_parameter/color_bleed_intensity = 2.0
+shader_parameter/anti_bleed_intensity = 1.1
+shader_parameter/color_bleed_blur_strength = 1.0
+shader_parameter/color_bleed_quality = 5
 
 [node name="everything_layer" type="CanvasLayer"]
 layer = -1
@@ -29,6 +29,8 @@ material = SubResource("ShaderMaterial_rxhbw")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

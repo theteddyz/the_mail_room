@@ -36,9 +36,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 226.0
-offset_top = -450.0
+offset_top = -219.0
 offset_right = 933.0
-offset_bottom = 457.0
+offset_bottom = 211.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_y1x6x")
@@ -53,10 +53,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/panel = SubResource("StyleBoxFlat_y1x6x")
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 
 [node name="Video" type="VBoxContainer" parent="Panel/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 24
 metadata/_tab_index = 0
@@ -121,6 +120,7 @@ button_pressed = true
 text = "Shadows"
 
 [node name="GamePlay" type="VBoxContainer" parent="Panel/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 12
 metadata/_tab_index = 2
