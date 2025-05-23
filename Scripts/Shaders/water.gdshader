@@ -1,6 +1,6 @@
 shader_type spatial;
 
-render_mode depth_draw_always;
+render_mode diffuse_lambert;//depth_draw_always;
 
 const float EPSILON = 1e-5;
 

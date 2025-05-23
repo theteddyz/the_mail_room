@@ -234,6 +234,7 @@ vec3 gaussianblur(sampler2D sampler, vec2 pos, vec2 pixel_size, float sigmaUsed,
 void fragment(){
 	vec2 uvs = fisheyeColor(FRAGCOORD, SCREEN_PIXEL_SIZE);
 	vec4 lensFlareColor = lensflare(uvs);
+
 	vec3 xorgaussian = gaussianblur(SCREEN_TEXTURE, uvs, SCREEN_PIXEL_SIZE, blur_amount, int(round(3.0 * blur_amount)));
 	vec4 fin = vec4(1.0); 
 	fin.rgb = xorgaussian + lensFlareColor.rgb;

@@ -3,8 +3,14 @@ shader_type canvas_item;
 group_uniforms Wiggle;
 uniform float wiggle : hint_range(0.0, 1.5, 0.01) = 0.03;
 uniform float wiggle_speed : hint_range(0.0, 100.0, 1.0) = 25;
+uniform float wiggle_height : hint_range(0.0, 10.0) = 1;
+uniform float wiggle_exponent : hint_range(0.0, 10.0) = 2;
+uniform float rng_factor : hint_range(0.0, 10.0) = 2;
+uniform float switching_height : hint_range(0.0, 100.0, 1.0) = 1;
 group_uniforms Smear;
 uniform float smear : hint_range(0.0, 2.0) = 1.0;
+uniform float smear_exponent : hint_range(0.0, 10.0) = 1.0;
+uniform float smear_edges : hint_range(0.0, 2.0) = 1.0;
 
 uniform sampler2D Source : hint_screen_texture, filter_linear_mipmap, repeat_disable;
 
@@ -65,17 +71,33 @@ vec3 Blur(vec2 uv, float d, int samples) {
 
 void fragment() {
     vec2 uv = UV;
-
+	
     float d=0.1-round(mod(TIME/3.0,1.0))*.1;;
     uv = jumpy(uv, mod(TIME * wiggle_speed, 7.0));
-
-    float s = 0.0001 * -d + 0.0001 * wiggle *(sin(TIME * wiggle_speed));
-    float e = min(.30,pow(max(0.0,cos(uv.y*4.0+.3)-.75)*(s+0.5)*1.0,3.0))*25.0;
-    float r = (250.0*(2.0*s));
-    uv.x += abs(r*pow(min(.003,(-uv.y+(.01*mod(TIME, 5.0))))*3.0,2.0)) * wiggle;
+		// Get screen coordinates
+	vec2 screen_coords = FRAGCOORD.xy;
+	vec2 screen_size = 1.0 / SCREEN_PIXEL_SIZE;
+	float screen_height = screen_size.y;
+	float squish_height = switching_height;
+	//Wiggle
+	if (screen_coords.y > (screen_height - squish_height)) {
+		float distance_into_squish = screen_coords.y - (screen_height - squish_height);
+		float factor = pow(clamp(distance_into_squish / squish_height, 0.0, 1.0),wiggle_exponent);
+		//uvs.x += factor*switching_offset;
+		//uvs.x += (noise(vec2(uvs.y, TIME)) - 0.5) * 0.005 * switching_noise * (1.0+factor);
+		//uvs.x += (noise(vec2(uvs.y * 100.0, TIME * 10.0)) - 0.5) * 0.01 * switching_noise* (1.0+factor);
+		float rng = 1.0 + fract(sin(dot(vec2(uv.y), vec2(12.9898, 4.1414))) * 43758.5453)*rng_factor;
+		float s = 0.0001 * -d + 0.0001 * wiggle *(sin(TIME * wiggle_speed));
+    	float e = min(.30,pow(max(0.0,cos(uv.y*4.0+.3)-.75)*(s+0.5)*1.0,3.0))*25.0;
+    	float r = (250.0*(2.0*s));
+    	uv.x +=abs(r*pow(min(.003,(-uv.y+(.01*mod(TIME, 5.0))))*3.0,2.0)) *rng* wiggle*factor;
+	}
     
+    float s = 0.0;
+	float e = min(.30,pow(max(0.0,cos(uv.y*4.0+.3)-.75)*(s+0.5)*1.0,3.0))*25.0;
+	float schmear = smear + pow(distance(uv, vec2(0.5)),smear_exponent)*5.0*smear_edges;
     d = 0.051+abs(sin(s/4.0));
-    float c = max(0.0001,.002*d) * smear;
+    float c = max(0.0001,.002*d) * schmear;
     vec4 final;
 
     final.rgb = Blur(uv, c + c * uv.x, blur_samples);

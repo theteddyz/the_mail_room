@@ -25,7 +25,8 @@ uniform float Blur = 5.0;
 //CHROMATIC ABERRATION
 group_uniforms chromatic_aberration;
 uniform float CHROMATIC_DISTANCE : hint_range(0., 32.) = 3;
-
+uniform float chromatic_edges : hint_range(0.0, 2.0) = 1.0;
+uniform float chromatic_edges_pow : hint_range(0.0, 2.0) = 1.0;
 //CHROMATIC ABERRATION RBG
 group_uniforms chromatic_aberration_rbg;
 uniform float CHROMATIC_RGB_DISTANCE : hint_range(0., 1.) = 0.1;
@@ -58,9 +59,10 @@ vec4 sharpenMask(vec2 frag_coord, vec2 screen_pixel_size)
 
 vec4 cromaticColor(vec2 uv, vec2 screen_pixel_size)
 {
-	vec2 r_displacement = vec2(CHROMATIC_DISTANCE, 0.0);
+	float cromaticDist = CHROMATIC_DISTANCE + pow(distance(uv, vec2(0.5)),chromatic_edges_pow)*150.0*chromatic_edges;
+	vec2 r_displacement = vec2(cromaticDist, 0.0);
 	vec2 g_displacement = vec2(0.0, 0.0);
-	vec2 b_displacement = vec2(-CHROMATIC_DISTANCE, 0.0);
+	vec2 b_displacement = vec2(-cromaticDist, 0.0);
 
 	float r = texture(SCREEN_TEXTURE, uv + vec2(screen_pixel_size*r_displacement), 0.0).r;
 	float g = texture(SCREEN_TEXTURE, uv + vec2(screen_pixel_size*g_displacement), 0.0).g;
