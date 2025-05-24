@@ -818,6 +818,7 @@ grow_vertical = 2
 texture = ExtResource("35_ydec6")
 
 [node name="VHS Text" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 1923.0
 offset_bottom = 1072.0

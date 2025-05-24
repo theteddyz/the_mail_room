@@ -50,7 +50,7 @@ height = 0.164936
 radius = 0.0390625
 
 [node name="BottleColaBroken" type="RigidBody3D"]
-collision_layer = 524288
+collision_layer = 8388608
 collision_mask = 3
 script = ExtResource("1_on04h")
 

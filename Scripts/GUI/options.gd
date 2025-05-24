@@ -11,17 +11,17 @@ extends Control
 @onready var vsync_toggle = $Panel/TabContainer/Graphics/Vsync/Vsync
 @onready var ssr_toggle = $Panel/TabContainer/Graphics/SSR/SSR
 @onready var shadow_toggle = $Panel/TabContainer/Graphics/Shadows/Shadows
-@onready var graphics_fisheye_label = $Panel/TabContainer/GamePlay/FishEye/Label
-@onready var graphics_fisheye_slider = $Panel/TabContainer/GamePlay/FishEye/Fish_Eye
-@onready var graphics_sharpening_label = $Panel/TabContainer/GamePlay/Sharpening/Label
-@onready var graphics_sharpening_slider = $Panel/TabContainer/GamePlay/Sharpening/Sharpening2
+#@onready var graphics_fisheye_label = $Panel/TabContainer/GamePlay/FishEye/Label
+#@onready var graphics_fisheye_slider = $Panel/TabContainer/GamePlay/FishEye/Fish_Eye
+#@onready var graphics_sharpening_label = $Panel/TabContainer/GamePlay/Sharpening/Label
+#@onready var graphics_sharpening_slider = $Panel/TabContainer/GamePlay/Sharpening/Sharpening2
 @onready var graphics_gi_toggle = $Panel/TabContainer/GamePlay/Global_Illumination/Global_Illumination
 
 # GAMEPLAY TAB
-@onready var gameplay_fisheye_label = $Panel/TabContainer/GamePlay/FishEye/Label
-@onready var gameplay_fisheye_slider = $Panel/TabContainer/GamePlay/FishEye/Fish_Eye
-@onready var gameplay_sharpening_label = $Panel/TabContainer/GamePlay/Sharpening/Label
-@onready var gameplay_sharpening_slider = $Panel/TabContainer/GamePlay/Sharpening/Sharpening2
+#@onready var gameplay_fisheye_label = $Panel/TabContainer/GamePlay/FishEye/Label
+#@onready var gameplay_fisheye_slider = $Panel/TabContainer/GamePlay/FishEye/Fish_Eye
+#@onready var gameplay_sharpening_label = $Panel/TabContainer/GamePlay/Sharpening/Label
+#@onready var gameplay_sharpening_slider = $Panel/TabContainer/GamePlay/Sharpening/Sharpening2
 @onready var gameplay_gi_toggle = $Panel/TabContainer/GamePlay/Global_Illumination/Global_Illumination
 @onready var gameplay_disable_shader = $Panel/TabContainer/GamePlay/Disable_Shader_Effect/Disable_Shader_Effect
 @onready var gameplay_mouse_sensitivity_slider = $Panel/TabContainer/GamePlay/Mouse_sensativtiy/Mouse_sensativity
@@ -50,9 +50,9 @@ func _ready():
 	for child in get_tree().get_nodes_in_group("Player_shader"):
 		if child.name == "everything":
 			shader = child.material
-	
-	graphics_fisheye_label.text = str(shader.get_shader_parameter("FISHEYE_AMOUNT"))
-	graphics_sharpening_label.text = str(shader.get_shader_parameter("SHARPENING"))
+
+	#graphics_fisheye_label.text = str(shader.get_shader_parameter("FISHEYE_AMOUNT"))
+	#graphics_sharpening_label.text = str(shader.get_shader_parameter("SHARPENING"))
 	hide()
 	working_settings = SettingsManager.settings.duplicate(true)
 	_init_resolution_ui()
@@ -196,25 +196,25 @@ func _update_borderless_visibility():
 	borderless_toggle.disabled = not is_fullscreen # Only clickable if fullscreen
 
 
-func _on_fish_eye_value_changed(value):
-	gameplay_fisheye_label.text = str(value)
-	shader.set_shader_parameter("FISHEYE_AMOUNT", value)
+#func _on_fish_eye_value_changed(value):
+	#gameplay_fisheye_label.text = str(value)
+	#shader.set_shader_parameter("FISHEYE_AMOUNT", value)
 
-func _on_sharpening_2_value_changed(value):
-	gameplay_sharpening_label.text = str(value)
-	shader.set_shader_parameter("SHARPENING", value)
-
-
-func _on_Fisheye_Text_Submitted(text):
-	var num = float(text)
-	num = clamp(num, graphics_fisheye_slider.min_value, graphics_fisheye_slider.max_value) # Stay in slider range
-	graphics_fisheye_slider.value = num
+#func _on_sharpening_2_value_changed(value):
+	#gameplay_sharpening_label.text = str(value)
+	#shader.set_shader_parameter("SHARPENING", value)
 
 
-func _on_sharpening_text_submitted(text):
-	var num = float(text)
-	num = clamp(num, graphics_sharpening_slider.min_value, graphics_sharpening_slider.max_value) # Stay in slider range
-	graphics_sharpening_slider.value = num
+#func _on_Fisheye_Text_Submitted(text):
+	#var num = float(text)
+	#num = clamp(num, graphics_fisheye_slider.min_value, graphics_fisheye_slider.max_value) # Stay in slider range
+	#graphics_fisheye_slider.value = num
+#
+#
+#func _on_sharpening_text_submitted(text):
+	#var num = float(text)
+	#num = clamp(num, graphics_sharpening_slider.min_value, graphics_sharpening_slider.max_value) # Stay in slider range
+	#graphics_sharpening_slider.value = num
 
 
 func _on_disable_shader_effect_pressed():

@@ -45,7 +45,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_edflc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2bacr"]
-size = Vector3(0.362, 0.0173187, 0.534531)
+size = Vector3(0.362, 0.0248375, 0.534531)
 
 [node name="PaperNoteBook" type="RigidBody3D"]
 collision_layer = 2
@@ -56,5 +56,5 @@ mesh = SubResource("ArrayMesh_ohjal")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000213623, 6.86646e-05, -0.000160217)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000213623, 0.000768658, -0.000160217)
 shape = SubResource("BoxShape3D_2bacr")

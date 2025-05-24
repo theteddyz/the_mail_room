@@ -176,7 +176,7 @@ radial_segments = 4
 rings = 4
 
 [node name="BottleCola" type="RigidBody3D"]
-collision_layer = 524288
+collision_layer = 8388608
 collision_mask = 3
 sleeping = true
 freeze = true

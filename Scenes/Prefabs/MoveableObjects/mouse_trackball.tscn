@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=4 uid="uid://wiqce4mvixol"]
 
 [ext_resource type="Texture2D" uid="uid://dxnsmau13ap8j" path="res://Assets/Textures/BlenderTextures/TrackBall.png" id="1_57e1d"]
-[ext_resource type="Script" path="res://Scripts/MoveableObjects/Grabbable.gd" id="1_aemuw"]
-[ext_resource type="Script" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_bhxbj"]
+[ext_resource type="Script" uid="uid://dopqxe6wlw42o" path="res://Scripts/MoveableObjects/Grabbable.gd" id="1_aemuw"]
+[ext_resource type="Script" uid="uid://yfdslqiugp0s" path="res://Scripts/Interpolator/ObjectInterpolation.gd" id="2_bhxbj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3fsh4"]
 resource_name = "TrackBall"
@@ -51,8 +51,8 @@ radius = 0.0344741
 size = Vector3(0.106201, 0.0346069, 0.146362)
 
 [node name="Grabbable" type="RigidBody3D"]
-collision_layer = 2
-collision_mask = 15
+collision_layer = 8388608
+collision_mask = 3
 script = ExtResource("1_aemuw")
 
 [node name="Interpolator" type="Node3D" parent="."]

@@ -33,15 +33,16 @@ SettingsManager="*res://Scripts/GUI/settings_manager.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/energy_saving/keep_screen_on=false
 window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/proton_scatter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/SphynxMotionBlurToolkit/plugin.cfg", "res://addons/proton_scatter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [file_customization]
 
@@ -202,6 +203,7 @@ DEBUG_DOWN={
 3d_physics/layer_20="A light (ceiling or otherwise)"
 3d_physics/layer_22="Player Blocking terrain, nave-able to agents"
 3d_physics/layer_23="Fake Global Illumination"
+3d_physics/layer_24="Tiny Grabbable Objects"
 
 [physics]
 

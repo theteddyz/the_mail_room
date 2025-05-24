@@ -4,9 +4,15 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxhbw"]
 shader = ExtResource("1_ij4ou")
-shader_parameter/wiggle = 0.03
-shader_parameter/wiggle_speed = 25.0
-shader_parameter/smear = 0.5
+shader_parameter/wiggle = 0.23
+shader_parameter/wiggle_speed = 82.0
+shader_parameter/wiggle_height = 1.0
+shader_parameter/wiggle_exponent = 8.033
+shader_parameter/rng_factor = 0.5
+shader_parameter/switching_height = 100.0
+shader_parameter/smear = 0.457
+shader_parameter/smear_exponent = 2.032
+shader_parameter/smear_edges = 2.0
 shader_parameter/blur_samples = 15
 
 [node name="everything_layer" type="CanvasLayer"]

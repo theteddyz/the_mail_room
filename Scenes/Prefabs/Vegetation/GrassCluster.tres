@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://by4tj5r7orf12"]
 
-[ext_resource type="Shader" uid="uid://folar6cvd0e1" path="res://Scenes/Prefabs/Vegetation/Leaf_movement.gdshader" id="1_e8day"]
+[ext_resource type="Shader" path="res://Scenes/Prefabs/Vegetation/Leaf_movement.gdshader" id="1_e8day"]
 [ext_resource type="Texture2D" uid="uid://krbep0r0ftof" path="res://Assets/Textures/BlenderTextures/GrassLow.png" id="2_e8day"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xovl2"]

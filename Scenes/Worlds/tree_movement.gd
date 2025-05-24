@@ -21,8 +21,8 @@ var position_influence2: float = 1.0
 var animation_speed2: float = 1.0
 var animation_strength2: float = 1.0
 
-var visibility_range_1: int = 50
-var visibility_range_2: int = 100
+var visibility_range_1: int = 100
+var visibility_range_2: int = 200
 
 var vegetationController: Node3D
 var vegetationScript = "res://Scenes/Worlds/vegetation_controller.gd"

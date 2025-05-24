@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bvha2qolbtfko"]
+[gd_scene load_steps=36 format=4 uid="uid://bvha2qolbtfko"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_md8ep"]
 [ext_resource type="Texture2D" uid="uid://dgy6bdhr0juyx" path="res://Assets/Textures/BlenderTextures/Desk.png" id="2_amgvs"]
@@ -94,6 +94,9 @@ stream_0/stream = ExtResource("5_k8fyy")
 playback_mode = 1
 streams_count = 1
 stream_0/stream = ExtResource("6_8vp8r")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lamsw"]
+friction = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x6f3f"]
 size = Vector3(2.48758, 0.118485, 1.17257)
@@ -284,6 +287,9 @@ stream = SubResource("AudioStreamRandomizer_8jt6j")
 collision_layer = 2
 collision_mask = 15
 mass = 50.0
+physics_material_override = SubResource("PhysicsMaterial_lamsw")
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.5, 0)
 sleeping = true
 freeze = true
 script = ExtResource("1_md8ep")

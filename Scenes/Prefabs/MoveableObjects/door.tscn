@@ -1,5 +1,6 @@
-[gd_scene load_steps=27 format=4 uid="uid://d2biwn1i8hx83"]
+[gd_scene load_steps=28 format=4 uid="uid://d2biwn1i8hx83"]
 
+[ext_resource type="Script" uid="uid://b5623d6ilxuid" path="res://Scenes/Prefabs/MoveableObjects/door_moveable.gd" id="1_bky6m"]
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_q0uqo"]
 [ext_resource type="Script" uid="uid://dmtprj5gddj6g" path="res://Scripts/Interactable/Door.gd" id="2_bky6m"]
 [ext_resource type="AudioStream" uid="uid://dwhgdxuiprgyt" path="res://Assets/Audio/SoundFX/Door/DoorLocked2.ogg" id="3_q5yqo"]
@@ -92,7 +93,16 @@ stream_0/stream = ExtResource("12_m5cfo")
 stream_1/stream = ExtResource("13_7qs1a")
 stream_2/stream = ExtResource("14_abh52")
 
-[node name="Node3D" type="StaticBody3D"]
+[node name="Node3D" type="StaticBody3D" node_paths=PackedStringArray("rigidbody")]
+script = ExtResource("1_bky6m")
+rigidbody = NodePath("RigidBody3D2")
+
+[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="."]
+transform = Transform3D(-1, -1.50996e-07, 6.60024e-15, 0, -4.37114e-08, -1, 1.50996e-07, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
+node_a = NodePath("../RigidBody3D2")
+node_b = NodePath("..")
+angular_limit/enable = true
+angular_limit/lower = 0.0
 
 [node name="RigidBody3D2" type="RigidBody3D" parent="." node_paths=PackedStringArray("open_sound", "close_sound", "loop_sound")]
 collision_layer = 3
@@ -109,13 +119,6 @@ is_door = true
 open_sound = NodePath("DrawerAudioOpen")
 close_sound = NodePath("DrawerAudioClose")
 loop_sound = NodePath("DrawerAudioLoop")
-
-[node name="JoltHingeJoint3D2" type="HingeJoint3D" parent="RigidBody3D2"]
-transform = Transform3D(-1, -1.50996e-07, 6.60024e-15, 0, -4.37114e-08, -1, 1.50996e-07, -1, 4.37114e-08, 0.946518, 1.87691, -0.127245)
-node_a = NodePath("..")
-node_b = NodePath("../..")
-angular_limit/enable = true
-angular_limit/lower = 0.0
 
 [node name="Door_Lock" type="Node" parent="RigidBody3D2" node_paths=PackedStringArray("door1", "audio_player")]
 script = ExtResource("2_bky6m")

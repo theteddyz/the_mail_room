@@ -153,11 +153,8 @@ open_sound = NodePath("../DrawerAudioOpen2")
 close_sound = NodePath("../DrawerAudioClose2")
 loop_sound = NodePath("../DrawerAudioLoop2")
 
-[node name="DrawerScript" type="Node3D" parent="RigidBody3D6" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="RigidBody3D6" node_paths=PackedStringArray("drawerSliderJoint")]
 script = ExtResource("3_gv0lt")
-drawerOpenedSound = NodePath("")
-drawerClosedSound = NodePath("")
-drawerLoopSound = NodePath("")
 drawerSliderJoint = NodePath("../../SliderJoint3D2")
 volume = -20.0
 
@@ -182,11 +179,8 @@ open_sound = NodePath("../DrawerAudioOpen2")
 close_sound = NodePath("../DrawerAudioClose2")
 loop_sound = NodePath("../DrawerAudioLoop2")
 
-[node name="DrawerScript" type="Node3D" parent="RigidBody3D5" node_paths=PackedStringArray("drawerOpenedSound", "drawerClosedSound", "drawerLoopSound", "drawerSliderJoint")]
+[node name="DrawerScript" type="Node3D" parent="RigidBody3D5" node_paths=PackedStringArray("drawerSliderJoint")]
 script = ExtResource("3_gv0lt")
-drawerOpenedSound = NodePath("")
-drawerClosedSound = NodePath("")
-drawerLoopSound = NodePath("")
 drawerSliderJoint = NodePath("../../SliderJoint3D")
 volume = -20.0
 

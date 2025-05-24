@@ -172,8 +172,9 @@ func update_position(delta):
 	var directionTo:Vector3 = targetPosition - currentPosition
 	var distance:float = currentPosition.distance_to(targetPosition)
 	
-	force = directionTo.normalized()*(pow(distance * 600,1) + (_mass * 15))#/max(1,(parent.mass*0.15)))
-	force = force.limit_length(max_force + (_mass * 15) + player.velocity.length()) #force.normalized()*pow(force.length(),0.95)*2
+	force = directionTo.normalized()*(pow(distance * 600,1))#/max(1,(parent.mass*0.15)))
+	force = force.limit_length(max_force + (_mass * 15) + player.velocity.length())
+	
 	object.apply_force(force, rotation_offset)
 	if is_tether_max_range:
 		force = (camera.global_transform.origin - currentPosition).normalized() * _mass * 15

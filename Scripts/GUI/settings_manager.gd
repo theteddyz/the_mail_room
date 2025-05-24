@@ -16,13 +16,13 @@ var settings := {
 	"gameplay": {
 		"disable_shader":false,
 		"gi": true,
-		"fisheye": 0.0,
-		"sharpening": 0.0,
 		"mouse_sensitivity":0.25
 	}
 }
 
 var resolutions := [
+	Vector2i(256, 144),
+	Vector2i(640, 480),
 	Vector2i(1280, 720),
 	Vector2i(1600, 900),
 	Vector2i(1920, 1080),
@@ -85,10 +85,10 @@ func apply_settings():
 			we.environment.sdfgi_enabled = settings["gameplay"]["gi"]
 
 	# --- Shader Settings (FishEye and Sharpening) ---
-	var shader_nodes = get_tree().get_nodes_in_group("Player_shader")
-	for shader in shader_nodes:
-		shader.material.set_shader_parameter("FISHEYE_AMOUNT", settings["gameplay"]["fisheye"])
-		shader.material.set_shader_parameter("SHARPENING", settings["gameplay"]["sharpening"])
+	#var shader_nodes = get_tree().get_nodes_in_group("Player_shader")
+	#for shader in shader_nodes:
+		#shader.material.set_shader_parameter("FISHEYE_AMOUNT", settings["gameplay"]["fisheye"])
+		#shader.material.set_shader_parameter("SHARPENING", settings["gameplay"]["sharpening"])
 
 func reset_to_defaults():
 	settings = {
@@ -105,8 +105,6 @@ func reset_to_defaults():
 		"gameplay": {
 			"disable_shader":false,
 			"gi": true,
-			"fisheye": 0.0,
-			"sharpening": 0.0
 		}
 	}
 	apply_settings()

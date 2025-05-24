@@ -1,24 +1,36 @@
-[gd_scene load_steps=30 format=3 uid="uid://b02uboce77q78"]
+[gd_scene load_steps=46 format=3 uid="uid://b02uboce77q78"]
 
 [ext_resource type="Script" uid="uid://cp4jrj7a18avb" path="res://Scripts/StateMachine/Player/PlayerMachine.gd" id="1_lsi20"]
 [ext_resource type="Script" uid="uid://bqadv5daugpb2" path="res://Scripts/GameManagement/HeadResourceSaver.gd" id="2_eyvdn"]
 [ext_resource type="PackedScene" uid="uid://07r80s3tkw3" path="res://Assets/Shaders/dither_shader2.tscn" id="3_6orpg"]
 [ext_resource type="Script" uid="uid://ysa45ukn8v21" path="res://Scenes/CameraMovement.gd" id="3_ap0n2"]
+[ext_resource type="Resource" uid="uid://cslvcweyejh3c" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_movement_component.tres" id="3_wohnl"]
+[ext_resource type="Resource" uid="uid://iru8ynu04i00" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_camera_rotation_component.tres" id="4_36dho"]
 [ext_resource type="PackedScene" uid="uid://8uuomvgrmu1b" path="res://Assets/Shaders/outline_shader.tscn" id="4_ao0s0"]
-[ext_resource type="Script" uid="uid://crfmg2pyfu8gc" path="res://Scripts/Interactable/InteractableFinder.gd" id="5_fh3d4"]
 [ext_resource type="Script" uid="uid://brtrfcahmyjah" path="res://Scripts/LightOptimizationDetector.gd" id="5_ic8gt"]
+[ext_resource type="Resource" uid="uid://rp3mpjmisoyh" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/default_object_movement_component.tres" id="5_yh6i2"]
 [ext_resource type="Shader" uid="uid://g18d7ggq4bq6" path="res://Scripts/Shaders/CombinedVHSAndSSAO.gdshader" id="6_7dp3o"]
 [ext_resource type="Script" uid="uid://brru7emutcew5" path="res://Scripts/StateMachine/Player/PlayerMonsterDetector.gd" id="6_f3pv2"]
+[ext_resource type="Resource" uid="uid://c8ulad7utgrg7" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processing_stage.tres" id="6_nv4vc"]
 [ext_resource type="PackedScene" uid="uid://43iceqac2doa" path="res://Assets/Shaders/blur.tscn" id="6_qqcod"]
 [ext_resource type="Shape3D" uid="uid://c480m7yk8nr7k" path="res://Scenes/pyramid.tres" id="6_u1lyf"]
+[ext_resource type="Script" uid="uid://e81i0u44kbxe" path="res://addons/SphynxMotionBlurToolkit/PreBlurProcessing/pre_blur_processor.gd" id="7_8gxox"]
 [ext_resource type="PackedScene" uid="uid://dq3m1bokl2jl1" path="res://Scenes/light_detection_player.tscn" id="8_6f6ef"]
+[ext_resource type="Resource" uid="uid://ca45noqewsyvp" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_experimental_blur_stage.tres" id="8_11gg7"]
 [ext_resource type="PackedScene" uid="uid://bcq43p4q358bx" path="res://Assets/Shaders/vhs_layer.tscn" id="8_fd4e3"]
 [ext_resource type="Script" uid="uid://cq5fmqrcunrhp" path="res://Scripts/Misc/walking_sound_swapper.gd" id="9_mvg12"]
 [ext_resource type="AudioStream" uid="uid://cin4ngwhr1g72" path="res://Scenes/Prefabs/AudioPlayers/carpet_footsteps.tres" id="9_pey34"]
+[ext_resource type="Resource" uid="uid://cvb65hfs2lrxo" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_neighbor_max_stage.tres" id="9_qpa8y"]
 [ext_resource type="PackedScene" uid="uid://befosmwf02tgk" path="res://Assets/Shaders/shader_toy.tscn" id="10_igrcy"]
+[ext_resource type="Resource" uid="uid://bidsfymvdyhek" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_overlay_stage.tres" id="10_sbwqj"]
+[ext_resource type="Script" uid="uid://oqyw7t1mcgag" path="res://addons/SphynxMotionBlurToolkit/Guertin/new_guertin_motion_blur.gd" id="11_xwi16"]
+[ext_resource type="Resource" uid="uid://dipvwksvqb3dm" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_x_stage.tres" id="12_sweqm"]
+[ext_resource type="Resource" uid="uid://bxfg45ubc2pv7" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_max_y_stage.tres" id="13_ph33w"]
+[ext_resource type="Resource" uid="uid://bqehecsdgt70s" path="res://addons/SphynxMotionBlurToolkit/Guertin/guertin_tile_variance_stage.tres" id="14_7ldla"]
 [ext_resource type="Script" uid="uid://cvbypy47gfal3" path="res://Scenes/scare_vision_controller.gd" id="14_jppxj"]
 [ext_resource type="Script" uid="uid://lq4kj7kaukgu" path="res://Scenes/FlashLight.gd" id="15_fs7ks"]
 [ext_resource type="Texture2D" uid="uid://du8w5bllunwpp" path="res://Assets/Textures/flashlight.png" id="15_igrcy"]
+[ext_resource type="Script" uid="uid://wtkdwhwml4g2" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="15_r7t2e"]
 [ext_resource type="AudioStream" uid="uid://bdx8qlgb45o3p" path="res://Assets/Audio/SoundFX/LampButton2.mp3" id="17_l6n3p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
@@ -35,6 +47,54 @@ height = 0.589089
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qqcod"]
 dof_blur_far_enabled = true
 dof_blur_near_enabled = true
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_nmr2m"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("7_8gxox")
+pre_blur_processor_stage = ExtResource("6_nv4vc")
+camera_rotation_component = ExtResource("4_36dho")
+camera_movement_component = ExtResource("3_wohnl")
+object_movement_component = ExtResource("5_yh6i2")
+debug = false
+metadata/_custom_type_script = "uid://e81i0u44kbxe"
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_ax3m3"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("11_xwi16")
+blur_stage = ExtResource("8_11gg7")
+overlay_stage = ExtResource("10_sbwqj")
+tile_max_x_stage = ExtResource("12_sweqm")
+tile_max_y_stage = ExtResource("13_ph33w")
+neighbor_max_stage = ExtResource("9_qpa8y")
+tile_variance_stage = ExtResource("14_7ldla")
+tile_size = 40
+linear_falloff_slope = 1.0
+importance_bias = 40.0
+maximum_jitter_value = 0.95
+minimum_user_threshold = 1.5
+debug = false
+metadata/_custom_type_script = "uid://oqyw7t1mcgag"
+
+[sub_resource type="Compositor" id="Compositor_3vlem"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_nmr2m"), SubResource("CompositorEffect_ax3m3")])
+script = ExtResource("15_r7t2e")
+samples = 16
+intensity = 0.5
+center_fade = 0.0
+framerate_independent = true
+uncapped_independence = true
+target_constant_framerate = 30.0
+metadata/_custom_type_script = "uid://wtkdwhwml4g2"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h4iuc"]
 render_priority = -1
@@ -53,6 +113,54 @@ radius = 50.9001
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fmr2d"]
 points = PackedVector3Array(1.905, 0.316, 0.64, 2.02, 0.411, -0.355, -1.905, 0.321, 0.615, 0, 0, 0, -1.905, 0.371, -0.43)
+
+[sub_resource type="GDScript" id="GDScript_fs7ks"]
+script/source = "extends RayCast3D
+var object_being_looked_at
+func _ready():
+	EventBus.connect(\"dropped_object\", _dropped_object)
+	pass
+
+func _process(_delta):
+	_check_for_interactables()
+
+func _dropped_object(_object,_object2):
+	object_being_looked_at = null
+
+func _check_for_interactables():
+	var current_interactable = get_interactable()
+	if current_interactable:
+		if object_being_looked_at != current_interactable:
+			EventBus.emitCustomSignal(\"object_looked_at\", [current_interactable])
+			object_being_looked_at = current_interactable
+	elif object_being_looked_at:
+		EventBus.emitCustomSignal(\"no_object_found\", [object_being_looked_at])
+		object_being_looked_at = null
+
+func get_interactable():
+	if is_colliding() :
+		var collider = get_collider()
+		if collider and ((collider.collision_layer & (1 << 1)) != 0 or (collider.collision_layer & (1 << 19)) != 0):
+			return collider
+		elif collider and collider.has_method(\"display_text\"):
+			return collider
+		elif collider and collider is Package:
+			return collider
+		elif collider and collider.name == \"Mailcart\":
+			return collider
+	return null
+
+
+func is_interactable():
+	var collider = get_interactable()
+	return collider
+
+
+func interact():
+	var collider = get_interactable()
+	if collider and collider.has_method(\"interact\"):
+		collider.interact()
+"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olqyp"]
 streams_count = 1
@@ -90,6 +198,7 @@ script = ExtResource("2_eyvdn")
 physics_interpolation_mode = 1
 cull_mask = 524287
 attributes = SubResource("CameraAttributesPractical_qqcod")
+compositor = SubResource("Compositor_3vlem")
 doppler_tracking = 2
 current = true
 fov = 60.0
@@ -120,6 +229,7 @@ layer = 1
 
 [node name="BlurRange" type="RayCast3D" parent="Neck/Head/HeadbopRoot/Camera"]
 target_position = Vector3(0, 0, -400)
+collision_mask = 4171
 
 [node name="LightOptimizerDetector" type="Area3D" parent="Neck/Head/HeadbopRoot"]
 transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0.0297186, -0.312485)
@@ -168,7 +278,7 @@ spot_angle_attenuation = 1.86607
 target_position = Vector3(0, 0, -2.5)
 collision_mask = 533643
 collide_with_areas = true
-script = ExtResource("5_fh3d4")
+script = SubResource("GDScript_fs7ks")
 
 [node name="StandingObstructionRaycasts" type="Node3D" parent="Neck/Head"]
 
@@ -207,6 +317,7 @@ target_position = Vector3(0, 0, -100)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Neck/Head/FlashLight"]
 light_energy = 0.5
+light_specular = 0.0
 omni_range = 2.80466
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Neck/Head/FlashLight"]
