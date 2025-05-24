@@ -256,6 +256,31 @@ stream_2/stream = ExtResource("8_rikp2")
 
 [node name="Chair" type="Node3D"]
 
+[node name="Wheel6" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.109935, -0.720126, 0.455696)
+node_a = NodePath("../Chair")
+node_b = NodePath("../Wheel1")
+
+[node name="Wheel7" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.424943, -0.723163, 0.284407)
+node_a = NodePath("../Chair")
+node_b = NodePath("../Wheel2")
+
+[node name="Wheel8" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.424321, -0.723114, -0.27801)
+node_a = NodePath("../Chair")
+node_b = NodePath("../Wheel3")
+
+[node name="Wheel9" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.108598, -0.726941, -0.450668)
+node_a = NodePath("../Chair")
+node_b = NodePath("../Wheel4")
+
+[node name="Wheel10" type="HingeJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.437987, -0.711981, 0.00193682)
+node_a = NodePath("../Chair")
+node_b = NodePath("../Wheel5")
+
 [node name="Wheel5" type="RigidBody3D" parent="."]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 0.415045, -0.746083, 0)
 collision_layer = 0
@@ -394,30 +419,5 @@ impact_audios = NodePath("../AudioStreamPlayer3D")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Chair"]
 stream = SubResource("AudioStreamRandomizer_5gbm1")
 bus = &"RigidBodies"
-
-[node name="Wheel1" type="HingeJoint3D" parent="Chair"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.109935, -0.720126, 0.455696)
-node_a = NodePath("..")
-node_b = NodePath("../../Wheel1")
-
-[node name="Wheel2" type="HingeJoint3D" parent="Chair"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.424943, -0.723163, 0.284407)
-node_a = NodePath("..")
-node_b = NodePath("../../Wheel2")
-
-[node name="Wheel3" type="HingeJoint3D" parent="Chair"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.424321, -0.723114, -0.27801)
-node_a = NodePath("..")
-node_b = NodePath("../../Wheel3")
-
-[node name="Wheel4" type="HingeJoint3D" parent="Chair"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.108598, -0.726941, -0.450668)
-node_a = NodePath("..")
-node_b = NodePath("../../Wheel4")
-
-[node name="Wheel5" type="HingeJoint3D" parent="Chair"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.437987, -0.711981, 0.00193682)
-node_a = NodePath("..")
-node_b = NodePath("../../Wheel5")
 
 [connection signal="body_entered" from="Chair" to="Chair/Node3D" method="_on_body_entered"]
