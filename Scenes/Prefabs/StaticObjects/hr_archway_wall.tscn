@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://erkjuywjqecv"]
+[gd_scene load_steps=48 format=4 uid="uid://erkjuywjqecv"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_8l1s5"]
 [ext_resource type="Texture2D" uid="uid://t6r0hauythae" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Concrete042A_1K-JPG_Color.jpg" id="1_vj8na"]
@@ -11,9 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dwcdylwdyjk6k" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_Roughness.png" id="8_btay4"]
 [ext_resource type="Texture2D" uid="uid://diq76i8r0wneq" path="res://Assets/TemporaryAssets/decimated_HR_ASSETS_T_Door_Door_basecolor.png" id="9_dei82"]
 [ext_resource type="Texture2D" uid="uid://dhepsytbckakx" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic018A_1K-JPG_NormalGL.jpg" id="9_gc46t"]
-[ext_resource type="Texture2D" uid="uid://bvl8a3o3e8mfa" path="res://Assets/TemporaryAssets/decimated_HR_ASSETS_MI_Door_Occlusion-T_Door_Door_surface.png" id="10_e8he2"]
 [ext_resource type="Texture2D" uid="uid://gqsedkoyeak2" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Color.jpg" id="10_ti2w2"]
-[ext_resource type="Texture2D" uid="uid://l8nrt1efbany" path="res://Assets/TemporaryAssets/decimated_HR_ASSETS_T_Door_Door_normal.png" id="11_wflpo"]
 [ext_resource type="Texture2D" uid="uid://dtprrraywwk3u" path="res://Assets/Models/test_models/Floor2/Walls/HR_wall_test_Plastic013A_1K-JPG_Roughness.png" id="11_y2blj"]
 [ext_resource type="Script" uid="uid://dmtprj5gddj6g" path="res://Scripts/Interactable/Door.gd" id="16_j4tbd"]
 [ext_resource type="AudioStream" uid="uid://dwhgdxuiprgyt" path="res://Assets/Audio/SoundFX/Door/DoorLocked2.ogg" id="17_uxr7i"]
@@ -53,15 +51,8 @@ size = Vector3(2.06232, 2.38063, 0.888916)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktgrt"]
 resource_name = "MI_Door"
 albedo_texture = ExtResource("9_dei82")
-metallic = 1.0
-metallic_texture = ExtResource("10_e8he2")
-metallic_texture_channel = 2
-roughness_texture = ExtResource("10_e8he2")
 roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("11_wflpo")
 ao_enabled = true
-ao_texture = ExtResource("10_e8he2")
 texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vqjh4"]
