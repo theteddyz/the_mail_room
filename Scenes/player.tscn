@@ -359,6 +359,12 @@ spot_angle = 89.0
 [node name="ScareVisionController" type="Node" parent="."]
 script = ExtResource("14_jppxj")
 
+[node name="mailcart_target_position" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12493, -2.51732)
+
+[node name="mailcart_target_position_sprint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12493, -2.81381)
+
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]
 [connection signal="timeout" from="Neck/Head/HeadbopRoot/MonsterDetector/Vision_Timer" to="Neck/Head/HeadbopRoot/MonsterDetector" method="_on_vision_timer_timeout"]
