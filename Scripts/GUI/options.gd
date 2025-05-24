@@ -50,7 +50,7 @@ func _ready():
 	for child in get_tree().get_nodes_in_group("Player_shader"):
 		if child.name == "everything":
 			shader = child.material
-
+	
 	graphics_fisheye_label.text = str(shader.get_shader_parameter("FISHEYE_AMOUNT"))
 	graphics_sharpening_label.text = str(shader.get_shader_parameter("SHARPENING"))
 	hide()

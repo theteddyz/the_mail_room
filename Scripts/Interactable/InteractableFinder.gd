@@ -22,12 +22,14 @@ func _check_for_interactables():
 
 func get_interactable():
 	if is_colliding() :
-		var collider = get_collider()
+		var collider := get_collider()
 		if collider and ((collider.collision_layer & (1 << 1)) != 0 or (collider.collision_layer & (1 << 19)) != 0):
 			return collider
 		elif collider and collider.has_method("display_text"):
 			return collider
 		elif collider and collider is Package:
+			return collider
+		elif collider and collider.name == "Basket":
 			return collider
 		elif collider and collider.name == "Mailcart":
 			return collider

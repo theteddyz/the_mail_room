@@ -249,14 +249,19 @@ func handle_general_interaction():
 	if collider and !is_holding_object:
 		ScareDirector.grabbable.emit(collider.name)
 		match collider.name:
-			mail_cart_name:
+			# This is the name (or should be the name) of the node in the mailcart with the top collider
+			"Basket":
 				if is_holding_package:
-					collider.add_package(package_last_held,true)
+					collider.get_parent().add_package(package_last_held,true)
 					package_last_held = null
 					is_holding_package = false
 				else:
-					collider.grab_current_package()
+					# TODO: 
+					# if this is the body of the cart, and not the basket, dont do this
+					collider.get_parent().grab_current_package()
 					gui_anim.show_icon(false)
+			"Mailcart":
+				mailcart.is_weak_grabbed = true
 			"MailboxStand":
 				if is_holding_package:
 					collider.find_child("PackageDestination").deliver(package_last_held)

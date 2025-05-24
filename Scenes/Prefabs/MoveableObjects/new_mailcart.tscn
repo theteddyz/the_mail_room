@@ -1,8 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://cjnqu05bvamsg"]
+[gd_scene load_steps=29 format=3 uid="uid://cjnqu05bvamsg"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://b1bqehkmdmmd7" path="res://Scenes/Prefabs/MoveableObjects/mailcart_physicsmaterial.tres" id="1_ql4ry"]
 [ext_resource type="Script" uid="uid://vabf0w3c01kb" path="res://Scripts/MailCart/new_mailcart.gd" id="2_dxty8"]
-[ext_resource type="Script" uid="uid://biooamxg1yw8u" path="res://Scripts/Interactable/hold_cart.gd" id="3_dxty8"]
+[ext_resource type="Script" uid="uid://biooamxg1yw8u" path="res://Scripts/Interactable/new_mailcart_handlebar.gd" id="3_dxty8"]
 [ext_resource type="PackedScene" uid="uid://k8vvnw4f144m" path="res://Assets/Models/cart_model.tscn" id="3_tkgiq"]
 [ext_resource type="Script" uid="uid://bnpju68ive8k8" path="res://Scripts/MailCart/clipboard.gd" id="4_vtlvp"]
 [ext_resource type="Texture2D" uid="uid://ccb6x7kk3ub7b" path="res://Assets/TemporaryAssets/Wood063_1K-JPG_Color.jpg" id="5_a28w2"]
@@ -14,11 +14,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ypu4y"]
 size = Vector3(0.814026, 0.0893555, 0.127289)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_r7lr0"]
-size = Vector3(1.60435, 2.18164, 0.935089)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_wco24"]
-size = Vector3(0.0115967, 0.488342, 0.484657)
+size = Vector3(0.066864, 0.548904, 0.453997)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0638x"]
 albedo_texture = ExtResource("5_a28w2")
@@ -63,7 +60,7 @@ size = Vector3(0.0703735, 0.98259, 1.67651)
 size = Vector3(0.926912, 0.98259, 0.0594177)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5dlk5"]
-size = Vector3(0.926912, 0.98259, 0.524826)
+size = Vector3(0.926912, 0.98259, 0.443645)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_138r2"]
 size = Vector3(0.926912, 0.048912, 1.30636)
@@ -97,11 +94,6 @@ shape = SubResource("BoxShape3D_ypu4y")
 [node name="PlayerPosition" type="Node3D" parent="Handlebar"]
 transform = Transform3D(-0.00832664, 0, -1.03996, 0, 1.26, 0, 0.929963, 0, -0.00931151, 0, -0.05, 0.625)
 
-[node name="PlayerCollider" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.00415401, 0, 1, 0, 1, 0, -1, 0, -0.00415401, 0, 1.049, 1.679)
-shape = SubResource("BoxShape3D_r7lr0")
-disabled = true
-
 [node name="Cart" parent="." instance=ExtResource("3_tkgiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68221e-06, 0.724449, 6.61463e-05)
 
@@ -114,7 +106,7 @@ collision_layer = 2
 script = ExtResource("4_vtlvp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map_Position/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 8.48515e-31, 1, 0.000305176, 0.0039978, -0.00578684)
+transform = Transform3D(1, -4.91738e-07, 0, 4.91738e-07, 1, 0, 1.35003e-13, -2.84217e-14, 1, -0.0273272, 0.0265426, 0.0124363)
 shape = SubResource("BoxShape3D_wco24")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Map_Position"]
@@ -176,16 +168,19 @@ shape = SubResource("BoxShape3D_83uqg")
 [node name="Radio_Sound_Player" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.64666, 0.625213, 0.0192857)
 
-[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17162, 0)
+[node name="cart_move_audio" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.153306, 0)
 stream = ExtResource("9_600bc")
+volume_db = -3.81
+unit_size = 1.21
+pitch_scale = 0.83
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Basket" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.600221, 0)
 collision_layer = 64
 collision_mask = 64
 
-[node name="Basket" type="CollisionShape3D" parent="Area3D"]
+[node name="Basket" type="CollisionShape3D" parent="Basket"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0580783, 0.0283203)
 shape = SubResource("BoxShape3D_pbic7")
 
@@ -202,7 +197,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00356007, 0.428, -0.780294
 shape = SubResource("BoxShape3D_mig1s")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00356007, 0.428, 0.77793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00356007, 0.428, 0.73734)
 shape = SubResource("BoxShape3D_5dlk5")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
@@ -216,28 +211,4 @@ shape = SubResource("BoxShape3D_cucwk")
 [node name="RadioPosition" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.64666, 0.625213, 0.0192857)
 
-[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07051, 1.25297)
-node_b = NodePath("..")
-exclude_nodes_from_collision = false
-linear_limit_x/upper_distance = 0.3
-linear_limit_x/lower_distance = -0.3
-linear_limit_z/upper_distance = 0.3
-linear_limit_z/lower_distance = -0.3
-linear_motor_x/enabled = true
-linear_motor_x/target_velocity = 10.0
-linear_motor_x/force_limit = 35.0
-linear_motor_z/enabled = true
-linear_motor_z/target_velocity = 5.0
-linear_motor_z/force_limit = 10.0
-linear_spring_x/enabled = true
-linear_spring_x/stiffness = 0.5
-linear_spring_x/damping = 0.2
-linear_spring_y/stiffness = 1.0
-linear_spring_y/damping = 1.0
-linear_spring_z/enabled = true
-linear_spring_z/stiffness = 0.5
-linear_spring_z/damping = 0.2
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Basket" to="." method="_on_basket_body_entered"]

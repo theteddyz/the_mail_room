@@ -8088,6 +8088,7 @@ shape = SubResource("BoxShape3D_87y0m")
 [editable path="NavigationRegion3D/human_resources_examination/WALLS/MailboxStand"]
 [editable path="NavigationRegion3D/human_resources_examination/Ceiling_Light_HR6"]
 [editable path="NavigationRegion3D/human_resources_secondary_wing/Ceiling_Light_HR"]
+[editable path="NavigationRegion3D/human_resources_secondary_wing/Ceiling_Light_HR6"]
 [editable path="NavigationRegion3D/human_resources_surgery/WALLS/HR_ArchwayWall3"]
 [editable path="NavigationRegion3D/human_resources_surgery/OBJECTS/Node3D"]
 [editable path="NavigationRegion3D/human_resources_surgery/OBJECTS/MailboxStand"]
