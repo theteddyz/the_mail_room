@@ -1,22 +1,15 @@
-[gd_scene load_steps=21 format=4 uid="uid://cr8uwvo50c4wq"]
+[gd_scene load_steps=18 format=4 uid="uid://cr8uwvo50c4wq"]
 
 [ext_resource type="Texture2D" uid="uid://ddop0qwn1qu0v" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_AutopsyLight_basecolor.png" id="1_qmmt5"]
-[ext_resource type="Texture2D" uid="uid://be8emvvpb6c4l" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_AutopsyLight_Occlusion-T_AutopsyLight_surface.png" id="2_wm6ka"]
-[ext_resource type="Texture2D" uid="uid://cxiaf1vh8kfka" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_AutopsyLight_normal.png" id="3_kitfu"]
-[ext_resource type="Texture2D" uid="uid://b3s0xyeddvnrp" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_AutopsyLight_Occlusion.png-T_AutopsyLight_surface.png" id="4_wm6ka"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aput0"]
 resource_name = "MI_AutopsyLight"
 albedo_texture = ExtResource("1_qmmt5")
 metallic = 1.0
-metallic_texture = ExtResource("2_wm6ka")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_wm6ka")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("3_kitfu")
 ao_enabled = true
-ao_texture = ExtResource("2_wm6ka")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_l6irl"]
 _surfaces = [{
@@ -62,14 +55,10 @@ size = Vector3(0.281921, 0.048584, 4.8732)
 resource_name = "MI_AutopsyLight.001"
 albedo_texture = ExtResource("1_qmmt5")
 metallic = 1.0
-metallic_texture = ExtResource("4_wm6ka")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("4_wm6ka")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("3_kitfu")
 ao_enabled = true
-ao_texture = ExtResource("4_wm6ka")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gl8vb"]
 _surfaces = [{
@@ -268,17 +257,17 @@ transform = Transform3D(0.998027, 0, -0.0627905, 0, 1, 0, 0.0627905, 0, 0.998027
 mesh = SubResource("ArrayMesh_j2gyi")
 skeleton = NodePath("")
 
-[node name="SM_LightHolder_RotationY_2_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.998027, 0.0294784, -0.0554407, 0, 0.882948, 0.469472, 0.0627905, -0.468545, 0.881205, -0.0278162, -1.48953, 0.486467)
+[node name="SM_LightHolder_RotationY_2_001" type="MeshInstance3D" parent="SM_LightHolder_RotationZ_2_001"]
+transform = Transform3D(1, 6.51926e-08, -1.49012e-08, 0, 0.882948, 0.469472, 0, -0.469471, 0.882947, -1.28057e-08, -0.644847, 0.443)
 mesh = SubResource("ArrayMesh_i330f")
 skeleton = NodePath("")
 
-[node name="SM_LightHolder_RotationX_2_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.998027, 0.0294784, -0.0554407, 0, 0.882948, 0.469472, 0.0627905, -0.468545, 0.881205, -0.039032, -1.3938, 0.664737)
+[node name="SM_LightHolder_RotationX_2_001" type="MeshInstance3D" parent="SM_LightHolder_RotationZ_2_001"]
+transform = Transform3D(1, 6.51926e-08, -1.49012e-08, 0, 0.882948, 0.469472, 0, -0.469471, 0.882947, -2.39816e-08, -0.549117, 0.621622)
 mesh = SubResource("ArrayMesh_naf48")
 skeleton = NodePath("")
 
-[node name="SM_MultiLight_2_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.998027, 0.00306731, -0.0627156, 0, 0.998806, 0.0488499, 0.0627905, -0.0487535, 0.996835, -0.00435309, -1.68822, 0.113531)
+[node name="SM_MultiLight_2_001" type="MeshInstance3D" parent="SM_LightHolder_RotationZ_2_001"]
+transform = Transform3D(1, 1.62981e-09, -8.9407e-08, 0, 0.998806, 0.0488499, 0, -0.0488499, 0.998806, -3.32948e-08, -0.843537, 0.0693267)
 mesh = SubResource("ArrayMesh_054pf")
 skeleton = NodePath("")
