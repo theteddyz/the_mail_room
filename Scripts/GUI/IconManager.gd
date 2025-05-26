@@ -34,6 +34,7 @@ func show_icon(object):
 	if GrabbingManager.current_grabbed_object == object:
 		object_name = "grabClosed"
 	else:
+		# If there was anything scary and horrific about our game, it is this here code. Truly eldritch. Truly frightening.
 		if not object_held:
 			if "icon_type" in object:
 				var type_id = object.icon_type
@@ -47,7 +48,7 @@ func show_icon(object):
 				object_name = "Drive"
 		elif object_held is Package and object is not Package:
 			match object.name:
-				"Mailcart", "MailboxStand":
+				"Basket", "MailboxStand":
 					object_name = "deliverable"
 				_:
 					object_name = "grab"

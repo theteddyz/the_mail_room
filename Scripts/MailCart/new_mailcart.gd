@@ -12,6 +12,7 @@ var highlight_lerp_speed:float = 8.2
 
 @onready var cart_move_audio: AudioStreamPlayer3D = $cart_move_audio
 @onready var base_pitch = cart_move_audio.pitch_scale
+@onready var basket = find_child("Basket")
 @onready var player: CharacterBody3D = GameManager.get_player()
 @onready var target: Marker3D = player.find_child("mailcart_target_position")
 @onready var target_sprint: Marker3D = player.find_child("mailcart_target_position_sprint")
@@ -164,7 +165,7 @@ func move_package_to_cart(package: Package, _position: float):
 	package.set_sleeping(true)
 
 func on_being_looked_at(node):
-	if node == self:
+	if node == basket:
 		is_being_looked_at = true
 
 func not_being_looked_at(_node):

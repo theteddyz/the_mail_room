@@ -234,11 +234,6 @@ func handle_keyboard_press(event: InputEvent):
 			if !is_holding_package and !is_holding_object:
 				change_state.call("grabcart")
 
-func handle_radio_interaction():
-	if interactable_finder.is_interactable("Mailcart"):
-		interactable_finder.get_interactable().add_radio(object_last_held)
-
-
 func handle_general_interaction():
 	if mailcart == null:
 		mailcart = GameManager.get_mail_cart()
@@ -319,13 +314,13 @@ func handle_scroll(is_down):
 	var collider = interactable_finder.get_interactable()
 	if collider:
 		match collider.name:
-			"Mailcart":
+			"Basket":
 				if is_down:
 					gui_anim.scroll_down()
-					collider.scroll_package_down()
+					collider.get_parent().scroll_package_down()
 				else:
 					gui_anim.scroll_up()
-					collider.scroll_package_up()
+					collider.get_parent().scroll_package_up()
 			"Radio":
 				#TODO:Handle Radio Functionality
 				var _parent = collider.get_parent()

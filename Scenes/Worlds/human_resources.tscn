@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="7_o0ubx"]
 [ext_resource type="PackedScene" uid="uid://dmy0v04imvkbv" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_big.tscn" id="8_pfkl4"]
 [ext_resource type="PackedScene" uid="uid://cnerano15ywvl" path="res://Scenes/Worlds/finance_monster_spawnpoint.tscn" id="8_q8swy"]
-[ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="8_rl6tn"]
 [ext_resource type="PackedScene" uid="uid://ugwqaphpkcxp" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_long.tscn" id="9_utodj"]
 [ext_resource type="PackedScene" uid="uid://c148bm0rukaqe" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_medium.tscn" id="10_qxgmc"]
 [ext_resource type="PackedScene" uid="uid://bwkdr1hhs71ee" path="res://Scenes/Prefabs/MoveableObjects/cardboard_box_small.tscn" id="11_ar01i"]
@@ -173,6 +172,7 @@
 [ext_resource type="PackedScene" uid="uid://cy8gsqjw3mgdo" path="res://Scenes/Prefabs/StaticObjects/HR_ASSETS/wall_poster_4.tscn" id="167_pvorj"]
 [ext_resource type="PackedScene" uid="uid://cr8uwvo50c4wq" path="res://Scenes/Prefabs/StaticObjects/HR_ASSETS/light_base.tscn" id="168_p8ln3"]
 [ext_resource type="Texture2D" uid="uid://ddop0qwn1qu0v" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_AutopsyLight_basecolor.png" id="169_uof0v"]
+[ext_resource type="PackedScene" uid="uid://cjnqu05bvamsg" path="res://Scenes/Prefabs/MoveableObjects/new_mailcart.tscn" id="173_owhnd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wf0j3"]
 size = Vector3(3.84387, 2.16748, 1)
@@ -3088,13 +3088,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.002, 0.418257, -4.41595)
 [node name="Player" parent="." instance=ExtResource("7_o0ubx")]
 transform = Transform3D(-0.0832604, 0, -0.996528, 0, 1, 0, 0.996528, 0, -0.0832604, 37.8603, 0.479325, 11.7388)
 
-[node name="Mailcart" parent="." instance=ExtResource("8_rl6tn")]
-transform = Transform3D(-0.349979, 0, -0.936758, 0, 1, 0, 0.936758, 0, -0.349979, 3.55372, 0.316447, 1.73329)
-
 [node name="cutter_ai" parent="." instance=ExtResource("99_q8swy")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 58.897, 0.05, 3.67236)
-visible = false
 enabled = false
+
+[node name="Mailcart" parent="." instance=ExtResource("173_owhnd")]
+transform = Transform3D(-0.241431, 0, -0.970418, 0, 1, 0, 0.970418, 0, -0.241431, 5.25125, 0.279996, 2.08654)
 
 [node name="cutter_carcass_ai" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.8182, 2.06857, 28.3236)

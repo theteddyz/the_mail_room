@@ -1,6 +1,7 @@
 extends Interactable
 class_name Radio
-@onready var audio:AudioStreamPlayer3D = $"../../Radio_Sound_Player"
+@onready var radio_sound_player: AudioStreamPlayer3D = $"../../Radio_Sound_Player"
+
 @onready var collider:CollisionShape3D = $CollisionShape3D
 var has_tape = false
 var held_tape
@@ -14,7 +15,7 @@ func _ready():
 	GameManager.register_player_radio(self)
 
 func get_stream_player() -> AudioStreamPlayer3D:
-	return audio
+	return radio_sound_player
 
 func interact():
 	if has_tape:
@@ -25,28 +26,28 @@ func play_tape(tape):
 		var sound  = held_tape.sound
 		print(held_tape)
 		has_tape = true
-		audio.set_stream(sound)
-		audio.play()
+		radio_sound_player.set_stream(sound)
+		radio_sound_player.play()
 func play_narrator_sound(sound):
-	if audio.playing:
-		await audio.finished
-		audio.stream = sound
-		audio.play()
+	if radio_sound_player.playing:
+		await radio_sound_player.finished
+		radio_sound_player.stream = sound
+		radio_sound_player.play()
 	else:
-		audio.stream = sound
-		audio.play()
+		radio_sound_player.stream = sound
+		radio_sound_player.play()
 	
 
 
 func eject_tape():
-	audio.stop()
+	radio_sound_player.stop()
 	held_tape.eject()
 	has_tape = false
 	held_tape = null
-	audio.stream = null
+	radio_sound_player.stream = null
 
 
 func delivery_sound(_i):
 	power = true
-	audio.stream = delievery_sound
-	audio.play()
+	radio_sound_player.stream = delievery_sound
+	radio_sound_player.play()

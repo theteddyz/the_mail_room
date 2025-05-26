@@ -149,6 +149,8 @@ func get_interactable():
 			return collider
 		elif collider and collider.name == \"Mailcart\":
 			return collider
+		elif collider and collider.name == \"Basket\":
+			return collider
 	return null
 
 
@@ -230,7 +232,7 @@ layer = 1
 
 [node name="BlurRange" type="RayCast3D" parent="Neck/Head/HeadbopRoot/Camera"]
 target_position = Vector3(0, 0, -400)
-collision_mask = 4171
+collision_mask = 4107
 
 [node name="LightOptimizerDetector" type="Area3D" parent="Neck/Head/HeadbopRoot"]
 transform = Transform3D(0.21, 0, 0, 0, 0.21, 0, 0, 0, 0.21, 0, 0.0297186, -0.312485)
@@ -277,7 +279,7 @@ spot_angle_attenuation = 1.86607
 
 [node name="InteractableFinder" type="RayCast3D" parent="Neck/Head"]
 target_position = Vector3(0, 0, -2.5)
-collision_mask = 533643
+collision_mask = 533707
 collide_with_areas = true
 script = SubResource("GDScript_fs7ks")
 
@@ -361,10 +363,10 @@ spot_angle = 89.0
 script = ExtResource("14_jppxj")
 
 [node name="mailcart_target_position" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12493, -2.51732)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12493, -2.37598)
 
 [node name="mailcart_target_position_sprint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12493, -2.81381)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12493, -2.47542)
 
 [connection signal="area_entered" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="Neck/Head/HeadbopRoot/LightOptimizerDetector" to="Neck/Head/HeadbopRoot/LightOptimizerDetector" method="_on_area_exited"]

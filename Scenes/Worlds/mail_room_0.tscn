@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bb75w210dxt14" path="res://Scenes/Prefabs/Rooms/mailroom.tscn" id="6_b44l8"]
 [ext_resource type="Texture2D" uid="uid://cewsovmotus3" path="res://Assets/Models/BlenderModels/desk_CRTTV.png" id="13_p37jt"]
 [ext_resource type="PackedScene" uid="uid://c03lqw7vrgadb" path="res://Scenes/Prefabs/StaticObjects/crttv.tscn" id="13_pdcxx"]
+[ext_resource type="PackedScene" uid="uid://cjnqu05bvamsg" path="res://Scenes/Prefabs/MoveableObjects/new_mailcart.tscn" id="16_pdcxx"]
 [ext_resource type="VideoStream" uid="uid://dcahllgl8gobw" path="res://Assets/crt-video-final-master-peter-3-1-jnne1j.ogv" id="17_p37jt"]
 [ext_resource type="AudioStream" uid="uid://cqiw4v1eyh2jv" path="res://Assets/CRT Video Final Master Peter 3 (1).mp3" id="17_ub5ip"]
 [ext_resource type="PackedScene" uid="uid://wd85mtseuke1" path="res://Scenes/Prefabs/StaticObjects/Tiles/elevator_prefab.tscn" id="29_3ttsr"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="30_xol48"]
-[ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="31_3qdax"]
 [ext_resource type="Script" uid="uid://dtdjtui3dj5fj" path="res://Scripts/GameManagement/tutorial_manager.gd" id="32_yjldp"]
 [ext_resource type="Texture2D" uid="uid://b01421mbq0uvp" path="res://Assets/Textures/BlenderTextures/ElevatorShaft.png" id="33_fpqgk"]
 [ext_resource type="PackedScene" uid="uid://c5gsbgt4sbxui" path="res://Scenes/Prefabs/StaticObjects/MailRoomFloorLayout.tscn" id="34_wi3qf"]
@@ -458,9 +458,6 @@ cart_position = Vector3(0, 0.65, 0)
 package_num = 7
 icon_type = 0
 
-[node name="Mailcart" parent="." instance=ExtResource("31_3qdax")]
-transform = Transform3D(0.0671446, 0, 0.997743, 0, 1, 0, -0.997743, 0, 0.0671446, -0.184902, 0.291614, -5.19861)
-
 [node name="TutorialManager" type="Node3D" parent="."]
 script = ExtResource("32_yjldp")
 
@@ -565,6 +562,9 @@ grow_vertical = 2
 audio_track = 1
 stream = ExtResource("17_p37jt")
 expand = true
+
+[node name="Mailcart" parent="." instance=ExtResource("16_pdcxx")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.203934, -5.86288)
 
 [connection signal="body_entered" from="TutorialManager/Start_Area" to="TutorialManager" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="TutorialManager/Tutorial_Start" to="TutorialManager" method="_on_tutorial_start_body_entered"]
