@@ -46,7 +46,8 @@ height = 0.589089
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qqcod"]
 dof_blur_far_enabled = true
-dof_blur_near_enabled = true
+dof_blur_far_distance = 1.65
+dof_blur_amount = 0.07
 
 [sub_resource type="CompositorEffect" id="CompositorEffect_nmr2m"]
 resource_local_to_scene = false
