@@ -1,22 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://yfsfwgt4dbtl"]
+[gd_scene load_steps=7 format=4 uid="uid://yfsfwgt4dbtl"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_iiuia"]
 [ext_resource type="Texture2D" uid="uid://bgsv251bwa6vd" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_cabinets_filler_01_basecolor.png" id="2_240ax"]
-[ext_resource type="Texture2D" uid="uid://dw0iejcujsu4h" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_cabinets_filler_01_surface.png" id="3_cph5n"]
-[ext_resource type="Texture2D" uid="uid://usv1f73vctnc" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_cabinets_filler_01_normal.png" id="4_tslxa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6whxs"]
 resource_name = "MI_CabinetsFiller_1"
 albedo_texture = ExtResource("2_240ax")
 metallic = 1.0
-metallic_texture = ExtResource("3_cph5n")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("3_cph5n")
 roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("4_tslxa")
-ao_enabled = true
-ao_texture = ExtResource("3_cph5n")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5uyhj"]
 _surfaces = [{

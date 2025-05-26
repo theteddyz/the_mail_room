@@ -1,21 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://m8kanicu5058"]
+[gd_scene load_steps=7 format=4 uid="uid://m8kanicu5058"]
 
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_k8sdb"]
 [ext_resource type="Texture2D" uid="uid://ddix2kivxpy3b" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_SurgeryProps_SurgeryProps_basecolor.png" id="1_yyixg"]
-[ext_resource type="Texture2D" uid="uid://blio0hp12tpc4" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_SurgeryProps_SurgeryProps_surface.png" id="2_jbmn0"]
-[ext_resource type="Texture2D" uid="uid://sj3eftxdeprq" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_SurgeryProps_SurgeryProps_normal.png" id="3_bx5nl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thmmu"]
 resource_name = "MI_SurgeryProps"
 albedo_texture = ExtResource("1_yyixg")
 metallic = 1.0
-metallic_texture = ExtResource("2_jbmn0")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_jbmn0")
 roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("3_bx5nl")
-ao_enabled = true
-ao_texture = ExtResource("2_jbmn0")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8gbl6"]
 _surfaces = [{
@@ -58,6 +51,7 @@ radius = 0.0683594
 [node name="saw_blade_2" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 15
+script = ExtResource("1_k8sdb")
 
 [node name="SM_SurgeryProps_Autopsy_Saw" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_wtsyk")

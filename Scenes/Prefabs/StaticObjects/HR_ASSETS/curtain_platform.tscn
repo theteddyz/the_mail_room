@@ -1,21 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://csnrq7rv0rmpj"]
+[gd_scene load_steps=6 format=4 uid="uid://csnrq7rv0rmpj"]
 
 [ext_resource type="Texture2D" uid="uid://dkcft6lkacu1u" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_CurtainBase_basecolor.png" id="1_8u52c"]
-[ext_resource type="Texture2D" uid="uid://cb2hlxk3gihug" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_CurtainBase_surface_Linear.png" id="2_n27be"]
-[ext_resource type="Texture2D" uid="uid://qq5lnwyi4cgf" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_CurtainBase_normal.png" id="3_tu0ls"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbm8s"]
 resource_name = "MI_CurtainBase"
 albedo_texture = ExtResource("1_8u52c")
-metallic = 1.0
-metallic_texture = ExtResource("2_n27be")
-metallic_texture_channel = 2
-roughness_texture = ExtResource("2_n27be")
-roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("3_tu0ls")
-ao_enabled = true
-ao_texture = ExtResource("2_n27be")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_sqe6u"]
 _surfaces = [{

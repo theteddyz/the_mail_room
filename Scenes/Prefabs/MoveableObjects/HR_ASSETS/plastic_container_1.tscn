@@ -1,21 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://drxsnba0bhgdt"]
+[gd_scene load_steps=7 format=4 uid="uid://drxsnba0bhgdt"]
 
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_n2egl"]
 [ext_resource type="Texture2D" uid="uid://cr2i4ie58ngro" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_plastic_containers_01_basecolor.png" id="1_nxxiv"]
-[ext_resource type="Texture2D" uid="uid://db6126l8vo3ts" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_plastic_containers_01_surface.png" id="2_pq4rf"]
-[ext_resource type="Texture2D" uid="uid://buo18ubnaapy0" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_plastic_containers_01_normal.png" id="3_ikd1d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xvt3j"]
 resource_name = "MI_PlasticContainers.003"
 albedo_texture = ExtResource("1_nxxiv")
 metallic = 1.0
-metallic_texture = ExtResource("2_pq4rf")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_pq4rf")
 roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("3_ikd1d")
-ao_enabled = true
-ao_texture = ExtResource("2_pq4rf")
 texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_a43q7"]
@@ -58,6 +51,7 @@ size = Vector3(0.102051, 0.294861, 0.182129)
 [node name="plastic_container_1" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 15
+script = ExtResource("1_n2egl")
 
 [node name="SM_PlasticContainer_plastic_containers_04" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ucylc")

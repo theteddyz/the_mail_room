@@ -1,24 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://blr75jx8ocncv"]
+[gd_scene load_steps=6 format=4 uid="uid://blr75jx8ocncv"]
 
 [ext_resource type="Texture2D" uid="uid://ulkcywxqw688" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_ExitSign_basecolor.png" id="1_mkxoe"]
-[ext_resource type="Texture2D" uid="uid://dpplesh3y32fk" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_ExitSign_Sign_Occlusion-T_ExitSign_surface_Linear.png" id="2_cm6qc"]
 [ext_resource type="Texture2D" uid="uid://kuueg0yli1k" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_ExitSign_Sign_Emissive.png" id="3_ycs1j"]
-[ext_resource type="Texture2D" uid="uid://cj5ba4n7vcn8r" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_ExitSign_normal.png" id="4_rae2h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ibbs"]
 resource_name = "MID_MI_ExitSign_Sign_0.001"
 albedo_texture = ExtResource("1_mkxoe")
-metallic = 1.0
-metallic_texture = ExtResource("2_cm6qc")
-metallic_texture_channel = 2
-roughness_texture = ExtResource("2_cm6qc")
-roughness_texture_channel = 1
 emission_enabled = true
 emission_texture = ExtResource("3_ycs1j")
-normal_enabled = true
-normal_texture = ExtResource("4_rae2h")
 ao_enabled = true
-ao_texture = ExtResource("2_cm6qc")
 texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_x2pxb"]

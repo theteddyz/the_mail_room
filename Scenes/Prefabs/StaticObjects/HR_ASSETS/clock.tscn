@@ -1,30 +1,22 @@
-[gd_scene load_steps=9 format=4 uid="uid://bqi8rbcws160r"]
+[gd_scene load_steps=7 format=4 uid="uid://bqi8rbcws160r"]
 
 [ext_resource type="Texture2D" uid="uid://cw44g4kpm7epv" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Clock_basecolor.png" id="1_tdh6l"]
-[ext_resource type="Texture2D" uid="uid://ceg2fpxeolw4a" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Clock_surface.png" id="2_cttrh"]
-[ext_resource type="Texture2D" uid="uid://toooe4tn2ga7" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Clock_normal.png" id="3_7gp45"]
 [ext_resource type="Texture2D" uid="uid://bn1ogswxhm03f" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_Glass_SM_Body_Occlusion_2.png" id="4_w81cu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pss6"]
 resource_name = "MI_Clock"
 albedo_texture = ExtResource("1_tdh6l")
 metallic = 1.0
-metallic_texture = ExtResource("2_cttrh")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_cttrh")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("3_7gp45")
 ao_enabled = true
-ao_texture = ExtResource("2_cttrh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0r5y"]
 resource_name = "MI_Glass_SM_Body.003"
 transparency = 4
 cull_mode = 2
 albedo_color = Color(1, 0, 1, 0)
-roughness = 0.0
-ao_enabled = true
 ao_texture = ExtResource("4_w81cu")
 texture_filter = 0
 

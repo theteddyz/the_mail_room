@@ -1,21 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://ghgpt03nqp0l"]
+[gd_scene load_steps=7 format=4 uid="uid://ghgpt03nqp0l"]
 
 [ext_resource type="Texture2D" uid="uid://ddix2kivxpy3b" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_SurgeryProps_SurgeryProps_basecolor.png" id="1_gugab"]
-[ext_resource type="Texture2D" uid="uid://blio0hp12tpc4" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_SurgeryProps_SurgeryProps_surface.png" id="2_0i5yi"]
-[ext_resource type="Texture2D" uid="uid://sj3eftxdeprq" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_SurgeryProps_SurgeryProps_normal.png" id="3_bjxyd"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_q4y3i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63nwf"]
 resource_name = "MI_SurgeryProps.003"
 albedo_texture = ExtResource("1_gugab")
 metallic = 1.0
-metallic_texture = ExtResource("2_0i5yi")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_0i5yi")
 roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("3_bjxyd")
-ao_enabled = true
-ao_texture = ExtResource("2_0i5yi")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xlep4"]
 _surfaces = [{
@@ -57,6 +50,7 @@ size = Vector3(0.0136719, 0.0120392, 0.0974426)
 [node name="tweezers" type="RigidBody3D"]
 collision_layer = 2
 collision_mask = 15
+script = ExtResource("1_q4y3i")
 
 [node name="SM_SurgeryProps_Dissecting_Foreceps2" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_mieii")

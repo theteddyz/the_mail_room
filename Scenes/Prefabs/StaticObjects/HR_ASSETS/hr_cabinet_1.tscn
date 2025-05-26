@@ -1,22 +1,13 @@
-[gd_scene load_steps=15 format=4 uid="uid://dgm8hdq7dd55k"]
+[gd_scene load_steps=13 format=4 uid="uid://dgm8hdq7dd55k"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_jer77"]
 [ext_resource type="Texture2D" uid="uid://c7trryvr18ilh" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Cabinets_basecolor.png" id="2_4mu40"]
-[ext_resource type="Texture2D" uid="uid://b1tgaweufww00" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Cabinets_surface.png" id="3_5sytp"]
-[ext_resource type="Texture2D" uid="uid://cx0flcjgcp3ob" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Cabinets_normal.png" id="4_ycrhw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bf28"]
 resource_name = "MI_Cabinets.001"
 albedo_texture = ExtResource("2_4mu40")
 metallic = 1.0
-metallic_texture = ExtResource("3_5sytp")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("3_5sytp")
-roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("4_ycrhw")
-ao_enabled = true
-ao_texture = ExtResource("3_5sytp")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_v0bhx"]
 _surfaces = [{
@@ -59,14 +50,8 @@ size = Vector3(0.0219116, 0.686096, 0.443359)
 resource_name = "MI_Cabinets.001"
 albedo_texture = ExtResource("2_4mu40")
 metallic = 1.0
-metallic_texture = ExtResource("3_5sytp")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("3_5sytp")
 roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("4_ycrhw")
-ao_enabled = true
-ao_texture = ExtResource("3_5sytp")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_t3h5f"]
 _surfaces = [{

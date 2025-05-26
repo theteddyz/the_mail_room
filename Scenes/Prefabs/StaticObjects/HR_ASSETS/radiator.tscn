@@ -1,24 +1,16 @@
-[gd_scene load_steps=9 format=4 uid="uid://cvjpd01rpfvk2"]
+[gd_scene load_steps=7 format=4 uid="uid://cvjpd01rpfvk2"]
 
 [ext_resource type="Texture2D" uid="uid://bhlifs257drmv" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_MorgueRadiator_Radiator_basecolor.png" id="1_lwvro"]
-[ext_resource type="Texture2D" uid="uid://dk51443wcssf2" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_MorgueRadiator_Radiator_Occlusion-T_MorgueRadiator_Radiator_surface.png" id="2_xtlev"]
 [ext_resource type="Texture2D" uid="uid://cj8tp7kueraus" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_MorgueRadiator_Radiator_Emissive.png" id="3_b1ifj"]
-[ext_resource type="Texture2D" uid="uid://d8fpn4stss63" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_MorgueRadiator_Radiator_normal.png" id="4_ie8pg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pj287"]
 resource_name = "MID_MI_MorgueRadiator_Radiator_0"
 albedo_texture = ExtResource("1_lwvro")
 metallic = 1.0
-metallic_texture = ExtResource("2_xtlev")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_xtlev")
 roughness_texture_channel = 1
 emission_enabled = true
 emission_texture = ExtResource("3_b1ifj")
-normal_enabled = true
-normal_texture = ExtResource("4_ie8pg")
-ao_enabled = true
-ao_texture = ExtResource("2_xtlev")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_y1i5c"]

@@ -1,21 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://c5owbelcvabp3"]
+[gd_scene load_steps=7 format=4 uid="uid://c5owbelcvabp3"]
 
 [ext_resource type="Texture2D" uid="uid://crtyev287uypv" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_cabinets_filler_02_basecolor.png" id="1_oo3rr"]
-[ext_resource type="Texture2D" uid="uid://syoagyh73got" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_cabinets_filler_02_surface.png" id="2_4ayml"]
-[ext_resource type="Texture2D" uid="uid://jinkv2hsx4j3" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_cabinets_filler_02_normal.png" id="3_7wx2m"]
+[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_slq6p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j83f5"]
 resource_name = "MI_CabinetsFiller_2"
 albedo_texture = ExtResource("1_oo3rr")
 metallic = 1.0
-metallic_texture = ExtResource("2_4ayml")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_4ayml")
 roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("3_7wx2m")
-ao_enabled = true
-ao_texture = ExtResource("2_4ayml")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_3xhm4"]
 _surfaces = [{
@@ -55,6 +48,9 @@ shadow_mesh = SubResource("ArrayMesh_3xhm4")
 size = Vector3(0.046936, 0.192322, 0.071228)
 
 [node name="filler_junk_2" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_slq6p")
 
 [node name="SM_CabinetFiller_DangerousContainer_26" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_04a7m")

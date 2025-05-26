@@ -1,25 +1,13 @@
-[gd_scene load_steps=21 format=4 uid="uid://c2tc8ghxtl3mq"]
+[gd_scene load_steps=18 format=4 uid="uid://c2tc8ghxtl3mq"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_bconw"]
 [ext_resource type="Texture2D" uid="uid://c7trryvr18ilh" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Cabinets_basecolor.png" id="1_wv15r"]
-[ext_resource type="Texture2D" uid="uid://b1tgaweufww00" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Cabinets_surface.png" id="2_bconw"]
-[ext_resource type="Texture2D" uid="uid://cx0flcjgcp3ob" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Cabinets_normal.png" id="3_a5ul3"]
 [ext_resource type="Texture2D" uid="uid://cpxa8gx28cy6j" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_Glass_BaseColor.png" id="4_440o6"]
 [ext_resource type="Texture2D" uid="uid://bvsswu5rymyj2" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_Glass_MetallicRoughness.png" id="5_234m3"]
-[ext_resource type="Texture2D" uid="uid://b8txfp4mv6dxb" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_Glass_Normal.png" id="6_kun3r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5of67"]
 resource_name = "MI_Cabinets"
 albedo_texture = ExtResource("1_wv15r")
-metallic = 1.0
-metallic_texture = ExtResource("2_bconw")
-metallic_texture_channel = 2
-roughness_texture = ExtResource("2_bconw")
-roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("3_a5ul3")
-ao_enabled = true
-ao_texture = ExtResource("2_bconw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hupdm"]
 resource_name = "MI_Glass"
@@ -32,7 +20,6 @@ metallic_texture_channel = 2
 roughness_texture = ExtResource("5_234m3")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("6_kun3r")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7kocv"]
 _surfaces = [{
@@ -97,14 +84,10 @@ size = Vector3(0.0245361, 1.83246, 0.444702)
 resource_name = "MI_Cabinets"
 albedo_texture = ExtResource("1_wv15r")
 metallic = 1.0
-metallic_texture = ExtResource("2_bconw")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_bconw")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("3_a5ul3")
 ao_enabled = true
-ao_texture = ExtResource("2_bconw")
 texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_2hagq"]
@@ -165,7 +148,6 @@ collision_mask = 15
 script = ExtResource("1_bconw")
 
 [node name="SM_Door_003" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_uxdsh")
 skeleton = NodePath("")
 

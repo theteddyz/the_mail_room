@@ -1,24 +1,16 @@
-[gd_scene load_steps=23 format=4 uid="uid://d2l1pae1r1nhm"]
+[gd_scene load_steps=21 format=4 uid="uid://d2l1pae1r1nhm"]
 
 [ext_resource type="Script" uid="uid://da8f0nlp61xaf" path="res://Scenes/Prefabs/StaticObjects/initial_offset.gd" id="1_4s83p"]
 [ext_resource type="Texture2D" uid="uid://c7trryvr18ilh" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Cabinets_basecolor.png" id="1_5oyf2"]
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_th58r"]
 [ext_resource type="Script" uid="uid://c2bhb72ytvio" path="res://Scenes/Prefabs/MoveableObjects/drawer_script.gd" id="2_4s83p"]
-[ext_resource type="Texture2D" uid="uid://b1tgaweufww00" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Cabinets_surface.png" id="2_7ju4y"]
-[ext_resource type="Texture2D" uid="uid://cx0flcjgcp3ob" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_Cabinets_normal.png" id="3_th58r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1cab"]
 resource_name = "MI_Cabinets.003"
 albedo_texture = ExtResource("1_5oyf2")
 metallic = 1.0
-metallic_texture = ExtResource("2_7ju4y")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_7ju4y")
 roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("3_th58r")
-ao_enabled = true
-ao_texture = ExtResource("2_7ju4y")
 texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_psc56"]

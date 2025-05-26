@@ -1,22 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://cwugc2xgpm1s6"]
+[gd_scene load_steps=7 format=4 uid="uid://cwugc2xgpm1s6"]
 
 [ext_resource type="Texture2D" uid="uid://ddix2kivxpy3b" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_SurgeryProps_SurgeryProps_basecolor.png" id="1_aqbw2"]
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_tlwmc"]
-[ext_resource type="Texture2D" uid="uid://blio0hp12tpc4" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_SurgeryProps_SurgeryProps_surface.png" id="2_tlwmc"]
-[ext_resource type="Texture2D" uid="uid://sj3eftxdeprq" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_SurgeryProps_SurgeryProps_normal.png" id="3_i8g56"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxcvi"]
 resource_name = "MI_SurgeryProps.002"
 albedo_texture = ExtResource("1_aqbw2")
 metallic = 1.0
-metallic_texture = ExtResource("2_tlwmc")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_tlwmc")
 roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = ExtResource("3_i8g56")
-ao_enabled = true
-ao_texture = ExtResource("2_tlwmc")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_s68gf"]
 _surfaces = [{
