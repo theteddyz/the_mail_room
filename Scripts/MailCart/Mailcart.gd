@@ -11,7 +11,6 @@ var text_displayer:Node
 var is_being_looked_at:bool = false
 var highlight_lerp_speed:float = 8.2
 var unhighlight_lerp_speed:float = 8.2
-var package_picked_up
 var gui_anim
 func _ready():
 	# Initialize the array with game objects if needed
@@ -91,7 +90,6 @@ func grab_current_package():
 		current_package.set_collision_mask_value(4,true)
 		current_package.inside_mail_cart = false
 		current_package.grabbed()
-		package_picked_up = true
 		text_displayer.hide_text()
 		if game_objects.size() > 0:
 			calculate_spacing() 
@@ -122,14 +120,12 @@ func calculate_spacing():
 		for i in range(total_packages):
 			var _position = 0.45 - i * step
 			move_package_to_cart(game_objects[i], _position)
-			
 	else:
 		if total_packages > 0:
 			move_package_to_cart(game_objects[0], 0)
 
 # Placeholder function to move package to cart
 func move_package_to_cart(package: Package, _position: float):
-	package_picked_up = false
 	if package.get_parent() != self:
 		package.reparent(self)
 	package.rotation_degrees = package.cart_rotation

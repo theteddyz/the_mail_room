@@ -234,11 +234,6 @@ func handle_keyboard_press(event: InputEvent):
 			if !is_holding_package and !is_holding_object:
 				change_state.call("grabcart")
 
-func handle_radio_interaction():
-	if interactable_finder.is_interactable("Mailcart"):
-		interactable_finder.get_interactable().add_radio(object_last_held)
-
-
 func handle_general_interaction():
 	if mailcart == null:
 		mailcart = GameManager.get_mail_cart()
@@ -249,14 +244,19 @@ func handle_general_interaction():
 	if collider and !is_holding_object:
 		ScareDirector.grabbable.emit(collider.name)
 		match collider.name:
-			mail_cart_name:
+			# This is the name (or should be the name) of the node in the mailcart with the top collider
+			"Basket":
 				if is_holding_package:
-					collider.add_package(package_last_held,true)
+					collider.get_parent().add_package(package_last_held,true)
 					package_last_held = null
 					is_holding_package = false
 				else:
-					collider.grab_current_package()
+					# TODO: 
+					# if this is the body of the cart, and not the basket, dont do this
+					collider.get_parent().grab_current_package()
 					gui_anim.show_icon(false)
+			"Mailcart":
+				mailcart.is_weak_grabbed = true
 			"MailboxStand":
 				if is_holding_package:
 					collider.find_child("PackageDestination").deliver(package_last_held)
@@ -314,13 +314,13 @@ func handle_scroll(is_down):
 	var collider = interactable_finder.get_interactable()
 	if collider:
 		match collider.name:
-			"Mailcart":
+			"Basket":
 				if is_down:
 					gui_anim.scroll_down()
-					collider.scroll_package_down()
+					collider.get_parent().scroll_package_down()
 				else:
 					gui_anim.scroll_up()
-					collider.scroll_package_up()
+					collider.get_parent().scroll_package_up()
 			"Radio":
 				#TODO:Handle Radio Functionality
 				var _parent = collider.get_parent()

@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=4 uid="uid://dmccmb11irfv7"]
+
+[ext_resource type="Texture2D" uid="uid://ccdhcombpf38f" path="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_T_documents_01_basecolor.png" id="1_um10p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4amv"]
+resource_name = "MI_Documents.001"
+albedo_texture = ExtResource("1_um10p")
+metallic = 1.0
+metallic_texture_channel = 2
+roughness_texture_channel = 1
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1hy5h"]
+_surfaces = [{
+"aabb": AABB(-0.229976, -0.365019, -0.00879363, 0.459953, 0.692423, 0.0175873),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAoAAQAEAAoAAAAKAAIAAgADAAAAAgAKAAgACgAEAAsACgALAAgABAAGAAsACAALAAkACwAGAAcACwAFAAkABwAFAAsA"),
+"lods": [0.00622051, PackedByteArray("AAABAAIAAgADAAAAAQAEAAIAAgAEAAUABAAGAAUABQAGAAcAAgAFAAgACAAFAAkA")],
+"name": "MI_Documents.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("1n3//wAAAAAM+Un+FA4AABgAPK8yMwAAAACt/xYAAAAa/b6u2o8AAKWAAAAuWAAAZ/9dW1c/AAD//4MD/PkAAHoArFvdkgAATQHxAP//AAARf1avGToAAN1/dFukVAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pohxe"]
+resource_name = "decimated_HR_ASSETS_SM_Documents_xray_01"
+_surfaces = [{
+"aabb": AABB(-0.229976, -0.365019, -0.00879363, 0.459953, 0.692423, 0.0175873),
+"attribute_data": PackedByteArray("fxvvSkcjH6YHNu9KRyOvb/UAP2Q/V5/c9QDvSkcjn9wHNj9kP1evb38b35tfyR+mBzavfn+Nr28HNt+bX8mvb/UAr35/jZ/c9QDfm1/Jn9x/Gz9kP1cfpn8b70pHIx+mfxuvfn+NH6Z/G69+f40fpn8b35tfyR+mBzbvSkcjr29/Gz9kP1cfpn8br35/jR+mfxvvSkcjH6Z/Gz9kP1cfpvUAP2Q/V5/cBzY/ZD9Xr29/G69+f40fpgc235tfya9vfxs/ZD9XH6Z/G69+f40fpvUAr35/jZ/c9QDfm1/Jn9w="),
+"format": 34896613431,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAoAAgADAAsABwAFAAwADQAOAAkADwAEABAAEAAEABEAEgATABQAFAATAAgAFQAGABYAFgAGABcAGAAZABoAGgAZABsA"),
+"lods": [0.00622051, PackedByteArray("AAABAAIAAgADAAAAAQAEAAIAAgAEAAUABAAGAAUABQAGAAcAAgAFAAgACAAFAAkA")],
+"material": SubResource("StandardMaterial3D_w4amv"),
+"name": "MI_Documents.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("1n3//wAAJYEM+Un+FA6KgRgAPK8yM6yAAACt/xYArIAa/b6u2o/GgKWAAAAuWO2BZ/9dW1c/t4D//4MD/PmagXoArFvdkieBTQHxAP//dYERf1avGTq+gNZ9//8AAAaB3X90W6RU0YDdf3RbpFSrgKWAAAAuWBeBDPlJ/hQOioERf1avGTq+gN1/dFukVKuA1n3//wAAJYERf1avGTq+gBgAPK8yM6OAGv2+rtqPt4Ddf3RbpFTRgP//gwP8+ZqBEX9Wrxk6voDdf3RbpFSrgHoArFvdkiiBTQHxAP//dYE1w/6WfcE3ocz/VmfM/1ZngqCcwUjxrCk5qQbSLNQ+0/m02zFxpYA1dsUuo5Pji6qM/8BGYOE8gPXI+2d9wTehdsUuo2DhPIA1w/6WdsUuo+3/E3c5qQbSjP/ARizUPtN2xS6jYOE8gFew+zdxpYA1")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1hy5h")
+
+[node name="wall_poster_3" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_pohxe")
+skeleton = NodePath("")

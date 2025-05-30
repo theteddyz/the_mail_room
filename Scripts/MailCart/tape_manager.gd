@@ -122,7 +122,6 @@ func add_tape(tape):
 	print("Tape positioned in the box at position: ", new_position)
 
 
-
 func grab_current_tape():
 	var radio = GameManager.get_player_radio()
 	if !radio.has_tape:

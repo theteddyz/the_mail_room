@@ -1,33 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://dwppa8t33rotp"]
+[gd_scene load_steps=8 format=4 uid="uid://dwppa8t33rotp"]
 
 [ext_resource type="Script" uid="uid://cn213mrcaenhg" path="res://Scenes/Prefabs/Floors/floor_tiler.gd" id="1_85gfo"]
+[ext_resource type="Material" uid="uid://biuo0vg705127" path="res://Assets/Textures/hr_base_floor_test.tres" id="2_atvu2"]
 [ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="4_kroat"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1m0pq"]
-load_path = "res://.godot/imported/floor_2_flooring_tezco256r.png-ca2a91e099e66448f145f3e0b659537d.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_atvu2"]
-load_path = "res://.godot/imported/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png-e3a0ccd90c6d9cd69d59085180fbc70b.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v8n8b"]
-load_path = "res://.godot/imported/floor_2_flooring_Terrazzo001_1K-JPG_NormalGL.jpg-e4167691087db6852f3752760ddc9073.s3tc.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_85gfo"]
-load_path = "res://.godot/imported/floor_2_flooring_Terrazzo001_1K-JPG_Roughness.png-e3a0ccd90c6d9cd69d59085180fbc70b.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xwl5v"]
-resource_local_to_scene = true
-resource_name = "Material.001"
-cull_mode = 2
-albedo_texture = SubResource("CompressedTexture2D_1m0pq")
-metallic_texture = SubResource("CompressedTexture2D_atvu2")
-metallic_texture_channel = 2
-roughness_texture = SubResource("CompressedTexture2D_85gfo")
-roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = SubResource("CompressedTexture2D_v8n8b")
-uv1_scale = Vector3(2.5, 2.5, 0)
-texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_atvu2"]
 _surfaces = [{
@@ -53,7 +28,7 @@ _surfaces = [{
 "format": 34359742519,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"material": SubResource("StandardMaterial3D_xwl5v"),
+"material": ExtResource("2_atvu2"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 4,

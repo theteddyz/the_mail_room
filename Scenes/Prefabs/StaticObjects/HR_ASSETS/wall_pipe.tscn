@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=4 uid="uid://krnmq8v44v2t"]
+
+[ext_resource type="Texture2D" uid="uid://dar6bkhd06qny" path="res://Assets/Models/test_models/hr_wall_new_Metal049B_1K-JPG_Color.jpg" id="1_8k6g6"]
+[ext_resource type="Texture2D" uid="uid://b8h7wiru4mkw8" path="res://Assets/Models/test_models/hr_wall_new_Metal049B_1K-JPG_Metalness-Metal049B_1K-JPG_Roughness.png" id="2_hvthj"]
+[ext_resource type="PackedScene" uid="uid://dd4kgfcmrjyjw" path="res://Scenes/Prefabs/StaticObjects/HR_ASSETS/wall_decoration.tscn" id="3_hvthj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45yfc"]
+resource_name = "Material.003"
+cull_mode = 2
+albedo_texture = ExtResource("1_8k6g6")
+metallic = 1.0
+metallic_texture = ExtResource("2_hvthj")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_hvthj")
+roughness_texture_channel = 1
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2kjij"]
+_surfaces = [{
+"aabb": AABB(-0.659258, -0.0270901, -0.0270901, 1.31852, 0.0541802, 0.0541802),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAgADAAUABgAEAAAABQADAAcABgAIAAQABQAHAAkACgAIAAYACQAHAAsACgAMAAgACQALAA0ADgAMAAoADQALAA8ADgAPAAwADQAPAA4A"),
+"name": "Material.003",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAD/fwAAAAD//4HafSUAAAAAgdp9JQAA//////9/AAD///9/AAAAAAAA////fwAAAAB9JX0lAAD//4HagdoAAP//fSV9JQAAAACB2oHaAAAAAAAA/38AAP///3///wAA//8AAP9/AAAAAP9///8AAAAAfSWB2gAA//99JYHaAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_a2v8k"]
+resource_name = "hr_wall_new_Cylinder_002"
+_surfaces = [{
+"aabb": AABB(-0.659258, -0.0270901, -0.0270901, 1.31852, 0.0541802, 0.0541802),
+"attribute_data": PackedByteArray("AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//w=="),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAgADAAUABgAEAAAABQADAAcABgAIAAQABQAHAAkACgAIAAYACQAHAAsACgAMAAgACQALAA0ADgAMAAoADQALAA8ADgAPAAwADQAPAA4A"),
+"material": SubResource("StandardMaterial3D_45yfc"),
+"name": "Material.003",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAD/fwAA/////4HafSX/3wAAgdp9Jf/f//////9//7////9/AAD//wAA////f/+/AAB9JX0l/9///4Hagdr/X///fSV9Jf/fAACB2oHa/18AAAAA/3//v////3////5///8AAP9//78AAP9////+fwAAfSWB2v9f//99JYHa/1////9/////f////3////9/////f////38AAP9/////fwAA/3////9/AAD/f/9///8AAP9//3///wAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2kjij")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mjdsn"]
+height = 1.32178
+radius = 0.0288086
+
+[node name="wall_pipe" type="StaticBody3D"]
+
+[node name="wall_handrail" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
+mesh = SubResource("ArrayMesh_a2v8k")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.00268555, -1.17389e-10, 0)
+shape = SubResource("CylinderShape3D_mjdsn")
+
+[node name="wall_decoration" parent="." instance=ExtResource("3_hvthj")]
+transform = Transform3D(0.0143717, 0, 0, 0, 0.0143717, 0, 0, 0, 0.0143717, 0, -0.052, -0.04)
+
+[node name="wall_decoration2" parent="." instance=ExtResource("3_hvthj")]
+transform = Transform3D(0.0143717, 0, 0, 0, 0.0143717, 0, 0, 0, 0.0143717, -0.625055, -0.052, -0.04)

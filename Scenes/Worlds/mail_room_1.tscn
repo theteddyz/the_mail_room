@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cyamc4lfjib8r" path="res://Scenes/Prefabs/StaticObjects/4_way_airduct.tscn" id="7_hycs1"]
 [ext_resource type="PackedScene" uid="uid://dtpyxdhxy0h8w" path="res://Scenes/Prefabs/MoveableObjects/Package.tscn" id="7_jjsy5"]
 [ext_resource type="PackedScene" uid="uid://b2vyyytppayk3" path="res://Scenes/Prefabs/StaticObjects/airduct_lid.tscn" id="8_4a1w8"]
-[ext_resource type="PackedScene" uid="uid://tw0mk31qdtge" path="res://Scenes/Prefabs/MoveableObjects/mailcart.tscn" id="8_i23t7"]
 [ext_resource type="PackedScene" uid="uid://b0lkbbkvuy6ow" path="res://Scenes/Prefabs/StaticObjects/base_airduct.tscn" id="9_o2qy4"]
 [ext_resource type="Texture2D" uid="uid://b01421mbq0uvp" path="res://Assets/Textures/BlenderTextures/ElevatorShaft.png" id="10_5bd8b"]
 [ext_resource type="Texture2D" uid="uid://wq1jn35h7tnn" path="res://Assets/Textures/BlenderTextures/Desk2.png" id="10_oj80k"]
@@ -61,6 +60,7 @@
 [ext_resource type="Script" uid="uid://dukwbapxl8v66" path="res://Scripts/CutoutCollisionShaper.gd" id="58_fc8q6"]
 [ext_resource type="Script" uid="uid://dkimokrgwhcry" path="res://Scenes/Worlds/mailroom_secret_ambiancetrigger.gd" id="61_fc8q6"]
 [ext_resource type="AudioStream" uid="uid://dephvjlxfo3d1" path="res://Assets/Audio/SoundFX/MailRoomAmbience.mp3" id="61_wu18t"]
+[ext_resource type="PackedScene" uid="uid://cjnqu05bvamsg" path="res://Scenes/Prefabs/MoveableObjects/new_mailcart.tscn" id="62_5vv7w"]
 [ext_resource type="AudioStream" uid="uid://bled33c0654ky" path="res://Assets/Audio/SoundFX/FirstFloorAmbience1.mp3" id="62_wu18t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ce6ua"]
@@ -1909,9 +1909,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.728
 [node name="Elevator_Wall" parent="Elevator" index="0"]
 visible = false
 
-[node name="Mailcart" parent="." instance=ExtResource("8_i23t7")]
-transform = Transform3D(0.938559, 0, 0.345118, 0, 1, 0, -0.345118, 0, 0.938559, 8.51151, 0.291614, -3.08491)
-
 [node name="ElevatorShaft2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, 20.0495, 8.42512, -9.73292)
 mesh = SubResource("ArrayMesh_wd6yl")
@@ -2203,6 +2200,9 @@ volume_db = -32.962
 unit_size = 10.46
 pitch_scale = 0.72
 autoplay = true
+
+[node name="Mailcart" parent="." instance=ExtResource("62_5vv7w")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.203934, -5.29747)
 
 [connection signal="body_entered" from="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_exited"]
