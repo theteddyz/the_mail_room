@@ -36,12 +36,14 @@ var animationTree: AnimationTree
 @export var low_quality_leaves: MeshInstance3D
 @export var super_low_quality: MeshInstance3D
 
-
+var fastNoiseLite: FastNoiseLite 
 
 func _ready():
 	var root = get_tree().root
 	var specific_script = load(vegetationScript)
 	find_node_with_script(root, specific_script)
+	
+	fastNoiseLite = FastNoiseLite.new()
 	
 	amount2 = amount * vegetationController.amount
 	speed2 = speed * vegetationController.speed
@@ -97,7 +99,8 @@ func _process(delta: float) -> void:
 		animationTree["parameters/TimeScale/scale"] = animation_speed2
 		
 	time += delta*speed2
-	var amound = sin((global_position.x + global_position.z)*0.05*position_influence2 + time)*amount2
+	var xAmount = fastNoiseLite.get_noise_1d((global_position.x)*0.05*position_influence2 + time)*amount2*10
+	var yAmount = fastNoiseLite.get_noise_1d((global_position.z)*0.05*position_influence2 + time)*amount2*10
 	
 	
 	
@@ -106,11 +109,11 @@ func _process(delta: float) -> void:
 	var y_val = cos(yaw)  # or -cos(yaw), depending on handedness
 
 	if trunk:
-		trunk.set("blend_shapes/X", -x_val*amound)
-		trunk.set("blend_shapes/Y", y_val*amound)
+		trunk.set("blend_shapes/X", -x_val*xAmount)
+		trunk.set("blend_shapes/Y", y_val*yAmount)
 	if leaves: 
-		leaves.set("blend_shapes/X", -x_val*amound)
-		leaves.set("blend_shapes/Y", y_val*amound)
+		leaves.set("blend_shapes/X", -x_val*xAmount)
+		leaves.set("blend_shapes/Y", y_val*yAmount)
 		
 	#yaw = global_rotation.y
 	#x_val = sin(yaw)
