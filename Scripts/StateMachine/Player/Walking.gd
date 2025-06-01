@@ -123,13 +123,7 @@ func _input(event: InputEvent):
 		if event is InputEventKey:
 			if event.is_action_pressed("ui_cancel"):
 				get_tree().quit()
-		 
-		if event is InputEventMouseButton:
-			if event.button_index == 1:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		
 		return
-	
 	if event is InputEventKey:
 		if event.is_action_pressed("ui_cancel"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

@@ -41,7 +41,7 @@ func stop_using_pc():
 
 func interact():
 	if !being_used:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
 		player_camera.reparent(self)
 		interactableFinder.enabled = false
 		EventBus.emitCustomSignal("disable_player_movement",[true,true])
@@ -60,4 +60,4 @@ func interact():
 		monitor_handler.is_mouse_inside = true
 		var col:CollisionShape3D = get_child(0)
 		col.disabled = true
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
