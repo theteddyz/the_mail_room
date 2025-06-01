@@ -14,6 +14,9 @@ signal scare_activated(scare_index: int)
 # Emitted on a keypickup
 signal key_pickedup(key_num:int)
 
+# Emitted on a usb-pickup
+signal usb_pickup(usb_index:int)
+
 # Emitted on any interacted grabbable
 signal grabbable(name: String)
 

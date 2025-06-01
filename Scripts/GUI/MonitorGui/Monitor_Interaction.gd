@@ -11,20 +11,46 @@ var scale_factor = 0.5
 @onready var node_quad = $"../Screen"
 @onready var node_area = $"../Screen/Area3D"
 @onready var mouse_cursor = $SubViewport/GUI/MouseCursor
+var space_state = null
 func _ready():
+	pass
 	#node_area.mouse_entered.connect(_mouse_entered_area)
 	#node_area.mouse_exited.connect(_mouse_exited_area)
-	node_area.input_event.connect(_mouse_input_event)
+	#node_area.input_event.connect(_mouse_input_event)
+
+func _physics_process(delta: float):
+	space_state = get_world_3d().direct_space_state
+
+func _input(event):
+	# Only care about mouse input
 
 
-func _unhandled_input(event):
-	# Check if the event is a non-mouse/non-touch event
-	for mouse_event in [InputEventMouseButton, InputEventMouseMotion, InputEventScreenDrag, InputEventScreenTouch]:
-		if is_instance_of(event, mouse_event):
-			# If the event is a mouse/touch event, then we can ignore it here, because it will be
-			# handled via Physics Picking.
-			return
-	node_viewport.push_input(event)
+	if is_mouse_inside:
+		if not is_inside_tree():
+			return  # Avoid querying world before node is in the scene
+		if event is InputEventKey:
+			node_viewport.push_input(event)
+		elif event is InputEventMouseMotion or event is InputEventMouseButton: 
+			var camera := get_viewport().get_camera_3d()
+			if camera == null:
+				return
+			# Raycast from camera into the scene
+			var from = camera.project_ray_origin(event.position)
+			var to = from + camera.project_ray_normal(event.position) * 1000
+			var query = PhysicsRayQueryParameters3D.create(from, to)
+			query.collision_mask = 1 << 24
+			query.exclude = []
+			query.hit_from_inside = true
+			query.collide_with_bodies = false
+			query.collide_with_areas = true
+			var result = space_state.intersect_ray(query)
+			if result and result.collider == node_area:
+				#is_mouse_inside = true
+				_mouse_input_event(camera, event, result.position, result.normal, result.shape)
+			else:
+				pass
+				#is_mouse_inside = false
+
 
 
 func _mouse_input_event(_camera: Camera3D, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int):

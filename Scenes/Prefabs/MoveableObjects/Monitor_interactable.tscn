@@ -273,6 +273,7 @@ offset_left = 200.0
 offset_top = 80.0
 offset_right = 400.0
 offset_bottom = 155.0
+focus_mode = 0
 theme_override_fonts/font = ExtResource("7_g2b4m")
 
 [node name="Label" type="Label" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/LoginMenu"]
@@ -428,6 +429,7 @@ offset_left = 2.0
 offset_top = 269.435
 offset_right = 22.0
 offset_bottom = 289.435
+focus_mode = 0
 flat = true
 
 [node name="ColorRect" type="ColorRect" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Paint/Red"]
@@ -461,6 +463,7 @@ offset_left = 22.265
 offset_top = 269.435
 offset_right = 42.265
 offset_bottom = 289.435
+focus_mode = 0
 flat = true
 
 [node name="ColorRect" type="ColorRect" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Paint/Light_Blue"]
@@ -494,6 +497,7 @@ offset_left = 42.39
 offset_top = 269.435
 offset_right = 62.39
 offset_bottom = 289.435
+focus_mode = 0
 flat = true
 
 [node name="ColorRect" type="ColorRect" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Paint/Yellow"]
@@ -527,6 +531,7 @@ offset_left = 63.3
 offset_top = 269.435
 offset_right = 83.3
 offset_bottom = 289.435
+focus_mode = 0
 flat = true
 
 [node name="ColorRect" type="ColorRect" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Paint/Blue"]
@@ -556,6 +561,7 @@ color = Color(0, 0, 1, 1)
 layout_mode = 0
 offset_right = 20.0
 offset_bottom = 20.0
+focus_mode = 0
 theme_override_font_sizes/font_size = 8
 text = "Eraser"
 
@@ -564,6 +570,7 @@ layout_mode = 0
 offset_left = 32.705
 offset_right = 62.705
 offset_bottom = 20.0
+focus_mode = 0
 theme_override_font_sizes/font_size = 8
 text = "Reset"
 
@@ -572,6 +579,7 @@ layout_mode = 0
 offset_left = 350.0
 offset_right = 380.0
 offset_bottom = 20.0
+focus_mode = 0
 theme_override_font_sizes/font_size = 8
 text = "X"
 
@@ -678,7 +686,8 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_jf2tv")
 
 [node name="Area3D" type="Area3D" parent="Monitor/ComputerOn/Screen"]
-collision_layer = 2
+collision_layer = 16777216
+collision_mask = 0
 input_capture_on_drag = true
 priority = 2
 

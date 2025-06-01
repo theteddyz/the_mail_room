@@ -7,7 +7,6 @@ var floor: int
 @export_enum("Mail Room", "Finance","Human Resources","Opening Floor")
 var target_destination: int
 
-
 func save():
 	var save_dict = {
 		#"filename" : get_scene_file_path(),ww
@@ -18,7 +17,7 @@ func save():
 		"pos_z" : position.z,
 	}
 	return save_dict
-	
+
 func _ready():
 	GameManager.register_world(self)
 	await get_tree().create_timer(2.5).timeout

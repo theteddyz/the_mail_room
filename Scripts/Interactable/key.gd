@@ -18,7 +18,6 @@ func _ready():
 	EventBus.connect("object_looked_at",on_seen)
 	EventBus.connect("no_object_found",on_unseen)
 
-
 func on_seen(node):
 	if node == self:
 		is_being_looked_at = true
