@@ -28,7 +28,6 @@ func _ready():
 
 func show_icon(object):
 	hide_all_icons(object)
-
 	var object_name = null
 
 	if GrabbingManager.current_grabbed_object == object:

@@ -27,6 +27,7 @@ signal turn_off_elevator_buttons()
 #Signal for when a package is delivered
 signal package_failed_delivery()
 signal picked_up_key(node)
+signal picked_up_usb(usb_index)
 signal dropped_key()
 signal object_looked_at(node)
 signal no_object_found(node)

@@ -15,6 +15,7 @@ var world_reference: Node
 var current_scene_root:Node
 var we_reference: WorldEnvironment
 var player_radio:Node
+
 #Quite a few script rely on these setter getter, proceed with caution if deleted
 func register_player(new_player):
 	player_reference = new_player
@@ -55,8 +56,10 @@ func get_player_radio() ->Node:
 	
 func get_world() ->Node:
 	return world_reference
+	
 func get_player_camera() ->Node:
 	return camera_reference
+
 func _ready():
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count() - 1)
@@ -65,17 +68,58 @@ func _ready():
 	if player_reference == null:
 		player_reference = current_scene.find_child("Player")
 	load_game()
-	
+
+func save_usb_data(new_value: int) -> void:
+	var data := {}
+	# Load existing data if the file exists
+	if FileAccess.file_exists(FILE_NAME):
+		var save_game = FileAccess.open(FILE_NAME, FileAccess.READ)
+		if save_game:
+			var save_string = save_game.get_as_text()
+			var parsed = JSON.parse_string(save_string)
+			if typeof(parsed) == TYPE_DICTIONARY:
+				data = parsed
+			save_game.close()
+
+	# Ensure USB_DATA exists and is an array
+	if not data.has("USB_DATA"):
+		data["USB_DATA"] = []
+
+	# Avoid duplicates
+	var x = data["USB_DATA"]
+	# FIX THIS TODO: STORES FLOATS BUT SHOULD BE STRINGS
+	if float(new_value) not in data["USB_DATA"]:
+		data["USB_DATA"].append(new_value)
+
+	# Save updated data
+	var save_game = FileAccess.open(FILE_NAME, FileAccess.WRITE)
+	if save_game:
+		var json_string = JSON.stringify(data, "\t")  # "\t" for pretty print
+		save_game.store_string(json_string)
+		save_game.close()
+
+
 func load_game():
 	if not FileAccess.file_exists(FILE_NAME):
 		return # Error! We don't have a save to load.
-	# Load the file line by line and process that dictionary to restore
-	# the object it represents.
-	var save_game = FileAccess.open(FILE_NAME, FileAccess.READ)
-	
+		
+	var file = FileAccess.open(FILE_NAME, FileAccess.READ)
+	if file:
+		var save_string = file.get_as_text()
+		var data = JSON.parse_string(save_string)
+		file.close()
+		# Check if it's only USB_DATA or completely empty/invalid
+		if typeof(data) != TYPE_DICTIONARY:
+			return # Corrupted or invalid save
+			
+		var keys = data.keys()
+		if keys.size() == 1 and "USB_DATA" in keys:
+			return # Only USB_DATA exists; skip loading game
+			
+	# Proceed with loading game state from `data`
 	elevator_reference = current_scene.find_child("Elevator")
-	while save_game.get_position() < save_game.get_length():
-		var json_string = save_game.get_line()
+	while file.get_position() < file.get_length():
+		var json_string = file.get_line()
 		var json = JSON.new()
 		var parse_result = json.parse(json_string)
 		if not parse_result == OK:

@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://omq23tssx1x6"]
+[gd_scene load_steps=8 format=4 uid="uid://omq23tssx1x6"]
 
 [ext_resource type="Texture2D" uid="uid://bvti20gq7xdjw" path="res://Assets/Models/BlenderModels/usbdrive_usbdrivetexture.png" id="1_2vns2"]
+[ext_resource type="Script" uid="uid://pbss2v44ylg3" path="res://Scripts/Interactable/usb.gd" id="1_qkti6"]
+[ext_resource type="Material" uid="uid://l75of2qmrq1n" path="res://Assets/Materials/item_hover.tres" id="2_qgb5k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12aj7"]
 resource_name = "Material"
@@ -42,9 +44,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k0mud")
 
-[node name="usb_drive" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_e8e4q"]
+size = Vector3(0.0535889, 0.0732422, 0.168381)
 
-[node name="usb_drive" type="MeshInstance3D" parent="."]
+[node name="Usb" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 15
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_qkti6")
+
+[node name="usb_drive2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.037, 0, 0, 0, 0.037, 0, 0, 0, 0.037, 0, 0, 0)
+material_overlay = ExtResource("2_qgb5k")
 mesh = SubResource("ArrayMesh_qkti6")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999491, 0, 0, 0, 0.999491, 0, 0, 0, 0.999491, 6.10352e-05, 0.000488281, -0.000175476)
+shape = SubResource("BoxShape3D_e8e4q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
