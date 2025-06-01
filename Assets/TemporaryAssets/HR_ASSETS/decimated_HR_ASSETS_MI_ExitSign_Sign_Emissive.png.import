@@ -3,10 +3,9 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kuueg0yli1k"
-path.s3tc="res://.godot/imported/decimated_HR_ASSETS_MI_ExitSign_Sign_Emissive.png-107757e74f02a0801d08abb77cc31610.s3tc.ctex"
+path="res://.godot/imported/decimated_HR_ASSETS_MI_ExitSign_Sign_Emissive.png-107757e74f02a0801d08abb77cc31610.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "7e4d9a571bce2c84c499258e7d2d7932"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/TemporaryAssets/HR_ASSETS/decimated_HR_ASSETS_MI_ExitSign_Sign_Emissive.png"
-dest_files=["res://.godot/imported/decimated_HR_ASSETS_MI_ExitSign_Sign_Emissive.png-107757e74f02a0801d08abb77cc31610.s3tc.ctex"]
+dest_files=["res://.godot/imported/decimated_HR_ASSETS_MI_ExitSign_Sign_Emissive.png-107757e74f02a0801d08abb77cc31610.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -27,7 +26,7 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=8
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
