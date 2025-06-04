@@ -1,7 +1,5 @@
 shader_type spatial;
 render_mode cull_disabled, diffuse_lambert_wrap,depth_prepass_alpha, specular_disabled;
-//uniform float sway_strength = 0.05;
-//uniform float sway_speed = 2.0;
 uniform sampler2D albedo_texture:source_color,filter_nearest;
 uniform float sway_strength = 0.05;
 uniform float sway_speed = 2.0;

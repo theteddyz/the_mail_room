@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4q2bmujmanc6"
-path.s3tc="res://.godot/imported/wave.png-d387544eba14013e763fdb82094dc9c6.s3tc.ctex"
+uid="uid://bdy8oe5wg5jcn"
+path.s3tc="res://.godot/imported/noise-texture-512x512-1.jpg-63dacd879a2f90c3a2542bb35decf4e9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/proton_scatter/masks/wave.png"
-dest_files=["res://.godot/imported/wave.png-d387544eba14013e763fdb82094dc9c6.s3tc.ctex"]
+source_file="res://Scripts/Shaders/noise-texture-512x512-1.jpg"
+dest_files=["res://.godot/imported/noise-texture-512x512-1.jpg-63dacd879a2f90c3a2542bb35decf4e9.s3tc.ctex"]
 
 [params]
 

@@ -22,6 +22,7 @@ shader_parameter/noise_intensity = 0.2
 shader_parameter/noise_texture = ExtResource("2_yapwg")
 
 [node name="vhs_layer" type="CanvasLayer"]
+layer = -1
 
 [node name="vhs" type="ColorRect" parent="." groups=["Player_shader"]]
 material = SubResource("ShaderMaterial_57gvc")
