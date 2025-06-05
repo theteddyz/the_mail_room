@@ -1,3 +1,4 @@
 extends Node3D
-@export var usernames: Array[String] = []
-@export var passwords: Array[String] = []
+@export var username:String
+@export var password:String
+@export var player_computer:bool = false

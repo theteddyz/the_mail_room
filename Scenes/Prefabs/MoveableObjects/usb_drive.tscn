@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://omq23tssx1x6"]
 
 [ext_resource type="Texture2D" uid="uid://bvti20gq7xdjw" path="res://Assets/Models/BlenderModels/usbdrive_usbdrivetexture.png" id="1_2vns2"]
-[ext_resource type="Script" uid="uid://pbss2v44ylg3" path="res://Scripts/Interactable/usb.gd" id="1_qkti6"]
+[ext_resource type="Script" path="res://Scripts/Interactable/usb.gd" id="1_qkti6"]
 [ext_resource type="Material" uid="uid://l75of2qmrq1n" path="res://Assets/Materials/item_hover.tres" id="2_qgb5k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12aj7"]
