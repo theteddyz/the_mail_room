@@ -1,0 +1,68 @@
+[gd_scene load_steps=14 format=3 uid="uid://cq6yml1gcs87t"]
+
+[ext_resource type="Script" uid="uid://15a0gg05ynpe" path="res://Scenes/Prefabs/gui/usb_computer_data.gd" id="1_njq1k"]
+[ext_resource type="Texture2D" uid="uid://cxbm61odo5il6" path="res://Assets/TemporaryAssets/Folder Friends icOnS/Sprites/Desktop/Desktop3_3.png" id="2_y2gn8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k84lp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vp8nr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_me8mh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eyacu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqynp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3nq5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2rr5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dk7rr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8lfy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxosr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kjlm2"]
+
+[node name="usbtest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_njq1k")
+application_text = "test"
+
+[node name="file_button" type="Button" parent="."]
+layout_mode = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k84lp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_vp8nr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_me8mh")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_eyacu")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_uqynp")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o3nq5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t2rr5")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dk7rr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_a8lfy")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_gxosr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kjlm2")
+icon = ExtResource("2_y2gn8")
+
+[node name="Label" type="Label" parent="file_button"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -8.5
+offset_right = 15.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "test"
+horizontal_alignment = 1

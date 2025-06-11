@@ -1,17 +1,23 @@
-[gd_scene load_steps=48 format=4 uid="uid://b85fvq8nn7wpm"]
+[gd_scene load_steps=111 format=4 uid="uid://b85fvq8nn7wpm"]
 
 [ext_resource type="Script" uid="uid://c5gd3r3nrlcm2" path="res://Scripts/GUI/MonitorGui/MonitorVariables.gd" id="1_messh"]
 [ext_resource type="PackedScene" uid="uid://d3hn5glhsxdca" path="res://Assets/Models/computer.tscn" id="3_urhub"]
 [ext_resource type="Texture2D" uid="uid://cr3eieskgm6h1" path="res://Assets/Textures/BlenderTextures/Computer.png" id="4_8cojr"]
 [ext_resource type="Script" uid="uid://8n68sstn22x" path="res://Scripts/Interactable/ComputerInteractionHandler.gd" id="4_pdath"]
+[ext_resource type="Texture2D" uid="uid://c3pplpq6n3q4q" path="res://Assets/TemporaryAssets/Folder Friends icOnS/RetroComputerGUI/Windows_Button.png" id="5_37at3"]
 [ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="5_bjdtd"]
 [ext_resource type="Script" uid="uid://60o6youec62i" path="res://Scripts/GUI/MonitorGui/Monitor_Interaction.gd" id="5_cb522"]
+[ext_resource type="Texture2D" uid="uid://deqym07eph818" path="res://Assets/TemporaryAssets/Folder Friends icOnS/Sprites/UI/WindowFrame.png" id="5_fv44a"]
+[ext_resource type="Texture2D" uid="uid://r2o20wakuvr7" path="res://Assets/TemporaryAssets/Folder Friends icOnS/RetroComputerGUI/Windows_Button_Focus.png" id="5_is448"]
+[ext_resource type="Script" uid="uid://dpjqc40q1rk2e" path="res://Scripts/GUI/player_usb_handler.gd" id="5_p8f1a"]
 [ext_resource type="Script" uid="uid://c6ti3in8u0lby" path="res://Scripts/GUI/MonitorGui/login_menu.gd" id="6_cspqt"]
+[ext_resource type="Texture2D" uid="uid://bdjxk7mxutwo5" path="res://Assets/TemporaryAssets/Folder Friends icOnS/RetroComputerGUI/Windows_Button_Pressed.png" id="6_hxvtj"]
 [ext_resource type="AudioStream" uid="uid://5f5atatab1fl" path="res://Assets/Audio/SoundFX/DestructionComputer2.mp3" id="6_xamx0"]
 [ext_resource type="FontFile" uid="uid://s8snq2lwjjdn" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="7_g2b4m"]
 [ext_resource type="AudioStream" uid="uid://bm3nm1l6pmfn7" path="res://Assets/Audio/SoundFX/DestructionComputer.mp3" id="7_kr46o"]
 [ext_resource type="Script" uid="uid://jiqujx6hy1om" path="res://Scripts/GUI/MonitorGui/home_screen.gd" id="8_h5kc7"]
 [ext_resource type="AudioStream" uid="uid://batn5vnkweh7n" path="res://Assets/Audio/SoundFX/ImpactComputer.mp3" id="8_usiik"]
+[ext_resource type="Texture2D" uid="uid://bwdocx7xlo8iu" path="res://Assets/TemporaryAssets/GlobalCorpIcon.png" id="9_kuhb0"]
 [ext_resource type="Script" uid="uid://do7qntkp2p01b" path="res://Scripts/GUI/MonitorGui/drawing_app.gd" id="9_u7ayr"]
 [ext_resource type="AudioStream" uid="uid://dc7uvwggouwhj" path="res://Assets/Audio/SoundFX/ImpactComputer2.mp3" id="9_ysvnn"]
 [ext_resource type="AudioStream" uid="uid://hhkh5wwplqt5" path="res://Assets/Audio/SoundFX/ImpactComputer3.mp3" id="10_js1oj"]
@@ -20,10 +26,16 @@
 [ext_resource type="AudioStream" uid="uid://c3o1w0k2nmxql" path="res://Assets/Audio/SoundFX/ImpactComputer4.mp3" id="11_iwbrn"]
 [ext_resource type="Texture2D" uid="uid://cvqyakqqrg635" path="res://Assets/TemporaryAssets/Pong/right_pallete.png" id="12_c03ar"]
 [ext_resource type="AudioStream" uid="uid://bxtc04ia8pi8" path="res://Assets/Audio/SoundFX/ImpactComputer5.mp3" id="12_lxfrw"]
+[ext_resource type="Texture2D" uid="uid://df4hejfp6p5s0" path="res://Assets/TemporaryAssets/Folder Friends icOnS/Sprites/Desktop/Desktop3_6.png" id="12_tb5fp"]
 [ext_resource type="Texture2D" uid="uid://ck5aqc0wno45q" path="res://Assets/TemporaryAssets/Pong/separator.png" id="13_24ev3"]
+[ext_resource type="Texture2D" uid="uid://cs3iyhqcev7h0" path="res://Assets/TemporaryAssets/Folder Friends icOnS/Sprites/Desktop/Desktop5_4.png" id="13_817l7"]
+[ext_resource type="Texture2D" uid="uid://ck1nungnidr41" path="res://Assets/TemporaryAssets/Folder Friends icOnS/Sprites/Desktop/Desktop2_1.png" id="13_kuhb0"]
 [ext_resource type="AudioStream" uid="uid://hhwvwau3w4b1" path="res://Assets/Audio/SoundFX/ImpactComputer6.mp3" id="13_qgltr"]
 [ext_resource type="Texture2D" uid="uid://cv8m3vn5h46oi" path="res://Assets/TemporaryAssets/Pong/ball.png" id="14_q1m36"]
-[ext_resource type="Texture2D" uid="uid://2r4lkdfb36wd" path="res://Assets/TemporaryAssets/png-transparent-white-cursor-computer-mouse-pointer-mouse-cursor-miscellaneous-angle-white-removebg-preview.png" id="15_0x4wk"]
+[ext_resource type="Texture2D" uid="uid://d12jrnbymcaeq" path="res://Assets/TemporaryAssets/Folder Friends icOnS/Sprites/Desktop/Desktop5_1.png" id="16_ebcdn"]
+[ext_resource type="Texture2D" uid="uid://cxbm61odo5il6" path="res://Assets/TemporaryAssets/Folder Friends icOnS/Sprites/Desktop/Desktop3_3.png" id="17_hjjwe"]
+[ext_resource type="Texture2D" uid="uid://b1ipymoqwha6p" path="res://Assets/TemporaryAssets/Folder Friends icOnS/Sprites/Cursor/Cursor1_5.png" id="20_817l7"]
+[ext_resource type="Texture2D" uid="uid://bq6yqsaeoihfu" path="res://Assets/TemporaryAssets/Folder Friends icOnS/RetroComputerGUI/Window_Base.png" id="24_k51j7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ghg7e"]
 size = Vector3(0.69751, 0.827362, 0.609497)
@@ -53,13 +65,151 @@ _surfaces = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_jeibh"]
 size = Vector3(1.66252, 1.44556, 1.6936)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_idtdj"]
+texture = ExtResource("5_is448")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hxvtj"]
+texture = ExtResource("5_37at3")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_is448"]
+texture = ExtResource("6_hxvtj")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37at3"]
+bg_color = Color(0.752941, 0.752941, 0.752941, 1)
+border_blend = true
+shadow_size = 3
+anti_aliasing = false
+anti_aliasing_size = 0.282
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_37at3"]
+texture = ExtResource("5_fv44a")
+
+[sub_resource type="Theme" id="Theme_hxvtj"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/focus = SubResource("StyleBoxTexture_idtdj")
+Button/styles/hover = SubResource("StyleBoxTexture_idtdj")
+Button/styles/normal = SubResource("StyleBoxTexture_hxvtj")
+Button/styles/pressed = SubResource("StyleBoxTexture_is448")
+Label/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/styles/focus = SubResource("StyleBoxFlat_37at3")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_37at3")
+Panel/styles/panel = SubResource("StyleBoxTexture_37at3")
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ca3h7"]
+bg_color = Color(0, 0.698039, 0.584314, 1)
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kces7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1hnqd"]
 
 [sub_resource type="Theme" id="Theme_nupjd"]
 default_font = ExtResource("7_g2b4m")
 
-[sub_resource type="Theme" id="Theme_2s5uo"]
-default_font = ExtResource("7_g2b4m")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvtx2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xush1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_81eio"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3p8yh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_65pst"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3woce"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ork1e"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jwnf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2u7m0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tba7y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xwupp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tb5fp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kuhb0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ebcdn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjjwe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k51j7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8f1a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_idtdj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fclsi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xp1ef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_76glo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_12rb7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_11l28"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p8o2q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s7ra5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_apykk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4s2l3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ljg5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rrbku"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4to4c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k772m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tnbxx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uw8wb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_itasc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kn3y7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71wvk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odch2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i58bk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cy2gi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6u7in"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85c6a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4tkl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwd0k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0jlwj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kh7um"]
 border_width_left = 6
@@ -88,20 +238,19 @@ border_width_right = 8
 border_width_bottom = 8
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ca3h7"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p8f1a"]
+texture = ExtResource("24_k51j7")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6biuy"]
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.422209, 0.693461, 0.694075, 1)
-border_blend = true
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-shadow_size = 12
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k51j7"]
+texture = ExtResource("24_k51j7")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_ulg4a"]
 size = Vector2(1.375, 1.225)
@@ -112,7 +261,6 @@ viewport_path = NodePath("Monitor/ComputerOn/MonitorHandler/SubViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jf2tv"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_pvcmu")
-emission_enabled = true
 emission = Color(0.0509804, 0.0509804, 0.784314, 1)
 emission_energy_multiplier = 4.6
 
@@ -123,7 +271,7 @@ size = Vector3(1.73148, 1.36295, 1.57025)
 resource_name = "Material.001"
 albedo_texture = ExtResource("4_8cojr")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ghg7e"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_p8f1a"]
 resource_local_to_scene = true
 resource_name = "desk_Cube_001"
 _surfaces = [{
@@ -242,72 +390,130 @@ size = Vector2i(560, 360)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
+[node name="Player_USB_Handler" type="Node" parent="Monitor/ComputerOn/MonitorHandler/SubViewport"]
+script = ExtResource("5_p8f1a")
+
 [node name="GUI" type="Control" parent="Monitor/ComputerOn/MonitorHandler/SubViewport"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = SubResource("Theme_hxvtj")
+
+[node name="Panel" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ca3h7")
+
+[node name="TextureRect" type="TextureRect" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Panel"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -280.0
-offset_top = -180.0
-offset_right = 280.0
-offset_bottom = 220.0
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+texture = ExtResource("9_kuhb0")
+expand_mode = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
-layout_mode = 0
-offset_right = 560.0
-offset_bottom = 360.0
-
-[node name="LoginMenu" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer"]
-self_modulate = Color(9.04858e-06, 0.913518, 0.914545, 1)
+[node name="LoginMenu" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
 layout_mode = 2
+offset_left = 130.0
+offset_top = 80.0
+offset_right = 430.0
+offset_bottom = 250.505
 script = ExtResource("6_cspqt")
 
-[node name="ItemList" type="ItemList" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/LoginMenu"]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 80.0
-offset_right = 400.0
-offset_bottom = 155.0
-focus_mode = 0
+[node name="ItemList" type="Label" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/LoginMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -11.0
+offset_right = 24.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("7_g2b4m")
+text = "John"
 
-[node name="Label" type="Label" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/LoginMenu"]
+[node name="Title" type="Label" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/LoginMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 17.935
+offset_right = 60.0
+offset_bottom = 64.935
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_g2b4m")
+text = "Global Corp
+"
+
+[node name="Label" type="Label" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/LoginMenu"]
 material = SubResource("CanvasItemMaterial_kces7")
-layout_mode = 0
-offset_left = 103.58
-offset_top = 203.74
-offset_right = 198.58
-offset_bottom = 226.74
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 22.545
+offset_top = 18.58
+offset_right = 117.545
+offset_bottom = 41.58
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("7_g2b4m")
 text = "Password:"
 
-[node name="LineEdit" type="LineEdit" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/LoginMenu"]
+[node name="LineEdit" type="LineEdit" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/LoginMenu"]
 layout_mode = 0
-offset_left = 203.425
-offset_top = 200.0
-offset_right = 403.425
-offset_bottom = 231.0
+offset_left = 122.795
+offset_top = 96.905
+offset_right = 288.225
+offset_bottom = 127.905
 secret = true
 
-[node name="Button" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/LoginMenu"]
-layout_mode = 0
-offset_left = 265.0
-offset_top = 238.695
-offset_right = 315.0
-offset_bottom = 269.695
+[node name="Button" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/LoginMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.5
+offset_top = -34.52
+offset_right = 40.5
+offset_bottom = -6.52
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("7_g2b4m")
 text = "Login"
 
-[node name="WelcomeScreen" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer"]
+[node name="WelcomeScreen" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
 visible = false
 layout_mode = 2
+offset_left = 130.0
+offset_top = 80.0
+offset_right = 430.0
+offset_bottom = 250.505
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/WelcomeScreen"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/WelcomeScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -325,39 +531,190 @@ bbcode_enabled = true
 text = "[center]Welcome 
 John Bogart"
 
-[node name="Home_Screen" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer"]
+[node name="Home_Screen" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
 visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1hnqd")
 script = ExtResource("8_h5kc7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = 80.0
+offset_top = -38.413
 offset_right = 120.0
-offset_bottom = -80.0
+offset_bottom = -69.918
 grow_vertical = 2
 theme = SubResource("Theme_nupjd")
 theme_override_constants/separation = 13
 alignment = 1
 
-[node name="MailPad" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen/VBoxContainer"]
+[node name="Recycle" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dvtx2")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_xush1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_81eio")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3p8yh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_65pst")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3woce")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ork1e")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_jwnf3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2u7m0")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_tba7y")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xwupp")
+icon = ExtResource("12_tb5fp")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer/Recycle"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.715
+offset_top = -4.69
+offset_right = 29.285
+offset_bottom = 17.31
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Recycle"
+
+[node name="MailPad" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tb5fp")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_kuhb0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ebcdn")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hjjwe")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_k51j7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_p8f1a")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_idtdj")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_fclsi")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xp1ef")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_76glo")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_12rb7")
+icon = ExtResource("13_kuhb0")
+expand_icon = true
+
+[node name="Label" type="Label" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer/MailPad"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.715
+offset_top = -4.69
+offset_right = 29.285
+offset_bottom = 17.31
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "MailPad"
 
-[node name="MailMail" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen/VBoxContainer"]
+[node name="MailMail" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-text = "MailMail"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dvtx2")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_xush1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_81eio")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_3p8yh")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_65pst")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_3woce")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ork1e")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_jwnf3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2u7m0")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_tba7y")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xwupp")
+icon = ExtResource("13_817l7")
+expand_icon = true
 
-[node name="Paint" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen/VBoxContainer"]
+[node name="Label" type="Label" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer/MailMail"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.715
+offset_top = -4.69
+offset_right = 29.285
+offset_bottom = 17.31
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Mail Mail"
+
+[node name="Paint" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_11l28")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_p8o2q")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_s7ra5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_apykk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_4s2l3")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8ljg5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rrbku")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_4to4c")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k772m")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_tnbxx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uw8wb")
+icon = ExtResource("16_ebcdn")
+
+[node name="Label" type="Label" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer/Paint"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -59.045
+offset_top = -4.69
+offset_right = 37.955
+offset_bottom = 17.31
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Paint"
 
-[node name="MailPong" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen/VBoxContainer"]
+[node name="MailPong" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer"]
 layout_mode = 2
-text = "MailPong"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_itasc")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_kn3y7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_71wvk")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_odch2")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_i58bk")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_cy2gi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6u7in")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_85c6a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_x4tkl")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_mwd0k")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0jlwj")
+icon = ExtResource("17_hjjwe")
+
+[node name="Label" type="Label" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer/MailPong"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.715
+offset_top = -4.69
+offset_right = 29.285
+offset_bottom = 17.31
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Mail Pong"
 
 [node name="NotePad" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
 visible = false
@@ -373,7 +730,6 @@ offset_right = 186.025
 offset_bottom = 152.16
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_2s5uo")
 theme_override_styles/panel = SubResource("StyleBoxFlat_kh7um")
 
 [node name="TextEdit" type="TextEdit" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/NotePad"]
@@ -402,7 +758,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -12.99
 offset_right = 0.0100098
-offset_bottom = 20.0
+offset_bottom = 18.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 8
 text = "x"
@@ -635,30 +991,23 @@ theme_override_fonts/font = ExtResource("7_g2b4m")
 theme_override_font_sizes/font_size = 8
 text = "X"
 
-[node name="Panel" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
-visible = false
-layout_mode = 0
-offset_left = 100.0
-offset_top = 40.0
-offset_right = 400.0
-offset_bottom = 290.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_ca3h7")
-
 [node name="BottomBar" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
 visible = false
 layout_mode = 0
-offset_top = 332.13
+offset_top = 334.245
 offset_right = 560.2
-offset_bottom = 351.245
-theme_override_styles/panel = SubResource("StyleBoxFlat_6biuy")
+offset_bottom = 353.36
+theme_override_styles/panel = SubResource("StyleBoxTexture_p8f1a")
 
 [node name="Button" type="Button" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/BottomBar"]
 layout_mode = 0
-offset_top = -4.14
-offset_right = 46.0
-offset_bottom = 26.86
+offset_top = 0.055
+offset_right = 47.005
+offset_bottom = 20.055
 theme_override_font_sizes/font_size = 10
 text = "Start"
+icon = ExtResource("9_kuhb0")
+expand_icon = true
 
 [node name="TopBar" type="Panel" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
 visible = false
@@ -667,7 +1016,7 @@ offset_left = -2.415
 offset_top = 10.06
 offset_right = 562.905
 offset_bottom = 15.32
-theme_override_styles/panel = SubResource("StyleBoxFlat_6biuy")
+theme_override_styles/panel = SubResource("StyleBoxTexture_k51j7")
 
 [node name="MouseCursor" type="TextureRect" parent="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI"]
 layout_mode = 0
@@ -675,7 +1024,7 @@ offset_top = 70.255
 offset_right = 25.0
 offset_bottom = 95.255
 mouse_filter = 2
-texture = ExtResource("15_0x4wk")
+texture = ExtResource("20_817l7")
 expand_mode = 1
 
 [node name="Screen" type="MeshInstance3D" parent="Monitor/ComputerOn"]
@@ -713,7 +1062,7 @@ spot_angle = 102.6
 [node name="ComputerOff" parent="Monitor" instance=ExtResource("3_urhub")]
 transform = Transform3D(0.403, 0, 0, 0, 0.403, 0, 0, 0, 0.403, 0, 0, 0)
 visible = false
-mesh = SubResource("ArrayMesh_ghg7e")
+mesh = SubResource("ArrayMesh_p8f1a")
 
 [node name="Screen2" parent="Monitor/ComputerOff" index="0"]
 mesh = SubResource("ArrayMesh_fngp1")
@@ -732,13 +1081,13 @@ stream = SubResource("AudioStreamRandomizer_hp4ao")
 stream = SubResource("AudioStreamRandomizer_v3hii")
 
 [connection signal="body_entered" from="Monitor" to="Monitor/Monitor_Collision_Handler" method="_on_body_entered"]
-[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/LoginMenu/Button" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/LoginMenu" method="check_login"]
-[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen/VBoxContainer/MailPad" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen" method="_on_button_pressed"]
-[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen/VBoxContainer/Paint" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen" method="_on_paint_pressed"]
-[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen/VBoxContainer/MailPong" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen" method="_on_mail_pong_pressed"]
-[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/NotePad/Button" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen" method="_notepad_close"]
+[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/LoginMenu/Button" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/LoginMenu" method="check_login"]
+[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer/MailPad" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen" method="_on_button_pressed"]
+[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer/Paint" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen" method="_on_paint_pressed"]
+[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen/VBoxContainer/MailPong" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen" method="_on_mail_pong_pressed"]
+[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/NotePad/Button" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen" method="_notepad_close"]
 [connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Paint/Hide" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Paint/Node2D" method="_on_hide_pressed"]
-[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/MailPongBackground/Button" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/PanelContainer/Home_Screen" method="on_mail_pong_close"]
+[connection signal="pressed" from="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/MailPongBackground/Button" to="Monitor/ComputerOn/MonitorHandler/SubViewport/GUI/Home_Screen" method="on_mail_pong_close"]
 [connection signal="mouse_entered" from="Monitor/ComputerOn/Screen/Area3D" to="Monitor/ComputerOn/MonitorHandler" method="_on_area_3d_mouse_entered"]
 [connection signal="mouse_exited" from="Monitor/ComputerOn/Screen/Area3D" to="Monitor/ComputerOn/MonitorHandler" method="_on_area_3d_mouse_exited"]
 

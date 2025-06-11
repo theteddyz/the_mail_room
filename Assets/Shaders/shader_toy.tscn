@@ -16,6 +16,7 @@ shader_parameter/smear_edges = 2.0
 shader_parameter/blur_samples = 15
 
 [node name="everything_layer" type="CanvasLayer"]
+layer = -1
 
 [node name="everything" type="ColorRect" parent="." groups=["Player_shader"]]
 material = SubResource("ShaderMaterial_rxhbw")

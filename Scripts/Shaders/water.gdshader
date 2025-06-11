@@ -209,7 +209,7 @@ void fragment()
 	vec4 ssr_color 					= get_ssr_color(surface_view_position, normal, VIEW, PROJECTION_MATRIX, INV_PROJECTION_MATRIX);
 	vec3 surface_color_transparency	= mix(color_shallow, screen_color, transparency);
 	vec3 surface_depth_color_mix 	= mix(color_deep, surface_color_transparency, depth_visibility);
-	vec3 surface_color_ssr_mix		= (ssr_max_travel > EPSILON) ? mix(surface_depth_color_mix, ssr_color.rgb, ssr_mix_strength * ssr_color.a) : vec3(0);
+	vec3 surface_color_ssr_mix		= ssr_color.rgb;//(ssr_max_travel > EPSILON) ? mix(surface_depth_color_mix, ssr_color.rgb, ssr_mix_strength * ssr_color.a) : vec3(0);
 	vec3 water_color 				= (ssr_color.x >= 0.0) ? surface_color_ssr_mix : surface_depth_color_mix;
 	vec3 final_color				= mix(border_color, water_color, step(border_scale, border_diff));
 

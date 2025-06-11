@@ -71,6 +71,7 @@ func _ready():
 
 func save_usb_data(new_value: int) -> void:
 	var data := {}
+	
 	# Load existing data if the file exists
 	if FileAccess.file_exists(FILE_NAME):
 		var save_game = FileAccess.open(FILE_NAME, FileAccess.READ)
@@ -85,16 +86,53 @@ func save_usb_data(new_value: int) -> void:
 	if not data.has("USB_DATA"):
 		data["USB_DATA"] = []
 
-	# Avoid duplicates
-	var x = data["USB_DATA"]
-	# FIX THIS TODO: STORES FLOATS BUT SHOULD BE STRINGS
-	if float(new_value) not in data["USB_DATA"]:
-		data["USB_DATA"].append(new_value)
+	var usb_data_array = data["USB_DATA"]
+
+	# Check if the USB is already in the list
+	var already_exists := false
+	for usb in usb_data_array:
+		if typeof(usb) == TYPE_DICTIONARY and usb.get("id", -1) == new_value:
+			already_exists = true
+			break
+
+	# If not already present, add it with the flag
+	if not already_exists:
+		usb_data_array.append({
+			"id": new_value,
+			"added_to_computer": false
+		})
 
 	# Save updated data
 	var save_game = FileAccess.open(FILE_NAME, FileAccess.WRITE)
 	if save_game:
 		var json_string = JSON.stringify(data, "\t")  # "\t" for pretty print
+		save_game.store_string(json_string)
+		save_game.close()
+
+
+
+func mark_usb_as_added_to_computer(target_id: int) -> void:
+	var data := {}
+	print("UPDATING BOOL")
+	if FileAccess.file_exists(FILE_NAME):
+		var save_game = FileAccess.open(FILE_NAME, FileAccess.READ)
+		if save_game:
+			var save_string = save_game.get_as_text()
+			var parsed = JSON.parse_string(save_string)
+			if typeof(parsed) == TYPE_DICTIONARY:
+				data = parsed
+			save_game.close()
+
+	if data.has("USB_DATA"):
+		for usb in data["USB_DATA"]:
+			if typeof(usb) == TYPE_DICTIONARY and usb.get("id", -1) == target_id:
+				usb["added_to_computer"] = true
+				break
+
+	# Save the updated data
+	var save_game = FileAccess.open(FILE_NAME, FileAccess.WRITE)
+	if save_game:
+		var json_string = JSON.stringify(data, "\t")
 		save_game.store_string(json_string)
 		save_game.close()
 
