@@ -29,8 +29,8 @@ func _ready():
 	monster_body.visible = false
 	#window_scare_initial_sound = preload("res://Assets/Audio/SoundFX/AmbientScares/WindowScareInitial.ogg")
 	monster_anim = monster_body.find_child("AnimationPlayer")
-	ScareDirector.connect("package_delivered", activate_scare)
-	ScareDirector.connect("monster_seen", monster_seen_function)
+	ScareDirector.package_delivered.connect(activate_scare)
+	ScareDirector.monster_seen.connect(monster_seen_function)
 	player = GameManager.player_reference
 	static_sfx = load("res://Assets/Audio/SoundFX/ChaseLoops/CutterAggroStatic.ogg")
 	scare_ambience_sound = load("res://Assets/Audio/SoundFX/MailRoomAmbience.mp3")

@@ -5,7 +5,7 @@ class_name State
 # Privates
 var current_speed = 0
 var change_state: Callable
-var persistent_state: CharacterBody3D
+var persistent_state: Node3D
 var mouse_sense = 0.25
 
 # Called when a new instance of any state is created

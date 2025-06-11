@@ -29,8 +29,8 @@ source = 5
 texture = ExtResource("1_b3u2l")
 
 [sub_resource type="Gradient" id="Gradient_irfw5"]
-offsets = PackedFloat32Array(0.00952381, 0.171429, 0.318182, 0.461905, 1)
-colors = PackedColorArray(0.0855738, 4.49346e-08, 1.35368e-08, 1, 0.159126, 1.25591e-07, 3.00817e-08, 1, 0.352573, 2.55695e-07, 1.08294e-07, 1, 1, 0, 0, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.00952381, 0.242915, 0.530364, 0.773279, 1)
+colors = PackedColorArray(0.168627, 0.345098, 0.572549, 1, 0.0971519, 0.134223, 0.368309, 1, 0.256158, 0.0730679, 0.50441, 1, 0.276597, 0.149719, 0.333545, 1, 0.0177324, 0.0177324, 0.0177324, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mo5mj"]
 gradient = SubResource("Gradient_irfw5")

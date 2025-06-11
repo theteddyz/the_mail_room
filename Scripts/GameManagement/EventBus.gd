@@ -25,15 +25,12 @@ signal turn_off_elevator_buttons()
 ##First Floor Signals## 
 
 #Signal for when a package is delivered
-signal package_failed_delivery()
 signal picked_up_key(node)
 signal picked_up_usb(usb_index)
-signal dropped_key()
 signal object_looked_at(node)
 signal no_object_found(node)
 
 #Connecting Functions
-
 signal request_object(node,node2)
 signal register_object(node)
 signal fufilled_request(node)

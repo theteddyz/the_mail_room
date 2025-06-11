@@ -38,14 +38,12 @@ func play_narrator_sound(sound):
 		radio_sound_player.play()
 	
 
-
 func eject_tape():
 	radio_sound_player.stop()
 	held_tape.eject()
 	has_tape = false
 	held_tape = null
 	radio_sound_player.stream = null
-
 
 func delivery_sound(_i):
 	power = true

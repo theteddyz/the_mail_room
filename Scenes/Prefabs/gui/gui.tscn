@@ -587,7 +587,6 @@ libraries = {
 }
 
 [node name="Monster_Debugger_Item" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0

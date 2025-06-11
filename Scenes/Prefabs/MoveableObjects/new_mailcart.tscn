@@ -217,6 +217,8 @@ shape = SubResource("BoxShape3D_83uqg")
 
 [node name="Radio_Sound_Player" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.64666, 0.625213, 0.0192857)
+volume_db = -6.255
+unit_size = 3.85
 
 [node name="cart_move_audio" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.153306, 0)
