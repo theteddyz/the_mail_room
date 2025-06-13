@@ -1,4 +1,4 @@
-[gd_scene load_steps=181 format=4 uid="uid://bu1pxcldnehfp"]
+[gd_scene load_steps=182 format=4 uid="uid://bu1pxcldnehfp"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_gv15l"]
 [ext_resource type="Environment" uid="uid://b6cvpqqdwan5k" path="res://Scenes/Worlds/introlevel.tres" id="3_l6t4i"]
@@ -107,6 +107,7 @@
 [ext_resource type="PackedScene" uid="uid://jv1tdx28kr7s" path="res://Scenes/Prefabs/StaticObjects/newspaper.tscn" id="86_uqu8v"]
 [ext_resource type="PackedScene" uid="uid://dgyk3ee7gauie" path="res://Scenes/Prefabs/StaticObjects/garbage_pile.tscn" id="87_pg0mv"]
 [ext_resource type="PackedScene" uid="uid://cabdt3d8b0cm7" path="res://Scenes/Prefabs/StaticObjects/radiator.tscn" id="89_pcwtw"]
+[ext_resource type="PackedScene" uid="uid://omq23tssx1x6" path="res://Scenes/Prefabs/MoveableObjects/usb_drive.tscn" id="108_wufj6"]
 
 [sub_resource type="MultiMesh" id="MultiMesh_ugi1t"]
 transform_format = 1
@@ -1550,7 +1551,7 @@ transform = Transform3D(0.00628211, 0, 0.00822052, 0, 0.0103461, 0, -0.00822052,
 [node name="Chair" parent="stage/Cubicles2/OfficeCubicle38" instance=ExtResource("26_2vxtn")]
 transform = Transform3D(0.796171, 0, 0.605072, 0, 1, 0, -0.605072, 0, 0.796171, -0.867614, 0.797346, 0.111)
 
-[node name="Chair" parent="stage/Cubicles2/OfficeCubicle38/Chair" index="5"]
+[node name="Chair" parent="stage/Cubicles2/OfficeCubicle38/Chair" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0674973, 0, -0.141785)
 collision_layer = 0
 
@@ -2438,6 +2439,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 14.150
 
 [node name="Plant4" parent="." instance=ExtResource("51_oinx4")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.17885, 2.17352, 2.17759)
+
+[node name="usb_drive" parent="." instance=ExtResource("108_wufj6")]
+transform = Transform3D(-0.5, 0, 0.866025, -7.57103e-08, -1, -4.37114e-08, 0.866025, -8.74228e-08, 0.5, 4.24961, 1.77821, -4.59592)
 
 [connection signal="body_entered" from="Keyboard2" to="Keyboard2/Key_Board_Collision_Handler" method="_on_body_entered"]
 

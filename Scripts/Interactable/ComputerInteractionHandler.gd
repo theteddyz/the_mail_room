@@ -12,6 +12,10 @@ var collision_shape:CollisionShape3D
 @onready var monitor_handler = $"../MonitorHandler"
 @onready var usb_handler = $"../MonitorHandler/SubViewport/Player_USB_Handler"
 @onready var mail_pong = $"../MonitorHandler/SubViewport/GUI/MailPongBackground/MailPong"
+@onready var main_parent = $"../../.."
+@onready var usb_mesh_scene:PackedScene = preload("res://Scenes/Prefabs/usb_drive_MESH.tscn")
+@onready var start_marker = $"../Screen/Marker3D2"
+@onready var end_marker = $"../Screen/Marker3D2"
 func _ready():
 	collision_shape = get_child(0)
 	var player = GameManager.get_player()
@@ -108,8 +112,12 @@ func load_unadded_usbs() -> void:
 			#save_game.close()
 
 
-
 func animate_usb_insert() -> void:
-	# Play animation/sound/particle FX here
-	print("Animating USB insert...")
-	await get_tree().create_timer(1.0).timeout  # simulate 1 second animation
+	var usb_mesh = usb_mesh_scene.instantiate()
+	start_marker.add_child(usb_mesh)  # Keep it locally parented
+	usb_mesh.position = Vector3.ZERO  # Start at local origin
+	usb_mesh.reparent(end_marker)
+	var tween = create_tween()
+	tween.tween_property(usb_mesh, "position", Vector3(0,0,-0.65), 1)
+	await tween.finished
+	usb_handler.load_usb_data()

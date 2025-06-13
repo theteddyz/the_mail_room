@@ -93,6 +93,8 @@ collision_mask = 15
 mass = 2.5
 script = ExtResource("1_36pyg")
 
+[node name="PackageDestination" parent="." instance=ExtResource("4_2yoek")]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00308111, 0.266359, 0.00247478)
 shape = SubResource("BoxShape3D_xi8h3")
@@ -105,8 +107,6 @@ skeleton = NodePath("")
 [node name="MailboxStand_001" type="MeshInstance3D" parent="MailboxStand"]
 mesh = SubResource("ArrayMesh_q3lxr")
 skeleton = NodePath("")
-
-[node name="PackageDestination" parent="." instance=ExtResource("4_2yoek")]
 
 [node name="CollisionDetector" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
 script = ExtResource("5_t02xu")

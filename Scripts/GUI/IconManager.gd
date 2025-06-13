@@ -1,17 +1,16 @@
 extends Control
 
-var icons: Dictionary = {}
-var object_held
-
-# Mapping from enum integer values to icon names
 const ICON_TYPE_NAMES = {
 	0: "grab",
 	1: "light",
 	2: "package",
-	3:"deliverable",
-	4:"key",
-	5:"tape"
+	3: "deliverable",
+	4: "key",
+	5: "tape"
 }
+
+var icons: Dictionary = {}
+var object_held = null
 
 func _ready():
 	EventBus.connect("show_icon", show_icon)
@@ -28,60 +27,69 @@ func _ready():
 
 func show_icon(object):
 	hide_all_icons(object)
-	var object_name = null
 
-	if GrabbingManager.current_grabbed_object == object:
-		object_name = "grabClosed"
-	else:
-		# If there was anything scary and horrific about our game, it is this here code. Truly eldritch. Truly frightening.
-		if not object_held:
-			if "icon_type" in object:
-				var type_id = object.icon_type
-				if type_id in ICON_TYPE_NAMES:
-					object_name = ICON_TYPE_NAMES[type_id]
-				else:
-					object_name = "grab"
-				if object is Package:
-					object.show_label(object.package_partial_address)
-			elif object.name == "Handlebar":
-				object_name = "Drive"
-		elif object_held is Package and object is not Package:
-			match object.name:
-				"Basket", "MailboxStand":
-					object_name = "deliverable"
-				_:
-					object_name = "grab"
+	var icon_name = get_icon_name_for_object(object)
 
-	if object_name != null and object_name in icons:
-		icons[object_name].show()
+	if icon_name and icons.has(icon_name):
+		icons[icon_name].show()
 
 func hide_icon(object):
-	var object_name = null
-	if object.has_meta("icon_type"):
+	var icon_name = get_icon_name_for_object(object)
+	if icon_name and icons.has(icon_name):
+		icons[icon_name].hide()
+
+func hide_all_icons(object):
+	if object is RigidBody3D and object.has_method("hide_label"):
+		object.hide_label()
+
+	for name in icons:
+		if object_held and name == "grabClosed":
+			continue
+		icons[name].hide()
+
+func held_object(_unused, held):
+	object_held = held
+
+func dropped_object(_unused, _unused2):
+	object_held = null
+	hide_all_icons(null)
+
+# --- Helper Functions ---
+
+func get_icon_name_for_object(object):
+	if GrabbingManager.current_grabbed_object == object:
+		return "grabClosed"
+
+	if object_held:
+		return get_icon_for_held_object(object)
+	else:
+		return get_icon_for_free_hand(object)
+
+func get_icon_for_free_hand(object):
+	if object is Package:
+		object.show_label(object.package_partial_address)
+
+	if "icon_type" in object:
 		var type_id = object.icon_type
 		if type_id in ICON_TYPE_NAMES:
-			object_name = ICON_TYPE_NAMES[type_id]
-	elif object.name == "Handlebar":
-		object_name = "Drive"
+			return ICON_TYPE_NAMES[type_id]
+		return "grab"
 
-	if object_name != null and object_name in icons:
-		icons[object_name].hide()
+	if object.name == "Handlebar":
+		return "Drive"
 
-func hide_all_icons(_object):
-	if _object is RigidBody3D and _object.has_method("hide_label"):
-		_object.hide_label()
+	return null
 
-	if not object_held:
-		for icon in icons.values():
-			icon.hide()
-	else:
-		for icon in icons.values():
-			if icon.name != "grabClosed":
-				icon.hide()
+func get_icon_for_held_object(object):
+	if not (object_held is Package):
+		return "grab"
 
-func held_object(_var1, var2):
-	object_held = var2
-
-func dropped_object(_var1, _var2):
-	hide_all_icons(_var1)
-	object_held = null
+	match object.name:
+		"MailboxStand":
+			var deliverable_num = object.get_child(0).accepted_num
+			if deliverable_num == object_held.package_num:
+				return "deliverable"
+		"Basket":
+			return "deliverable"
+		_:
+			return "grab"
