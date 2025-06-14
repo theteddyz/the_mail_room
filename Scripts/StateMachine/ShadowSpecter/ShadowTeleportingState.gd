@@ -48,7 +48,7 @@ func set_enabled(flag: bool):
 	if flag:
 		persistent_state.enabled = flag
 		collision_shape_3d.disabled = false
-		AudioController.play_resource(teleporting_ambiance)
+		AudioController.play_resource(teleporting_ambiance, 1)
 		teleporting_behaviour_timer.start()
 		teleporting_behaviour_timer.timeout.connect(on_teleport_end_timer, 1)
 		visible = true

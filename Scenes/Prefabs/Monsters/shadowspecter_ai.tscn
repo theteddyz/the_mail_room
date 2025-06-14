@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c1lkeccx56a7c"]
+[gd_scene load_steps=32 format=4 uid="uid://c1lkeccx56a7c"]
 
 [ext_resource type="Shader" uid="uid://sa34od7wut4t" path="res://Scenes/Prefabs/Monsters/shadowspecter_inner_mesh_ai.tres" id="1_m758c"]
 [ext_resource type="Script" uid="uid://ddl81u2xxu0dd" path="res://Scripts/StateMachine/ShadowSpecter/ShadowStateMachine.gd" id="1_r0qoo"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://b7m7tb5do3l4m" path="res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundInitialCutter2.ogg" id="5_s5osp"]
 [ext_resource type="AudioStream" uid="uid://do1gadqbhyq4l" path="res://Assets/Audio/SoundFX/ChaseLoops/AggroSoundInitialCutter.ogg" id="7_1441f"]
 [ext_resource type="AudioStream" uid="uid://ccf1t642egx8c" path="res://Assets/Audio/SoundFX/AmbientScares/WindowScareInitial.ogg" id="9_vsa22"]
+[ext_resource type="AudioStream" uid="uid://suvwr30ocvwq" path="res://Assets/Audio/SoundFX/AmbientScares/ShadowJuke1.ogg" id="10_3c8vm"]
+[ext_resource type="AudioStream" uid="uid://bmi12whcuhjlk" path="res://Assets/Audio/SoundFX/AmbientScares/ShadowJuke2.ogg" id="11_dxi04"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0dey"]
 transparency = 1
@@ -299,7 +301,7 @@ bind/64/pose = Transform3D(0.999052, -0.0180329, -0.0395566, -0.0393523, 0.01193
 render_priority = 0
 shader = ExtResource("1_m758c")
 shader_parameter/Texture2DParameter2 = ExtResource("2_m758c")
-shader_parameter/blood3 = 0.571
+shader_parameter/blood3 = 0.532
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_t61u8"]
 resource_name = "shadowspecter_Cube_003"
@@ -344,6 +346,12 @@ streams_count = 3
 stream_0/stream = ExtResource("5_s5osp")
 stream_1/stream = ExtResource("5_cf7ic")
 stream_2/stream = ExtResource("7_1441f")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xtrsa"]
+random_pitch = 1.11
+streams_count = 2
+stream_0/stream = ExtResource("10_3c8vm")
+stream_1/stream = ExtResource("11_dxi04")
 
 [node name="shadowspecter" type="Node3D" groups=["monster", "scarevision"]]
 script = ExtResource("1_r0qoo")
@@ -869,6 +877,10 @@ one_shot = true
 wait_time = 26.0
 one_shot = true
 
+[node name="chasing_juke_timer" type="Timer" parent="Timers"]
+wait_time = 5.5
+one_shot = true
+
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73418, 0)
 aabb = AABB(-0.467956, -1.62822, -0.282248, 0.935912, 3.25547, 0.564495)
@@ -883,3 +895,8 @@ pitch_scale = 1.51
 
 [node name="HitBySound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("9_vsa22")
+
+[node name="JukeSound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_xtrsa")
+attenuation_model = 1
+unit_size = 5.27

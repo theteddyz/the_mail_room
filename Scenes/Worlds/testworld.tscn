@@ -807,8 +807,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08481, 0.0474928, 4.44076)
 
 [node name="Monitor" parent="." instance=ExtResource("18_87p0u")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.02617, 1.58316, 4.67029)
-usernames = Array[String](["John"])
-passwords = Array[String](["aaa"])
 
 [node name="CRTTVScreen" parent="." instance=ExtResource("19_87p0u")]
 transform = Transform3D(4.37114e-08, -6.60023e-15, 1, -1.50996e-07, -1, 2.5411e-21, 1, -1.50996e-07, -4.37114e-08, 8.34449, 1.6725, 8.79802)
