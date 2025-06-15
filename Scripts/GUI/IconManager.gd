@@ -11,7 +11,7 @@ const ICON_TYPE_NAMES = {
 
 var icons: Dictionary = {}
 var object_held = null
-
+var package_held
 func _ready():
 	EventBus.connect("show_icon", show_icon)
 	EventBus.connect("hide_icon", hide_all_icons)
@@ -49,9 +49,13 @@ func hide_all_icons(object):
 
 func held_object(_unused, held):
 	object_held = held
+	if object_held is Package:
+		package_held = held
 
-func dropped_object(_unused, _unused2):
+func dropped_object(_unused, dropped):
 	object_held = null
+	if package_held and dropped is Package:
+		package_held = null 
 	hide_all_icons(null)
 
 # --- Helper Functions ---
@@ -60,7 +64,7 @@ func get_icon_name_for_object(object):
 	if GrabbingManager.current_grabbed_object == object:
 		return "grabClosed"
 
-	if object_held:
+	if object_held or package_held:
 		return get_icon_for_held_object(object)
 	else:
 		return get_icon_for_free_hand(object)
@@ -81,13 +85,13 @@ func get_icon_for_free_hand(object):
 	return null
 
 func get_icon_for_held_object(object):
-	if not (object_held is Package):
-		return "grab"
+	#if not (object_held is Package):
+		#return "grab"
 
 	match object.name:
 		"MailboxStand":
 			var deliverable_num = object.get_child(0).accepted_num
-			if deliverable_num == object_held.package_num:
+			if deliverable_num == package_held.package_num:
 				return "deliverable"
 		"Basket":
 			return "deliverable"

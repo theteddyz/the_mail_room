@@ -1,10 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://dq6b3ab1wyhca"]
+[gd_scene load_steps=12 format=4 uid="uid://dq6b3ab1wyhca"]
 
 [ext_resource type="Texture2D" uid="uid://bawy11xmnvil2" path="res://Assets/Textures/BlenderTextures/Mailbox.png" id="1_2skgq"]
-[ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_36pyg"]
 [ext_resource type="Texture2D" uid="uid://d0rpbmloe0xw" path="res://Assets/Textures/BlenderTextures/MailboxMesh.png" id="2_osjud"]
 [ext_resource type="PackedScene" uid="uid://ckuwn1pv3gq2i" path="res://Scenes/Prefabs/package_destination.tscn" id="4_2yoek"]
-[ext_resource type="Script" uid="uid://c0mfs0ulcnrcx" path="res://Scenes/Prefabs/StaticObjects/ObjectCollisionAndBreakage.gd" id="5_t02xu"]
 [ext_resource type="AudioStream" uid="uid://w5heanp85nvb" path="res://Assets/Audio/SoundFX/ImpactLamp.mp3" id="6_aattr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xi8h3"]
@@ -91,7 +89,6 @@ shadow_mesh = SubResource("ArrayMesh_hab4u")
 collision_layer = 2
 collision_mask = 15
 mass = 2.5
-script = ExtResource("1_36pyg")
 
 [node name="PackageDestination" parent="." instance=ExtResource("4_2yoek")]
 
@@ -108,12 +105,6 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_q3lxr")
 skeleton = NodePath("")
 
-[node name="CollisionDetector" type="Node3D" parent="." node_paths=PackedStringArray("impact_audios")]
-script = ExtResource("5_t02xu")
-impact_audios = NodePath("../ImpactAudioPlayer")
-
 [node name="ImpactAudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_aattr")
 bus = &"RigidBodies"
-
-[connection signal="body_entered" from="." to="CollisionDetector" method="_on_body_entered"]

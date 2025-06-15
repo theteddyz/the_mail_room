@@ -33,6 +33,8 @@ func get_interactable():
 			return collider
 		elif collider and collider.name == "Mailcart":
 			return collider
+		elif collider and collider.name == "MailboxStand":
+			return collider
 	return null
 
 
