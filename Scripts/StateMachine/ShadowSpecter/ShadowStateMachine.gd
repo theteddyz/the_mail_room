@@ -18,7 +18,7 @@ func _ready() -> void:
 	scare_manager.package_order_disrupted.connect(_initialize)
 	visible = false
 	collision_shape_3d.disabled = true
-	change_state("aggro")
+	#change_state("aggro")
 
 func _initialize():
 	player_errors += 1

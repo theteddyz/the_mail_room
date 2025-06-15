@@ -930,19 +930,19 @@ icon_type = 0
 [node name="Node3D" parent="." instance=ExtResource("34_qt4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41303, 0.0137595, 14.7924)
 
-[node name="FileCabinetDrawer_001" parent="Node3D/Drawer" index="5"]
+[node name="FileCabinetDrawer_001" parent="Node3D/Drawer" index="6"]
 mesh = SubResource("ArrayMesh_sv7fo")
 
-[node name="FileCabinetDrawer_001" parent="Node3D/Drawer2" index="5"]
+[node name="FileCabinetDrawer_001" parent="Node3D/Drawer2" index="6"]
 mesh = SubResource("ArrayMesh_sv7fo")
 
 [node name="Node3D" parent="Node3D/Drawer2" index="10" instance=ExtResource("36_jhwrq")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.04212, -1.00981, 4.72413)
 
-[node name="FileCabinetDrawer_001" parent="Node3D/Drawer3" index="5"]
+[node name="FileCabinetDrawer_001" parent="Node3D/Drawer3" index="6"]
 mesh = SubResource("ArrayMesh_sv7fo")
 
-[node name="FileCabinetDrawer_001" parent="Node3D/Drawer4" index="5"]
+[node name="FileCabinetDrawer_001" parent="Node3D/Drawer4" index="6"]
 mesh = SubResource("ArrayMesh_sv7fo")
 
 [node name="FileCabinet" parent="Node3D/File_Cabinet" index="0"]
