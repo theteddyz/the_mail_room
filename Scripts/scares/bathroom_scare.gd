@@ -65,6 +65,7 @@ func spawn_end_trigger(grabbable:String):
 
 func _on_corpse_observed():
 	AudioController.play_resource(corpse_music)
+	visible_on_screen_notifier_3d.queue_free()
 
 func _on_end_trigger(body: Node3D) -> void:
 	AudioController.play_resource(end_ambience)
@@ -80,6 +81,8 @@ func _on_end_trigger(body: Node3D) -> void:
 	john_for_scare.visible = true
 	john_for_scare.find_child("AnimationPlayer").play("Run")
 	(john_for_scare.find_child("AnimationPlayer") as AnimationPlayer).speed_scale = 3.0
+	await get_tree().create_timer(2.0).timeout
+	end_scare()
 
 func end_scare():
 	animation_player_for_bathroom_scare.play("RESET")
