@@ -45,8 +45,7 @@ shadow_mesh = SubResource("ArrayMesh_yafp1")
 size = Vector3(5.66855, 7.74037, 0.365845)
 
 [node name="Bathroom_wall" type="StaticBody3D"]
-collision_layer = 149
-collision_mask = 149
+collision_mask = 0
 
 [node name="WallMailRoom2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, 0, 0, 0)

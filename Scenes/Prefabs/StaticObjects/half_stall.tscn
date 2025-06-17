@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cnus2pwbp1koj"]
+[gd_scene load_steps=18 format=4 uid="uid://cnus2pwbp1koj"]
 
 [ext_resource type="Texture2D" uid="uid://41emsnlmgt7f" path="res://Assets/Models/test_models/bathroom_stall_together_bathroom_stall_open1.png" id="1_fger0"]
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="2_x8i6i"]
@@ -85,6 +85,9 @@ shadow_mesh = SubResource("ArrayMesh_r5vm2")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ojk3t"]
 size = Vector3(0.0664673, 2.00586, 1.00562)
 
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_x8i6i"]
+size = Vector3(0.0687598, 1.90053, 0.977936)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6alxf"]
 size = Vector3(2.09106, 2.00314, 0.110352)
 
@@ -94,9 +97,14 @@ size = Vector3(0.0527039, 2.7074, 0.361267)
 [sub_resource type="BoxShape3D" id="BoxShape3D_dtbdx"]
 size = Vector3(0.0543213, 0.111206, 1.39105)
 
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_x6l5p"]
+size = Vector3(0.0472443, 2.66263, 0.344612)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ximl7"]
+size = Vector3(0.0841451, 1.93763, 2.04974)
+
 [node name="StaticBody3D" type="StaticBody3D"]
-collision_layer = 17
-collision_mask = 17
+collision_mask = 0
 
 [node name="Cube_003" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -125,6 +133,10 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00985718, 0.072839, -0.101196)
 shape = SubResource("BoxShape3D_ojk3t")
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="bathroom_door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0190464, 0.0773194, -0.100714)
+occluder = SubResource("BoxOccluder3D_x8i6i")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.933773, 1.1663, -0.157715)
 shape = SubResource("BoxShape3D_6alxf")
@@ -136,3 +148,11 @@ shape = SubResource("BoxShape3D_i1u3b")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14032, 2.53442, 0.358063)
 shape = SubResource("BoxShape3D_dtbdx")
+
+[node name="OccluderInstance3D2" type="OccluderInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138412, 1.23988, -0.156792)
+occluder = SubResource("BoxOccluder3D_x6l5p")
+
+[node name="OccluderInstance3D3" type="OccluderInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.934422, 1.16591, -0.156792)
+occluder = SubResource("BoxOccluder3D_ximl7")
