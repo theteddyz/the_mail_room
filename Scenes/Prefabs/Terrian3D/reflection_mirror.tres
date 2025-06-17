@@ -1,10 +1,10 @@
-[gd_resource type="Shader" format=3 uid="uid://bitv41ebfxr2p"]
+[gd_resource type="Shader" format=3 uid="uid://blov3kc20urfi"]
 
 [resource]
 code = "shader_type spatial;
 render_mode unshaded;
 
-uniform sampler2D refl_tx;
+uniform sampler2D refl_tx: source_color;
 
 
 

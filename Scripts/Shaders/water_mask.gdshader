@@ -1,5 +1,5 @@
 shader_type spatial;
-//render_mode unshaded;
+render_mode unshaded,fog_disabled;
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture,filter_linear_mipmap;
 void vertex() {
 	// Called for every vertex the material is visible on.
