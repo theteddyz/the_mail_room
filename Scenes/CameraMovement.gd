@@ -50,9 +50,10 @@ func _ready() -> void:
 	top_level = false
 	head = get_parent()
 	previous_head_quat = Quaternion.IDENTITY #head.global_transform.basis.get_rotation_quaternion()
+	register_self()
+	EventBus.connect("loaded_new_floor",Callable(self,"register_self"))
+func register_self():
 	GameManager.register_camera(self)
-	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	if shouldEnable:

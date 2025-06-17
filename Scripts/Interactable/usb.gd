@@ -10,6 +10,7 @@ var being_grabbed
 var lerp_pos 
 var item_icon_manager
 @onready var col = $CollisionShape3D
+
 func _ready():
 	mesh_instance = get_child(0)
 	item_icon_manager = Gui.get_item_icon_displayer()

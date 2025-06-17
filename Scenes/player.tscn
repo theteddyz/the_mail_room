@@ -266,13 +266,17 @@ cast_shadow = 0
 mesh = SubResource("QuadMesh_h4iuc")
 
 [node name="initial_shader" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("6_qqcod")]
+visible = false
 
 [node name="Smear" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("10_igrcy")]
+visible = false
 
 [node name="VHS_Look" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("3_6orpg")]
 layer = 1
+visible = false
 
 [node name="VHS_Shader" parent="Neck/Head/HeadbopRoot/Camera" instance=ExtResource("8_fd4e3")]
+visible = false
 
 [node name="BlurRange" type="RayCast3D" parent="Neck/Head/HeadbopRoot/Camera"]
 target_position = Vector3(0, 0, -400)

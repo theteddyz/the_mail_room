@@ -137,7 +137,7 @@ void fragment()
 	// Tape wave
     uvs.x += (noise(vec2(uvs.y, TIME)) - 0.5) * 0.005*stretch_noise;
     uvs.x += (noise(vec2(uvs.y * 100.0, TIME * 10.0)) - 0.5) * 0.01*stretch_noise;
-	
+
 	// Tape crease
     float tcPhase = clamp((sin(uvs.y * 8.0 - TIME*crease_speed* PI * 1.2) - 0.92) * noise(vec2(TIME)), 0.0, 0.01) * 10.0;
     float tcNoise = max(noise(vec2(uvs.y * 100.0, TIME*crease_speed * 10.0)) - 0.5, 0.0);
@@ -163,12 +163,12 @@ void fragment()
     vec4 sharpenColor = sharpenMask(uvs, SCREEN_PIXEL_SIZE);
 
 	vec4 chromaticColor = cromaticColor(uvs, SCREEN_PIXEL_SIZE);
-	
+
 	vec4 cromaticColorRGB = cromaticColorRGB(uvs, SCREEN_PIXEL_SIZE);
 
 	vec4 mixColor = vec4(0.0);
-	
-	
+
+
 
 	vec4 originalColor = texture(SCREEN_TEXTURE, uvs, 0.0);
 
@@ -214,6 +214,6 @@ void fragment()
     //}
 
 	vec4 finalColor = vhsMixColor;
-	
+
 	COLOR = finalColor;
 }

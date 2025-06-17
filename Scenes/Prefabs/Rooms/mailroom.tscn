@@ -304,7 +304,6 @@ sleeping = true
 freeze = true
 linear_damp = 6.0
 script = ExtResource("6_u7rba")
-grab_type = "drawer"
 
 [node name="CabinetDesk2" type="MeshInstance3D" parent="Objects/Desk3/Desk/DrawerTop"]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
@@ -342,7 +341,6 @@ sleeping = true
 freeze = true
 linear_damp = 6.0
 script = ExtResource("6_u7rba")
-grab_type = "drawer"
 
 [node name="Interpolator" type="Node3D" parent="Objects/Desk3/Desk/DrawerBottom"]
 script = ExtResource("14_1wq6m")
@@ -411,8 +409,6 @@ shape = SubResource("BoxShape3D_5vlwi")
 
 [node name="Monitor" parent="Objects/Desk3" instance=ExtResource("20_csg54")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.57256, -0.227464)
-usernames = Array[String](["mailman"])
-passwords = Array[String](["globalcorprulez"])
 
 [node name="IndustrialTable" parent="Objects" instance=ExtResource("7_lddy1")]
 transform = Transform3D(0.587, 0, 0, 0, 0.587, 0, 0, 0, 0.587, -9.85651, 0.556907, -4.93296)

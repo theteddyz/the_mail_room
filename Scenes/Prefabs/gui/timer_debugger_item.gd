@@ -1,12 +1,12 @@
 extends Control
-@export var node_to_debug: Node
+var node_to_debug: Node
 var timer_array: Array[Timer]
 var labels_array: Array[Label]
 
 func _ready() -> void:
-	node_to_debug = get_tree().root.get_node("world").find_child("cutter_ai") if get_tree().root.get_node("world") != null else null
+	node_to_debug = get_tree().root.get_node("world").find_child("shadowspecter") if get_tree().root.get_node("world") != null else null
 	if node_to_debug != null:
-		var children = node_to_debug.get_children(true)
+		var children = node_to_debug.find_child("Timers").get_children()
 		for c in children:
 			if c is Timer:
 				# Create a new label object

@@ -15,6 +15,26 @@ var world_reference: Node
 var current_scene_root:Node
 var we_reference: WorldEnvironment
 var player_radio:Node
+var _threaded_scene_path = ""
+var _threaded_loading_complete = false
+var _threaded_loaded_scene : PackedScene
+
+
+func preload_scene_in_background(scene_path: String) -> void:
+	_threaded_scene_path = scene_path
+	_threaded_loading_complete = false
+	ResourceLoader.load_threaded_request(scene_path)
+
+func poll_scene_loading() -> bool:
+	if _threaded_loading_complete:
+		return true
+	var status = ResourceLoader.load_threaded_get_status(_threaded_scene_path)
+	if status == ResourceLoader.THREAD_LOAD_LOADED:
+		_threaded_loaded_scene = ResourceLoader.load_threaded_get(_threaded_scene_path)
+		_threaded_loading_complete = true
+		return true
+	return false
+
 
 #Quite a few script rely on these setter getter, proceed with caution if deleted
 func register_player(new_player):
@@ -71,6 +91,7 @@ func _ready():
 
 func save_usb_data(new_value: int) -> void:
 	var data := {}
+	
 	# Load existing data if the file exists
 	if FileAccess.file_exists(FILE_NAME):
 		var save_game = FileAccess.open(FILE_NAME, FileAccess.READ)
@@ -85,16 +106,53 @@ func save_usb_data(new_value: int) -> void:
 	if not data.has("USB_DATA"):
 		data["USB_DATA"] = []
 
-	# Avoid duplicates
-	var x = data["USB_DATA"]
-	# FIX THIS TODO: STORES FLOATS BUT SHOULD BE STRINGS
-	if float(new_value) not in data["USB_DATA"]:
-		data["USB_DATA"].append(new_value)
+	var usb_data_array = data["USB_DATA"]
+
+	# Check if the USB is already in the list
+	var already_exists := false
+	for usb in usb_data_array:
+		if typeof(usb) == TYPE_DICTIONARY and usb.get("id", -1) == new_value:
+			already_exists = true
+			break
+
+	# If not already present, add it with the flag
+	if not already_exists:
+		usb_data_array.append({
+			"id": new_value,
+			"added_to_computer": false
+		})
 
 	# Save updated data
 	var save_game = FileAccess.open(FILE_NAME, FileAccess.WRITE)
 	if save_game:
 		var json_string = JSON.stringify(data, "\t")  # "\t" for pretty print
+		save_game.store_string(json_string)
+		save_game.close()
+
+
+
+func mark_usb_as_added_to_computer(target_id: int) -> void:
+	var data := {}
+	print("UPDATING BOOL")
+	if FileAccess.file_exists(FILE_NAME):
+		var save_game = FileAccess.open(FILE_NAME, FileAccess.READ)
+		if save_game:
+			var save_string = save_game.get_as_text()
+			var parsed = JSON.parse_string(save_string)
+			if typeof(parsed) == TYPE_DICTIONARY:
+				data = parsed
+			save_game.close()
+
+	if data.has("USB_DATA"):
+		for usb in data["USB_DATA"]:
+			if typeof(usb) == TYPE_DICTIONARY and usb.get("id", -1) == target_id:
+				usb["added_to_computer"] = true
+				break
+
+	# Save the updated data
+	var save_game = FileAccess.open(FILE_NAME, FileAccess.WRITE)
+	if save_game:
+		var json_string = JSON.stringify(data, "\t")
 		save_game.store_string(json_string)
 		save_game.close()
 
@@ -178,77 +236,125 @@ func goto_scene(path, _floor):
 			call_deferred("_deferred_goto_scene", path)
 		
 
-func _deferred_goto_scene(path, is_not_scene_load = false):
-	# Load the new scene. New scene exists "in limbo"
-	var s = ResourceLoader.load(path)
-	
-	if(s == null):
-		assert(false, "Could not load scene: " + path + ", not valid path?")
-	
-	var mailcart_in_elevator = elevator_reference.get_node("Elevator").get_node("ObjectDetectionShape").mailcart_exists_in_elevator
-	#var elevator_reference_origin = elevator_reference.get_node("Elevator").get_node("ElevatorOrigin")
-	#var player_relative_to_elevator = player_reference.global_position - elevator_reference_origin.global_position
-	#var player_relativerotation_to_elevator = player_reference.rotation - elevator_reference.rotation
-	#if mail_cart_reference:
-		#var mailcart_relative_to_elevator = mail_cart_reference.global_position - elevator_reference_origin.global_position
-		#var mailcart_relativerotation_to_elevator = mail_cart_reference.rotation - elevator_reference.rotation
-	
-	# Change to the new scene
-	var old_scene = current_scene
-	current_scene = s.instantiate()
-	# Find and replace any potential player node in new scene
-	var new_player = current_scene.find_child("Player")
-	if(new_player != null):
-		new_player.free()
-		
-	# If this is not a save-load
-	if(!is_not_scene_load):
-		player_reference.reparent(current_scene, false)
-		player_reference.owner = current_scene
-		player_reference._ready()
-	
-	
-	# We do not want to add the mailcart to the new scene in some cases
-	if(mailcart_in_elevator):
-		var mailcart = elevator_reference.get_node("Elevator").get_node("Mailcart")
-		mailcart.perform_package_replacement(current_scene)
-		# Find and replace any potential mailcart node in new scene
-		var new_mailcart = current_scene.find_child("Mailcart")
-		if(new_mailcart != null):
-			new_mailcart.free()
-	# Find and replace the elevator node
-	var new_elevator = current_scene.find_child("Elevator")
-	#var new_elevator_rotation = new_elevator.rotation
-	elevator_reference.reparent(current_scene, false)
-	elevator_reference.owner = current_scene
-	
-	# Position the elevator
-	elevator_reference.position = new_elevator.position
-	elevator_reference.rotation = new_elevator.rotation
-	new_elevator.free()
-	elevator_reference.name = "Elevator"
-	
-	# Time to delete the old scene
-	old_scene.free()
+func _deferred_goto_scene(scene_or_path: Variant, is_not_scene_load: bool = false) -> void:
+	var s: PackedScene = ResourceLoader.load(scene_or_path) if typeof(scene_or_path) == TYPE_STRING else scene_or_path
+	if s == null:
+		push_error("Could not load scene: " + str(scene_or_path))
+		return
 
-	# Add it to the active scene, as child of root.
-	get_tree().root.add_child(current_scene)
-	
-	# FIX FOR VOLUMETRIC BLEEDING THROUGH WALLS WHEN SCENESWITCHING
-	if current_scene.get_node("WorldEnvironment") != null:
-		var we = current_scene.get_node("WorldEnvironment")
-		var timer = get_tree().create_timer(0.2)
-		timer.timeout.connect(setWorldEnvironmentFog.bind(false, we))
-		var timer2 = get_tree().create_timer(0.4)
+	# --- References ---
+	var elevator: Node3D = get_elevator()
+	var player: Node3D = get_player()
+	var mailcart: Node3D = get_mail_cart()
+	var camera = get_player_camera()
+	var old_scene
+	# --- Detach elevator (with its contents) from current scene ---
+	elevator.reparent(get_tree().root)  # Temporarily keep elevator in scene tree
+
+	# --- Move old scene far away ---
+	if current_scene:
+		current_scene.global_position += Vector3(0, -500, 0)
+
+	# --- Instantiate new scene ---
+	var new_scene: Node = s.instantiate()
+	old_scene = current_scene
+	current_scene = new_scene
+
+	# --- Remove default player and mailcart if they exist ---
+	var new_player: Node = new_scene.find_child("Player", true, false)
+	if new_player:
+		new_player.queue_free()
+	if mailcart:
+		var new_mailcart: Node = new_scene.find_child("Mailcart", true, false)
+		if new_mailcart:
+			new_mailcart.queue_free()
+
+	# --- Replace new elevator with our existing one ---
+	var new_elevator: Node3D = new_scene.find_child("Elevator", true, false)
+	var new_elevator_pos: Vector3 = new_elevator.position
+	var new_elevator_rot: Vector3 = new_elevator.rotation
+
+		# Delete the placeholder elevator
+	new_elevator.queue_free()
+	register_elevator(elevator)
+		# Reattach the real elevator
+
+
+		# Store target landing position so elevator can snap there
+	elevator.target_landing_position = new_elevator_pos
+	# --- Add new scene to the tree ---
+	get_tree().root.add_child(new_scene)
+	elevator.reparent(new_scene, false)
+	elevator.owner = new_scene
+	elevator.position = new_elevator_pos
+	elevator.rotation = new_elevator_rot
+	old_scene.queue_free()
+	EventBus.emitCustomSignal("loaded_new_floor")
+	register_camera(camera)
+	register_player(player)
+	if mailcart:
+		register_mail_cart(mailcart)
+	register_elevator(elevator)
+	# --- Restore fog (optional visual fix) ---
+	if new_scene.has_node("WorldEnvironment"):
+		var we: WorldEnvironment = new_scene.get_node("WorldEnvironment")
+		var timer1: SceneTreeTimer = get_tree().create_timer(0.2)
+		timer1.timeout.connect(setWorldEnvironmentFog.bind(false, we))
+		var timer2: SceneTreeTimer = get_tree().create_timer(0.4)
 		timer2.timeout.connect(setWorldEnvironmentFog.bind(true, we))
-	 
-	
-	if(is_not_scene_load):
-		elevator_reference.load_floor()
+	# --- Final load step for scenes from save ---
+	if is_not_scene_load:
+		elevator.load_floor()
 
 # FIX FOR VOLUMETRIC BLEEDING THROUGH WALLS WHEN SCENESWITCHING
 func setWorldEnvironmentFog(flag, we):
 	we.environment.volumetric_fog_enabled = flag
+
+
+func replace_with_threaded_scene():
+	if !_threaded_loading_complete or _threaded_loaded_scene == null:
+		push_error("Scene not fully loaded!")
+		return
+	_deferred_goto_scene(_threaded_loaded_scene)
+
+
+func auto_register_scene_objects(scene: Node) -> void:
+	# You can customize these names if needed
+	var new_player = scene.find_child("Player", true, false)
+	if new_player:
+		register_player(new_player)
+
+	var new_elevator = scene.find_child("Elevator", true, false)
+	if new_elevator:
+		register_elevator(new_elevator)
+
+	var new_mailcart = scene.find_child("Mailcart", true, false)
+	if new_mailcart:
+		register_mail_cart(new_mailcart)
+
+	var new_radio = scene.find_child("PlayerRadio", true, false)
+	if new_radio:
+		register_player_radio(new_radio)
+
+	var new_we = scene.find_child("WorldEnvironment", true, false)
+	if new_we:
+		register_world_environment(new_we)
+
+	register_world(scene)
+
+
+func clear_all_registered_objects():
+	player_reference = null
+	camera_reference = null
+	elevator_reference = null
+	mail_cart_reference = null
+	scare_director_reference = null
+	world_reference = null
+	current_scene_root = null
+	we_reference = null
+	player_radio = null
+
+
 
 func load_node_variables():
 	if not FileAccess.file_exists(FILE_NAME):

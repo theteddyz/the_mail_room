@@ -45,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0638238, 1.1455, 0.399151)
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.416294, 1.1614, 0.3639)
 
 [node name="MailboxStand" parent="." instance=ExtResource("12_x1ixq")]
-transform = Transform3D(-0.999752, 0, -0.022286, 0, 1, 0, 0.022286, 0, -0.999752, -0.889354, 1.13881, -0.239794)
+transform = Transform3D(-0.999752, 0, -0.022286, 0, 1, 0, 0.022286, 0, -0.999752, -0.889354, 1.18708, -0.239794)
 sleeping = true
 freeze = true
 

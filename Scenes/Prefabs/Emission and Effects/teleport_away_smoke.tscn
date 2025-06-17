@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkl3olwfcx1a2"]
+
+[ext_resource type="Texture2D" uid="uid://b8rgo0fh1aied" path="res://Assets/Textures/ParticleTextures/T_smoke_flipbook.png" id="1_o13ym"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0dey"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_o13ym")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+proximity_fade_enabled = true
+
+[sub_resource type="Curve" id="Curve_s5osp"]
+_data = [Vector2(0, 0.00230241), 0.0, 0.0, 0, 0, Vector2(0.510504, 0.466232), 0.0, 0.0, 0, 0, Vector2(0.747899, 0.685725), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_1441f"]
+curve = SubResource("Curve_s5osp")
+
+[sub_resource type="Gradient" id="Gradient_vsa22"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l75uj"]
+gradient = SubResource("Gradient_vsa22")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_3c8vm"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.717837), 0.0, 0.0, 0, 0, Vector2(0.329832, 1.35359), 0.0, 0.0, 0, 0, Vector2(0.651261, 1.36385), 0.284534, 0.284534, 0, 0, Vector2(0.995798, 1.63062), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_dxi04"]
+curve = SubResource("Curve_3c8vm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xtrsa"]
+particle_flag_rotate_y = true
+emission_shape_scale = Vector3(1.369, 2.271, 0.404)
+emission_shape = 1
+emission_sphere_radius = 0.71
+angle_min = -39.0
+angle_max = 39.0
+direction = Vector3(0, 1, 0)
+spread = 87.455
+flatness = 0.175
+initial_velocity_min = 0.44
+initial_velocity_max = 0.91
+angular_velocity_min = -134.09
+angular_velocity_max = 134.32
+gravity = Vector3(0, 0, 0)
+scale_min = 0.38
+scale_max = 0.65
+scale_curve = SubResource("CurveTexture_dxi04")
+color = Color(2.5, 2.5, 2.5, 1)
+color_ramp = SubResource("GradientTexture1D_l75uj")
+alpha_curve = SubResource("CurveTexture_1441f")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_r0qoo"]
+
+[node name="TeleportAwaySmoke" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_v0dey")
+emitting = false
+amount = 15
+lifetime = 1.31
+one_shot = true
+explosiveness = 0.69
+fixed_fps = 24
+process_material = SubResource("ParticleProcessMaterial_xtrsa")
+draw_pass_1 = SubResource("QuadMesh_r0qoo")

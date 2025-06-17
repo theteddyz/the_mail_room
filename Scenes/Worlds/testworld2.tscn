@@ -56,7 +56,7 @@ avoidance_enabled = false
 [node name="OfficeCubicle" parent="NavRegionFirstHalf" instance=ExtResource("11_cn52c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62517, 0.5, 6.80775)
 
-[node name="PackageDestination" parent="NavRegionFirstHalf/OfficeCubicle/MailboxStand" index="2"]
+[node name="PackageDestination" parent="NavRegionFirstHalf/OfficeCubicle/MailboxStand" index="0"]
 accepts_package_named = "Package2"
 
 [node name="OfficeCubicle2" parent="NavRegionFirstHalf" instance=ExtResource("11_cn52c")]

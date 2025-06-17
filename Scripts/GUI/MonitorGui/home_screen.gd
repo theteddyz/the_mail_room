@@ -1,8 +1,8 @@
 extends Panel
 
-@onready var notepad = $"../../NotePad"
-@onready var mailPong = $"../../MailPongBackground/MailPong"
-@onready var paint = $"../../Paint"
+@onready var notepad = $"../NotePad"
+@onready var mailPong = $"../MailPongBackground/MailPong"
+@onready var paint = $"../Paint"
 func _on_button_pressed():
 	notepad.show()
 
