@@ -15,8 +15,12 @@ const REGULAR_WE = preload("res://Scenes/Worlds/Finance.tres")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state_factory = PlayerStateFactory.new()
-	GameManager.register_player(self)
+	register_self()
 	change_state("walking")
+	EventBus.connect("loaded_new_floor",Callable(self,"register_self"))
+
+func register_self():
+	GameManager.register_player(self)
 
 # Break this out to a pausemanager or similar
 func _shortcut_input(event):

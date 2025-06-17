@@ -25,19 +25,20 @@ func handle_keyboard_press(event: InputEvent):
 	
 func _process(delta: float) -> void:
 	timer += delta
-	if timer < randomDuration*0.45:
-		target_velocity = -10.0
-		
+	var accel_strength := 1.5
+	if timer < randomDuration*0.55:
+		target_velocity = -15.0
+		accel_strength = 1.0
 		if animationTree:
 			animationTree["parameters/Blend2/blend_amount"] = lerpf(animationTree["parameters/Blend2/blend_amount"],1,delta*10);
 	elif timer < randomDuration:
-		target_velocity = 10.0
+		target_velocity = 15.0
 		if animationTree:
 			animationTree["parameters/Blend2/blend_amount"] = lerpf(animationTree["parameters/Blend2/blend_amount"],0,delta*10);
 	else:
 		timer = 0
 		var rng = RandomNumberGenerator.new()
-		randomDuration = rng.randf_range(0.5, 1.0)
+		randomDuration = rng.randf_range(0.25, 1.0)
 		randomRotation.x = originRotation.x + rng.randf_range(-1.0, 1.0)
 		randomRotation.y = originRotation.y + rng.randf_range(-1.0, 1.0)
 		randomRotation.z = originRotation.z + rng.randf_range(-1.0, 1.0)
@@ -45,7 +46,7 @@ func _process(delta: float) -> void:
 	rotation.y = lerpf(rotation.y,randomRotation.y,delta*2);
 	rotation.z = lerpf(rotation.z,randomRotation.z,delta*2);
 	# Smooth acceleration toward the target velocity
-	var accel_strength := 2.0
+	
 	acceleration = (target_velocity - velocity) * accel_strength
 	velocity += acceleration * delta
 	#global_position.y += velocity * delta	

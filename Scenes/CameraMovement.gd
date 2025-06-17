@@ -50,9 +50,10 @@ func _ready() -> void:
 	top_level = false
 	head = get_parent()
 	previous_head_quat = Quaternion.IDENTITY #head.global_transform.basis.get_rotation_quaternion()
+	register_self()
+	EventBus.connect("loaded_new_floor",Callable(self,"register_self"))
+func register_self():
 	GameManager.register_camera(self)
-	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float):
 	if shouldEnable:
@@ -186,19 +187,20 @@ func _process(delta: float):
 		#global_transform = head.global_transform
 
 func _physics_process(delta: float) -> void:
-	$BlurRange.target_position.z = blur_range
-	
-	if $BlurRange.is_colliding():
-		var origin = $BlurRange.global_transform.origin
-		var collision_point = $BlurRange.get_collision_point()
-		var distance = origin.distance_to(collision_point)
-		self.attributes.dof_blur_far_distance = lerpf(self.attributes.dof_blur_far_distance,distance+distance*0.1,delta*lerp_speed);
-		self.attributes.dof_blur_far_transition = lerpf(self.attributes.dof_blur_far_transition,distance*0.5,delta*lerp_speed);
-		self.attributes.dof_blur_near_distance = lerpf(self.attributes.dof_blur_near_distance,distance*0.5,delta*lerp_speed);
-		self.attributes.dof_blur_near_transition = lerpf(self.attributes.dof_blur_near_transition,distance*0.5,delta*lerp_speed);
+	pass
+	#$BlurRange.target_position.z = blur_range
+	#
+	#if $BlurRange.is_colliding():
+		#var origin = $BlurRange.global_transform.origin
+		#var collision_point = $BlurRange.get_collision_point()
+		#var distance = origin.distance_to(collision_point)
+		#self.attributes.dof_blur_far_distance = lerpf(self.attributes.dof_blur_far_distance,distance+distance*0.1,delta*lerp_speed);
+		#self.attributes.dof_blur_far_transition = lerpf(self.attributes.dof_blur_far_transition,distance*1.0,delta*lerp_speed);
+		#self.attributes.dof_blur_near_distance = lerpf(self.attributes.dof_blur_near_distance,distance*0.5,delta*lerp_speed);
+		#self.attributes.dof_blur_near_transition = lerpf(self.attributes.dof_blur_near_transition,distance*0.5,delta*lerp_speed);
 	#else:
-	#	self.attributes.dof_blur_far_distance = blur_far_max
-	#	self.attributes.dof_blur_near_distance = blur_near_max
+		#self.attributes.dof_blur_far_distance = blur_far_max
+		#self.attributes.dof_blur_near_distance = blur_near_max
 
 func calculatePosition(delta: float):
 	

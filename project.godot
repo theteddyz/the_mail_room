@@ -16,7 +16,7 @@ warnings/check_angle_interpolation_type_conflicting=false
 [application]
 
 config/name="the-mail-room"
-run/main_scene="res://Scenes/Worlds/Finance.tscn"
+run/main_scene="uid://daboi1jlu17kv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/image="res://Assets/TemporaryAssets/image.png"
 config/icon="res://icon.png"
@@ -35,6 +35,7 @@ SettingsManager="*res://Scripts/GUI/settings_manager.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=3
 window/energy_saving/keep_screen_on=false
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"

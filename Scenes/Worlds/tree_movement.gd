@@ -21,8 +21,8 @@ var position_influence2: float = 1.0
 var animation_speed2: float = 1.0
 var animation_strength2: float = 1.0
 
-var visibility_range_1: int = 100
-var visibility_range_2: int = 200
+var visibility_range_1: int = 200
+var visibility_range_2: int = 300
 
 var vegetationController: Node3D
 var vegetationScript = "res://Scenes/Worlds/vegetation_controller.gd"
@@ -84,46 +84,46 @@ func _ready():
 
 
 func _process(delta: float) -> void:
+	pass
 	
 	
-	
-	#Remove when releasing the game
-	amount2 = amount * vegetationController.amount
-	speed2 = speed * vegetationController.speed
-	position_influence2 = position_influence * vegetationController.position_influence
-	animation_speed2 = animation_speed * vegetationController.animation_speed
-	animation_strength2 = animation_strength * vegetationController.animation_strength
-	
-	if animationTree:
-		animationTree["parameters/Blend/blend_amount"] = animation_strength2
-		animationTree["parameters/TimeScale/scale"] = animation_speed2
-		
-	time += delta*speed2
-
-	# Sample noise from two offset positions to get a 2D vector
-	var wind_pos = (global_position.x + global_position.z) * 0.8 * position_influence2 + time * 3
-	var wind_x = fastNoiseLite.get_noise_1d(wind_pos)
-	var wind_y = fastNoiseLite.get_noise_1d(wind_pos + 100.0)  # offset to get different value
-
-	# Combine into a wind vector
-	var wind_vec = Vector2(wind_x, wind_y)
-
-	# Optional: normalize and scale by noise-based amount
-	var amount = wind_vec.length() * amount2 * 4.0
-	wind_vec = wind_vec.normalized()
-
-	# Now convert wind_vec from world-space to local-space
-	var yaw = rotation.y
-	var local_x = -sin(yaw) * wind_vec.x + cos(yaw) * wind_vec.y
-	var local_y =  cos(yaw) * wind_vec.x + sin(yaw) * wind_vec.y
-
-	# Apply as blend shapes
-	if trunk:
-		trunk.set("blend_shapes/X", local_x * amount)
-		trunk.set("blend_shapes/Y", local_y * amount)
-	if leaves:
-		leaves.set("blend_shapes/X", local_x * amount)
-		leaves.set("blend_shapes/Y", local_y * amount)
+	##Remove when releasing the game
+	#amount2 = amount * vegetationController.amount
+	#speed2 = speed * vegetationController.speed
+	#position_influence2 = position_influence * vegetationController.position_influence
+	#animation_speed2 = animation_speed * vegetationController.animation_speed
+	#animation_strength2 = animation_strength * vegetationController.animation_strength
+	#
+	#if animationTree:
+		#animationTree["parameters/Blend/blend_amount"] = animation_strength2
+		#animationTree["parameters/TimeScale/scale"] = animation_speed2
+		#
+	#time += delta*speed2
+#
+	## Sample noise from two offset positions to get a 2D vector
+	#var wind_pos = (global_position.x + global_position.z) * 0.8 * position_influence2 + time * 3
+	#var wind_x = fastNoiseLite.get_noise_1d(wind_pos)
+	#var wind_y = fastNoiseLite.get_noise_1d(wind_pos + 100.0)  # offset to get different value
+#
+	## Combine into a wind vector
+	#var wind_vec = Vector2(wind_x, wind_y)
+#
+	## Optional: normalize and scale by noise-based amount
+	#var amount = wind_vec.length() * amount2 * 4.0
+	#wind_vec = wind_vec.normalized()
+#
+	## Now convert wind_vec from world-space to local-space
+	#var yaw = rotation.y
+	#var local_x = -sin(yaw) * wind_vec.x + cos(yaw) * wind_vec.y
+	#var local_y =  cos(yaw) * wind_vec.x + sin(yaw) * wind_vec.y
+#
+	## Apply as blend shapes
+	#if trunk:
+		#trunk.set("blend_shapes/X", local_x * amount)
+		#trunk.set("blend_shapes/Y", local_y * amount)
+	#if leaves:
+		#leaves.set("blend_shapes/X", local_x * amount)
+		#leaves.set("blend_shapes/Y", local_y * amount)
 		
 	#yaw = global_rotation.y
 	#x_val = sin(yaw)

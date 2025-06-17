@@ -79,7 +79,7 @@ radius = 1.76913
 
 [node name="TreeSmall" type="Node3D" node_paths=PackedStringArray("trunk", "low_quality_trunk", "super_low_quality")]
 script = ExtResource("1_4msrk")
-amount = 0.2
+amount = 0.1
 trunk = NodePath("TreeSmall")
 low_quality_trunk = NodePath("LowTreeSmall")
 super_low_quality = NodePath("SuperLowQuality")

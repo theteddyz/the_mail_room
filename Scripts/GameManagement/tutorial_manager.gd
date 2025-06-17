@@ -34,6 +34,8 @@ func _on_area_3d_body_entered(body):
 		#timer.timeout.connect(func(): timer.queue_free())
 
 func _on_tutorial_start_body_entered(body):
+	if !mail_cart:
+		GameManager.get_mail_cart()
 	if tutorial_started and !step_1_played:
 		step_1_played = true
 		#player_radio.play_narrator_sound(tutorial_step_1)
@@ -59,6 +61,7 @@ func start_tutorial_part_2():
 
 func _process(delta):
 	if step_1_played and !package_in_mailcart:
+		
 		if mail_cart.game_objects.size() > 0:
 			package_in_mailcart = true
 			start_tutorial_part_2()

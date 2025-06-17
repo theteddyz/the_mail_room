@@ -36,7 +36,11 @@ var next_floor
 @onready var top_pos = $Top_Position
 @onready var bottom_pos = $Bottom_Position
 @onready var stop_pos = $Stop_Position
-
+var elevator_loop_tween: Tween
+var infinite_move_active: bool = false
+var move_direction: float = 1.0  # +1 for up, -1 for down
+var move_speed: float = 1.5  # Units per second (tweak as needed)
+var target_landing_position: Vector3 = Vector3.ZERO
 func _ready():
 	GameManager.register_elevator(self)
 	EventBus.connect("moved_to_floor",set_floor)
@@ -45,7 +49,13 @@ func _ready():
 	light_active_button()
 	show_or_hide_door()
 	
+func _physics_process(delta: float) -> void:
+	if infinite_move_active:
+		Elevator.translate(Vector3(0, move_direction * move_speed * delta, 0))
 
+func start_infinite_elevator_motion(up: bool = true) -> void:
+	infinite_move_active = true
+	move_direction = 1.0 if up else -1.0
 
 func call_elevator():
 	var world = GameManager.current_scene
@@ -83,19 +93,41 @@ func move_floors()->void:
 		await move_elevator_up()
 		return
 
-func set_floor(path,new_floor:int):
+func set_floor(path: String, new_floor: int):
 	music_player.play()
-	
-	await move_floors()
-	#var loading_screen = Gui.get_loading_screen()
-	#if loading_screen:
-		#loading_screen.visible = true
-		#loading_screen.show()
-		#loading_screen.load_screen(path)
-	#await get_tree().create_timer(5.0).timeout
-	await GameManager.goto_scene(path,next_floor)
-	_ready()
+	await close_doors()
+
+	# Start background scene load
+	GameManager.preload_scene_in_background(path)
+	# Start elevator motion
+	var going_up = GameManager.current_scene.move_direction != 0
+	swap_floor_collider(false)
+	start_infinite_elevator_motion(going_up)
+
+	# Wait for the scene to load
+	while not GameManager.poll_scene_loading():
+		await get_tree().process_frame
+
+	# Stop elevator motion
+	#stop_elevator_motion()
+
+	# Replace the scene (this sets target_landing_position and recenters)
+	await get_tree().create_timer(3.0).timeout
+	teleport_to_start_position()
+	GameManager.replace_with_threaded_scene()
+	await move_to_stop_position()
+	# Snap elevator to target position after scene load
+	#if target_landing_position != Vector3.ZERO:
+		#Elevator.global_position = target_landing_position
+
 	EventBus.emitCustomSignal("turn_off_elevator_buttons")
+
+
+func stop_elevator_motion() -> void:
+	infinite_move_active = false
+
+func transition_to_new_scene():
+	GameManager.replace_with_threaded_scene() 
 
 func load_floor():
 	swap_floor_collider(false)
@@ -133,8 +165,6 @@ func swap_floor_collider(on:bool):
 				collider.set_collision_layer_value(4,true)
 				collider.set_collision_layer_value(3,true)
 			floor_.visible = true
-		for _floors in get_tree().get_nodes_in_group("Fake_Floor"):
-			_floors.visible = false
 	else:
 		for _floor in get_tree().get_nodes_in_group("Real_Floor"):
 			if _floor is CollisionShape3D:
@@ -142,8 +172,6 @@ func swap_floor_collider(on:bool):
 				collider.set_collision_layer_value(4,false)
 				collider.set_collision_layer_value(3,false)
 			_floor.visible = false
-	for _floors in get_tree().get_nodes_in_group("Fake_Floor"):
-		_floors.visible = true
 
 func close_doors(_reparent = true)-> void:
 	var player = GameManager.get_player()
@@ -167,10 +195,11 @@ func close_doors(_reparent = true)-> void:
 
 func open_doors()->void:
 	var player = GameManager.get_player()
+	var mailcart = GameManager.get_mail_cart()
+	#Elevator = GameManager.get_elevator()
 	if Elevator.is_ancestor_of(player):
 		player.reparent(GameManager.current_scene,true)
 		player.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, false)
-	var mailcart = GameManager.get_mail_cart()
 	if Elevator.is_ancestor_of(mailcart):
 		mailcart.reparent(GameManager.current_scene,true)
 		mailcart.set_axis_lock(PhysicsServer3D.BodyAxis.BODY_AXIS_LINEAR_Y, false)
@@ -270,3 +299,24 @@ func light_active_button():
 			human_resources_floor.update_glow()
 		_:
 			pass
+
+
+func teleport_to_start_position():
+	var world = GameManager.get_world()
+	var going_up = world.move_direction != 0
+	Elevator.position = bottom_pos.position if going_up else top_pos.position
+
+
+
+func move_to_stop_position() -> void:
+	var tween = create_tween()
+	tween.tween_property(Elevator, "global_position", stop_pos.global_position, 10)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	stop_elevator_motion()
+	elevator_audio.stream = elevator_moving
+	elevator_audio.play()
+	await tween.finished
+	elevator_audio.stream = elevator_ding
+	elevator_audio.play()
+	await elevator_audio.finished
+	open_doors()
