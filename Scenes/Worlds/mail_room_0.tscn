@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=38 format=4 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_3nw8p"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_2im65"]
@@ -16,12 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://b01421mbq0uvp" path="res://Assets/Textures/BlenderTextures/ElevatorShaft.png" id="33_fpqgk"]
 [ext_resource type="PackedScene" uid="uid://c5gsbgt4sbxui" path="res://Scenes/Prefabs/StaticObjects/MailRoomFloorLayout.tscn" id="34_wi3qf"]
 [ext_resource type="Texture2D" uid="uid://c6ajcb8q4d2y7" path="res://Assets/Textures/BlenderTextures/CartLight.png" id="35_hf3b2"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ru4ij"]
-size = Vector3(4.52856, 3.04559, 4.39209)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_j45ys"]
-size = Vector3(1, 3.7345, 3.41296)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01aq2"]
 resource_name = "ElevatorShaft"
@@ -44,7 +38,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_wd6yl"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_eksns"]
 resource_name = "desk_Cube_120"
 _surfaces = [{
 "aabb": AABB(-1.71044, -1.06578, -2.44153, 3.42087, 6.76168, 5.12628),
@@ -61,6 +55,51 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hbn2u")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ru4ij"]
+size = Vector3(4.52856, 3.04559, 4.39209)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j45ys"]
+size = Vector3(1, 3.7345, 3.41296)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdcxx"]
+resource_name = "ElevatorShaft"
+cull_mode = 2
+albedo_texture = ExtResource("33_fpqgk")
+roughness = 0.7
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p37jt"]
+_surfaces = [{
+"aabb": AABB(-1.71044, -1.06578, -2.44153, 3.42087, 6.76168, 5.12628),
+"format": 34896613377,
+"index_count": 252,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAAgAHAAMAAgAGAAcABgAFAAcABgAEAAUABQAJAAEABQAKAAkABAAKAAUABAALAAoAAQAIAAAAAQAJAAgAAAALAAQAAAAIAAsACgANAAkACgAOAA0AEQAUABIAEQATABQAGwAUABMAGAAcABcAGAAZABwAGgAUABsAGAAaABkAFAAaABgAFwAbABMAFwAcABsAFwAWABgAFwAVABYAHwAVABEAHwAgABUAHgAVACAAEgAfABEAEgAdAB8AHgAWABUAEgAeAB0AFgAeABIAEwAVABcAEwARABUAGAASABQAGAAWABIAHwAaABsAHwAdABoAHAAeACAAHAAZAB4AIAAbABwAIAAfABsAGgAeABkAGgAdAB4AJgAlACgAJgAiACUAJAAiABAAJAAlACIAKQAjACsADwAoACoADwAmACgAKAAnACoAIwAMACsAIwAhAAwAJwArACoAJwApACsAEAAjACQAEAAhACMAAQADACMAJAADACUAEAACACEAJQAHACgAJQADAAcAIwADACQAAQAjACkAAQApACcAAQAnAAUAKAAHAAUABQAnACgAEAAGAAIAEAAiAAYABAAGACYAJgAGACIAAAAMACEAAAAPAAwAJgAPAAQAIQACAAAABAAPAAAADwAsAAwADwAtACwA"),
+"name": "ElevatorShaft",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 46,
+"vertex_data": PackedByteArray("AAAAAPn+AAAAAP//+f4AAAAAAAAAAAAAAAD//wAAAAD//wAA+f4AAP/////5/gAA//8AAAAAAAD/////AAAAAOdGtgT5/gAA50ZlZfn+AAANuWVl+f4AAA25tgT5/gAA50YAAPH4AADnRmVl8fgAAA25ZWXx+AAADbkAAPH4AAB3CQAAjQQAACpFQgP//wAAKkUmZv//AAAqRUID5PcAACpFJmbk9wAA1LpCA///AADUuiZm//8AANS6QgPk9wAA1LomZuT3AABnuPNk5PcAAIxH82Tk9wAAjEfdBOT3AABnuN0E5PcAAIxH82T//wAAZ7jzZP//AACMR90E//8AAGe43QT//wAAdwkAAPH4AACH9gAAjQQAAHcJ///x+AAAdwn//40EAACH9v//jQQAAIf2AADx+AAADbn///H4AACH9v//8fgAAOdG///x+AAADblEZfH4AADnRq9l8fgAAOdG6APx+AAADbnoA/H4AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wd6yl"]
+resource_name = "desk_Cube_120"
+_surfaces = [{
+"aabb": AABB(-1.71044, -1.06578, -2.44153, 3.42087, 6.76168, 5.12628),
+"attribute_data": PackedByteArray("7DBWGICHv6LMANEAZkUy/4CH5UcxNFYY7OTyF2ZFWKQyjVikzABFRswAMv8yjTL/ojhWGOzkjFzMAFik7DBMRne1v6IWL8wA/0Yy/3e15UcxNExGOeMlXv9GWKQpu1ikUy9MRpmLMv8puzL/ojhMRjnjv6KZi1ikmDIRJTuUE6E7lMN+TITOMbqow35MhExGmDKPObqoE6HBDWoCmNa/osENagKsgs4xrIJMRjMiPAIZwr+iMyI8AsK8Mv+FAgdF54W/ovRQTEZXfiwx93gsMdxpTEb0UDQjkHosMdxpNCNbT0xGFIEsMcl2LDGtZ0xGW080I758LDGtZzQjFWZMRld+TEb3eExGdGtMRhVmNCOQekxGdGs0Izs6TEYUgUxGyXZMRqJtTEY7OjQjvnxMRqJtNCOqOqEjPrkJMgJzMyTuTqEjPrlMRmlxMyTuTrpFgoCZMXe1CTJpcUxGqjq6RYKA3UV3tUxGAnNMRmJRoSMQt0xGO28zJKVloSMQtwkyMHUzJGJRukXpfpkxSbMJMjtvTEalZbpF6X7dRUmzTEYwdUxGoOG/ooMChAImRL+iUucy/5MtBUWNQuVHoOHlR9A1CRo545EZJkTlR8K8WKRpNwkaOeNTW+eF5UdS51ikaTeZROzkhqGNQr+iELe/omEtggLMAOVHGcLlR9A1jzkQt+VH0DWZROzkxF/MAL+imNblR9A1ESUZws9+mNapftQNcwIbIjwC"),
+"format": 34896613399,
+"index_count": 252,
+"index_data": PackedByteArray("AwAOAAcAAwAKAA4ACAAaAAsACAAXABoAGQAWAB0AGQASABYAEwAgAAQAEwAiACAAEAAiABMAEAAlACIABAAfAAEABAAgAB8AAAAkAA8AAAAeACQAIwApACEAIwAqACkANAA+ADcANAA7AD4AUwA8ADgASgBXAEYASgBNAFcAUAA8AFMASgBQAE0APABQAEoARwBUADkARwBYAFQASQBFAEwASQBCAEUAYgBAADIAYgBmAEAAXgA/AGUANQBhADEANQBbAGEAXgBDAD8ANQBeAFsAQwBeADUAOgBBAEgAOgAzAEEASwA2AD0ASwBEADYAZABSAFYAZABdAFIAWgBgAGgAWgBPAGAAZwBVAFkAZwBjAFUAUQBfAE4AUQBcAF8AfQB6AIMAfQBuAHoAcwBsAC4AcwB3AGwAhABvAIcALACAAIYALAB7AIAAgAB+AIYAbwAnAIcAbwBpACcAfgCHAIYAfgCEAIcAMAByAHYAMABrAHIABgANAHEAdAAMAHgALwAJAGoAeQAcAIIAeAAMABsAcQANAHUABQBwAIUABQCFAH8ABQB/ABQAggAcABUAFAB/AIEALwAYAAkALwBtABgAEQAYAHwAfAAYAG0AAgAoAGoAAgAtACgAfAAtABEAagAJAAIAEQAtAAIAKwCIACYAKwCJAIgA"),
+"material": SubResource("StandardMaterial3D_pdcxx"),
+"name": "ElevatorShaft",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 138,
+"vertex_data": PackedByteArray("AAAAAPn+/78AAAAA+f4AgAAAAAD5/v+/AAAAAPn+/78AAP//+f4AgAAA///5/lTVAAD///n+//8AAP//+f7/vwAAAAAAAP//AAAAAAAA/78AAAAAAAD/vwAA//8AAP//AAD//wAAVNUAAP//AAD//wAA//8AAP+///8AAPn+/7///wAA+f4AgP//AAD5/v+///8AAPn+/7//////+f4AgP/////5/lTV//////n+////////+f7/v///AAAAAP////8AAAAA/7///wAAAAD/v/////8AAP///////wAAVNX/////AAD///////8AAP+/50a2BPn+/7/nRrYE+f4AgOdGZWX5/gCA50ZlZfn+VNUNuWVl+f4AgA25ZWX5/lTVDbm2BPn+/78NubYE+f4AgOdGAADx+P//50YAAPH4///nRgAA8fj/v+dGZWXx+FTVDbllZfH4VNUNuQAA8fgAAA25AADx+P//DbkAAPH4/793CQAAjQQAgHcJAACNBP+/dwkAAI0E/78qRUID//8AgCpFQgP///+/KkVCA///VNUqRUID////vypFJmb//wCAKkUmZv//VNUqRSZm////vypFQgPk9///KkVCA+T3//8qRUID5PdU1SpFQgPk9/+/KkUmZuT3//8qRSZm5PdU1SpFJmbk9/+/1LpCA///AIDUukID////v9S6QgP//1TV1LpCA////7/UuiZm//8AgNS6Jmb//1TV1LomZv///7/UukID5Pf//9S6QgPk9///1LpCA+T3VNXUukID5Pf/v9S6Jmbk9///1LomZuT3VNXUuiZm5Pf/v2e482Tk9///Z7jzZOT3VNVnuPNk5Pf/v4xH82Tk9///jEfzZOT3VNWMR/Nk5Pf/v4xH3QTk9///jEfdBOT3//+MR90E5PdU1YxH3QTk9/+/Z7jdBOT3//9nuN0E5Pf//2e43QTk91TVZ7jdBOT3/7+MR/Nk//8AgIxH82T//1TVjEfzZP///79nuPNk//8AgGe482T//1TVZ7jzZP///7+MR90E//8AgIxH3QT///+/jEfdBP//VNWMR90E////v2e43QT//wCAZ7jdBP///79nuN0E//9U1We43QT///+/dwkAAPH4//93CQAA8fj/v3cJAADx+P+/h/YAAI0EAICH9gAAjQT/v4f2AACNBP//dwn///H4//93Cf//8fhU1XcJ///x+P//dwn///H4/793Cf//jQQAgHcJ//+NBFTVdwn//40E//93Cf//jQT/v4f2//+NBACAh/b//40EVNWH9v//jQT//4f2//+NBP//h/YAAPH4//+H9gAA8fj/v4f2AADx+P//Dbn///H4//8Nuf//8fhU1Yf2///x+P//h/b///H4VNWH9v//8fj//4f2///x+P//50b///H4///nRv//8fhU1Q25RGXx+P//50avZfH4///nRugD8fgAAA256APx+AAA//////9////TAKaB/3////9///9U1aoq/3//v/9///////9/CQASgP9///////9/VNWqKv9//7//f/////////9///9sAUl//38AAP9///9U1aoq/3//v/9/AAD///9/zQCZgf9/AAD///9/VNWqKv9//7//fwAA//////9/////f///qipU1f9///+qKlTV//////9///+Q7W6S/3///w8Bd3+qKlTVqipU1SZCJcL/f/7/BAAJgP9///8CAAWA/38AAP//////////qipU1f9//v//f/9/VNWqKv9//v//f/7//z//v6oqVNX/f////3/+/1TVqir/f/7//3//f/////+qKlTV/38AAP9///9U1aoq/38AAP9//v//P/+/qipU1f9/AAD/f/7/VNWqKv9/AAD/f/7/VFVUVf9/////f/7/VFVUVf9/AAD/f/7//z//v1TVqir/fwAA/3/+//8//79U1aoq/3////9//39UVVRV/38AAP9///9UVVRV/3//////////////VNWqKv9/AAD/f/9//////1TVqir/f////3///74AfYH/fwAA/3///6oAVIH/P/9//3///1TVqir/f/+//38AAP9///9U1aoq/3//v/9/AAD/f///VNWqKv9//7//P/9//3////wAgX//P/9//3///1TVqir/f/7/VNWqKv9//7//P/9//3///1TVqir/f/7//3/+/yZCJcImQiXC")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_p37jt")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2l4l"]
 resource_name = "CartLight"
@@ -243,7 +282,7 @@ game_objects = [NodePath("../../../Package"), NodePath("../../../Package2"), Nod
 [node name="RigidBody3D" parent="mailroom_prefab/Objects/StaticBody3D6/Chute" index="1"]
 script = null
 
-[node name="PackageDestination" parent="mailroom_prefab/Objects/Desk2/MailboxStand" index="2"]
+[node name="PackageDestination" parent="mailroom_prefab/Objects/Desk2/MailboxStand" index="0"]
 accepted_num = 7
 
 [node name="Cardboard_box_big3" parent="mailroom_prefab/Objects" index="19"]
@@ -341,6 +380,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.728
 
 [node name="Elevator_Wall" parent="Elevator" index="0"]
 visible = false
+
+[node name="ElevatorShaft2" parent="Elevator/ElevatorShaft3" index="0"]
+transform = Transform3D(-1.3, 0, -1.1365e-07, 0, 1.3, 0, 1.1365e-07, 0, -1.3, 0.167519, 8.04981, 0.34366)
+
+[node name="ElevatorShaft3" type="MeshInstance3D" parent="Elevator/ElevatorShaft3" index="1"]
+transform = Transform3D(-1.3, 0, -1.1365e-07, 0, 1.3, 0, 1.1365e-07, 0, -1.3, 0.167519, 16.8586, 0.34366)
+mesh = SubResource("ArrayMesh_eksns")
+skeleton = NodePath("")
 
 [node name="Package" parent="." instance=ExtResource("30_xol48")]
 transform = Transform3D(1, 0, 0, 0, 0.735329, 0.677711, 0, -0.677711, 0.735329, -11.1246, 2.37412, 1.83842)
@@ -477,6 +524,11 @@ shape = SubResource("BoxShape3D_j45ys")
 
 [node name="ElevatorShaft2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, 20.0495, 8.42512, -9.73292)
+mesh = SubResource("ArrayMesh_wd6yl")
+skeleton = NodePath("")
+
+[node name="ElevatorShaft3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, 20.0495, 8.42512, -4.89971)
 mesh = SubResource("ArrayMesh_wd6yl")
 skeleton = NodePath("")
 

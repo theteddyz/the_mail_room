@@ -15,15 +15,18 @@ var gui_anim
 func _ready():
 	# Initialize the array with game objects if needed
 	# For example, game_objects.append(some_game_object)
-	GameManager.register_mail_cart(self)
+	register_self()
 	is_being_looked_at = false
 	player = GameManager.get_player()
 	text_displayer = Gui.get_address_displayer()
 	gui_anim = Gui.get_control_displayer()
 	EventBus.connect("object_looked_at",on_being_looked_at)
 	EventBus.connect("no_object_found",not_being_looked_at)
+	EventBus.connect("loaded_new_floor",register_self)
 	# Single handedly the most retarded line of code, who the fuck wrote this
 	#self.angular_velocity.y = 1.5
+func register_self():
+	GameManager.register_mail_cart(self)
 func _process(delta):
 	if !is_being_looked_at:
 		lowerAllPackages(delta)
