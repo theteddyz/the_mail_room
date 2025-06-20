@@ -68,6 +68,10 @@ func _on_quit_button_pressed():
 	if is_paused:
 		get_tree().quit()
 
+func _input(event: InputEvent) -> void:
+	if is_paused and event.is_action_pressed("escape"):
+		_on_continue_pressed()
+
 func game_paused():
 	is_paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
