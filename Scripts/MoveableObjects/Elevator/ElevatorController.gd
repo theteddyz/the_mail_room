@@ -309,6 +309,7 @@ func teleport_to_start_position():
 
 
 func move_to_stop_position() -> void:
+	show_or_hide_door()
 	var tween = create_tween()
 	tween.tween_property(Elevator, "global_position", stop_pos.global_position, 10)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -319,4 +320,5 @@ func move_to_stop_position() -> void:
 	elevator_audio.stream = elevator_ding
 	elevator_audio.play()
 	await elevator_audio.finished
+	music_player.stop()
 	open_doors()

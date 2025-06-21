@@ -55,7 +55,10 @@ func _physics_process(delta):
 			cart_move_audio.playing = true
 		_move_towards_target(delta)
 		adjust_volume_based_on_velocity(cart_move_audio, linear_velocity.length(), delta)
-		
+	if !player:
+		player = GameManager.get_player()
+		target = player.find_child("mailcart_target_position")
+		target_sprint = player.find_child("mailcart_target_position_sprint")
 	if !is_grabbed and !is_weak_grabbed:
 		cart_move_audio.playing = false
 

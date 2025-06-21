@@ -1208,13 +1208,13 @@ shape = SubResource("SphereShape3D_yfroe")
 stream = ExtResource("14_rtdkd")
 
 [node name="Top_Position" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.987, 8.82, 0.696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9865, 9.05539, 0.695824)
 
 [node name="Stop_Position" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.987, 0.8, 0.696)
 
 [node name="Bottom_Position" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.987, -10.6237, 0.696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9865, -8.81457, 0.695824)
 
 [connection signal="body_entered" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_entered"]
 [connection signal="body_exited" from="Elevator/ObjectDetectionShape" to="Elevator/ObjectDetectionShape" method="_on_body_exited"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=38 format=4 uid="uid://ct5178luew5jj"]
+[gd_scene load_steps=39 format=4 uid="uid://ct5178luew5jj"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_3nw8p"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_2im65"]
 [ext_resource type="Environment" uid="uid://bhc42hyiv0lac" path="res://Scenes/Worlds/mail_room.tres" id="3_r8df3"]
 [ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="4_gvu72"]
 [ext_resource type="PackedScene" uid="uid://bb75w210dxt14" path="res://Scenes/Prefabs/Rooms/mailroom.tscn" id="6_b44l8"]
+[ext_resource type="PackedScene" uid="uid://uuhrokgnd64l" path="res://Scenes/Prefabs/StaticObjects/Tiles/mail_room_wall.tscn" id="6_p37jt"]
 [ext_resource type="Texture2D" uid="uid://cewsovmotus3" path="res://Assets/Models/BlenderModels/desk_CRTTV.png" id="13_p37jt"]
 [ext_resource type="PackedScene" uid="uid://c03lqw7vrgadb" path="res://Scenes/Prefabs/StaticObjects/crttv.tscn" id="13_pdcxx"]
 [ext_resource type="PackedScene" uid="uid://cjnqu05bvamsg" path="res://Scenes/Prefabs/MoveableObjects/new_mailcart.tscn" id="16_pdcxx"]
@@ -330,6 +331,21 @@ transform = Transform3D(0.853023, 0, 0.521873, 0, 1, 0, -0.521873, 0, 0.853023, 
 [node name="cardboard_box_small42" parent="mailroom_prefab/Objects" index="189"]
 transform = Transform3D(0.853023, 0, 0.521873, 0.00212225, 0.999992, -0.00346891, -0.521869, 0.00406661, 0.853016, -9.33325, 1.49157, -5.02671)
 
+[node name="StaticBody3D67" parent="mailroom_prefab/Walls" index="4" instance=ExtResource("6_p37jt")]
+transform = Transform3D(-2.43361, 0, -5.65626e-08, 0, 2.38458, 0, 2.12753e-07, 0, -0.647, 18.3638, 7.04234, -2.90589)
+
+[node name="StaticBody3D68" parent="mailroom_prefab/Walls" index="5" instance=ExtResource("6_p37jt")]
+transform = Transform3D(-2.43361, 0, -5.65626e-08, 0, 2.38458, 0, 2.12753e-07, 0, -0.647, 18.3638, 7.04234, -8.32361)
+
+[node name="StaticBody3D69" parent="mailroom_prefab/Walls" index="6" instance=ExtResource("6_p37jt")]
+transform = Transform3D(-1.06376e-07, 0, 0.647, 0, 2.38458, 0, -2.43361, 0, -2.82813e-08, 16.2259, 7.04234, -8.32361)
+
+[node name="StaticBody3D71" parent="mailroom_prefab/Walls" index="7" instance=ExtResource("6_p37jt")]
+transform = Transform3D(-1.06376e-07, 2.38458, -2.82813e-08, 0, -1.04233e-07, -0.647, -2.43361, -1.04233e-07, 1.23621e-15, 6.42061, 32.3086, -7.271)
+
+[node name="StaticBody3D70" parent="mailroom_prefab/Walls" index="8" instance=ExtResource("6_p37jt")]
+transform = Transform3D(-1.06376e-07, 0, 0.647, 0, 2.38458, 0, -2.43361, 0, -2.82813e-08, 23.2782, 7.04234, -8.32361)
+
 [node name="OmniLight3D2" parent="mailroom_prefab/Lights/CeilingLightOn3" index="1"]
 visible = true
 
@@ -524,26 +540,31 @@ shape = SubResource("BoxShape3D_j45ys")
 
 [node name="ElevatorShaft2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, 20.0495, 8.42512, -9.73292)
+visible = false
 mesh = SubResource("ArrayMesh_wd6yl")
 skeleton = NodePath("")
 
 [node name="ElevatorShaft3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, 20.0495, 8.42512, -4.89971)
+visible = false
 mesh = SubResource("ArrayMesh_wd6yl")
 skeleton = NodePath("")
 
 [node name="ElevatorShaft5" type="MeshInstance3D" parent="."]
 transform = Transform3D(-5.68248e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.68248e-08, 19.9046, 8.41667, -0.709819)
+visible = false
 mesh = SubResource("ArrayMesh_wd6yl")
 skeleton = NodePath("")
 
 [node name="ElevatorShaft6" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.3, 0, -1.42109e-14, 0, 1.3, 0, 1.42109e-14, 0, 1.3, 25.3175, 8.33613, -6.34944)
+visible = false
 mesh = SubResource("ArrayMesh_wd6yl")
 skeleton = NodePath("")
 
 [node name="ElevatorShaft7" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.3, 0, -1.42109e-14, 0, 1.3, 0, 1.42109e-14, 0, 1.3, 14.1624, 8.33613, -6.31002)
+visible = false
 mesh = SubResource("ArrayMesh_wd6yl")
 skeleton = NodePath("")
 
