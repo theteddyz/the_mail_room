@@ -14,6 +14,8 @@ func _on_body_entered(body: Node3D):
 	if body.name == "Player":
 		body.state.crouching_depth = new_crouch_depth
 		body.state.crouch_assist = true
+		if !old_croching_collider:
+			check_for_collider()
 		new_crouching_collider.disabled = false
 		old_croching_collider.disabled = true
 
@@ -24,5 +26,12 @@ func _on_body_exited(body: Node3D):
 		# Add some way to tell if the player is in several of these or just one
 		body.state.crouching_depth = old_crouch_depth
 		body.state.crouch_assist = false
+		if !old_croching_collider:
+			check_for_collider()
 		old_croching_collider.disabled = false
 		new_crouching_collider.disabled = true
+
+func check_for_collider():
+	var player = GameManager.get_player()
+	old_croching_collider = player.find_child("crouching_collision_shape")
+	new_crouching_collider = player.find_child("crouching_collision_addition")

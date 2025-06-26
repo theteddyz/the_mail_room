@@ -41,12 +41,14 @@ func _on_tutorial_start_body_entered(body):
 		#player_radio.play_narrator_sound(tutorial_step_1)
 
 func start_tutorial_end(num):
-	var player_audio_player = player_radio.get_stream_player()
-	await player_audio_player.finished
+	#var player_audio_player = player_radio.get_stream_player()
+	#await player_audio_player.finished
 	#player_radio.play_narrator_sound(that_just_happened)
-	await get_tree().create_timer(3.0).timeout
+	var elevator = GameManager.get_elevator()
+	elevator.light_active_button()
+	#await get_tree().create_timer(3.0).timeout
 	#player_radio.play_narrator_sound(tutorial_end)
-	await get_tree().create_timer(2.0).timeout
+	#await get_tree().create_timer(2.0).timeout
 	finance_floor_chute.activate_chute()
 	
 func start_tutorial_part_3(var1,var2):
