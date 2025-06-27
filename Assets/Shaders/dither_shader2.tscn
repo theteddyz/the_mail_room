@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://jytobqm43kqt" path="res://Scripts/Shaders/VHSLook.gdshader" id="1_ddsee"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxhbw"]
+resource_local_to_scene = true
 shader = ExtResource("1_ddsee")
 shader_parameter/stretch_noise = 0.193
 shader_parameter/crease_noise = 0.035
@@ -17,8 +18,8 @@ shader_parameter/CHROMATIC_DISTANCE = 0.0
 shader_parameter/chromatic_edges = 0.26
 shader_parameter/chromatic_edges_pow = 2.0
 shader_parameter/CHROMATIC_RGB_DISTANCE = 0.301
-shader_parameter/color_bleed_seperation = 0.021
-shader_parameter/color_bleed_intensity = 0.0
+shader_parameter/color_bleed_seperation = 0.02
+shader_parameter/color_bleed_intensity = 0.34
 shader_parameter/anti_bleed_intensity = 1.1
 shader_parameter/color_bleed_blur_strength = 1.0
 shader_parameter/color_bleed_quality = 5

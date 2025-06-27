@@ -1,17 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://befosmwf02tgk"]
+[gd_scene load_steps=5 format=3 uid="uid://befosmwf02tgk"]
 
 [ext_resource type="Shader" uid="uid://br3dadfile7od" path="res://Scripts/Shaders/VHSShaderToy5.gdshader" id="1_ij4ou"]
+[ext_resource type="VideoStream" uid="uid://rwkidqx62dko" path="res://Assets/VHS_noise_output.ogv" id="2_4vtag"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5kwy7"]
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxhbw"]
+resource_local_to_scene = true
 shader = ExtResource("1_ij4ou")
+shader_parameter/vhs_video = SubResource("ViewportTexture_5kwy7")
 shader_parameter/wiggle = 0.23
 shader_parameter/wiggle_speed = 82.0
 shader_parameter/wiggle_height = 1.0
 shader_parameter/wiggle_exponent = 8.033
 shader_parameter/rng_factor = 0.5
 shader_parameter/switching_height = 100.0
-shader_parameter/smear = 0.457
-shader_parameter/smear_exponent = 2.032
+shader_parameter/smear = 0.953
+shader_parameter/smear_exponent = 2.413
 shader_parameter/smear_edges = 2.0
 shader_parameter/blur_samples = 15
 
@@ -26,3 +32,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(845, 475)
+size_2d_override_stretch = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 342.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_4vtag")
+autoplay = true
+loop = true
+metadata/_edit_use_anchors_ = true

@@ -18,7 +18,7 @@ shader_parameter/tape_crease_speed = 0.3
 shader_parameter/tape_crease_discoloration = 0.5
 shader_parameter/bottom_border_thickness = 2.9
 shader_parameter/bottom_border_jitter = 3.0
-shader_parameter/noise_intensity = 0.2
+shader_parameter/noise_intensity = 0.0
 shader_parameter/noise_texture = ExtResource("2_yapwg")
 
 [node name="vhs_layer" type="CanvasLayer"]

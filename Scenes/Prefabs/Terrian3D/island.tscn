@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://drnvkn4smbfde" path="res://Assets/Textures/Terrian/rockNMChannelPack.dds" id="4_81a5s"]
 [ext_resource type="Script" uid="uid://cp3jx1mrtkcjb" path="res://Scenes/Prefabs/Terrian3D/lighthouse_test.gd" id="4_qdxfb"]
 [ext_resource type="Script" uid="uid://bgs671o5k8jlx" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="5_2pxrh"]
-[ext_resource type="Shader" uid="uid://blov3kc20urfi" path="res://Scenes/Prefabs/Terrian3D/reflection_mirror.tres" id="5_hw0cs"]
+[ext_resource type="Shader" uid="uid://djbvyop2hlcny" path="res://Scenes/Prefabs/Terrian3D/reflection_mirror.tres" id="5_hw0cs"]
 [ext_resource type="Texture2D" uid="uid://0a4p8ttgrxst" path="res://Assets/Textures/Terrian/groundChannelpack.dds" id="6_5goeu"]
 [ext_resource type="Texture2D" uid="uid://c4q2bmujmanc6" path="res://addons/proton_scatter/masks/wave.png" id="6_50t84"]
 [ext_resource type="Script" uid="uid://ct05k3a6y5hyo" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="6_qdxfb"]
@@ -1170,7 +1170,6 @@ transform = Transform3D(-1, -1.50996e-07, 0, 1.50996e-07, -1, 0, 0, 0, 1, 114.43
 cull_mask = 524287
 current = true
 fov = 60.0
-near = 3.702
 script = ExtResource("2_xamh6")
 water = NodePath("../../WaterShine")
 
