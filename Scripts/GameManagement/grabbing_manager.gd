@@ -21,26 +21,32 @@ func grabbed_object(object:RigidBody3D):
 
 func _input(event):
 	if current_grabbed_object:
+		# Drop object on interaction release
 		if event.is_action_released("interact"):
 			match current_grabbed_object.grab_type:
 				0:
 					dynamic_type.drop_object()
 				1:
-					grab_sound_manager.isEnabled =false
+					grab_sound_manager.isEnabled = false
 					door_type.drop_object()
 				2:
-					grab_sound_manager.isEnabled =false
+					grab_sound_manager.isEnabled = false
 					drawer_type.drop_object()
+
 			current_grabbed_object = null
 			holding_object = false
-		if current_grabbed_object != null:
-			if current_grabbed_object.has_meta("grab_type"):
-				if current_grabbed_object.grab_type == 1 or 2:
-					if event is InputEventMouseMotion:
-						if current_grabbed_object.grab_type == 1:
-							door_type.move_door_with_mouse(event)
-						else:
-							drawer_type.move_drawer_with_mouse(event)
+			return
+
+		# Send mouse motion to correct grab type
+		if event is InputEventMouseMotion:
+			var grab_type = current_grabbed_object.grab_type
+
+			if grab_type == 1:
+				door_type.move_door_with_mouse(event)
+			elif grab_type == 2:
+				drawer_type.move_drawer_with_mouse(event)
+
+		# Throw object if dynamic and drive pressed
 		if event.is_action_pressed("drive") and current_grabbed_object.grab_type == 0:
 			dynamic_type.throw_object()
 			current_grabbed_object = null
