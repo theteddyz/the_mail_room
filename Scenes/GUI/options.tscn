@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://diefpogffw68t"]
+[gd_scene load_steps=5 format=3 uid="uid://diefpogffw68t"]
 
 [ext_resource type="Script" uid="uid://cpm4lgbg02fvd" path="res://Scripts/GUI/options.gd" id="1_4mv6r"]
+[ext_resource type="Theme" uid="uid://b048pmwu1trqg" path="res://Assets/Themes/PauseTheme.tres" id="1_o3j5s"]
 [ext_resource type="StyleBox" uid="uid://w8xxjerwwbx3" path="res://Scenes/Prefabs/gui/pauseMenu.tres" id="2_y1x6x"]
-[ext_resource type="PackedScene" uid="uid://dngu4fl1jgenk" path="res://Scenes/Prefabs/gui/options_preview.tscn" id="3_o3j5s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1x6x"]
 bg_color = Color(0, 0, 0, 1)
@@ -14,9 +14,6 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 anti_aliasing_size = 6.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_o3j5s"]
-viewport_path = NodePath("SubViewport")
-
 [node name="Options" type="Control"]
 process_mode = 2
 z_index = 2
@@ -26,20 +23,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_o3j5s")
 script = ExtResource("1_4mv6r")
 
+[node name="OptionsLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+offset_right = 159.0
+offset_bottom = 90.0
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsSelectedLabel" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 218.0
+offset_top = 2.0
+offset_right = 377.0
+offset_bottom = 92.0
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 226.0
-offset_top = -219.0
-offset_right = 933.0
-offset_bottom = 211.0
-grow_horizontal = 2
+offset_top = -215.0
+offset_right = 707.0
+offset_bottom = 215.0
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_y1x6x")
 
@@ -232,22 +249,216 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "Close"
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="OptionsButtons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 100.0
-offset_top = -252.0
-offset_right = 612.0
-offset_bottom = 260.0
+offset_top = -201.5
+offset_right = 350.0
+offset_bottom = 201.5
 grow_vertical = 2
-texture = SubResource("ViewportTexture_o3j5s")
+theme_override_constants/separation = 16
+alignment = 1
 
-[node name="Options_Preview" parent="." instance=ExtResource("3_o3j5s")]
+[node name="controls" type="Button" parent="OptionsButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "CONTROLS"
 
-[node name="SubViewport" parent="Options_Preview" index="0"]
-size = Vector2i(512, 512)
+[node name="display" type="Button" parent="OptionsButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "DISPLAY"
+
+[node name="graphics" type="Button" parent="OptionsButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "GRAPHICS"
+
+[node name="audio" type="Button" parent="OptionsButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "AUDIO"
+
+[node name="system" type="Button" parent="OptionsButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "SYSTEM"
+
+[node name="Controls" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Controls/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sensitivity
+"
+fit_content = true
+
+[node name="HSlider" type="HSlider" parent="Controls/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+value = 50.0
+
+[node name="Display" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Display"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Display/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Display/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Display
+"
+fit_content = true
+
+[node name="graphics" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="graphics"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="graphics/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="graphics/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Display
+"
+fit_content = true
+
+[node name="audio" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="audio"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="audio/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="audio/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Display
+"
+fit_content = true
+
+[node name="system" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="system"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="system/VBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="system/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Display
+"
+fit_content = true
+
+[node name="HBOX" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.26
+offset_bottom = -6.26001
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="ApplyChanges" type="Button" parent="HBOX"]
+layout_mode = 2
+text = "APPLY CHANGES"
+
+[node name="Reset" type="Button" parent="HBOX"]
+layout_mode = 2
+text = "RESET TO DEFAULT"
+
+[node name="BackButton" type="Button" parent="HBOX"]
+layout_mode = 2
+text = "BACK
+"
 
 [connection signal="pressed" from="Panel/TabContainer/Graphics/Vsync/Vsync" to="." method="_on_vsync_pressed"]
 [connection signal="pressed" from="Panel/TabContainer/Graphics/Shadows/Shadows" to="." method="_on_shadows_pressed"]
@@ -261,6 +472,9 @@ size = Vector2i(512, 512)
 [connection signal="pressed" from="Panel/TabContainer/GamePlay/Global_Illumination/Global_Illumination" to="." method="_on_global_illumination_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Apply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
-
-[editable path="Options_Preview"]
-[editable path="Options_Preview/Chair"]
+[connection signal="pressed" from="OptionsButtons/controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="OptionsButtons/display" to="." method="_on_display_pressed"]
+[connection signal="pressed" from="OptionsButtons/graphics" to="." method="_on_graphics_pressed"]
+[connection signal="pressed" from="OptionsButtons/audio" to="." method="_on_audio_pressed"]
+[connection signal="pressed" from="OptionsButtons/system" to="." method="_on_system_pressed"]
+[connection signal="pressed" from="HBOX/BackButton" to="." method="_on_back_button_pressed"]

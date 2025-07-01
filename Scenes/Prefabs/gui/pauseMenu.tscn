@@ -1,111 +1,90 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo8gwo72vdffr"]
+[gd_scene load_steps=4 format=3 uid="uid://bo8gwo72vdffr"]
 
 [ext_resource type="Script" uid="uid://bhtka0boq1qgc" path="res://Scripts/GUI/PauseMenu.gd" id="1_cmt41"]
-[ext_resource type="FontFile" uid="uid://s8snq2lwjjdn" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="2_prjj8"]
-[ext_resource type="Shader" uid="uid://c4gmhmfrrping" path="res://Scenes/Prefabs/gui/pauseMenu.gdshader" id="2_wtldp"]
-[ext_resource type="StyleBox" uid="uid://w8xxjerwwbx3" path="res://Scenes/Prefabs/gui/pauseMenu.tres" id="3_exk8j"]
+[ext_resource type="Theme" uid="uid://b048pmwu1trqg" path="res://Assets/Themes/PauseTheme.tres" id="1_exk8j"]
+[ext_resource type="PackedScene" uid="uid://diefpogffw68t" path="res://Scenes/GUI/options.tscn" id="3_exk8j"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bemb"]
-shader = ExtResource("2_wtldp")
-shader_parameter/blur_size = 4.0
-shader_parameter/blur_steps = 8
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+layer = 100
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5hbfg"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="Theme" id="Theme_exk8j"]
-default_font = ExtResource("2_prjj8")
-
-[node name="pauseMenu" type="Control"]
-process_mode = 2
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_cmt41")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_2bemb")
-layout_mode = 1
+[node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("ViewportTexture_5hbfg")
+color = Color(0, 0, 0, 0.862745)
 
-[node name="PauseMenu" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -200.0
-offset_right = 200.0
-offset_bottom = 200.0
+[node name="pauseMenu" type="Control" parent="."]
+process_mode = 3
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_exk8j")
-theme_override_styles/panel = ExtResource("3_exk8j")
+theme = ExtResource("1_exk8j")
+script = ExtResource("1_cmt41")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="pauseMenu"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -175.0
-offset_top = -175.0
-offset_right = 175.0
-offset_bottom = 175.0
-grow_horizontal = 2
+offset_top = -201.5
+offset_right = 350.0
+offset_bottom = 201.5
 grow_vertical = 2
+theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Continue" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="Continue" type="Button" parent="pauseMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 text = "Continue"
 
-[node name="Options" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="Options" type="Button" parent="pauseMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 text = "Options"
 
-[node name="Notes" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="Notes" type="Button" parent="pauseMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 text = "Notes"
 
-[node name="Restart" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="Restart" type="Button" parent="pauseMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 text = "Restart"
 
-[node name="QuitButton" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="pauseMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 text = "Quit"
 
-[node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1920, 1080)
+[node name="Options" parent="." instance=ExtResource("3_exk8j")]
+visible = false
 
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="CheckButton" type="CheckButton" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -201.0
+offset_bottom = 31.0
+grow_horizontal = 0
+button_pressed = true
+text = "Debug Menu"
+
+[connection signal="pressed" from="pauseMenu/VBoxContainer/Continue" to="pauseMenu" method="_on_continue_pressed"]
+[connection signal="pressed" from="pauseMenu/VBoxContainer/Options" to="pauseMenu" method="_on_options_pressed"]
+[connection signal="pressed" from="pauseMenu/VBoxContainer/Restart" to="pauseMenu" method="_on_restart_pressed"]
+[connection signal="pressed" from="pauseMenu/VBoxContainer/QuitButton" to="pauseMenu" method="_on_quit_button_pressed"]
+[connection signal="toggled" from="CheckButton" to="pauseMenu" method="_on_check_button_toggled"]

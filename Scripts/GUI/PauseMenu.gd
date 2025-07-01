@@ -7,44 +7,63 @@ var Icon_Manager
 
 @onready var item_reader = $"../ItemReader"
 @onready var options = $"../Options"
-@onready var continue_button =$PauseMenu/VBoxContainer/Continue
-@onready var options_button = $PauseMenu/VBoxContainer/Options
-@onready var button_container = $PauseMenu/VBoxContainer
+@onready var continue_button =$VBoxContainer/Continue
+@onready var options_button = $VBoxContainer/Options
+@onready var button_container = $VBoxContainer
+@onready var background:ColorRect = $"../ColorRect"
+@onready var debug_menu = $FPSMeter
 var buttons: Array[Button]
+var parent
 func _ready():
 	for child in button_container.get_children():
 		if child is Button:
 			buttons.append(child)
-	var parent = get_parent()
-	Icon_Manager = parent.find_child("IconManager")
+	Icon_Manager = Gui.get_icon_manager()
 	world = get_tree().root.get_child(3)
-	hide()
 	is_paused = false
 	get_tree().paused = false
 	EventBus.connect("player_reading", is_player_reading)
 	EventBus.connect("game_paused", game_paused)
+	parent = get_parent()
+	parent.hide()
+
+func _input(event):
+	if event.is_action_pressed("escape") and is_paused:
+		_on_continue_pressed()
+
+func fade_background(out:bool):
+	if out:
+		var tween = create_tween()
+		tween.tween_property(background, "modulate:a", 0, 0.5).set_ease(Tween.EASE_IN_OUT)
+	else:
+		var tween = create_tween()
+		tween.tween_property(background, "modulate:a", 225, 0.5).set_ease(Tween.EASE_IN_OUT)
+
 
 func _on_continue_pressed():
 	if is_paused and !is_reading:
 		# Reset scale just in case
 		await animate_button_press(continue_button)
-		Icon_Manager.show()
+		get_icon_manger(true)
 		_reset_pause_state()
-		hide()
+		get_parent().hide()
 		_reset_button_alpha()
 	else:
 		await animate_button_press(continue_button)
-		Icon_Manager.show()
+		get_icon_manger(true)
 		_reset_pause_state()
-		hide()
+		get_parent().hide()
 		_reset_button_alpha()
 
 func _on_options_pressed():
 	if is_paused:
 		await animate_button_press(options_button)
-		#hide()
-		options.show()
-		options.show_preview_scene()
+		hide()
+		if options:
+			options.show()
+		else:
+			printerr("NO OPTIONS MENU")
+		#options.show_preview_scene()
 
 
 func _on_restart_pressed():
@@ -68,23 +87,20 @@ func _on_quit_button_pressed():
 	if is_paused:
 		get_tree().quit()
 
-func _input(event: InputEvent) -> void:
-	if is_paused and event.is_action_pressed("escape"):
-		_on_continue_pressed()
+
 
 func game_paused():
 	is_paused = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
-
-	Icon_Manager.hide()
-	item_reader.hide()
+	get_icon_manger(false)
+	get_item_reader(false)
 
 	var controls = get_parent().find_child("Controls")
 	if controls and controls.visible:
 		controls.hide()
-
-	show()
+	var parent = get_parent()
+	parent.show()
 
 func is_player_reading(_is_reading: bool):
 	is_reading = _is_reading
@@ -94,6 +110,7 @@ func _reset_button_alpha():
 	for btn in buttons:
 		btn.modulate.a = 1.0
 		btn.disabled = false
+	show()
 
 func _reset_pause_state():
 	is_paused = false
@@ -103,12 +120,24 @@ func _reset_pause_state():
 	# Restore other button opacities
 	_reset_button_alpha()
 
-	hide()
+	get_parent().hide()
 
 
+func  get_icon_manger(show:bool):
+	if !Icon_Manager:
+		Icon_Manager = Gui.get_icon_manager()
+	if show:
+		Icon_Manager.show()
+	else:
+		Icon_Manager.hide()
 
-
-
+func get_item_reader(show:bool):
+	if !item_reader:
+		item_reader = Gui.get_item_reader()
+	if show:
+		item_reader.show()
+	else:
+		item_reader.hide()
 
 
 func animate_button_press(button: Control) -> void:
@@ -128,3 +157,12 @@ func animate_button_press(button: Control) -> void:
 	tween.tween_property(button, "scale", Vector2(0.9, 0.9), 0.1)
 	tween.tween_property(button, "scale", Vector2.ONE, 0.15)
 	await tween.finished
+
+
+func _on_check_button_toggled(toggled_on):
+	if !debug_menu:
+		debug_menu = Gui.get_debug()
+	if toggled_on:
+		debug_menu.show()
+	else:
+		debug_menu.hide()
