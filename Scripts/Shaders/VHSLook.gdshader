@@ -214,7 +214,7 @@ void fragment()
     //} else {
         //COLOR = vec4(0.0, 0.0, 0.0, color.a); // black with same alpha
     //}
-	
+
 	vec4 finalColor =  vhsMixColor;
 
 	COLOR = finalColor;
