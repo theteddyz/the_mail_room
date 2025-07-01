@@ -116,7 +116,11 @@ void fragment() {
     c *= 2.50;
     final.rgb = Blur(uv, c, blur_samples);
     float q = rgb2yiq(final.rgb).b;
-    final.rgb = yiq2rgb(vec3(y, i, q)) - pow(s + e * 2.0, 3.0) + texture(vhs_video, UV).rgb;
+	
+	//Makes sure that the bottom of the screen sometimes doesn't feature the tape noise
+	vec2 video_uvs = UV;
+	video_uvs.y *= 1.0 - 0.02 - sin(TIME)*0.02;
+    final.rgb = yiq2rgb(vec3(y, i, q)) - pow(s + e * 2.0, 3.0) + texture(vhs_video, video_uvs).rgb;
 
     final.a = 1.0;
 

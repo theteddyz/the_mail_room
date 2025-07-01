@@ -226,12 +226,6 @@ void fragment()
 	float cut_out_x_half = cut_out_x / 2.0;
 	float cut_out_z_half = cut_out_z / 2.0;
 	
-	if((local_position.x < cut_out_x_half && local_position.x > -cut_out_x_half) &&
-	(local_position.z < cut_out_z_half && local_position.z > -cut_out_z_half)) 
-	{
-		discard;
-	}
-	
 	ALBEDO.rgb = final_color;
 	//ALBEDO = texture(refl_tx,vec2(1.0 - SCREEN_UV.x,SCREEN_UV.y)).rgb;
 	METALLIC = metallic;
