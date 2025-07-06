@@ -54,6 +54,7 @@ mesh = SubResource("ArrayMesh_v8n8b")
 skeleton = NodePath("")
 
 [node name="footstep_collider_carpet" type="Area3D" parent="Plane1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.001, 0)
 collision_layer = 32768
 collision_mask = 32768
 script = ExtResource("4_kroat")
@@ -64,7 +65,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000931914, -0.248688, 0.001
 shape = SubResource("BoxShape3D_fr2tg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.98635)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, -0.986)
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane1/StaticBody3D"]

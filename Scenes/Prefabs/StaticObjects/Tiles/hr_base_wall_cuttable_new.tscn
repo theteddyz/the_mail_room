@@ -1,0 +1,141 @@
+[gd_scene load_steps=15 format=3 uid="uid://dmxup18r4lka5"]
+
+[ext_resource type="PackedScene" uid="uid://c4nsdvtqi2ydi" path="res://Scenes/Prefabs/StaticObjects/airduct_longer.tscn" id="12_d6q68"]
+[ext_resource type="Script" uid="uid://cbvb1snf756vu" path="res://Scripts/StateMachine/Player/Crouching_Assistant.gd" id="13_op2o7"]
+[ext_resource type="Script" uid="uid://dukwbapxl8v66" path="res://Scripts/CutoutCollisionShaper.gd" id="14_43l5l"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8fx2g"]
+load_path = "res://.godot/imported/hr_wall_new_new_wall_base.png-a642c01651113da8b88e452542fafc16.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kc13x"]
+load_path = "res://.godot/imported/hr_wall_new_hr_wall_specular_map.png-3f02314f0dd3c9a219e6ad2f6e756ebf.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qqfne"]
+load_path = "res://.godot/imported/hr_wall_new_hr_wall_specular_map.png-3f02314f0dd3c9a219e6ad2f6e756ebf.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmp60"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_8fx2g")
+metallic_texture = SubResource("CompressedTexture2D_kc13x")
+metallic_texture_channel = 2
+roughness_texture = SubResource("CompressedTexture2D_qqfne")
+roughness_texture_channel = 1
+uv1_scale = Vector3(0.38, 0.59, 0.508)
+uv1_offset = Vector3(-0.955, 0.362, 0)
+texture_filter = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5qfmh"]
+load_path = "res://.godot/imported/hr_wall_new_nwe_wall_base_bottom.png-d89387efc99353aa123c40daa0f5b022.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xupy3"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_5qfmh")
+uv1_scale = Vector3(0.223, 0.223, 0.223)
+uv1_offset = Vector3(1.775, 0.425, 0)
+texture_filter = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0x8t6"]
+size = Vector3(0.644165, 0.463867, 5.07054)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ajdd"]
+size = Vector3(2.73682, 7.893, 0.26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v8pt1"]
+size = Vector3(1.81318, 7.70207, 0.349243)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ocwf"]
+size = Vector3(5.80928, 6.22511, 0.349243)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dbpaf"]
+size = Vector3(5.72033, 0.287889, 0.349243)
+
+[node name="hr_base_wall_cuttable" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="TopSection" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 2.4608, 0, 0, 0, 1.10291, 0, 4.24909, 0)
+size = Vector3(5.705, 3.266, 0.223)
+material = SubResource("StandardMaterial3D_lmp60")
+
+[node name="BottomSection" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-1.002, 0, -2.04794e-07, 0, -0.111259, 0, -1.51298e-07, 0, 1.35629, 0, 0.397354, 0)
+size = Vector3(5.705, 3.266, 0.223)
+material = SubResource("StandardMaterial3D_xupy3")
+
+[node name="Cutout" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.592566, 1.6157, 1.7053e-13)
+operation = 2
+calculate_tangents = false
+size = Vector3(1.25, 1.25, 1)
+
+[node name="airduct_longer" parent="CSGCombiner3D/Cutout" instance=ExtResource("12_d6q68")]
+transform = Transform3D(2.005, 0, 0, 0, 2.62, 0, 0, 0, 1.47, -0.0277901, -0.00451994, -2.49999)
+layers = 2
+
+[node name="Area3D" type="Area3D" parent="CSGCombiner3D/Cutout/airduct_longer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.569155)
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("13_op2o7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/Cutout/airduct_longer/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0042125, 0.008304, 0.0740515)
+shape = SubResource("BoxShape3D_0x8t6")
+
+[node name="LeftCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
+collision_layer = 133
+collision_mask = 133
+script = ExtResource("14_43l5l")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(1, 0, 0)
+sign = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46622, 3.97421, 0)
+shape = SubResource("BoxShape3D_1ajdd")
+
+[node name="RightCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
+collision_layer = 133
+collision_mask = 133
+script = ExtResource("14_43l5l")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(1, 0, 0)
+sign = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05878, 3.859, -0.00457764)
+shape = SubResource("BoxShape3D_v8pt1")
+
+[node name="TopCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
+collision_layer = 133
+collision_mask = 133
+script = ExtResource("14_43l5l")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(0, 1, 0)
+sign = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00185, -0.005)
+shape = SubResource("BoxShape3D_4ocwf")
+
+[node name="BottomCollision" type="StaticBody3D" parent="." node_paths=PackedStringArray("collision_area", "cutout")]
+collision_layer = 133
+collision_mask = 133
+script = ExtResource("14_43l5l")
+collision_area = NodePath("CollisionShape3D")
+cutout = NodePath("../CSGCombiner3D/Cutout")
+axis_to_adjust = Vector3(0, 1, 0)
+sign = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BottomCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.49535, -0.00457764)
+shape = SubResource("BoxShape3D_dbpaf")
+
+[connection signal="body_entered" from="CSGCombiner3D/Cutout/airduct_longer/Area3D" to="CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="CSGCombiner3D/Cutout/airduct_longer/Area3D" to="CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_exited"]

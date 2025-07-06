@@ -3,10 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://81im3llo5xr8" path="res://Assets/Models/test_models/hr_wall_new_new_wall_base.png" id="2_furck"]
 [ext_resource type="Texture2D" uid="uid://n8ov0xocogs4" path="res://Assets/Models/test_models/hr_wall_new_hr_wall_specular_map.png" id="3_22epe"]
 [ext_resource type="Texture2D" uid="uid://o3ufbs8kt1hk" path="res://Assets/Models/test_models/hr_wall_new_nwe_wall_base_bottom.png" id="4_nwvkb"]
-[ext_resource type="ArrayOccluder3D" uid="uid://c5gc6cke17obg" path="res://Scenes/Prefabs/StaticObjects/hr_base_wall.occ" id="12_ehhbu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84nc4"]
 size = Vector3(5.68358, 7.69862, 0.24707)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_vwwo0"]
+size = Vector3(5.62929, 7.72676, 0.23146)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vu4m"]
 resource_name = "Material"
@@ -88,7 +90,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00107574, 3.91721, 0.00439
 shape = SubResource("BoxShape3D_84nc4")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
-occluder = ExtResource("12_ehhbu")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88303, 0)
+occluder = SubResource("BoxOccluder3D_vwwo0")
 
 [node name="hr_wall_base" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
