@@ -4,6 +4,8 @@ shader_type canvas_item;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform lowp sampler2D Screen_Sample : hint_screen_texture, filter_linear_mipmap_anisotropic;
 
+
+
 //NOISE
 group_uniforms noise;
 uniform float stretch_noise : hint_range(0., 0.5) = 0.05;
@@ -213,7 +215,7 @@ void fragment()
         //COLOR = vec4(0.0, 0.0, 0.0, color.a); // black with same alpha
     //}
 
-	vec4 finalColor = vhsMixColor;
+	vec4 finalColor =  vhsMixColor;
 
 	COLOR = finalColor;
 }

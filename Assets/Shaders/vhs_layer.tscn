@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcq43p4q358bx"]
+[gd_scene load_steps=5 format=3 uid="uid://bcq43p4q358bx"]
 
 [ext_resource type="Shader" uid="uid://bumluxrb810f5" path="res://Scripts/Shaders/VHSShader.gdshader" id="1_trijw"]
 [ext_resource type="Texture2D" uid="uid://b15bwfsdmmpi3" path="res://Assets/Textures/rgba-noise-medium.png" id="2_yapwg"]
+[ext_resource type="Script" uid="uid://cqeyunl8fr05l" path="res://Assets/Shaders/shader_jitter_test.gd" id="3_8c0v8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_57gvc"]
 shader = ExtResource("1_trijw")
@@ -18,7 +19,7 @@ shader_parameter/tape_crease_speed = 0.3
 shader_parameter/tape_crease_discoloration = 0.5
 shader_parameter/bottom_border_thickness = 2.9
 shader_parameter/bottom_border_jitter = 3.0
-shader_parameter/noise_intensity = 0.2
+shader_parameter/noise_intensity = 0.0
 shader_parameter/noise_texture = ExtResource("2_yapwg")
 
 [node name="vhs_layer" type="CanvasLayer"]
@@ -32,3 +33,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("3_8c0v8")

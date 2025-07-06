@@ -264,7 +264,7 @@ void start() {
 	// Save Fixed 2 Random values for Reg/Green color randomness
 	CUSTOM.rg = r.rg;
 	// Save Y component scale pre-rotation
-	CUSTOM[3] = scale.y;
+	//CUSTOM[3] = scale.y;
 }
 
 void process() {

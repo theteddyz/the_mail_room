@@ -10,7 +10,7 @@ extends Control
 @onready var look_icon:Node = $look_icon
 @onready var pager:Node = $Pager
 @onready var hint_container: Control = $Hint_Container
-
+@onready var debug_menu = $FPSMeter
 func get_item_reader()->Node:
 	return item_reader
 func get_icon_manager() ->Node:
@@ -33,7 +33,7 @@ func get_pager() -> Node:
 	return pager
 func get_hint_controller() -> Node:
 	return hint_container
-
 func call_ready():
 	icon_manager.show()
-	
+func get_debug()->Node:
+	return debug_menu

@@ -1,5 +1,9 @@
 shader_type canvas_item;
 
+//VHS VIDEO
+group_uniforms vhs_video;
+uniform sampler2D vhs_video:source_color,filter_nearest;
+
 group_uniforms Wiggle;
 uniform float wiggle : hint_range(0.0, 1.5, 0.01) = 0.03;
 uniform float wiggle_speed : hint_range(0.0, 100.0, 1.0) = 25;
@@ -112,9 +116,15 @@ void fragment() {
     c *= 2.50;
     final.rgb = Blur(uv, c, blur_samples);
     float q = rgb2yiq(final.rgb).b;
-    final.rgb = yiq2rgb(vec3(y, i, q)) - pow(s + e * 2.0, 3.0);
+	
+	//Makes sure that the bottom of the screen sometimes doesn't feature the tape noise
+	vec2 video_uvs = UV;
+	video_uvs.y *= 1.0 - 0.02 - sin(TIME)*0.02;
+    final.rgb = yiq2rgb(vec3(y, i, q)) - pow(s + e * 2.0, 3.0) + texture(vhs_video, video_uvs).rgb;
 
     final.a = 1.0;
+
+	
 
     COLOR = final;
 }

@@ -257,7 +257,7 @@ loop_sound = NodePath("DrawerAudioLoop")
 
 [node name="DrawerScript" type="Node3D" parent="Drawer2" node_paths=PackedStringArray("drawerSliderJoint")]
 script = ExtResource("4_h0h7m")
-drawerSliderJoint = NodePath("../../JoltSliderJoint3D")
+drawerSliderJoint = NodePath("../../JoltSliderJoint3D2")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -308,7 +308,7 @@ loop_sound = NodePath("DrawerAudioLoop")
 
 [node name="DrawerScript" type="Node3D" parent="Drawer3" node_paths=PackedStringArray("drawerSliderJoint")]
 script = ExtResource("4_h0h7m")
-drawerSliderJoint = NodePath("../../JoltSliderJoint3D")
+drawerSliderJoint = NodePath("../../JoltSliderJoint3D3")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)
@@ -359,7 +359,7 @@ loop_sound = NodePath("DrawerAudioLoop")
 
 [node name="DrawerScript" type="Node3D" parent="Drawer4" node_paths=PackedStringArray("drawerSliderJoint")]
 script = ExtResource("4_h0h7m")
-drawerSliderJoint = NodePath("../../JoltSliderJoint3D")
+drawerSliderJoint = NodePath("../../JoltSliderJoint3D4")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="Drawer4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0054245, 0.00147319, 0.00371051)

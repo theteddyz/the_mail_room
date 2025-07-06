@@ -187,7 +187,6 @@ func _process(delta: float):
 		#global_transform = head.global_transform
 
 func _physics_process(delta: float) -> void:
-	
 	$BlurRange.target_position.z = blur_range
 	
 	if $BlurRange.is_colliding():

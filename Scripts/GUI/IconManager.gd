@@ -19,7 +19,7 @@ func _ready():
 	EventBus.connect("no_object_found", hide_all_icons)
 	EventBus.connect("object_held", held_object)
 	EventBus.connect("dropped_object", dropped_object)
-
+	
 	for child in get_children():
 		if child is TextureRect:
 			icons[child.name] = child
