@@ -41,6 +41,7 @@ func _ready():
 	package_material = get_child(0)
 	starting_path =  get_parent().name + "/" + name
 	player = get_parent().find_child("Player")
+	package_holder = player.find_child("PackageHolder")
 	text_displayer = Gui.get_address_displayer()
 	EventBus.connect("object_looked_at",on_seen)
 	EventBus.connect("no_object_found",on_unseen)
@@ -163,7 +164,8 @@ func grabbed():
 		pager.remove_package(self)
 		is_being_tracked = false
 	if player:
-		package_holder = player.find_child("PackageHolder")
+		# this here broke once upon a time, but please do NOT try to reapply the packageholder variable here, it doesnt always find itself, for whatever reason. Use specific 
+		# and clean code if you do. No find child bs
 		assert(package_holder != null, "THIS SHOULD NEVER OCCUR; PACKAGEHOLDER HAS DISSAPEARED? FIGURE OUT WHY ASAP")
 		reparent(package_holder)
 	else :

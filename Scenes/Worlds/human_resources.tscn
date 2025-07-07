@@ -1788,7 +1788,7 @@ texture_filter = 2
 size = Vector3(4.18539, 7.893, 0.26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mivgl"]
-size = Vector3(0.364609, 7.70207, 0.349243)
+size = Vector3(0.36461, 7.70207, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ihyi"]
 size = Vector3(5.80928, 6.22654, 0.349243)
@@ -6408,7 +6408,7 @@ axis_to_adjust = Vector3(1, 0, 0)
 sign = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_carcass_and_butcher/WALLS/hr_base_wall_cuttable2/RightCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7177, 3.859, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71769, 3.859, -0.00457764)
 shape = SubResource("BoxShape3D_mivgl")
 
 [node name="TopCollision" type="StaticBody3D" parent="NavigationRegion3D/human_resources_carcass_and_butcher/WALLS/hr_base_wall_cuttable2" node_paths=PackedStringArray("collision_area", "cutout")]
@@ -7732,7 +7732,7 @@ axis_to_adjust = Vector3(0, 1, 0)
 sign = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/human_resources_wing_link/WALLS/hr_base_wall_cuttable/BottomCollision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.143944, -0.00457764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00488788, 0.143945, -0.00457764)
 shape = SubResource("BoxShape3D_dbpaf")
 
 [node name="vent" type="Node3D" parent="NavigationRegion3D/human_resources_wing_link/WALLS"]

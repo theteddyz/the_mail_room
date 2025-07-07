@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://du8w5bllunwpp" path="res://Assets/Textures/flashlight.png" id="15_igrcy"]
 [ext_resource type="Script" uid="uid://wtkdwhwml4g2" path="res://addons/SphynxMotionBlurToolkit/BaseClasses/mb_compositor.gd" id="15_r7t2e"]
 [ext_resource type="AudioStream" uid="uid://bdx8qlgb45o3p" path="res://Assets/Audio/SoundFX/LampButton2.mp3" id="17_l6n3p"]
-[ext_resource type="Shader" uid="uid://buss5i8lmufga" path="res://Scripts/Shaders/water_reflection_refraction.gdshader" id="19_yh6i2"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/water_reflection_refraction.gdshader" id="19_yh6i2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h18q0"]
 radius = 0.3

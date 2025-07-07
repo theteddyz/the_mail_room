@@ -17,6 +17,7 @@ func deliver(package: Package):
 		package.rotation = package.delivered_rotation
 		package.get_child(1).disabled = true
 		delivered = true
+		# VERIFY THIS; FOR SOME REASON TUTORIAL PACKAGE WONT TRIGGER IF YOU SKIP THE TUTORIAL (OR AT ALL PROBABLY)
 		EventBus.emitCustomSignal("dropped_object",[package.mass,package])
 		ScareDirector.emit_signal("package_delivered",package.package_num)
 		#AudioController.play_resource(sound)

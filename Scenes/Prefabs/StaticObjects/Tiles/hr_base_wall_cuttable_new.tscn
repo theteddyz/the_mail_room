@@ -40,16 +40,16 @@ texture_filter = 2
 size = Vector3(0.644165, 0.463867, 5.07054)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ajdd"]
-size = Vector3(2.73682, 7.893, 0.26)
+size = Vector3(2.86757, 7.893, 0.26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v8pt1"]
-size = Vector3(1.81318, 7.70207, 0.349243)
+size = Vector3(1.68243, 7.70207, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ocwf"]
-size = Vector3(5.80928, 6.22511, 0.349243)
+size = Vector3(5.80928, 5.5223, 0.349243)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbpaf"]
-size = Vector3(5.72033, 0.287889, 0.349243)
+size = Vector3(5.72033, 0.9907, 0.349243)
 
 [node name="hr_base_wall_cuttable" type="Node3D"]
 
