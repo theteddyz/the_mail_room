@@ -1,8 +1,7 @@
-[gd_scene load_steps=58 format=3 uid="uid://bs2k28vlgdnhl"]
+[gd_scene load_steps=57 format=3 uid="uid://bs2k28vlgdnhl"]
 
 [ext_resource type="PackedScene" uid="uid://d2x4onytkpeym" path="res://Scenes/Prefabs/gui/item_reader.tscn" id="1_4tqc1"]
 [ext_resource type="Script" uid="uid://cggbaeh823mtn" path="res://Scripts/GUI/gui_manager.gd" id="1_udi3s"]
-[ext_resource type="PackedScene" uid="uid://diefpogffw68t" path="res://Scenes/GUI/options.tscn" id="2_1ts2g"]
 [ext_resource type="PackedScene" uid="uid://bo8gwo72vdffr" path="res://Scenes/Prefabs/gui/pauseMenu.tscn" id="2_j1350"]
 [ext_resource type="PackedScene" uid="uid://dlxusgmvl8f47" path="res://Scenes/Prefabs/gui/load_screen.tscn" id="2_wjt07"]
 [ext_resource type="Script" uid="uid://bwivfyhesnmls" path="res://Scripts/GUI/FPSMeter.gd" id="3_bccgp"]
@@ -220,9 +219,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_de5p4")
-
-[node name="Options" parent="." instance=ExtResource("2_1ts2g")]
-layout_mode = 1
 
 [node name="loading_screen" parent="." instance=ExtResource("2_wjt07")]
 layout_mode = 1

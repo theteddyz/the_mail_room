@@ -8,10 +8,11 @@ extends Control
 @onready var system_menu = $system
 @onready var selected_option:RichTextLabel = $OptionsSelectedLabel
 @onready var options_holder = $OptionsButtons
+@onready var setting_title = $Panel2/RichTextLabel
+@onready var setting_description = $Panel2/RichTextLabel2
 var current_submenu:Array
 func _ready():
 	hide()
-
 
 
 
@@ -29,16 +30,29 @@ func _on_display_pressed():
 	set_options_label("DISPLAY")
 
 func _on_graphics_pressed():
-	pass # Replace with function body.
+	options_holder.hide()
+	graphics_menu.show()
+	current_submenu.append(graphics_menu)
+	set_options_label("GRAPHICS")
 
 
 func _on_audio_pressed():
-	pass # Replace with function body.
+	options_holder.hide()
+	audio_menu.show()
+	current_submenu.append(audio_menu)
+	set_options_label("AUDIO")
 
 
 func _on_system_pressed():
-	pass # Replace with function body.
+	options_holder.hide()
+	system_menu.show()
+	current_submenu.append(system_menu)
+	set_options_label("SYSTEM")
 
+
+func set_setting_description(title:String,description:String):
+	setting_description.text = description
+	setting_title.text = title
 
 
 
