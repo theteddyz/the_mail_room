@@ -29,7 +29,14 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("escape") and is_paused:
-		_on_continue_pressed()
+		if options.current_submenu.size() > 0:
+			options._on_back_button_pressed()
+		elif options.current_submenu.size() == 0 and options.visible:
+			options.hide()
+			show()
+			_reset_pause_state()
+		else:
+			_on_continue_pressed()
 
 func fade_background(out:bool):
 	if out:

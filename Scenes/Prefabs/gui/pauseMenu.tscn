@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bo8gwo72vdffr"]
 
 [ext_resource type="Script" uid="uid://bhtka0boq1qgc" path="res://Scripts/GUI/PauseMenu.gd" id="1_cmt41"]
-[ext_resource type="Theme" uid="uid://b048pmwu1trqg" path="res://Assets/Themes/PauseTheme.tres" id="1_exk8j"]
+[ext_resource type="Theme" uid="uid://dmp0hx0aum73o" path="res://Assets/GUI/MinimalUI.tres" id="1_exk8j"]
 [ext_resource type="PackedScene" uid="uid://diefpogffw68t" path="res://Scenes/GUI/options.tscn" id="3_exk8j"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -80,6 +80,7 @@ anchor_right = 1.0
 offset_left = -201.0
 offset_bottom = 31.0
 grow_horizontal = 0
+theme = ExtResource("1_exk8j")
 button_pressed = true
 text = "Debug Menu"
 
