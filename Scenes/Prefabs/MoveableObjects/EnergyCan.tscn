@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dc7fuq6wqfwr" path="res://Assets/Audio/SoundFX/Impacts/CanImpact6.ogg" id="13_pdi8g"]
 [ext_resource type="AudioStream" uid="uid://daliqnavemyx2" path="res://Assets/Audio/SoundFX/Impacts/CanImpact7.ogg" id="14_5sukw"]
 [ext_resource type="AudioStream" uid="uid://baylwcyu5hajb" path="res://Assets/Audio/SoundFX/Impacts/CanImpact8.ogg" id="15_o0d4d"]
-[ext_resource type="Script" uid="uid://b2hcdthxbi08f" path="res://Scenes/Prefabs/MoveableObjects/energy_can.gd" id="16_3tx06"]
+[ext_resource type="Script" path="res://Scenes/Prefabs/MoveableObjects/energy_can.gd" id="16_3tx06"]
 [ext_resource type="AudioStream" uid="uid://cf7hnux6scxj6" path="res://Assets/Audio/SoundFX/Impacts/CanImpact9.ogg" id="16_sd4ni"]
 [ext_resource type="AudioStream" uid="uid://cbsdg4fp74jvi" path="res://Assets/Audio/SoundFX/Impacts/CanImpact10.ogg" id="17_wgect"]
 [ext_resource type="Texture2D" uid="uid://bv10qub5w2l8x" path="res://Assets/Textures/BlenderTextures/EnergyCan.png" id="18_30aq2"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cjnqu05bvamsg"]
+[gd_scene load_steps=37 format=4 uid="uid://cjnqu05bvamsg"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://b1bqehkmdmmd7" path="res://Scenes/Prefabs/MoveableObjects/mailcart_physicsmaterial.tres" id="1_ql4ry"]
 [ext_resource type="Script" uid="uid://vabf0w3c01kb" path="res://Scripts/MailCart/new_mailcart.gd" id="2_dxty8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://blodt01y3aacp" path="res://Scripts/MailCart/tape_manager.gd" id="7_0jqot"]
 [ext_resource type="Script" uid="uid://cxht27f0vbpap" path="res://Scripts/MailCart/tape_interaction_detector.gd" id="8_vur8w"]
 [ext_resource type="AudioStream" uid="uid://c0t8xaftuek6t" path="res://Assets/Audio/SoundFX/Cart.mp3" id="9_600bc"]
+[ext_resource type="AudioStream" uid="uid://cn5vsha2x7y7y" path="res://Assets/Audio/SoundFX/VoiceLines/TutorialStep1.ogg" id="10_tkgiq"]
 [ext_resource type="Script" uid="uid://bodt1l40yhg4h" path="res://Scripts/MailCart/Radio.gd" id="11_dxty8"]
 [ext_resource type="Texture2D" uid="uid://bpmaq4gl82cgl" path="res://Assets/Textures/BlenderTextures/Radio2.png" id="12_tkgiq"]
 
@@ -217,8 +218,11 @@ shape = SubResource("BoxShape3D_83uqg")
 
 [node name="Radio_Sound_Player" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.64666, 0.625213, 0.0192857)
+stream = ExtResource("10_tkgiq")
+attenuation_model = 1
 volume_db = -6.255
-unit_size = 3.85
+unit_size = 7.0
+max_db = -9.647
 
 [node name="cart_move_audio" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.153306, 0)

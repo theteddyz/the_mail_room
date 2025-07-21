@@ -1,8 +1,9 @@
-[gd_scene load_steps=127 format=4 uid="uid://0hwxvod2i3hn"]
+[gd_scene load_steps=129 format=4 uid="uid://0hwxvod2i3hn"]
 
 [ext_resource type="Script" uid="uid://bn56m3ol3qagp" path="res://Scripts/GameManagement/TestworldResourceSaver.gd" id="1_k4xxo"]
 [ext_resource type="PackedScene" uid="uid://b02uboce77q78" path="res://Scenes/player.tscn" id="2_dtci6"]
 [ext_resource type="Environment" uid="uid://bhc42hyiv0lac" path="res://Scenes/Worlds/mail_room.tres" id="3_jh2lx"]
+[ext_resource type="Script" uid="uid://das5rd4xvsh02" path="res://Scenes/Worlds/AfterFinanceMailroomDialogueManager.gd" id="3_ned67"]
 [ext_resource type="Script" uid="uid://clx466x67r36q" path="res://Scenes/Worlds/world_environment_data.gd" id="4_ol4n4"]
 [ext_resource type="Texture2D" uid="uid://n3a6s3w3vg03" path="res://Assets/Textures/Concrete042A_1K-JPG_Color.jpg" id="5_3rxvh"]
 [ext_resource type="Script" uid="uid://db2hrldo4efr" path="res://Scripts/Misc/floor_type.gd" id="6_17bx0"]
@@ -63,6 +64,9 @@
 [ext_resource type="AudioStream" uid="uid://dephvjlxfo3d1" path="res://Assets/Audio/SoundFX/MailRoomAmbience.mp3" id="61_wu18t"]
 [ext_resource type="PackedScene" uid="uid://cjnqu05bvamsg" path="res://Scenes/Prefabs/MoveableObjects/new_mailcart.tscn" id="62_5vv7w"]
 [ext_resource type="AudioStream" uid="uid://bled33c0654ky" path="res://Assets/Audio/SoundFX/FirstFloorAmbience1.mp3" id="62_wu18t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ng6jo"]
+size = Vector3(2.11823, 5.87, 5.21576)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ce6ua"]
 albedo_texture = ExtResource("5_3rxvh")
@@ -591,6 +595,17 @@ target_destination = 2
 
 [node name="Player" parent="." instance=ExtResource("2_dtci6")]
 transform = Transform3D(0.536564, 0, 0.84386, 0, 1, 0, -0.84386, 0, 0.536564, 14.4209, 2.38419e-07, -1.6153)
+
+[node name="DialogueManager" type="Node3D" parent="."]
+script = ExtResource("3_ned67")
+
+[node name="StartingTrigger" type="Area3D" parent="DialogueManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3197, 2.8681, -5.44318)
+collision_layer = 0
+collision_mask = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueManager/StartingTrigger"]
+shape = SubResource("BoxShape3D_ng6jo")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." groups=["worldEnviorment"]]
 environment = ExtResource("3_jh2lx")
@@ -2300,6 +2315,7 @@ autoplay = true
 [node name="Mailcart" parent="." instance=ExtResource("62_5vv7w")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.203934, -5.29747)
 
+[connection signal="body_entered" from="DialogueManager/StartingTrigger" to="DialogueManager" method="_on_starting_trigger_body_entered"]
 [connection signal="body_entered" from="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" to="cuttable_wall/CSGCombiner3D/Cutout/airduct_longer/Area3D" method="_on_body_exited"]
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

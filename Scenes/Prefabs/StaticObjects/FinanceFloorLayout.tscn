@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://ci06t62wr0l2o"]
 
-[ext_resource type="Texture2D" uid="uid://dllsrbme5liyw" path="res://Assets/Textures/FinanceFloorLayout2.png" id="1_lcrrq"]
+[ext_resource type="Texture2D" uid="uid://cqsjps1ooduah" path="res://Assets/Textures/FinanceFloorLayout2.png" id="1_x3ovj"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_mshcd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fac3c"]
-albedo_texture = ExtResource("1_lcrrq")
+albedo_texture = ExtResource("1_x3ovj")
 texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_dm0eh"]

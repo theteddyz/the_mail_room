@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=4 uid="uid://bkcgk7uuk22yf"]
 
 [ext_resource type="Script" uid="uid://ddjtf2o8agagi" path="res://Scripts/Misc/desk_name_plate.gd" id="1_m6n5u"]
-[ext_resource type="Texture2D" uid="uid://785uc626og8a" path="res://Assets/Models/test_models/Desk_name_plate/desk_name_plate_Metal049B_1K-JPG_Roughness.jpg" id="1_r31sn"]
+[ext_resource type="Texture2D" uid="uid://c4kl56p6lekwv" path="res://Assets/Models/test_models/Desk_name_plate/desk_name_plate_Metal049B_1K-JPG_Roughness.jpg" id="1_r31sn"]
 [ext_resource type="Script" uid="uid://d4cwsvxfx8oj5" path="res://Scripts/GUI/name_tag_reader.gd" id="2_f08jb"]
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="3_xrp8i"]
 

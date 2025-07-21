@@ -54,7 +54,7 @@ emission_enabled = true
 emission = Color(0, 0, 1, 1)
 emission_energy_multiplier = 3.34
 
-[node name="Area3D" type="Area3D"]
+[node name="Readable" type="Area3D"]
 collision_layer = 1024
 collision_mask = 1024
 script = ExtResource("1_k3dof")

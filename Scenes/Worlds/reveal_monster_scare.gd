@@ -12,7 +12,7 @@ func _ready():
 	ScareDirector.connect("package_delivered", activate_scare)
 
 func activate_scare(package_num:int):
-	if package_num == 1:
+	if package_num == 3:
 		audio_stream_player_3d.play()
 		trigger_col.disabled = false
 

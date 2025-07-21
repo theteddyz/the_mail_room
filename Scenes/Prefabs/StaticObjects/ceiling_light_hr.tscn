@@ -8,6 +8,8 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c107p"]
 resource_name = "Ceiling_light"
 cull_mode = 2
+specular_mode = 2
+disable_ambient_light = true
 albedo_texture = ExtResource("1_1aw8o")
 metallic = 1.0
 metallic_texture = ExtResource("2_ynwa0")

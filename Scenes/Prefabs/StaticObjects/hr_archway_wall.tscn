@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://erkjuywjqecv"]
+[gd_scene load_steps=38 format=4 uid="uid://erkjuywjqecv"]
 
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_8l1s5"]
 [ext_resource type="Texture2D" uid="uid://diq76i8r0wneq" path="res://Assets/TemporaryAssets/decimated_HR_ASSETS_T_Door_Door_basecolor.png" id="9_dei82"]
@@ -12,7 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://dcv3fcs5k3ykn" path="res://Assets/Audio/SoundFX/Door/DoorLocked4.ogg" id="19_c257p"]
 [ext_resource type="AudioStream" uid="uid://cr47bel457b3v" path="res://Assets/Audio/SoundFX/Door/DoorLocked.ogg" id="20_hy75y"]
 [ext_resource type="Script" uid="uid://dui22n87pky58" path="res://Scripts/MoveableObjects/door_audio.gd" id="21_rulya"]
-[ext_resource type="Script" uid="uid://ye54x0y0d6q6" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="22_itqju"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vv71w"]
 size = Vector3(1.50781, 7.758, 0.264832)
@@ -37,9 +36,6 @@ stream_0/stream = ExtResource("17_uxr7i")
 stream_1/stream = ExtResource("18_os4sb")
 stream_2/stream = ExtResource("19_c257p")
 stream_3/stream = ExtResource("20_hy75y")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bex0t"]
-size = Vector3(2.06232, 2.38063, 0.888916)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktgrt"]
 resource_name = "MI_Door"
@@ -403,11 +399,14 @@ shape = SubResource("BoxShape3D_uhg2l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0197489, 2.53029, -0.0187198)
 shape = SubResource("BoxShape3D_03vr2")
 
-[node name="Door_Lock" type="Node" parent="." node_paths=PackedStringArray("door2")]
+[node name="Door_Lock" type="Node" parent="." node_paths=PackedStringArray("door1", "door2", "audio_player")]
 script = ExtResource("16_j4tbd")
+door1 = NodePath("../RigidBody3D4")
 door2 = NodePath("../RigidBody3D3")
+audio_player = NodePath("../RigidBody3D3/AudioStreamPlayer3D")
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.157415, 0, 0)
 collision_layer = 2
 collision_mask = 4110
 axis_lock_linear_y = true
@@ -426,15 +425,6 @@ transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.50384, 0)
 stream = SubResource("AudioStreamRandomizer_5ch2d")
 max_distance = 25.0
 script = ExtResource("21_rulya")
-
-[node name="Monster_Detector" type="Area3D" parent="RigidBody3D3"]
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("22_itqju")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3/Monster_Detector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0941466, 1.25269, 0.419556)
-shape = SubResource("BoxShape3D_bex0t")
 
 [node name="JoltHingeJoint3D3" type="HingeJoint3D" parent="RigidBody3D3"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.22842, 1.01394, 0.047476)
@@ -459,7 +449,7 @@ mesh = SubResource("ArrayMesh_8l1s5")
 skeleton = NodePath("")
 
 [node name="RigidBody3D4" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31689, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16231, 0, 0)
 collision_layer = 2
 collision_mask = 4110
 axis_lock_linear_y = true
@@ -478,15 +468,6 @@ transform = Transform3D(1.5456, 0, 0, 0, 1.5456, 0, 0, 0, 1.5456, 0, 1.50384, 0)
 stream = SubResource("AudioStreamRandomizer_5ch2d")
 max_distance = 25.0
 script = ExtResource("21_rulya")
-
-[node name="Monster_Detector" type="Area3D" parent="RigidBody3D4"]
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("22_itqju")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4/Monster_Detector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0941466, 1.25269, 0.419556)
-shape = SubResource("BoxShape3D_bex0t")
 
 [node name="JoltHingeJoint3D3" type="HingeJoint3D" parent="RigidBody3D4"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0365535, 1.01394, -0.0097509)
@@ -514,6 +495,3 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("ArrayMesh_i0gr1")
 skeleton = NodePath("")
-
-[connection signal="body_entered" from="RigidBody3D3/Monster_Detector" to="RigidBody3D3/Monster_Detector" method="_on_body_entered"]
-[connection signal="body_entered" from="RigidBody3D4/Monster_Detector" to="RigidBody3D4/Monster_Detector" method="_on_body_entered"]

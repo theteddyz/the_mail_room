@@ -1,12 +1,14 @@
 [gd_resource type="Environment" load_steps=2 format=3 uid="uid://52by3g1q6hkh"]
 
-[ext_resource type="Sky" uid="uid://bggj16jfsv77g" path="res://Scenes/Sky.tres" id="1_08dbw"]
+[ext_resource type="Sky" uid="uid://dx6nsgfnerjes" path="res://Scenes/SkyHumanResources.tres" id="1_w430f"]
 
 [resource]
 background_mode = 2
-background_energy_multiplier = 1.09
-sky = ExtResource("1_08dbw")
-ambient_light_source = 1
+background_color = Color(1, 1, 1, 1)
+sky = ExtResource("1_w430f")
+ambient_light_source = 2
+ambient_light_color = Color(0.650589, 0.0953389, 0.0893781, 1)
+ambient_light_energy = 0.06
 reflected_light_source = 1
 tonemap_mode = 2
 tonemap_exposure = 0.77

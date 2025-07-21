@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://d2biwn1i8hx83"]
+[gd_scene load_steps=26 format=4 uid="uid://d2biwn1i8hx83"]
 
 [ext_resource type="Script" uid="uid://b5623d6ilxuid" path="res://Scenes/Prefabs/MoveableObjects/door_moveable.gd" id="1_bky6m"]
 [ext_resource type="Script" uid="uid://d0h0rc38eq7js" path="res://Scripts/Grabbing_Types/Grab_Type.gd" id="1_q0uqo"]
@@ -9,7 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://cr47bel457b3v" path="res://Assets/Audio/SoundFX/Door/DoorLocked.ogg" id="6_1ikic"]
 [ext_resource type="Script" uid="uid://dui22n87pky58" path="res://Scripts/MoveableObjects/door_audio.gd" id="7_agoq7"]
 [ext_resource type="Texture2D" uid="uid://bgqnmx2g3lx72" path="res://Assets/Textures/BlenderTextures/Door.png" id="8_ppbl2"]
-[ext_resource type="Script" uid="uid://ye54x0y0d6q6" path="res://Scripts/MonsterAI/Monster_Detector.gd" id="9_cj0ar"]
 [ext_resource type="AudioStream" uid="uid://c6txdw12dxjcy" path="res://Assets/Audio/SoundFX/DoorOpened.mp3" id="10_cucd6"]
 [ext_resource type="AudioStream" uid="uid://c4nptbyxitq60" path="res://Assets/Audio/SoundFX/CabinetMaxOpened.mp3" id="11_i02fi"]
 [ext_resource type="AudioStream" uid="uid://p1lp413rpcng" path="res://Assets/Audio/SoundFX/DoorClosed2.mp3" id="12_m5cfo"]
@@ -69,9 +68,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ly587")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2gtk4"]
-size = Vector3(1.88855, 3.82867, 1)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ng8e4"]
 size = Vector3(1.89377, 3.93951, 0.221408)
@@ -152,15 +148,6 @@ transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.96591, 2.04469, 0)
 mesh = SubResource("ArrayMesh_kwu7s")
 skeleton = NodePath("")
 
-[node name="Monster_Detector" type="Area3D" parent="RigidBody3D2"]
-collision_layer = 4096
-collision_mask = 4096
-script = ExtResource("9_cj0ar")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2/Monster_Detector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0072632, 2.0184, 0)
-shape = SubResource("BoxShape3D_2gtk4")
-
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="RigidBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0292662, 1.97721, 0)
 occluder = SubResource("BoxOccluder3D_ng8e4")
@@ -173,5 +160,3 @@ stream = SubResource("AudioStreamRandomizer_4w0t6")
 
 [node name="DrawerAudioClose" type="AudioStreamPlayer3D" parent="RigidBody3D2"]
 stream = SubResource("AudioStreamRandomizer_8cgor")
-
-[connection signal="body_entered" from="RigidBody3D2/Monster_Detector" to="RigidBody3D2/Monster_Detector" method="_on_body_entered"]

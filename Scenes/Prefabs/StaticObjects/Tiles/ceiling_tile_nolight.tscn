@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=4 uid="uid://c8uw4jij34csj"]
+[gd_scene load_steps=8 format=4 uid="uid://c8uw4jij34csj"]
 
 [ext_resource type="Texture2D" uid="uid://bja0m3p5hofsb" path="res://Assets/Textures/BlenderTextures/LowPolyCeiling.png" id="1_2nfcf"]
 [ext_resource type="Script" uid="uid://ik6ihg46ec48" path="res://Scripts/Misc/multi_mesh_type.gd" id="1_ki48j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v2j1w"]
 size = Vector3(8.77533, 1, 8.82343)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ki48j"]
+size = Vector3(13.4653, 0.26791, 13.5981)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7ys1"]
 resource_name = "LowPolyCeiling"
@@ -54,7 +57,8 @@ collision_mask = 0
 shape = SubResource("BoxShape3D_v2j1w")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="StaticBody3D"]
-transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -0.016174, 0.458589, -0.0208939)
+transform = Transform3D(0.646906, 0, 0, 0, 0.646906, 0, 0, 0, 0.646906, -0.016174, 0.57736, -0.0208939)
+occluder = SubResource("BoxOccluder3D_ki48j")
 
 [node name="MultimeshPointer" type="Node3D" parent="." groups=["multimesh"]]
 transform = Transform3D(0.647, 0, 0, 0, 0.647, 0, 0, 0, 0.647, 0, 0, 0)

@@ -41,10 +41,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tvfjc")
 
-[node name="PaperOnWall" type="StaticBody3D"]
-collision_mask = 0
-
-[node name="PaperOnWall" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+[node name="PaperOnWall" type="MeshInstance3D"]
 mesh = SubResource("ArrayMesh_dvamb")
 skeleton = NodePath("")

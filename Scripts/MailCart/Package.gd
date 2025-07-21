@@ -40,7 +40,7 @@ func _ready():
 	#top_level = true
 	package_material = get_child(0)
 	starting_path =  get_parent().name + "/" + name
-	player = get_parent().find_child("Player")
+	player = GameManager.get_player()
 	package_holder = player.find_child("PackageHolder")
 	text_displayer = Gui.get_address_displayer()
 	EventBus.connect("object_looked_at",on_seen)

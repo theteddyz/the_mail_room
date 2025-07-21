@@ -43,10 +43,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_82hy5")
 
-[node name="Pin" type="StaticBody3D"]
-collision_mask = 0
+[node name="Node3D" type="Node3D"]
 
 [node name="Pin" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0174459, 0, 0, 0, 0.0174459, 0, 0, 0, 0.0174459, 0, 0, 0)
+transform = Transform3D(0.017, 0, 0, 0, 0.017, 0, 0, 0, 0.017, 0, 0, 0)
 mesh = SubResource("ArrayMesh_r2ljl")
 skeleton = NodePath("")
