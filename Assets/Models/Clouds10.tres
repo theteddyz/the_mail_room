@@ -1,0 +1,42 @@
+[gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://c86vm35iqqocp"]
+
+[ext_resource type="Texture2D" uid="uid://cpq44y84s5oik" path="res://Assets/Models/BlenderModels/clouds2_depositphotos_97012524-stock-photo-seamless-texture-sky-with-li.jpg" id="1_u1i12"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_du3wh"]
+resource_name = "Material"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_u1i12")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_71y52"]
+_surfaces = [{
+"aabb": AABB(-1, -0.728209, -1, 2, 1.45642, 2),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAAAAD//wAA//8AAP//AAAAAAAAAAAAAP//AAD/////AAAAAAAA/////wAA////////AAAAAP//AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "clouds2_Cube_002"
+_surfaces = [{
+"aabb": AABB(-1, -0.728209, -1, 2, 1.45642, 2),
+"attribute_data": PackedByteArray("/x//f/9f/z//X/9//x//P//f/z//n/9//9//f/+f/z8="),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUA"),
+"material": SubResource("StandardMaterial3D_du3wh"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAAAA/7///wAA////v///AAAAAP+/AAAAAP///7//////AAD/PwAA//////8//////////z8AAP//AAD/PwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_71y52")
